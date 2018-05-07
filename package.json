@@ -1,0 +1,35 @@
+{
+    "name": "js-toolbox",
+    "version": "0.0.1",
+    "description": "Various JS utilities.",
+    "keywords": [
+        "es6",
+        "javascript",
+        "tools",
+        "snippets"
+    ],
+    "homepage": "https://github.com/drmats/js-toolbox",
+    "bugs": {
+        "url": "https://github.com/drmats/js-toolbox/issues"
+    },
+    "license": "Apache-2.0",
+    "contributors": [
+        {
+            "name": "drmats",
+            "email": "xcmats@protonmail.com",
+            "url": "https://twitter.com/xcmats/"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/drmats/js-toolbox.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-eslint": "^8.2.3",
+        "eslint": "^4.19.1"
+    }
+}
