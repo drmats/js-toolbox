@@ -48,3 +48,14 @@ export const handleException = (fn, handler) => {
 // simple array flattener
 // [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
 export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
+
+
+
+
+// when o = { a: "b", c: "d" }
+// then swap(o) = { b: "a", d: "c" }
+export const swap = (o) => dict(
+    Object
+        .entries(o)
+        .map((kv) => [].concat(kv).reverse())
+)
