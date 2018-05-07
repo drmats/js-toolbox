@@ -1,19 +1,3 @@
-// helper - handle exceptions in expressions
-export const handleException = (fn, handler) => {
-    try { return fn() }
-    catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
-}
-
-
-
-
-// simple array flattener
-// [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
-export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
-
-
-
-
 // functional replacement of a "switch" statement
 export const choose = (
     key,
@@ -38,3 +22,29 @@ export const createReducer = (initState = {}) =>
                 defaultAction,
                 [state, action,]
             )
+
+
+
+
+// construct object from result of Object.entries() call
+// entries = [[k1,v1], ... [kn, vn]]
+// imitates Python's dict()
+export const dict = (entries) => entries.reduce(
+    (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
+)
+
+
+
+
+// helper - handle exceptions in expressions
+export const handleException = (fn, handler) => {
+    try { return fn() }
+    catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
+}
+
+
+
+
+// simple array flattener
+// [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
+export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
