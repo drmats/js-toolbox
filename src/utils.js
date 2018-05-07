@@ -7,7 +7,14 @@ export const handleException = (fn, handler) => {
 
 
 
-// functional replacement of "switch" statement
+// simple array flattener
+// [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
+export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
+
+
+
+
+// functional replacement of a "switch" statement
 export const choose = (
     key,
     actions = {},
