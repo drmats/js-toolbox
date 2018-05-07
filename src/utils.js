@@ -24,3 +24,17 @@ export const choose = (
     key in actions ?
         actions[key](...args) :
         defaultAction(...args)
+
+
+
+
+// create clean and readable reducers for redux
+export const createReducer = (initState = {}) =>
+    (actions, defaultAction = (s, _a) => s) =>
+        (state = initState, action) =>
+            choose(
+                action.type,
+                actions,
+                defaultAction,
+                [state, action,]
+            )
