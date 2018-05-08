@@ -1,3 +1,4 @@
+//
 // setTimeout in promise/async skin
 // example usage:
 //
@@ -28,6 +29,8 @@ export const timeout = (f, time = 1000, cancel = (_reason) => null) => {
 
 
 
+//
 // convenience shortcut of "timeout"
+//
 export const delay = (time = 1000, cancel = (_reason) => null) =>
     timeout(() => time, time, cancel)

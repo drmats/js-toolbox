@@ -1,4 +1,6 @@
+//
 // functional replacement of a "switch" statement
+//
 export const choose = (
     key,
     actions = {},
@@ -12,7 +14,9 @@ export const choose = (
 
 
 
+//
 // create clean and readable reducers for redux
+//
 export const createReducer = (initState = {}) =>
     (actions, defaultAction = (s, _a) => s) =>
         (state = initState, action) =>
@@ -26,10 +30,12 @@ export const createReducer = (initState = {}) =>
 
 
 
+//
 // construct object from result of Object.entries() call
 // entries = [[k1, v1], ... [kn, vn]]
 //
 // imitates Python's dict()
+//
 export const dict = (entries) => entries.reduce(
     (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
 )
@@ -37,7 +43,9 @@ export const dict = (entries) => entries.reduce(
 
 
 
+//
 // helper - handle exceptions in expressions
+//
 export const handleException = (fn, handler) => {
     try { return fn() }
     catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
@@ -46,15 +54,19 @@ export const handleException = (fn, handler) => {
 
 
 
+//
 // simple array flattener
 // [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
+//
 export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
 
 
 
 
+//
 // when o = { a: "b", c: "d" }
 // then swap(o) = { b: "a", d: "c" }
+//
 export const swap = (o) => dict(
     Object
         .entries(o)
@@ -64,6 +76,7 @@ export const swap = (o) => dict(
 
 
 
+//
 // range(stop) -> array of integers
 // range(start, stop[, step]) -> array of integers
 //
@@ -73,6 +86,7 @@ export const swap = (o) => dict(
 // For example, range(4) returns [0, 1, 2, 3].
 //
 // imitates Python's range()
+//
 export const range = (...args) => {
     let start = 0, stop = 0, step = 1, arr = []
 
