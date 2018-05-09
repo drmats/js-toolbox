@@ -32,24 +32,13 @@ export const createReducer = (initState = {}) =>
 
 //
 // construct object from result of Object.entries() call
-// entries = [[k1, v1], ... [kn, vn]]
+// entries = [[k1, v1,], ... [kn, vn,]]
 //
 // imitates Python's dict()
 //
 export const dict = (entries) => entries.reduce(
     (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
 )
-
-
-
-
-//
-// helper - handle exceptions in expressions
-//
-export const handleException = (fn, handler) => {
-    try { return fn() }
-    catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
-}
 
 
 
@@ -64,14 +53,12 @@ export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
 
 
 //
-// when o = { a: "b", c: "d" }
-// then swap(o) = { b: "a", d: "c" }
+// helper - handle exceptions in expressions
 //
-export const swap = (o) => dict(
-    Object
-        .entries(o)
-        .map((kv) => [].concat(kv).reverse())
-)
+export const handleException = (fn, handler) => {
+    try { return fn() }
+    catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
+}
 
 
 
@@ -111,3 +98,41 @@ export const range = (...args) => {
 
     return arr
 }
+
+
+
+
+//
+// Randomly shuffles all elements in the given array
+// (Durstenfeld's modification to Fisher-Yates shuffle algorithm).
+// The operation is taken in-place.
+//
+export const shuffle = (arr) => {
+    let j, tmp;
+
+    if (!Array.isArray(arr)) throw new TypeError(
+        `shuffle() expected array as argument, got ${typeof arr}`
+    )
+
+    for (let i = arr.length-1;  i > 0;  i -= 1) {
+        j = Math.floor(Math.random()*1e16) % (i+1)
+        tmp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = tmp
+    }
+
+    return arr
+}
+
+
+
+
+//
+// when o = { a: "b", c: "d" }
+// then swap(o) = { b: "a", d: "c" }
+//
+export const swap = (o) => dict(
+    Object
+        .entries(o)
+        .map((kv) => [].concat(kv).reverse())
+)
