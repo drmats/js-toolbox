@@ -64,6 +64,22 @@ export const handleException = (fn, handler) => {
 
 
 //
+// base 10 logarithm
+//
+export const log10 = (x) => Math.log(x) / Math.LN10
+
+
+
+
+//
+// base 2 logarithm
+//
+export const log2 = (x) => Math.log(x) / Math.LN2
+
+
+
+
+//
 // range(stop) -> array of integers
 // range(start, stop[, step]) -> array of integers
 //
@@ -108,7 +124,7 @@ export const range = (...args) => {
 // The operation is taken in-place.
 //
 export const shuffle = (arr) => {
-    let j, tmp;
+    let j, tmp
 
     if (!Array.isArray(arr)) throw new TypeError(
         `shuffle() expected array as argument, got ${typeof arr}`
