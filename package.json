@@ -25,10 +25,13 @@
         "url": "https://github.com/drmats/js-toolbox.git"
     },
     "scripts": {
+        "build": "babel ./src/ -d ./build/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "babel-cli": "^6.26.0",
+        "@babel/cli": "^7.0.0-beta.46",
+        "@babel/core": "^7.0.0-beta.46",
+        "@babel/preset-env": "^7.0.0-beta.46",
         "babel-eslint": "^8.2.3",
         "eslint": "^4.19.1"
     }
