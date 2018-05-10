@@ -1,8 +1,24 @@
 //
+// return first element of the given array
+//
+export const first = (arr) => arr[0]
+
+
+
+
+//
 // simple array flattener
 // [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
 //
 export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
+
+
+
+
+//
+// return last element of the given array
+//
+export const last = (arr) => arr[arr.length-1]
 
 
 
