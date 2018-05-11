@@ -1,5 +1,5 @@
 //
-// functional replacement of a "switch" statement
+// Functional replacement of a "switch" statement.
 //
 export const choose = (
     key,
@@ -15,7 +15,7 @@ export const choose = (
 
 
 //
-// create clean and readable reducers for redux
+// Create clean and readable reducers for redux.
 //
 export const createReducer = (initState = {}) =>
     (actions, defaultAction = (s, _a) => s) =>
@@ -31,7 +31,7 @@ export const createReducer = (initState = {}) =>
 
 
 //
-// construct object from result of Object.entries() call
+// Construct object from result of Object.entries() call.
 // entries = [[k1, v1,], ... [kn, vn,]]
 //
 // imitates Python's dict()
@@ -44,7 +44,7 @@ export const dict = (entries) => entries.reduce(
 
 
 //
-// helper - handle exceptions in expressions
+// Handle exceptions in expressions.
 //
 export const handleException = (fn, handler) => {
     try { return fn() }

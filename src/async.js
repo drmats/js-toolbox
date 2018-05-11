@@ -1,6 +1,6 @@
 //
-// setTimeout in promise/async skin
-// example usage:
+// setTimeout in promise/async skin.
+// Example usage:
 //
 // sf.utils.timeout(
 //     () => { console.log("Hey!"); return 42 }, 1000,
@@ -30,7 +30,7 @@ export const timeout = (f, time = 1000, cancel = (_reason) => null) => {
 
 
 //
-// convenience shortcut of "timeout"
+// Convenience shortcut of "timeout".
 //
 export const delay = (time = 1000, cancel = (_reason) => null) =>
     timeout(() => time, time, cancel)
