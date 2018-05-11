@@ -16,6 +16,14 @@ export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
 
 
 //
+// Alias for "first".
+//
+export const head = first
+
+
+
+
+//
 // Return last element of the given array.
 //
 export const last = (arr) => arr[arr.length-1]
@@ -120,3 +128,11 @@ export const sparse = (...args) => {
 
     return Object.values(hash).sort((a, b) => a - b)
 }
+
+
+
+
+//
+// Returns array without its head (first element).
+//
+export const tail = (arr) => arr.slice(1)
