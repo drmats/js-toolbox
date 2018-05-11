@@ -30,23 +30,34 @@ $ node
 ```
 
 ```javascript
-> [array, async, math, utils] =
-... ["array", "async", "math", "utils"].map(
+> [array, async, math, string, utils] =
+... ["array", "async", "math", "string", "utils"].map(
 ...     m => require("./build/" + m + ".js")
 ... )
-[ { first: [Function: first],
-    flatten: [Function: flatten],
+[ { flatten: [Function: flatten],
+    head: [Function: head],
+    init: [Function: init],
     last: [Function: last],
     range: [Function: range],
     shuffle: [Function: shuffle],
-    sparse: [Function: sparse] },
-{ timeout: [Function: timeout], delay: [Function: delay] },
-{ log10: [Function: log10], log2: [Function: log2] },
-{ choose: [Function: choose],
+    sparse: [Function: sparse],
+    tail: [Function: tail] },
+  { delay: [Function: delay], timeout: [Function: timeout] },
+  { log10: [Function: log10], log2: [Function: log2] },
+  { camelToPascal: [Function: camelToPascal],
+    camelToSnake: [Function: camelToSnake],
+    capitalize: [Function: capitalize],
+    empty: [Function: empty],
+    pascalToCamel: [Function: pascalToCamel],
+    pascalToSnake: [Function: pascalToSnake],
+    snakeToCamel: [Function: snakeToCamel],
+    snakeToPascal: [Function: snakeToPascal] },
+  { choose: [Function: choose],
     createReducer: [Function: createReducer],
     dict: [Function: dict],
     handleException: [Function: handleException],
     swap: [Function: swap] } ]
+
 ```
 
 
@@ -62,4 +73,14 @@ $ node
 ```javascript
 > array.sparse(1024, 8)
 [ 6, 34, 170, 422, 530, 643, 855, 862 ]
+```
+
+```javascript
+> string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+'some_nights_i_stay_up_cashing_in_my_bad_luck'
+```
+
+```javascript
+> string.snakeToCamel('some_nights_i_call_it_a_draw')
+'someNightsICallItADraw'
 ```
