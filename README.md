@@ -42,7 +42,9 @@ $ node
     shuffle: [Function: shuffle],
     sparse: [Function: sparse],
     tail: [Function: tail] },
-  { delay: [Function: delay], timeout: [Function: timeout] },
+  { delay: [Function: delay],
+    interval: [Function: interval],
+    timeout: [Function: timeout] },
   { log10: [Function: log10], log2: [Function: log2] },
   { camelToPascal: [Function: camelToPascal],
     camelToSnake: [Function: camelToSnake],
@@ -57,7 +59,6 @@ $ node
     dict: [Function: dict],
     handleException: [Function: handleException],
     swap: [Function: swap] } ]
-
 ```
 
 
