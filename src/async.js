@@ -31,6 +31,7 @@ export const interval = (f, clear, time = 1000) => {
     clear(() => {
         clearInterval(handle)
         resolve(result)
+        return result
     })
     return promise
 }
