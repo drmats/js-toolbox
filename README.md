@@ -100,6 +100,6 @@ $ npm start
 ```
 
 ```javascript
-> math.log10(100000000)
-8
+> math.log10(1e9)
+9
 ```
