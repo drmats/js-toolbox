@@ -70,6 +70,11 @@ $ npm start
 ```
 
 ```javascript
+> array.shuffle(array.range(12))
+[ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+```
+
+```javascript
 > string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
 'some_nights_i_stay_up_cashing_in_my_bad_luck'
 ```
