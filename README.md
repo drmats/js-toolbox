@@ -46,7 +46,7 @@ $ npm start
   pascalToSnake: [Function: pascalToSnake],
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
-  > utils
+> utils
 { choose: [Function: choose],
   createReducer: [Function: createReducer],
   dict: [Function: dict],
@@ -77,4 +77,29 @@ $ npm start
 ```javascript
 > string.snakeToCamel('some_nights_i_call_it_a_draw')
 'someNightsICallItADraw'
+```
+
+```javascript
+> utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+{ a: 'b', c: 'd', e: 'f' }
+```
+
+```javascript
+> array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
+[ 'a', 'b', 'c', 'd', 'e', 'f' ]
+```
+
+```javascript
+> utils.swap({ a: 'b', c: 'd', e: 'f' })
+{ b: 'a', d: 'c', f: 'e' }
+```
+
+```javascript
+> math.log2(2**32)
+32
+```
+
+```javascript
+> math.log10(100000000)
+8
 ```
