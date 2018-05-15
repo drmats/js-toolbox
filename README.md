@@ -18,7 +18,7 @@ $ npm install
 
 ```bash
 $ npm start
-🎉  Successfully compiled 5 files with Babel.
+🎉  Successfully compiled 6 files with Babel.
 ```
 
 ```javascript
@@ -42,6 +42,9 @@ $ npm start
   log2: [Function: log2],
   roundIfClose: [Function: roundIfClose] }
 
+> redux
+{ createReducer: [Function: createReducer] }
+
 > string
 { big: [Function],
   camelToPascal: [Function: camelToPascal],
@@ -55,7 +58,6 @@ $ npm start
 
 > utils
 { choose: [Function: choose],
-  createReducer: [Function: createReducer],
   dict: [Function: dict],
   handleException: [Function: handleException],
   swap: [Function: swap],
