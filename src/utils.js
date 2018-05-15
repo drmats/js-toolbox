@@ -63,3 +63,11 @@ export const swap = (o) => dict(
         .entries(o)
         .map((kv) => [].concat(kv).reverse())
 )
+
+
+
+
+//
+// Y-combinator (returns fixed point of higher-order function passed as "f")
+//
+export const Y = (f) => ((g) => g(g))((h) => (...args) => f(h(h))(...args))
