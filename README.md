@@ -31,14 +31,20 @@ $ npm start
   shuffle: [Function: shuffle],
   sparse: [Function: sparse],
   tail: [Function: tail] }
+
 > async
 { delay: [Function: delay],
   interval: [Function: interval],
   timeout: [Function: timeout] }
+
 > math
-{ log10: [Function: log10], log2: [Function: log2] }
+{ log10: [Function: log10],
+  log2: [Function: log2],
+  roundIfClose: [Function: roundIfClose] }
+
 > string
-{ camelToPascal: [Function: camelToPascal],
+{ big: [Function],
+  camelToPascal: [Function: camelToPascal],
   camelToSnake: [Function: camelToSnake],
   capitalize: [Function: capitalize],
   empty: [Function: empty],
@@ -46,12 +52,14 @@ $ npm start
   pascalToSnake: [Function: pascalToSnake],
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
+
 > utils
 { choose: [Function: choose],
   createReducer: [Function: createReducer],
   dict: [Function: dict],
   handleException: [Function: handleException],
-  swap: [Function: swap] }
+  swap: [Function: swap],
+  Y: [Function: Y] }
 ```
 
 
