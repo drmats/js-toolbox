@@ -1,4 +1,19 @@
 import { head, tail } from "./array"
+import { Y } from "./utils"
+
+
+
+
+//
+// Create a big string (of size 2^n). Use with caution!
+//     big(16) makes 2^16 = 65536 string size.
+//     big(23) makes 2^23 = 8M string size,
+//     big(24) makes 16M and so on.
+// [c="x"] Character used during string generation.
+//     big(2) = "xxxx"
+//     big(3, "a") = "aaaaaaaa"
+//
+export const big = Y((r) => (n, c = "x") => n > 0  ?  r(n-1, c+c)  :  c)
 
 
 

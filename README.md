@@ -108,3 +108,8 @@ $ npm start
 > math.log10(1e9)
 9
 ```
+
+```javascript
+> string.big(4)
+'xxxxxxxxxxxxxxxx'
+```
