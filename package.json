@@ -15,7 +15,8 @@
         "@babel/core": "^7.0.0-beta.46",
         "@babel/preset-env": "^7.0.0-beta.46",
         "babel-eslint": "^8.2.3",
-        "eslint": "^4.19.1"
+        "eslint": "^4.19.1",
+        "rimraf": "^2.6.2"
     },
     "engines": {
         "node": ">=6.0.0",
@@ -42,6 +43,7 @@
     },
     "scripts": {
         "build": "babel ./src/ -d ./lib/",
+        "clean": "rimraf lib",
         "lint": "eslint ./src/",
         "start": "npm run build; node ./scripts/start.js",
         "test": "npm run lint  &&  echo \"Warning: no tests specified (yet)\""
