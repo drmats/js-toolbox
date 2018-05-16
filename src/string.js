@@ -120,6 +120,14 @@ export const pascalToSnake = (str) =>
 
 
 //
+// Quote text.
+//
+export const quote = (str, q="\"\"") => `${q[0]}${str}${q[1]}`
+
+
+
+
+//
 // Construct random string of desired length.
 //
 export const random = (size = 0, letters = asciiLetters() + digits()) =>

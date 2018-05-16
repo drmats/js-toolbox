@@ -43,6 +43,7 @@ export {
     empty as emptyString,
     pascalToCamel,
     pascalToSnake,
+    quote,
     random as randomString,
     snakeToCamel,
     snakeToPascal,

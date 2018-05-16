@@ -65,6 +65,7 @@ $ npm start
   empty: [Function: empty],
   pascalToCamel: [Function: pascalToCamel],
   pascalToSnake: [Function: pascalToSnake],
+  quote: [Function: quote],
   random: [Function: random],
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
@@ -145,4 +146,9 @@ $ npm start
 ```javascript
 > array.draw(string.asciiLetters())
 'S'
+```
+
+```javascript
+> string.quote("div", "<>")
+'<div>'
 ```
