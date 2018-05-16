@@ -46,6 +46,7 @@
         "clean": "rimraf lib",
         "clean_modules": "rimraf node_modules",
         "lint": "eslint ./src/",
+        "prepublishOnly": "npm run clean; npm run build",
         "start": "npm run build; node ./scripts/start.js",
         "test": "npm run lint  &&  echo \"Warning: no tests specified (yet)\""
     },
