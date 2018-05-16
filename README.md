@@ -2,6 +2,13 @@
 
 Various JS utilities.
 
+![npm (scoped)](https://img.shields.io/npm/v/@xcmats/js-toolbox.svg)
+![npm](https://img.shields.io/npm/l/@xcmats/js-toolbox.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/drmats/js-toolbox.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/drmats/js-toolbox.svg)
+
+<br />
+
 
 
 
