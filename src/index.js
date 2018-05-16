@@ -1,5 +1,6 @@
 // ...
 export {
+    draw,
     flatten,
     head,
     init,
@@ -31,13 +32,18 @@ export {
 
 // ...
 export {
+    asciiLetters,
+    asciiLowercase,
+    asciiUppercase,
     big as bigString,
     camelToPascal,
     camelToSnake,
     capitalize,
+    digits,
     empty as emptyString,
     pascalToCamel,
     pascalToSnake,
+    random as randomString,
     snakeToCamel,
     snakeToPascal,
 } from "./string"

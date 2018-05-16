@@ -30,7 +30,8 @@ $ npm start
 
 ```javascript
 > array
-{ flatten: [Function: flatten],
+{ draw: [Function: draw],
+  flatten: [Function: flatten],
   head: [Function: head],
   init: [Function: init],
   last: [Function: last],
@@ -53,13 +54,18 @@ $ npm start
 { createReducer: [Function: createReducer] }
 
 > string
-{ big: [Function],
+{ asciiLetters: [Function: asciiLetters],
+  asciiLowercase: [Function: asciiLowercase],
+  asciiUppercase: [Function: asciiUppercase],
+  big: [Function],
   camelToPascal: [Function: camelToPascal],
   camelToSnake: [Function: camelToSnake],
   capitalize: [Function: capitalize],
+  digits: [Function: digits],
   empty: [Function: empty],
   pascalToCamel: [Function: pascalToCamel],
   pascalToSnake: [Function: pascalToSnake],
+  random: [Function: random],
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
 
@@ -129,4 +135,14 @@ $ npm start
 ```javascript
 > string.big(4)
 'xxxxxxxxxxxxxxxx'
+```
+
+```javascript
+> string.random(16)
+'MxWGe8MoOss0yUAP'
+```
+
+```javascript
+> array.draw(string.asciiLetters())
+'S'
 ```
