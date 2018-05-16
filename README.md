@@ -6,24 +6,24 @@ Various JS utilities.
 [![npm license](https://img.shields.io/npm/l/@xcmats/js-toolbox.svg)](https://www.npmjs.com/package/@xcmats/js-toolbox)
 [![GitHub top language](https://img.shields.io/github/languages/top/drmats/js-toolbox.svg)](https://github.com/drmats/js-toolbox)
 [![GitHub code size](https://img.shields.io/github/languages/code-size/drmats/js-toolbox.svg)](https://github.com/drmats/js-toolbox)
+[![GitHub tag](https://img.shields.io/github/tag/drmats/js-toolbox.svg)](https://github.com/drmats/js-toolbox)
+
+```bash
+$ npm install @xcmats/js-toolbox
+```
 
 <br />
 
 
 
 
-## prerequisities installation
+## experimenting
 
 ```bash
-$ npm install
-```
-
-
-
-
-## usage / experimenting
-
-```bash
+$ git clone git@github.com:drmats/js-toolbox.git
+Cloning into 'js-toolbox'...
+$ cd js-toolbox
+$ npm i
 $ npm start
 🎉  Successfully compiled 7 files with Babel.
 ```
