@@ -1,4 +1,12 @@
 //
+// Choose a random element from a non-empty array.
+//
+export const draw = (arr) => arr[Math.floor(Math.random()*1e16) % arr.length]
+
+
+
+
+//
 // Simple array flattener.
 // [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
 //
