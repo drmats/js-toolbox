@@ -7,6 +7,6 @@
 Object.assign(
     require("repl").start({}).context,
     ["array", "async", "math", "redux", "string", "utils",].reduce(
-        (e, mn) => (e[mn] = require("../build/" + mn + ".js"), e), {}
+        (e, mn) => (e[mn] = require("../lib/" + mn + ".js"), e), {}
     )
 )

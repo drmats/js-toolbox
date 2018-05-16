@@ -18,7 +18,7 @@ $ npm install
 
 ```bash
 $ npm start
-🎉  Successfully compiled 6 files with Babel.
+🎉  Successfully compiled 7 files with Babel.
 ```
 
 ```javascript
