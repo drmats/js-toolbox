@@ -1,4 +1,16 @@
 //
+// Apply path to an object "o".
+// access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
+//
+export const access = (o, path) => handleException(
+    () => path.reduce((acc, p) => acc[p], o),
+    () => undefined
+)
+
+
+
+
+//
 // Functional replacement of a "switch" statement.
 //
 export const choose = (

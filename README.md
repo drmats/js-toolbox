@@ -73,11 +73,13 @@ $ npm start
   snakeToPascal: [Function: snakeToPascal] }
 
 > utils
-{ choose: [Function: choose],
+{ access: [Function: access],
+  choose: [Function: choose],
   dict: [Function: dict],
   handleException: [Function: handleException],
   swap: [Function: swap],
   Y: [Function: Y] }
+
 ```
 
 
@@ -163,4 +165,9 @@ $ npm start
 ```javascript
 > math.average([1,2,3,4,5])
 3
+```
+
+```javascript
+> utils.access({ a: { b: { c: 42 } } }, ["a", "b", "c"])
+42
 ```
