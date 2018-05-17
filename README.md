@@ -79,7 +79,6 @@ $ npm start
   handleException: [Function: handleException],
   swap: [Function: swap],
   Y: [Function: Y] }
-
 ```
 
 
@@ -88,33 +87,8 @@ $ npm start
 ## examples
 
 ```javascript
-> array.range(10)
-[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-```
-
-```javascript
-> array.sparse(1024, 8)
-[ 6, 34, 170, 422, 530, 643, 855, 862 ]
-```
-
-```javascript
-> array.shuffle(array.range(12))
-[ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
-```
-
-```javascript
-> string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
-'some_nights_i_stay_up_cashing_in_my_bad_luck'
-```
-
-```javascript
-> string.snakeToCamel('some_nights_i_call_it_a_draw')
-'someNightsICallItADraw'
-```
-
-```javascript
-> utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
-{ a: 'b', c: 'd', e: 'f' }
+> array.draw(string.asciiLetters())
+'S'
 ```
 
 ```javascript
@@ -123,8 +97,23 @@ $ npm start
 ```
 
 ```javascript
-> utils.swap({ a: 'b', c: 'd', e: 'f' })
-{ b: 'a', d: 'c', f: 'e' }
+> array.range(10)
+[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+```javascript
+> array.shuffle(array.range(12))
+[ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+```
+
+```javascript
+> array.sparse(1024, 8)
+[ 6, 34, 170, 422, 530, 643, 855, 862 ]
+```
+
+```javascript
+> math.average([1, 2, 3, 4, 5])
+3
 ```
 
 ```javascript
@@ -138,18 +127,18 @@ $ npm start
 ```
 
 ```javascript
+> math.sum([5, 6, 7, 8, 9, 10])
+45
+```
+
+```javascript
 > string.big(4)
 'xxxxxxxxxxxxxxxx'
 ```
 
 ```javascript
-> string.random(16)
-'MxWGe8MoOss0yUAP'
-```
-
-```javascript
-> array.draw(string.asciiLetters())
-'S'
+> string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+'some_nights_i_stay_up_cashing_in_my_bad_luck'
 ```
 
 ```javascript
@@ -158,16 +147,26 @@ $ npm start
 ```
 
 ```javascript
-> math.sum([5,6,7,8,9,10])
-45
+> string.random(16)
+'MxWGe8MoOss0yUAP'
 ```
 
 ```javascript
-> math.average([1,2,3,4,5])
-3
+> string.snakeToCamel('some_nights_i_call_it_a_draw')
+'someNightsICallItADraw'
 ```
 
 ```javascript
 > utils.access({ a: { b: { c: 42 } } }, ["a", "b", "c"])
 42
+```
+
+```javascript
+> utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+{ a: 'b', c: 'd', e: 'f' }
+```
+
+```javascript
+> utils.swap({ a: 'b', c: 'd', e: 'f' })
+{ b: 'a', d: 'c', f: 'e' }
 ```
