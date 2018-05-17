@@ -46,9 +46,11 @@ $ npm start
   timeout: [Function: timeout] }
 
 > math
-{ log10: [Function: log10],
+{ average: [Function: average],
+  log10: [Function: log10],
   log2: [Function: log2],
-  roundIfClose: [Function: roundIfClose] }
+  roundIfClose: [Function: roundIfClose],
+  sum: [Function: sum] }
 
 > redux
 { createReducer: [Function: createReducer] }
@@ -151,4 +153,14 @@ $ npm start
 ```javascript
 > string.quote("div", "<>")
 '<div>'
+```
+
+```javascript
+> math.sum([5,6,7,8,9,10])
+45
+```
+
+```javascript
+> math.average([1,2,3,4,5])
+3
 ```

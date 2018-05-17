@@ -20,9 +20,11 @@ export {
 
 // ...
 export {
+    average,
     log10,
     log2,
     roundIfClose,
+    sum,
 } from "./math"
 
 // ...
