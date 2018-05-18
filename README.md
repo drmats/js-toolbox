@@ -77,6 +77,7 @@ $ npm start
   choose: [Function: choose],
   dict: [Function: dict],
   handleException: [Function: handleException],
+  nullToUndefined: [Function: nullToUndefined],
   swap: [Function: swap],
   Y: [Function: Y] }
 ```

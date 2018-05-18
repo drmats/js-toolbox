@@ -44,8 +44,16 @@ export const dict = (entries) => entries.reduce(
 //
 export const handleException = (fn, handler) => {
     try { return fn() }
-    catch (ex) { return typeof handler === "function" ? handler(ex) : ex }
+    catch (ex) { return typeof handler === "function"  ?  handler(ex)  :  ex }
 }
+
+
+
+
+//
+// If val is null then return undefined, else return val.
+//
+export const nullToUndefined = (val) => val === null  ?  undefined  :  val
 
 
 
