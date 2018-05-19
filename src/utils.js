@@ -59,13 +59,33 @@ export const nullToUndefined = (val) => val === null  ?  undefined  :  val
 
 
 //
+// Map (iteration) on objects.
+//
+// o - Object to enumerate on.
+// f - Function to call on each key, params:
+//    this - bound to enumerated object
+//    kv - current [key, value] array
+//
+// f should return [key, value] array.
+//
+export const objectMap = (o, f) => {
+    if (typeof o !== "object"  ||  o === null  ||  typeof f !== "function") {
+        throw new TypeError("objectMap() expected object and function")
+    }
+    return dict(Object.entries(o).map((kv) => f.call(o, kv)))
+}
+
+
+
+
+//
 // when o = { a: "b", c: "d" }
 // then swap(o) = { b: "a", d: "c" }
 //
 export const swap = (o) => dict(
     Object
         .entries(o)
-        .map((kv) => [].concat(kv).reverse())
+        .map(([k, v,]) => [v, k,])
 )
 
 

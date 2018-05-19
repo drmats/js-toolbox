@@ -58,6 +58,7 @@ export {
     dict,
     handleException,
     nullToUndefined,
+    objectMap,
     swap,
     Y,
 } from "./utils"

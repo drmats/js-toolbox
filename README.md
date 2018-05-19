@@ -78,6 +78,7 @@ $ npm start
   dict: [Function: dict],
   handleException: [Function: handleException],
   nullToUndefined: [Function: nullToUndefined],
+  objectMap: [Function: objectMap],
   swap: [Function: swap],
   Y: [Function: Y] }
 ```
@@ -143,7 +144,7 @@ $ npm start
 ```
 
 ```javascript
-> string.quote("div", "<>")
+> string.quote('div', '<>')
 '<div>'
 ```
 
@@ -158,13 +159,24 @@ $ npm start
 ```
 
 ```javascript
-> utils.access({ a: { b: { c: 42 } } }, ["a", "b", "c"])
+> utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
 42
 ```
 
 ```javascript
 > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
 { a: 'b', c: 'd', e: 'f' }
+```
+
+```javascript
+> utils.objectMap(
+...     { what: 'od', i: '?rof dnats' },
+...     ([k, v,]) => [
+...         string.capitalize(k),
+...         v.split('').reverse().join('')
+...     ]
+... )
+{ What: 'do', I: 'stand for?' }
 ```
 
 ```javascript
