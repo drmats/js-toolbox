@@ -82,11 +82,7 @@ export const objectMap = (o, f) => {
 // when o = { a: "b", c: "d" }
 // then swap(o) = { b: "a", d: "c" }
 //
-export const swap = (o) => dict(
-    Object
-        .entries(o)
-        .map(([k, v,]) => [v, k,])
-)
+export const swap = (o) => objectMap(o, ([k, v,]) => [v, k,])
 
 
 
