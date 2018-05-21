@@ -55,10 +55,12 @@ export {
 export {
     access,
     choose,
+    curry,
     dict,
     handleException,
     nullToUndefined,
     objectMap,
+    partial,
     swap,
     Y,
 } from "./utils"
