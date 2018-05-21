@@ -25,7 +25,7 @@ Cloning into 'js-toolbox'...
 $ cd js-toolbox
 $ npm i
 $ npm start
-🎉  Successfully compiled 7 files with Babel.
+🎉  Successfully compiled 8 files with Babel.
 ```
 
 ```javascript
@@ -44,6 +44,11 @@ $ npm start
 { delay: [Function: delay],
   interval: [Function: interval],
   timeout: [Function: timeout] }
+
+> func
+{ curry: [Function: curry],
+  partial: [Function: partial],
+  Y: [Function: Y] }
 
 > math
 { average: [Function: average],
@@ -79,8 +84,7 @@ $ npm start
   handleException: [Function: handleException],
   nullToUndefined: [Function: nullToUndefined],
   objectMap: [Function: objectMap],
-  swap: [Function: swap],
-  Y: [Function: Y] }
+  swap: [Function: swap] }
 ```
 
 
@@ -106,6 +110,13 @@ $ npm start
 ```javascript
 > array.shuffle(array.range(12))
 [ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+```
+
+```javascript
+> f = (...args) => math.sum(args)
+[Function: f]
+> func.curry(f)(1)(2)(3)(4)(5)()
+15
 ```
 
 ```javascript

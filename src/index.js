@@ -11,12 +11,28 @@ export {
     tail,
 } from "./array"
 
+
+
+
 // ...
 export {
     delay,
     interval,
     timeout,
 } from "./async"
+
+
+
+
+// ...
+export {
+    curry,
+    partial,
+    Y,
+} from "./func"
+
+
+
 
 // ...
 export {
@@ -27,10 +43,16 @@ export {
     sum,
 } from "./math"
 
+
+
+
 // ...
 export {
     createReducer,
 } from "./redux"
+
+
+
 
 // ...
 export {
@@ -51,16 +73,16 @@ export {
     snakeToPascal,
 } from "./string"
 
+
+
+
 // ...
 export {
     access,
     choose,
-    curry,
     dict,
     handleException,
     nullToUndefined,
     objectMap,
-    partial,
     swap,
-    Y,
 } from "./utils"

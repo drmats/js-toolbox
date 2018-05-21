@@ -4,7 +4,7 @@ import {
     range,
     tail
 } from "./array"
-import { Y } from "./utils"
+import { Y } from "./func"
 
 
 
