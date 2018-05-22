@@ -86,5 +86,6 @@ export {
     isObject,
     nullToUndefined,
     objectMap,
+    objectReduce,
     swap,
 } from "./utils"

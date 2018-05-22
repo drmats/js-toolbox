@@ -86,6 +86,7 @@ $ npm start
   isObject: [Function: isObject],
   nullToUndefined: [Function: nullToUndefined],
   objectMap: [Function: objectMap],
+  objectReduce: [Function: objectReduce],
   swap: [Function: swap] }
 ```
 

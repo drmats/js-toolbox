@@ -77,20 +77,42 @@ export const nullToUndefined = (val) => val === null  ?  undefined  :  val
 
 
 //
-// Map (iteration) on objects.
+// Map (iteration) on objects - shallow.
 //
-// o - Object to enumerate on.
-// f - Function to call on each key, params:
+// "o" - Object to enumerate on.
+// "f" - Function to call on each key, params:
 //     this - bound to enumerated object,
-//     kv - current [key, value] array,
+//     "kv" - current [key, value] array,
 //
-// f should return [key, value] array.
+// "f" should return [key, value] array.
 //
 export const objectMap = (o, f) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "objectMap() expected object and function"
     )
     return dict(Object.entries(o).map((kv) => f.call(o, kv)))
+}
+
+
+
+
+//
+// Reduce (fold) on objects - shallow.
+//
+// "o" - Object to enumerate on.
+// "f" - Function to call on each key, params:
+//     this - bound to enumerated object,
+//     "acc" - accumulated value
+//     "kv" - current [key, value] array,
+// "init" - accumulated value initializer
+//
+// "f" should return value of the same type as "init".
+//
+export const objectReduce = (o, f, init) => {
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "objectReduce() expected object and function"
+    )
+    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
 }
 
 
