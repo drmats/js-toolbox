@@ -5,7 +5,7 @@
 // f(a, b, c, d)  <=>  curry(f)(a)(b)(c)(d)()
 //
 export const curry = (f) => (...args) =>
-    args.length === 0 ? f() : curry(partial(f)(...args))
+    args.length === 0  ?  f()  :  curry(partial(f)(...args))
 
 
 

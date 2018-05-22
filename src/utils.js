@@ -44,8 +44,26 @@ export const dict = (entries) => entries.reduce(
 //
 export const handleException = (fn, handler) => {
     try { return fn() }
-    catch (ex) { return typeof handler === "function"  ?  handler(ex)  :  ex }
+    catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
 }
+
+
+
+
+//
+// Determine if given value is a function.
+//
+export const isFunction = (f) =>
+    f != null  &&  typeof f === "function"
+
+
+
+
+//
+// Determine if given value is an object.
+//
+export const isObject = (o) =>
+    o != null  &&  typeof o === "object"  &&  !Array.isArray(o)
 
 
 
@@ -63,15 +81,15 @@ export const nullToUndefined = (val) => val === null  ?  undefined  :  val
 //
 // o - Object to enumerate on.
 // f - Function to call on each key, params:
-//    this - bound to enumerated object
-//    kv - current [key, value] array
+//     this - bound to enumerated object,
+//     kv - current [key, value] array,
 //
 // f should return [key, value] array.
 //
 export const objectMap = (o, f) => {
-    if (typeof o !== "object"  ||  o === null  ||  typeof f !== "function") {
-        throw new TypeError("objectMap() expected object and function")
-    }
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "objectMap() expected object and function"
+    )
     return dict(Object.entries(o).map((kv) => f.call(o, kv)))
 }
 

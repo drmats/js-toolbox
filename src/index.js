@@ -82,6 +82,8 @@ export {
     choose,
     dict,
     handleException,
+    isFunction,
+    isObject,
     nullToUndefined,
     objectMap,
     swap,

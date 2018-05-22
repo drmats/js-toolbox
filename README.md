@@ -82,6 +82,8 @@ $ npm start
   choose: [Function: choose],
   dict: [Function: dict],
   handleException: [Function: handleException],
+  isFunction: [Function: isFunction],
+  isObject: [Function: isObject],
   nullToUndefined: [Function: nullToUndefined],
   objectMap: [Function: objectMap],
   swap: [Function: swap] }
@@ -177,6 +179,15 @@ $ npm start
 ```javascript
 > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
 { a: 'b', c: 'd', e: 'f' }
+```
+
+```javascript
+> utils.isObject(null)
+false
+> utils.isObject([])
+false
+> utils.isObject({})
+true
 ```
 
 ```javascript
