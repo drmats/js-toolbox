@@ -1,6 +1,7 @@
 import {
     draw,
     head,
+    last,
     range,
     tail
 } from "./array"
@@ -63,9 +64,7 @@ export const camelToPascal = (str) =>
 // Convert "thisKindOfText" to "this_kind_of_text".
 //
 export const camelToSnake = (str) =>
-    str  ?
-        str.replace(/([A-Z])/g, "_$1").toLowerCase()  :
-        empty()
+    str  ?  str.replace(/([A-Z])/g, "_$1").toLowerCase()  :  empty()
 
 
 
@@ -112,9 +111,7 @@ export const pascalToCamel = (str) =>
 // Convert "ThisKindOfText" to "this_kind_of_text".
 //
 export const pascalToSnake = (str) =>
-    str  ?
-        tail(camelToSnake(str))  :
-        empty()
+    str  ?  tail(camelToSnake(str))  :  empty()
 
 
 
@@ -122,7 +119,7 @@ export const pascalToSnake = (str) =>
 //
 // Quote text.
 //
-export const quote = (str, q="\"\"") => `${q[0]}${str}${q[1]}`
+export const quote = (str, q="\"\"") => `${head(q)}${str}${last(q)}`
 
 
 
@@ -131,7 +128,7 @@ export const quote = (str, q="\"\"") => `${q[0]}${str}${q[1]}`
 // Construct random string of desired length.
 //
 export const random = (size = 0, letters = asciiLetters() + digits()) =>
-    range(size).map(() => draw(letters.split(""))).join("")
+    range(size).map(() => draw(letters.split(empty()))).join(empty())
 
 
 
