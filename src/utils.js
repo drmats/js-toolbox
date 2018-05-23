@@ -35,8 +35,8 @@ export const choose = (
 
 
 //
-// Construct object from result of Object.entries() call.
-// entries = [[k1, v1,], ... [kn, vn,]]
+// Construct Object from the result of Object.entries() call.
+// entries = [[k1, v1,], ..., [kn, vn,]]
 //
 // imitates Python's dict()
 //
@@ -101,7 +101,7 @@ export const objectReduce = (o, f, init) => {
 
 
 //
-// when o = { a: "b", c: "d" }
-// then swap(o) = { b: "a", d: "c" }
+// When o = { a: "b", c: "d" }
+// then swap(o) = { b: "a", d: "c" }.
 //
 export const swap = (o) => objectMap(o, ([k, v,]) => [v, k,])

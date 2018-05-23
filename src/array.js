@@ -40,11 +40,11 @@ export const last = (arr) => arr[arr.length-1]
 
 
 //
-// range(stop) -> array of integers
-// range(start, stop[, step]) -> array of integers
+// range(stop) -> array of integers; start defaults to 0
+// range(start, stop[, step]) -> array of numbers
 //
-// Return a list containing an arithmetic progression of integers.
-// range(i, j) returns [i, i+1, i+2, ..., j-1]; start defaults to 0.
+// Return a list containing an arithmetic progression.
+// range(i, j) returns [i, i+1, i+2, ..., j-1].
 // When step is given, it specifies the increment (or decrement).
 // For example, range(4) returns [0, 1, 2, 3].
 //
@@ -79,8 +79,8 @@ export const range = (...args) => {
 
 
 //
-// Randomly shuffles all elements in the given array
-// (Durstenfeld's modification to Fisher-Yates shuffle algorithm).
+// Randomly shuffle all elements in the given array
+// (Durstenfeld's modification to the Fisher-Yates shuffle algorithm).
 // The operation is taken in-place.
 //
 export const shuffle = (arr) => {
@@ -101,9 +101,9 @@ export const shuffle = (arr) => {
 
 //
 // sparse(stop, size) -> array of 'size' distinct integers
-//     in range [0..stop]
+//     in range [0..stop-1]
 // sparse(start, stop, size) -> array of 'size' distinct integers
-//     in range [start..stop]
+//     in range [start..stop-1]
 //
 // Generate sparse array of distinct integers
 // with (almost) uniform distribution.

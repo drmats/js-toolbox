@@ -1,5 +1,5 @@
 //
-// Determine if given value is a function.
+// Determine if a given value is a Function.
 //
 export const isFunction = (f) =>
     f != null  &&  typeof f === "function"
@@ -8,7 +8,7 @@ export const isFunction = (f) =>
 
 
 //
-// Determine if given value is a proper number
+// Determine if a given value is a proper Number
 // (not NaN and not Infinity).
 //
 export const isNumber = (n) =>
@@ -19,7 +19,8 @@ export const isNumber = (n) =>
 
 
 //
-// Determine if given value is an object.
+// Determine if a given value is an Object
+// (not null, not undefined and not Array).
 //
 export const isObject = (o) =>
     o != null  &&  typeof o === "object"  &&  !Array.isArray(o)

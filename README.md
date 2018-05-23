@@ -93,135 +93,228 @@ $ npm start
   swap: [Function: swap] }
 ```
 
+<br />
+
 
 
 
 ## examples
 
-```javascript
-> array.draw(string.asciiLetters())
-'S'
-```
+* Choose a random element from a given `array`
+  (or a random character from a given `string`).
 
-```javascript
-> array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
-[ 'a', 'b', 'c', 'd', 'e', 'f' ]
-```
+    ```javascript
+    > array.draw(string.asciiLetters())
+    'S'
+    ```
 
-```javascript
-> array.range(10)
-[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-```
 
-```javascript
-> array.shuffle(array.range(12))
-[ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
-```
+* Flatten passed `array`, i.e. transform
+  `[[1, 2,], ..., [3, 4,],]` to `[1, 2, ..., 3, 4,]`.
 
-```javascript
-> f = (...args) => math.sum(args)
-[Function: f]
-> func.curry(f)(1)(2)(3)(4)(5)()
-15
-```
+    ```javascript
+    > array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
+    [ 'a', 'b', 'c', 'd', 'e', 'f' ]
+    ```
 
-```javascript
-> factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
-[Function]
-> factorial(5)
-120
-```
 
-```javascript
-> array.sparse(1024, 8)
-[ 6, 34, 170, 422, 530, 643, 855, 862 ]
-```
+* Return a list containing an arithmetic progression.
+  `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
+  Possible invocations are: `range(stop)`, `range(start, stop)`,
+  `range(start, stop, step)`. When `start` is omitted it defaults to `0`.
+  When `step` is given, it specifies the increment (or decrement).
 
-```javascript
-> math.average([1, 2, 3, 4, 5])
-3
-```
+    ```javascript
+    > array.range(10)
+    [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
-```javascript
-> math.log2(2**32)
-32
-```
+    > array.range(-128, -256, -16)
+    [ -128, -144, -160, -176, -192, -208, -224, -240 ]
+    ```
 
-```javascript
-> math.log10(1e9)
-9
-```
 
-```javascript
-> math.sum([5, 6, 7, 8, 9, 10])
-45
-```
+* Randomly shuffle all elements in the given `array` (Durstenfeld's
+  modification to the Fisher-Yates shuffle algorithm).
+  The operation is taken in-place.
 
-```javascript
-> string.big(4)
-'xxxxxxxxxxxxxxxx'
-```
+    ```javascript
+    > array.shuffle(array.range(12))
+    [ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+    ```
 
-```javascript
-> string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
-'some_nights_i_stay_up_cashing_in_my_bad_luck'
-```
 
-```javascript
-> string.quote('div', '<>')
-'<div>'
-```
+* Generate sparse array of distinct integers.
+  `sparse(stop, size)` returns `array` of `size` distinct
+  integers in range `[0..stop-1]`.
+  `sparse(start, stop, size)` returns `array` of `size` distinct
+  integers in range `[start..stop-1]`.
 
-```javascript
-> string.random(16)
-'MxWGe8MoOss0yUAP'
-```
+    ```javascript
+    > array.sparse(1024, 8)
+    [ 6, 34, 170, 422, 530, 643, 855, 862 ]
+    ```
 
-```javascript
-> string.snakeToCamel('some_nights_i_call_it_a_draw')
-'someNightsICallItADraw'
-```
 
-```javascript
-> type.isNumber(NaN)
-false
-> type.isNumber(-Infinity)
-false
-> type.isNumber(1234.5678)
-true
-```
+* Translate the evaluation of function `f` taking multiple arguments
+  into an evaluation of sequence of functions, each with a single argument.
 
-```javascript
-> type.isObject(null)
-false
-> type.isObject([])
-false
-> type.isObject({})
-true
-```
+    ```javascript
+    > sum = (...args) => math.sum(args)
+    [Function: sum]
 
-```javascript
-> utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
-42
-```
+    > func.curry(sum)(1)(2)(3)(4)(5)()
+    15
+    ```
 
-```javascript
-> utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
-{ a: 'b', c: 'd', e: 'f' }
-```
 
-```javascript
-> utils.objectMap(
-...     { what: 'od', i: '?rof dnats' },
-...     ([k, v,]) => [
-...         string.capitalize(k),
-...         v.split('').reverse().join('')
-...     ]
-... )
-{ What: 'do', I: 'stand for?' }
-```
+* Y-combinator - returns fixed point of a higher-order function passed as `f`.
+  **Anonymous recursion in Javascript**.
 
-```javascript
-> utils.swap({ a: 'b', c: 'd', e: 'f' })
-{ b: 'a', d: 'c', f: 'e' }
-```
+    ```javascript
+    > factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
+    [Function]
+
+    > factorial(5)
+    120
+    ```
+
+
+* Compute mathematical average of array of numbers.
+
+    ```javascript
+    > math.average([1, 2, 3, 4, 5])
+    3
+    ```
+
+
+* Base 2 logarithm.
+
+    ```javascript
+    > math.log2(2**32)
+    32
+    ```
+
+
+* Base 10 logarithm.
+
+    ```javascript
+    > math.log10(1e9)
+    9
+    ```
+
+
+* Sum of numbers in passed `array`.
+
+    ```javascript
+    > math.sum([5, 6, 7, 8, 9, 10])
+    45
+    ```
+
+
+* Allocate a **big** string (of size `2^n`).
+
+    ```javascript
+    > string.big(5)
+    'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    ```
+
+
+* Convert `camelText` to `snake_text`.
+
+    ```javascript
+    > string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+    'some_nights_i_stay_up_cashing_in_my_bad_luck'
+    ```
+
+
+* Quote text.
+
+    ```javascript
+    > string.quote('div', '<>')
+    '<div>'
+    ```
+
+
+* Construct random string of desired length.
+
+    ```javascript
+    > string.random(16)
+    'MxWGe8MoOss0yUAP'
+    ```
+
+
+* Convert `snake_text` to `camelText`.
+
+    ```javascript
+    > string.snakeToCamel('some_nights_i_call_it_a_draw')
+    'someNightsICallItADraw'
+    ```
+
+
+* Determine if a given value is a proper `Number`
+  (not `NaN` and not `Infinity`).
+
+    ```javascript
+    > type.isNumber(NaN)
+    false
+
+    > type.isNumber(-Infinity)
+    false
+
+    > type.isNumber(1234.5678)
+    true
+    ```
+
+
+* Determine if a given value is an `Object`
+  (not `null`, not `undefined` and not `Array`).
+
+    ```javascript
+    > type.isObject(null)
+    false
+
+    > type.isObject([])
+    false
+
+    > type.isObject({})
+    true
+    ```
+
+
+* Apply `path` to an object.
+
+    ```javascript
+    > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+    42
+    ```
+
+
+* Construct `Object` from the result of `Object.entries()` call.
+  `entries = [[k1, v1,], ..., [kn, vn,]]`
+
+    ```javascript
+    > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+    { a: 'b', c: 'd', e: 'f' }
+    ```
+
+
+* Shallow map (iteration) on objects.
+
+    ```javascript
+    > utils.objectMap(
+    ...     { what: 'od', i: '?rof dnats' },
+    ...     ([k, v,]) => [
+    ...         string.capitalize(k),
+    ...         v.split('').reverse().join('')
+    ...     ]
+    ... )
+    { What: 'do', I: 'stand for?' }
+    ```
+
+
+* Swap keys with values in a given `Object`.
+
+    ```javascript
+    > utils.swap({ a: 'b', c: 'd', e: 'f' })
+    { b: 'a', d: 'c', f: 'e' }
+    ```

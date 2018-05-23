@@ -36,7 +36,7 @@ export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 //
-// Create a big string (of size 2^n). Use with caution!
+// Allocate a big string (of size 2^n). Use with caution!
 //     big(16) makes 2^16 = 65536 string size.
 //     big(23) makes 2^23 = 8M string size,
 //     big(24) makes 16M and so on.
