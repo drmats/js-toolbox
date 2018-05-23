@@ -78,13 +78,21 @@ export {
 
 // ...
 export {
+    isFunction,
+    isNumber,
+    isObject,
+    nullToUndefined,
+} from "./type"
+
+
+
+
+// ...
+export {
     access,
     choose,
     dict,
     handleException,
-    isFunction,
-    isObject,
-    nullToUndefined,
     objectMap,
     objectReduce,
     swap,

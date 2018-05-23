@@ -1,3 +1,11 @@
+import {
+    isFunction,
+    isObject,
+} from "./type"
+
+
+
+
 //
 // Apply path to an object "o".
 // access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
@@ -46,43 +54,6 @@ export const handleException = (fn, handler) => {
     try { return fn() }
     catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
 }
-
-
-
-
-//
-// Determine if given value is a function.
-//
-export const isFunction = (f) =>
-    f != null  &&  typeof f === "function"
-
-
-
-
-//
-// Determine if given value is a proper number
-// (not NaN and not Infinity).
-//
-export const isNumber = (n) =>
-    n != null  &&  typeof n === "number"  &&
-    !Number.isNaN(n)  && Number.isFinite(n)
-
-
-
-
-//
-// Determine if given value is an object.
-//
-export const isObject = (o) =>
-    o != null  &&  typeof o === "object"  &&  !Array.isArray(o)
-
-
-
-
-//
-// If val is null then return undefined, else return val.
-//
-export const nullToUndefined = (val) => val === null  ?  undefined  :  val
 
 
 

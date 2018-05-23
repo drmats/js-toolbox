@@ -25,7 +25,7 @@ Cloning into 'js-toolbox'...
 $ cd js-toolbox
 $ npm i
 $ npm start
-🎉  Successfully compiled 8 files with Babel.
+🎉  Successfully compiled 9 files with Babel.
 ```
 
 ```javascript
@@ -77,14 +77,17 @@ $ npm start
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
 
+> type
+{ isFunction: [Function: isFunction],
+  isNumber: [Function: isNumber],
+  isObject: [Function: isObject],
+  nullToUndefined: [Function: nullToUndefined] }
+
 > utils
 { access: [Function: access],
   choose: [Function: choose],
   dict: [Function: dict],
   handleException: [Function: handleException],
-  isFunction: [Function: isFunction],
-  isObject: [Function: isObject],
-  nullToUndefined: [Function: nullToUndefined],
   objectMap: [Function: objectMap],
   objectReduce: [Function: objectReduce],
   swap: [Function: swap] }
@@ -120,6 +123,13 @@ $ npm start
 [Function: f]
 > func.curry(f)(1)(2)(3)(4)(5)()
 15
+```
+
+```javascript
+> factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
+[Function]
+> factorial(5)
+120
 ```
 
 ```javascript
@@ -173,6 +183,24 @@ $ npm start
 ```
 
 ```javascript
+> type.isNumber(NaN)
+false
+> type.isNumber(-Infinity)
+false
+> type.isNumber(1234.5678)
+true
+```
+
+```javascript
+> type.isObject(null)
+false
+> type.isObject([])
+false
+> type.isObject({})
+true
+```
+
+```javascript
 > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
 42
 ```
@@ -180,15 +208,6 @@ $ npm start
 ```javascript
 > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
 { a: 'b', c: 'd', e: 'f' }
-```
-
-```javascript
-> utils.isObject(null)
-false
-> utils.isObject([])
-false
-> utils.isObject({})
-true
 ```
 
 ```javascript
