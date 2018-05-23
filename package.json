@@ -62,5 +62,5 @@
         "start": "npm run build; node ./scripts/start.js",
         "test": "npm run lint  &&  echo \"Warning: no tests specified (yet)\""
     },
-    "version": "0.2.0"
+    "version": "0.2.1"
 }

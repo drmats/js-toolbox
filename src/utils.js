@@ -60,6 +60,17 @@ export const isFunction = (f) =>
 
 
 //
+// Determine if given value is a proper number
+// (not NaN and not Infinity).
+//
+export const isNumber = (n) =>
+    n != null  &&  typeof n === "number"  &&
+    !Number.isNaN(n)  && Number.isFinite(n)
+
+
+
+
+//
 // Determine if given value is an object.
 //
 export const isObject = (o) =>
