@@ -49,6 +49,9 @@
     "main": "lib/index.js",
     "name": "@xcmats/js-toolbox",
     "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/drmats/js-toolbox.git"
@@ -62,5 +65,5 @@
         "start": "npm run build; node ./scripts/start.js",
         "test": "npm run lint  &&  echo \"Warning: no tests specified (yet)\""
     },
-    "version": "0.3.0"
+    "version": "0.3.1"
 }
