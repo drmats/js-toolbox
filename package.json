@@ -67,8 +67,8 @@
         "clean:modules": "rimraf node_modules",
         "lint": "eslint ./src/",
         "prepublishOnly": "npm run test && npm run build",
-        "start": "npm run build:commonjs; node ./scripts/start.js",
+        "start": "npm run build:commonjs && node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
-    "version": "0.3.1"
+    "version": "0.3.2"
 }
