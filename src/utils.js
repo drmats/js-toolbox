@@ -1,3 +1,13 @@
+/**
+ * Various tools.
+ *
+ * @module utils
+ * @license Apache-2.0
+ */
+
+
+
+
 import {
     isFunction,
     isObject,
@@ -6,10 +16,18 @@ import {
 
 
 
-//
-// Apply path to an object "o".
-// access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
-//
+/**
+ * Apply path to an object `o`.
+ *
+ * ```
+ * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
+ * ```
+ *
+ * @function access
+ * @param {Object} o
+ * @param {Array.<String>} path
+ * @returns {*}
+ */
 export const access = (o, path) => handleException(
     () => path.reduce((acc, p) => acc[p], o),
     () => undefined
@@ -18,9 +36,16 @@ export const access = (o, path) => handleException(
 
 
 
-//
-// Functional replacement of a "switch" statement.
-//
+/**
+ * Functional replacement of a `switch` statement.
+ *
+ * @function choose
+ * @param {String} key
+ * @param {Object.<String, Function>} actions
+ * @param {Function} defaultAction
+ * @param {Array} args
+ * @returns {*}
+ */
 export const choose = (
     key,
     actions = {},
@@ -34,12 +59,19 @@ export const choose = (
 
 
 
-//
-// Construct Object from the result of Object.entries() call.
-// entries = [[k1, v1,], ..., [kn, vn,]]
-//
-// imitates Python's dict()
-//
+/**
+ * Construct `Object` from the result of `Object.entries()` call.
+ *
+ * ```
+ * entries = [[k1, v1,], ..., [kn, vn,]]
+ * ```
+ *
+ * Imitates Python's `dict()`.
+ *
+ * @function dict
+ * @param {Array.<Array>} entries
+ * @returns {Object}
+ */
 export const dict = (entries) => entries.reduce(
     (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
 )
@@ -47,10 +79,15 @@ export const dict = (entries) => entries.reduce(
 
 
 
-//
-// Handle exceptions in expressions.
-//
-export const handleException = (fn, handler) => {
+/**
+ * Handle exceptions in expressions.
+ *
+ * @function handleException
+ * @param {Function} fn
+ * @param {Function} [handler]
+ * @returns {*}
+ */
+export const handleException = (fn, handler = null) => {
     try { return fn() }
     catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
 }
@@ -58,16 +95,21 @@ export const handleException = (fn, handler) => {
 
 
 
-//
-// Map (iteration) on objects - shallow.
-//
-// "o" - Object to enumerate on.
-// "f" - Function to call on each key, params:
-//     this - bound to enumerated object,
-//     "kv" - current [key, value] array,
-//
-// "f" should return [key, value] array.
-//
+/**
+ * Map (iteration) on objects - shallow.
+ *
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `kv` - current `[key, value]` array,
+ *
+ * `f` should return `[key, value]` array.
+ *
+ * @function objectMap
+ * @param {Object} o
+ * @param {Function} f
+ * @returns {Object}
+*/
 export const objectMap = (o, f) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "objectMap() expected object and function"
@@ -78,18 +120,24 @@ export const objectMap = (o, f) => {
 
 
 
-//
-// Reduce (fold) on objects - shallow.
-//
-// "o" - Object to enumerate on.
-// "f" - Function to call on each key, params:
-//     this - bound to enumerated object,
-//     "acc" - accumulated value
-//     "kv" - current [key, value] array,
-// "init" - accumulated value initializer
-//
-// "f" should return value of the same type as "init".
-//
+/**
+ * Reduce (fold) on objects - shallow.
+ *
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `acc` - accumulated value,
+ *     - `kv` - current `[key, value]` array,
+ * - `init` - accumulated value initializer,
+ *
+ * `f` should return value of the same type as `init`.
+ *
+ * @function objectReduce
+ * @param {Object} o
+ * @param {Function} f
+ * @param {*} init
+ * @returns {*}
+*/
 export const objectReduce = (o, f, init) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "objectReduce() expected object and function"
@@ -100,8 +148,12 @@ export const objectReduce = (o, f, init) => {
 
 
 
-//
-// When o = { a: "b", c: "d" }
-// then swap(o) = { b: "a", d: "c" }.
-//
+/**
+ * When `o = { a: "b", c: "d" }`
+ * then `swap(o) = { b: "a", d: "c" }`.
+ *
+ * @function swap
+ * @param {Object.<String, String>} o
+ * @returns {Object.<String, String>}
+ */
 export const swap = (o) => objectMap(o, ([k, v,]) => [v, k,])
