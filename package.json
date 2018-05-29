@@ -66,7 +66,7 @@
         "build:es": "cross-env BABEL_ENV=es babel ./src/ -d ./es/",
         "clean": "rimraf ./es ./lib",
         "clean:modules": "rimraf node_modules",
-        "doc": "jsdoc -R ./README.md ./src/ -d ./doc/",
+        "doc": "jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
         "lint": "eslint ./src/",
         "prepublishOnly": "npm run test && npm run build",
         "start": "npm run build:commonjs && node ./scripts/start.js",
