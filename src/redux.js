@@ -1,11 +1,25 @@
+/**
+ * Redux tools.
+ *
+ * @module redux
+ * @license Apache-2.0
+ */
+
+
+
+
 import { choose } from "./utils"
 
 
 
 
-//
-// Create clean and readable reducers for redux.
-//
+/**
+ * Create clean and readable reducers for redux.
+ *
+ * @function createReducer
+ * @param {Object} [initState={}]
+ * @returns {Function}
+ */
 export const createReducer = (initState = {}) =>
     (actions, defaultAction = (s, _a) => s) =>
         (state = initState, action) =>
