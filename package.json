@@ -29,6 +29,7 @@
         "babel-eslint": "^8.2.3",
         "cross-env": "^5.1.6",
         "eslint": "^4.19.1",
+        "jsdoc": "^3.5.5",
         "rimraf": "^2.6.2"
     },
     "engines": {
@@ -65,6 +66,7 @@
         "build:es": "cross-env BABEL_ENV=es babel ./src/ -d ./es/",
         "clean": "rimraf ./es ./lib",
         "clean:modules": "rimraf node_modules",
+        "doc": "jsdoc -R ./README.md ./src/ -d ./doc/",
         "lint": "eslint ./src/",
         "prepublishOnly": "npm run test && npm run build",
         "start": "npm run build:commonjs && node ./scripts/start.js",
