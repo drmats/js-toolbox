@@ -155,6 +155,18 @@ $ npm start
     ```
 
 
+* Delay current async execution by `time` miliseconds.
+
+    ```javascript
+    (async () => {
+        await async.delay()
+        console.log('Hello ...')
+        await async.delay()
+        console.log('... world')
+    })()
+    ```
+
+
 * Translate the evaluation of function `f` taking multiple arguments
   into an evaluation of sequence of functions, each with a single argument.
 
