@@ -1,55 +1,94 @@
-//
-// Choose a random element from a non-empty array.
-//
+/**
+ * Array tools.
+ *
+ * @module array
+ * @license Apache-2.0
+ */
+
+
+
+
+/**
+ * Choose a random element from a non-empty array.
+ *
+ * @function draw
+ * @param {Array|String} arr
+ * @returns {*}
+ */
 export const draw = (arr) => arr[Math.floor(Math.random()*1e16) % arr.length]
 
 
 
 
-//
-// Simple array flattener.
-// [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
-//
+/**
+ * Simple array flattener.
+ *
+ * - `[[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]`
+ *
+ * @function flatten
+ * @param {Array.<Array>} arr
+ * @returns {Array}
+ */
 export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
 
 
 
 
-//
-// Return first element of the given array.
-//
+/**
+ * Return first element of the given array.
+ *
+ * @function head
+ * @param {Array|String} arr
+ * @returns {*}
+ */
 export const head = (arr) => arr[0]
 
 
 
 
-//
-// Returns array without its last element.
-//
+/**
+ * Return array without its last element.
+ *
+ * @function init
+ * @param {Array|String} arr
+ * @returns {Array|String}
+ */
 export const init = (arr) => arr.slice(0, arr.length-1)
 
 
 
 
-//
-// Return last element of the given array.
-//
+/**
+ * Return last element of the given array.
+ *
+ * @function last
+ * @param {Array|String} arr
+ * @returns {*}
+ */
 export const last = (arr) => arr[arr.length-1]
 
 
 
 
-//
-// range(stop) -> array of integers; start defaults to 0
-// range(start, stop[, step]) -> array of numbers
-//
-// Return a list containing an arithmetic progression.
-// range(i, j) returns [i, i+1, i+2, ..., j-1].
-// When step is given, it specifies the increment (or decrement).
-// For example, range(4) returns [0, 1, 2, 3].
-//
-// imitates Python's range()
-//
+/**
+ * - `range(stop)` -> array of numbers; start defaults to `0`
+ * - `range(start, stop[, step])` -> array of numbers
+ *
+ * Return a list containing an arithmetic progression.
+ * - `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
+ *
+ * When step is given, it specifies the increment (or decrement).
+ * For example:
+ * - `range(4)` returns `[0, 1, 2, 3]`.
+ *
+ * Imitates Python's `range()`.
+ *
+ * @function range
+ * @param {Number} [start=0]
+ * @param {Number} stop
+ * @param {Number} [step=1]
+ * @returns {Array}
+ */
 export const range = (...args) => {
     let start = 0, stop = 0, step = 1, arr = []
 
@@ -78,11 +117,16 @@ export const range = (...args) => {
 
 
 
-//
-// Randomly shuffle all elements in the given array
-// (Durstenfeld's modification to the Fisher-Yates shuffle algorithm).
-// The operation is taken in-place.
-//
+/**
+ * Shuffle all elements in the given array
+ * (Durstenfeld's modification to the Fisher-Yates shuffle algorithm).
+ *
+ * The operation is taken in-place.
+ *
+ * @function shuffle
+ * @param {Array} arr
+ * @returns {Array}
+ */
 export const shuffle = (arr) => {
     if (!Array.isArray(arr)) throw new TypeError(
         `shuffle() expected array as argument, got ${typeof arr}`
@@ -99,15 +143,21 @@ export const shuffle = (arr) => {
 
 
 
-//
-// sparse(stop, size) -> array of 'size' distinct integers
-//     in range [0..stop-1]
-// sparse(start, stop, size) -> array of 'size' distinct integers
-//     in range [start..stop-1]
-//
-// Generate sparse array of distinct integers
-// with (almost) uniform distribution.
-//
+/**
+ * - `sparse(stop, size)` -> array of 'size' distinct integers
+ *     in range `[0..stop-1]`
+ * - `sparse(start, stop, size)` -> array of 'size' distinct integers
+ *     in range `[start..stop-1]`
+ *
+ * Generate sparse array of distinct integers
+ * with (almost) uniform distribution.
+ *
+ * @function sparse
+ * @param {Number} [start=0]
+ * @param {Number} stop
+ * @param {Number} size
+ * @returns {Array}
+ */
 export const sparse = (...args) => {
     let
         start = 0, stop = 0, size = 0,
@@ -140,7 +190,11 @@ export const sparse = (...args) => {
 
 
 
-//
-// Returns array without its head (first element).
-//
+/**
+ * Return array without its head (first element).
+ *
+ * @function tail
+ * @param {Array|String} arr
+ * @returns {Array|String}
+ */
 export const tail = (arr) => arr.slice(1)
