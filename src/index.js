@@ -1,4 +1,17 @@
-// ...
+/**
+ * Javascript toolbox.
+ *
+ * @module @xcmats/js-toolbox
+ * @license Apache-2.0
+ */
+
+
+
+
+/**
+ * @name array
+ * @see {@link array.js}
+ */
 export {
     draw,
     flatten,
@@ -14,7 +27,10 @@ export {
 
 
 
-// ...
+/**
+ * @name async
+ * @see {@link async.js}
+ */
 export {
     delay,
     interval,
@@ -24,7 +40,10 @@ export {
 
 
 
-// ...
+/**
+ * @name func
+ * @see {@link func.js}
+ */
 export {
     curry,
     partial,
@@ -34,7 +53,10 @@ export {
 
 
 
-// ...
+/**
+ * @name math
+ * @see {@link math.js}
+ */
 export {
     average,
     log10,
@@ -46,7 +68,10 @@ export {
 
 
 
-// ...
+/**
+ * @name redux
+ * @see {@link redux.js}
+ */
 export {
     createReducer,
 } from "./redux"
@@ -54,7 +79,10 @@ export {
 
 
 
-// ...
+/**
+ * @name string
+ * @see {@link string.js}
+ */
 export {
     asciiLetters,
     asciiLowercase,
@@ -76,7 +104,10 @@ export {
 
 
 
-// ...
+/**
+ * @name type
+ * @see {@link type.js}
+ */
 export {
     isFunction,
     isNumber,
@@ -87,7 +118,10 @@ export {
 
 
 
-// ...
+/**
+ * @name utils
+ * @see {@link utils.js}
+ */
 export {
     access,
     choose,
