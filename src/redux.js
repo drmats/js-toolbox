@@ -3,6 +3,7 @@
  *
  * @module redux
  * @license Apache-2.0
+ * @author drmats
  */
 
 
