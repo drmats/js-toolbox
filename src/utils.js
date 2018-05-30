@@ -110,7 +110,7 @@ export const handleException = (fn, handler = null) => {
  * @param {Object} o
  * @param {Function} f
  * @returns {Object}
-*/
+ */
 export const objectMap = (o, f) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "objectMap() expected object and function"
@@ -138,7 +138,7 @@ export const objectMap = (o, f) => {
  * @param {Function} f
  * @param {*} init
  * @returns {*}
-*/
+ */
 export const objectReduce = (o, f, init) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "objectReduce() expected object and function"
