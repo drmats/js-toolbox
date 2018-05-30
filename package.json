@@ -43,6 +43,7 @@
     "files": [
         "doc",
         "es",
+        "index.d.ts",
         "lib",
         "src"
     ],
@@ -81,5 +82,6 @@
         "start": "npm run build:commonjs && node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
+    "types": "./index.d.ts",
     "version": "0.3.2"
 }
