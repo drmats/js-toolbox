@@ -17,7 +17,49 @@ $ npm install @xcmats/js-toolbox
 
 
 
-## experimenting
+## experimenting in browser
+
+> [RunKit with @xcmats/js-toolbox](https://npm.runkit.com/@xcmats/js-toolbox)
+
+* list member functions ([link](https://runkit.com/embed/r1c9vte7yz3b)):
+
+    ```javascript
+    var jsToolbox = require("@xcmats/js-toolbox")
+
+    Object.keys(jsToolbox).sort()
+    ```
+
+    ```javascript
+    [ "Y",
+    "access",
+    "asciiLetters",
+    "asciiLowercase",
+    "asciiUppercase",
+    "average",
+    "bigString",
+    "camelToPascal",
+    "camelToSnake",
+    "capitalize",
+    "choose",
+    ... ]
+    ```
+
+* play with `shuffle` and `range` ([link](https://runkit.com/embed/pdk4lfc4ul51)):
+
+    ```javascript
+    jsToolbox.shuffle(jsToolbox.range(16))
+    ```
+
+    ```javascript
+    [ 14, 12, 15, 8, 13, 4, 5, 6, 1, 7, 10, 0, 2, 3, 9, 11 ]
+    ```
+
+<br />
+
+
+
+
+## experimenting in [node.js](https://nodejs.org/)
 
 ```bash
 $ git clone git@github.com:drmats/js-toolbox.git
@@ -39,27 +81,37 @@ $ npm start
   shuffle: [Function: shuffle],
   sparse: [Function: sparse],
   tail: [Function: tail] }
+```
 
+```javascript
 > async
 { delay: [Function: delay],
   interval: [Function: interval],
   timeout: [Function: timeout] }
+```
 
+```javascript
 > func
 { curry: [Function: curry],
   partial: [Function: partial],
   Y: [Function: Y] }
+```
 
+```javascript
 > math
 { average: [Function: average],
   log10: [Function: log10],
   log2: [Function: log2],
   roundIfClose: [Function: roundIfClose],
   sum: [Function: sum] }
+```
 
+```javascript
 > redux
 { createReducer: [Function: createReducer] }
+```
 
+```javascript
 > string
 { asciiLetters: [Function: asciiLetters],
   asciiLowercase: [Function: asciiLowercase],
@@ -76,13 +128,17 @@ $ npm start
   random: [Function: random],
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal] }
+```
 
+```javascript
 > type
 { isFunction: [Function: isFunction],
   isNumber: [Function: isNumber],
   isObject: [Function: isObject],
   nullToUndefined: [Function: nullToUndefined] }
+```
 
+```javascript
 > utils
 { access: [Function: access],
   choose: [Function: choose],
