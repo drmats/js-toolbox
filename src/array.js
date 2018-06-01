@@ -100,10 +100,10 @@ export const range = (...args) => {
     else if (args.length === 3) {
         [start, stop, step,] = args
         if (step === 0) throw new RangeError(
-            "range() 'step' argument must not be zero"
+            "array.range() 'step' argument must not be zero"
         )
     } else throw new TypeError(
-        `range() expected at most 3 arguments, got ${args.length}`
+        `array.range() expected at most 3 arguments, got ${args.length}`
     )
 
     while (
@@ -132,7 +132,7 @@ export const range = (...args) => {
  */
 export const shuffle = (arr) => {
     if (!Array.isArray(arr)) throw new TypeError(
-        `shuffle() expected array as argument, got ${typeof arr}`
+        `array.shuffle() expected array as argument, got ${typeof arr}`
     )
 
     for (let i = arr.length-1;  i > 0;  i -= 1) {
@@ -170,7 +170,7 @@ export const sparse = (...args) => {
     if (args.length === 2) { [stop, size,] = args }
     else if (args.length === 3) { [start, stop, size,] = args }
     else throw new TypeError(
-        `sparse() expected 2 or 3 arguments, got ${args.length}`
+        `array.sparse() expected 2 or 3 arguments, got ${args.length}`
     )
 
     if (start > stop) { [start, stop,] = [stop, start,] }

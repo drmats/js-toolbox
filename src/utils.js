@@ -113,7 +113,8 @@ export const handleException = (fn, handler = null) => {
  */
 export const objectMap = (o, f) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "objectMap() expected object and function"
+        "utils.objectMap() expected object and function," +
+        ` got ${typeof o} and ${typeof f}`
     )
     return dict(Object.entries(o).map((kv) => f.call(o, kv)))
 }
@@ -141,7 +142,8 @@ export const objectMap = (o, f) => {
  */
 export const objectReduce = (o, f, init) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "objectReduce() expected object and function"
+        "utils.objectReduce() expected object and function," +
+        ` got ${typeof o} and ${typeof f}`
     )
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
 }
