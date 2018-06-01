@@ -35,6 +35,7 @@ $ npm install @xcmats/js-toolbox
     "asciiLetters",
     "asciiLowercase",
     "asciiUppercase",
+    "asyncMap",
     "average",
     "bigString",
     "camelToPascal",
@@ -87,6 +88,7 @@ $ npm start
 > async
 { delay: [Function: delay],
   interval: [Function: interval],
+  map: [Function: map],
   timeout: [Function: timeout] }
 ```
 
@@ -219,6 +221,22 @@ $ npm start
         console.log('Hello ...')
         await async.delay()
         console.log('... world')
+    })()
+    ```
+
+
+* Invoke a sequence of asynchronous operations on an array of elements.
+
+    ```javascript
+    (async () => {
+        let x = await async.map(
+            array.range(10),
+            (x) => async.timeout(() => {
+                console.log(4*x);
+                return 4*x;
+            }, 100*x)
+        )
+        console.log(x)
     })()
     ```
 

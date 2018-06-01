@@ -141,6 +141,32 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Asynchronous version of standard `Array.prototype.map` function.
+     *
+     * - `arr` - array to operate on
+     * - `f` - async or sync function with signature:
+     *     - `this` - bound to `arr`
+     *     - `element` - currently processed element
+     *     - `index` - current index
+     *
+     * `f` can return `Promise.<*>` or `<*>`
+     *
+     * Example usage:
+     *
+     * ```
+     * (async () => {
+     *     let x = await async.map(
+     *         array.range(10),
+     *         (x) => async.timeout(() => 4*x, 100*x)
+     *     )
+     *     console.log(x)
+     * })()
+     * ```
+     */
+    export function asyncMap<T> (arr: any[], f: (el, i) => T): Promise<T[]>;
+
+
+    /**
      * `setTimeout` in `Promise` / `async` skin.
      *
      * Example usage:

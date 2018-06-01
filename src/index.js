@@ -35,6 +35,7 @@ export {
 export {
     delay,
     interval,
+    map as asyncMap,
     timeout,
 } from "./async"
 
