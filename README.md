@@ -36,6 +36,7 @@ $ npm install @xcmats/js-toolbox
     "asciiLowercase",
     "asciiUppercase",
     "asyncMap",
+    "asyncReduce",
     "average",
     "bigString",
     "camelToPascal",
@@ -89,6 +90,7 @@ $ npm start
 { delay: [Function: delay],
   interval: [Function: interval],
   map: [Function: map],
+  reduce: [Function: reduce],
   timeout: [Function: timeout] }
 ```
 
@@ -236,7 +238,23 @@ $ npm start
                 return 4*x;
             }, 100*x)
         )
-        console.log(x)
+        console.log(`Result: ${x}`)
+    })()
+    ```
+
+
+* Accumulate value over an array of elements using asynchronous operation.
+
+    ```javascript
+    (async () => {
+        let x = await async.reduce(
+            array.range(10),
+            (acc, x) => async.timeout(() => {
+                console.log(acc+x);
+                return acc+x;
+            }, 100*x)
+        )
+        console.log(`Accumulated value: ${x}`)
     })()
     ```
 
