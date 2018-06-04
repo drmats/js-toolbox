@@ -165,7 +165,38 @@ declare module "@xcmats/js-toolbox" {
      */
     export function asyncMap<T> (
         arr: any[],
-        f: (el: any, i: number) => T
+        f: (el: any, i: number) => Promise<T> | T
+    ): Promise<T[]>;
+
+
+    /**
+     * Asynchronous version of standard `Array.prototype.map` function.
+     *
+     * *Implementation that does paralell execution*.
+     *
+     * - `arr` - array to operate on
+     * - `f` - async or sync function with signature:
+     *     - `this` - bound to `arr`
+     *     - `element` - currently processed element
+     *     - `index` - current index
+     *
+     * `f` can return `Promise.<*>` or `<*>`
+     *
+     * Example usage:
+     *
+     * ```
+     * (async () => {
+     *     let x = await parMap(
+     *         array.range(10),
+     *         (x) => async.timeout(() => 4*x, 100*x)
+     *     )
+     *     console.log(x)
+     * })()
+     * ```
+     */
+    export function parMap<T> (
+        arr: any[],
+        f: (el: any, i: number) => Promise<T> | T
     ): Promise<T[]>;
 
 
@@ -198,19 +229,12 @@ declare module "@xcmats/js-toolbox" {
      *     console.log(x)
      * })()
      * ```
-     *
-     * @async
-     * @function reduce
-     * @param {Array} arr
-     * @param {Function} f
-     * @param {*} [initAcc]
-     * @returns {Promise.<Array>}
      */
     export function asyncReduce<T> (
         arr: any[],
-        f: (acc: T, el: any, i: number) => T,
+        f: (acc: T, el: any, i: number) => Promise<T> | T,
         initAcc: T
-    ): Promise<T>
+    ): Promise<T>;
 
 
     /**

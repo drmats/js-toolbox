@@ -90,6 +90,7 @@ $ npm start
 { delay: [Function: delay],
   interval: [Function: interval],
   map: [Function: map],
+  parMap: [Function: parMap],
   reduce: [Function: reduce],
   timeout: [Function: timeout] }
 ```
@@ -236,7 +237,23 @@ $ npm start
             (x) => async.timeout(() => {
                 console.log(4*x);
                 return 4*x;
-            }, 100*x)
+            }, array.head(array.sparse(1000, 1)))
+        )
+        console.log(`Result: ${x}`)
+    })()
+    ```
+
+
+* Paralelly execute operation on each element of the array.
+
+    ```javascript
+    (async () => {
+        let x = await async.parMap(
+            array.range(10),
+            (x) => async.timeout(() => {
+                console.log(4*x);
+                return 4*x;
+            }, array.head(array.sparse(1000, 1)))
         )
         console.log(`Result: ${x}`)
     })()

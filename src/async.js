@@ -143,6 +143,43 @@ export const map = (arr, f) => {
 
 
 /**
+ * Asynchronous version of standard `Array.prototype.map` function.
+ *
+ * *Implementation that does paralell execution*.
+ *
+ * - `arr` - array to operate on
+ * - `f` - async or sync function with signature:
+ *     - `this` - bound to `arr`
+ *     - `element` - currently processed element
+ *     - `index` - current index
+ *
+ * `f` can return `Promise.<*>` or `<*>`
+ *
+ * Example usage:
+ *
+ * ```
+ * (async () => {
+ *     let x = await async.parMap(
+ *         array.range(10),
+ *         (x) => async.timeout(() => 4*x, 100*x)
+ *     )
+ *     console.log(x)
+ * })()
+ * ```
+ *
+ * @async
+ * @function parMap
+ * @param {Array} arr
+ * @param {Function} f
+ * @returns {Promise.<Array>}
+ */
+export const parMap = (arr, f) =>
+    Promise.all(arr.map((el) => Promise.resolve(f(el))))
+
+
+
+
+/**
  * Asynchronous version of standard `Array.prototype.reduce` function.
  *
  * - `arr` - array to operate on
