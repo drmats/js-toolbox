@@ -73,7 +73,7 @@ export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
  *
  * @function big
  * @param {Number} n
- * @param {String} c
+ * @param {String} [c="x"]
  * @returns {String}
  */
 export const big = Y((r) => (n, c = "x") => n > 0  ?  r(n - 1, c + c)  :  c)
