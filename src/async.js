@@ -18,6 +18,8 @@ import { isFunction } from "./type"
 /**
  * Delay current async execution by `time` miliseconds.
  *
+ * Example:
+ *
  * ```
  * (async () => {
  *     await async.delay()
@@ -43,7 +45,7 @@ export const delay = (time = 1000, cancel = (_canceller) => null) =>
 /**
  * `setInterval` in `Promise` / `async` skin.
  *
- * Example usage:
+ * Example:
  *
  * ```
  * interval(
@@ -93,7 +95,7 @@ export const interval = (f, clear, time = 1000) => {
  *
  * `f` can return `Promise.<*>` or `<*>`
  *
- * Example usage:
+ * Example:
  *
  * ```
  * (async () => {
@@ -155,7 +157,7 @@ export const map = (arr, f) => {
  *
  * `f` can return `Promise.<*>` or `<*>`
  *
- * Example usage:
+ * Example:
  *
  * ```
  * (async () => {
@@ -196,7 +198,7 @@ export const parMap = (arr, f) =>
  *
  * `f` can return `Promise.<*>` or `<*>`
  *
- * Example usage:
+ * Example:
  *
  * ```
  * (async () => {
@@ -248,7 +250,7 @@ export const reduce = (arr, f, initAcc) => {
 /**
  * `setTimeout` in `Promise` / `async` skin.
  *
- * Example usage:
+ * Example:
  *
  * ```
  * timeout(

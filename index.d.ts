@@ -104,6 +104,8 @@ declare module "@xcmats/js-toolbox" {
     /**
      * Delay current async execution by `time` miliseconds.
      *
+     * Example:
+     *
      * ```
      * (async () => {
      *     await async.delay()
@@ -122,7 +124,7 @@ declare module "@xcmats/js-toolbox" {
     /**
      * `setInterval` in `Promise` / `async` skin.
      *
-     * Example usage:
+     * Example:
      *
      * ```
      * interval(
@@ -151,7 +153,7 @@ declare module "@xcmats/js-toolbox" {
      *
      * `f` can return `Promise.<*>` or `<*>`
      *
-     * Example usage:
+     * Example:
      *
      * ```
      * (async () => {
@@ -182,7 +184,7 @@ declare module "@xcmats/js-toolbox" {
      *
      * `f` can return `Promise.<*>` or `<*>`
      *
-     * Example usage:
+     * Example:
      *
      * ```
      * (async () => {
@@ -217,7 +219,7 @@ declare module "@xcmats/js-toolbox" {
      *
      * `f` can return `Promise.<*>` or `<*>`
      *
-     * Example usage:
+     * Example:
      *
      * ```
      * (async () => {
@@ -240,7 +242,7 @@ declare module "@xcmats/js-toolbox" {
     /**
      * `setTimeout` in `Promise` / `async` skin.
      *
-     * Example usage:
+     * Example:
      *
      * ```
      * timeout(
@@ -396,9 +398,11 @@ declare module "@xcmats/js-toolbox" {
      *
      * `c = "x"` - Character used during string generation.
      *
+     * Example:
+     *
      * ```
-     * bigString(2) = "xxxx"
-     * bigString(3, "a") = "aaaaaaaa"
+     * bigString(2) === "xxxx"
+     * bigString(3, "a") === "aaaaaaaa"
      * ```
      */
     export function bigString (n: number, c: string): string;
@@ -515,8 +519,10 @@ declare module "@xcmats/js-toolbox" {
     /**
      * Apply path to an object `o`.
      *
+     * Example:
+     *
      * ```
-     * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
+     * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
      * ```
      */
     export function access (o: object, path: string[]): any;
@@ -601,8 +607,8 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
-     * When `o = { a: "b", c: "d" }`
-     * then `swap(o) = { b: "a", d: "c" }`.
+     * When `o == { a: "b", c: "d" }`
+     * then `swap(o) == { b: "a", d: "c" }`.
      */
     export function swap (o: object): object;
 

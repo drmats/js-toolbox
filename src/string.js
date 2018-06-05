@@ -64,9 +64,11 @@ export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
  *
  * `c = "x"` - Character used during string generation.
  *
+ * Example:
+ *
  * ```
- * big(2) = "xxxx"
- * big(3, "a") = "aaaaaaaa"
+ * big(2) === "xxxx"
+ * big(3, "a") === "aaaaaaaa"
  * ```
  *
  * @function big

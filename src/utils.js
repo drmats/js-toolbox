@@ -20,8 +20,10 @@ import {
 /**
  * Apply path to an object `o`.
  *
+ * Example:
+ *
  * ```
- * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) -> 42
+ * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
  * ```
  *
  * @function access
@@ -164,8 +166,8 @@ export const objectReduce = (o, f, init) => {
 
 
 /**
- * When `o = { a: "b", c: "d" }`
- * then `swap(o) = { b: "a", d: "c" }`.
+ * When `o == { a: "b", c: "d" }`
+ * then `swap(o) == { b: "a", d: "c" }`.
  *
  * @function swap
  * @param {Object.<String, String>} o
