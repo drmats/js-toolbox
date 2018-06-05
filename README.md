@@ -74,7 +74,8 @@ $ npm start
 
 ```javascript
 > array
-{ draw: [Function: draw],
+{ countBy: [Function: countBy],
+  draw: [Function: draw],
   flatten: [Function: flatten],
   head: [Function: head],
   init: [Function: init],
@@ -161,6 +162,18 @@ $ npm start
 
 
 ## examples
+
+* Find the lenghts of the words in a given sentence
+  and count how many of them exists in each length group.
+
+    ```javascript
+    > array.countBy(
+    ...     "exemplo plus quam ratione vivimus".split(" "),
+    ...     (w) => w.length
+    ... )
+    { '4': 2, '7': 3 }
+    ```
+
 
 * Choose a random element from a given `array`
   (or a random character from a given `string`).

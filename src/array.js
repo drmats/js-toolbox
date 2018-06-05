@@ -9,6 +9,45 @@
 
 
 
+import { isNumber } from "./type"
+import { identity } from "./utils"
+
+
+
+
+/**
+ * Create object composed of keys resulting from application of `iteratee`
+ * function to each element of the passed array `arr`. Values corresponds
+ * to the number of occurences of an element in the passed array.
+ *
+ * `iteratee` is optional and defaults to `identity` function.
+ *
+ * Example:
+ *
+ * ```
+ * array.countBy(
+ *     "exemplo plus quam ratione vivimus".split(" "),
+ *     (w) => w.length
+ * )
+ *
+ * array.countBy(["one", "two", "one", "three", "four", "two", "two"])
+ * ```
+ *
+ * @function countBy
+ * @param {Array} arr
+ * @param {Function} [iteratee=identity]
+ * @returns {Object.<String, Number>}
+ */
+export const countBy = (arr, iteratee = identity) =>
+    arr.reduce((acc, el) => (
+        (key) => isNumber(acc[key]) ?
+            { ...acc, [key]: acc[key] + 1, } :
+            { ...acc, [key]: 1, }
+    )(iteratee(el)), Object.create(null))
+
+
+
+
 /**
  * Choose a random element from a non-empty array.
  *

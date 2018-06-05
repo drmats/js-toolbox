@@ -14,6 +14,7 @@
  * @see {@link array.js}
  */
 export {
+    countBy,
     draw,
     flatten,
     head,

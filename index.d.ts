@@ -20,6 +20,27 @@ declare module "@xcmats/js-toolbox" {
      */
 
 
+     /**
+     * Create object composed of keys resulting from application of `iteratee`
+     * function to each element of the passed array `arr`. Values corresponds
+     * to the number of occurences of an element in the passed array.
+     *
+     * `iteratee` is optional and defaults to `identity` function.
+     *
+     * Example:
+     *
+     * ```
+     * countBy(
+     *     "exemplo plus quam ratione vivimus".split(" "),
+     *     (w) => w.length
+     * )
+     *
+     * countBy(["one", "two", "one", "three", "four", "two", "two"])
+     * ```
+     */
+    export function countBy (arr: any[], iteratee: (any) => (any)): object;
+
+
     /**
      * Choose a random element from a non-empty array.
      */
