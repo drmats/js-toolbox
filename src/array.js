@@ -10,7 +10,10 @@
 
 
 import { isNumber } from "./type"
-import { identity } from "./utils"
+import {
+    identity,
+    objectReduce,
+} from "./utils"
 
 
 
@@ -29,8 +32,6 @@ import { identity } from "./utils"
  *     "exemplo plus quam ratione vivimus".split(" "),
  *     (w) => w.length
  * )
- *
- * array.countBy(["one", "two", "one", "three", "four", "two", "two"])
  * ```
  *
  * @function countBy
@@ -55,7 +56,35 @@ export const countBy = (arr, iteratee = identity) =>
  * @param {Array|String} arr
  * @returns {*}
  */
-export const draw = (arr) => arr[Math.floor(Math.random()*1e16) % arr.length]
+export const draw = (arr) =>
+    arr[Math.floor(Math.random() * 1e16) % arr.length]
+
+
+
+
+/**
+ * Find duplicates in a given array.
+ *
+ * Optionally, before comparision, each element is transformed by
+ * `iteratee` function (which defaults to `identity`).
+ *
+ * Example:
+ *
+ * ```
+ * array.findDuplicates(["one", "two", "one", "three", "six", "two", "two"])
+ * ```
+ *
+ * @function findDuplicates
+ * @param {Array} arr
+ * @param {Function} [iteratee=identity]
+ * @returns {Object}
+ */
+export const findDuplicates = (arr, iteratee = identity) =>
+    objectReduce(
+        countBy(arr, iteratee),
+        (acc, [k, v,]) => v > 1  ?  acc.concat([k,])  :  acc,
+        []
+    )
 
 
 

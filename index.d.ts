@@ -34,17 +34,33 @@ declare module "@xcmats/js-toolbox" {
      *     "exemplo plus quam ratione vivimus".split(" "),
      *     (w) => w.length
      * )
-     *
-     * countBy(["one", "two", "one", "three", "four", "two", "two"])
      * ```
      */
-    export function countBy (arr: any[], iteratee: (any) => (any)): object;
+    export function countBy (arr: any[], iteratee?: (any) => (any)): object;
 
 
     /**
      * Choose a random element from a non-empty array.
      */
     export function draw (arr: any[] | string): any[] | string;
+
+
+    /**
+     * Find duplicates in a given array.
+     *
+     * Optionally, before comparision, each element is transformed by
+     * `iteratee` function (which defaults to `identity`).
+     *
+     * Example:
+     *
+     * ```
+     * findDuplicates(["one", "two", "one", "three", "six", "two", "two"])
+     * ```
+     */
+    export function findDuplicates (
+        arr: any[],
+        iteratee?: (any) => (any)
+    ): object;
 
 
     /**
@@ -426,7 +442,7 @@ declare module "@xcmats/js-toolbox" {
      * bigString(3, "a") === "aaaaaaaa"
      * ```
      */
-    export function bigString (n: number, c: string): string;
+    export function bigString (n: number, c?: string): string;
 
 
     /**

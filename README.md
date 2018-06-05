@@ -76,6 +76,7 @@ $ npm start
 > array
 { countBy: [Function: countBy],
   draw: [Function: draw],
+  findDuplicates: [Function: findDuplicates],
   flatten: [Function: flatten],
   head: [Function: head],
   init: [Function: init],
@@ -168,7 +169,7 @@ $ npm start
 
     ```javascript
     > array.countBy(
-    ...     "exemplo plus quam ratione vivimus".split(" "),
+    ...     'exemplo plus quam ratione vivimus'.split(' '),
     ...     (w) => w.length
     ... )
     { '4': 2, '7': 3 }
@@ -181,6 +182,14 @@ $ npm start
     ```javascript
     > array.draw(string.asciiLetters())
     'S'
+    ```
+
+
+* Find duplicates in a given `array`.
+
+    ```javascript
+    > array.findDuplicates(['one', 'two', 'one', 'three', 'six', 'two', 'two'])
+    [ 'one', 'two' ]
     ```
 
 

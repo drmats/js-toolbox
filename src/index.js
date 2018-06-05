@@ -16,6 +16,7 @@
 export {
     countBy,
     draw,
+    findDuplicates,
     flatten,
     head,
     init,
