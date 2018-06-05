@@ -131,6 +131,7 @@ export {
     choose,
     dict,
     handleException,
+    identity,
     objectMap,
     objectReduce,
     swap,

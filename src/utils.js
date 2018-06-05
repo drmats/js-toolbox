@@ -97,6 +97,18 @@ export const handleException = (fn, handler = null) => {
 
 
 /**
+ * Return value passed as a first argument.
+ *
+ * @function identity
+ * @param {*} val
+ * @returns {*}
+ */
+export const identity = (val) => val
+
+
+
+
+/**
  * Map (iteration) on objects - shallow.
  *
  * - `o` - `Object` to enumerate on.

@@ -149,6 +149,7 @@ $ npm start
   choose: [Function: choose],
   dict: [Function: dict],
   handleException: [Function: handleException],
+  identity: [Function: identity],
   objectMap: [Function: objectMap],
   objectReduce: [Function: objectReduce],
   swap: [Function: swap] }

@@ -560,6 +560,12 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Return value passed as a first argument.
+     */
+    export function identity<T> (val: T): T;
+
+
+    /**
      * Map (iteration) on objects - shallow.
      *
      * - `o` - `Object` to enumerate on.
