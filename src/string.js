@@ -229,3 +229,18 @@ export const snakeToPascal = (str) =>
     str  ?
         str.split(/_+/g).map((w) => capitalize(w)).join(empty())  :
         empty()
+
+
+
+
+/**
+ * Wrap passed string with `prefix` and `suffix`.
+ *
+ * @function wrap
+ * @param {String} str
+ * @param {String} [prefix=""]
+ * @param {String} [suffix=""]
+ * @returns {String}
+ */
+export const wrap = (str, prefix = "", suffix = "") =>
+    `${prefix}${str}${suffix}`

@@ -134,7 +134,8 @@ $ npm start
   quote: [Function: quote],
   random: [Function: random],
   snakeToCamel: [Function: snakeToCamel],
-  snakeToPascal: [Function: snakeToPascal] }
+  snakeToPascal: [Function: snakeToPascal],
+  wrap: [Function: wrap] }
 ```
 
 ```javascript

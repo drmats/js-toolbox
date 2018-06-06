@@ -105,6 +105,7 @@ export {
     random as randomString,
     snakeToCamel,
     snakeToPascal,
+    wrap,
 } from "./string"
 
 

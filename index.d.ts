@@ -511,6 +511,16 @@ declare module "@xcmats/js-toolbox" {
     export function snakeToPascal (str: string): string;
 
 
+    /**
+     * Wrap passed string with `prefix` and `suffix`.
+     */
+    export function wrap (
+        str: string,
+        prefix?: string,
+        suffix?: string
+    ): string;
+
+
 
 
     /**
