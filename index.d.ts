@@ -550,6 +550,12 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Determine if a given value is a `String`.
+     */
+    export function isString (s: any): string;
+
+
+    /**
      * If `val` is `null` then return `undefined`, else return `val`.
      */
     export function nullToUndefined (val: any): any;

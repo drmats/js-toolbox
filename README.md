@@ -143,6 +143,7 @@ $ npm start
 { isFunction: [Function: isFunction],
   isNumber: [Function: isNumber],
   isObject: [Function: isObject],
+  isString: [Function: isString],
   nullToUndefined: [Function: nullToUndefined] }
 ```
 

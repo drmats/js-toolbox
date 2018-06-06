@@ -119,6 +119,7 @@ export {
     isFunction,
     isNumber,
     isObject,
+    isString,
     nullToUndefined,
 } from "./type"
 

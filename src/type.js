@@ -17,7 +17,7 @@
  * @returns {Boolean}
  */
 export const isFunction = (f) =>
-    f != null  &&  typeof f === "function"
+    f != null  &&  "function" === typeof f
 
 
 
@@ -31,8 +31,8 @@ export const isFunction = (f) =>
  * @returns {Boolean}
  */
 export const isNumber = (n) =>
-    n != null  &&  typeof n === "number"  &&
-    !Number.isNaN(n)  && Number.isFinite(n)
+    n != null  &&  "number" === typeof n  &&
+    !Number.isNaN(n)  &&  Number.isFinite(n)
 
 
 
@@ -46,7 +46,21 @@ export const isNumber = (n) =>
  * @returns {Boolean}
  */
 export const isObject = (o) =>
-    o != null  &&  typeof o === "object"  &&  !Array.isArray(o)
+    o != null  &&  "object" === typeof o  &&
+    !Array.isArray(o)
+
+
+
+
+/**
+ * Determine if a given value is a `String`.
+ *
+ * @function isString
+ * @param {*} s
+ * @returns {Boolean}
+ */
+export const isString = (s) =>
+    s != null  &&  "string" === typeof s
 
 
 
@@ -58,4 +72,5 @@ export const isObject = (o) =>
  * @param {*} val
  * @returns {*}
  */
-export const nullToUndefined = (val) => val === null  ?  undefined  :  val
+export const nullToUndefined = (val) =>
+    val === null  ?  undefined  :  val
