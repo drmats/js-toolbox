@@ -11,6 +11,7 @@
 
 import { head } from "./array"
 import { isFunction } from "./type"
+import { timeUnit } from "./utils"
 
 
 
@@ -32,11 +33,14 @@ import { isFunction } from "./type"
  * @async
  * @function delay
  * @see {@link async.timeout}
- * @param {Number} [time=1000]
+ * @param {Number} [time=timeUnit.second]
  * @param {Function} [cancel]
  * @returns {Promise.<Number>}
  */
-export const delay = (time = 1000, cancel = (_canceller) => null) =>
+export const delay = (
+    time = timeUnit.second,
+    cancel = (_canceller) => null
+) =>
     timeout(() => time, time, cancel)
 
 
@@ -50,7 +54,7 @@ export const delay = (time = 1000, cancel = (_canceller) => null) =>
  * ```
  * interval(
  *     () => { console.log("Hey!"); return 42 },
- *     (c) => timeout(() => c(), 4000)
+ *     (c) => timeout(() => c(), 4 * timeUnit.second)
  * )
  * .then((x) => console.log("Finished:", x))
  * .catch((c) => console.log("Error:", c))
@@ -60,10 +64,10 @@ export const delay = (time = 1000, cancel = (_canceller) => null) =>
  * @function interval
  * @param {Function} f
  * @param {Function} clear
- * @param {Number} [time=1000]
+ * @param {Number} [time=timeUnit.second]
  * @returns {Promise.<*>}
  */
-export const interval = (f, clear, time = 1000) => {
+export const interval = (f, clear, time = timeUnit.second) => {
     let
         resolve = null, handle = null, result = null,
         promise = new Promise((res, rej) => {
@@ -254,8 +258,8 @@ export const reduce = (arr, f, initAcc) => {
  *
  * ```
  * timeout(
- *     () => { console.log("Hey!"); return 42 }, 1000,
- *     (c) => timeout(() => c("Cancelled!"), 800)
+ *     () => { console.log("Hey!"); return 42 }, 2 * timeUnit.second,
+ *     (c) => timeout(() => c("Cancelled!"), timeUnit.second)
  * )
  * .then((x) => console.log("Success:", x))
  * .catch((c) => console.log("Error or cancel:", c))
@@ -264,11 +268,15 @@ export const reduce = (arr, f, initAcc) => {
  * @async
  * @function timeout
  * @param {Function} f
- * @param {Number} [time=1000]
+ * @param {Number} [time=timeUnit.second]
  * @param {Function} [cancel]
  * @returns {Promise.<*>}
  */
-export const timeout = (f, time = 1000, cancel = (_canceller) => null) => {
+export const timeout = (
+    f,
+    time = timeUnit.second,
+    cancel = (_canceller) => null
+) => {
     let
         reject = null, handle = null,
         promise = new Promise((res, rej) => {

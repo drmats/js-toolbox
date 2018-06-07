@@ -174,3 +174,31 @@ export const objectReduce = (o, f, init) => {
  * @returns {Object.<String, String>}
  */
 export const swap = (o) => objectMap(o, ([k, v,]) => [v, k,])
+
+
+
+
+/**
+ * Time units represented in milliseconds.
+ *
+ * - `second` - `1000 milliseconds`
+ * - `minute` - `60 seconds`
+ * - `hour` - `60 minutes`
+ * - `day` - `24 hours`
+ * - `week` - `7 days`
+ * - `month` - [**average** month]: `30.4375 days` (`365.25 days / 12`)
+ * - `quarter` - [**average** quarter]: `3 months` (`365.25 days / 4`)
+ * - `year` - [**average** year]: `365.25 days`
+ *
+ * @name timeUnit
+ */
+export const timeUnit = Object.freeze({
+    second: 1000,
+    minute: 60000,
+    hour: 3600000,
+    day: 86400000,
+    week: 604800000,
+    month: 2629800000,
+    quarter: 7889400000,
+    year: 31557600000,
+})

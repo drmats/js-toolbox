@@ -156,7 +156,8 @@ $ npm start
   identity: [Function: identity],
   objectMap: [Function: objectMap],
   objectReduce: [Function: objectReduce],
-  swap: [Function: swap] }
+  swap: [Function: swap],
+  timeUnit: { ... } }
 ```
 
 <br />

@@ -139,4 +139,5 @@ export {
     objectMap,
     objectReduce,
     swap,
+    timeUnit,
 } from "./utils"
