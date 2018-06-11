@@ -10,6 +10,7 @@
 
 
 import { head } from "./array"
+import { Y } from "./func"
 import { isFunction } from "./type"
 import { timeUnit } from "./utils"
 
@@ -122,7 +123,7 @@ export const map = (arr, f) => {
         results = [],
         i = 0,
         resolve = null,
-        p = new Promise((res) => { resolve = res }),
+        promise = new Promise((res) => { resolve = res }),
         progress = (r) => {
             results.push(r)
             i += 1
@@ -142,7 +143,7 @@ export const map = (arr, f) => {
         ` got ${typeof arr} and ${typeof f}`
     )
 
-    return p
+    return promise
 }
 
 
@@ -226,7 +227,7 @@ export const reduce = (arr, f, initAcc) => {
     let
         i = 0,
         resolve = null,
-        p = new Promise((res) => { resolve = res }),
+        promise = new Promise((res) => { resolve = res }),
         progress = (r) => {
             i += 1
             if (i < arr.length) {
@@ -245,8 +246,30 @@ export const reduce = (arr, f, initAcc) => {
         ` got ${typeof arr} and ${typeof f}`
     )
 
-    return p
+    return promise
 }
+
+
+
+
+/**
+ * Repeat `f` (sync. or async.) while `condition` evaluates to `true`.
+ *
+ * Resolves with result of last `f` execution
+ * when `condition` evaluates to `false`.
+ *
+ * @async
+ * @function repeat
+ * @param {Function} f
+ * @param {Function} condition
+ * @returns {Promise.<*>}
+ */
+export const repeat = (f, condition) => Y(
+    (act) => (result) =>
+        condition() ?
+            Promise.resolve().then(f).then(act) :
+            Promise.resolve(result)
+)()
 
 
 

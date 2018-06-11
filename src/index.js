@@ -40,6 +40,7 @@ export {
     map as asyncMap,
     parMap,
     reduce as asyncReduce,
+    repeat as asyncRepeat,
     timeout,
 } from "./async"
 

@@ -94,6 +94,7 @@ $ npm start
   map: [Function: map],
   parMap: [Function: parMap],
   reduce: [Function: reduce],
+  repeat: [Function: repeat],
   timeout: [Function: timeout] }
 ```
 

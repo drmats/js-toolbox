@@ -240,6 +240,18 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Repeat `f` (sync. or async.) while `condition` evaluates to `true`.
+     *
+     * Resolves with result of last `f` execution
+     * when `condition` evaluates to `false`.
+     */
+    export function asyncRepeat<T> (
+        f: () => Promise<T> | T,
+        condition: () => boolean
+    ): Promise<T>;
+
+
+    /**
      * Asynchronous version of standard `Array.prototype.reduce` function.
      *
      * - `arr` - array to operate on
