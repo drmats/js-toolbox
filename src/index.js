@@ -134,6 +134,7 @@ export {
 export {
     access,
     choose,
+    clone,
     dict,
     handleException,
     identity,

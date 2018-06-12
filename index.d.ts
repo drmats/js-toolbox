@@ -605,6 +605,13 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Do the deep-copy of any JavaScript object
+     * that doesn't contain functions.
+     */
+    export function clone (o: object): object;
+
+
+    /**
      * Construct `Object` from the result of `Object.entries()` call.
      *
      * ```

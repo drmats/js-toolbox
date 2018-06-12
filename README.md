@@ -152,6 +152,7 @@ $ npm start
 > utils
 { access: [Function: access],
   choose: [Function: choose],
+  clone: [Function: clone],
   dict: [Function: dict],
   handleException: [Function: handleException],
   identity: [Function: identity],
