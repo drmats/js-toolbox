@@ -145,6 +145,8 @@ $ npm start
   isNumber: [Function: isNumber],
   isObject: [Function: isObject],
   isString: [Function: isString],
+  maxInt: 9007199254740991,
+  minInt: -9007199254740991,
   nullToUndefined: [Function: nullToUndefined] }
 ```
 

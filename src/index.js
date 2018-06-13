@@ -121,6 +121,8 @@ export {
     isNumber,
     isObject,
     isString,
+    maxInt,
+    minInt,
     nullToUndefined,
 } from "./type"
 
