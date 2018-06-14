@@ -94,3 +94,17 @@ export const minInt = Number.MIN_SAFE_INTEGER  ||  -(2 ** 53) + 1
  */
 export const nullToUndefined = (val) =>
     val === null  ?  undefined  :  val
+
+
+
+
+/**
+ * Returns `false` for all **falsy** values
+ * (`false`, `0`, `""`, `null`, `undefined`, and `NaN`),
+ * and `true` for all **truthy** values.
+ *
+ * @function toBool
+ * @param {*} x
+ * @returns {Boolean}
+ */
+export const toBool = (x) => !!x

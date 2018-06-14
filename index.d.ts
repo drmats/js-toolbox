@@ -585,6 +585,14 @@ declare module "@xcmats/js-toolbox" {
     export function nullToUndefined (val: any): any;
 
 
+    /**
+     * Returns `false` for all **falsy** values
+     * (`false`, `0`, `""`, `null`, `undefined`, and `NaN`),
+     * and `true` for all **truthy** values.
+     */
+    export function toBool (x: any): boolean;
+
+
 
 
     /**

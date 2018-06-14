@@ -124,6 +124,7 @@ export {
     maxInt,
     minInt,
     nullToUndefined,
+    toBool,
 } from "./type"
 
 

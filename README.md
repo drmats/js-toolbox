@@ -147,7 +147,8 @@ $ npm start
   isString: [Function: isString],
   maxInt: 9007199254740991,
   minInt: -9007199254740991,
-  nullToUndefined: [Function: nullToUndefined] }
+  nullToUndefined: [Function: nullToUndefined],
+  toBool: [Function: toBool] }
 ```
 
 ```javascript
