@@ -143,6 +143,7 @@ export {
     identity,
     objectMap,
     objectReduce,
+    randomInt,
     swap,
     timeUnit,
 } from "./utils"

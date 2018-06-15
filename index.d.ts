@@ -699,6 +699,12 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Generate a random positive integer.
+     */
+    export function randomInt (): number;
+
+
+    /**
      * When `o == { a: "b", c: "d" }`
      * then `swap(o) == { b: "a", d: "c" }`.
      */

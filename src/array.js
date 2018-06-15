@@ -9,13 +9,11 @@
 
 
 
-import {
-    isNumber,
-    maxInt,
-} from "./type"
+import { isNumber } from "./type"
 import {
     identity,
     objectReduce,
+    randomInt,
 } from "./utils"
 
 
@@ -59,8 +57,7 @@ export const countBy = (arr, iteratee = identity) =>
  * @param {Array|String} arr
  * @returns {*}
  */
-export const draw = (arr) =>
-    arr[Math.floor(Math.random() * maxInt) % arr.length]
+export const draw = (arr) => arr[randomInt() % arr.length]
 
 
 
@@ -207,7 +204,7 @@ export const shuffle = (arr) => {
     )
 
     for (let i = arr.length-1;  i > 0;  i -= 1) {
-        let j = Math.floor(Math.random() * maxInt) % (i+1);
+        let j = randomInt() % (i+1);
         [arr[i], arr[j],] = [arr[j], arr[i],]
     }
 
@@ -251,7 +248,7 @@ export const sparse = (...args) => {
     if (size >= interval) { return range(start, stop) }
 
     while (size > 0) {
-        let val = (Math.floor(Math.random() * maxInt) % interval) + start
+        let val = (randomInt() % interval) + start
         if (!Object.hasOwnProperty.call(hash, val)) {
             hash[val] = val
             size -= 1

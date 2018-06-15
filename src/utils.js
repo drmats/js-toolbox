@@ -12,6 +12,7 @@
 import {
     isFunction,
     isObject,
+    maxInt,
 } from "./type"
 
 
@@ -174,6 +175,17 @@ export const objectReduce = (o, f, init) => {
     )
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
 }
+
+
+
+
+/**
+ * Generate a random positive integer.
+ *
+ * @function randomInt
+ * @returns {Number}
+ */
+export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
 
 
 

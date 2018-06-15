@@ -161,6 +161,7 @@ $ npm start
   identity: [Function: identity],
   objectMap: [Function: objectMap],
   objectReduce: [Function: objectReduce],
+  randomInt: [Function: randomInt],
   swap: [Function: swap],
   timeUnit: { ... } }
 ```
