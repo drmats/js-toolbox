@@ -30,11 +30,12 @@ import {
  * @function access
  * @param {Object} o
  * @param {Array.<String>} path
+ * @param {*} [def=undefined]
  * @returns {*}
  */
-export const access = (o, path) => handleException(
-    () => path.reduce((acc, p) => acc[p], o),
-    () => undefined
+export const access = (o, path, def = undefined) => handleException(
+    () => path.reduce((acc, p) => acc[p], o) || def,
+    () => def
 )
 
 

@@ -610,7 +610,7 @@ declare module "@xcmats/js-toolbox" {
      * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
      * ```
      */
-    export function access (o: object, path: string[]): any;
+    export function access (o: object, path: string[], def?: any): any;
 
 
     /**
