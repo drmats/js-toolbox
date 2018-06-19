@@ -178,11 +178,12 @@ export const pascalToSnake = (str) =>
  * Quote text.
  *
  * @function quote
- * @param {String} str
+ * @param {String} [str=empty()]
  * @param {String} [q="\"\""]
  * @returns {String}
  */
-export const quote = (str, q="\"\"") => `${head(q)}${str}${last(q)}`
+export const quote = (str = empty(), q = "\"\"") =>
+    `${head(q)}${str}${last(q)}`
 
 
 
@@ -237,10 +238,10 @@ export const snakeToPascal = (str) =>
  * Wrap passed string with `prefix` and `suffix`.
  *
  * @function wrap
- * @param {String} str
- * @param {String} [prefix=""]
- * @param {String} [suffix=""]
+ * @param {String} [str=empty()]
+ * @param {String} [prefix=empty()]
+ * @param {String} [suffix=empty()]
  * @returns {String}
  */
-export const wrap = (str, prefix = "", suffix = "") =>
+export const wrap = (str = empty(), prefix = empty(), suffix = empty()) =>
     `${prefix}${str}${suffix}`

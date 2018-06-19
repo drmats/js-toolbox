@@ -502,7 +502,7 @@ declare module "@xcmats/js-toolbox" {
     /**
      * Quote text.
      */
-    export function quote (str: string, q?: string): string;
+    export function quote (str?: string, q?: string): string;
 
 
     /**
@@ -527,7 +527,7 @@ declare module "@xcmats/js-toolbox" {
      * Wrap passed string with `prefix` and `suffix`.
      */
     export function wrap (
-        str: string,
+        str?: string,
         prefix?: string,
         suffix?: string
     ): string;
