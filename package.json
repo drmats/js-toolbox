@@ -45,7 +45,8 @@
         "es",
         "index.d.ts",
         "lib",
-        "src"
+        "src",
+        "typings"
     ],
     "homepage": "https://github.com/drmats/js-toolbox",
     "keywords": [
@@ -82,6 +83,6 @@
         "start": "npm run build:commonjs && node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
-    "types": "./index.d.ts",
-    "version": "0.3.7"
+    "typings": "typings/js-toolbox.d.ts",
+    "version": "0.3.8"
 }
