@@ -3,7 +3,7 @@
  *
  * @license Apache-2.0
  * @author drmats
- * @see {@link index.js}
+ * @see {@link ../src/index.js}
  */
 
 
