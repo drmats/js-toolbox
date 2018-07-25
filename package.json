@@ -43,7 +43,6 @@
     "files": [
         "doc",
         "es",
-        "index.d.ts",
         "lib",
         "src",
         "typings"
