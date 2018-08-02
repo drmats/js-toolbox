@@ -483,7 +483,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * Constructs new string with inserted `sep` (of default value `…`)
-     * at the beginning (`0`), middle (`1`) or end (`2`).
+     * at the `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
      * Returned string has the same length as input string
      * (thus some original characters are replaced with `sep` contents).
      */
@@ -522,6 +522,17 @@ declare module "@xcmats/js-toolbox" {
      * Construct random string of desired length.
      */
     export function randomString (size?: number, letters?: string): string;
+
+
+    /**
+     * Constructs new string not longer than `len`.
+     */
+    export function shorten (
+        str: string,
+        len: number,
+        placing?: number,
+        sep?: string
+    ): string;
 
 
     /**

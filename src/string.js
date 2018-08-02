@@ -137,32 +137,34 @@ export const digits = () => "0123456789"
 
 /**
  * Constructs new string with inserted `sep` (of default value `…`)
- * at the beginning (`0`), middle (`1`) or end (`2`).
+ * at the `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
  * Returned string has the same length as input string
  * (thus some original characters are replaced with `sep` contents).
  *
  * @function ellipsis
  * @param {String} str Text to insert `sep` (`…`) into.
- * @param {String} [placing=1] Place to insert. Can be `0`, `1` or `2`.
+ * @param {Number} [placing=ellipsis.MIDDLE] Place to insert.
+ *     Can be `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
  * @param {String} [sep="…"] Separator.
- * @return {String} Changed string.
+ * @returns {String}
  */
 export const ellipsis = (str, placing = 1, sep = "…") => {
     let x = str.split(empty())
     if (str.length >= sep.length) {
-        if (placing === 1) {
+        if (placing === 1) {             // ellipsis.MIDDLE
             x.splice(
                 Math.floor(x.length / 2) - Math.floor(sep.length / 2),
                 sep.length, sep
             )
-        } else if (placing === 0) {
+        } else if (placing === 0) {      // ellipsis.BEGIN
             x.splice(0, sep.length, sep)
-        } else if (placing === 2) {
+        } else if (placing === 2) {      // ellipsis.END
             x.splice(x.length - sep.length, sep.length, sep)
         }
     }
     return x.join(empty())
 }
+Object.freeze(Object.assign(ellipsis, { BEGIN: 0, MIDDLE: 1, END: 2, }))
 
 
 
@@ -230,6 +232,36 @@ export const quote = (str = empty(), q = "\"\"") =>
  */
 export const random = (size = 0, letters = asciiLetters() + digits()) =>
     range(size).map(() => draw(letters.split(empty()))).join(empty())
+
+
+
+
+/**
+ * Constructs new string not longer than `len`.
+ *
+ * @function shorten
+ * @param {String} str Text to be shortened.
+ * @param {Number} len Desired text length.
+ * @param {Number} [placing=shorten.MIDDLE] Character cutting place.
+ *     Can be `shorten.BEGIN`, `shorten.MIDDLE` or `shorten.END`.
+ * @param {String} [sep="…"] Separator.
+ * @returns {String}
+ */
+export const shorten = (str, len, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (len < str.length) {
+        if (placing === 1) {             // shorten.MIDDLE
+            x.splice(Math.floor(len/2), str.length - len)
+        } else if (placing === 0) {      // shorten.BEGIN
+            x.splice(0, x.length - len)
+        } else if (placing === 2) {      // shorten.END
+            x.splice(len, x.length - len)
+        }
+        return ellipsis(x.join(empty()), placing, sep)
+    }
+    return str
+}
+Object.freeze(Object.assign(shorten, ellipsis))
 
 
 

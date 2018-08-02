@@ -105,6 +105,7 @@ export {
     pascalToSnake,
     quote,
     random as randomString,
+    shorten,
     snakeToCamel,
     snakeToPascal,
     wrap,

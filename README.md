@@ -129,12 +129,13 @@ $ npm start
   camelToSnake: [Function: camelToSnake],
   capitalize: [Function: capitalize],
   digits: [Function: digits],
-  ellipsis: [Function: ellipsis],
+  ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
   empty: [Function: empty],
   pascalToCamel: [Function: pascalToCamel],
   pascalToSnake: [Function: pascalToSnake],
   quote: [Function: quote],
   random: [Function: random],
+  shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
   snakeToCamel: [Function: snakeToCamel],
   snakeToPascal: [Function: snakeToPascal],
   wrap: [Function: wrap] }
@@ -394,6 +395,21 @@ $ npm start
     ```javascript
     > string.random(16)
     'MxWGe8MoOss0yUAP'
+    ```
+
+
+* Shorten a given string to the desired length.
+
+    ```javascript
+    > string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
+    'abcdefg…tuvwxyz'
+
+    > string.shorten(
+    ...     'To be, or not to be, that is the question',
+    ...     20,
+    ...     string.shorten.END
+    ... )
+    'To be, or not to be…'
     ```
 
 
