@@ -136,6 +136,38 @@ export const digits = () => "0123456789"
 
 
 /**
+ * Constructs new string with inserted `sep` (of default value `…`)
+ * at the beginning (`0`), middle (`1`) or end (`2`).
+ * Returned string has the same length as input string
+ * (thus some original characters are replaced with `sep` contents).
+ *
+ * @function ellipsis
+ * @param {String} str Text to insert `sep` (`…`) into.
+ * @param {String} [placing=1] Place to insert. Can be `0`, `1` or `2`.
+ * @param {String} [sep="…"] Separator.
+ * @return {String} Changed string.
+ */
+export const ellipsis = (str, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (str.length >= sep.length) {
+        if (placing === 1) {
+            x.splice(
+                Math.floor(x.length / 2) - Math.floor(sep.length / 2),
+                sep.length, sep
+            )
+        } else if (placing === 0) {
+            x.splice(0, sep.length, sep)
+        } else if (placing === 2) {
+            x.splice(x.length - sep.length, sep.length, sep)
+        }
+    }
+    return x.join(empty())
+}
+
+
+
+
+/**
  * Construct empty string.
  *
  * @function empty

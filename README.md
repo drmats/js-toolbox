@@ -129,6 +129,7 @@ $ npm start
   camelToSnake: [Function: camelToSnake],
   capitalize: [Function: capitalize],
   digits: [Function: digits],
+  ellipsis: [Function: ellipsis],
   empty: [Function: empty],
   pascalToCamel: [Function: pascalToCamel],
   pascalToSnake: [Function: pascalToSnake],

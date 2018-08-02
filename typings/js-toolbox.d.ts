@@ -482,6 +482,19 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Constructs new string with inserted `sep` (of default value `…`)
+     * at the beginning (`0`), middle (`1`) or end (`2`).
+     * Returned string has the same length as input string
+     * (thus some original characters are replaced with `sep` contents).
+     */
+    export function ellipsis (
+        str: string,
+        placing?: number,
+        sep?: string
+    ): string;
+
+
+    /**
      * Construct empty string.
      */
     export function emptyString (): string;

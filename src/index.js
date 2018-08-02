@@ -99,6 +99,7 @@ export {
     camelToSnake,
     capitalize,
     digits,
+    ellipsis,
     empty as emptyString,
     pascalToCamel,
     pascalToSnake,
