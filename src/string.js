@@ -241,13 +241,13 @@ export const random = (size = 0, letters = asciiLetters() + digits()) =>
  *
  * @function shorten
  * @param {String} str Text to be shortened.
- * @param {Number} len Desired text length.
+ * @param {Number} [len=Infinity] Desired text length.
  * @param {Number} [placing=shorten.MIDDLE] Character cutting place.
  *     Can be `shorten.BEGIN`, `shorten.MIDDLE` or `shorten.END`.
  * @param {String} [sep="…"] Separator.
  * @returns {String}
  */
-export const shorten = (str, len, placing = 1, sep = "…") => {
+export const shorten = (str, len = Infinity, placing = 1, sep = "…") => {
     let x = str.split(empty())
     if (len < str.length) {
         if (placing === 1) {             // shorten.MIDDLE

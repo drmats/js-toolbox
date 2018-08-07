@@ -529,7 +529,7 @@ declare module "@xcmats/js-toolbox" {
      */
     export function shorten (
         str: string,
-        len: number,
+        len?: number,
         placing?: number,
         sep?: string
     ): string;
