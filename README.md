@@ -1,6 +1,6 @@
 # js-toolbox
 
-Various JS utilities.
+Useful JavaScript utilities.
 
 [![npm version](https://img.shields.io/npm/v/@xcmats/js-toolbox.svg)](https://www.npmjs.com/package/@xcmats/js-toolbox)
 [![npm license](https://img.shields.io/npm/l/@xcmats/js-toolbox.svg)](https://www.npmjs.com/package/@xcmats/js-toolbox)
@@ -38,7 +38,7 @@ $ npm install @xcmats/js-toolbox
     "asyncMap",
     "asyncReduce",
     "average",
-    "b64dec,
+    "b64dec",
     "b64enc",
     "bytesToString",
     "bigString",
@@ -187,6 +187,8 @@ $ npm start
 
 ## examples
 
+### array manipulation
+
 * Find the lenghts of the words in a given sentence
   and count how many of them exists in each length group.
 
@@ -261,6 +263,10 @@ $ npm start
     [ 6, 34, 170, 422, 530, 643, 855, 862 ]
     ```
 
+<br />
+
+
+### asynchonous helpers
 
 * Delay current async execution by `time` miliseconds.
 
@@ -321,6 +327,57 @@ $ npm start
     })()
     ```
 
+<br />
+
+
+### base64 encoding and decoding
+
+* Convert UTF-8 string into an array of bytes.
+
+    ```javascript
+    > codec.stringToBytes('Koń: 🐎')
+    Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
+    ```
+
+
+* Convert array of bytes into a UTF-8 string.
+
+    ```javascript
+    > data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
+    Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
+
+    > codec.bytesToString(data)
+    'Fox: 🦊'
+    ```
+
+
+* Encode given byte array to Base64.
+  **Base64 encoding in browser and `node.js`.**
+
+    ```javascript
+    > data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
+    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+    > codec.b64enc(data)
+    '8J+OqfCfkLA='
+    ```
+
+
+* Decode given Base64 string to byte array.
+  **Base64 decoding in browser and `node.js`.**
+
+    ```javascript
+    > data = codec.b64dec('8J+OqfCfkLA=')
+    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+    > codec.bytesToString(data)
+    '🎩🐰'
+    ```
+
+<br />
+
+
+### functional programming
 
 * Translate the evaluation of function `f` taking multiple arguments
   into an evaluation of sequence of functions, each with a single argument.
@@ -345,6 +402,10 @@ $ npm start
     120
     ```
 
+<br />
+
+
+### simple math
 
 * Compute mathematical average of array of numbers.
 
@@ -377,6 +438,10 @@ $ npm start
     45
     ```
 
+<br />
+
+
+### operations on strings
 
 * Allocate a **big** string (of size `2^n`).
 
@@ -432,6 +497,10 @@ $ npm start
     'someNightsICallItADraw'
     ```
 
+<br />
+
+
+### type primitives
 
 * Determine if a given value is a proper `Number`
   (not `NaN` and not `Infinity`).
@@ -462,55 +531,16 @@ $ npm start
     true
     ```
 
+<br />
+
+
+### assorted utilities
 
 * Apply `path` to an object.
 
     ```javascript
     > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
     42
-    ```
-
-
-* Convert UTF-8 string into an array of bytes.
-
-    ```javascript
-    > codec.stringToBytes('Koń: 🐎')
-    Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
-    ```
-
-
-* Convert array of bytes into a UTF-8 string.
-
-    ```javascript
-    > data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
-    Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
-
-    > codec.bytesToString(data)
-    'Fox: 🦊'
-    ```
-
-
-* Encode given byte array to Base64.
-  **Base64 encoding in browser and `node.js`.**
-
-    ```javascript
-    > data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
-    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
-
-    > codec.b64enc(data)
-    '8J+OqfCfkLA='
-    ```
-
-
-* Decode given Base64 string to byte array.
-  **Base64 decoding in browser and `node.js`.**
-
-    ```javascript
-    > data = codec.b64dec('8J+OqfCfkLA=')
-    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
-
-    > codec.bytesToString(data)
-    '🎩🐰'
     ```
 
 
