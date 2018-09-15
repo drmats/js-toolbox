@@ -106,7 +106,9 @@ $ npm start
 { b64dec: [Function],
   b64enc: [Function],
   bytesToString: [Function],
-  stringToBytes: [Function] }
+  stringToBytes: [Function],
+  stringB64dec: [Function],
+  stringB64enc: [Function] }
 ```
 
 ```javascript

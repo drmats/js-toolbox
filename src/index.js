@@ -56,6 +56,8 @@ export {
     b64enc,
     bytesToString,
     stringToBytes,
+    stringB64dec,
+    stringB64enc,
 } from "./codec"
 
 

@@ -342,6 +342,18 @@ declare module "@xcmats/js-toolbox" {
     export function stringToBytes (s: string): Uint8Array;
 
 
+    /**
+     * Base64 decoding for strings.
+     */
+    export function stringB64dec (s: string): string;
+
+
+    /**
+     * Base64 encoding for strings.
+     */
+    export function stringB64enc (s: string): string;
+
+
 
 
     /**

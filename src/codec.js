@@ -9,6 +9,7 @@
 
 
 
+import { compose } from "./func"
 import { empty } from "./string"
 import { isBrowser } from "./utils"
 
@@ -72,3 +73,27 @@ export const bytesToString = isBrowser() ?
 export const stringToBytes = isBrowser() ?
     (s) => (new TextEncoder("utf-8")).encode(s) :
     (s) => Uint8Array.from(Buffer.from(s))
+
+
+
+
+/**
+ * Base64 decoding for strings.
+ *
+ * @function stringB64dec
+ * @param {String} s
+ * @returns {String}
+ */
+export const stringB64dec = compose(bytesToString, b64dec)
+
+
+
+
+/**
+ * Base64 encoding for strings.
+ *
+ * @function stringB64enc
+ * @param {String} s
+ * @returns {String}
+ */
+export const stringB64enc = compose(b64enc, stringToBytes)
