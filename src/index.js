@@ -143,6 +143,7 @@ export {
     dict,
     handleException,
     identity,
+    isBrowser,
     objectMap,
     objectReduce,
     randomInt,

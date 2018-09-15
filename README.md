@@ -161,6 +161,7 @@ $ npm start
   dict: [Function: dict],
   handleException: [Function: handleException],
   identity: [Function: identity],
+  isBrowser: [Function: isBrowser],
   objectMap: [Function: objectMap],
   objectReduce: [Function: objectReduce],
   randomInt: [Function: randomInt],

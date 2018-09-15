@@ -688,6 +688,12 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Check current runtime environment
+     */
+    export function isBrowser (): boolean
+
+
+    /**
      * Map (iteration) on objects - shallow.
      *
      * - `o` - `Object` to enumerate on.

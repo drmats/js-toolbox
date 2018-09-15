@@ -13,6 +13,7 @@ import {
     isFunction,
     isObject,
     maxInt,
+    toBool,
 } from "./type"
 
 
@@ -121,6 +122,19 @@ export const handleException = (fn, handler = null) => {
  * @returns {*}
  */
 export const identity = (val) => val
+
+
+
+
+/**
+ * Check current runtime environment.
+ *
+ * @function isBrowser
+ * @returns {Boolean}
+ */
+export const isBrowser = () =>
+    // eslint-disable-next-line
+    toBool(process.browser)
 
 
 
