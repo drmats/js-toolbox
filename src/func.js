@@ -9,6 +9,32 @@
 
 
 
+import { head } from "./array"
+
+
+
+
+/**
+ * Function composition.
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  <=>  (g . f)(x)  <=>  compose(g, f)(x)
+ * ```
+ *
+ * @function compose
+ * @param {...Function} fs
+ * @returns {Function}
+ */
+export const compose = (...fs) =>
+    (...args) => head(fs.reduceRight((result, f) => [f(...result),], args))
+
+
+
+
 /**
  * Translate the evaluation of function `f` taking multiple arguments
  * into an evaluation of sequence of functions, each with a single argument.

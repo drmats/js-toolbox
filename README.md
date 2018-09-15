@@ -111,7 +111,8 @@ $ npm start
 
 ```javascript
 > func
-{ curry: [Function: curry],
+{ compose: [Function: compose],
+  curry: [Function: curry],
   partial: [Function: partial],
   Y: [Function: Y] }
 ```
@@ -378,6 +379,20 @@ $ npm start
 
 
 ### functional programming
+
+* Function composition.
+
+    ```javascript
+    > shortenAndQuote = func.compose(string.quote, string.shorten)
+    [Function]
+
+    > shortenAndQuote(
+    ... "When I find myself in times of trouble",
+    ... 20, string.shorten.END
+    ... )
+    '"When I find myself …"'
+    ```
+
 
 * Translate the evaluation of function `f` taking multiple arguments
   into an evaluation of sequence of functions, each with a single argument.

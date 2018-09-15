@@ -351,6 +351,20 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Function composition.
+     *
+     * ```
+     * let:
+     * f: X -> Y,  g: Y -> Z
+     *
+     * then:
+     * g(f(x))  <=>  (g . f)(x)  <=>  compose(g, f)(x)
+     * ```
+     */
+    export function compose (...fs: Function[]): Function;
+
+
+    /**
      * Translate the evaluation of function `f` taking multiple arguments
      * into an evaluation of sequence of functions,
      * each with a single argument.

@@ -66,6 +66,7 @@ export {
  * @see {@link func.js}
  */
 export {
+    compose,
     curry,
     partial,
     Y,
