@@ -72,7 +72,7 @@ Cloning into 'js-toolbox'...
 $ cd js-toolbox
 $ npm i
 $ npm start
-🎉  Successfully compiled 9 files with Babel.
+🎉  Successfully compiled 10 files with Babel.
 ```
 
 ```javascript
@@ -573,3 +573,14 @@ $ npm start
     > utils.swap({ a: 'b', c: 'd', e: 'f' })
     { b: 'a', d: 'c', f: 'e' }
     ```
+
+</br>
+
+
+
+
+## license
+
+**js-toolbox** is released under the Apache License, Version 2.0. See the
+[LICENSE](https://github.com/drmats/js-toolbox/blob/master/LICENSE)
+for more details.
