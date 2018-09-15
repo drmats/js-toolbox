@@ -312,6 +312,39 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * @name codec
+     * @see {@link codec.js}
+     */
+
+
+    /**
+     * Decode given Base64-encoded string into byte array (Uint8Array).
+     */
+    export function b64dec (s: string): Uint8Array;
+
+
+    /**
+     * Base64-encode given byte array (Uint8Array).
+     */
+    export function b64enc (bytes: Uint8Array): string;
+
+
+    /**
+     * Convert given byte array (Uint8Array) to UTF-8-encoded string.
+     */
+    export function bytesToString (bytes: Uint8Array): string;
+
+
+    /**
+     * Convert given string to byte array (Uint8Array).
+     * String is assumed to be encoded in UTF-8.
+     */
+    export function stringToBytes (s: string): Uint8Array;
+
+
+
+
+    /**
      * @name func
      * @see {@link func.js}
      */
@@ -688,9 +721,9 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
-     * Check current runtime environment
+     * Check current runtime environment.
      */
-    export function isBrowser (): boolean
+    export function isBrowser (): boolean;
 
 
     /**

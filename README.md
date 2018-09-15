@@ -38,6 +38,9 @@ $ npm install @xcmats/js-toolbox
     "asyncMap",
     "asyncReduce",
     "average",
+    "b64dec,
+    "b64enc",
+    "bytesToString",
     "bigString",
     "camelToPascal",
     "camelToSnake",
@@ -96,6 +99,14 @@ $ npm start
   reduce: [Function: reduce],
   repeat: [Function: repeat],
   timeout: [Function: timeout] }
+```
+
+```javascript
+> codec
+{ b64dec: [Function],
+  b64enc: [Function],
+  bytesToString: [Function],
+  stringToBytes: [Function] }
 ```
 
 ```javascript
@@ -457,6 +468,49 @@ $ npm start
     ```javascript
     > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
     42
+    ```
+
+
+* Convert UTF-8 string into an array of bytes.
+
+    ```javascript
+    > codec.stringToBytes('Koń: 🐎')
+    Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
+    ```
+
+
+* Convert array of bytes into a UTF-8 string.
+
+    ```javascript
+    > data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
+    Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
+
+    > codec.bytesToString(data)
+    'Fox: 🦊'
+    ```
+
+
+* Encode given byte array to Base64.
+  **Base64 encoding in browser and `node.js`.**
+
+    ```javascript
+    > data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
+    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+    > codec.b64enc(data)
+    '8J+OqfCfkLA='
+    ```
+
+
+* Decode given Base64 string to byte array.
+  **Base64 decoding in browser and `node.js`.**
+
+    ```javascript
+    > data = codec.b64dec('8J+OqfCfkLA=')
+    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+    > codec.bytesToString(data)
+    '🎩🐰'
     ```
 
 

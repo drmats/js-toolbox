@@ -48,6 +48,20 @@ export {
 
 
 /**
+ * @name codec
+ * @see {@link codec.js}
+ */
+export {
+    b64dec,
+    b64enc,
+    bytesToString,
+    stringToBytes,
+} from "./codec"
+
+
+
+
+/**
  * @name func
  * @see {@link func.js}
  */
