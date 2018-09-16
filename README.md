@@ -64,7 +64,7 @@ $ npm install @xcmats/js-toolbox
 
 
 
-## experimenting in [node.js](https://nodejs.org/)
+## experimenting in node.js
 
 ```bash
 $ git clone git@github.com:drmats/js-toolbox.git
@@ -269,7 +269,7 @@ $ npm start
 <br />
 
 
-### asynchonous helpers
+### asynchronous helpers
 
 * Delay current async execution by `time` miliseconds.
 
