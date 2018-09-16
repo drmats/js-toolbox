@@ -19,7 +19,7 @@ $ npm install @xcmats/js-toolbox
 
 ## documentation
 
-[API Reference](https://drmats.github.io/js-toolbox/)
+> [API Reference](https://drmats.github.io/js-toolbox/)
 
 <br />
 
@@ -599,6 +599,18 @@ $ npm start
     > utils.swap({ a: 'b', c: 'd', e: 'f' })
     { b: 'a', d: 'c', f: 'e' }
     ```
+
+</br>
+
+
+
+
+## notes
+
+This library is suitable to use in server and browser environments
+and it is being used as such.
+Go ahead and [file an issue](https://github.com/drmats/js-toolbox/issues/new)
+if you found a bug 🐞.
 
 </br>
 
