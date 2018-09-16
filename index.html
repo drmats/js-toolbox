@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-@xcmats_js-toolbox.html">@xcmats/js-toolbox</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-array.html">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~countBy">countBy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~draw">draw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~findDuplicates">findDuplicates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~flatten">flatten</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~head">head</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~last">last</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~range">range</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~shuffle">shuffle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~sparse">sparse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~tail">tail</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-async.html">async</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~delay">delay</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~interval">interval</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~map">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~parMap">parMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~reduce">reduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~repeat">repeat</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~timeout">timeout</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-codec.html">codec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~b64dec">b64dec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~b64enc">b64enc</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~bytesToString">bytesToString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringB64dec">stringB64dec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringB64enc">stringB64enc</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringToBytes">stringToBytes</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-func.html">func</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~compose">compose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~curry">curry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~partial">partial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~Y">Y</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-math.html">math</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~average">average</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~log2">log2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~log10">log10</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~roundIfClose">roundIfClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~sum">sum</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-redux.html">redux</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-redux.html#~createReducer">createReducer</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-string.html">string</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiLetters">asciiLetters</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiLowercase">asciiLowercase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiUppercase">asciiUppercase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~big">big</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~camelToPascal">camelToPascal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~camelToSnake">camelToSnake</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~capitalize">capitalize</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~digits">digits</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~ellipsis">ellipsis</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~empty">empty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~pascalToCamel">pascalToCamel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~pascalToSnake">pascalToSnake</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~quote">quote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~random">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~shorten">shorten</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~snakeToCamel">snakeToCamel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~snakeToPascal">snakeToPascal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~wrap">wrap</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-type.html">type</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isFunction">isFunction</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isNumber">isNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isObject">isObject</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isString">isString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~nullToUndefined">nullToUndefined</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~toBool">toBool</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils.html">utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~access">access</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~choose">choose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~clone">clone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~dict">dict</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~handleException">handleException</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~identity">identity</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~isBrowser">isBrowser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~objectMap">objectMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~objectReduce">objectReduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~randomInt">randomInt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~swap">swap</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>js-toolbox</h1><p>Useful JavaScript utilities.</p>
+<p><a href="https://www.npmjs.com/package/@xcmats/js-toolbox"><img src="https://img.shields.io/npm/v/@xcmats/js-toolbox.svg" alt="npm version"></a>
+<a href="https://www.npmjs.com/package/@xcmats/js-toolbox"><img src="https://img.shields.io/npm/l/@xcmats/js-toolbox.svg" alt="npm license"></a>
+<a href="https://github.com/drmats/js-toolbox"><img src="https://img.shields.io/github/languages/top/drmats/js-toolbox.svg" alt="GitHub top language"></a>
+<a href="https://github.com/drmats/js-toolbox"><img src="https://img.shields.io/github/languages/code-size/drmats/js-toolbox.svg" alt="GitHub code size"></a>
+<a href="https://github.com/drmats/js-toolbox"><img src="https://img.shields.io/github/tag/drmats/js-toolbox.svg" alt="GitHub tag"></a></p>
+<pre class="prettyprint source lang-bash"><code>$ npm install @xcmats/js-toolbox</code></pre><p><br /></p>
+<h2>documentation</h2><p><a href="https://drmats.github.io/js-toolbox/">API Reference</a></p>
+<p><br /></p>
+<h2>experimenting in browser</h2><blockquote>
+<p><a href="https://npm.runkit.com/@xcmats/js-toolbox">RunKit with @xcmats/js-toolbox</a></p>
+</blockquote>
+<ul>
+<li><p>list member functions (<a href="https://runkit.com/embed/r1c9vte7yz3b">link</a>):</p>
+<pre class="prettyprint source lang-javascript"><code>  var jsToolbox = require(&quot;@xcmats/js-toolbox&quot;)
+
+  Object.keys(jsToolbox).sort()</code></pre><pre class="prettyprint source lang-javascript"><code>  [ &quot;Y&quot;,
+  &quot;access&quot;,
+  &quot;asciiLetters&quot;,
+  &quot;asciiLowercase&quot;,
+  &quot;asciiUppercase&quot;,
+  &quot;asyncMap&quot;,
+  &quot;asyncReduce&quot;,
+  &quot;average&quot;,
+  &quot;b64dec&quot;,
+  &quot;b64enc&quot;,
+  &quot;bytesToString&quot;,
+  &quot;bigString&quot;,
+  &quot;camelToPascal&quot;,
+  &quot;camelToSnake&quot;,
+  &quot;capitalize&quot;,
+  &quot;choose&quot;,
+  ... ]</code></pre></li>
+<li><p>play with <code>shuffle</code> and <code>range</code> (<a href="https://runkit.com/embed/pdk4lfc4ul51">link</a>):</p>
+<pre class="prettyprint source lang-javascript"><code>  jsToolbox.shuffle(jsToolbox.range(16))</code></pre><pre class="prettyprint source lang-javascript"><code>  [ 14, 12, 15, 8, 13, 4, 5, 6, 1, 7, 10, 0, 2, 3, 9, 11 ]</code></pre></li>
+</ul>
+<p><br /></p>
+<h2>experimenting in node.js</h2><pre class="prettyprint source lang-bash"><code>$ git clone git@github.com:drmats/js-toolbox.git
+Cloning into 'js-toolbox'...
+$ cd js-toolbox
+$ npm i
+$ npm start
+🎉  Successfully compiled 10 files with Babel.</code></pre><pre class="prettyprint source lang-javascript"><code>> array
+{ countBy: [Function: countBy],
+  draw: [Function: draw],
+  findDuplicates: [Function: findDuplicates],
+  flatten: [Function: flatten],
+  head: [Function: head],
+  init: [Function: init],
+  last: [Function: last],
+  range: [Function: range],
+  shuffle: [Function: shuffle],
+  sparse: [Function: sparse],
+  tail: [Function: tail] }</code></pre><pre class="prettyprint source lang-javascript"><code>> async
+{ delay: [Function: delay],
+  interval: [Function: interval],
+  map: [Function: map],
+  parMap: [Function: parMap],
+  reduce: [Function: reduce],
+  repeat: [Function: repeat],
+  timeout: [Function: timeout] }</code></pre><pre class="prettyprint source lang-javascript"><code>> codec
+{ b64dec: [Function],
+  b64enc: [Function],
+  bytesToString: [Function],
+  stringToBytes: [Function],
+  stringB64dec: [Function],
+  stringB64enc: [Function] }</code></pre><pre class="prettyprint source lang-javascript"><code>> func
+{ compose: [Function: compose],
+  curry: [Function: curry],
+  partial: [Function: partial],
+  Y: [Function: Y] }</code></pre><pre class="prettyprint source lang-javascript"><code>> math
+{ average: [Function: average],
+  log10: [Function: log10],
+  log2: [Function: log2],
+  roundIfClose: [Function: roundIfClose],
+  sum: [Function: sum] }</code></pre><pre class="prettyprint source lang-javascript"><code>> redux
+{ createReducer: [Function: createReducer] }</code></pre><pre class="prettyprint source lang-javascript"><code>> string
+{ asciiLetters: [Function: asciiLetters],
+  asciiLowercase: [Function: asciiLowercase],
+  asciiUppercase: [Function: asciiUppercase],
+  big: [Function],
+  camelToPascal: [Function: camelToPascal],
+  camelToSnake: [Function: camelToSnake],
+  capitalize: [Function: capitalize],
+  digits: [Function: digits],
+  ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
+  empty: [Function: empty],
+  pascalToCamel: [Function: pascalToCamel],
+  pascalToSnake: [Function: pascalToSnake],
+  quote: [Function: quote],
+  random: [Function: random],
+  shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
+  snakeToCamel: [Function: snakeToCamel],
+  snakeToPascal: [Function: snakeToPascal],
+  wrap: [Function: wrap] }</code></pre><pre class="prettyprint source lang-javascript"><code>> type
+{ isFunction: [Function: isFunction],
+  isNumber: [Function: isNumber],
+  isObject: [Function: isObject],
+  isString: [Function: isString],
+  maxInt: 9007199254740991,
+  minInt: -9007199254740991,
+  nullToUndefined: [Function: nullToUndefined],
+  toBool: [Function: toBool] }</code></pre><pre class="prettyprint source lang-javascript"><code>> utils
+{ access: [Function: access],
+  choose: [Function: choose],
+  clone: [Function: clone],
+  dict: [Function: dict],
+  handleException: [Function: handleException],
+  identity: [Function: identity],
+  isBrowser: [Function: isBrowser],
+  objectMap: [Function: objectMap],
+  objectReduce: [Function: objectReduce],
+  randomInt: [Function: randomInt],
+  swap: [Function: swap],
+  timeUnit: { ... } }</code></pre><p><br /></p>
+<h2>examples</h2><h3>array manipulation</h3><ul>
+<li><p>Find the lenghts of the words in a given sentence
+and count how many of them exists in each length group.</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.countBy(
+  ...     'exemplo plus quam ratione vivimus'.split(' '),
+  ...     (w) => w.length
+  ... )
+  { '4': 2, '7': 3 }</code></pre></li>
+</ul>
+<ul>
+<li><p>Choose a random element from a given <code>array</code>
+(or a random character from a given <code>string</code>).</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.draw(string.asciiLetters())
+  'S'</code></pre></li>
+</ul>
+<ul>
+<li><p>Find duplicates in a given <code>array</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.findDuplicates(['one', 'two', 'one', 'three', 'six', 'two', 'two'])
+  [ 'one', 'two' ]</code></pre></li>
+</ul>
+<ul>
+<li><p>Flatten passed <code>array</code>, i.e. transform
+<code>[[1, 2,], ..., [3, 4,],]</code> to <code>[1, 2, ..., 3, 4,]</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
+  [ 'a', 'b', 'c', 'd', 'e', 'f' ]</code></pre></li>
+</ul>
+<ul>
+<li><p>Return a list containing an arithmetic progression.
+<code>range(i, j)</code> returns <code>[i, i+1, i+2, ..., j-1]</code>.
+Possible invocations are: <code>range(stop)</code>, <code>range(start, stop)</code>,
+<code>range(start, stop, step)</code>. When <code>start</code> is omitted it defaults to <code>0</code>.
+When <code>step</code> is given, it specifies the increment (or decrement).</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.range(10)
+  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+  > array.range(-128, -256, -16)
+  [ -128, -144, -160, -176, -192, -208, -224, -240 ]</code></pre></li>
+</ul>
+<ul>
+<li><p>Randomly shuffle all elements in the given <code>array</code> (Durstenfeld's
+modification to the Fisher-Yates shuffle algorithm).
+The operation is taken in-place.</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.shuffle(array.range(12))
+  [ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]</code></pre></li>
+</ul>
+<ul>
+<li><p>Generate sparse array of distinct integers.
+<code>sparse(stop, size)</code> returns <code>array</code> of <code>size</code> distinct
+integers in range <code>[0..stop-1]</code>.
+<code>sparse(start, stop, size)</code> returns <code>array</code> of <code>size</code> distinct
+integers in range <code>[start..stop-1]</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > array.sparse(1024, 8)
+  [ 6, 34, 170, 422, 530, 643, 855, 862 ]</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>asynchronous helpers</h3><ul>
+<li><p>Delay current async execution by <code>time</code> miliseconds.</p>
+<pre class="prettyprint source lang-javascript"><code>  (async () => {
+      await async.delay()
+      console.log('Hello ...')
+      await async.delay()
+      console.log('... world')
+  })()</code></pre></li>
+</ul>
+<ul>
+<li><p>Invoke a sequence of asynchronous operations on an array of elements.</p>
+<pre class="prettyprint source lang-javascript"><code>  (async () => {
+      let x = await async.map(
+          array.range(10),
+          (x) => async.timeout(() => {
+              console.log(4*x);
+              return 4*x;
+          }, array.head(array.sparse(1000, 1)))
+      )
+      console.log(`Result: ${x}`)
+  })()</code></pre></li>
+</ul>
+<ul>
+<li><p>Paralelly execute operation on each element of the array.</p>
+<pre class="prettyprint source lang-javascript"><code>  (async () => {
+      let x = await async.parMap(
+          array.range(10),
+          (x) => async.timeout(() => {
+              console.log(4*x);
+              return 4*x;
+          }, array.head(array.sparse(1000, 1)))
+      )
+      console.log(`Result: ${x}`)
+  })()</code></pre></li>
+</ul>
+<ul>
+<li><p>Accumulate value over an array of elements using asynchronous operation.</p>
+<pre class="prettyprint source lang-javascript"><code>  (async () => {
+      let x = await async.reduce(
+          array.range(10),
+          (acc, x) => async.timeout(() => {
+              console.log(acc+x);
+              return acc+x;
+          }, 100*x)
+      )
+      console.log(`Accumulated value: ${x}`)
+  })()</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>base64 encoding and decoding</h3><ul>
+<li><p>Convert UTF-8 string into an array of bytes.</p>
+<pre class="prettyprint source lang-javascript"><code>  > codec.stringToBytes('Koń: 🐎')
+  Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]</code></pre></li>
+</ul>
+<ul>
+<li><p>Convert array of bytes into a UTF-8 string.</p>
+<pre class="prettyprint source lang-javascript"><code>  > data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
+  Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
+
+  > codec.bytesToString(data)
+  'Fox: 🦊'</code></pre></li>
+</ul>
+<ul>
+<li><p>Encode given byte array to Base64.
+<strong>Base64 encoding in browser and <code>node.js</code>.</strong></p>
+<pre class="prettyprint source lang-javascript"><code>  > data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
+  Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+  > codec.b64enc(data)
+  '8J+OqfCfkLA='</code></pre></li>
+</ul>
+<ul>
+<li><p>Decode given Base64 string to byte array.
+<strong>Base64 decoding in browser and <code>node.js</code>.</strong></p>
+<pre class="prettyprint source lang-javascript"><code>  > data = codec.b64dec('8J+OqfCfkLA=')
+  Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+
+  > codec.bytesToString(data)
+  '🎩🐰'</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>functional programming</h3><ul>
+<li><p>Function composition.</p>
+<pre class="prettyprint source lang-javascript"><code>  > shortenAndQuote = func.compose(string.quote, string.shorten)
+  [Function]
+
+  > shortenAndQuote(
+  ... &quot;When I find myself in times of trouble&quot;,
+  ... 20, string.shorten.END
+  ... )
+  '&quot;When I find myself …&quot;'</code></pre></li>
+</ul>
+<ul>
+<li><p>Translate the evaluation of function <code>f</code> taking multiple arguments
+into an evaluation of sequence of functions, each with a single argument.</p>
+<pre class="prettyprint source lang-javascript"><code>  > sum = (...args) => math.sum(args)
+  [Function: sum]
+
+  > func.curry(sum)(1)(2)(3)(4)(5)()
+  15</code></pre></li>
+</ul>
+<ul>
+<li><p>Y-combinator - returns fixed point of a higher-order function passed as <code>f</code>.
+<strong>Anonymous recursion in Javascript</strong>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > factorial = func.Y((r) => (n) => n &lt;= 0  ?  1  :  n * r(n - 1))
+  [Function]
+
+  > factorial(5)
+  120</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>simple math</h3><ul>
+<li><p>Compute mathematical average of array of numbers.</p>
+<pre class="prettyprint source lang-javascript"><code>  > math.average([1, 2, 3, 4, 5])
+  3</code></pre></li>
+</ul>
+<ul>
+<li><p>Base 2 logarithm.</p>
+<pre class="prettyprint source lang-javascript"><code>  > math.log2(2**32)
+  32</code></pre></li>
+</ul>
+<ul>
+<li><p>Base 10 logarithm.</p>
+<pre class="prettyprint source lang-javascript"><code>  > math.log10(1e9)
+  9</code></pre></li>
+</ul>
+<ul>
+<li><p>Sum of numbers in passed <code>array</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > math.sum([5, 6, 7, 8, 9, 10])
+  45</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>operations on strings</h3><ul>
+<li><p>Allocate a <strong>big</strong> string (of size <code>2^n</code>).</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.big(5)
+  'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</code></pre></li>
+</ul>
+<ul>
+<li><p>Convert <code>camelText</code> to <code>snake_text</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+  'some_nights_i_stay_up_cashing_in_my_bad_luck'</code></pre></li>
+</ul>
+<ul>
+<li><p>Quote text.</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.quote('div', '&lt;>')
+  '&lt;div>'</code></pre></li>
+</ul>
+<ul>
+<li><p>Construct random string of desired length.</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.random(16)
+  'MxWGe8MoOss0yUAP'</code></pre></li>
+</ul>
+<ul>
+<li><p>Shorten a given string to the desired length.</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
+  'abcdefg…tuvwxyz'
+
+  > string.shorten(
+  ...     'To be, or not to be, that is the question',
+  ...     20,
+  ...     string.shorten.END
+  ... )
+  'To be, or not to be…'</code></pre></li>
+</ul>
+<ul>
+<li><p>Convert <code>snake_text</code> to <code>camelText</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > string.snakeToCamel('some_nights_i_call_it_a_draw')
+  'someNightsICallItADraw'</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>type primitives</h3><ul>
+<li><p>Determine if a given value is a proper <code>Number</code>
+(not <code>NaN</code> and not <code>Infinity</code>).</p>
+<pre class="prettyprint source lang-javascript"><code>  > type.isNumber(NaN)
+  false
+
+  > type.isNumber(-Infinity)
+  false
+
+  > type.isNumber(1234.5678)
+  true</code></pre></li>
+</ul>
+<ul>
+<li><p>Determine if a given value is an <code>Object</code>
+(not <code>null</code>, not <code>undefined</code> and not <code>Array</code>).</p>
+<pre class="prettyprint source lang-javascript"><code>  > type.isObject(null)
+  false
+
+  > type.isObject([])
+  false
+
+  > type.isObject({})
+  true</code></pre></li>
+</ul>
+<p><br /></p>
+<h3>assorted utilities</h3><ul>
+<li><p>Apply <code>path</code> to an object.</p>
+<pre class="prettyprint source lang-javascript"><code>  > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+  42</code></pre></li>
+</ul>
+<ul>
+<li><p>Construct <code>Object</code> from the result of <code>Object.entries()</code> call.
+<code>entries = [[k1, v1,], ..., [kn, vn,]]</code></p>
+<pre class="prettyprint source lang-javascript"><code>  > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+  { a: 'b', c: 'd', e: 'f' }</code></pre></li>
+</ul>
+<ul>
+<li><p>Shallow map (iteration) on objects.</p>
+<pre class="prettyprint source lang-javascript"><code>  > utils.objectMap(
+  ...     { what: 'od', i: '?rof dnats' },
+  ...     ([k, v,]) => [
+  ...         string.capitalize(k),
+  ...         v.split('').reverse().join('')
+  ...     ]
+  ... )
+  { What: 'do', I: 'stand for?' }</code></pre></li>
+</ul>
+<ul>
+<li><p>Swap keys with values in a given <code>Object</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>  > utils.swap({ a: 'b', c: 'd', e: 'f' })
+  { b: 'a', d: 'c', f: 'e' }</code></pre></li>
+</ul>
+<p></br></p>
+<h2>license</h2><p><strong>js-toolbox</strong> is released under the Apache License, Version 2.0. See the
+<a href="https://github.com/drmats/js-toolbox/blob/master/LICENSE">LICENSE</a>
+for more details.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Sep 16 2018 09:50:02 GMT+0200 (CEST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

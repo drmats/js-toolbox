@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>async - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-@xcmats_js-toolbox.html">@xcmats/js-toolbox</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-array.html">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~countBy">countBy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~draw">draw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~findDuplicates">findDuplicates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~flatten">flatten</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~head">head</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~last">last</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~range">range</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~shuffle">shuffle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~sparse">sparse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-array.html#~tail">tail</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-async.html">async</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~delay">delay</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~interval">interval</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~map">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~parMap">parMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~reduce">reduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~repeat">repeat</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-async.html#~timeout">timeout</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-codec.html">codec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~b64dec">b64dec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~b64enc">b64enc</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~bytesToString">bytesToString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringB64dec">stringB64dec</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringB64enc">stringB64enc</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-codec.html#~stringToBytes">stringToBytes</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-func.html">func</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~compose">compose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~curry">curry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~partial">partial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-func.html#~Y">Y</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-math.html">math</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~average">average</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~log2">log2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~log10">log10</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~roundIfClose">roundIfClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#~sum">sum</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-redux.html">redux</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-redux.html#~createReducer">createReducer</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-string.html">string</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiLetters">asciiLetters</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiLowercase">asciiLowercase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~asciiUppercase">asciiUppercase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~big">big</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~camelToPascal">camelToPascal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~camelToSnake">camelToSnake</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~capitalize">capitalize</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~digits">digits</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~ellipsis">ellipsis</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~empty">empty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~pascalToCamel">pascalToCamel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~pascalToSnake">pascalToSnake</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~quote">quote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~random">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~shorten">shorten</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~snakeToCamel">snakeToCamel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~snakeToPascal">snakeToPascal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-string.html#~wrap">wrap</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-type.html">type</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isFunction">isFunction</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isNumber">isNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isObject">isObject</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~isString">isString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~nullToUndefined">nullToUndefined</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-type.html#~toBool">toBool</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils.html">utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~access">access</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~choose">choose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~clone">clone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~dict">dict</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~handleException">handleException</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~identity">identity</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~isBrowser">isBrowser</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~objectMap">objectMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~objectReduce">objectReduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~randomInt">randomInt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#~swap">swap</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">async</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Asynchronous tools.</p></div>
+        
+
+        
+            
+<div class="section-method">
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>drmats</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+    <dt class="tag-license">License:</dt>
+    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~delay"><span class="type-signature">(async, inner) </span>delay<span class="signature">(time<span class="signature-attributes">opt</span>, cancel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Number>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Delay current async execution by <code>time</code> miliseconds.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>(async () => {
+    await async.delay()
+    console.log(&quot;Hello ...&quot;)
+    await async.delay()
+    console.log(&quot;... world&quot;)
+})()</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>async.timeout</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    timeUnit.second
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cancel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;Number></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~interval"><span class="type-signature">(async, inner) </span>interval<span class="signature">(f, clear, time<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p><code>setInterval</code> in <code>Promise</code> / <code>async</code> skin.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>interval(
+    () => { console.log(&quot;Hey!&quot;); return 42 },
+    (c) => timeout(() => c(), 4 * timeUnit.second)
+)
+.then((x) => console.log(&quot;Finished:&quot;, x))
+.catch((c) => console.log(&quot;Error:&quot;, c))</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>clear</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    timeUnit.second
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;*></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~map"><span class="type-signature">(async, inner) </span>map<span class="signature">(arr, f)</span><span class="type-signature"> &rarr; {Promise.&lt;Array>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Asynchronous version of standard <code>Array.prototype.map</code> function.</p>
+<ul>
+<li><code>arr</code> - array to operate on</li>
+<li><code>f</code> - async or sync function with signature:<ul>
+<li><code>this</code> - bound to <code>arr</code></li>
+<li><code>element</code> - currently processed element</li>
+<li><code>index</code> - current index</li>
+</ul>
+</li>
+</ul>
+<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>(async () => {
+    let x = await async.map(
+        array.range(10),
+        (x) => async.timeout(() => 4*x, 100*x)
+    )
+    console.log(x)
+})()</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;Array></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~parMap"><span class="type-signature">(async, inner) </span>parMap<span class="signature">(arr, f)</span><span class="type-signature"> &rarr; {Promise.&lt;Array>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Asynchronous version of standard <code>Array.prototype.map</code> function.</p>
+<p><em>Implementation that does paralell execution</em>.</p>
+<ul>
+<li><code>arr</code> - array to operate on</li>
+<li><code>f</code> - async or sync function with signature:<ul>
+<li><code>this</code> - bound to <code>arr</code></li>
+<li><code>element</code> - currently processed element</li>
+<li><code>index</code> - current index</li>
+</ul>
+</li>
+</ul>
+<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>(async () => {
+    let x = await async.parMap(
+        array.range(10),
+        (x) => async.timeout(() => 4*x, 100*x)
+    )
+    console.log(x)
+})()</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;Array></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~reduce"><span class="type-signature">(async, inner) </span>reduce<span class="signature">(arr, f, initAcc<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Asynchronous version of standard <code>Array.prototype.reduce</code> function.</p>
+<ul>
+<li><code>arr</code> - array to operate on</li>
+<li><code>f</code> - async or sync function with signature:<ul>
+<li><code>this</code> - bound to <code>arr</code></li>
+<li><code>acc</code> - accumulates the <code>f</code>'s return values; it is
+  the accumulated value previously returned
+  in the last invocation of <code>f</code>, or <code>initAcc</code>, if supplied.</li>
+<li><code>element</code> - currently processed element</li>
+<li><code>index</code> - current index</li>
+</ul>
+</li>
+<li><code>initAcc</code> - value to use as the first argument to the first call
+  of the <code>f</code>. If no initial value is supplied, the first element
+  in the array will be used.</li>
+</ul>
+<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>(async () => {
+    let x = await async.reduce(
+        array.range(10),
+        (acc, x) => async.timeout(() => acc+x, 100*x),
+        0
+    )
+    console.log(x)
+})()</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line189">line 189</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initAcc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>*</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;*></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~repeat"><span class="type-signature">(async, inner) </span>repeat<span class="signature">(f, condition)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Repeat <code>f</code> (sync. or async.) while <code>condition</code> evaluates to <code>true</code>.</p>
+<p>Resolves with result of last <code>f</code> execution
+when <code>condition</code> evaluates to <code>false</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line255">line 255</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>condition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;*></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~timeout"><span class="type-signature">(async, inner) </span>timeout<span class="signature">(f, time<span class="signature-attributes">opt</span>, cancel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p><code>setTimeout</code> in <code>Promise</code> / <code>async</code> skin.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>timeout(
+    () => { console.log(&quot;Hey!&quot;); return 42 }, 2 * timeUnit.second,
+    (c) => timeout(() => c(&quot;Cancelled!&quot;), timeUnit.second)
+)
+.then((x) => console.log(&quot;Success:&quot;, x))
+.catch((c) => console.log(&quot;Error or cancel:&quot;, c))</code></pre>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line277">line 277</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    timeUnit.second
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cancel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;*></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Sep 16 2018 09:50:02 GMT+0200 (CEST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
