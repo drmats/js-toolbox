@@ -33,6 +33,7 @@
         "babel-eslint": "^9.0.0",
         "cross-env": "^5.2.0",
         "eslint": "^5.6.0",
+        "gh-pages": "^2.0.0",
         "jsdoc": "^3.5.5",
         "minami": "^1.2.3",
         "rimraf": "^2.6.2"
@@ -76,9 +77,11 @@
         "clean:build": "rimraf ./es ./lib",
         "clean:doc": "rimraf ./doc",
         "clean:modules": "rimraf node_modules",
+        "deploy": "gh-pages -d doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
         "jsdoc": "jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
         "lint": "eslint ./src/",
+        "predeploy": "npm run doc",
         "prepublishOnly": "npm run test && npm run doc && npm run build",
         "start": "npm run build:commonjs && node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""

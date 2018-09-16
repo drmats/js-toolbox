@@ -17,6 +17,15 @@ $ npm install @xcmats/js-toolbox
 
 
 
+## documentation
+
+[API Reference](https://drmats.github.io/js-toolbox/)
+
+<br />
+
+
+
+
 ## experimenting in browser
 
 > [RunKit with @xcmats/js-toolbox](https://npm.runkit.com/@xcmats/js-toolbox)
