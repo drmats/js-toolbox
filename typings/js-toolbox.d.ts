@@ -153,8 +153,8 @@ declare module "@xcmats/js-toolbox" {
      * ```
      */
     export function delay (
-        time: number,
-        cancel: (canceller: (reason: any) => void) => void
+        time?: number,
+        cancel?: (canceller: (reason: any) => void) => void
     ): Promise<number>;
 
 
@@ -174,8 +174,8 @@ declare module "@xcmats/js-toolbox" {
      */
     export function interval<T> (
         f: () => T,
-        time: number,
-        cancel: (canceller: (reason: any) => void) => void
+        clear: (canceller: (reason: any) => T) => void,
+        time?: number
     ): Promise<T>;
 
 
@@ -240,18 +240,6 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
-     * Repeat `f` (sync. or async.) while `condition` evaluates to `true`.
-     *
-     * Resolves with result of last `f` execution
-     * when `condition` evaluates to `false`.
-     */
-    export function asyncRepeat<T> (
-        f: () => Promise<T> | T,
-        condition: () => boolean
-    ): Promise<T>;
-
-
-    /**
      * Asynchronous version of standard `Array.prototype.reduce` function.
      *
      * - `arr` - array to operate on
@@ -289,6 +277,18 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Repeat `f` (sync. or async.) while `condition` evaluates to `true`.
+     *
+     * Resolves with result of last `f` execution
+     * when `condition` evaluates to `false`.
+     */
+    export function asyncRepeat<T> (
+        f: () => Promise<T> | T,
+        condition: () => boolean
+    ): Promise<T>;
+
+
+    /**
      * `setTimeout` in `Promise` / `async` skin.
      *
      * Example:
@@ -304,8 +304,8 @@ declare module "@xcmats/js-toolbox" {
      */
     export function timeout<T> (
         f: () => T,
-        clear: (clearer: () => T) => void,
-        time: number
+        clear?: (clearer: () => T) => void,
+        time?: number
     ): Promise<T>;
 
 

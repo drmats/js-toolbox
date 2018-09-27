@@ -35,7 +35,7 @@ import { timeUnit } from "./utils"
  * @function delay
  * @see {@link async.timeout}
  * @param {Number} [time=timeUnit.second]
- * @param {Function} [cancel]
+ * @param {Function} [cancel=()=>null]
  * @returns {Promise.<Number>}
  */
 export const delay = (
@@ -292,7 +292,7 @@ export const repeat = (f, condition) => Y(
  * @function timeout
  * @param {Function} f
  * @param {Number} [time=timeUnit.second]
- * @param {Function} [cancel]
+ * @param {Function} [cancel=()=>null]
  * @returns {Promise.<*>}
  */
 export const timeout = (
