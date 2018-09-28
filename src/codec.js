@@ -54,13 +54,20 @@ export const b64enc = isBrowser() ?
 
 /**
  * Convert given byte array (Uint8Array) to a hex-encoded string.
+ * Each byte is encoded on the two hexadecimal digits.
  *
  * @function bytesToHex
  * @param {Uint8Array} bytes
  * @return {String}
  */
 export const bytesToHex = (bytes) =>
-    Array.from(bytes).map(b => b.toString(16)).join(empty())
+    Array.from(bytes)
+        .map((b) =>
+            b < 16  ?
+                "0" + b.toString(16) :
+                b.toString(16)
+        )
+        .join(empty())
 
 
 

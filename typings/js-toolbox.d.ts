@@ -331,6 +331,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * Convert given byte array (Uint8Array) to a hex-encoded string.
+     * Each byte is encoded on the two hexadecimal digits.
      */
     export function bytesToHex (bytes: Uint8Array): string;
 
