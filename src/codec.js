@@ -53,7 +53,20 @@ export const b64enc = isBrowser() ?
 
 
 /**
- * Convert given byte array (Uint8Array) to UTF-8-encoded string.
+ * Convert given byte array (Uint8Array) to a hex-encoded string.
+ *
+ * @function bytesToHex
+ * @param {Uint8Array} bytes
+ * @return {String}
+ */
+export const bytesToHex = (bytes) =>
+    Array.from(bytes).map(b => b.toString(16)).join(empty())
+
+
+
+
+/**
+ * Convert given byte array (Uint8Array) to an utf8-encoded string.
  *
  * @function bytesToString
  * @param {Uint8Array} bytes
@@ -108,8 +121,7 @@ export const hexToBytes = ((hexInput) => (
 
 
 /**
- * Convert given string to byte array (Uint8Array).
- * String is assumed to be encoded in UTF-8.
+ * Convert given utf8-encoded string to byte array (Uint8Array).
  *
  * @function stringToBytes
  * @param {String} s

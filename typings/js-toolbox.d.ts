@@ -330,7 +330,13 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
-     * Convert given byte array (Uint8Array) to UTF-8-encoded string.
+     * Convert given byte array (Uint8Array) to a hex-encoded string.
+     */
+    export function bytesToHex (bytes: Uint8Array): string;
+
+
+    /**
+     * Convert given byte array (Uint8Array) to an utf8-encoded string.
      */
     export function bytesToString (bytes: Uint8Array): string;
 
@@ -359,8 +365,7 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
-     * Convert given string to byte array (Uint8Array).
-     * String is assumed to be encoded in UTF-8.
+     * Convert given utf8-encoded string to byte array (Uint8Array).
      */
     export function stringToBytes (s: string): Uint8Array;
 

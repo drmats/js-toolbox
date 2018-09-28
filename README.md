@@ -49,6 +49,7 @@ $ npm install @xcmats/js-toolbox
     "average",
     "b64dec",
     "b64enc",
+    "bytesToHex",
     "bytesToString",
     "bigString",
     "camelToPascal",
@@ -114,6 +115,7 @@ $ npm start
 > codec
 { b64dec: [Function],
   b64enc: [Function],
+  bytesToHex: [Function: bytesToHex],
   bytesToString: [Function],
   hexToBytes: [Function: hexToBytes],
   stringToBytes: [Function],
@@ -392,7 +394,7 @@ $ npm start
 
 ### hex encoding and decoding
 
-* Convert hex-encoded string to byte representation.
+* Convert hex-encoded string to a byte representation.
 
     ```javascript
     > codec.hexToBytes('cabafa87')
@@ -400,6 +402,13 @@ $ npm start
 
     > codec.hexToBytes('0x1234567890ABCDEF')
     Uint8Array [ 18, 52, 86, 120, 144, 171, 205, 239 ]
+    ```
+
+* Convert byte representation to a hex-encoded string.
+
+    ```javascript
+    > codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]))
+    '1f3f7fff'
     ```
 
 <br />
@@ -418,6 +427,22 @@ $ npm start
     ... 20, string.shorten.END
     ... )
     '"When I find myself …"'
+    ```
+
+    ```javascript
+    > stringToHex = func.compose(codec.bytesToHex, codec.stringToBytes)
+    [Function]
+
+    > stringToHex('Kaboom! 💥')
+    '4b61626f6f6d2120f09f92a5'
+    ```
+
+    ```javascript
+    > hexToString = func.compose(codec.bytesToString, codec.hexToBytes)
+    [Function]
+
+    > hexToString('4b61626f6f6d2120f09f92a5')
+    'Kaboom! 💥'
     ```
 
 
