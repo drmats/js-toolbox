@@ -115,6 +115,7 @@ $ npm start
 { b64dec: [Function],
   b64enc: [Function],
   bytesToString: [Function],
+  hexToBytes: [Function: hexToBytes],
   stringToBytes: [Function],
   stringB64dec: [Function],
   stringB64enc: [Function] }
@@ -384,6 +385,21 @@ $ npm start
 
     > codec.bytesToString(data)
     '🎩🐰'
+    ```
+
+<br />
+
+
+### hex encoding and decoding
+
+* Convert hex-encoded string to byte representation.
+
+    ```javascript
+    > codec.hexToBytes('cabafa87')
+    Uint8Array [ 202, 186, 250, 135 ]
+
+    > codec.hexToBytes('0x1234567890ABCDEF')
+    Uint8Array [ 18, 52, 86, 120, 144, 171, 205, 239 ]
     ```
 
 <br />

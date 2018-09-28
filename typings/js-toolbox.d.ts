@@ -336,6 +336,29 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * Convert hex-encoded string to byte array (Uint8Array).
+     *
+     * If given `hexInput` is of odd length (hexInput.length % 2 !== 0)
+     * then the last hex-digit is treated as full byte representation,
+     * i.e.:
+     *
+     * ```
+     *     hexToBytes("fa6") <=> hexToBytes("fa06") <=> Uint8Array [ 250, 6 ]
+     * ```
+     *
+     * All unrecognized hex-digit groups (e.g. "zz") are treated
+     * by `parseInt()` as `NaN` and then effectively converted
+     * to `Uint8Array [ 0 ]`.
+     *
+     * Input parameter (`hexInput`) can be prefixed with `0x`.
+     *
+     * All whitespaces, tabs and carriage returns
+     * are stripped out from the input.
+     */
+    export function hexToBytes (hexInput: string): Uint8Array;
+
+
+    /**
      * Convert given string to byte array (Uint8Array).
      * String is assumed to be encoded in UTF-8.
      */

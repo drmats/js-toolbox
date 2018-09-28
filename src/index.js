@@ -55,6 +55,7 @@ export {
     b64dec,
     b64enc,
     bytesToString,
+    hexToBytes,
     stringToBytes,
     stringB64dec,
     stringB64enc,
