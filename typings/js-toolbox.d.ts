@@ -937,7 +937,17 @@ declare module "@xcmats/js-toolbox" {
          * - `quarter` - [**average** quarter]: `3 months` (`365.25 days / 4`)
          * - `year` - [**average** year]: `365.25 days`
          */
-        export const timeUnit: object;
+        export interface TimeUnit {
+            second: number;
+            minute: number;
+            hour: number;
+            day: number;
+            week: number;
+            month: number;
+            quarter: number;
+            year: number;
+        }
+        export declare const timeUnit: TimeUnit;
 
     }
 
