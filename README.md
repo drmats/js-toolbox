@@ -82,6 +82,7 @@ Cloning into 'js-toolbox'...
 $ cd js-toolbox
 $ npm i
 $ npm start
+Compiling for 'commonjs' ...
 🎉  Successfully compiled 10 files with Babel.
 ```
 
