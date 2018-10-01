@@ -16,7 +16,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name array
-     * @see {@link array.js}
+     * @see {@link ../src/array.js}
      */
 
 
@@ -134,7 +134,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name async
-     * @see {@link async.js}
+     * @see {@link ../src/async.js}
      */
 
 
@@ -313,7 +313,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name codec
-     * @see {@link codec.js}
+     * @see {@link ../src/codec.js}
      */
 
 
@@ -387,7 +387,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name func
-     * @see {@link func.js}
+     * @see {@link ../src/func.js}
      */
 
 
@@ -450,7 +450,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name math
-     * @see {@link math.js}
+     * @see {@link ../src/math.js}
      */
 
 
@@ -490,7 +490,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name redux
-     * @see {@link redux.js}
+     * @see {@link ../src/redux.js}
      */
 
 
@@ -504,7 +504,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name string
-     * @see {@link string.js}
+     * @see {@link ../src/string.js}
      */
 
 
@@ -649,7 +649,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name type
-     * @see {@link type.js}
+     * @see {@link ../src/type.js}
      */
 
 
@@ -709,7 +709,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @name utils
-     * @see {@link utils.js}
+     * @see {@link ../src/utils.js}
      */
 
 
