@@ -80,7 +80,7 @@
         "clean:modules": "rimraf node_modules",
         "deploy": "gh-pages -d doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
-        "jsdoc": "jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
+        "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
         "lint": "eslint ./src/",
         "predeploy": "npm run doc",
         "prepublishOnly": "npm run test && npm run doc && npm run build",
