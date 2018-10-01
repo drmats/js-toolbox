@@ -20,16 +20,17 @@ import {
 
 
 /**
- * Create object composed of keys resulting from application of `iteratee`
- * function to each element of the passed array `arr`. Values corresponds
- * to the number of occurences of an element in the passed array.
+ * Create object composed of keys resulting from application
+ * of `iteratee` function to each element of the passed array `arr`.
+ * Values corresponds to the number of occurences of an element
+ * in the passed array.
  *
  * `iteratee` is optional and defaults to `identity` function.
  *
  * Example:
  *
  * ```
- * array.countBy(
+ * countBy(
  *     "exemplo plus quam ratione vivimus".split(" "),
  *     (w) => w.length
  * )

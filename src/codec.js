@@ -94,7 +94,7 @@ export const bytesToString = isBrowser() ?
  * i.e.:
  *
  * ```
- *     hexToBytes("fa6") <=> hexToBytes("fa06") <=> Uint8Array [ 250, 6 ]
+ * hexToBytes("fa6") <=> hexToBytes("fa06") <=> Uint8Array [ 250, 6 ]
  * ```
  *
  * All unrecognized hex-digit groups (e.g. "zz") are treated

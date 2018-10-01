@@ -26,6 +26,8 @@ export {
     sparse,
     tail,
 } from "./array"
+import * as arrayModule from "./array"
+export const array = arrayModule
 
 
 
@@ -43,6 +45,8 @@ export {
     repeat as asyncRepeat,
     timeout,
 } from "./async"
+import * as asyncModule from "./async"
+export const async = asyncModule
 
 
 
@@ -61,6 +65,8 @@ export {
     stringB64dec,
     stringB64enc,
 } from "./codec"
+import * as codecModule from "./codec"
+export const codec = codecModule
 
 
 
@@ -75,6 +81,8 @@ export {
     partial,
     Y,
 } from "./func"
+import * as funcModule from "./func"
+export const func = funcModule
 
 
 
@@ -90,6 +98,8 @@ export {
     roundIfClose,
     sum,
 } from "./math"
+import * as mathModule from "./math"
+export const math = mathModule
 
 
 
@@ -101,6 +111,8 @@ export {
 export {
     createReducer,
 } from "./redux"
+import * as reduxModule from "./redux"
+export const redux = reduxModule
 
 
 
@@ -129,6 +141,8 @@ export {
     snakeToPascal,
     wrap,
 } from "./string"
+import * as stringModule from "./string"
+export const string = stringModule
 
 
 
@@ -147,6 +161,8 @@ export {
     nullToUndefined,
     toBool,
 } from "./type"
+import * as typeModule from "./type"
+export const type = typeModule
 
 
 
@@ -169,3 +185,5 @@ export {
     swap,
     timeUnit,
 } from "./utils"
+import * as utilsModule from "./utils"
+export const utils = utilsModule
