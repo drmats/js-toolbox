@@ -422,7 +422,7 @@ Compiling for 'commonjs' ...
 <br />
 
 
-## byte array manipulation
+### byte array manipulation
 
 * Concatenate contents of a given byte arrays.
 
@@ -434,6 +434,8 @@ Compiling for 'commonjs' ...
     )
     Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
     ```
+
+<br />
 
 
 ### functional programming
