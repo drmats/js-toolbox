@@ -345,18 +345,6 @@ declare module "@xcmats/js-toolbox" {
     export declare namespace codec {
 
         /**
-         * Decode given Base64-encoded string into byte array (Uint8Array).
-         */
-        export declare function b64dec (s: string): Uint8Array;
-
-
-        /**
-         * Base64-encode given byte array (Uint8Array).
-         */
-        export declare function b64enc (bytes: Uint8Array): string;
-
-
-        /**
          * Concatenate contents of a given byte arrays (Uint8Array)
          * into a new byte array (Uint8Array).
          */
@@ -366,20 +354,19 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Convert given byte array (Uint8Array) to a hex-encoded string.
-         * Each byte is encoded on the two hexadecimal digits.
+         * Convert given a utf8-encoded string to byte array (Uint8Array).
          */
-        export declare function bytesToHex (bytes: Uint8Array): string;
+        export declare function stringToBytes (s: string): Uint8Array;
 
 
         /**
-         * Convert given byte array (Uint8Array) to an utf8-encoded string.
+         * Convert a given byte array (Uint8Array) to an utf8-encoded string.
          */
         export declare function bytesToString (bytes: Uint8Array): string;
 
 
         /**
-         * Convert hex-encoded string to byte array (Uint8Array).
+         * Convert a hex-encoded string to a byte array (Uint8Array).
          *
          * If given `hexInput` is of odd length (hexInput.length % 2 !== 0)
          * then the last hex-digit is treated as full byte representation,
@@ -402,33 +389,60 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Convert given utf8-encoded string to byte array (Uint8Array).
+         * Convert a given byte array (Uint8Array) to a hex-encoded string.
+         * Each byte is encoded on the two hexadecimal digits.
          */
-        export declare function stringToBytes (s: string): Uint8Array;
+        export declare function bytesToHex (bytes: Uint8Array): string;
 
 
         /**
-         * Base64 decoding for strings.
+         * Decode given Base64-encoded string into byte array (Uint8Array).
          */
-        export declare function stringB64dec (s: string): string;
+        export declare function b64dec (s: string): Uint8Array;
 
 
         /**
-         * Base64 encoding for strings.
+         * Base64-encode given byte array (Uint8Array).
          */
-        export declare function stringB64enc (s: string): string;
+        export declare function b64enc (bytes: Uint8Array): string;
+
+
+        /**
+         * Base64 decoding for strings (b64-string to utf8-string).
+         */
+        export declare function b64ToString (s: string): string;
+
+
+        /**
+         * Base64 encoding for strings (utf8-string to b64-string)
+         */
+        export declare function stringToB64 (s: string): string;
+
+
+        /**
+         * Covert a given b64-encoded string to a hex-encoded string.
+         */
+        export declare function b64ToHex (s: string): string;
+
+
+        /**
+         * Covert a given hex-encoded string to a b64-encoded string.
+         */
+        export declare function hexToB64 (s: string): string;
 
     }
 
+    export declare const concatBytes = codec.concatBytes;
+    export declare const stringToBytes = codec.stringToBytes;
+    export declare const bytesToString = codec.bytesToString;
+    export declare const hexToBytes = codec.hexToBytes;
+    export declare const bytesToHex = codec.bytesToHex;
     export declare const b64dec = codec.b64dec;
     export declare const b64enc = codec.b64enc;
-    export declare const bytesToHex = codec.bytesToHex;
-    export declare const bytesToString = codec.bytesToString;
-    export declare const concatBytes = codec.concatBytes;
-    export declare const hexToBytes = codec.hexToBytes;
-    export declare const stringToBytes = codec.stringToBytes;
-    export declare const stringB64dec = codec.stringB64dec;
-    export declare const stringB64enc = codec.stringB64enc;
+    export declare const b64ToString = codec.b64ToString;
+    export declare const stringToB64 = codec.stringToB64;
+    export declare const b64ToHex = codec.b64ToHex;
+    export declare const hexToB64 = codec.hexToB64;
 
 
 

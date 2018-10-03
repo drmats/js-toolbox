@@ -52,6 +52,8 @@ $ npm install @xcmats/js-toolbox
     "average",
     "b64dec",
     "b64enc",
+    "b64ToHex",
+    "b64ToString",
     "bigString",
     "bytesToHex",
     "bytesToString",
@@ -116,15 +118,17 @@ Compiling for 'commonjs' ...
 
 ```javascript
 > codec
-{ b64dec: [Function],
-  b64enc: [Function],
-  bytesToHex: [Function: bytesToHex],
-  bytesToString: [Function],
-  concatBytes: [Function: concatBytes],
-  hexToBytes: [Function: hexToBytes],
+{ concatBytes: [Function: concatBytes],
   stringToBytes: [Function],
-  stringB64dec: [Function],
-  stringB64enc: [Function] }
+  bytesToString: [Function],
+  hexToBytes: [Function: hexToBytes],
+  bytesToHex: [Function: bytesToHex],
+  b64dec: [Function],
+  b64enc: [Function],
+  b64ToString: [Function],
+  stringToB64: [Function],
+  b64ToHex: [Function],
+  hexToB64: [Function] }
 ```
 
 ```javascript

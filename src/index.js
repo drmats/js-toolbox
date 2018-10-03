@@ -58,13 +58,15 @@ export const async = asyncModule
 export {
     b64dec,
     b64enc,
+    b64ToHex,
+    b64ToString,
     bytesToHex,
     bytesToString,
     concatBytes,
+    hexToB64,
     hexToBytes,
+    stringToB64,
     stringToBytes,
-    stringB64dec,
-    stringB64enc,
 } from "./codec"
 import * as codecModule from "./codec"
 export const codec = codecModule

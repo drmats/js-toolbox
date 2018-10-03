@@ -22,72 +22,6 @@ import { isBrowser } from "./utils"
 
 
 /**
- * Decode given Base64-encoded string into byte array (Uint8Array).
- *
- * @function b64dec
- * @param {String} s
- * @returns {Uint8Array}
- */
-export const b64dec = isBrowser() ?
-    (s) =>
-        Uint8Array.from(atob(s).split(empty()).map(c => c.charCodeAt(0))) :
-    (s) =>
-        Uint8Array.from(Buffer.from(s, "base64"))
-
-
-
-
-/**
- * Base64-encode given byte array (Uint8Array).
- *
- * @function b64enc
- * @param {Uint8Array} bytes
- * @returns {String}
- */
-export const b64enc = isBrowser() ?
-    (bytes) =>
-        btoa([...bytes,].map((b) => String.fromCharCode(b)).join(empty())) :
-    (bytes) =>
-        Buffer.from(bytes).toString("base64")
-
-
-
-
-/**
- * Convert given byte array (Uint8Array) to a hex-encoded string.
- * Each byte is encoded on the two hexadecimal digits.
- *
- * @function bytesToHex
- * @param {Uint8Array} bytes
- * @return {String}
- */
-export const bytesToHex = (bytes) =>
-    Array.from(bytes)
-        .map((b) =>
-            b < 16  ?
-                "0" + b.toString(16) :
-                b.toString(16)
-        )
-        .join(empty())
-
-
-
-
-/**
- * Convert given byte array (Uint8Array) to an utf8-encoded string.
- *
- * @function bytesToString
- * @param {Uint8Array} bytes
- * @returns {String}
- */
-export const bytesToString = isBrowser() ?
-    (bytes) => (new TextDecoder("utf-8")).decode(bytes) :
-    (bytes) => Buffer.from(bytes).toString()
-
-
-
-
-/**
  * Concatenate contents of a given byte arrays (Uint8Array)
  * into a new byte array (Uint8Array).
  *
@@ -108,7 +42,35 @@ export const concatBytes = (...u8as) => {
 
 
 /**
- * Convert hex-encoded string to byte array (Uint8Array).
+ * Convert a given utf8-encoded string to byte array (Uint8Array).
+ *
+ * @function stringToBytes
+ * @param {String} s
+ * @returns {Uint8Array}
+ */
+export const stringToBytes = isBrowser() ?
+    (s) => (new TextEncoder("utf-8")).encode(s) :
+    (s) => Uint8Array.from(Buffer.from(s))
+
+
+
+
+/**
+ * Convert a given byte array (Uint8Array) to an utf8-encoded string.
+ *
+ * @function bytesToString
+ * @param {Uint8Array} bytes
+ * @returns {String}
+ */
+export const bytesToString = isBrowser() ?
+    (bytes) => (new TextDecoder("utf-8")).decode(bytes) :
+    (bytes) => Buffer.from(bytes).toString()
+
+
+
+
+/**
+ * Convert a hex-encoded string to a byte array (Uint8Array).
  *
  * If given `hexInput` is of odd length (hexInput.length % 2 !== 0)
  * then the last hex-digit is treated as full byte representation,
@@ -149,36 +111,98 @@ export const hexToBytes = ((hexInput) => (
 
 
 /**
- * Convert given utf8-encoded string to byte array (Uint8Array).
+ * Convert a given byte array (Uint8Array) to a hex-encoded string.
+ * Each byte is encoded on the two hexadecimal digits.
  *
- * @function stringToBytes
+ * @function bytesToHex
+ * @param {Uint8Array} bytes
+ * @return {String}
+ */
+export const bytesToHex = (bytes) =>
+    Array.from(bytes)
+        .map((b) =>
+            b < 16  ?
+                "0" + b.toString(16) :
+                b.toString(16)
+        )
+        .join(empty())
+
+
+
+
+/**
+ * Decode given Base64-encoded string into byte array (Uint8Array).
+ *
+ * @function b64dec
  * @param {String} s
  * @returns {Uint8Array}
  */
-export const stringToBytes = isBrowser() ?
-    (s) => (new TextEncoder("utf-8")).encode(s) :
-    (s) => Uint8Array.from(Buffer.from(s))
+export const b64dec = isBrowser() ?
+    (s) =>
+        Uint8Array.from(atob(s).split(empty()).map(c => c.charCodeAt(0))) :
+    (s) =>
+        Uint8Array.from(Buffer.from(s, "base64"))
 
 
 
 
 /**
- * Base64 decoding for strings.
+ * Base64-encode given byte array (Uint8Array).
  *
- * @function stringB64dec
- * @param {String} s
+ * @function b64enc
+ * @param {Uint8Array} bytes
  * @returns {String}
  */
-export const stringB64dec = compose(bytesToString, b64dec)
+export const b64enc = isBrowser() ?
+    (bytes) =>
+        btoa([...bytes,].map((b) => String.fromCharCode(b)).join(empty())) :
+    (bytes) =>
+        Buffer.from(bytes).toString("base64")
 
 
 
 
 /**
- * Base64 encoding for strings.
+ * Base64 decoding for strings (b64-string to utf8-string).
  *
- * @function stringB64enc
+ * @function b64ToString
  * @param {String} s
  * @returns {String}
  */
-export const stringB64enc = compose(b64enc, stringToBytes)
+export const b64ToString = compose(bytesToString, b64dec)
+
+
+
+
+/**
+ * Base64 encoding for strings (utf8-string to b64-string)
+ *
+ * @function stringToB64
+ * @param {String} s
+ * @returns {String}
+ */
+export const stringToB64 = compose(b64enc, stringToBytes)
+
+
+
+
+/**
+ * Covert a given b64-encoded string to a hex-encoded string.
+ *
+ * @function b64ToHex
+ * @param {String} input
+ * @returns {String}
+ */
+export const b64ToHex = compose(bytesToHex, b64dec)
+
+
+
+
+/**
+ * Covert a given hex-encoded string to a b64-encoded string.
+ *
+ * @function hexToB64
+ * @param {String} input
+ * @returns {String}
+ */
+export const hexToB64 = compose(b64enc, hexToBytes)
