@@ -1,7 +1,6 @@
 /**
  * Javascript toolbox.
  *
- * @module @xcmats/js-toolbox
  * @license Apache-2.0
  * @author drmats
  */
@@ -10,7 +9,6 @@
 
 
 /**
- * @name array
  * @see {@link array.js}
  */
 export {
@@ -33,7 +31,6 @@ export const array = arrayModule
 
 
 /**
- * @name async
  * @see {@link async.js}
  */
 export {
@@ -52,7 +49,6 @@ export const async = asyncModule
 
 
 /**
- * @name codec
  * @see {@link codec.js}
  */
 export {
@@ -75,7 +71,6 @@ export const codec = codecModule
 
 
 /**
- * @name func
  * @see {@link func.js}
  */
 export {
@@ -91,7 +86,6 @@ export const func = funcModule
 
 
 /**
- * @name math
  * @see {@link math.js}
  */
 export {
@@ -108,7 +102,6 @@ export const math = mathModule
 
 
 /**
- * @name redux
  * @see {@link redux.js}
  */
 export {
@@ -121,7 +114,6 @@ export const redux = reduxModule
 
 
 /**
- * @name string
  * @see {@link string.js}
  */
 export {
@@ -151,7 +143,6 @@ export const string = stringModule
 
 
 /**
- * @name type
  * @see {@link type.js}
  */
 export {
@@ -171,7 +162,6 @@ export const type = typeModule
 
 
 /**
- * @name utils
  * @see {@link utils.js}
  */
 export {
