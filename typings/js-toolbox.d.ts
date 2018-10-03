@@ -355,6 +355,15 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Compare two byte arrays.
+         */
+        export declare function compareBytes (
+            u8a1: Uint8Array,
+            u8a2: Uint8Array
+        ): Uint8Array;
+
+
+        /**
          * Convert given a utf8-encoded string to byte array (Uint8Array).
          */
         export declare function stringToBytes (s: string): Uint8Array;
@@ -434,6 +443,7 @@ declare module "@xcmats/js-toolbox" {
     }
 
     export declare const concatBytes = codec.concatBytes;
+    export declare const compareBytes = codec.compareBytes;
     export declare const stringToBytes = codec.stringToBytes;
     export declare const bytesToString = codec.bytesToString;
     export declare const hexToBytes = codec.hexToBytes;

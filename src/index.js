@@ -59,6 +59,7 @@ export {
     bytesToHex,
     bytesToString,
     concatBytes,
+    compareBytes,
     hexToB64,
     hexToBytes,
     stringToB64,

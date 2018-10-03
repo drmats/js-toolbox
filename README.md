@@ -119,6 +119,7 @@ Compiling for 'commonjs' ...
 ```javascript
 > codec
 { concatBytes: [Function: concatBytes],
+  compareBytes: [Function: compareBytes],
   stringToBytes: [Function],
   bytesToString: [Function],
   hexToBytes: [Function: hexToBytes],
@@ -431,8 +432,21 @@ Compiling for 'commonjs' ...
     ... Uint8Array.from([255, 255, 0, 0]),
     ... codec.stringToBytes('🌍'),
     ... Uint8Array.from([128, 64])
-    )
+    ... )
     Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
+    ```
+
+* Compare two byte arrays.
+
+    ```javascript
+    codec.compareBytes(
+    ... codec.stringToBytes('𝓬𝓸𝓭𝓮'.normalize('NFC')),
+    ... codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC'))
+    ... )
+    false
+
+    > codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]))
+    true
     ```
 
 <br />
