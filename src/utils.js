@@ -196,6 +196,7 @@ export const objectReduce = (o, f, init) => {
 
 /**
  * Generate a random positive integer.
+ * NOT CRYPTOGRAPHICALLY SECURE.
  *
  * @function randomInt
  * @returns {Number}

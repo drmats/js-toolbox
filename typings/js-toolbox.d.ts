@@ -914,6 +914,7 @@ declare module "@xcmats/js-toolbox" {
 
         /**
          * Generate a random positive integer.
+         * NOT CRYPTOGRAPHICALLY SECURE.
          */
         export declare function randomInt (): number;
 
