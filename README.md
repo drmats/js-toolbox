@@ -41,21 +41,23 @@ $ npm install @xcmats/js-toolbox
     ```javascript
     [ "Y",
     "access",
+    "array",
     "asciiLetters",
     "asciiLowercase",
     "asciiUppercase",
+    "async",
     "asyncMap",
     "asyncReduce",
+    "asyncRepeat",
     "average",
     "b64dec",
     "b64enc",
+    "bigString",
     "bytesToHex",
     "bytesToString",
-    "bigString",
     "camelToPascal",
     "camelToSnake",
     "capitalize",
-    "choose",
     ... ]
     ```
 
@@ -118,6 +120,7 @@ Compiling for 'commonjs' ...
   b64enc: [Function],
   bytesToHex: [Function: bytesToHex],
   bytesToString: [Function],
+  concatBytes: [Function: concatBytes],
   hexToBytes: [Function: hexToBytes],
   stringToBytes: [Function],
   stringB64dec: [Function],
@@ -413,6 +416,20 @@ Compiling for 'commonjs' ...
     ```
 
 <br />
+
+
+## byte array manipulation
+
+* Concatenate contents of a given byte arrays.
+
+    ```javascript
+    > codec.concatBytes(
+    ... Uint8Array.from([255, 255, 0, 0]),
+    ... codec.stringToBytes('🌍'),
+    ... Uint8Array.from([128, 64])
+    )
+    Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
+    ```
 
 
 ### functional programming

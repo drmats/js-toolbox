@@ -60,6 +60,7 @@ export {
     b64enc,
     bytesToHex,
     bytesToString,
+    concatBytes,
     hexToBytes,
     stringToBytes,
     stringB64dec,

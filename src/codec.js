@@ -14,6 +14,7 @@ import {
     tail,
 } from "./array"
 import { compose } from "./func"
+import { sum } from "./math"
 import { empty } from "./string"
 import { isBrowser } from "./utils"
 
@@ -82,6 +83,26 @@ export const bytesToHex = (bytes) =>
 export const bytesToString = isBrowser() ?
     (bytes) => (new TextDecoder("utf-8")).decode(bytes) :
     (bytes) => Buffer.from(bytes).toString()
+
+
+
+
+/**
+ * Concatenate contents of a given byte arrays (Uint8Array)
+ * into a new byte array (Uint8Array).
+ *
+ * @function concatBytes
+ * @param {...Uint8Array} u8as
+ * @return {Uint8Array}
+ */
+export const concatBytes = (...u8as) => {
+    let result = new Uint8Array(sum(u8as.map((u8a) => u8a.length)))
+    u8as.reduce((pointer, u8a) => {
+        result.set(u8a, pointer)
+        return pointer + u8a.length
+    }, 0)
+    return result
+}
 
 
 

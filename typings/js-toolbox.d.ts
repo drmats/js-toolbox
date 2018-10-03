@@ -357,6 +357,15 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Concatenate contents of a given byte arrays (Uint8Array)
+         * into a new byte array (Uint8Array).
+         */
+        export declare function concatBytes (
+            ...u8as: Uint8Array[]
+        ): Uint8Array;
+
+
+        /**
          * Convert given byte array (Uint8Array) to a hex-encoded string.
          * Each byte is encoded on the two hexadecimal digits.
          */
@@ -415,6 +424,7 @@ declare module "@xcmats/js-toolbox" {
     export declare const b64enc = codec.b64enc;
     export declare const bytesToHex = codec.bytesToHex;
     export declare const bytesToString = codec.bytesToString;
+    export declare const concatBytes = codec.concatBytes;
     export declare const hexToBytes = codec.hexToBytes;
     export declare const stringToBytes = codec.stringToBytes;
     export declare const stringB64dec = codec.stringB64dec;
