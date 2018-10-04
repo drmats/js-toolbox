@@ -459,15 +459,15 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ```javascript
     > Promise { <pending> }
     > 0
-    > 28
-    > 8
-    > 32
     > 4
+    > 8
+    > 12
     > 16
     > 20
-    > 36
     > 24
-    > 12
+    > 28
+    > 32
+    > 36
     > Result: 0,4,8,12,16,20,24,28,32,36
     > ```
 
