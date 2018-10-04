@@ -9,8 +9,12 @@ Useful JavaScript utilities.
 [![GitHub tag](https://img.shields.io/github/tag/drmats/js-toolbox.svg)](https://github.com/drmats/js-toolbox)
 
 ```bash
-$ npm install @xcmats/js-toolbox
+$ npm i @xcmats/js-toolbox
 ```
+
+Works in [node.js](https://nodejs.org/) and browser environments
+(use [WebPack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/)
+to bundle it with your project).
 
 <br />
 
@@ -26,7 +30,7 @@ $ npm install @xcmats/js-toolbox
 
 
 
-## experimenting in browser
+## play in your browser
 
 > [RunKit with @xcmats/js-toolbox](https://npm.runkit.com/@xcmats/js-toolbox)
 
@@ -52,14 +56,6 @@ $ npm install @xcmats/js-toolbox
     "average",
     "b64dec",
     "b64enc",
-    "b64ToHex",
-    "b64ToString",
-    "bigString",
-    "bytesToHex",
-    "bytesToString",
-    "camelToPascal",
-    "camelToSnake",
-    "capitalize",
     ... ]
     ```
 
@@ -73,12 +69,80 @@ $ npm install @xcmats/js-toolbox
     [ 14, 12, 15, 8, 13, 4, 5, 6, 1, 7, 10, 0, 2, 3, 9, 11 ]
     ```
 
+* do all other things shown in **examples** section below
+
 <br />
 
 
 
 
-## experimenting in node.js
+## use the package
+
+### install
+
+```bash
+$ mkdir playground
+$ cd playground/
+$ npm init
+...
+$ npm i @xcmats/js-toolbox
+...
+```
+
+<br />
+
+
+### play in node.js
+
+```bash
+$ node
+>
+```
+
+```javascript
+> t = require("@xcmats/js-toolbox")
+{ ...
+array:
+ { ... },
+...
+utils:
+ { ... } }
+```
+
+<br />
+
+
+### example use in your source code
+
+```javascript
+import {
+    array,
+    codec,
+    func,
+    string,
+} from "@xcmats/js-toolbox"
+
+const b64stringify = func.compose(
+    codec.stringToB64, JSON.stringify
+)
+
+let stupidIdea = b64stringify({
+    tenNumbers: array.range(10),
+    randomLetters: string.random(20)
+})
+
+console.log(
+    "Stringified and b64-encoded object: ",
+    stupidIdea
+)
+```
+
+<br />
+
+
+
+
+## use the source
 
 ```bash
 $ git clone git@github.com:drmats/js-toolbox.git
@@ -88,7 +152,21 @@ $ npm i
 $ npm start
 Compiling for 'commonjs' ...
 🎉  Successfully compiled 10 files with Babel.
+>
 ```
+
+<br />
+
+
+
+
+## namespaces
+
+If you're experimenting via _RunKit_ then prepend all namespaces with "`jsToolbox.`"
+and if you're experimenting inside _node.js console_ with _npm_ package (as described
+above) then prepend all namespaces with "`t.`". If you're using the source
+and have launched _node.js_ session via `npm start` then you're good to go
+( [`¯\_(ツ)_/¯`](https://i.imgur.com/Bw6D5zZ.gif) ).
 
 ```javascript
 > array
@@ -214,78 +292,104 @@ Compiling for 'commonjs' ...
 ### array manipulation
 
 * Find the lenghts of the words in a given sentence
-  and count how many of them exists in each length group.
+    and count how many of them exists in each length group.
 
     ```javascript
-    > array.countBy(
-    ...     'exemplo plus quam ratione vivimus'.split(' '),
-    ...     (w) => w.length
-    ... )
-    { '4': 2, '7': 3 }
+    array.countBy(
+        'exemplo plus quam ratione vivimus'.split(' '),
+        (w) => w.length
+    )
     ```
+
+    > ```javascript
+    > { '4': 2, '7': 3 }
+    > ```
 
 
 * Choose a random element from a given `array`
-  (or a random character from a given `string`).
+    (or a random character from a given `string`).
 
     ```javascript
-    > array.draw(string.asciiLetters())
-    'S'
+    array.draw(string.asciiLetters())
     ```
+
+    > ```javascript
+    > 'S'
+    > ```
 
 
 * Find duplicates in a given `array`.
 
     ```javascript
-    > array.findDuplicates(['one', 'two', 'one', 'three', 'six', 'two', 'two'])
-    [ 'one', 'two' ]
+    array.findDuplicates(['one', 'two', 'one', 'six', 'two', 'two'])
     ```
+
+    > ```javascript
+    > [ 'one', 'two' ]
+    > ```
 
 
 * Flatten passed `array`, i.e. transform
-  `[[1, 2,], ..., [3, 4,],]` to `[1, 2, ..., 3, 4,]`.
+    `[[1, 2,], ..., [3, 4,],]` to `[1, 2, ..., 3, 4,]`.
 
     ```javascript
-    > array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
-    [ 'a', 'b', 'c', 'd', 'e', 'f' ]
+    array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
     ```
+
+    > ```javascript
+    > [ 'a', 'b', 'c', 'd', 'e', 'f' ]
+    > ```
 
 
 * Return a list containing an arithmetic progression.
-  `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
-  Possible invocations are: `range(stop)`, `range(start, stop)`,
-  `range(start, stop, step)`. When `start` is omitted it defaults to `0`.
-  When `step` is given, it specifies the increment (or decrement).
+    `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
+    Possible invocations are: `range(stop)`, `range(start, stop)`,
+    `range(start, stop, step)`. When `start` is omitted it defaults to `0`.
+    When `step` is given, it specifies the increment (or decrement).
 
     ```javascript
-    > array.range(10)
-    [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-
-    > array.range(-128, -256, -16)
-    [ -128, -144, -160, -176, -192, -208, -224, -240 ]
+    array.range(10)
     ```
+
+    > ```javascript
+    > [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+    > ```
+
+    ```javascript
+    array.range(-128, -256, -16)
+    ```
+
+    > ```javascript
+    > [ -128, -144, -160, -176, -192, -208, -224, -240 ]
+    > ```
 
 
 * Randomly shuffle all elements in the given `array` (Durstenfeld's
-  modification to the Fisher-Yates shuffle algorithm).
-  The operation is taken in-place.
+    modification to the Fisher-Yates shuffle algorithm).
+    The operation is taken in-place.
 
     ```javascript
-    > array.shuffle(array.range(12))
-    [ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+    array.shuffle(array.range(12))
     ```
+
+    > ```javascript
+    > [ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
+    > ```
 
 
 * Generate sparse array of distinct integers.
-  `sparse(stop, size)` returns `array` of `size` distinct
-  integers in range `[0..stop-1]`.
-  `sparse(start, stop, size)` returns `array` of `size` distinct
-  integers in range `[start..stop-1]`.
+    `sparse(stop, size)` returns `array` of `size` distinct
+    integers in range `[0..stop-1]`.
+    `sparse(start, stop, size)` returns `array` of `size` distinct
+    integers in range `[start..stop-1]`.
 
     ```javascript
-    > array.sparse(1024, 8)
-    [ 6, 34, 170, 422, 530, 643, 855, 862 ]
+    array.sparse(1024, 8)
     ```
+
+    > ```javascript
+    > [ 6, 34, 170, 422, 530, 643, 855, 862 ]
+    > ```
 
 <br />
 
@@ -303,6 +407,12 @@ Compiling for 'commonjs' ...
     })()
     ```
 
+    > ```javascript
+    > Promise { <pending> }
+    > Hello ...
+    > ... world
+    > ```
+
 
 * Invoke a sequence of asynchronous operations on an array of elements.
 
@@ -318,6 +428,21 @@ Compiling for 'commonjs' ...
         console.log(`Result: ${x}`)
     })()
     ```
+
+    > ```javascript
+    > Promise { <pending> }
+    > 0
+    > 28
+    > 8
+    > 32
+    > 4
+    > 16
+    > 20
+    > 36
+    > 24
+    > 12
+    > Result: 0,4,8,12,16,20,24,28,32,36
+    > ```
 
 
 * Paralelly execute operation on each element of the array.
@@ -335,6 +460,21 @@ Compiling for 'commonjs' ...
     })()
     ```
 
+    > ```javascript
+    > Promise { <pending> }
+    > 24
+    > 8
+    > 16
+    > 12
+    > 28
+    > 20
+    > 0
+    > 36
+    > 32
+    > 4
+    > Result: 0,4,8,12,16,20,24,28,32,36
+    > ```
+
 
 * Accumulate value over an array of elements using asynchronous operation.
 
@@ -351,6 +491,21 @@ Compiling for 'commonjs' ...
     })()
     ```
 
+    > ```javascript
+    > Promise { <pending> }
+    > 0
+    > 1
+    > 3
+    > 6
+    > 10
+    > 15
+    > 21
+    > 28
+    > 36
+    > 45
+    > Accumulated value: 45
+    > ```
+
 <br />
 
 
@@ -359,44 +514,71 @@ Compiling for 'commonjs' ...
 * Convert UTF-8 string into an array of bytes.
 
     ```javascript
-    > codec.stringToBytes('Koń: 🐎')
-    Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
+    codec.stringToBytes('Koń: 🐎')
     ```
+
+    > ```javascript
+    > Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
+    > ```
 
 
 * Convert array of bytes into a UTF-8 string.
 
     ```javascript
-    > data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
-    Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
-
-    > codec.bytesToString(data)
-    'Fox: 🦊'
+    data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
     ```
+
+    > ```javascript
+    > Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
+    > ```
+
+    ```javascript
+    codec.bytesToString(data)
+    ```
+
+    >```javascript
+    >'Fox: 🦊'
+    >```
 
 
 * Encode given byte array to Base64.
-  **Base64 encoding in browser and `node.js`.**
+    **Base64 encoding in _browser_ and _node.js_.**
 
     ```javascript
-    > data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
-    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
-
-    > codec.b64enc(data)
-    '8J+OqfCfkLA='
+    data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
     ```
+
+    > ```javascript
+    > Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+    > ```
+
+    ```javascript
+    codec.b64enc(data)
+    ```
+
+    > ```javascript
+    > '8J+OqfCfkLA='
+    > ```
 
 
 * Decode given Base64 string to byte array.
-  **Base64 decoding in browser and `node.js`.**
+    **Base64 decoding in _browser_ and _node.js_.**
 
     ```javascript
-    > data = codec.b64dec('8J+OqfCfkLA=')
-    Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
-
-    > codec.bytesToString(data)
-    '🎩🐰'
+    data = codec.b64dec('8J+OqfCfkLA=')
     ```
+
+    > ```javascript
+    > Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
+    > ```
+
+    ```javascript
+    codec.bytesToString(data)
+    ```
+
+    > ```javascript
+    > '🎩🐰'
+    > ```
 
 <br />
 
@@ -406,19 +588,31 @@ Compiling for 'commonjs' ...
 * Convert hex-encoded string to a byte representation.
 
     ```javascript
-    > codec.hexToBytes('cabafa87')
-    Uint8Array [ 202, 186, 250, 135 ]
-
-    > codec.hexToBytes('0x1234567890ABCDEF')
-    Uint8Array [ 18, 52, 86, 120, 144, 171, 205, 239 ]
+    codec.hexToBytes('cabafa87')
     ```
+
+    > ```javascript
+    > Uint8Array [ 202, 186, 250, 135 ]
+    > ```
+
+    ```javascript
+    codec.hexToBytes('0x1234567890ABCDEF')
+    ```
+
+    > ```javascript
+    > Uint8Array [ 18, 52, 86, 120, 144, 171, 205, 239 ]
+    > ```
+
 
 * Convert byte representation to a hex-encoded string.
 
     ```javascript
-    > codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]))
-    '1f3f7fff'
+    codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]))
     ```
+
+    > ```javascript
+    > '1f3f7fff'
+    > ```
 
 <br />
 
@@ -428,26 +622,38 @@ Compiling for 'commonjs' ...
 * Concatenate contents of a given byte arrays.
 
     ```javascript
-    > codec.concatBytes(
-    ... Uint8Array.from([255, 255, 0, 0]),
-    ... codec.stringToBytes('🌍'),
-    ... Uint8Array.from([128, 64])
-    ... )
-    Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
+    codec.concatBytes(
+        Uint8Array.from([255, 255, 0, 0]),
+        codec.stringToBytes('🌍'),
+        Uint8Array.from([128, 64])
+    )
     ```
+
+    > ```javascript
+    > Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
+    > ```
+
 
 * Compare two byte arrays.
 
     ```javascript
     codec.compareBytes(
-    ... codec.stringToBytes('𝓬𝓸𝓭𝓮'.normalize('NFC')),
-    ... codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC'))
-    ... )
-    false
-
-    > codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]))
-    true
+        codec.stringToBytes('𝓬𝓸𝓭𝓮'.normalize('NFC')),
+        codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC'))
+    )
     ```
+
+    > ```javascript
+    > false
+    > ```
+
+    ```javascript
+    codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]))
+    ```
+
+    > ```javascript
+    > true
+    > ```
 
 <br />
 
@@ -457,55 +663,95 @@ Compiling for 'commonjs' ...
 * Function composition.
 
     ```javascript
-    > shortenAndQuote = func.compose(string.quote, string.shorten)
-    [Function]
-
-    > shortenAndQuote(
-    ... "When I find myself in times of trouble",
-    ... 20, string.shorten.END
-    ... )
-    '"When I find myself …"'
+    shortenAndQuote = func.compose(string.quote, string.shorten)
     ```
+
+    > ```javascript
+    > [Function]
+    > ```
 
     ```javascript
-    > stringToHex = func.compose(codec.bytesToHex, codec.stringToBytes)
-    [Function]
-
-    > stringToHex('Kaboom! 💥')
-    '4b61626f6f6d2120f09f92a5'
+    shortenAndQuote(
+        "When I find myself in times of trouble",
+        20, string.shorten.END
+    )
     ```
+
+    > ```javascript
+    > '"When I find myself …"'
+    > ```
 
     ```javascript
-    > hexToString = func.compose(codec.bytesToString, codec.hexToBytes)
-    [Function]
-
-    > hexToString('4b61626f6f6d2120f09f92a5')
-    'Kaboom! 💥'
+    stringToHex = func.compose(codec.bytesToHex, codec.stringToBytes)
     ```
+
+    > ```javascript
+    > [Function]
+    > ```
+
+    ```javascript
+    stringToHex('Kaboom! 💥')
+    ```
+
+    > ```javascript
+    > '4b61626f6f6d2120f09f92a5'
+    > ```
+
+    ```javascript
+    hexToString = func.compose(codec.bytesToString, codec.hexToBytes)
+    ```
+
+    > ```javascript
+    > [Function]
+    > ```
+
+    ```javascript
+    hexToString('4b61626f6f6d2120f09f92a5')
+    ```
+
+    > ```javascript
+    > 'Kaboom! 💥'
+    > ```
 
 
 * Translate the evaluation of function `f` taking multiple arguments
-  into an evaluation of sequence of functions, each with a single argument.
+    into an evaluation of sequence of functions, each with a single argument.
 
     ```javascript
-    > sum = (...args) => math.sum(args)
-    [Function: sum]
-
-    > func.curry(sum)(1)(2)(3)(4)(5)()
-    15
+    sum = (...args) => math.sum(args)
     ```
+
+    > ```javascript
+    > [Function: sum]
+    > ```
+
+    ```javascript
+    func.curry(sum)(1)(2)(3)(4)(5)()
+    ```
+
+    > ```javascript
+    > 15
+    > ```
 
 
 * Y-combinator - returns fixed point of a higher-order function passed as `f`.
-  **Anonymous recursion in Javascript**.
+    **Anonymous recursion in Javascript**.
 
     ```javascript
-    > factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
-    [Function]
-
-    > factorial(5)
-    120
+    factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
     ```
+
+    > ```javascript
+    > [Function]
+    > ```
+
+    ```javascript
+    factorial(5)
+    ```
+
+    > ```javascript
+    > 120
+    > ```
 
 <br />
 
@@ -515,33 +761,45 @@ Compiling for 'commonjs' ...
 * Compute mathematical average of array of numbers.
 
     ```javascript
-    > math.average([1, 2, 3, 4, 5])
-    3
+    math.average([1, 2, 3, 4, 5])
     ```
+
+    > ```javascript
+    > 3
+    > ```
 
 
 * Base 2 logarithm.
 
     ```javascript
-    > math.log2(2**32)
-    32
+    math.log2(2**32)
     ```
+
+    > ```javascript
+    > 32
+    > ```
 
 
 * Base 10 logarithm.
 
     ```javascript
-    > math.log10(1e9)
-    9
+    math.log10(1e9)
     ```
+
+    > ```javascript
+    > 9
+    > ```
 
 
 * Sum of numbers in passed `array`.
 
     ```javascript
-    > math.sum([5, 6, 7, 8, 9, 10])
-    45
+    math.sum([5, 6, 7, 8, 9, 10])
     ```
+
+    > ```javascript
+    > 45
+    > ```
 
 <br />
 
@@ -551,56 +809,79 @@ Compiling for 'commonjs' ...
 * Allocate a **big** string (of size `2^n`).
 
     ```javascript
-    > string.big(5)
-    'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    string.big(5)
     ```
+
+    > ```javascript
+    > 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    > ```
 
 
 * Convert `camelText` to `snake_text`.
 
     ```javascript
-    > string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
-    'some_nights_i_stay_up_cashing_in_my_bad_luck'
+    string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
     ```
+
+    > ```javascript
+    > 'some_nights_i_stay_up_cashing_in_my_bad_luck'
+    > ```
 
 
 * Quote text.
 
     ```javascript
-    > string.quote('div', '<>')
-    '<div>'
+    string.quote('div', '<>')
     ```
+
+    > ```javascript
+    > '<div>'
+    > ```
 
 
 * Construct random string of desired length.
 
     ```javascript
-    > string.random(16)
-    'MxWGe8MoOss0yUAP'
+    string.random(16)
     ```
+
+    > ```javascript
+    > 'MxWGe8MoOss0yUAP'
+    > ```
 
 
 * Shorten a given string to the desired length.
 
     ```javascript
-    > string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
-    'abcdefg…tuvwxyz'
-
-    > string.shorten(
-    ...     'To be, or not to be, that is the question',
-    ...     20,
-    ...     string.shorten.END
-    ... )
-    'To be, or not to be…'
+    string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
     ```
+
+    > ```javascript
+    > 'abcdefg…tuvwxyz'
+    > ```
+
+    ```javascript
+    string.shorten(
+        'To be, or not to be, that is the question',
+        20,
+        string.shorten.END
+    )
+    ```
+
+    > ```javascript
+    > 'To be, or not to be…'
+    > ```
 
 
 * Convert `snake_text` to `camelText`.
 
     ```javascript
-    > string.snakeToCamel('some_nights_i_call_it_a_draw')
-    'someNightsICallItADraw'
+    string.snakeToCamel('some_nights_i_call_it_a_draw')
     ```
+
+    > ```javascript
+    > 'someNightsICallItADraw'
+    > ```
 
 <br />
 
@@ -608,33 +889,59 @@ Compiling for 'commonjs' ...
 ### type primitives
 
 * Determine if a given value is a proper `Number`
-  (not `NaN` and not `Infinity`).
+    (not `NaN` and not `Infinity`).
 
     ```javascript
-    > type.isNumber(NaN)
-    false
-
-    > type.isNumber(-Infinity)
-    false
-
-    > type.isNumber(1234.5678)
-    true
+    type.isNumber(NaN)
     ```
+
+    > ```javascript
+    > false
+    > ```
+
+    ```javascript
+    type.isNumber(-Infinity)
+    ```
+
+    > ```javascript
+    > false
+    > ```
+
+    ```javascript
+    type.isNumber(1234.5678)
+    ```
+
+    > ```javascript
+    > true
+    > ```
 
 
 * Determine if a given value is an `Object`
-  (not `null`, not `undefined` and not `Array`).
+    (not `null`, not `undefined` and not `Array`).
 
     ```javascript
-    > type.isObject(null)
-    false
-
-    > type.isObject([])
-    false
-
-    > type.isObject({})
-    true
+    type.isObject(null)
     ```
+
+    > ```javascript
+    > false
+    > ```
+
+    ```javascript
+    type.isObject([])
+    ```
+
+    > ```javascript
+    > false
+    > ```
+
+    ```javascript
+    type.isObject({})
+    ```
+
+    > ```javascript
+    > true
+    > ```
 
 <br />
 
@@ -644,40 +951,52 @@ Compiling for 'commonjs' ...
 * Apply `path` to an object.
 
     ```javascript
-    > utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
-    42
+    utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
     ```
+
+    > ```javascript
+    > 42
+    > ```
 
 
 * Construct `Object` from the result of `Object.entries()` call.
-  `entries = [[k1, v1,], ..., [kn, vn,]]`
+    `entries = [[k1, v1,], ..., [kn, vn,]]`
 
     ```javascript
-    > utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
-    { a: 'b', c: 'd', e: 'f' }
+    utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
     ```
+
+    > ```javascript
+    > { a: 'b', c: 'd', e: 'f' }
+    > ```
 
 
 * Shallow map (iteration) on objects.
 
     ```javascript
-    > utils.objectMap(
-    ...     { what: 'od', i: '?rof dnats' },
-    ...     ([k, v,]) => [
-    ...         string.capitalize(k),
-    ...         v.split('').reverse().join('')
-    ...     ]
-    ... )
-    { What: 'do', I: 'stand for?' }
+    utils.objectMap(
+        { what: 'od', i: '?rof dnats' },
+        ([k, v,]) => [
+            string.capitalize(k),
+            v.split('').reverse().join('')
+        ]
+    )
     ```
+
+    > ```javascript
+    > { What: 'do', I: 'stand for?' }
+    > ```
 
 
 * Swap keys with values in a given `Object`.
 
     ```javascript
-    > utils.swap({ a: 'b', c: 'd', e: 'f' })
-    { b: 'a', d: 'c', f: 'e' }
+    utils.swap({ a: 'b', c: 'd', e: 'f' })
     ```
+
+    > ```javascript
+    > { b: 'a', d: 'c', f: 'e' }
+    > ```
 
 </br>
 
