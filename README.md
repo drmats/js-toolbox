@@ -169,7 +169,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
 ( [`¯\_(ツ)_/¯`](https://i.imgur.com/Bw6D5zZ.gif) ).
 
 
-* **array** utilities
+* **array** utilities:
 
     ```javascript
     > array
@@ -187,7 +187,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* **asynchronous programming** helpers
+* **asynchronous programming** helpers:
 
     ```javascript
     > async
@@ -201,7 +201,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders
+* **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders:
 
     ```javascript
     > codec
@@ -220,7 +220,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* **functional programming**
+* **functional programming**:
 
     ```javascript
     > func
@@ -231,7 +231,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* simple **math**
+* simple **math**:
 
     ```javascript
     > math
@@ -243,7 +243,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* some goodies for **[redux](https://redux.js.org/)**
+* some goodies for **[redux](https://redux.js.org/)**:
 
     ```javascript
     > redux
@@ -251,7 +251,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* **string** utilities
+* **string** utilities:
 
     ```javascript
     > string
@@ -276,7 +276,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* **type** helpers
+* **type** helpers:
 
     ```javascript
     > type
@@ -291,7 +291,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```
 
 
-* uncategorized **utilities**
+* uncategorized **utilities**:
 
     ```javascript
     > utils
