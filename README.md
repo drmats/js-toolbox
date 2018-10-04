@@ -168,119 +168,146 @@ above) then prepend all namespaces with "`t.`". If you're using the source
 and have launched _node.js_ session via `npm start` then you're good to go
 ( [`¯\_(ツ)_/¯`](https://i.imgur.com/Bw6D5zZ.gif) ).
 
-```javascript
-> array
-{ countBy: [Function: countBy],
-  draw: [Function: draw],
-  findDuplicates: [Function: findDuplicates],
-  flatten: [Function: flatten],
-  head: [Function: head],
-  init: [Function: init],
-  last: [Function: last],
-  range: [Function: range],
-  shuffle: [Function: shuffle],
-  sparse: [Function: sparse],
-  tail: [Function: tail] }
-```
 
-```javascript
-> async
-{ delay: [Function: delay],
-  interval: [Function: interval],
-  map: [Function: map],
-  parMap: [Function: parMap],
-  reduce: [Function: reduce],
-  repeat: [Function: repeat],
-  timeout: [Function: timeout] }
-```
+* **array** utilities
 
-```javascript
-> codec
-{ concatBytes: [Function: concatBytes],
-  compareBytes: [Function: compareBytes],
-  stringToBytes: [Function],
-  bytesToString: [Function],
-  hexToBytes: [Function: hexToBytes],
-  bytesToHex: [Function: bytesToHex],
-  b64dec: [Function],
-  b64enc: [Function],
-  b64ToString: [Function],
-  stringToB64: [Function],
-  b64ToHex: [Function],
-  hexToB64: [Function] }
-```
+    ```javascript
+    > array
+    { countBy: [Function: countBy],
+    draw: [Function: draw],
+    findDuplicates: [Function: findDuplicates],
+    flatten: [Function: flatten],
+    head: [Function: head],
+    init: [Function: init],
+    last: [Function: last],
+    range: [Function: range],
+    shuffle: [Function: shuffle],
+    sparse: [Function: sparse],
+    tail: [Function: tail] }
+    ```
 
-```javascript
-> func
-{ compose: [Function: compose],
-  curry: [Function: curry],
-  partial: [Function: partial],
-  Y: [Function: Y] }
-```
 
-```javascript
-> math
-{ average: [Function: average],
-  log10: [Function: log10],
-  log2: [Function: log2],
-  roundIfClose: [Function: roundIfClose],
-  sum: [Function: sum] }
-```
+* **asynchronous programming** helpers
 
-```javascript
-> redux
-{ createReducer: [Function: createReducer] }
-```
+    ```javascript
+    > async
+    { delay: [Function: delay],
+    interval: [Function: interval],
+    map: [Function: map],
+    parMap: [Function: parMap],
+    reduce: [Function: reduce],
+    repeat: [Function: repeat],
+    timeout: [Function: timeout] }
+    ```
 
-```javascript
-> string
-{ asciiLetters: [Function: asciiLetters],
-  asciiLowercase: [Function: asciiLowercase],
-  asciiUppercase: [Function: asciiUppercase],
-  big: [Function],
-  camelToPascal: [Function: camelToPascal],
-  camelToSnake: [Function: camelToSnake],
-  capitalize: [Function: capitalize],
-  digits: [Function: digits],
-  ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
-  empty: [Function: empty],
-  pascalToCamel: [Function: pascalToCamel],
-  pascalToSnake: [Function: pascalToSnake],
-  quote: [Function: quote],
-  random: [Function: random],
-  shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
-  snakeToCamel: [Function: snakeToCamel],
-  snakeToPascal: [Function: snakeToPascal],
-  wrap: [Function: wrap] }
-```
 
-```javascript
-> type
-{ isFunction: [Function: isFunction],
-  isNumber: [Function: isNumber],
-  isObject: [Function: isObject],
-  isString: [Function: isString],
-  maxInt: 9007199254740991,
-  minInt: -9007199254740991,
-  nullToUndefined: [Function: nullToUndefined],
-  toBool: [Function: toBool] }
-```
+* **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders
 
-```javascript
-> utils
-{ access: [Function: access],
-  choose: [Function: choose],
-  clone: [Function: clone],
-  dict: [Function: dict],
-  handleException: [Function: handleException],
-  identity: [Function: identity],
-  isBrowser: [Function: isBrowser],
-  objectMap: [Function: objectMap],
-  objectReduce: [Function: objectReduce],
-  randomInt: [Function: randomInt],
-  swap: [Function: swap],
-  timeUnit: { ... } }
-```
+    ```javascript
+    > codec
+    { concatBytes: [Function: concatBytes],
+    compareBytes: [Function: compareBytes],
+    stringToBytes: [Function],
+    bytesToString: [Function],
+    hexToBytes: [Function: hexToBytes],
+    bytesToHex: [Function: bytesToHex],
+    b64dec: [Function],
+    b64enc: [Function],
+    b64ToString: [Function],
+    stringToB64: [Function],
+    b64ToHex: [Function],
+    hexToB64: [Function] }
+    ```
+
+
+* **functional programming**
+
+    ```javascript
+    > func
+    { compose: [Function: compose],
+    curry: [Function: curry],
+    partial: [Function: partial],
+    Y: [Function: Y] }
+    ```
+
+
+* simple **math**
+
+    ```javascript
+    > math
+    { average: [Function: average],
+    log10: [Function: log10],
+    log2: [Function: log2],
+    roundIfClose: [Function: roundIfClose],
+    sum: [Function: sum] }
+    ```
+
+
+* some goodies for **[redux](https://redux.js.org/)**
+
+    ```javascript
+    > redux
+    { createReducer: [Function: createReducer] }
+    ```
+
+
+* **string** utilities
+
+    ```javascript
+    > string
+    { asciiLetters: [Function: asciiLetters],
+    asciiLowercase: [Function: asciiLowercase],
+    asciiUppercase: [Function: asciiUppercase],
+    big: [Function],
+    camelToPascal: [Function: camelToPascal],
+    camelToSnake: [Function: camelToSnake],
+    capitalize: [Function: capitalize],
+    digits: [Function: digits],
+    ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
+    empty: [Function: empty],
+    pascalToCamel: [Function: pascalToCamel],
+    pascalToSnake: [Function: pascalToSnake],
+    quote: [Function: quote],
+    random: [Function: random],
+    shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
+    snakeToCamel: [Function: snakeToCamel],
+    snakeToPascal: [Function: snakeToPascal],
+    wrap: [Function: wrap] }
+    ```
+
+
+* **type** helpers
+
+    ```javascript
+    > type
+    { isFunction: [Function: isFunction],
+    isNumber: [Function: isNumber],
+    isObject: [Function: isObject],
+    isString: [Function: isString],
+    maxInt: 9007199254740991,
+    minInt: -9007199254740991,
+    nullToUndefined: [Function: nullToUndefined],
+    toBool: [Function: toBool] }
+    ```
+
+
+* uncategorized **utilities**
+
+    ```javascript
+    > utils
+    { access: [Function: access],
+    choose: [Function: choose],
+    clone: [Function: clone],
+    dict: [Function: dict],
+    handleException: [Function: handleException],
+    identity: [Function: identity],
+    isBrowser: [Function: isBrowser],
+    objectMap: [Function: objectMap],
+    objectReduce: [Function: objectReduce],
+    randomInt: [Function: randomInt],
+    swap: [Function: swap],
+    timeUnit: { ... } }
+    ```
 
 <br />
 
