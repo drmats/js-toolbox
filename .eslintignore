@@ -1,0 +1,6 @@
+doc/*
+es/*
+lib/*
+node_modules/*
+scripts/*
+typings/*
