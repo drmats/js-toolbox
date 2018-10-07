@@ -792,7 +792,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Determine if a given value is a `String`.
          */
-        export declare function isString (s: any): string;
+        export declare function isString (s: any): boolean;
 
 
         /**
