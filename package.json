@@ -12,7 +12,7 @@
     "dependencies": {
         "@babel/runtime": "^7.1.2"
     },
-    "description": "Various JS utilities.",
+    "description": "Useful JS utilities.",
     "devDependencies": {
         "@babel/cli": "^7.1.2",
         "@babel/core": "^7.1.2",
