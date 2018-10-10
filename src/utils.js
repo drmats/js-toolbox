@@ -10,6 +10,14 @@
 
 
 import {
+    dependencies,
+    description,
+    homepage,
+    license,
+    name,
+    version,
+} from "../package.json"
+import {
     isFunction,
     isObject,
     isString,
@@ -134,6 +142,24 @@ export const devEnv = (strict = false) =>
 export const dict = (entries) => entries.reduce(
     (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
 )
+
+
+
+
+/**
+ * Get useful library configuration variables.
+ *
+ * @function getLibConfig
+ * @returns {Object}
+ */
+export const getLibConfig = () => ({
+    dependencies,
+    description,
+    homepage,
+    license,
+    name,
+    version,
+})
 
 
 

@@ -171,6 +171,7 @@ export {
     clone,
     devEnv,
     dict,
+    getLibConfig,
     getProcess,
     handleException,
     identity,

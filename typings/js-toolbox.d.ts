@@ -898,6 +898,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Get useful library configuration variables.
+         */
+        export declare function getLibConfig (): object;
+
+
+        /**
          * Return global `process` variable if it exists.
          */
         export declare function getProcess (): object;
@@ -1009,6 +1015,7 @@ declare module "@xcmats/js-toolbox" {
     export declare const clone = utils.clone;
     export declare const devEnv = utils.devEnv;
     export declare const dict = utils.dict;
+    export declare const getLibConfig = utils.getLibConfig;
     export declare const getProcess = utils.getProcess;
     export declare const handleException = utils.handleException;
     export declare const identity = utils.identity;
