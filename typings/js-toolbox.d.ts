@@ -875,6 +875,17 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Determine runtime environment (is it development or not?).
+         * `devEnv() -> true/false`
+         *
+         * When `strict` is not set to `true` then "development environment"
+         * can be simulated by storing value of any type under "dev" key
+         * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
+         */
+        export declare function devEnv (strict: boolean): boolean;
+
+
+        /**
          * Construct `Object` from the result of `Object.entries()` call.
          *
          * ```
@@ -884,6 +895,12 @@ declare module "@xcmats/js-toolbox" {
          * Imitates Python's `dict()`.
          */
         export declare function dict (entries: [string, any][]): object;
+
+
+        /**
+         * Return global `process` variable if it exists.
+         */
+        export declare function getProcess (): object;
 
 
         /**
@@ -990,12 +1007,14 @@ declare module "@xcmats/js-toolbox" {
     export declare const access = utils.access;
     export declare const choose = utils.choose;
     export declare const clone = utils.clone;
+    export declare const devEnv = utils.devEnv;
     export declare const dict = utils.dict;
     export declare const handleException = utils.handleException;
     export declare const identity = utils.identity;
     export declare const isBrowser = utils.isBrowser;
     export declare const objectMap = utils.objectMap;
     export declare const objectReduce = utils.objectReduce;
+    export declare const process = utils.process;
     export declare const randomInt = utils.randomInt;
     export declare const swap = utils.swap;
     export declare const timeUnit = utils.timeUnit;
