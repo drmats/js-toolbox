@@ -1009,12 +1009,12 @@ declare module "@xcmats/js-toolbox" {
     export declare const clone = utils.clone;
     export declare const devEnv = utils.devEnv;
     export declare const dict = utils.dict;
+    export declare const getProcess = utils.getProcess;
     export declare const handleException = utils.handleException;
     export declare const identity = utils.identity;
     export declare const isBrowser = utils.isBrowser;
     export declare const objectMap = utils.objectMap;
     export declare const objectReduce = utils.objectReduce;
-    export declare const process = utils.process;
     export declare const randomInt = utils.randomInt;
     export declare const swap = utils.swap;
     export declare const timeUnit = utils.timeUnit;
