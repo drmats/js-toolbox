@@ -1,3 +1,8 @@
+"use strict";
+
+
+
+
 // common plugins
 var commonPlugins = [
     "@babel/plugin-proposal-object-rest-spread",
