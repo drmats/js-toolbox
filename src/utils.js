@@ -113,14 +113,14 @@ export const devEnv = (strict = false) =>
     )  ||  (
         // or if there is a `string` under `process.env.NODE_ENV`
         // and it is not equal to "production"
-        isString(access(getProcess(), ["env", "NODE_ENV",]))  &&
-        access(getProcess(), ["env", "NODE_ENV",]) !== "production"
+        isString(access(getProcess(), ["env", "NODE_ENV"]))  &&
+        access(getProcess(), ["env", "NODE_ENV"]) !== "production"
     )  ||  (
         // or, maybe, you're not in browser
         // and there is no `string` under `process.env.NODE_ENV`,
         // which happens in "bare" node.js console
         !isBrowser()  &&
-        !isString(access(getProcess(), ["env", "NODE_ENV",]))
+        !isString(access(getProcess(), ["env", "NODE_ENV"]))
     )
 
 
@@ -140,7 +140,7 @@ export const devEnv = (strict = false) =>
  * @returns {Object}
  */
 export const dict = (entries) => entries.reduce(
-    (acc, [k, v,]) => ({ ...acc, [k]: v, }), {}
+    (acc, [k, v]) => ({ ...acc, [k]: v }), {}
 )
 
 
@@ -315,7 +315,7 @@ export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
  * @param {Object.<String, String>} o
  * @returns {Object.<String, String>}
  */
-export const swap = (o) => objectMap(o, ([k, v,]) => [v, k,])
+export const swap = (o) => objectMap(o, ([k, v]) => [v, k])
 
 
 

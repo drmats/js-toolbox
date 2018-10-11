@@ -28,5 +28,5 @@ export const createReducer = (initState = {}) =>
                 action.type,
                 actions,
                 defaultAction,
-                [state, action,]
+                [state, action]
             )

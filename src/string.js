@@ -164,7 +164,7 @@ export const ellipsis = (str, placing = 1, sep = "…") => {
     }
     return x.join(empty())
 }
-Object.freeze(Object.assign(ellipsis, { BEGIN: 0, MIDDLE: 1, END: 2, }))
+Object.freeze(Object.assign(ellipsis, { BEGIN: 0, MIDDLE: 1, END: 2 }))
 
 
 

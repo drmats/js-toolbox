@@ -129,8 +129,8 @@ export const hexToBytes = ((hexInput) => (
             .reduceRight(
                 (acc, el, i) =>
                     i % 2  ?
-                        [el,].concat(acc)  :
-                        [el + head(acc),].concat(tail(acc)),
+                        [el].concat(acc)  :
+                        [el + head(acc)].concat(tail(acc)),
                 []
             )
             .map((hexByte) => parseInt(hexByte, 16))
@@ -185,7 +185,7 @@ export const b64dec = isBrowser() ?
  */
 export const b64enc = isBrowser() ?
     (bytes) =>
-        btoa([...bytes,].map((b) => String.fromCharCode(b)).join(empty())) :
+        btoa([...bytes].map((b) => String.fromCharCode(b)).join(empty())) :
     (bytes) =>
         Buffer.from(bytes).toString("base64")
 

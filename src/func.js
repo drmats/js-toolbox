@@ -30,7 +30,7 @@ import { head } from "./array"
  * @returns {Function}
  */
 export const compose = (...fs) =>
-    (...args) => head(fs.reduceRight((result, f) => [f(...result),], args))
+    (...args) => head(fs.reduceRight((result, f) => [f(...result)], args))
 
 
 
@@ -73,7 +73,7 @@ export const curry = (f) => (...args) =>
  * @returns {Function}
  */
 export const partial = (f) => (...init) =>
-    (...rest) => f(...[...init, ...rest,])
+    (...rest) => f(...[...init, ...rest])
 
 
 

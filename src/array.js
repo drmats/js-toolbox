@@ -44,8 +44,8 @@ import {
 export const countBy = (arr, iteratee = identity) =>
     arr.reduce((acc, el) => (
         (key) => isNumber(acc[key]) ?
-            { ...acc, [key]: acc[key] + 1, } :
-            { ...acc, [key]: 1, }
+            { ...acc, [key]: acc[key] + 1 } :
+            { ...acc, [key]: 1 }
     )(iteratee(el)), Object.create(null))
 
 
@@ -83,7 +83,7 @@ export const draw = (arr) => arr[randomInt() % arr.length]
 export const findDuplicates = (arr, iteratee = identity) =>
     objectReduce(
         countBy(arr, iteratee),
-        (acc, [k, v,]) => v > 1  ?  acc.concat([k,])  :  acc,
+        (acc, [k, v]) => v > 1  ?  acc.concat([k])  :  acc,
         []
     )
 
@@ -164,10 +164,10 @@ export const last = (arr) => arr[arr.length-1]
 export const range = (...args) => {
     let start = 0, stop = 0, step = 1, arr = []
 
-    if (args.length === 1) { [stop,] = args }
-    else if (args.length === 2) { [start, stop,] = args }
+    if (args.length === 1) { [stop] = args }
+    else if (args.length === 2) { [start, stop] = args }
     else if (args.length === 3) {
-        [start, stop, step,] = args
+        [start, stop, step] = args
         if (step === 0) throw new RangeError(
             "array.range() 'step' argument must not be zero"
         )
@@ -206,7 +206,7 @@ export const shuffle = (arr) => {
 
     for (let i = arr.length-1;  i > 0;  i -= 1) {
         let j = randomInt() % (i+1);
-        [arr[i], arr[j],] = [arr[j], arr[i],]
+        [arr[i], arr[j]] = [arr[j], arr[i]]
     }
 
     return arr
@@ -236,13 +236,13 @@ export const sparse = (...args) => {
         hash = Object.create(null),
         interval = 0
 
-    if (args.length === 2) { [stop, size,] = args }
-    else if (args.length === 3) { [start, stop, size,] = args }
+    if (args.length === 2) { [stop, size] = args }
+    else if (args.length === 3) { [start, stop, size] = args }
     else throw new TypeError(
         `array.sparse() expected 2 or 3 arguments, got ${args.length}`
     )
 
-    if (start > stop) { [start, stop,] = [stop, start,] }
+    if (start > stop) { [start, stop] = [stop, start] }
     interval = stop - start
 
     if (size <= 0  ||  interval === 0) { return [] }
