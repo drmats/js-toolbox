@@ -33,6 +33,7 @@
         "no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}],
         "quotes": ["error", "double"],
         "semi": ["error", "never"],
+        "space-before-function-paren": ["error", "always"],
         "strict": 0
     }
 }
