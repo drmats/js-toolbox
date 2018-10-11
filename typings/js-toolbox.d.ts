@@ -46,7 +46,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Choose a random element from a non-empty array.
          */
-        export function draw (arr: any[] | string): any[] | string;
+        export function draw (arr: any[] | string): any | string;
 
 
         /**
