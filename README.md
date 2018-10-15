@@ -236,6 +236,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     ```javascript
     > math
     { average: [Function: average],
+    clamp: [Function: clamp],
     log10: [Function: log10],
     log2: [Function: log2],
     roundIfClose: [Function: roundIfClose],
@@ -265,6 +266,9 @@ and have launched _node.js_ session via `npm start` then you're good to go
     digits: [Function: digits],
     ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
     empty: [Function: empty],
+    space: [Function: space],
+    padLeft: [Function: padLeft],
+    padRight: [Function: padRight],
     pascalToCamel: [Function: pascalToCamel],
     pascalToSnake: [Function: pascalToSnake],
     quote: [Function: quote],

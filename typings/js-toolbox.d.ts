@@ -688,6 +688,38 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Construct space.
+         */
+        export function space (): string;
+
+
+        /**
+         * Prepend given `input` string with an appropriate amount of
+         * `ch` characters so that returning string length is equal to `len`.
+         * If `len` is smaller than length of `input` then `input` is being
+         * returned untouched (padding doesn't shorten the `input`).
+         */
+        export function padLeft (
+            input: string,
+            len: number,
+            ch?: string
+        ): string;
+
+
+        /**
+         * Append an appropriate amount of `ch` characters to the given `input`
+         * string so that returning string length is equal to `len`.
+         * If `len` is smaller than length of `input` then `input` is being
+         * returned untouched (padding doesn't shorten the `input`).
+         */
+        export function padRight (
+            input: string,
+            len: number,
+            ch?: string
+        ): string;
+
+
+        /**
          * Convert `ThisKindOfText` to `thisKindOfText`.
          */
         export function pascalToCamel (str: string): string;
@@ -758,6 +790,9 @@ declare module "@xcmats/js-toolbox" {
     export const digits: typeof string.digits;
     export const ellipsis: typeof string.ellipsis;
     export const emptyString: typeof string.empty;
+    export const spaceString: typeof string.space;
+    export const padLeft: typeof string.padLeft;
+    export const padRight: typeof string.padRight;
     export const pascalToCamel: typeof string.pascalToCamel;
     export const pascalToSnake: typeof string.pascalToSnake;
     export const quote: typeof string.quote;

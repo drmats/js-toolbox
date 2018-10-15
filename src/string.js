@@ -181,6 +181,55 @@ export const empty = () => ""
 
 
 /**
+ * Construct space.
+ *
+ * @function space
+ * @returns {String}
+ */
+export const space = () => " "
+
+
+
+
+/**
+ * Prepend given `input` string with an appropriate amount of
+ * `ch` characters so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padLeft
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padLeft = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => range(len - ilen).map(() => c).join(empty()) + input
+)(input.length, head(ch))
+
+
+
+
+/**
+ * Append an appropriate amount of `ch` characters to the given `input`
+ * string so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padRight
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padRight = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => input + range(len - ilen).map(() => c).join(empty())
+)(input.length, head(ch))
+
+
+
+
+/**
  * Convert `ThisKindOfText` to `thisKindOfText`.
  *
  * @function pascalToCamel
