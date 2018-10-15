@@ -135,17 +135,17 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const countBy = array.countBy;
-    export const draw = array.draw;
-    export const findDuplicates = array.findDuplicates;
-    export const flatten = array.flatten;
-    export const head = array.head;
-    export const init = array.init;
-    export const last = array.last;
-    export const range = array.range;
-    export const shuffle = array.shuffle;
-    export const sparse = array.sparse;
-    export const tail = array.tail;
+    export const countBy: typeof array.countBy;
+    export const draw: typeof array.draw;
+    export const findDuplicates: typeof array.findDuplicates;
+    export const flatten: typeof array.flatten;
+    export const head: typeof array.head;
+    export const init: typeof array.init;
+    export const last: typeof array.last;
+    export const range: typeof array.range;
+    export const shuffle: typeof array.shuffle;
+    export const sparse: typeof array.sparse;
+    export const tail: typeof array.tail;
 
 
 
@@ -328,13 +328,13 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const delay = async.delay;
-    export const interval = async.interval;
-    export const asyncMap = async.map;
-    export const parMap = async.parMap;
-    export const asyncReduce = async.reduce;
-    export const asyncRepeat = async.repeat;
-    export const timeout = async.timeout;
+    export const delay: typeof async.delay;
+    export const interval: typeof async.interval;
+    export const asyncMap: typeof async.map;
+    export const parMap: typeof async.parMap;
+    export const asyncReduce: typeof async.reduce;
+    export const asyncRepeat: typeof async.repeat;
+    export const timeout: typeof async.timeout;
 
 
 
@@ -442,18 +442,18 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const concatBytes = codec.concatBytes;
-    export const compareBytes = codec.compareBytes;
-    export const stringToBytes = codec.stringToBytes;
-    export const bytesToString = codec.bytesToString;
-    export const hexToBytes = codec.hexToBytes;
-    export const bytesToHex = codec.bytesToHex;
-    export const b64dec = codec.b64dec;
-    export const b64enc = codec.b64enc;
-    export const b64ToString = codec.b64ToString;
-    export const stringToB64 = codec.stringToB64;
-    export const b64ToHex = codec.b64ToHex;
-    export const hexToB64 = codec.hexToB64;
+    export const concatBytes: typeof codec.concatBytes;
+    export const compareBytes: typeof codec.compareBytes;
+    export const stringToBytes: typeof codec.stringToBytes;
+    export const bytesToString: typeof codec.bytesToString;
+    export const hexToBytes: typeof codec.hexToBytes;
+    export const bytesToHex: typeof codec.bytesToHex;
+    export const b64dec: typeof codec.b64dec;
+    export const b64enc: typeof codec.b64enc;
+    export const b64ToString: typeof codec.b64ToString;
+    export const stringToB64: typeof codec.stringToB64;
+    export const b64ToHex: typeof codec.b64ToHex;
+    export const hexToB64: typeof codec.hexToB64;
 
 
 
@@ -520,10 +520,10 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const compose = func.compose;
-    export const curry = func.curry;
-    export const partial = func.partial;
-    export const Y = func.Y;
+    export const compose: typeof func.compose;
+    export const curry: typeof func.curry;
+    export const partial: typeof func.partial;
+    export const Y: typeof func.Y;
 
 
 
@@ -567,11 +567,11 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const average = math.average;
-    export const log10 = math.log10;
-    export const log2 = math.log2;
-    export const roundIfClose = math.roundIfClose;
-    export const sum = math.sum;
+    export const average: typeof math.average;
+    export const log10: typeof math.log10;
+    export const log2: typeof math.log2;
+    export const roundIfClose: typeof math.roundIfClose;
+    export const sum: typeof math.sum;
 
 
 
@@ -589,7 +589,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const createReducer = redux.createReducer;
+    export const createReducer: typeof redux.createReducer;
 
 
 
@@ -741,24 +741,24 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const asciiLetters = string.asciiLetters;
-    export const asciiLowercase = string.asciiLowercase;
-    export const asciiUppercase = string.asciiUppercase;
-    export const bigString = string.big;
-    export const camelToPascal = string.camelToPascal;
-    export const camelToSnake = string.camelToSnake;
-    export const capitalize = string.capitalize;
-    export const digits = string.digits;
-    export const ellipsis = string.ellipsis;
-    export const emptyString = string.empty;
-    export const pascalToCamel = string.pascalToCamel;
-    export const pascalToSnake = string.pascalToSnake;
-    export const quote = string.quote;
-    export const randomString = string.random;
-    export const shorten = string.shorten;
-    export const snakeToCamel = string.snakeToCamel;
-    export const snakeToPascal = string.snakeToPascal;
-    export const wrap = string.wrap;
+    export const asciiLetters: typeof string.asciiLetters;
+    export const asciiLowercase: typeof string.asciiLowercase;
+    export const asciiUppercase: typeof string.asciiUppercase;
+    export const bigString: typeof string.big;
+    export const camelToPascal: typeof string.camelToPascal;
+    export const camelToSnake: typeof string.camelToSnake;
+    export const capitalize: typeof string.capitalize;
+    export const digits: typeof string.digits;
+    export const ellipsis: typeof string.ellipsis;
+    export const emptyString: typeof string.empty;
+    export const pascalToCamel: typeof string.pascalToCamel;
+    export const pascalToSnake: typeof string.pascalToSnake;
+    export const quote: typeof string.quote;
+    export const randomString: typeof string.random;
+    export const shorten: typeof string.shorten;
+    export const snakeToCamel: typeof string.snakeToCamel;
+    export const snakeToPascal: typeof string.snakeToPascal;
+    export const wrap: typeof string.wrap;
 
 
 
@@ -822,14 +822,14 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const isFunction = type.isFunction;
-    export const isNumber = type.isNumber;
-    export const isObject = type.isObject;
-    export const isString = type.isString;
-    export const maxInt = type.maxInt;
-    export const minInt = type.minInt;
-    export const nullToUndefined = type.nullToUndefined;
-    export const toBool = type.toBool;
+    export const isFunction: typeof type.isFunction;
+    export const isNumber: typeof type.isNumber;
+    export const isObject: typeof type.isObject;
+    export const isString: typeof type.isString;
+    export const maxInt: typeof type.maxInt;
+    export const minInt: typeof type.minInt;
+    export const nullToUndefined: typeof type.nullToUndefined;
+    export const toBool: typeof type.toBool;
 
 
 
@@ -1010,21 +1010,21 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const access = utils.access;
-    export const choose = utils.choose;
-    export const clone = utils.clone;
-    export const devEnv = utils.devEnv;
-    export const dict = utils.dict;
-    export const getLibConfig = utils.getLibConfig;
-    export const getProcess = utils.getProcess;
-    export const handleException = utils.handleException;
-    export const identity = utils.identity;
-    export const isBrowser = utils.isBrowser;
-    export const objectMap = utils.objectMap;
-    export const objectReduce = utils.objectReduce;
-    export const randomInt = utils.randomInt;
-    export const swap = utils.swap;
-    export const timeUnit = utils.timeUnit;
+    export const access: typeof utils.access;
+    export const choose: typeof utils.choose;
+    export const clone: typeof utils.clone;
+    export const devEnv: typeof utils.devEnv;
+    export const dict: typeof utils.dict;
+    export const getLibConfig: typeof utils.getLibConfig;
+    export const getProcess: typeof utils.getProcess;
+    export const handleException: typeof utils.handleException;
+    export const identity: typeof utils.identity;
+    export const isBrowser: typeof utils.isBrowser;
+    export const objectMap: typeof utils.objectMap;
+    export const objectReduce: typeof utils.objectReduce;
+    export const randomInt: typeof utils.randomInt;
+    export const swap: typeof utils.swap;
+    export const timeUnit: typeof utils.timeUnit;
 
 
 
