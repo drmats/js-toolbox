@@ -91,6 +91,7 @@ export const func = funcModule
  */
 export {
     average,
+    clamp,
     log10,
     log2,
     roundIfClose,

@@ -541,6 +541,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * If input is greater than zero then return it, else return zero.
+         */
+        export function clamp (n: number): number;
+
+
+        /**
          * Base 10 logarithm.
          */
         export function log10 (x: number): number;
@@ -568,6 +574,7 @@ declare module "@xcmats/js-toolbox" {
     }
 
     export const average: typeof math.average;
+    export const clamp: typeof math.clamp;
     export const log10: typeof math.log10;
     export const log2: typeof math.log2;
     export const roundIfClose: typeof math.roundIfClose;

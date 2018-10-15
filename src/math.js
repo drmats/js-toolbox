@@ -22,6 +22,18 @@ export const average = (arr) => sum(arr) / arr.length
 
 
 /**
+ * If input is greater than zero then return it, else return zero.
+ *
+ * @function clamp
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const clamp = (n) => n > 0 ? n : 0
+
+
+
+
+/**
  * Base 10 logarithm.
  *
  * @function log10
