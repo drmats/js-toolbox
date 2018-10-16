@@ -14,7 +14,7 @@ import {
     head,
     last,
     range,
-    tail
+    tail,
 } from "./array"
 import { Y } from "./func"
 
