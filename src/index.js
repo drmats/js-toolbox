@@ -9,7 +9,7 @@
 
 
 /**
- * @see {@link array.js}
+ * @see {@link module:array}
  */
 export {
     countBy,
@@ -31,7 +31,7 @@ export const array = arrayModule
 
 
 /**
- * @see {@link async.js}
+ * @see {@link module:async}
  */
 export {
     delay,
@@ -49,7 +49,7 @@ export const async = asyncModule
 
 
 /**
- * @see {@link codec.js}
+ * @see {@link module:codec}
  */
 export {
     b64dec,
@@ -72,7 +72,7 @@ export const codec = codecModule
 
 
 /**
- * @see {@link func.js}
+ * @see {@link module:func}
  */
 export {
     compose,
@@ -87,7 +87,7 @@ export const func = funcModule
 
 
 /**
- * @see {@link math.js}
+ * @see {@link module:math}
  */
 export {
     average,
@@ -104,7 +104,7 @@ export const math = mathModule
 
 
 /**
- * @see {@link redux.js}
+ * @see {@link module:redux}
  */
 export {
     createReducer,
@@ -116,7 +116,7 @@ export const redux = reduxModule
 
 
 /**
- * @see {@link string.js}
+ * @see {@link module:string}
  */
 export {
     asciiLetters,
@@ -148,7 +148,7 @@ export const string = stringModule
 
 
 /**
- * @see {@link type.js}
+ * @see {@link module:type}
  */
 export {
     isFunction,
@@ -167,7 +167,7 @@ export const type = typeModule
 
 
 /**
- * @see {@link utils.js}
+ * @see {@link module:utils}
  */
 export {
     access,

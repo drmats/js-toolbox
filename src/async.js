@@ -33,7 +33,7 @@ import { timeUnit } from "./utils"
  *
  * @async
  * @function delay
- * @see {@link async.timeout}
+ * @see [timeout]{@link module:async~timeout}
  * @param {Number} [time=timeUnit.second]
  * @param {Function} [cancel=()=>null]
  * @returns {Promise.<Number>}

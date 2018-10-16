@@ -4,7 +4,6 @@
  * @module @xcmats/js-toolbox
  * @license Apache-2.0
  * @author drmats
- * @see {@link ../src/index.js}
  */
 
 
@@ -17,7 +16,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace array
-     * @see {@link ../src/array.js}
+     * @see {@link module:array}
      */
     export namespace array {
 
@@ -152,7 +151,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace async
-     * @see {@link ../src/async.js}
+     * @see {@link module:async}
      */
     export namespace async {
 
@@ -341,7 +340,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace codec
-     * @see {@link ../src/codec.js}
+     * @see {@link module:codec}
      */
     export namespace codec {
 
@@ -460,7 +459,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace func
-     * @see {@link ../src/func.js}
+     * @see {@link module:func}
      */
     export namespace func {
 
@@ -530,7 +529,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace math
-     * @see {@link ../src/math.js}
+     * @see {@link module:math}
      */
     export namespace math {
 
@@ -585,7 +584,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace redux
-     * @see {@link ../src/redux.js}
+     * @see {@link module:redux}
      */
     export namespace redux {
 
@@ -603,7 +602,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace string
-     * @see {@link ../src/string.js}
+     * @see {@link module:string}
      */
     export namespace string {
 
@@ -807,7 +806,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace type
-     * @see {@link ../src/type.js}
+     * @see {@link module:type}
      */
     export namespace type {
 
@@ -878,7 +877,7 @@ declare module "@xcmats/js-toolbox" {
 
     /**
      * @namespace utils
-     * @see {@link ../src/utils.js}
+     * @see {@link module:utils}
      */
     export namespace utils {
 
