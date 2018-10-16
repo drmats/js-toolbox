@@ -136,6 +136,22 @@ export const digits = () => "0123456789"
 
 
 /**
+ * Enumeration (used by `ellipsis` and `shorten`)
+ * indicating position in a string.
+ *
+ * @private
+ * @constant position
+ */
+const position = Object.freeze({
+    BEGIN: 0,
+    MIDDLE: 1,
+    END: 2,
+})
+
+
+
+
+/**
  * Constructs new string with inserted `sep` (of default value `…`)
  * at the `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
  * Returned string has the same length as input string
@@ -151,20 +167,20 @@ export const digits = () => "0123456789"
 export const ellipsis = (str, placing = 1, sep = "…") => {
     let x = str.split(empty())
     if (str.length >= sep.length) {
-        if (placing === 1) {             // ellipsis.MIDDLE
+        if (placing === position.MIDDLE) {
             x.splice(
                 Math.floor(x.length / 2) - Math.floor(sep.length / 2),
                 sep.length, sep
             )
-        } else if (placing === 0) {      // ellipsis.BEGIN
+        } else if (placing === position.BEGIN) {
             x.splice(0, sep.length, sep)
-        } else if (placing === 2) {      // ellipsis.END
+        } else if (placing === position.END) {
             x.splice(x.length - sep.length, sep.length, sep)
         }
     }
     return x.join(empty())
 }
-Object.freeze(Object.assign(ellipsis, { BEGIN: 0, MIDDLE: 1, END: 2 }))
+Object.freeze(Object.assign(ellipsis, position))
 
 
 
@@ -299,18 +315,18 @@ export const random = (size = 0, letters = asciiLetters() + digits()) =>
 export const shorten = (str, len = Infinity, placing = 1, sep = "…") => {
     let x = str.split(empty())
     if (len < str.length) {
-        if (placing === 1) {             // shorten.MIDDLE
+        if (placing === position.MIDDLE) {
             x.splice(Math.floor(len/2), str.length - len)
-        } else if (placing === 0) {      // shorten.BEGIN
+        } else if (placing === position.BEGIN) {
             x.splice(0, x.length - len)
-        } else if (placing === 2) {      // shorten.END
+        } else if (placing === position.END) {
             x.splice(len, x.length - len)
         }
         return ellipsis(x.join(empty()), placing, sep)
     }
     return str
 }
-Object.freeze(Object.assign(shorten, ellipsis))
+Object.freeze(Object.assign(shorten, position))
 
 
 
