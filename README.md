@@ -179,6 +179,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     flatten: [Function: flatten],
     head: [Function: head],
     init: [Function: init],
+    isSorted: [Function: isSorted],
     last: [Function: last],
     range: [Function: range],
     shuffle: [Function: shuffle],

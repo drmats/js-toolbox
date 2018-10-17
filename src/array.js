@@ -131,6 +131,22 @@ export const init = (arr) => arr.slice(0, arr.length-1)
 
 
 /**
+ * Checks if a given array is sorted.
+ *
+ * @function isSorted
+ * @param {Array.<T>} arr Array to check.
+ * @param {Function} [cmp] Comparison function.
+ */
+export const isSorted = (arr, cmp = (a, b) => a <= b) => {
+    for (let i = 0;  i < arr.length - 1;  i += 1)
+        if (!cmp(arr[i], arr[i+1])) return false
+    return true
+}
+
+
+
+
+/**
  * Return last element of the given array.
  *
  * @function last

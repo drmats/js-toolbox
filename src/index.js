@@ -18,6 +18,7 @@ export {
     flatten,
     head,
     init,
+    isSorted,
     last,
     range,
     shuffle,

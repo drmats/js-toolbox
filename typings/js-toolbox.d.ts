@@ -85,6 +85,15 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Checks if a given array is sorted.
+         */
+        export function isSorted (
+            arr: T[],
+            cmp: (a: T, b: T) => boolean
+        ): boolean;
+
+
+        /**
          * Return last element of the given array.
          */
         export function last (arr: any[] | string): any | string;
