@@ -149,6 +149,7 @@ declare module "@xcmats/js-toolbox" {
     export const flatten: typeof array.flatten;
     export const head: typeof array.head;
     export const init: typeof array.init;
+    export const isSorted: typeof array.isSorted;
     export const last: typeof array.last;
     export const range: typeof array.range;
     export const shuffle: typeof array.shuffle;
