@@ -87,7 +87,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Checks if a given array is sorted.
          */
-        export function isSorted (
+        export function isSorted<T> (
             arr: T[],
             cmp: (a: T, b: T) => boolean
         ): boolean;
