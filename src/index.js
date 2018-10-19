@@ -179,6 +179,7 @@ export {
     getLibConfig,
     getProcess,
     handleException,
+    handleRejection,
     identity,
     isBrowser,
     objectMap,

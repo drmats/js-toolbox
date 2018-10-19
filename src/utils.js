@@ -218,6 +218,24 @@ export const handleException = (fn, handler = null) => {
 
 
 /**
+ * Handle rejections in expressions.
+ * Async version of `handleException`.
+ *
+ * @async
+ * @function handleRejection
+ * @param {Function} fn
+ * @param {Function} [handler]
+ * @returns {Promise}
+ */
+export const handleRejection = async (fn, handler = null) => {
+    try { return await fn() }
+    catch (ex) { return isFunction(handler)  ?  await handler(ex)  :  ex }
+}
+
+
+
+
+/**
  * Return value passed as a first argument.
  *
  * @function identity

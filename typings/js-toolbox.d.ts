@@ -962,16 +962,21 @@ declare module "@xcmats/js-toolbox" {
 
         /**
          * Handle exceptions in expressions.
-         *
-         * @function handleException
-         * @param {Function} fn
-         * @param {Function} [handler]
-         * @returns {*}
          */
         export function handleException<T> (
             fn: () => T,
-            handler?: (p: any) => T
+            handler?: (ex: any) => T
         ): T;
+
+
+        /**
+         * Handle rejections in expressions.
+         * Async version of `handleException`.
+         */
+        export async function handleRejection<T> (
+            fn: () => Promise<T>,
+            handler?: (ex: any) => Promise<T>
+        ): Promise<T>;
 
 
         /**
@@ -1069,6 +1074,7 @@ declare module "@xcmats/js-toolbox" {
     export const getLibConfig: typeof utils.getLibConfig;
     export const getProcess: typeof utils.getProcess;
     export const handleException: typeof utils.handleException;
+    export const handleRejection: typeof utils.handleRejection;
     export const identity: typeof utils.identity;
     export const isBrowser: typeof utils.isBrowser;
     export const objectMap: typeof utils.objectMap;

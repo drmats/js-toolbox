@@ -305,6 +305,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     clone: [Function: clone],
     dict: [Function: dict],
     handleException: [Function: handleException],
+    handleRejection: [Function: handleRejection],
     identity: [Function: identity],
     isBrowser: [Function: isBrowser],
     objectMap: [Function: objectMap],
