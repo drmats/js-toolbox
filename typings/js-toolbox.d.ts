@@ -179,7 +179,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export function delay (
+        export async function delay (
             time?: number,
             cancel?: (canceller: (reason: any) => void) => void
         ): Promise<number>;
@@ -199,7 +199,7 @@ declare module "@xcmats/js-toolbox" {
          * .catch((c) => console.log("Error:", c))
          * ```
          */
-        export function interval<T> (
+        export async function interval<T> (
             f: () => T,
             clear: (canceller: (reason: any) => T) => void,
             time?: number
@@ -229,7 +229,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export function map<T> (
+        export async function map<T> (
             arr: any[],
             f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
@@ -260,7 +260,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export function parMap<T> (
+        export async function parMap<T> (
             arr: any[],
             f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
@@ -296,7 +296,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export function reduce<T> (
+        export async function reduce<T> (
             arr: any[],
             f: (acc: T, el: any, i: number) => Promise<T> | T,
             initAcc: T
@@ -309,7 +309,7 @@ declare module "@xcmats/js-toolbox" {
          * Resolves with result of last `f` execution
          * when `condition` evaluates to `false`.
          */
-        export function repeat<T> (
+        export async function repeat<T> (
             f: () => Promise<T> | T,
             condition: () => boolean
         ): Promise<T>;
@@ -329,7 +329,7 @@ declare module "@xcmats/js-toolbox" {
          * .catch((c) => console.log("Error or cancel:", c))
          * ```
          */
-        export function timeout<T> (
+        export async function timeout<T> (
             f: () => T,
             clear?: (clearer: () => T) => void,
             time?: number
