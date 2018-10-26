@@ -136,6 +136,7 @@ export const init = (arr) => arr.slice(0, arr.length-1)
  * @function isSorted
  * @param {Array.<T>} arr Array to check.
  * @param {Function} [cmp] Comparison function.
+ * @returns {Boolean}
  */
 export const isSorted = (arr, cmp = (a, b) => a <= b) => {
     for (let i = 0;  i < arr.length - 1;  i += 1)
