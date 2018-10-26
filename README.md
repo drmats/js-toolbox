@@ -42,22 +42,22 @@ to bundle it with your project).
     Object.keys(jsToolbox).sort()
     ```
 
-    ```javascript
-    [ "Y",
-    "access",
-    "array",
-    "asciiLetters",
-    "asciiLowercase",
-    "asciiUppercase",
-    "async",
-    "asyncMap",
-    "asyncReduce",
-    "asyncRepeat",
-    "average",
-    "b64dec",
-    "b64enc",
-    ... ]
-    ```
+    > ```javascript
+    > [ "Y",
+    > "access",
+    > "array",
+    > "asciiLetters",
+    > "asciiLowercase",
+    > "asciiUppercase",
+    > "async",
+    > "asyncMap",
+    > "asyncReduce",
+    > "asyncRepeat",
+    > "average",
+    > "b64dec",
+    > "b64enc",
+    > ... ]
+    > ```
 
 * play with `shuffle` and `range` ([link](https://runkit.com/embed/pdk4lfc4ul51)):
 
@@ -65,9 +65,9 @@ to bundle it with your project).
     jsToolbox.shuffle(jsToolbox.range(16))
     ```
 
-    ```javascript
-    [ 14, 12, 15, 8, 13, 4, 5, 6, 1, 7, 10, 0, 2, 3, 9, 11 ]
-    ```
+    > ```javascript
+    > [ 14, 12, 15, 8, 13, 4, 5, 6, 1, 7, 10, 0, 2, 3, 9, 11 ]
+    > ```
 
 * do all other things shown in **examples** section below
 
@@ -100,14 +100,17 @@ $ node
 ```
 
 ```javascript
-> t = require("@xcmats/js-toolbox")
-{ ...
-array:
- { ... },
-...
-utils:
- { ... } }
+t = require("@xcmats/js-toolbox")
 ```
+
+> ```javascript
+> { ...
+> array:
+>  { ... },
+> ...
+> utils:
+>  { ... } }
+> ```
 
 <br />
 
@@ -172,148 +175,175 @@ and have launched _node.js_ session via `npm start` then you're good to go
 * **array** utilities:
 
     ```javascript
-    > array
-    { countBy: [Function: countBy],
-    draw: [Function: draw],
-    findDuplicates: [Function: findDuplicates],
-    flatten: [Function: flatten],
-    head: [Function: head],
-    init: [Function: init],
-    isSorted: [Function: isSorted],
-    last: [Function: last],
-    range: [Function: range],
-    shuffle: [Function: shuffle],
-    sparse: [Function: sparse],
-    tail: [Function: tail] }
+    array
     ```
+
+    > ```javascript
+    > { countBy: [Function: countBy],
+    > draw: [Function: draw],
+    > findDuplicates: [Function: findDuplicates],
+    > flatten: [Function: flatten],
+    > head: [Function: head],
+    > init: [Function: init],
+    > isSorted: [Function: isSorted],
+    > last: [Function: last],
+    > range: [Function: range],
+    > shuffle: [Function: shuffle],
+    > sparse: [Function: sparse],
+    > tail: [Function: tail] }
+    > ```
 
 
 * **asynchronous programming** helpers:
 
     ```javascript
-    > async
-    { delay: [Function: delay],
-    interval: [Function: interval],
-    map: [Function: map],
-    parMap: [Function: parMap],
-    reduce: [Function: reduce],
-    repeat: [Function: repeat],
-    timeout: [Function: timeout] }
+    async
     ```
+
+    > ```javascript
+    > { delay: [Function: delay],
+    > interval: [Function: interval],
+    > map: [Function: map],
+    > parMap: [Function: parMap],
+    > reduce: [Function: reduce],
+    > repeat: [Function: repeat],
+    > timeout: [Function: timeout] }
+    > ```
 
 
 * **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders:
 
     ```javascript
-    > codec
-    { concatBytes: [Function: concatBytes],
-    compareBytes: [Function: compareBytes],
-    stringToBytes: [Function],
-    bytesToString: [Function],
-    hexToBytes: [Function: hexToBytes],
-    bytesToHex: [Function: bytesToHex],
-    b64dec: [Function],
-    b64enc: [Function],
-    b64ToString: [Function],
-    stringToB64: [Function],
-    b64ToHex: [Function],
-    hexToB64: [Function] }
+    codec
     ```
+
+    > ```javascript
+    > { concatBytes: [Function: concatBytes],
+    > compareBytes: [Function: compareBytes],
+    > stringToBytes: [Function],
+    > bytesToString: [Function],
+    > hexToBytes: [Function: hexToBytes],
+    > bytesToHex: [Function: bytesToHex],
+    > b64dec: [Function],
+    > b64enc: [Function],
+    > b64ToString: [Function],
+    > stringToB64: [Function],
+    > b64ToHex: [Function],
+    > hexToB64: [Function] }
+    > ```
 
 
 * **functional programming**:
 
     ```javascript
-    > func
-    { compose: [Function: compose],
-    curry: [Function: curry],
-    partial: [Function: partial],
-    Y: [Function: Y] }
+    func
     ```
+
+    > ```javascript
+    > { compose: [Function: compose],
+    > curry: [Function: curry],
+    > partial: [Function: partial],
+    > Y: [Function: Y] }
+    > ```
 
 
 * simple **math**:
 
     ```javascript
-    > math
-    { average: [Function: average],
-    clamp: [Function: clamp],
-    log10: [Function: log10],
-    log2: [Function: log2],
-    roundIfClose: [Function: roundIfClose],
-    sum: [Function: sum] }
+    math
     ```
+
+    > ```javascript
+    > { average: [Function: average],
+    > clamp: [Function: clamp],
+    > log10: [Function: log10],
+    > log2: [Function: log2],
+    > roundIfClose: [Function: roundIfClose],
+    > sum: [Function: sum] }
+    > ```
 
 
 * some goodies for **[redux](https://redux.js.org/)**:
 
     ```javascript
-    > redux
-    { createReducer: [Function: createReducer] }
+    redux
     ```
+
+    > ```javascript
+    > { createReducer: [Function: createReducer] }
+    > ```
 
 
 * **string** utilities:
 
     ```javascript
-    > string
-    { asciiLetters: [Function: asciiLetters],
-    asciiLowercase: [Function: asciiLowercase],
-    asciiUppercase: [Function: asciiUppercase],
-    big: [Function],
-    camelToPascal: [Function: camelToPascal],
-    camelToSnake: [Function: camelToSnake],
-    capitalize: [Function: capitalize],
-    digits: [Function: digits],
-    ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
-    empty: [Function: empty],
-    space: [Function: space],
-    padLeft: [Function: padLeft],
-    padRight: [Function: padRight],
-    pascalToCamel: [Function: pascalToCamel],
-    pascalToSnake: [Function: pascalToSnake],
-    quote: [Function: quote],
-    random: [Function: random],
-    shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
-    snakeToCamel: [Function: snakeToCamel],
-    snakeToPascal: [Function: snakeToPascal],
-    wrap: [Function: wrap] }
+    string
     ```
+
+    > ```javascript
+    > { asciiLetters: [Function: asciiLetters],
+    > asciiLowercase: [Function: asciiLowercase],
+    > asciiUppercase: [Function: asciiUppercase],
+    > big: [Function],
+    > camelToPascal: [Function: camelToPascal],
+    > camelToSnake: [Function: camelToSnake],
+    > capitalize: [Function: capitalize],
+    > digits: [Function: digits],
+    > ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
+    > empty: [Function: empty],
+    > space: [Function: space],
+    > padLeft: [Function: padLeft],
+    > padRight: [Function: padRight],
+    > pascalToCamel: [Function: pascalToCamel],
+    > pascalToSnake: [Function: pascalToSnake],
+    > quote: [Function: quote],
+    > random: [Function: random],
+    > shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
+    > snakeToCamel: [Function: snakeToCamel],
+    > snakeToPascal: [Function: snakeToPascal],
+    > wrap: [Function: wrap] }
+    > ```
 
 
 * **type** helpers:
 
     ```javascript
-    > type
-    { isFunction: [Function: isFunction],
-    isNumber: [Function: isNumber],
-    isObject: [Function: isObject],
-    isString: [Function: isString],
-    maxInt: 9007199254740991,
-    minInt: -9007199254740991,
-    nullToUndefined: [Function: nullToUndefined],
-    toBool: [Function: toBool] }
+    type
     ```
+
+    > ```javascript
+    > { isFunction: [Function: isFunction],
+    > isNumber: [Function: isNumber],
+    > isObject: [Function: isObject],
+    > isString: [Function: isString],
+    > maxInt: 9007199254740991,
+    > minInt: -9007199254740991,
+    > nullToUndefined: [Function: nullToUndefined],
+    > toBool: [Function: toBool] }
+    > ```
 
 
 * uncategorized **utilities**:
 
     ```javascript
-    > utils
-    { access: [Function: access],
-    choose: [Function: choose],
-    clone: [Function: clone],
-    dict: [Function: dict],
-    handleException: [Function: handleException],
-    handleRejection: [Function: handleRejection],
-    identity: [Function: identity],
-    isBrowser: [Function: isBrowser],
-    objectMap: [Function: objectMap],
-    objectReduce: [Function: objectReduce],
-    randomInt: [Function: randomInt],
-    swap: [Function: swap],
-    timeUnit: { ... } }
+    utils
     ```
+
+    > ```javascript
+    > { access: [Function: access],
+    > choose: [Function: choose],
+    > clone: [Function: clone],
+    > dict: [Function: dict],
+    > handleException: [Function: handleException],
+    > handleRejection: [Function: handleRejection],
+    > identity: [Function: identity],
+    > isBrowser: [Function: isBrowser],
+    > objectMap: [Function: objectMap],
+    > objectReduce: [Function: objectReduce],
+    > randomInt: [Function: randomInt],
+    > swap: [Function: swap],
+    > timeUnit: { ... } }
+    > ```
 
 <br />
 
