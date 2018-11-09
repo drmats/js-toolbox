@@ -242,6 +242,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ```javascript
     > { compose: [Function: compose],
     > curry: [Function: curry],
+    > flow: [Function: flow],
     > partial: [Function: partial],
     > Y: [Function: Y] }
     > ```
@@ -727,15 +728,10 @@ and have launched _node.js_ session via `npm start` then you're good to go
 * Function composition.
 
     ```javascript
-    shortenAndQuote = func.compose(string.quote, string.shorten)
-    ```
-
-    > ```javascript
-    > [Function]
-    > ```
-
-    ```javascript
-    shortenAndQuote(
+    func.compose(
+        string.quote,
+        string.shorten
+    )(
         "When I find myself in times of trouble",
         20, string.shorten.END
     )
@@ -746,7 +742,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ```
 
     ```javascript
-    stringToHex = func.compose(codec.bytesToHex, codec.stringToBytes)
+    stringToHex = func.flow(codec.stringToBytes, codec.bytesToHex)
     ```
 
     > ```javascript
@@ -762,7 +758,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ```
 
     ```javascript
-    hexToString = func.compose(codec.bytesToString, codec.hexToBytes)
+    hexToString = func.flow(codec.hexToBytes, codec.bytesToString)
     ```
 
     > ```javascript

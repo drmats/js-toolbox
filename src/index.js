@@ -78,6 +78,7 @@ export const codec = codecModule
 export {
     compose,
     curry,
+    flow,
     partial,
     Y,
 } from "./func"

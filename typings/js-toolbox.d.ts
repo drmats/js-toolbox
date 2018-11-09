@@ -474,7 +474,7 @@ declare module "@xcmats/js-toolbox" {
     export namespace func {
 
         /**
-         * Function composition.
+         * Function composition - read as "compose backward" or "but first".
          *
          * ```
          * let:
@@ -496,9 +496,25 @@ declare module "@xcmats/js-toolbox" {
          * f(a, b, c, d)  <=>  curry(f)(a)(b)(c)(d)()
          * ```
          */
-        export function curry <T> (
+        export function curry<T> (
             f: (...args: any[]) => T
         ): (...args: any[]) => Function | T;
+
+
+        /**
+          * Function composition - read as "compose forward" or "and then".
+          *
+          * ```
+          * let:
+          * f: X -> Y,  g: Y -> Z
+          *
+          * then:
+          * g(f(x))  <=>  (g . f)(x)  <=>  flow(f, g)(x)
+          * ```
+          *
+          * Inspired by {@link https://github.com/tfausak/flow}.
+         */
+        export function flow (...fs: Function[]): Function;
 
 
         /**
@@ -531,6 +547,7 @@ declare module "@xcmats/js-toolbox" {
 
     export const compose: typeof func.compose;
     export const curry: typeof func.curry;
+    export const flow: typeof func.flow;
     export const partial: typeof func.partial;
     export const Y: typeof func.Y;
 

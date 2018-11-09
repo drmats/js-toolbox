@@ -1,5 +1,5 @@
 /**
- * Functional tools.
+ * Functional programming tools.
  *
  * @module func
  * @license Apache-2.0
@@ -15,7 +15,7 @@ import { head } from "./array"
 
 
 /**
- * Function composition.
+ * Function composition - read as "compose backward" or "but first".
  *
  * ```
  * let:
@@ -49,6 +49,28 @@ export const compose = (...fs) =>
  */
 export const curry = (f) => (...args) =>
     args.length === 0  ?  f()  :  curry(partial(f)(...args))
+
+
+
+
+/**
+ * Function composition - read as "compose forward" or "and then".
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  <=>  (g . f)(x)  <=>  flow(f, g)(x)
+ * ```
+ *
+ * Inspired by {@link https://github.com/tfausak/flow}.
+ *
+ * @function flow
+ * @param {...Function} fs
+ * @returns {Function}
+ */
+export const flow = (...fs) => compose(...fs.reverse())
 
 
 
