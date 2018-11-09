@@ -243,6 +243,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > { compose: [Function: compose],
     > curry: [Function: curry],
     > flow: [Function: flow],
+    > identity: [Function: identity],
     > partial: [Function: partial],
     > Y: [Function: Y] }
     > ```
@@ -337,7 +338,6 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > dict: [Function: dict],
     > handleException: [Function: handleException],
     > handleRejection: [Function: handleRejection],
-    > identity: [Function: identity],
     > isBrowser: [Function: isBrowser],
     > objectMap: [Function: objectMap],
     > objectReduce: [Function: objectReduce],

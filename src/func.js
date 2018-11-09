@@ -76,6 +76,18 @@ export const flow = (...fs) => compose(...fs.reverse())
 
 
 /**
+ * Return value passed as a first argument.
+ *
+ * @function identity
+ * @param {*} val
+ * @returns {*}
+ */
+export const identity = (val) => val
+
+
+
+
+/**
  * Partial application.
  *
  * Bind `init` arguments to function `f` and construct

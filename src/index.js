@@ -79,6 +79,7 @@ export {
     compose,
     curry,
     flow,
+    identity,
     partial,
     Y,
 } from "./func"
@@ -181,7 +182,6 @@ export {
     getProcess,
     handleException,
     handleRejection,
-    identity,
     isBrowser,
     objectMap,
     objectReduce,

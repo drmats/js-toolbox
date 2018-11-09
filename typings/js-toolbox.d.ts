@@ -518,6 +518,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Return value passed as a first argument.
+         */
+        export function identity<T> (val: T): T;
+
+
+        /**
          * Partial application.
          *
          * Bind `init` arguments to function `f` and construct
@@ -548,6 +554,7 @@ declare module "@xcmats/js-toolbox" {
     export const compose: typeof func.compose;
     export const curry: typeof func.curry;
     export const flow: typeof func.flow;
+    export const identity: typeof func.identity;
     export const partial: typeof func.partial;
     export const Y: typeof func.Y;
 
@@ -997,12 +1004,6 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Return value passed as a first argument.
-         */
-        export function identity<T> (val: T): T;
-
-
-        /**
          * Check current runtime environment.
          */
         export function isBrowser (): boolean;
@@ -1099,7 +1100,6 @@ declare module "@xcmats/js-toolbox" {
     export const getProcess: typeof utils.getProcess;
     export const handleException: typeof utils.handleException;
     export const handleRejection: typeof utils.handleRejection;
-    export const identity: typeof utils.identity;
     export const isBrowser: typeof utils.isBrowser;
     export const objectMap: typeof utils.objectMap;
     export const objectReduce: typeof utils.objectReduce;

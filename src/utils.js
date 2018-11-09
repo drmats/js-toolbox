@@ -237,18 +237,6 @@ export const handleRejection = async (fn, handler = null) => {
 
 
 /**
- * Return value passed as a first argument.
- *
- * @function identity
- * @param {*} val
- * @returns {*}
- */
-export const identity = (val) => val
-
-
-
-
-/**
  * Check current runtime environment.
  *
  * @function isBrowser

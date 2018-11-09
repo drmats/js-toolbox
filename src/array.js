@@ -9,9 +9,9 @@
 
 
 
+import { identity } from "./func"
 import { isNumber } from "./type"
 import {
-    identity,
     objectReduce,
     randomInt,
 } from "./utils"
