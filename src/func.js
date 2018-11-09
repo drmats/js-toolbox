@@ -98,7 +98,7 @@ export const identity = (val) => val
  * ```
  * let f = (a, b) => a + b
  * f(3, 4)  ->  7
- * let g = partial(f)(3)
+ * let g = partial(f)(3)  // note that `partial` is in *curried* form
  * g(4)  ->  7
  * ```
  *
@@ -108,6 +108,43 @@ export const identity = (val) => val
  */
 export const partial = (f) => (...init) =>
     (...rest) => f(...[...init, ...rest])
+
+
+
+
+/**
+ * Function arguments rearrangement.
+ *
+ * Takes function `f` and `indices` and returns a new function,
+ * which has it's arguments arranged according to `indices`.
+ *
+ * Example:
+ *
+ * ```
+ * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
+ *
+ * let rePad = rearg(string.padLeft)(1, 2, 0)  // *curried* form
+ * rePad(10, ".", "Bar")  ->  ".......Bar"
+ *
+ * console.log("a", "b", "c", "d", "e")
+ * a b c d e
+ *
+ * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+ * revConsole("a", "b", "c", "d", "e")
+ * e d c b a
+ * ```
+ *
+ * @function rearg
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const rearg = (f) => (...indices) =>
+    (...args) => f(
+        ...indices
+            .map((n, o) => [n, o])
+            .sort(([n1], [n2]) => n1 - n2)
+            .map(([_, o]) => args[o])
+    )
 
 
 

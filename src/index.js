@@ -81,6 +81,7 @@ export {
     flow,
     identity,
     partial,
+    rearg,
     Y,
 } from "./func"
 import * as funcModule from "./func"

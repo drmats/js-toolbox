@@ -534,13 +534,40 @@ declare module "@xcmats/js-toolbox" {
          * ```
          * let f = (a, b) => a + b
          * f(3, 4)  ->  7
-         * let g = partial(f)(3)
+         * let g = partial(f)(3)  // note that `partial` is in *curried* form
          * g(4)  ->  7
          * ```
          */
         export function partial<T> (
             f: (...args: any[]) => T
         ): (...init: any[]) => (...rest: any[]) => T;
+
+
+        /**
+         * Function arguments rearrangement.
+         *
+         * Takes function `f` and `indices` and returns a new function,
+         * which has it's arguments arranged according to `indices`.
+         *
+         * Example:
+         *
+         * ```
+         * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
+         *
+         * let rePad = rearg(string.padLeft)(1, 2, 0)  // *curried* form
+         * rePad(10, ".", "Bar")  ->  ".......Bar"
+         *
+         * console.log("a", "b", "c", "d", "e")
+         * a b c d e
+         *
+         * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+         * revConsole("a", "b", "c", "d", "e")
+         * e d c b a
+         * ```
+         */
+        export function rearg<T> (
+            f: (...args: any[]) => T
+        ): (...indices: number[]) => (...args: any[]) => T;
 
 
         /**
@@ -556,6 +583,7 @@ declare module "@xcmats/js-toolbox" {
     export const flow: typeof func.flow;
     export const identity: typeof func.identity;
     export const partial: typeof func.partial;
+    export const rearg: typeof func.rearg;
     export const Y: typeof func.Y;
 
 

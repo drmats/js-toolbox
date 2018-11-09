@@ -245,6 +245,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > flow: [Function: flow],
     > identity: [Function: identity],
     > partial: [Function: partial],
+    > rearg: [Function: rearg],
     > Y: [Function: Y] }
     > ```
 
