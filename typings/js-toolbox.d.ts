@@ -755,6 +755,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Construct newline.
+         */
+        export function nl (): string;
+
+
+        /**
          * Prepend given `input` string with an appropriate amount of
          * `ch` characters so that returning string length is equal to `len`.
          * If `len` is smaller than length of `input` then `input` is being
@@ -852,6 +858,7 @@ declare module "@xcmats/js-toolbox" {
     export const ellipsis: typeof string.ellipsis;
     export const emptyString: typeof string.empty;
     export const spaceString: typeof string.space;
+    export const nlString: typeof string.nl;
     export const padLeft: typeof string.padLeft;
     export const padRight: typeof string.padRight;
     export const pascalToCamel: typeof string.pascalToCamel;

@@ -134,6 +134,7 @@ export {
     ellipsis,
     empty as emptyString,
     space as spaceString,
+    nl as nlString,
     padLeft,
     padRight,
     pascalToCamel,

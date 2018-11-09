@@ -208,6 +208,17 @@ export const space = () => " "
 
 
 /**
+ * Construct newline.
+ *
+ * @function nl
+ * @returns {String}
+ */
+export const nl = () => "\n"
+
+
+
+
+/**
  * Prepend given `input` string with an appropriate amount of
  * `ch` characters so that returning string length is equal to `len`.
  * If `len` is smaller than length of `input` then `input` is being

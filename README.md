@@ -125,8 +125,8 @@ import {
     string,
 } from "@xcmats/js-toolbox"
 
-const b64stringify = func.compose(
-    codec.stringToB64, JSON.stringify
+const b64stringify = func.flow(
+    JSON.stringify, codec.stringToB64
 )
 
 let stupidIdea = b64stringify({
@@ -295,6 +295,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
     > empty: [Function: empty],
     > space: [Function: space],
+    > nl: [Function: nl],
     > padLeft: [Function: padLeft],
     > padRight: [Function: padRight],
     > pascalToCamel: [Function: pascalToCamel],
