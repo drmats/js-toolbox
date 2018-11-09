@@ -1064,6 +1064,13 @@ declare module "@xcmats/js-toolbox" {
         }
         export const timeUnit: TimeUnit;
 
+
+        /**
+         * Assign argument to the global object.
+         * Async-console-dev-helper.
+         */
+        export function to_(name?: string): Function;
+
     }
 
     export const access: typeof utils.access;
@@ -1082,6 +1089,7 @@ declare module "@xcmats/js-toolbox" {
     export const randomInt: typeof utils.randomInt;
     export const swap: typeof utils.swap;
     export const timeUnit: typeof utils.timeUnit;
+    export const to_: typeof utils.to_;
 
 
 

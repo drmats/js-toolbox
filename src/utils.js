@@ -17,6 +17,7 @@ import {
     name,
     version,
 } from "../package.json"
+import { quote } from "./string"
 import {
     isFunction,
     isObject,
@@ -362,3 +363,37 @@ export const timeUnit = Object.freeze({
     quarter: 7889400000,
     year: 31557600000,
 })
+
+
+
+
+/**
+ * Assign argument to the global object.
+ * Async-console-dev-helper.
+ *
+ * @function to_
+ * @param {String} name
+ * @returns {Function} (*) => *
+ */
+export const to_ = (name = "_") =>
+    (val) => {
+        // eslint-disable-next-line no-console
+        console.log(`${name} = ${quote(typeof val, "[]")}`)
+        handleException(
+            () => {
+                (window || self)[name] = val
+                // eslint-disable-next-line no-console
+                console.log(val)
+            },
+            () => {
+                if (!isBrowser()) {
+                    let { repl } = require("repl")
+                    repl.context[name] = val
+                    // eslint-disable-next-line no-console
+                    console.log(val)
+                    repl.context.process.stdout.write(repl._prompt)
+                }
+            }
+        )
+        return val
+    }

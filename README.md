@@ -342,7 +342,8 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > objectReduce: [Function: objectReduce],
     > randomInt: [Function: randomInt],
     > swap: [Function: swap],
-    > timeUnit: { ... } }
+    > timeUnit: { ... },
+    > to_: [Function: to_] }
     > ```
 
 <br />

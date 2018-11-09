@@ -187,6 +187,7 @@ export {
     randomInt,
     swap,
     timeUnit,
+    to_,
 } from "./utils"
 import * as utilsModule from "./utils"
 export const utils = utilsModule
