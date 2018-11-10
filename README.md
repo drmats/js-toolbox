@@ -192,7 +192,8 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > shuffle: [Function: shuffle],
     > sparse: [Function: sparse],
     > tail: [Function: tail],
-    > zipWith: [Function: zipWith] }
+    > zipWith: [Function: zipWith],
+    > zip: [Function] }
     > ```
 
 

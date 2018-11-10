@@ -154,11 +154,10 @@ export const isContinuous = (
  * @param {Function} [cmp] Comparison function.
  * @returns {Boolean}
  */
-export const isSorted = (arr, cmp = (a, b) => a <= b) => {
-    if (!Array.isArray(arr)) return false
-    return zipWith((a, b) => [a, b])(arr, tail(arr))
-        .every((pair) => cmp(...pair))
-}
+export const isSorted = (arr, cmp = (a, b) => a <= b) =>
+    Array.isArray(arr) ?
+        zip(arr, tail(arr)).every((pair) => cmp(...pair)) :
+        false
 
 
 
@@ -316,6 +315,10 @@ export const tail = (arr) => arr.slice(1)
  * zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
  * [ 11, 22, 33, 44 ]
  * ```
+ *
+ * @function zipWith
+ * @param {Function} f
+ * @return {Funcion}
  */
 export const zipWith = (f) => (...arrs) => {
     let
@@ -332,3 +335,22 @@ export const zipWith = (f) => (...arrs) => {
 
     return out
 }
+
+
+
+
+/**
+ * Zip given arrays.
+ *
+ * Example:
+ *
+ * ```
+ * zip([1, 2, 3, 4, 5], ["a", "b", "c", "d", "e"])
+ * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
+ * ```
+ *
+ * @function zip
+ * @param {...Array} arrs Arrays to zip.
+ * @return {Array}
+ */
+export const zip = zipWith((...args) => args)

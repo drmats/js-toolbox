@@ -26,6 +26,7 @@ export {
     sparse,
     tail,
     zipWith,
+    zip,
 } from "./array"
 import * as arrayModule from "./array"
 export const array = arrayModule

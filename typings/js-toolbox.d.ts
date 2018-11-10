@@ -165,6 +165,19 @@ declare module "@xcmats/js-toolbox" {
             f: (...args: any[]) => T
         ): (...arrs: any[][]) => T[];
 
+
+        /**
+         * Zip given arrays.
+         *
+         * Example:
+         *
+         * ```
+         * zip([1, 2, 3, 4, 5], ["a", "b", "c", "d", "e"])
+         * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
+         * ```
+         */
+        export function zip (...arrs: any[][]): any[][]
+
     }
 
     export const countBy: typeof array.countBy;
@@ -181,6 +194,7 @@ declare module "@xcmats/js-toolbox" {
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;
     export const zipWith: typeof array.zipWith;
+    export const zip: typeof array.zip;
 
 
 
