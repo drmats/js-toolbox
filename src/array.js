@@ -304,3 +304,32 @@ export const sparse = (...args) => {
  * @returns {Array|String}
  */
 export const tail = (arr) => arr.slice(1)
+
+
+
+
+/**
+ * Zip given arrays using provided `f` operator.
+ *
+ * Example:
+ *
+ * ```
+ * zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+ * [ 11, 22, 33, 44 ]
+ * ```
+ */
+export const zipWith = (f) => (...arrs) => {
+    let
+        length = head(
+            arrs
+                .map((arr) => arr.length)
+                .sort((a, b) => a - b)
+        ),
+        out = new Array(length)
+
+    for (let i = 0;  i < length;  i += 1) {
+        out[i] = f(...arrs.map((arr) => arr[i]))
+    }
+
+    return out
+}

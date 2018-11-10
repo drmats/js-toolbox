@@ -150,6 +150,21 @@ declare module "@xcmats/js-toolbox" {
          */
         export function tail (arr: any[] | string): any[] | string;
 
+
+        /**
+         * Zip given arrays using provided `f` operator.
+         *
+         * Example:
+         *
+         * ```
+         * zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+         * [ 11, 22, 33, 44 ]
+         * ```
+         */
+        export function zipWith<T> (
+            f: (...args: any[]) => T
+        ): (...arrs: any[][]) => T[];
+
     }
 
     export const countBy: typeof array.countBy;
@@ -165,6 +180,7 @@ declare module "@xcmats/js-toolbox" {
     export const shuffle: typeof array.shuffle;
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;
+    export const zipWith: typeof array.zipWith;
 
 
 

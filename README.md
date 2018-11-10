@@ -191,7 +191,8 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > range: [Function: range],
     > shuffle: [Function: shuffle],
     > sparse: [Function: sparse],
-    > tail: [Function: tail] }
+    > tail: [Function: tail],
+    > zipWith: [Function: zipWith] }
     > ```
 
 
@@ -457,6 +458,17 @@ and have launched _node.js_ session via `npm start` then you're good to go
 
     > ```javascript
     > [ 6, 34, 170, 422, 530, 643, 855, 862 ]
+    > ```
+
+
+* "Zip" given arrays using provided `f` operator.
+
+    ```javascript
+    array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+    ```
+
+    > ```javascript
+    > [ 11, 22, 33, 44 ]
     > ```
 
 <br />
