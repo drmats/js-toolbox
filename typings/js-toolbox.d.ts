@@ -85,11 +85,20 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Checks if a given array is a continuous block.
+         */
+        export function isContinuous<T> (
+            arr: T[],
+            cmp?: (a: T, b: T) => boolean
+        ): boolean;
+
+
+        /**
          * Checks if a given array is sorted.
          */
         export function isSorted<T> (
             arr: T[],
-            cmp: (a: T, b: T) => boolean
+            cmp?: (a: T, b: T) => boolean
         ): boolean;
 
 
@@ -149,6 +158,7 @@ declare module "@xcmats/js-toolbox" {
     export const flatten: typeof array.flatten;
     export const head: typeof array.head;
     export const init: typeof array.init;
+    export const isContinuous: typeof array.isContinuous;
     export const isSorted: typeof array.isSorted;
     export const last: typeof array.last;
     export const range: typeof array.range;

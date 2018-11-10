@@ -131,6 +131,22 @@ export const init = (arr) => arr.slice(0, arr.length-1)
 
 
 /**
+ * Checks if a given array is a continuous block.
+ *
+ * @function isContinuous
+ * @param {Array.<T>} arr Array to check.
+ * @param {Function} [neighbour] Comparison function.
+ * @returns {Boolean}
+ */
+export const isContinuous = (
+    arr = [], neighbour = (a, b) => b - a === 1
+) =>
+    isSorted(arr, neighbour)
+
+
+
+
+/**
  * Checks if a given array is sorted.
  *
  * @function isSorted
@@ -139,6 +155,7 @@ export const init = (arr) => arr.slice(0, arr.length-1)
  * @returns {Boolean}
  */
 export const isSorted = (arr, cmp = (a, b) => a <= b) => {
+    if (!Array.isArray(arr)) return false
     for (let i = 0;  i < arr.length - 1;  i += 1)
         if (!cmp(arr[i], arr[i+1])) return false
     return true

@@ -18,6 +18,7 @@ export {
     flatten,
     head,
     init,
+    isContinuous,
     isSorted,
     last,
     range,
