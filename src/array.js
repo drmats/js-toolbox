@@ -156,9 +156,8 @@ export const isContinuous = (
  */
 export const isSorted = (arr, cmp = (a, b) => a <= b) => {
     if (!Array.isArray(arr)) return false
-    for (let i = 0;  i < arr.length - 1;  i += 1)
-        if (!cmp(arr[i], arr[i+1])) return false
-    return true
+    return zipWith((a, b) => [a, b])(arr, tail(arr))
+        .every((pair) => cmp(...pair))
 }
 
 
