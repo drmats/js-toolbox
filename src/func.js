@@ -9,7 +9,10 @@
 
 
 
-import { head } from "./array"
+import {
+    head,
+    isContinuous,
+} from "./array"
 
 
 
@@ -138,13 +141,23 @@ export const partial = (f) => (...init) =>
  * @param {Function} f
  * @returns {Function}
  */
-export const rearg = (f) => (...indices) =>
-    (...args) => f(
-        ...indices
-            .map((n, o) => [n, o])
-            .sort(([n1], [n2]) => n1 - n2)
-            .map(([_, o]) => args[o])
-    )
+export const rearg = (f) => (...indices) => {
+    if (indices.length === 0) return f
+
+    let indexPairs = indices
+        .map((n, o) => [n, o])
+        .sort(([n1], [n2]) => n1 - n2)
+
+    if (
+        !isContinuous(indexPairs, ([n1], [n2]) => n2 - n1 === 1)  ||
+        compose(head, head)(indexPairs)  !== 0
+    ) {
+        throw new RangeError("Not all required arguments are covered.")
+    }
+
+    return (...args) => f(...indexPairs.map(([_, o]) => args[o]))
+
+}
 
 
 
