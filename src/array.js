@@ -64,6 +64,34 @@ export const draw = (arr) => arr[randomInt() % arr.length]
 
 
 /**
+ * Drop the first `n` elements of a given array.
+ * Returns array without the first `n` elements.
+ *
+ * @function drop
+ * @param {Number} n
+ * @returns {Function} which takes `arr` and returns
+ *      array without the first `n` elements.
+ */
+export const drop = (n) => (arr) => arr.slice(n)
+
+
+
+
+/**
+ * Drop the last `n` elements of a given array.
+ * Returns array without the last `n` elements.
+ *
+ * @function dropLast
+ * @param {Number} n
+ * @returns {Function} which takes `arr` and returns
+ *      array without the last `n` elements.
+ */
+export const dropLast = (n) => (arr) => arr.slice(0, arr.length - n)
+
+
+
+
+/**
  * Find duplicates in a given array.
  *
  * Optionally, before comparision, each element is transformed by
@@ -302,6 +330,32 @@ export const sparse = (...args) => {
  * @returns {Array|String}
  */
 export const tail = (arr) => arr.slice(1)
+
+
+
+
+/**
+ * Take the first `n` elements of a given array.
+ *
+ * @function take
+ * @param {Number} n
+ * @returns {Function} which takes `arr` and return first `n` elements
+ *
+ */
+export const take = (n) => (arr) => arr.slice(0, n)
+
+
+
+
+/**
+ * Take the last `n` elements of a given array.
+ *
+ * @function takeLast
+ * @param {Number} n
+ * @returns {Function} which takes `arr` and return last `n` elements
+ *
+ */
+export const takeLast = (n) => (arr) => arr.slice(arr.length - n)
 
 
 

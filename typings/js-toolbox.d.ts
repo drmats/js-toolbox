@@ -49,6 +49,20 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Drop the first `n` elements of a given array.
+         * Returns array without the first `n` elements.
+         */
+        export function drop (n: number): (arr: any[]) => any[];
+
+
+        /**
+         * Drop the last `n` elements of a given array.
+         * Returns array without the last `n` elements.
+         */
+        export function dropLast (n: number): (arr: any[]) => any[];
+
+
+        /**
          * Find duplicates in a given array.
          *
          * Optionally, before comparision, each element is transformed by
@@ -152,6 +166,18 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Take the first `n` elements of a given array.
+         */
+        export function take (n: number): (arr: any[]) => any[];
+
+
+        /**
+         * Take the last `n` elements of a given array.
+         */
+        export function takeLast (n: number): (arr: any[]) => any[];
+
+
+        /**
          * Zip given arrays using provided `f` operator.
          *
          * Example:
@@ -182,6 +208,8 @@ declare module "@xcmats/js-toolbox" {
 
     export const countBy: typeof array.countBy;
     export const draw: typeof array.draw;
+    export const drop: typeof array.drop;
+    export const dropLast: typeof array.dropLast;
     export const findDuplicates: typeof array.findDuplicates;
     export const flatten: typeof array.flatten;
     export const head: typeof array.head;
@@ -193,6 +221,8 @@ declare module "@xcmats/js-toolbox" {
     export const shuffle: typeof array.shuffle;
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;
+    export const take: typeof array.take;
+    export const takeLast: typeof array.takeLast;
     export const zipWith: typeof array.zipWith;
     export const zip: typeof array.zip;
 

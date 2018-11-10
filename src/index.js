@@ -14,6 +14,8 @@
 export {
     countBy,
     draw,
+    drop,
+    dropLast,
     findDuplicates,
     flatten,
     head,
@@ -25,6 +27,8 @@ export {
     shuffle,
     sparse,
     tail,
+    take,
+    takeLast,
     zipWith,
     zip,
 } from "./array"
