@@ -375,7 +375,8 @@ export const to_ = (name = "_") =>
             },
             () => {
                 if (!isBrowser()) {
-                    let { repl } = require("repl")
+                    // hide the repl require from webpack
+                    let { repl } = eval("require(\"repl\")")
                     repl.context[name] = val
                     // eslint-disable-next-line no-console
                     console.log(val)
