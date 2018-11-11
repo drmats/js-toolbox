@@ -554,7 +554,9 @@ declare module "@xcmats/js-toolbox" {
          * g(f(x))  <=>  (g . f)(x)  <=>  compose(g, f)(x)
          * ```
          */
-        export function compose (...fs: Function[]): Function;
+        export function compose (
+            ...fs: Function[]
+        ): (...args: any[]) => Function;
 
 
         /**
@@ -584,7 +586,9 @@ declare module "@xcmats/js-toolbox" {
           *
           * Inspired by {@link https://github.com/tfausak/flow}.
          */
-        export function flow (...fs: Function[]): Function;
+        export function flow (
+            ...fs: Function[]
+        ): (...args: any[]) => Function;
 
 
         /**
@@ -626,7 +630,9 @@ declare module "@xcmats/js-toolbox" {
          * g(f(x))  <=>  (g . f)(x)  <=>  pipe(x)(f, g)
          * ```
          */
-        export function pipe (...args: Function[]): Function;
+        export function pipe (
+            ...args: any[]
+        ): (...fs: Function[]) => Function;
 
 
         /**
