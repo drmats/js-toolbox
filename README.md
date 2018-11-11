@@ -21,6 +21,44 @@ to bundle it with your project).
 
 
 
+## index
+
+* [documentation](#documentation)
+* [play in your browser](#play-in-your-browser)
+* [use the package](#use-the-package)
+    - [install](#install)
+    - [play in node.js](#play-in-nodejs)
+    - [example use in your source code](#example-use-in-your-source-code)
+* [use the source](#use-the-source)
+* [namespaces](#namespaces)
+    - [array](#array-utilities)
+    - [async](#asynchronous-programming-helpers)
+    - [codec](#typedarray-codersdecoders)
+    - [func](#functional-programming)
+    - [math](#simple-math)
+    - [redux](#some-goodies-for-redux)
+    - [string](#string-utilities)
+    - [type](#type-helpers)
+    - [utils](#uncategorized-utilities)
+* [examples](#examples)
+    - [array manipulation](#array-manipulation)
+    - [asynchronous programming](#asynchronous-programming)
+    - [base64 encoding and decoding](#base64-encoding-and-decoding)
+    - [hex encoding and decoding](#hex-encoding-and-decoding)
+    - [byte array manipulation](#byte-array-manipulation)
+    - [functional programming](#functional-programming)
+    - [simple math](#simple-math)
+    - [operating on strings](#operating-on-strings)
+    - [type primitives](#type-primitives)
+    - [assorted utilities](#assorted-utilities)
+* [notes](#notes)
+* [license](#license)
+
+<br />
+
+
+
+
 ## documentation
 
 > [API Reference](https://drmats.github.io/js-toolbox/)
@@ -173,190 +211,190 @@ and have launched _node.js_ session via `npm start` then you're good to go
 ( [`¯\_(ツ)_/¯`](https://i.imgur.com/Bw6D5zZ.gif) ).
 
 
-* **array** utilities:
+### **array** utilities:
 
-    ```javascript
-    array
-    ```
+```javascript
+array
+```
 
-    > ```javascript
-    > { countBy: [Function: countBy],
-    >   draw: [Function: draw],
-    >   drop: [Function: drop],
-    >   dropLast: [Function: dropLast],
-    >   findDuplicates: [Function: findDuplicates],
-    >   flatten: [Function: flatten],
-    >   head: [Function: head],
-    >   init: [Function: init],
-    >   isContinuous: [Function: isContinuous],
-    >   isSorted: [Function: isSorted],
-    >   last: [Function: last],
-    >   range: [Function: range],
-    >   shuffle: [Function: shuffle],
-    >   sparse: [Function: sparse],
-    >   tail: [Function: tail],
-    >   take: [Function: take],
-    >   takeLast: [Function: takeLast],
-    >   zipWith: [Function: zipWith],
-    >   zip: [Function] }
-    > ```
-
-
-* **asynchronous programming** helpers:
-
-    ```javascript
-    async
-    ```
-
-    > ```javascript
-    > { delay: [Function: delay],
-    >   interval: [Function: interval],
-    >   map: [Function: map],
-    >   parMap: [Function: parMap],
-    >   reduce: [Function: reduce],
-    >   repeat: [Function: repeat],
-    >   timeout: [Function: timeout] }
-    > ```
+> ```javascript
+> { countBy: [Function: countBy],
+>   draw: [Function: draw],
+>   drop: [Function: drop],
+>   dropLast: [Function: dropLast],
+>   findDuplicates: [Function: findDuplicates],
+>   flatten: [Function: flatten],
+>   head: [Function: head],
+>   init: [Function: init],
+>   isContinuous: [Function: isContinuous],
+>   isSorted: [Function: isSorted],
+>   last: [Function: last],
+>   range: [Function: range],
+>   shuffle: [Function: shuffle],
+>   sparse: [Function: sparse],
+>   tail: [Function: tail],
+>   take: [Function: take],
+>   takeLast: [Function: takeLast],
+>   zipWith: [Function: zipWith],
+>   zip: [Function] }
+> ```
 
 
-* **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders:
+### **asynchronous programming** helpers:
 
-    ```javascript
-    codec
-    ```
+```javascript
+async
+```
 
-    > ```javascript
-    > { concatBytes: [Function: concatBytes],
-    >   compareBytes: [Function: compareBytes],
-    >   stringToBytes: [Function],
-    >   bytesToString: [Function],
-    >   hexToBytes: [Function: hexToBytes],
-    >   bytesToHex: [Function: bytesToHex],
-    >   b64dec: [Function],
-    >   b64enc: [Function],
-    >   b64ToString: [Function],
-    >   stringToB64: [Function],
-    >   b64ToHex: [Function],
-    >   hexToB64: [Function] }
-    > ```
+> ```javascript
+> { delay: [Function: delay],
+>   interval: [Function: interval],
+>   map: [Function: map],
+>   parMap: [Function: parMap],
+>   reduce: [Function: reduce],
+>   repeat: [Function: repeat],
+>   timeout: [Function: timeout] }
+> ```
 
 
-* **functional programming**:
+### **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders:
 
-    ```javascript
-    func
-    ```
+```javascript
+codec
+```
 
-    > ```javascript
-    > { compose: [Function: compose],
-    >   curry: [Function: curry],
-    >   flow: [Function: flow],
-    >   identity: [Function: identity],
-    >   partial: [Function: partial],
-    >   pipe: [Function: pipe],
-    >   rearg: [Function: rearg],
-    >   Y: [Function: Y] }
-    > ```
-
-
-* simple **math**:
-
-    ```javascript
-    math
-    ```
-
-    > ```javascript
-    > { average: [Function: average],
-    >   clamp: [Function: clamp],
-    >   log10: [Function: log10],
-    >   log2: [Function: log2],
-    >   roundIfClose: [Function: roundIfClose],
-    >   sum: [Function: sum] }
-    > ```
+> ```javascript
+> { concatBytes: [Function: concatBytes],
+>   compareBytes: [Function: compareBytes],
+>   stringToBytes: [Function],
+>   bytesToString: [Function],
+>   hexToBytes: [Function: hexToBytes],
+>   bytesToHex: [Function: bytesToHex],
+>   b64dec: [Function],
+>   b64enc: [Function],
+>   b64ToString: [Function],
+>   stringToB64: [Function],
+>   b64ToHex: [Function],
+>   hexToB64: [Function] }
+> ```
 
 
-* some goodies for **[redux](https://redux.js.org/)**:
+### **functional programming**:
 
-    ```javascript
-    redux
-    ```
+```javascript
+func
+```
 
-    > ```javascript
-    > { createReducer: [Function: createReducer] }
-    > ```
-
-
-* **string** utilities:
-
-    ```javascript
-    string
-    ```
-
-    > ```javascript
-    > { asciiLetters: [Function: asciiLetters],
-    >   asciiLowercase: [Function: asciiLowercase],
-    >   asciiUppercase: [Function: asciiUppercase],
-    >   big: [Function],
-    >   camelToPascal: [Function: camelToPascal],
-    >   camelToSnake: [Function: camelToSnake],
-    >   capitalize: [Function: capitalize],
-    >   digits: [Function: digits],
-    >   ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
-    >   empty: [Function: empty],
-    >   space: [Function: space],
-    >   nl: [Function: nl],
-    >   padLeft: [Function: padLeft],
-    >   padRight: [Function: padRight],
-    >   pascalToCamel: [Function: pascalToCamel],
-    >   pascalToSnake: [Function: pascalToSnake],
-    >   quote: [Function: quote],
-    >   random: [Function: random],
-    >   shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
-    >   snakeToCamel: [Function: snakeToCamel],
-    >   snakeToPascal: [Function: snakeToPascal],
-    >   wrap: [Function: wrap] }
-    > ```
+> ```javascript
+> { compose: [Function: compose],
+>   curry: [Function: curry],
+>   flow: [Function: flow],
+>   identity: [Function: identity],
+>   partial: [Function: partial],
+>   pipe: [Function: pipe],
+>   rearg: [Function: rearg],
+>   Y: [Function: Y] }
+> ```
 
 
-* **type** helpers:
+### simple **math**:
 
-    ```javascript
-    type
-    ```
+```javascript
+math
+```
 
-    > ```javascript
-    > { isFunction: [Function: isFunction],
-    >   isNumber: [Function: isNumber],
-    >   isObject: [Function: isObject],
-    >   isString: [Function: isString],
-    >   maxInt: 9007199254740991,
-    >   minInt: -9007199254740991,
-    >   nullToUndefined: [Function: nullToUndefined],
-    >   toBool: [Function: toBool] }
-    > ```
+> ```javascript
+> { average: [Function: average],
+>   clamp: [Function: clamp],
+>   log10: [Function: log10],
+>   log2: [Function: log2],
+>   roundIfClose: [Function: roundIfClose],
+>   sum: [Function: sum] }
+> ```
 
 
-* uncategorized **utilities**:
+### some goodies for **[redux](https://redux.js.org/)**:
 
-    ```javascript
-    utils
-    ```
+```javascript
+redux
+```
 
-    > ```javascript
-    > { access: [Function: access],
-    >   choose: [Function: choose],
-    >   clone: [Function: clone],
-    >   dict: [Function: dict],
-    >   handleException: [Function: handleException],
-    >   handleRejection: [Function: handleRejection],
-    >   isBrowser: [Function: isBrowser],
-    >   objectMap: [Function: objectMap],
-    >   objectReduce: [Function: objectReduce],
-    >   randomInt: [Function: randomInt],
-    >   swap: [Function: swap],
-    >   timeUnit: { ... },
-    >   to_: [Function: to_] }
-    > ```
+> ```javascript
+> { createReducer: [Function: createReducer] }
+> ```
+
+
+### **string** utilities:
+
+```javascript
+string
+```
+
+> ```javascript
+> { asciiLetters: [Function: asciiLetters],
+>   asciiLowercase: [Function: asciiLowercase],
+>   asciiUppercase: [Function: asciiUppercase],
+>   big: [Function],
+>   camelToPascal: [Function: camelToPascal],
+>   camelToSnake: [Function: camelToSnake],
+>   capitalize: [Function: capitalize],
+>   digits: [Function: digits],
+>   ellipsis: { [Function: ellipsis] BEGIN: 0, MIDDLE: 1, END: 2 },
+>   empty: [Function: empty],
+>   space: [Function: space],
+>   nl: [Function: nl],
+>   padLeft: [Function: padLeft],
+>   padRight: [Function: padRight],
+>   pascalToCamel: [Function: pascalToCamel],
+>   pascalToSnake: [Function: pascalToSnake],
+>   quote: [Function: quote],
+>   random: [Function: random],
+>   shorten: { [Function: shorten] BEGIN: 0, MIDDLE: 1, END: 2 },
+>   snakeToCamel: [Function: snakeToCamel],
+>   snakeToPascal: [Function: snakeToPascal],
+>   wrap: [Function: wrap] }
+> ```
+
+
+### **type** helpers:
+
+```javascript
+type
+```
+
+> ```javascript
+> { isFunction: [Function: isFunction],
+>   isNumber: [Function: isNumber],
+>   isObject: [Function: isObject],
+>   isString: [Function: isString],
+>   maxInt: 9007199254740991,
+>   minInt: -9007199254740991,
+>   nullToUndefined: [Function: nullToUndefined],
+>   toBool: [Function: toBool] }
+> ```
+
+
+### uncategorized **utilities**:
+
+```javascript
+utils
+```
+
+> ```javascript
+> { access: [Function: access],
+>   choose: [Function: choose],
+>   clone: [Function: clone],
+>   dict: [Function: dict],
+>   handleException: [Function: handleException],
+>   handleRejection: [Function: handleRejection],
+>   isBrowser: [Function: isBrowser],
+>   objectMap: [Function: objectMap],
+>   objectReduce: [Function: objectReduce],
+>   randomInt: [Function: randomInt],
+>   swap: [Function: swap],
+>   timeUnit: { ... },
+>   to_: [Function: to_] }
+> ```
 
 <br />
 
@@ -481,7 +519,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
 <br />
 
 
-### asynchronous helpers
+### asynchronous programming
 
 * Delay current async execution by `time` miliseconds.
 
@@ -880,7 +918,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
 <br />
 
 
-### operations on strings
+### operating on strings
 
 * Allocate a **big** string (of size `2^n`).
 
