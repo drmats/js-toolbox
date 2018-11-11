@@ -88,6 +88,7 @@ export {
     flow,
     identity,
     partial,
+    pipe,
     rearg,
     Y,
 } from "./func"

@@ -88,5 +88,5 @@
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
     "typings": "typings/js-toolbox.d.ts",
-    "version": "0.6.10"
+    "version": "0.6.11"
 }

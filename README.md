@@ -44,19 +44,19 @@ to bundle it with your project).
 
     > ```javascript
     > [ "Y",
-    > "access",
-    > "array",
-    > "asciiLetters",
-    > "asciiLowercase",
-    > "asciiUppercase",
-    > "async",
-    > "asyncMap",
-    > "asyncReduce",
-    > "asyncRepeat",
-    > "average",
-    > "b64dec",
-    > "b64enc",
-    > ... ]
+    >   "access",
+    >   "array",
+    >   "asciiLetters",
+    >   "asciiLowercase",
+    >   "asciiUppercase",
+    >   "async",
+    >   "asyncMap",
+    >   "asyncReduce",
+    >   "asyncRepeat",
+    >   "average",
+    >   "b64dec",
+    >   "b64enc",
+    >   ... ]
     > ```
 
 * play with `shuffle` and `range` ([link](https://runkit.com/embed/pdk4lfc4ul51)):
@@ -126,7 +126,8 @@ import {
 } from "@xcmats/js-toolbox"
 
 const b64stringify = func.flow(
-    JSON.stringify, codec.stringToB64
+    JSON.stringify,
+    codec.stringToB64
 )
 
 let stupidIdea = b64stringify({
@@ -252,6 +253,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
     >   flow: [Function: flow],
     >   identity: [Function: identity],
     >   partial: [Function: partial],
+    >   pipe: [Function: pipe],
     >   rearg: [Function: rearg],
     >   Y: [Function: Y] }
     > ```
@@ -778,15 +780,9 @@ and have launched _node.js_ session via `npm start` then you're good to go
     > ```
 
     ```javascript
-    hexToString = func.flow(codec.hexToBytes, codec.bytesToString)
-    ```
-
-    > ```javascript
-    > [Function]
-    > ```
-
-    ```javascript
-    hexToString('4b61626f6f6d2120f09f92a5')
+    func.pipe('4b61626f6f6d2120f09f92a5')(
+        codec.hexToBytes, codec.bytesToString
+    )
     ```
 
     > ```javascript

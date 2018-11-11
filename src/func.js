@@ -32,8 +32,8 @@ import {
  * @param {...Function} fs
  * @returns {Function}
  */
-export const compose = (...fs) =>
-    (...args) => head(fs.reduceRight((result, f) => [f(...result)], args))
+export const compose = (...fs) => (...args) =>
+    head(fs.reduceRight((result, f) => [f(...result)], args))
 
 
 
@@ -111,6 +111,28 @@ export const identity = (val) => val
  */
 export const partial = (f) => (...init) =>
     (...rest) => f(...[...init, ...rest])
+
+
+
+
+/**
+ * Function composition - read as "compose forward" or "and then".
+ * Version of `flow` taking _arguments_ (`args`) first
+ * and then _functions_ (`fs`).
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  <=>  (g . f)(x)  <=>  pipe(x)(f, g)
+ * ```
+ *
+ * @function pipe
+ * @param {...Function} args
+ * @returns {Function}
+ */
+export const pipe = (...args) => (...fs) => flow(...fs)(...args)
 
 
 

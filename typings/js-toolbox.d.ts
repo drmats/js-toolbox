@@ -614,6 +614,22 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Function composition - read as "compose forward" or "and then".
+         * Version of `flow` taking _arguments_ (`args`) first
+         * and then _functions_ (`fs`).
+         *
+         * ```
+         * let:
+         * f: X -> Y,  g: Y -> Z
+         *
+         * then:
+         * g(f(x))  <=>  (g . f)(x)  <=>  pipe(x)(f, g)
+         * ```
+         */
+        export function pipe (...args: Function[]): Function;
+
+
+        /**
          * Function arguments rearrangement.
          *
          * Takes function `f` and `indices` and returns a new function,
@@ -653,6 +669,7 @@ declare module "@xcmats/js-toolbox" {
     export const flow: typeof func.flow;
     export const identity: typeof func.identity;
     export const partial: typeof func.partial;
+    export const pipe: typeof func.pipe;
     export const rearg: typeof func.rearg;
     export const Y: typeof func.Y;
 
