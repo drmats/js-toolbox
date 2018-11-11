@@ -34,8 +34,8 @@ to bundle it with your project).
     - [array](#array-utilities)
     - [async](#asynchronous-programming-helpers)
     - [codec](#typedarray-codersdecoders)
-    - [func](#functional-programming)
-    - [math](#simple-math)
+    - [func](#functional-programming-tools)
+    - [math](#basic-math)
     - [redux](#some-goodies-for-redux)
     - [string](#string-utilities)
     - [type](#type-helpers)
@@ -279,7 +279,7 @@ codec
 > ```
 
 
-### **functional programming**:
+### **functional programming tools**:
 
 ```javascript
 func
@@ -297,7 +297,7 @@ func
 > ```
 
 
-### simple **math**:
+### basic **math**:
 
 ```javascript
 math
