@@ -211,7 +211,7 @@ and have launched _node.js_ session via `npm start` then you're good to go
 ( [`¯\_(ツ)_/¯`](https://i.imgur.com/Bw6D5zZ.gif) ).
 
 
-### **array** utilities:
+### **array** utilities
 
 ```javascript
 array
@@ -240,7 +240,7 @@ array
 > ```
 
 
-### **asynchronous programming** helpers:
+### **asynchronous programming** helpers
 
 ```javascript
 async
@@ -257,7 +257,7 @@ async
 > ```
 
 
-### **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders:
+### **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** coders/decoders
 
 ```javascript
 codec
@@ -279,7 +279,7 @@ codec
 > ```
 
 
-### **functional programming tools**:
+### **functional programming tools**
 
 ```javascript
 func
@@ -297,7 +297,7 @@ func
 > ```
 
 
-### basic **math**:
+### basic **math**
 
 ```javascript
 math
@@ -313,7 +313,7 @@ math
 > ```
 
 
-### some goodies for **[redux](https://redux.js.org/)**:
+### some goodies for **[redux](https://redux.js.org/)**
 
 ```javascript
 redux
@@ -324,7 +324,7 @@ redux
 > ```
 
 
-### **string** utilities:
+### **string** utilities
 
 ```javascript
 string
@@ -356,7 +356,7 @@ string
 > ```
 
 
-### **type** helpers:
+### **type** helpers
 
 ```javascript
 type
@@ -374,7 +374,7 @@ type
 > ```
 
 
-### uncategorized **utilities**:
+### uncategorized **utilities**
 
 ```javascript
 utils
