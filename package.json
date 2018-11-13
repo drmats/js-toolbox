@@ -77,7 +77,7 @@
         "clean": "npm run clean:build && npm run clean:doc",
         "clean:build": "rimraf ./es ./lib",
         "clean:doc": "rimraf ./doc",
-        "clean:modules": "rimraf node_modules",
+        "clean:modules": "rimraf node_modules && rimraf package-lock.json",
         "deploy": "gh-pages -d doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
         "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
