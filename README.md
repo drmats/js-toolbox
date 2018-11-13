@@ -848,6 +848,26 @@ utils
     > ```
 
 
+ * Function arguments rearrangement.
+
+    ```javascript
+    console.log('a', 'b', 'c', 'd', 'e')
+    ```
+
+    > ```javascript
+    > a b c d e
+    > ```
+
+    ```javascript
+    revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+    revConsole('a', 'b', 'c', 'd', 'e')
+    ```
+
+    > ```javascript
+    > e d c b a
+    > ```
+
+
 * Y-combinator - returns fixed point of a higher-order function passed as `f`.
     **Anonymous recursion in Javascript**.
 
