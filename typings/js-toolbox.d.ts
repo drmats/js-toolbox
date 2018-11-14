@@ -1116,6 +1116,12 @@ declare module "@xcmats/js-toolbox" {
     export namespace type {
 
         /**
+         * Determine if a given value is an `Array`.
+         */
+        export function isArray (a: any): boolean;
+
+
+        /**
          * Determine if a given value is a `Function`.
          */
         export function isFunction (f: any): boolean;
@@ -1168,6 +1174,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
+    export const isArray: typeof type.isArray;
     export const isFunction: typeof type.isFunction;
     export const isNumber: typeof type.isNumber;
     export const isObject: typeof type.isObject;

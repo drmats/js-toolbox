@@ -10,6 +10,18 @@
 
 
 /**
+ * Determine if a given value is an `Array`.
+ *
+ * @function isArray
+ * @param {*} a
+ * @returns {Boolean}
+ */
+export const isArray = Array.isArray
+
+
+
+
+/**
  * Determine if a given value is a `Function`.
  *
  * @function isFunction

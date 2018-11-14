@@ -184,6 +184,7 @@ export const struct = structModule
  * @see {@link module:type}
  */
 export {
+    isArray,
     isFunction,
     isNumber,
     isObject,

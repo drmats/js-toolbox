@@ -384,7 +384,8 @@ type
 ```
 
 > ```javascript
-> { isFunction: [Function: isFunction],
+> { isArray: [Function: isArray],
+>   isFunction: [Function: isFunction],
 >   isNumber: [Function: isNumber],
 >   isObject: [Function: isObject],
 >   isString: [Function: isString],
