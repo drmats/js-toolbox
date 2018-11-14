@@ -367,6 +367,7 @@ struct
 
 > ```javascript
 > { access: [Function: access],
+>   clone: [Function: clone],
 >   dict: [Function: dict],
 >   objectMap: [Function: objectMap],
 >   objectReduce: [Function: objectReduce],
@@ -399,8 +400,7 @@ utils
 ```
 
 > ```javascript
-> { clone: [Function: clone],
->   devEnv: [Function: devEnv],
+> { devEnv: [Function: devEnv],
 >   getLibConfig: [Function: getLibConfig],
 >   getProcess: [Function: getProcess],
 >   handleException: [Function: handleException],

@@ -1009,6 +1009,13 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Do the deep-copy of any JavaScript object
+         * that doesn't contain functions.
+         */
+        export function clone (o: object): object;
+
+
+        /**
          * Construct `Object` from the result of `Object.entries()` call.
          *
          * ```
@@ -1064,6 +1071,7 @@ declare module "@xcmats/js-toolbox" {
     }
 
     export const access: typeof struct.access;
+    export const clone: typeof struct.clone;
     export const dict: typeof struct.dict;
     export const objectMap: typeof struct.objectMap;
     export const objectReduce: typeof struct.objectReduce;
@@ -1150,13 +1158,6 @@ declare module "@xcmats/js-toolbox" {
     export namespace utils {
 
         /**
-         * Do the deep-copy of any JavaScript object
-         * that doesn't contain functions.
-         */
-        export function clone (o: object): object;
-
-
-        /**
          * Determine runtime environment (is it development or not?).
          * `devEnv() -> true/false`
          *
@@ -1237,7 +1238,6 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const clone: typeof utils.clone;
     export const devEnv: typeof utils.devEnv;
     export const getLibConfig: typeof utils.getLibConfig;
     export const getProcess: typeof utils.getProcess;

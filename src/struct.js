@@ -42,6 +42,19 @@ export const access = (o, path, def = undefined) => handleException(
 
 
 /**
+ * Do the deep-copy of any JavaScript object
+ * that doesn't contain functions.
+ *
+ * @function clone
+ * @param {Object} o
+ * @returns {Object}
+ */
+export const clone = (o) => JSON.parse(JSON.stringify(o))
+
+
+
+
+/**
  * Construct `Object` from the result of `Object.entries()` call.
  *
  * ```

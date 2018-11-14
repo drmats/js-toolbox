@@ -30,19 +30,6 @@ import {
 
 
 /**
- * Do the deep-copy of any JavaScript object
- * that doesn't contain functions.
- *
- * @function clone
- * @param {Object} o
- * @returns {Object}
- */
-export const clone = (o) => JSON.parse(JSON.stringify(o))
-
-
-
-
-/**
  * Determine runtime environment (is it development or not?).
  * `devEnv() -> true/false`
  *

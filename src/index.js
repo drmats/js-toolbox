@@ -167,6 +167,7 @@ export const string = stringModule
  */
 export {
     access,
+    clone,
     dict,
     objectMap,
     objectReduce,
@@ -201,7 +202,6 @@ export const type = typeModule
  * @see {@link module:utils}
  */
 export {
-    clone,
     devEnv,
     getLibConfig,
     getProcess,
