@@ -10,6 +10,13 @@
 
 
 import {
+    flow,
+    partial,
+    rearg,
+    Y,
+} from "./func"
+import { quote } from "./string"
+import {
     isFunction,
     isObject,
 } from "./type"
@@ -19,24 +26,26 @@ import { handleException } from "./utils"
 
 
 /**
- * Apply path to an object `o`.
+ * Apply `path` to an object `o`. Return element reachable through
+ * that `path` or `def` value.
  *
  * Example:
  *
  * ```
- * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
+ * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
  * ```
  *
  * @function access
- * @param {Object} o
- * @param {Array.<String>} path
- * @param {*} [def=undefined]
+ * @param {Object} [o={}]
+ * @param {Array.<String>} [path=[]]
+ * @param {*} [def]
  * @returns {*}
  */
-export const access = (o, path, def = undefined) => handleException(
-    () => path.reduce((acc, p) => acc[p], o) || def,
-    () => def
-)
+export const access = (o = {}, path = [], def = undefined) =>
+    handleException(
+        () => path.reduce((acc, p) => acc[p], o) || def,
+        () => def
+    )
 
 
 
@@ -49,7 +58,60 @@ export const access = (o, path, def = undefined) => handleException(
  * @param {Object} o
  * @returns {Object}
  */
-export const clone = (o) => JSON.parse(JSON.stringify(o))
+export const clone = flow(JSON.stringify, JSON.parse)
+
+
+
+
+/**
+ * Depth-first search. Executes certain operation `f`
+ * on each `tree` node in reduce-like fashion, accumulating
+ * intermediate results.
+ *
+ * @function dfs
+ * @param {Object} tree Tree-like structure.
+ * @param {Function} f Function to be executed on each node.
+ *      Its signature is as follows: `function (accs, node, path, position)`,
+ *      where:
+ *      <ul>
+ *          <li>`accs` - array of accumulated results,
+ *              for each subtree of current `node`</li>
+ *          <li>`node` - reference to current node</li>
+ *          <li>`path` - current `node` is reachable by applying
+ *              `struct.access` to `tree` and `path`</li>
+ *          <li>`position` - position of currently processed node
+ *              in an array of children (current node is "position-th"
+ *              child of its parent)</li>
+ *      </ul>
+ * @param {Function} [children] Function that should accept `node` and return
+ *      array of `n` tuples. In each tuple first element should be the `n`-th
+ *      `child` of the `node` and second element should be the `path` leading
+ *      from the `node` to the `n`-th `child`
+ * @returns {*} Accumulated results for all subtree nodes.
+ */
+export const dfs = (
+    tree = {},
+    f = (_accs, node, _path, _position) => node,
+    children = (n) =>
+        access(n, ["children"], []).map((c, i) => [c, ["children", i]])
+) => {
+    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
+    if (
+        !isObject(tree) || !isFunction(f) || !isFunction(children)
+    ) throw new TypeError(
+        "struct.dfs() expected object and 2 functions, " +
+        `got ${bquote(tree)}, ${bquote(f)} and ${bquote(children)}`
+    )
+    return Y(
+        (aux) =>
+            (node, path, position) => f(
+                children(node).map(
+                    ([child, childPath], p) =>
+                        aux(child, path.concat(childPath), p)
+                ), node, path, position
+            )
+    )(tree, [], 0)
+}
 
 
 
@@ -90,9 +152,10 @@ export const dict = (entries) => entries.reduce(
  * @returns {Object}
  */
 export const objectMap = (o, f) => {
+    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "utils.objectMap() expected object and function," +
-        ` got ${typeof o} and ${typeof f}`
+        "struct.objectMap() expected object and function, " +
+        `got ${bquote(o)} and ${bquote(f)}`
     )
     return dict(Object.entries(o).map((kv) => f.call(o, kv)))
 }
@@ -119,9 +182,10 @@ export const objectMap = (o, f) => {
  * @returns {*}
  */
 export const objectReduce = (o, f, init) => {
+    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "utils.objectReduce() expected object and function," +
-        ` got ${typeof o} and ${typeof f}`
+        "struct.objectReduce() expected object and function, " +
+        `got ${bquote(o)} and ${bquote(f)}`
     )
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
 }

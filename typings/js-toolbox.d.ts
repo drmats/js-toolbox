@@ -45,7 +45,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Choose a random element from a non-empty array.
          */
-        export function draw (arr: any[] | string): any | string;
+        export function draw (arr: any[]  |  string): any | string;
 
 
         /**
@@ -89,13 +89,13 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return first element of the given array.
          */
-        export function head (arr: any[] | string): any | string;
+        export function head (arr: any[]  |  string): any | string;
 
 
         /**
          * Return array without its last element.
          */
-        export function init (arr: any[] | string): any[] | string;
+        export function init (arr: any[]  |  string): any[] | string;
 
 
         /**
@@ -119,7 +119,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return last element of the given array.
          */
-        export function last (arr: any[] | string): any | string;
+        export function last (arr: any[]  |  string): any | string;
 
 
         /**
@@ -162,7 +162,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return array without its head (first element).
          */
-        export function tail (arr: any[] | string): any[] | string;
+        export function tail (arr: any[]  |  string): any[] | string;
 
 
         /**
@@ -301,7 +301,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function map<T> (
             arr: any[],
-            f: (el: any, i: number) => Promise<T> | T
+            f: (el: any, i: number) => Promise<T>  |  T
         ): Promise<T[]>;
 
 
@@ -332,7 +332,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function parMap<T> (
             arr: any[],
-            f: (el: any, i: number) => Promise<T> | T
+            f: (el: any, i: number) => Promise<T>  |  T
         ): Promise<T[]>;
 
 
@@ -368,7 +368,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function reduce<T> (
             arr: any[],
-            f: (acc: T, el: any, i: number) => Promise<T> | T,
+            f: (acc: T, el: any, i: number) => Promise<T>  |  T,
             initAcc: T
         ): Promise<T>;
 
@@ -380,7 +380,7 @@ declare module "@xcmats/js-toolbox" {
          * when `condition` evaluates to `false`.
          */
         export function repeat<T> (
-            f: () => Promise<T> | T,
+            f: () => Promise<T>  |  T,
             condition: () => boolean
         ): Promise<T>;
 
@@ -581,7 +581,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function curry<T> (
             f: (...args: any[]) => T
-        ): (...args: any[]) => Function | T;
+        ): (...args: any[]) => Function  |  T;
 
 
         /**
@@ -993,17 +993,18 @@ declare module "@xcmats/js-toolbox" {
     export namespace struct {
 
         /**
-         * Apply path to an object `o`.
+         * Apply `path` to an object `o`. Return element reachable through
+         * that `path` or `def` value.
          *
          * Example:
          *
          * ```
-         * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
+         * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
          * ```
          */
         export function access (
-            o: object,
-            path: string[],
+            o?: object,
+            path?: (string | number)[],
             def?: any
         ): any;
 
@@ -1013,6 +1014,25 @@ declare module "@xcmats/js-toolbox" {
          * that doesn't contain functions.
          */
         export function clone (o: object): object;
+
+
+        /**
+         * Depth-first search. Executes certain operation `f`
+         * on each `tree` node in reduce-like fashion, accumulating
+         * intermediate results.
+         */
+        export function dfs<T> (
+            tree?: object,
+            f?: (
+                accs: T[],
+                node: object,
+                path: (string | number)[],
+                position: number
+            ) => T,
+            children?: (
+                n: object
+            ) => [object, (string | number)[]][]
+        ): T;
 
 
         /**

@@ -168,6 +168,7 @@ export const string = stringModule
 export {
     access,
     clone,
+    dfs,
     dict,
     objectMap,
     objectReduce,
