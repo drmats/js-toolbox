@@ -264,7 +264,7 @@ export const range = (...args) => {
  */
 export const shuffle = (arr) => {
     if (!isArray(arr)) throw new TypeError(
-        `array.shuffle() expected array as argument, got ${typeof arr}`
+        `array.shuffle() expected array as argument, got [${typeof arr}]`
     )
 
     for (let i = arr.length-1;  i > 0;  i -= 1) {
