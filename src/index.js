@@ -145,6 +145,7 @@ export {
     empty as emptyString,
     space as spaceString,
     nl as nlString,
+    tab as tabString,
     padLeft,
     padRight,
     pascalToCamel,

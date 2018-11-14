@@ -219,6 +219,17 @@ export const nl = () => "\n"
 
 
 /**
+ * Construct tab.
+ *
+ * @function tab
+ * @returns {String}
+ */
+export const tab = () => "\t"
+
+
+
+
+/**
  * Prepend given `input` string with an appropriate amount of
  * `ch` characters so that returning string length is equal to `len`.
  * If `len` is smaller than length of `input` then `input` is being

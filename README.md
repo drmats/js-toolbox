@@ -346,6 +346,7 @@ string
 >   empty: [Function: empty],
 >   space: [Function: space],
 >   nl: [Function: nl],
+>   tab: [Function: tab],
 >   padLeft: [Function: padLeft],
 >   padRight: [Function: padRight],
 >   pascalToCamel: [Function: pascalToCamel],
