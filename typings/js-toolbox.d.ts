@@ -967,6 +967,92 @@ declare module "@xcmats/js-toolbox" {
 
 
     /**
+     * @namespace struct
+     * @see {@link module:struct}
+     */
+    export namespace struct {
+
+        /**
+         * Apply path to an object `o`.
+         *
+         * Example:
+         *
+         * ```
+         * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
+         * ```
+         */
+        export function access (
+            o: object,
+            path: string[],
+            def?: any
+        ): any;
+
+
+        /**
+         * Construct `Object` from the result of `Object.entries()` call.
+         *
+         * ```
+         * entries = [[k1, v1,], ..., [kn, vn,]]
+         * ```
+         *
+         * Imitates Python's `dict()`.
+         */
+        export function dict (entries: [string, any][]): object;
+
+
+        /**
+         * Map (iteration) on objects - shallow.
+         *
+         * - `o` - `Object` to enumerate on.
+         * - `f` - `Function` to call on each key, params:
+         *     - `this` - bound to the enumerated object,
+         *     - `kv` - current `[key, value]` array,
+         *
+         * `f` should return `[key, value]` array.
+         */
+        export function objectMap (
+            o: object,
+            f: (kv: [string, any]) => [string, any]
+        ): object;
+
+
+        /**
+         * Reduce (fold) on objects - shallow.
+         *
+         * - `o` - `Object` to enumerate on.
+         * - `f` - `Function` to call on each key, params:
+         *     - `this` - bound to the enumerated object,
+         *     - `acc` - accumulated value,
+         *     - `kv` - current `[key, value]` array,
+         * - `init` - accumulated value initializer,
+         *
+         * `f` should return value of the same type as `init`.
+         */
+        export function objectReduce<T> (
+            o: object,
+            f: (acc: T, kv: [string, any]) => T,
+            init: T
+        ): T;
+
+
+        /**
+         * When `o == { a: "b", c: "d" }`
+         * then `swap(o) == { b: "a", d: "c" }`.
+         */
+        export function swap (o: object): object;
+
+    }
+
+    export const access: typeof struct.access;
+    export const dict: typeof struct.dict;
+    export const objectMap: typeof struct.objectMap;
+    export const objectReduce: typeof struct.objectReduce;
+    export const swap: typeof struct.swap;
+
+
+
+
+    /**
      * @namespace type
      * @see {@link module:type}
      */
@@ -1044,22 +1130,6 @@ declare module "@xcmats/js-toolbox" {
     export namespace utils {
 
         /**
-         * Apply path to an object `o`.
-         *
-         * Example:
-         *
-         * ```
-         * access({ a: { b: { c: 42 } } }, ["a", "b", "c"]) === 42
-         * ```
-         */
-        export function access (
-            o: object,
-            path: string[],
-            def?: any
-        ): any;
-
-
-        /**
          * Functional replacement of a `switch` statement.
          */
         export function choose (
@@ -1086,18 +1156,6 @@ declare module "@xcmats/js-toolbox" {
          * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
          */
         export function devEnv (strict: boolean): boolean;
-
-
-        /**
-         * Construct `Object` from the result of `Object.entries()` call.
-         *
-         * ```
-         * entries = [[k1, v1,], ..., [kn, vn,]]
-         * ```
-         *
-         * Imitates Python's `dict()`.
-         */
-        export function dict (entries: [string, any][]): object;
 
 
         /**
@@ -1138,52 +1196,10 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Map (iteration) on objects - shallow.
-         *
-         * - `o` - `Object` to enumerate on.
-         * - `f` - `Function` to call on each key, params:
-         *     - `this` - bound to the enumerated object,
-         *     - `kv` - current `[key, value]` array,
-         *
-         * `f` should return `[key, value]` array.
-         */
-        export function objectMap (
-            o: object,
-            f: (kv: [string, any]) => [string, any]
-        ): object;
-
-
-        /**
-         * Reduce (fold) on objects - shallow.
-         *
-         * - `o` - `Object` to enumerate on.
-         * - `f` - `Function` to call on each key, params:
-         *     - `this` - bound to the enumerated object,
-         *     - `acc` - accumulated value,
-         *     - `kv` - current `[key, value]` array,
-         * - `init` - accumulated value initializer,
-         *
-         * `f` should return value of the same type as `init`.
-         */
-        export function objectReduce<T> (
-            o: object,
-            f: (acc: T, kv: [string, any]) => T,
-            init: T
-        ): T;
-
-
-        /**
          * Generate a random positive integer.
          * NOT CRYPTOGRAPHICALLY SECURE.
          */
         export function randomInt (): number;
-
-
-        /**
-         * When `o == { a: "b", c: "d" }`
-         * then `swap(o) == { b: "a", d: "c" }`.
-         */
-        export function swap (o: object): object;
 
 
         /**
@@ -1219,20 +1235,15 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const access: typeof utils.access;
     export const choose: typeof utils.choose;
     export const clone: typeof utils.clone;
     export const devEnv: typeof utils.devEnv;
-    export const dict: typeof utils.dict;
     export const getLibConfig: typeof utils.getLibConfig;
     export const getProcess: typeof utils.getProcess;
     export const handleException: typeof utils.handleException;
     export const handleRejection: typeof utils.handleRejection;
     export const isBrowser: typeof utils.isBrowser;
-    export const objectMap: typeof utils.objectMap;
-    export const objectReduce: typeof utils.objectReduce;
     export const randomInt: typeof utils.randomInt;
-    export const swap: typeof utils.swap;
     export const timeUnit: typeof utils.timeUnit;
     export const to_: typeof utils.to_;
 

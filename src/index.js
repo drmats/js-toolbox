@@ -161,6 +161,22 @@ export const string = stringModule
 
 
 /**
+ * @see {@link module:struct}
+ */
+export {
+    access,
+    dict,
+    objectMap,
+    objectReduce,
+    swap,
+} from "./struct"
+import * as structModule from "./struct"
+export const struct = structModule
+
+
+
+
+/**
  * @see {@link module:type}
  */
 export {
@@ -183,20 +199,15 @@ export const type = typeModule
  * @see {@link module:utils}
  */
 export {
-    access,
     choose,
     clone,
     devEnv,
-    dict,
     getLibConfig,
     getProcess,
     handleException,
     handleRejection,
     isBrowser,
-    objectMap,
-    objectReduce,
     randomInt,
-    swap,
     timeUnit,
     to_,
 } from "./utils"

@@ -38,6 +38,7 @@ to bundle it with your project).
     - [math](#basic-math)
     - [redux](#some-goodies-for-redux)
     - [string](#string-utilities)
+    - [struct](#data-structure-manipulation-tools)
     - [type](#type-helpers)
     - [utils](#uncategorized-utilities)
 * [examples](#examples)
@@ -49,8 +50,8 @@ to bundle it with your project).
     - [functional programming](#functional-programming)
     - [simple math](#simple-math)
     - [operating on strings](#operating-on-strings)
+    - [data structure manipulation](#data-structure-manipulation)
     - [type primitives](#type-primitives)
-    - [assorted utilities](#assorted-utilities)
 * [notes](#notes)
 * [license](#license)
 
@@ -193,7 +194,7 @@ $ cd js-toolbox
 $ npm i
 $ npm start
 Compiling for 'commonjs' ...
-🎉  Successfully compiled 10 files with Babel.
+🎉  Successfully compiled 11 files with Babel.
 >
 ```
 
@@ -356,6 +357,21 @@ string
 > ```
 
 
+### data structure manipulation tools
+
+```javascript
+struct
+```
+
+> ```javascript
+> { access: [Function: access],
+>   dict: [Function: dict],
+>   objectMap: [Function: objectMap],
+>   objectReduce: [Function: objectReduce],
+>   swap: [Function: swap] }
+> ```
+
+
 ### **type** helpers
 
 ```javascript
@@ -381,17 +397,15 @@ utils
 ```
 
 > ```javascript
-> { access: [Function: access],
->   choose: [Function: choose],
+> { choose: [Function: choose],
 >   clone: [Function: clone],
->   dict: [Function: dict],
+>   devEnv: [Function: devEnv],
+>   getLibConfig: [Function: getLibConfig],
+>   getProcess: [Function: getProcess],
 >   handleException: [Function: handleException],
 >   handleRejection: [Function: handleRejection],
 >   isBrowser: [Function: isBrowser],
->   objectMap: [Function: objectMap],
->   objectReduce: [Function: objectReduce],
 >   randomInt: [Function: randomInt],
->   swap: [Function: swap],
 >   timeUnit: { ... },
 >   to_: [Function: to_] }
 > ```
@@ -1020,6 +1034,61 @@ utils
 <br />
 
 
+### data structure manipulation
+
+* Apply `path` to an object.
+
+    ```javascript
+    utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+    ```
+
+    > ```javascript
+    > 42
+    > ```
+
+
+* Construct `Object` from the result of `Object.entries()` call.
+    `entries = [[k1, v1,], ..., [kn, vn,]]`
+
+    ```javascript
+    utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+    ```
+
+    > ```javascript
+    > { a: 'b', c: 'd', e: 'f' }
+    > ```
+
+
+* Shallow map (iteration) on objects.
+
+    ```javascript
+    utils.objectMap(
+        { what: 'od', i: '?rof dnats' },
+        ([k, v,]) => [
+            string.capitalize(k),
+            v.split('').reverse().join('')
+        ]
+    )
+    ```
+
+    > ```javascript
+    > { What: 'do', I: 'stand for?' }
+    > ```
+
+
+* Swap keys with values in a given `Object`.
+
+    ```javascript
+    utils.swap({ a: 'b', c: 'd', e: 'f' })
+    ```
+
+    > ```javascript
+    > { b: 'a', d: 'c', f: 'e' }
+    > ```
+
+</br>
+
+
 ### type primitives
 
 * Determine if a given value is a proper `Number`
@@ -1078,61 +1147,6 @@ utils
     > ```
 
 <br />
-
-
-### assorted utilities
-
-* Apply `path` to an object.
-
-    ```javascript
-    utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
-    ```
-
-    > ```javascript
-    > 42
-    > ```
-
-
-* Construct `Object` from the result of `Object.entries()` call.
-    `entries = [[k1, v1,], ..., [kn, vn,]]`
-
-    ```javascript
-    utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
-    ```
-
-    > ```javascript
-    > { a: 'b', c: 'd', e: 'f' }
-    > ```
-
-
-* Shallow map (iteration) on objects.
-
-    ```javascript
-    utils.objectMap(
-        { what: 'od', i: '?rof dnats' },
-        ([k, v,]) => [
-            string.capitalize(k),
-            v.split('').reverse().join('')
-        ]
-    )
-    ```
-
-    > ```javascript
-    > { What: 'do', I: 'stand for?' }
-    > ```
-
-
-* Swap keys with values in a given `Object`.
-
-    ```javascript
-    utils.swap({ a: 'b', c: 'd', e: 'f' })
-    ```
-
-    > ```javascript
-    > { b: 'a', d: 'c', f: 'e' }
-    > ```
-
-</br>
 
 
 
