@@ -45,7 +45,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Choose a random element from a non-empty array.
          */
-        export function draw (arr: any[]  |  string): any | string;
+        export function draw (arr: any[] | string): any | string;
 
 
         /**
@@ -89,13 +89,13 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return first element of the given array.
          */
-        export function head (arr: any[]  |  string): any | string;
+        export function head (arr: any[] | string): any | string;
 
 
         /**
          * Return array without its last element.
          */
-        export function init (arr: any[]  |  string): any[] | string;
+        export function init (arr: any[] | string): any[] | string;
 
 
         /**
@@ -119,7 +119,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return last element of the given array.
          */
-        export function last (arr: any[]  |  string): any | string;
+        export function last (arr: any[] | string): any | string;
 
 
         /**
@@ -162,7 +162,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return array without its head (first element).
          */
-        export function tail (arr: any[]  |  string): any[] | string;
+        export function tail (arr: any[] | string): any[] | string;
 
 
         /**
@@ -301,7 +301,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function map<T> (
             arr: any[],
-            f: (el: any, i: number) => Promise<T>  |  T
+            f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
 
 
@@ -332,7 +332,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function parMap<T> (
             arr: any[],
-            f: (el: any, i: number) => Promise<T>  |  T
+            f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
 
 
@@ -368,7 +368,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function reduce<T> (
             arr: any[],
-            f: (acc: T, el: any, i: number) => Promise<T>  |  T,
+            f: (acc: T, el: any, i: number) => Promise<T> | T,
             initAcc: T
         ): Promise<T>;
 
@@ -380,7 +380,7 @@ declare module "@xcmats/js-toolbox" {
          * when `condition` evaluates to `false`.
          */
         export function repeat<T> (
-            f: () => Promise<T>  |  T,
+            f: () => Promise<T> | T,
             condition: () => boolean
         ): Promise<T>;
 
@@ -581,7 +581,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function curry<T> (
             f: (...args: any[]) => T
-        ): (...args: any[]) => Function  |  T;
+        ): (...args: any[]) => Function | T;
 
 
         /**
