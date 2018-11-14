@@ -544,6 +544,17 @@ declare module "@xcmats/js-toolbox" {
     export namespace func {
 
         /**
+         * Functional replacement of a `switch` statement.
+         */
+        export function choose (
+            key: string,
+            actions?: object,
+            defaultAction?: Function,
+            args?: any[]
+        ): any;
+
+
+        /**
          * Function composition - read as "compose backward" or "but first".
          *
          * ```
@@ -670,6 +681,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
+    export const choose: typeof func.choose;
     export const compose: typeof func.compose;
     export const curry: typeof func.curry;
     export const flow: typeof func.flow;
@@ -1138,17 +1150,6 @@ declare module "@xcmats/js-toolbox" {
     export namespace utils {
 
         /**
-         * Functional replacement of a `switch` statement.
-         */
-        export function choose (
-            key: string,
-            actions?: object,
-            defaultAction?: Function,
-            args?: any[]
-        ): any;
-
-
-        /**
          * Do the deep-copy of any JavaScript object
          * that doesn't contain functions.
          */
@@ -1236,7 +1237,6 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
-    export const choose: typeof utils.choose;
     export const clone: typeof utils.clone;
     export const devEnv: typeof utils.devEnv;
     export const getLibConfig: typeof utils.getLibConfig;

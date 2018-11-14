@@ -18,6 +18,29 @@ import {
 
 
 /**
+ * Functional replacement of a `switch` statement.
+ *
+ * @function choose
+ * @param {String} key
+ * @param {Object.<String, Function>} actions
+ * @param {Function} defaultAction
+ * @param {Array} args
+ * @returns {*}
+ */
+export const choose = (
+    key,
+    actions = {},
+    defaultAction = () => null,
+    args = []
+) =>
+    key in actions ?
+        actions[key](...args) :
+        defaultAction(...args)
+
+
+
+
+/**
  * Function composition - read as "compose backward" or "but first".
  *
  * ```

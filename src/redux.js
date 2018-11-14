@@ -9,7 +9,7 @@
 
 
 
-import { choose } from "./utils"
+import { choose } from "./func"
 
 
 

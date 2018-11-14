@@ -287,7 +287,8 @@ func
 ```
 
 > ```javascript
-> { compose: [Function: compose],
+> { choose: [Function: choose],
+>   compose: [Function: compose],
 >   curry: [Function: curry],
 >   flow: [Function: flow],
 >   identity: [Function: identity],
@@ -398,8 +399,7 @@ utils
 ```
 
 > ```javascript
-> { choose: [Function: choose],
->   clone: [Function: clone],
+> { clone: [Function: clone],
 >   devEnv: [Function: devEnv],
 >   getLibConfig: [Function: getLibConfig],
 >   getProcess: [Function: getProcess],

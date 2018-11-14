@@ -83,6 +83,7 @@ export const codec = codecModule
  * @see {@link module:func}
  */
 export {
+    choose,
     compose,
     curry,
     flow,
@@ -200,7 +201,6 @@ export const type = typeModule
  * @see {@link module:utils}
  */
 export {
-    choose,
     clone,
     devEnv,
     getLibConfig,
