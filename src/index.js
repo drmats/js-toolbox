@@ -106,6 +106,7 @@ export {
     clamp,
     log10,
     log2,
+    randomInt,
     roundIfClose,
     sum,
 } from "./math"
@@ -207,7 +208,6 @@ export {
     handleException,
     handleRejection,
     isBrowser,
-    randomInt,
     timeUnit,
     to_,
 } from "./utils"

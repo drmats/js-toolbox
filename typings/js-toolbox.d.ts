@@ -713,6 +713,13 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Generate a random positive integer.
+         * NOT CRYPTOGRAPHICALLY SECURE.
+         */
+        export function randomInt (): number;
+
+
+        /**
          * Round to the nearest integer if the given value is within
          * epsilon range of that integer. Default epsilon is `1e-9`,
          * which can be changed through `precision` parameter.
@@ -731,6 +738,7 @@ declare module "@xcmats/js-toolbox" {
     export const clamp: typeof math.clamp;
     export const log10: typeof math.log10;
     export const log2: typeof math.log2;
+    export const randomInt: typeof math.randomInt;
     export const roundIfClose: typeof math.roundIfClose;
     export const sum: typeof math.sum;
 
@@ -1196,13 +1204,6 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Generate a random positive integer.
-         * NOT CRYPTOGRAPHICALLY SECURE.
-         */
-        export function randomInt (): number;
-
-
-        /**
          * Time units represented in milliseconds.
          *
          * - `second` - `1000 milliseconds`
@@ -1243,7 +1244,6 @@ declare module "@xcmats/js-toolbox" {
     export const handleException: typeof utils.handleException;
     export const handleRejection: typeof utils.handleRejection;
     export const isBrowser: typeof utils.isBrowser;
-    export const randomInt: typeof utils.randomInt;
     export const timeUnit: typeof utils.timeUnit;
     export const to_: typeof utils.to_;
 

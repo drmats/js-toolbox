@@ -9,6 +9,11 @@
 
 
 
+import { maxInt } from "./type"
+
+
+
+
 /**
  * Compute mathematical average of array of numbers.
  *
@@ -53,6 +58,18 @@ export const log10 = (x) => roundIfClose(Math.log(x) / Math.LN10)
  * @returns {Number}
  */
 export const log2 = (x) => roundIfClose(Math.log(x) / Math.LN2)
+
+
+
+
+/**
+ * Generate a random positive integer.
+ * NOT CRYPTOGRAPHICALLY SECURE.
+ *
+ * @function randomInt
+ * @returns {Number}
+ */
+export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
 
 
 

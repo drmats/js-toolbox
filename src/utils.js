@@ -23,7 +23,6 @@ import {
     isFunction,
     isObject,
     isString,
-    maxInt,
     toBool,
 } from "./type"
 
@@ -201,18 +200,6 @@ export const handleRejection = async (fn, handler = null) => {
  * @returns {Boolean}
  */
 export const isBrowser = () => toBool(getProcess().browser)
-
-
-
-
-/**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
- *
- * @function randomInt
- * @returns {Number}
- */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
 
 
 

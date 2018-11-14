@@ -309,6 +309,7 @@ math
 >   clamp: [Function: clamp],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
+>   randomInt: [Function: randomInt],
 >   roundIfClose: [Function: roundIfClose],
 >   sum: [Function: sum] }
 > ```
@@ -405,7 +406,6 @@ utils
 >   handleException: [Function: handleException],
 >   handleRejection: [Function: handleRejection],
 >   isBrowser: [Function: isBrowser],
->   randomInt: [Function: randomInt],
 >   timeUnit: { ... },
 >   to_: [Function: to_] }
 > ```
