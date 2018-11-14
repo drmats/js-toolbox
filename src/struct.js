@@ -70,10 +70,11 @@ export const clone = flow(JSON.stringify, JSON.parse)
 
 /**
  * Construct function appropriate to use as the `children` argument
- * to the `struct.dfs` function. Use it with `struct.dfs` to
+ * in the `struct.dfs` function. Use it with `struct.dfs` to
  * enumerate on any javascript object.
  *
  * @function hashAccessor
+ * @see {@link module:struct~dfs}
  * @returns {Function}
  */
 export const hashAccessor = () =>
@@ -89,10 +90,27 @@ export const hashAccessor = () =>
 
 /**
  * Construct function appropriate to use as the `children` argument
- * to the `struct.dfs` function. Use it with `struct.dfs` if your
+ * in the `struct.dfs` function. Use it with `struct.dfs` if your
  * tree-like structure contains children organized as arrays.
  *
+ * E.g. if a `node` is defined as follows:
+ *
+ * ```
+ * node = { val: "something", props: { num: 14, ch: [node1, node2] } }
+ * ```
+ *
+ * then `keyAccessor` should be defined in this way:
+ *
+ * ```
+ * keyAccessor("props", "ch")
+ * ```
+ *
+ * `keyAccessor` called without arguments (`keyAccessor()`) returns
+ * `hashAccessor`.
+ *
  * @function keyAccessor
+ * @see {@link module:struct~dfs}
+ * @see {@link module:struct~hashAccessor}
  * @param  {...(Number|String)} path A path leading from the `node`
  *      to the `children` array.
  * @returns {Function}
@@ -111,6 +129,7 @@ export const keyAccessor = (...path) =>
  * intermediate results.
  *
  * @function dfs
+ * @see {@link module:struct~keyAccessor}
  * @param {Object} tree Tree-like structure.
  * @param {Function} f Function to be executed on each node.
  *      Its signature is as follows: `function (accs, node, path, position)`,
@@ -129,7 +148,7 @@ export const keyAccessor = (...path) =>
  *      array of `n` tuples. In each tuple first element should be the `n`-th
  *      `child` of the `node` and second element should be the `path` leading
  *      from the `node` to the `n`-th `child`. If there is no children
- *      to given `node` then returned array should be empty.
+ *      under given `node` then returned array should be empty.
  * @returns {*} Accumulated result for all subtree nodes.
  */
 export const dfs = (

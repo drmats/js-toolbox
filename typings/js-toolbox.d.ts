@@ -1018,7 +1018,7 @@ declare module "@xcmats/js-toolbox" {
 
         /**
          * Construct function appropriate to use as the `children` argument
-         * to the `struct.dfs` function. Use it with `struct.dfs` to
+         * in the `struct.dfs` function. Use it with `struct.dfs` to
          * enumerate on any javascript object.
          */
         export function hashAccessor ():
@@ -1027,8 +1027,23 @@ declare module "@xcmats/js-toolbox" {
 
         /**
          * Construct function appropriate to use as the `children` argument
-         * to the `struct.dfs` function. Use it with `struct.dfs` if your
+         * in the `struct.dfs` function. Use it with `struct.dfs` if your
          * tree-like structure contains children organized as arrays.
+         *
+         * E.g. if a `node` is defined as follows:
+         *
+         * ```
+         * node = { val: "something", props: { num: 14, ch: [node1, node2] } }
+         * ```
+         *
+         * then `keyAccessor` should be defined in this way:
+         *
+         * ```
+         * keyAccessor("props", "ch")
+         * ```
+         *
+         * `keyAccessor` called without arguments (`keyAccessor()`) returns
+         * `hashAccessor`.
          */
         export function keyAccessor (
             ...path: (string | number)[]
