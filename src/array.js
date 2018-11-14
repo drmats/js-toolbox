@@ -10,7 +10,10 @@
 
 
 import { identity } from "./func"
-import { isNumber } from "./type"
+import {
+    isArray,
+    isNumber,
+} from "./type"
 import {
     objectReduce,
     randomInt,
@@ -183,7 +186,7 @@ export const isContinuous = (
  * @returns {Boolean}
  */
 export const isSorted = (arr, cmp = (a, b) => a <= b) =>
-    Array.isArray(arr) ?
+    isArray(arr) ?
         zip(arr, tail(arr)).every((pair) => cmp(...pair)) :
         false
 
@@ -260,7 +263,7 @@ export const range = (...args) => {
  * @returns {Array}
  */
 export const shuffle = (arr) => {
-    if (!Array.isArray(arr)) throw new TypeError(
+    if (!isArray(arr)) throw new TypeError(
         `array.shuffle() expected array as argument, got ${typeof arr}`
     )
 

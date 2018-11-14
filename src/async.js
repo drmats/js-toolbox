@@ -10,8 +10,16 @@
 
 
 import { head } from "./array"
-import { Y } from "./func"
-import { isFunction } from "./type"
+import {
+    partial,
+    rearg,
+    Y,
+} from "./func"
+import { quote } from "./string"
+import {
+    isArray,
+    isFunction,
+} from "./type"
 import { timeUnit } from "./utils"
 
 
@@ -128,19 +136,22 @@ export const map = (arr, f) => {
             results.push(r)
             i += 1
             if (i < arr.length) {
-                Promise.resolve(f.call(arr, arr[i], i))
+                Promise
+                    .resolve(f.call(arr, arr[i], i))
                     .then(progress).catch(progress)
             } else resolve(results)
-        }
+        },
+        bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
 
-    if (Array.isArray(arr)  &&  isFunction(f)) {
+    if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
-            Promise.resolve(f.call(arr, head(arr), 0))
+            Promise
+                .resolve(f.call(arr, head(arr), 0))
                 .then(progress).catch(progress)
         } else return Promise.resolve(results)
     } else throw new TypeError(
-        "async.map() expected array and function," +
-        ` got ${typeof arr} and ${typeof f}`
+        "async.map() expected array and function, " +
+        `got ${bquote(arr)} and ${bquote(f)}`
     )
 
     return promise
@@ -231,19 +242,22 @@ export const reduce = (arr, f, initAcc) => {
         progress = (r) => {
             i += 1
             if (i < arr.length) {
-                Promise.resolve(f.call(arr, r, arr[i], i))
+                Promise
+                    .resolve(f.call(arr, r, arr[i], i))
                     .then(progress).catch(progress)
             } else resolve(r)
-        }
+        },
+        bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
 
-    if (Array.isArray(arr)  &&  isFunction(f)) {
+    if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
-            Promise.resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
+            Promise
+                .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
                 .then(progress).catch(progress)
         } else return Promise.resolve(initAcc)
     } else throw new TypeError(
-        "async.reduce() expected array and function," +
-        ` got ${typeof arr} and ${typeof f}`
+        "async.reduce() expected array and function, " +
+        `got ${bquote(arr)} and ${bquote(f)}`
     )
 
     return promise

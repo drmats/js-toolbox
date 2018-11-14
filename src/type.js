@@ -58,8 +58,7 @@ export const isNumber = (n) =>
  * @returns {Boolean}
  */
 export const isObject = (o) =>
-    o != null  &&  "object" === typeof o  &&
-    !Array.isArray(o)
+    o != null  &&  "object" === typeof o  &&  !isArray(o)
 
 
 
