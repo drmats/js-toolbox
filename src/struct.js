@@ -64,6 +64,21 @@ export const clone = flow(JSON.stringify, JSON.parse)
 
 
 /**
+ * Construct function appropriate to use as the `children` argument
+ * to the `struct.dfs` function.
+ *
+ * @function keyAccessor
+ * @param  {...(Number|String)} path A path leading from the `node`
+ *      to the `children` array.
+ * @returns {Function}
+ */
+export const keyAccessor = (...path) =>
+    (n) => access(n, path, []).map((c, i) => [c, path.concat([i])])
+
+
+
+
+/**
  * Depth-first search. Executes certain operation `f`
  * on each `tree` node in reduce-like fashion, accumulating
  * intermediate results.
@@ -86,14 +101,14 @@ export const clone = flow(JSON.stringify, JSON.parse)
  * @param {Function} [children] Function that should accept `node` and return
  *      array of `n` tuples. In each tuple first element should be the `n`-th
  *      `child` of the `node` and second element should be the `path` leading
- *      from the `node` to the `n`-th `child`
- * @returns {*} Accumulated results for all subtree nodes.
+ *      from the `node` to the `n`-th `child`. If there is no children
+ *      to given `node` then returned array should be empty.
+ * @returns {*} Accumulated result for all subtree nodes.
  */
 export const dfs = (
     tree = {},
     f = (_accs, node, _path, _position) => node,
-    children = (n) =>
-        access(n, ["children"], []).map((c, i) => [c, ["children", i]])
+    children = keyAccessor("children")
 ) => {
     let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
     if (

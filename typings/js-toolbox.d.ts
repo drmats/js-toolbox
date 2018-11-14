@@ -1017,6 +1017,15 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Construct function appropriate to use as the `children` argument
+         * to the `struct.dfs` function.
+         */
+        export function keyAccessor (
+            ...path: (string | number)[]
+        ): (n: object) => [object, (string | number)[]][];
+
+
+        /**
          * Depth-first search. Executes certain operation `f`
          * on each `tree` node in reduce-like fashion, accumulating
          * intermediate results.
