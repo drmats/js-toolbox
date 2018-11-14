@@ -249,7 +249,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export async function delay (
+        export function delay (
             time?: number,
             cancel?: (canceller: (reason: any) => void) => void
         ): Promise<number>;
@@ -269,7 +269,7 @@ declare module "@xcmats/js-toolbox" {
          * .catch((c) => console.log("Error:", c))
          * ```
          */
-        export async function interval<T> (
+        export function interval<T> (
             f: () => T,
             clear: (canceller: (reason: any) => T) => void,
             time?: number
@@ -299,7 +299,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export async function map<T> (
+        export function map<T> (
             arr: any[],
             f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
@@ -330,7 +330,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export async function parMap<T> (
+        export function parMap<T> (
             arr: any[],
             f: (el: any, i: number) => Promise<T> | T
         ): Promise<T[]>;
@@ -366,7 +366,7 @@ declare module "@xcmats/js-toolbox" {
          * })()
          * ```
          */
-        export async function reduce<T> (
+        export function reduce<T> (
             arr: any[],
             f: (acc: T, el: any, i: number) => Promise<T> | T,
             initAcc: T
@@ -379,7 +379,7 @@ declare module "@xcmats/js-toolbox" {
          * Resolves with result of last `f` execution
          * when `condition` evaluates to `false`.
          */
-        export async function repeat<T> (
+        export function repeat<T> (
             f: () => Promise<T> | T,
             condition: () => boolean
         ): Promise<T>;
@@ -399,7 +399,7 @@ declare module "@xcmats/js-toolbox" {
          * .catch((c) => console.log("Error or cancel:", c))
          * ```
          */
-        export async function timeout<T> (
+        export function timeout<T> (
             f: () => T,
             clear?: (clearer: () => T) => void,
             time?: number
@@ -1192,7 +1192,7 @@ declare module "@xcmats/js-toolbox" {
          * Handle rejections in expressions.
          * Async version of `handleException`.
          */
-        export async function handleRejection<T> (
+        export function handleRejection<T> (
             fn: () => Promise<T>,
             handler?: (ex: any) => Promise<T>
         ): Promise<T>;
