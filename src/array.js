@@ -10,14 +10,12 @@
 
 
 import { identity } from "./func"
+import { randomInt } from "./math"
+import { objectReduce } from "./struct"
 import {
     isArray,
     isNumber,
 } from "./type"
-import {
-    objectReduce,
-    randomInt,
-} from "./utils"
 
 
 
