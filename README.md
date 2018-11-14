@@ -368,6 +368,7 @@ struct
 > ```javascript
 > { access: [Function: access],
 >   clone: [Function],
+>   hashAccessor: [Function: hashAccessor],
 >   keyAccessor: [Function: keyAccessor],
 >   dfs: [Function: dfs],
 >   dict: [Function: dict],

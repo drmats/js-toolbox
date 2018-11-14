@@ -1018,7 +1018,17 @@ declare module "@xcmats/js-toolbox" {
 
         /**
          * Construct function appropriate to use as the `children` argument
-         * to the `struct.dfs` function.
+         * to the `struct.dfs` function. Use it with `struct.dfs` to
+         * enumerate on any javascript object.
+         */
+        export function hashAccessor ():
+            (n: object) => [object, (string | number)[]][];
+
+
+        /**
+         * Construct function appropriate to use as the `children` argument
+         * to the `struct.dfs` function. Use it with `struct.dfs` if your
+         * tree-like structure contains children organized as arrays.
          */
         export function keyAccessor (
             ...path: (string | number)[]

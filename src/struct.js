@@ -10,13 +10,18 @@
 
 
 import {
+    choose,
     flow,
     partial,
     rearg,
     Y,
 } from "./func"
-import { quote } from "./string"
 import {
+    empty,
+    quote,
+} from "./string"
+import {
+    isArray,
     isFunction,
     isObject,
 } from "./type"
@@ -65,7 +70,27 @@ export const clone = flow(JSON.stringify, JSON.parse)
 
 /**
  * Construct function appropriate to use as the `children` argument
- * to the `struct.dfs` function.
+ * to the `struct.dfs` function. Use it with `struct.dfs` to
+ * enumerate on any javascript object.
+ *
+ * @function hashAccessor
+ * @returns {Function}
+ */
+export const hashAccessor = () =>
+    (n) => choose(
+        [isObject(n), isArray(n)].map((v) => v ? 1 : 0).join(empty()), {
+            "10": () => Object.keys(n).map((k) => [n[k], [k]]),
+            "01": () => n.map((v, i) => [v, [i]]),
+        }, () => []
+    )
+
+
+
+
+/**
+ * Construct function appropriate to use as the `children` argument
+ * to the `struct.dfs` function. Use it with `struct.dfs` if your
+ * tree-like structure contains children organized as arrays.
  *
  * @function keyAccessor
  * @param  {...(Number|String)} path A path leading from the `node`
@@ -73,7 +98,9 @@ export const clone = flow(JSON.stringify, JSON.parse)
  * @returns {Function}
  */
 export const keyAccessor = (...path) =>
-    (n) => access(n, path, []).map((c, i) => [c, path.concat([i])])
+    path.length > 0 ?
+        (n) => access(n, path, []).map((c, i) => [c, path.concat([i])]) :
+        hashAccessor()
 
 
 
@@ -108,9 +135,9 @@ export const keyAccessor = (...path) =>
 export const dfs = (
     tree = {},
     f = (_accs, node, _path, _position) => node,
-    children = keyAccessor("children")
+    children = keyAccessor()
 ) => {
-    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
+    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
     if (
         !isObject(tree) || !isFunction(f) || !isFunction(children)
     ) throw new TypeError(
@@ -167,7 +194,7 @@ export const dict = (entries) => entries.reduce(
  * @returns {Object}
  */
 export const objectMap = (o, f) => {
-    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
+    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
@@ -197,7 +224,7 @@ export const objectMap = (o, f) => {
  * @returns {*}
  */
 export const objectReduce = (o, f, init) => {
-    let bquote = (x) => partial(rearg(quote)(1,0))("[]")(typeof x)
+    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
