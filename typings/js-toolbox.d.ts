@@ -77,7 +77,7 @@ declare module "@xcmats/js-toolbox" {
         export function findDuplicates (
             arr: any[],
             iteratee?: (el: any) => (any)
-        ): object;
+        ): string[];
 
 
         /**
@@ -136,6 +136,15 @@ declare module "@xcmats/js-toolbox" {
          * Imitates Python's `range()`.
          */
         export function range (...args: number[]): number[];
+
+
+        /**
+         * Create a new array with removed duplicates.
+         */
+        export function removeDuplicates (
+            arr: any[],
+            iteratee?: (el: any) => (any)
+        ): string[];
 
 
         /**
@@ -224,6 +233,7 @@ declare module "@xcmats/js-toolbox" {
     export const isSorted: typeof array.isSorted;
     export const last: typeof array.last;
     export const range: typeof array.range;
+    export const removeDuplicates: typeof array.removeDuplicates;
     export const shuffle: typeof array.shuffle;
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;

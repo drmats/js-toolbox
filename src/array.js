@@ -10,6 +10,7 @@
 
 
 import {
+    flow,
     identity,
     pipe,
 } from "./func"
@@ -110,7 +111,7 @@ export const dropLast = (n) => (arr) => arr.slice(0, arr.length - n)
  * @function findDuplicates
  * @param {Array} arr
  * @param {Function} [iteratee=identity]
- * @returns {Object}
+ * @returns {Array.<String>}
  */
 export const findDuplicates = (arr, iteratee = identity) =>
     objectReduce(
@@ -249,6 +250,22 @@ export const range = (...args) => {
 
     return arr
 }
+
+
+
+
+/**
+ * Create a new array with removed duplicates.
+ *
+ * @function removeDupliates
+ * @param {Array} arr
+ * @param {Function} [iteratee=identity]
+ * @returns {Array.<String>}
+ */
+export const removeDuplicates = flow(
+    countBy,
+    Object.keys.bind(Object)
+)
 
 
 

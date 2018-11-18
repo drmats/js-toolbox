@@ -231,6 +231,7 @@ array
 >   isSorted: [Function: isSorted],
 >   last: [Function: last],
 >   range: [Function: range],
+>   removeDuplicates: [Function],
 >   shuffle: [Function: shuffle],
 >   sparse: [Function: sparse],
 >   tail: [Function: tail],

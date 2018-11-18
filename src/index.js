@@ -24,6 +24,7 @@ export {
     isSorted,
     last,
     range,
+    removeDuplicates,
     shuffle,
     sparse,
     tail,
