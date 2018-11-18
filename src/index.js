@@ -28,6 +28,7 @@ export {
     sparse,
     tail,
     take,
+    takeEvery,
     takeLast,
     zipWith,
     zip,

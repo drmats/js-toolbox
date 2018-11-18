@@ -235,6 +235,7 @@ array
 >   sparse: [Function: sparse],
 >   tail: [Function: tail],
 >   take: [Function: take],
+>   takeEvery: [Function: takeEvery],
 >   takeLast: [Function: takeLast],
 >   zipWith: [Function: zipWith],
 >   zip: [Function] }
@@ -533,6 +534,17 @@ utils
 
     > ```javascript
     > [ 11, 22, 33, 44 ]
+    > ```
+
+
+* Take every 3rd element from a given array.
+
+    ```javascript
+    array.takeEvery(3)([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ```
+
+    > ```javascript
+    > [0, 3, 6, 9]
     > ```
 
 <br />

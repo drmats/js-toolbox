@@ -172,6 +172,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Take every `nth` element from an `arr` array.
+         */
+        export function takeEvery (nth: number): (arr: any[]) => any[];
+
+
+        /**
          * Take the last `n` elements of a given array.
          */
         export function takeLast (n: number): (arr: any[]) => any[];
@@ -222,6 +228,7 @@ declare module "@xcmats/js-toolbox" {
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;
     export const take: typeof array.take;
+    export const takeEvery: typeof array.takeEvery;
     export const takeLast: typeof array.takeLast;
     export const zipWith: typeof array.zipWith;
     export const zip: typeof array.zip;

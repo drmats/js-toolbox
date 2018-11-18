@@ -9,7 +9,10 @@
 
 
 
-import { identity } from "./func"
+import {
+    identity,
+    pipe,
+} from "./func"
 import { randomInt } from "./math"
 import { objectReduce } from "./struct"
 import {
@@ -349,6 +352,29 @@ export const take = (n) => (arr) => arr.slice(0, n)
 
 
 /**
+ * Take every `nth` element from an `arr` array.
+ *
+ * @function takeEvery
+ * @param {Number} nth
+ * @returns {Function} (any[]) => any[]
+ */
+export const takeEvery = (nth) => (arr) =>
+    isNumber(nth)  &&  nth > 0  &&  isArray(arr) ?
+        pipe(
+            range(Math.ceil(arr.length / nth))
+                .reduce(([taken, rest]) => [
+                    take(1)(rest).concat(taken),
+                    drop(nth)(rest),
+                ], [[], arr])
+        )(
+            head,
+            (arr) => arr.reverse()
+        ) : arr
+
+
+
+
+/**
  * Take the last `n` elements of a given array.
  *
  * @function takeLast
@@ -372,8 +398,8 @@ export const takeLast = (n) => (arr) => arr.slice(arr.length - n)
  * ```
  *
  * @function zipWith
- * @param {Function} f
- * @return {Funcion}
+ * @param {Function} f (...any[]) => any
+ * @return {Funcion} (...any[][]) => any[]
  */
 export const zipWith = (f) => (...arrs) => {
     let
