@@ -250,7 +250,8 @@ async
 ```
 
 > ```javascript
-> { delay: [Function: delay],
+> { createMutex: [Function: createMutex],
+>   delay: [Function: delay],
 >   interval: [Function: interval],
 >   map: [Function: map],
 >   parMap: [Function: parMap],

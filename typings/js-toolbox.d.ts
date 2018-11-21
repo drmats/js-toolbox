@@ -253,6 +253,27 @@ declare module "@xcmats/js-toolbox" {
     export namespace async {
 
         /**
+         * Mutual exclusion for asynchronous functions.
+         *
+         * Example:
+         *
+         * ```
+         * const mutex = async.createMutex()
+         *
+         * let f = async (m) => {
+         *     let val = await m.lock()
+         *     return `Freed with val: ${val}`
+         * }
+         *
+         * f(mutex).then(utils.to_("success")).catch(utils.to_("failure"))
+         *
+         * mutex.resolve(42)  //  mutex.reject("ERROR")
+         * ```
+         */
+        export function createMutex (): object;
+
+
+        /**
          * Delay current async execution by `time` miliseconds.
          *
          * Example:
@@ -424,6 +445,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
+    export const createMutex: typeof async.createMutex;
     export const delay: typeof async.delay;
     export const interval: typeof async.interval;
     export const asyncMap: typeof async.map;
