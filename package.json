@@ -52,11 +52,16 @@
     ],
     "homepage": "https://github.com/drmats/js-toolbox",
     "keywords": [
+        "array",
+        "async",
+        "byte-array",
+        "codec",
         "es6",
+        "functional",
         "javascript",
         "library",
-        "tools",
-        "snippets"
+        "string",
+        "type"
     ],
     "license": "Apache-2.0",
     "main": "lib/index.js",
@@ -88,5 +93,5 @@
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
     "typings": "typings/js-toolbox.d.ts",
-    "version": "0.6.14"
+    "version": "0.6.15"
 }
