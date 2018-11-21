@@ -11,6 +11,7 @@
 
 import { head } from "./array"
 import {
+    identity,
     partial,
     rearg,
     Y,
@@ -58,8 +59,22 @@ export const delay = (
 /**
  * `setInterval` in `Promise` / `async` skin.
  *
- * Example:
+ * Example 1:
  *
+ * ```
+ * global.x = 0
+ * async.interval(
+ *     (c) => {
+ *         if (global.x === 10) { c("tada") }
+ *         else { global.x += 1 }
+ *         console.log("ping", Date.now())
+ *     }
+ * )
+ * .then(utils.to_("success"))
+ * .catch(utils.to_("failure"))
+ * ```
+ *
+ * Example 2:
  * ```
  * interval(
  *     () => { console.log("Hey!"); return 42 },
@@ -72,25 +87,33 @@ export const delay = (
  * @async
  * @function interval
  * @param {Function} f
- * @param {Function} clear
+ * @param {Function} [passClear] (Function) => any
  * @param {Number} [time=timeUnit.second]
  * @returns {Promise.<*>}
  */
-export const interval = (f, clear, time = timeUnit.second) => {
+export const interval = (
+    f,
+    passClear = identity,
+    time = timeUnit.second
+) => {
     let
         resolve = null, handle = null, result = null,
+        clear = (...args) => {
+            clearInterval(handle)
+            resolve(...(args.length > 0 ? args : [result]))
+            return result
+        },
         promise = new Promise((res, rej) => {
             resolve = res
             handle = setInterval(() => {
-                try { result = f() }
-                catch (ex) { rej(ex) }
+                try { result = f(clear) }
+                catch (ex) {
+                    clearInterval(handle)
+                    rej(ex)
+                }
             }, time)
         })
-    clear(() => {
-        clearInterval(handle)
-        resolve(result)
-        return result
-    })
+    passClear(clear)
     return promise
 }
 
