@@ -289,7 +289,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function delay (
             time?: number,
-            cancel?: (canceller: (reason: any) => void) => void
+            passCancel?: (canceller: (reason: any) => void) => void
         ): Promise<number>;
 
 
@@ -308,8 +308,8 @@ declare module "@xcmats/js-toolbox" {
          * ```
          */
         export function interval<T> (
-            f: () => T,
-            clear: (canceller: (reason: any) => T) => void,
+            f: (clear: (reason: any) => T) => T,
+            passClear: (clear: (reason: any) => T) => void,
             time?: number
         ): Promise<T>;
 
@@ -429,9 +429,9 @@ declare module "@xcmats/js-toolbox" {
          * Example:
          *
          * ```
-         * timeout(
-         *     () => { console.log("Hey!"); return 42 }, 2 * timeUnit.second,
-         *     (c) => timeout(() => c("Cancelled!"), timeUnit.second)
+         * async.timeout(
+         *     () => { console.log("Hey!"); return 42 }, 2000,
+         *     (c) => async.timeout(() => c("Cancelled!"), 1000)
          * )
          * .then((x) => console.log("Success:", x))
          * .catch((c) => console.log("Error or cancel:", c))
@@ -439,7 +439,7 @@ declare module "@xcmats/js-toolbox" {
          */
         export function timeout<T> (
             f: () => T,
-            clear?: (clearer: () => T) => void,
+            passCancel?: (cancel: () => T) => void,
             time?: number
         ): Promise<T>;
 

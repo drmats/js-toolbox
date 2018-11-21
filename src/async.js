@@ -51,12 +51,12 @@ export const createMutex = () => {
     let
         resolve = null, reject = null,
         promise = new Promise(
-            (res, rej) => { resolve = res, reject = rej }
+            (res, rej) => { resolve = res; reject = rej }
         )
 
     return {
         lock: () => promise,
-        resolve, reject
+        resolve, reject,
     }
 }
 
@@ -81,14 +81,14 @@ export const createMutex = () => {
  * @function delay
  * @see [timeout]{@link module:async~timeout}
  * @param {Number} [time=timeUnit.second]
- * @param {Function} [cancel=()=>null]
+ * @param {Function} [passCancel] (cancel) => any
  * @returns {Promise.<Number>}
  */
 export const delay = (
     time = timeUnit.second,
-    cancel = (_canceller) => null
+    passCancel = identity
 ) =>
-    timeout(() => time, time, cancel)
+    timeout(() => time, time, passCancel)
 
 
 
@@ -354,9 +354,9 @@ export const repeat = (f, condition) => Y(
  * Example:
  *
  * ```
- * timeout(
- *     () => { console.log("Hey!"); return 42 }, 2 * timeUnit.second,
- *     (c) => timeout(() => c("Cancelled!"), timeUnit.second)
+ * async.timeout(
+ *     () => { console.log("Hey!"); return 42 }, 2000,
+ *     (c) => async.timeout(() => c("Cancelled!"), 1000)
  * )
  * .then((x) => console.log("Success:", x))
  * .catch((c) => console.log("Error or cancel:", c))
@@ -366,13 +366,13 @@ export const repeat = (f, condition) => Y(
  * @function timeout
  * @param {Function} f
  * @param {Number} [time=timeUnit.second]
- * @param {Function} [cancel=()=>null]
+ * @param {Function} [passCancel] (cancel) => any
  * @returns {Promise.<*>}
  */
 export const timeout = (
     f,
     time = timeUnit.second,
-    cancel = (_canceller) => null
+    passCancel = identity
 ) => {
     let
         reject = null, handle = null,
@@ -383,7 +383,7 @@ export const timeout = (
                 catch (ex) { rej(ex) }
             }, time)
         })
-    cancel((reason) => {
+    passCancel((reason) => {
         clearTimeout(handle)
         reject(reason)
     })
