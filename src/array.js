@@ -116,7 +116,7 @@ export const dropLast = (n) => (arr) => arr.slice(0, arr.length - n)
 export const findDuplicates = (arr, iteratee = identity) =>
     objectReduce(
         countBy(arr, iteratee),
-        (acc, [k, v]) => v > 1  ?  acc.concat([k])  :  acc,
+        (acc, [k, v]) => v > 1  ?  [...acc, k]  :  acc,
         []
     )
 
@@ -134,7 +134,7 @@ export const findDuplicates = (arr, iteratee = identity) =>
  * @param {Array.<Array>} arr
  * @returns {Array}
  */
-export const flatten = (arr) => arr.reduce((acc, el) => acc.concat(el), [])
+export const flatten = (arr) => arr.reduce((acc, el) => [...acc, ...el], [])
 
 
 

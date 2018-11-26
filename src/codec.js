@@ -129,8 +129,8 @@ export const hexToBytes = ((hexInput) => (
             .reduceRight(
                 (acc, el, i) =>
                     i % 2  ?
-                        [el].concat(acc)  :
-                        [el + head(acc)].concat(tail(acc)),
+                        [el, ...acc] :
+                        [el + head(acc), ...tail(acc)],
                 []
             )
             .map((hexByte) => parseInt(hexByte, 16))

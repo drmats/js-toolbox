@@ -117,7 +117,7 @@ export const hashAccessor = () =>
  */
 export const keyAccessor = (...path) =>
     path.length > 0 ?
-        (n) => access(n, path, []).map((c, i) => [c, path.concat([i])]) :
+        (n) => access(n, path, []).map((c, i) => [c, [...path, i]]) :
         hashAccessor()
 
 
