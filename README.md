@@ -257,6 +257,7 @@ async
 >   parMap: [Function: parMap],
 >   reduce: [Function: reduce],
 >   repeat: [Function: repeat],
+>   some: [Function: some],
 >   timeout: [Function: timeout] }
 > ```
 

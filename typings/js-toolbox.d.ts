@@ -424,6 +424,28 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Resolve or reject when any of the promises
+         * passed as arguments resolve or reject.
+         *
+         * Complementary function to the standard `Promise.all()`.
+         *
+         * Example:
+         *
+         * ```
+         * m1 = async.createMutex()
+         * m2 = async.createMutex()
+         *
+         * async.some(m1.lock(), m2.lock())
+         *     .then(utils.to_("resolved"))
+         *     .catch(utils.to_("rejected"))
+         *
+         * m1.resolve("All right!")  //  or, e.g: m2.reject("Some left!")
+         * ```
+         */
+        export function some (...ps: Promise<any>[]): Promise<any>;
+
+
+        /**
          * `setTimeout` in `Promise` / `async` skin.
          *
          * Example:
@@ -452,6 +474,7 @@ declare module "@xcmats/js-toolbox" {
     export const parMap: typeof async.parMap;
     export const asyncReduce: typeof async.reduce;
     export const asyncRepeat: typeof async.repeat;
+    export const asyncSome: typeof async.some;
     export const timeout: typeof async.timeout;
 
 

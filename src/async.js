@@ -20,6 +20,7 @@ import { quote } from "./string"
 import {
     isArray,
     isFunction,
+    toBool,
 } from "./type"
 import { timeUnit } from "./utils"
 
@@ -344,6 +345,52 @@ export const repeat = (f, condition) => Y(
             Promise.resolve().then(f).then(act) :
             Promise.resolve(result)
 )()
+
+
+
+
+/**
+ * Resolve or reject when any of the promises
+ * passed as arguments resolve or reject.
+ *
+ * Complementary function to the standard `Promise.all()`.
+ *
+ * Example:
+ *
+ * ```
+ * m1 = async.createMutex()
+ * m2 = async.createMutex()
+ *
+ * async.some(m1.lock(), m2.lock())
+ *     .then(utils.to_("resolved"))
+ *     .catch(utils.to_("rejected"))
+ *
+ * m1.resolve("All right!")  //  or, e.g: m2.reject("Some left!")
+ * ```
+ *
+ * @async
+ * @function some
+ * @param  {...Promise} ps promises
+ * @returns {Promise}
+ */
+export const some = (...ps) => {
+    let
+        mutex = createMutex(),
+        resolved = false
+
+    ps.forEach(async (p) => {
+        let v = null, e = null
+        try { v = await p }
+        catch (ex) { e = ex }
+        if (!resolved) {
+            resolved = true
+            if (toBool(v)) mutex.resolve(v)
+            else mutex.reject(e)
+        }
+    })
+
+    return mutex.lock()
+}
 
 
 
