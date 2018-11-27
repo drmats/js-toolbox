@@ -255,9 +255,9 @@ async
 >   interval: [Function: interval],
 >   map: [Function: map],
 >   parMap: [Function: parMap],
+>   race: [Function: race],
 >   reduce: [Function: reduce],
 >   repeat: [Function: repeat],
->   some: [Function: some],
 >   timeout: [Function: timeout] }
 > ```
 

@@ -49,9 +49,9 @@ export {
     interval,
     map as asyncMap,
     parMap,
+    race as asyncRace,
     reduce as asyncReduce,
     repeat as asyncRepeat,
-    some as asyncSome,
     timeout,
 } from "./async"
 import * as asyncModule from "./async"
