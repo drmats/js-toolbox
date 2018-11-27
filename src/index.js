@@ -44,6 +44,7 @@ export const array = arrayModule
  * @see {@link module:async}
  */
 export {
+    cancellable,
     createMutex,
     delay,
     interval,

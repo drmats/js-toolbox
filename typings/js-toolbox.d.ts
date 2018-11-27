@@ -253,6 +253,24 @@ declare module "@xcmats/js-toolbox" {
     export namespace async {
 
         /**
+         * Make any promise cancellable.
+         *
+         * Example:
+         *
+         * ```
+         * let { promise, cancel } = async.cancellable(
+         *     async.timeout(() => "Job done!", 2000)
+         * )
+         *
+         * promise.then(utils.to_("resolved")).catch(utils.to_("rejected"))
+         *
+         * cancel("I've changed my mind")
+         * ```
+         */
+        export function cancellable (p: Promise<any>): object;
+
+
+        /**
          * Mutual exclusion for asynchronous functions.
          *
          * Example:
@@ -467,6 +485,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
+    export const cancellable: typeof async.cancellable;
     export const createMutex: typeof async.createMutex;
     export const delay: typeof async.delay;
     export const interval: typeof async.interval;

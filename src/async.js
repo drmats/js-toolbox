@@ -28,6 +28,38 @@ import { timeUnit } from "./utils"
 
 
 /**
+ * Make any promise cancellable.
+ *
+ * Example:
+ *
+ * ```
+ * let { promise, cancel } = async.cancellable(
+ *     async.timeout(() => "Job done!", 2000)
+ * )
+ *
+ * promise.then(utils.to_("resolved")).catch(utils.to_("rejected"))
+ *
+ * cancel("I've changed my mind")
+ * ```
+ *
+ * @function cancellable
+ * @param {Promise} p
+ * @returns {Object} { promise, cancel, resolve }
+ */
+export const cancellable = (p) => {
+    let mutex = createMutex()
+
+    return {
+        promise: race(p, mutex.lock()),
+        cancel: mutex.reject,
+        resolve: mutex.resolve,
+    }
+}
+
+
+
+
+/**
  * Mutual exclusion for asynchronous functions.
  *
  * Example:
@@ -151,7 +183,9 @@ export const interval = (
                 }
             }, time)
         })
+
     passClear(clear)
+
     return promise
 }
 
@@ -430,9 +464,11 @@ export const timeout = (
                 catch (ex) { rej(ex) }
             }, time)
         })
+
     passCancel((reason) => {
         clearTimeout(handle)
         reject(reason)
     })
+
     return promise
 }
