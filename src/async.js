@@ -20,7 +20,6 @@ import { quote } from "./string"
 import {
     isArray,
     isFunction,
-    toBool,
 } from "./type"
 import { timeUnit } from "./utils"
 
@@ -322,12 +321,12 @@ export const race = (...ps) => {
         resolved = false
 
     ps.forEach(async (p) => {
-        let v = null, e = null
+        let v = null, e = null, thrown = false
         try { v = await p }
-        catch (ex) { e = ex }
+        catch (ex) { e = ex; thrown = true }
         if (!resolved) {
             resolved = true
-            if (toBool(v)) mutex.resolve(v)
+            if (!thrown) mutex.resolve(v)
             else mutex.reject(e)
         }
     })
