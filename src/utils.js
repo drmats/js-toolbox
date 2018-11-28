@@ -129,7 +129,7 @@ export const getProcess = () => (
  * @function handleException
  * @param {Function} fn
  * @param {Function} [handler]
- * @returns {*}
+ * @returns {any}
  */
 export const handleException = (fn, handler = null) => {
     try { return fn() }

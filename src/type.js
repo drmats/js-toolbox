@@ -13,7 +13,7 @@
  * Determine if a given value is an `Array`.
  *
  * @function isArray
- * @param {*} a
+ * @param {any} a
  * @returns {Boolean}
  */
 export const isArray = Array.isArray
@@ -25,7 +25,7 @@ export const isArray = Array.isArray
  * Determine if a given value is a `Function`.
  *
  * @function isFunction
- * @param {*} f
+ * @param {any} f
  * @returns {Boolean}
  */
 export const isFunction = (f) =>
@@ -39,7 +39,7 @@ export const isFunction = (f) =>
  * (not `NaN` and not `Infinity`).
  *
  * @function isNumber
- * @param {*} n
+ * @param {any} n
  * @returns {Boolean}
  */
 export const isNumber = (n) =>
@@ -54,7 +54,7 @@ export const isNumber = (n) =>
  * (not `null`, not `undefined` and not `Array`).
  *
  * @function isObject
- * @param {*} o
+ * @param {any} o
  * @returns {Boolean}
  */
 export const isObject = (o) =>
@@ -67,7 +67,7 @@ export const isObject = (o) =>
  * Determine if a given value is a `String`.
  *
  * @function isString
- * @param {*} s
+ * @param {any} s
  * @returns {Boolean}
  */
 export const isString = (s) =>
@@ -100,8 +100,8 @@ export const minInt = Number.MIN_SAFE_INTEGER  ||  -(2 ** 53) + 1
  * If `val` is `null` then return `undefined`, else return `val`.
  *
  * @function nullToUndefined
- * @param {*} val
- * @returns {*}
+ * @param {any} val
+ * @returns {any}
  */
 export const nullToUndefined = (val) =>
     val === null  ?  undefined  :  val
@@ -115,7 +115,7 @@ export const nullToUndefined = (val) =>
  * and `true` for all **truthy** values.
  *
  * @function toBool
- * @param {*} x
+ * @param {any} x
  * @returns {Boolean}
  */
 export const toBool = (x) => !!x

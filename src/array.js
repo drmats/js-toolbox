@@ -61,7 +61,7 @@ export const countBy = (arr, iteratee = identity) =>
  *
  * @function draw
  * @param {Array|String} arr
- * @returns {*}
+ * @returns {any}
  */
 export const draw = (arr) => arr[randomInt() % arr.length]
 
@@ -144,7 +144,7 @@ export const flatten = (arr) => arr.reduce((acc, el) => [...acc, ...el], [])
  *
  * @function head
  * @param {Array|String} arr
- * @returns {*}
+ * @returns {any}
  */
 export const head = (arr) => arr[0]
 
@@ -200,7 +200,7 @@ export const isSorted = (arr, cmp = (a, b) => a <= b) =>
  *
  * @function last
  * @param {Array|String} arr
- * @returns {*}
+ * @returns {any}
  */
 export const last = (arr) => arr[arr.length-1]
 

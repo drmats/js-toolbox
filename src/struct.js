@@ -43,8 +43,8 @@ import { handleException } from "./utils"
  * @function access
  * @param {Object} [o={}]
  * @param {Array.<String>} [path=[]]
- * @param {*} [def]
- * @returns {*}
+ * @param {any} [def]
+ * @returns {any}
  */
 export const access = (o = {}, path = [], def = undefined) =>
     handleException(
@@ -149,7 +149,7 @@ export const keyAccessor = (...path) =>
  *      `child` of the `node` and second element should be the `path` leading
  *      from the `node` to the `n`-th `child`. If there is no children
  *      under given `node` then returned array should be empty.
- * @returns {*} Accumulated result for all subtree nodes.
+ * @returns {any} Accumulated result for all subtree nodes.
  */
 export const dfs = (
     tree = {},
@@ -239,8 +239,8 @@ export const objectMap = (o, f) => {
  * @function objectReduce
  * @param {Object} o
  * @param {Function} f
- * @param {*} init
- * @returns {*}
+ * @param {any} init
+ * @returns {any}
  */
 export const objectReduce = (o, f, init) => {
     let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)

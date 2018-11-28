@@ -25,7 +25,7 @@ import {
  * @param {Object.<String, Function>} actions
  * @param {Function} defaultAction
  * @param {Array} args
- * @returns {*}
+ * @returns {any}
  */
 export const choose = (
     key,
@@ -105,8 +105,8 @@ export const flow = (...fs) => compose(...fs.reverse())
  * Return value passed as a first argument.
  *
  * @function identity
- * @param {*} val
- * @returns {*}
+ * @param {any} val
+ * @returns {any}
  */
 export const identity = (val) => val
 
