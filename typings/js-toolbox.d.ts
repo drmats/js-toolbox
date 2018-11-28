@@ -341,7 +341,7 @@ declare module "@xcmats/js-toolbox" {
          *     - `element` - currently processed element
          *     - `index` - current index
          *
-         * `f` can return `Promise.<*>` or `<*>`
+         * `f` can return `Promise.<any>` or `<any>`
          *
          * Example:
          *
@@ -372,7 +372,7 @@ declare module "@xcmats/js-toolbox" {
          *     - `element` - currently processed element
          *     - `index` - current index
          *
-         * `f` can return `Promise.<*>` or `<*>`
+         * `f` can return `Promise.<any>` or `<any>`
          *
          * Example:
          *
@@ -429,7 +429,7 @@ declare module "@xcmats/js-toolbox" {
          *     of the `f`. If no initial value is supplied, the first element
          *     in the array will be used.
          *
-         * `f` can return `Promise.<*>` or `<*>`
+         * `f` can return `Promise.<any>` or `<any>`
          *
          * Example:
          *

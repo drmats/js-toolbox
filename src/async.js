@@ -158,7 +158,7 @@ export const delay = (
  * @param {Function} f
  * @param {Function} [passClear] (Function) => any
  * @param {Number} [time=timeUnit.second]
- * @returns {Promise.<*>}
+ * @returns {Promise.<any>}
  */
 export const interval = (
     f,
@@ -200,7 +200,7 @@ export const interval = (
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<*>` or `<*>`
+ * `f` can return `Promise.<any>` or `<any>`
  *
  * Example:
  *
@@ -265,7 +265,7 @@ export const map = (arr, f) => {
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<*>` or `<*>`
+ * `f` can return `Promise.<any>` or `<any>`
  *
  * Example:
  *
@@ -352,7 +352,7 @@ export const race = (...ps) => {
  *     of the `f`. If no initial value is supplied, the first element
  *     in the array will be used.
  *
- * `f` can return `Promise.<*>` or `<*>`
+ * `f` can return `Promise.<any>` or `<any>`
  *
  * Example:
  *
@@ -371,8 +371,8 @@ export const race = (...ps) => {
  * @function reduce
  * @param {Array} arr
  * @param {Function} f
- * @param {*} [initAcc]
- * @returns {Promise.<*>}
+ * @param {any} [initAcc]
+ * @returns {Promise.<any>}
  */
 export const reduce = (arr, f, initAcc) => {
     let
@@ -416,7 +416,7 @@ export const reduce = (arr, f, initAcc) => {
  * @function repeat
  * @param {Function} f
  * @param {Function} condition
- * @returns {Promise.<*>}
+ * @returns {Promise.<any>}
  */
 export const repeat = (f, condition) => Y(
     (act) => (result) =>
@@ -447,7 +447,7 @@ export const repeat = (f, condition) => Y(
  * @param {Function} f
  * @param {Number} [time=timeUnit.second]
  * @param {Function} [passCancel] (cancel) => any
- * @returns {Promise.<*>}
+ * @returns {Promise.<any>}
  */
 export const timeout = (
     f,
