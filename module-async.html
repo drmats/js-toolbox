@@ -213,7 +213,7 @@ cancel(&quot;I've changed my mind&quot;)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line30">line 30</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -384,7 +384,7 @@ mutex.resolve(42)  //  mutex.reject(&quot;ERROR&quot;)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line62">line 62</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -499,7 +499,7 @@ mutex.resolve(42)  //  mutex.reject(&quot;ERROR&quot;)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line99">line 99</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line98">line 98</a>
     </li></ul></dd>
     
 
@@ -679,7 +679,7 @@ mutex.resolve(42)  //  mutex.reject(&quot;ERROR&quot;)</code></pre>
 
     
 
-    <h4 class="name" id="~interval"><span class="type-signature">(async, inner) </span>interval<span class="signature">(f, passClear<span class="signature-attributes">opt</span>, time<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+    <h4 class="name" id="~interval"><span class="type-signature">(async, inner) </span>interval<span class="signature">(f, passClear<span class="signature-attributes">opt</span>, time<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
 
     
 
@@ -739,7 +739,7 @@ async.interval(
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line129">line 129</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -931,7 +931,7 @@ async.interval(
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;*></code></span>
+<span class="param-type"><code>Promise.&lt;any></code></span>
 
 
     </dd>
@@ -967,7 +967,7 @@ async.interval(
 </ul>
 </li>
 </ul>
-<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p><code>f</code> can return <code>Promise.&lt;any&gt;</code> or <code>&lt;any&gt;</code></p>
 <p>Example:</p>
 <pre class="prettyprint source"><code>(async () => {
     let x = await async.map(
@@ -1011,7 +1011,7 @@ async.interval(
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line195">line 195</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line194">line 194</a>
     </li></ul></dd>
     
 
@@ -1168,7 +1168,7 @@ async.interval(
 </ul>
 </li>
 </ul>
-<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p><code>f</code> can return <code>Promise.&lt;any&gt;</code> or <code>&lt;any&gt;</code></p>
 <p>Example:</p>
 <pre class="prettyprint source"><code>(async () => {
     let x = await async.parMap(
@@ -1212,7 +1212,7 @@ async.interval(
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line258">line 258</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line257">line 257</a>
     </li></ul></dd>
     
 
@@ -1405,7 +1405,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line295">line 295</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -1530,7 +1530,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
 
     
 
-    <h4 class="name" id="~reduce"><span class="type-signature">(async, inner) </span>reduce<span class="signature">(arr, f, initAcc<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+    <h4 class="name" id="~reduce"><span class="type-signature">(async, inner) </span>reduce<span class="signature">(arr, f, initAcc<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
 
     
 
@@ -1553,7 +1553,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
   of the <code>f</code>. If no initial value is supplied, the first element
   in the array will be used.</li>
 </ul>
-<p><code>f</code> can return <code>Promise.&lt;*&gt;</code> or <code>&lt;*&gt;</code></p>
+<p><code>f</code> can return <code>Promise.&lt;any&gt;</code> or <code>&lt;any&gt;</code></p>
 <p>Example:</p>
 <pre class="prettyprint source"><code>(async () => {
     let x = await async.reduce(
@@ -1598,7 +1598,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line341">line 341</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line340">line 340</a>
     </li></ul></dd>
     
 
@@ -1718,7 +1718,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
             <td class="type">
             
                 
-<span class="param-type"><code>*</code></span>
+<span class="param-type"><code>any</code></span>
 
 
             
@@ -1772,7 +1772,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;*></code></span>
+<span class="param-type"><code>Promise.&lt;any></code></span>
 
 
     </dd>
@@ -1791,7 +1791,7 @@ m1.resolve(&quot;All right!&quot;)  //  or, e.g: m2.reject(&quot;Some left!&quot
 
     
 
-    <h4 class="name" id="~repeat"><span class="type-signature">(async, inner) </span>repeat<span class="signature">(f, condition)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+    <h4 class="name" id="~repeat"><span class="type-signature">(async, inner) </span>repeat<span class="signature">(f, condition)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
 
     
 
@@ -1836,7 +1836,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line410">line 410</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line409">line 409</a>
     </li></ul></dd>
     
 
@@ -1956,7 +1956,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;*></code></span>
+<span class="param-type"><code>Promise.&lt;any></code></span>
 
 
     </dd>
@@ -1975,7 +1975,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
 
     
 
-    <h4 class="name" id="~timeout"><span class="type-signature">(async, inner) </span>timeout<span class="signature">(f, time<span class="signature-attributes">opt</span>, passCancel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;*>}</span></h4>
+    <h4 class="name" id="~timeout"><span class="type-signature">(async, inner) </span>timeout<span class="signature">(f, time<span class="signature-attributes">opt</span>, passCancel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
 
     
 
@@ -2025,7 +2025,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="async.js.html">async.js</a>, <a href="async.js.html#line432">line 432</a>
+        <a href="async.js.html">async.js</a>, <a href="async.js.html#line431">line 431</a>
     </li></ul></dd>
     
 
@@ -2217,7 +2217,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;*></code></span>
+<span class="param-type"><code>Promise.&lt;any></code></span>
 
 
     </dd>
@@ -2248,7 +2248,7 @@ when <code>condition</code> evaluates to <code>false</code>.</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Nov 27 2018 17:16:58 GMT+0100 (CET) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Nov 28 2018 15:42:20 GMT+0100 (CET) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
