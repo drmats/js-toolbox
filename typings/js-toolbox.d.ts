@@ -656,11 +656,14 @@ declare module "@xcmats/js-toolbox" {
          * into an evaluation of sequence of functions,
          * each with a single argument.
          *
+         * Because `curryThunk` doesn't assume anything on passed function
+         * `f` arity, final invocation has to be done with no arguments.
+         *
          * ```
-         * f(a, b, c, d)  <=>  curry(f)(a)(b)(c)(d)()
+         * f(a, b, c, d)  <=>  curryThunk(f)(a)(b)(c)(d)()
          * ```
          */
-        export function curry<T> (
+        export function curryThunk<T> (
             f: (...args: any[]) => T
         ): (...args: any[]) => Function | T;
 
@@ -764,7 +767,7 @@ declare module "@xcmats/js-toolbox" {
 
     export const choose: typeof func.choose;
     export const compose: typeof func.compose;
-    export const curry: typeof func.curry;
+    export const curryThunk: typeof func.curryThunk;
     export const flow: typeof func.flow;
     export const identity: typeof func.identity;
     export const partial: typeof func.partial;

@@ -294,7 +294,7 @@ func
 > ```javascript
 > { choose: [Function: choose],
 >   compose: [Function: compose],
->   curry: [Function: curry],
+>   curryThunk: [Function: curryThunk],
 >   flow: [Function: flow],
 >   identity: [Function: identity],
 >   partial: [Function: partial],
@@ -875,7 +875,7 @@ utils
     > ```
 
     ```javascript
-    func.curry(sum)(1)(2)(3)(4)(5)()
+    func.curryThunk(sum)(1)(2)(3)(4)(5)()
     ```
 
     > ```javascript
