@@ -152,6 +152,19 @@ export const neg = mul(-1)
 
 
 /**
+ * Raise one value to the power of the second value.
+ *
+ * @function pow
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const pow = curry((a, b) => Number(a) ** Number(b))
+
+
+
+
+/**
  * Compute product of numbers in a passed array.
  *
  * @function product

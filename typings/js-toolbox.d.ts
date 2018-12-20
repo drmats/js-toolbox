@@ -921,6 +921,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Raise one value to the power of the second value.
+         */
+        export function pow (a: number, b: number): number;
+
+
+        /**
          * Compute product of numbers in a passed array.
          */
         export function product (arr: number[]): number;
@@ -965,6 +971,7 @@ declare module "@xcmats/js-toolbox" {
     export const mod: typeof math.mod;
     export const mul: typeof math.mul;
     export const neg: typeof math.neg;
+    export const pow: typeof math.pow;
     export const product: typeof math.product;
     export const randomInt: typeof math.randomInt;
     export const roundIfClose: typeof math.roundIfClose;
