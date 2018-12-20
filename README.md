@@ -904,6 +904,14 @@ utils
     > e d c b a
     > ```
 
+    ```javascript
+    revConsole('f')('g', 'h')('i')('j')
+    ```
+
+    > ```javascript
+    > j i h g f
+    > ```
+
 
 * Y-combinator - returns fixed point of a higher-order function passed as `f`.
     **Anonymous recursion in Javascript**.

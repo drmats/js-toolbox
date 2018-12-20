@@ -219,6 +219,13 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
  * Takes function `f` and `indices` and returns a new function,
  * which has it's arguments arranged according to `indices`.
  *
+ * Returned function will expect the number of arguments to be exactly
+ * equal to the number of `indices`. If not all of the required
+ * arguments will be passed, a new function will be returned
+ * expecting _rest_ of the arguments.
+ *
+ * In other words - function returned by `rearg` is _curried_.
+ *
  * Example:
  *
  * ```
@@ -233,6 +240,9 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
  * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
  * revConsole("a", "b", "c", "d", "e")
  * e d c b a
+ *
+ * revConsole("f")("g", "h")("i")("j")
+ * j i h g f
  * ```
  *
  * @function rearg
@@ -248,13 +258,15 @@ export const rearg = (f) => (...indices) => {
 
     if (
         !isContinuous(indexPairs, ([n1], [n2]) => n2 - n1 === 1)  ||
-        compose(head, head)(indexPairs)  !== 0
+        compose(head, head)(indexPairs) !== 0
     ) {
-        throw new RangeError("Not all required arguments are covered.")
+        throw new RangeError("Not all of the required arguments are covered.")
     }
 
-    return (...args) => f(...indexPairs.map(([_, o]) => args[o]))
-
+    return curryN(
+        indices.length,
+        (...args) => f(...indexPairs.map(([_, o]) => args[o]))
+    )
 }
 
 

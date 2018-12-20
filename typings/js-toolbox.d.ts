@@ -772,6 +772,13 @@ declare module "@xcmats/js-toolbox" {
          * Takes function `f` and `indices` and returns a new function,
          * which has it's arguments arranged according to `indices`.
          *
+         * Returned function will expect the number of arguments to be exactly
+         * equal to the number of `indices`. If not all of the required
+         * arguments will be passed, a new function will be returned
+         * expecting _rest_ of the arguments.
+         *
+         * In other words - function returned by `rearg` is _curried_.
+         *
          * Example:
          *
          * ```
@@ -786,6 +793,9 @@ declare module "@xcmats/js-toolbox" {
          * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
          * revConsole("a", "b", "c", "d", "e")
          * e d c b a
+         *
+         * revConsole("f")("g", "h")("i")("j")
+         * j i h g f
          * ```
          */
         export function rearg<T> (
