@@ -792,8 +792,8 @@ declare module "@xcmats/js-toolbox" {
          * Takes function `f` and `indices` and returns a new function,
          * which has it's arguments arranged according to `indices`.
          *
-         * Returned function will expect the number of arguments to be exactly
-         * equal to the number of `indices`. If not all of the required
+         * Returned function will expect the number of arguments to be
+         * no less than the number of `indices`. If not all of the required
          * arguments will be passed, a new function will be returned
          * expecting _rest_ of the arguments.
          *
