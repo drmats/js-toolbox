@@ -12,8 +12,6 @@
 import {
     choose,
     flow,
-    partial,
-    rearg,
     Y,
 } from "./func"
 import {
@@ -156,7 +154,7 @@ export const dfs = (
     f = (_accs, node, _path, _position) => node,
     children = keyAccessor()
 ) => {
-    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
+    let bquote = (x) => quote(typeof x, "[]")
     if (
         !isObject(tree) || !isFunction(f) || !isFunction(children)
     ) throw new TypeError(
@@ -213,7 +211,7 @@ export const dict = (entries) => entries.reduce(
  * @returns {Object}
  */
 export const objectMap = (o, f) => {
-    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
+    let bquote = (x) => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
@@ -243,7 +241,7 @@ export const objectMap = (o, f) => {
  * @returns {any}
  */
 export const objectReduce = (o, f, init) => {
-    let bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
+    let bquote = (x) => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`

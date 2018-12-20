@@ -13,8 +13,6 @@ import { head } from "./array"
 import {
     curry,
     identity,
-    partial,
-    rearg,
     Y,
 } from "./func"
 import { quote } from "./string"
@@ -236,7 +234,7 @@ export const map = curry((arr, f) => {
                     .then(progress).catch(progress)
             } else resolve(results)
         },
-        bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
+        bquote = (x) => quote(typeof x, "[]")
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
@@ -389,7 +387,7 @@ export const reduce = curry((arr, f, initAcc) => {
                     .then(progress).catch(progress)
             } else resolve(r)
         },
-        bquote = (x) => partial(rearg(quote)(1, 0))("[]")(typeof x)
+        bquote = (x) => quote(typeof x, "[]")
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
