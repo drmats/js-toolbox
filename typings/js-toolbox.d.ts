@@ -729,6 +729,26 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Create function that can "lock the thing".
+         *
+         * During the first invocation the argument `thing` is memoized
+         * and on all subsequent invocations passed arguments are ignored
+         * and memoized `thing` is returned.
+         *
+         * ```
+         * let lock = func.locker()
+         *
+         * lock("I like you!")
+         * 'I like you!'
+         *
+         * lock("I hate you.")
+         * 'I like you!'
+         * ```
+         */
+        export function locker<T> (): (val: T) => T
+
+
+        /**
          * Partial application.
          *
          * Bind `init` arguments to function `f` and construct
@@ -777,20 +797,20 @@ declare module "@xcmats/js-toolbox" {
          * arguments will be passed, a new function will be returned
          * expecting _rest_ of the arguments.
          *
-         * In other words - function returned by `rearg` is _curried_.
+         * In other words - function returned by `rearg` is *curried*.
          *
          * Example:
          *
          * ```
          * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
          *
-         * let rePad = rearg(string.padLeft)(1, 2, 0)  // *curried* form
+         * let rePad = func.rearg(string.padLeft)(1, 2, 0)  // *curried* form
          * rePad(10, ".", "Bar")  ->  ".......Bar"
          *
          * console.log("a", "b", "c", "d", "e")
          * a b c d e
          *
-         * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+         * let revConsole = func.rearg(console.log)(4, 3, 2, 1, 0)
          * revConsole("a", "b", "c", "d", "e")
          * e d c b a
          *
@@ -818,6 +838,7 @@ declare module "@xcmats/js-toolbox" {
     export const curryThunk: typeof func.curryThunk;
     export const flow: typeof func.flow;
     export const identity: typeof func.identity;
+    export const locker: typeof func.locker;
     export const partial: typeof func.partial;
     export const pipe: typeof func.pipe;
     export const rearg: typeof func.rearg;

@@ -95,6 +95,7 @@ export {
     curryThunk,
     flow,
     identity,
+    locker,
     partial,
     pipe,
     rearg,

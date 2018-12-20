@@ -299,6 +299,7 @@ func
 >   curryThunk: [Function: curryThunk],
 >   flow: [Function: flow],
 >   identity: [Function: identity],
+>   locker: [Function: locker],
 >   partial: [Function: partial],
 >   pipe: [Function: pipe],
 >   rearg: [Function: rearg],

@@ -167,6 +167,40 @@ export const identity = (val) => val
 
 
 /**
+ * Create function that can "lock the thing".
+ *
+ * During the first invocation the argument `thing` is memoized
+ * and on all subsequent invocations passed arguments are ignored
+ * and memoized `thing` is returned.
+ *
+ * ```
+ * let lock = func.locker()
+ *
+ * lock("I like you!")
+ * 'I like you!'
+ *
+ * lock("I hate you.")
+ * 'I like you!'
+ * ```
+ *
+ * @function locker
+ * @returns {Function} (any) => any
+ */
+export const locker = () => (
+    ({ memoized, value }) =>
+        (thing) => {
+            if (!memoized) {
+                memoized = true
+                value = thing
+            }
+            return value
+        }
+)({ memoized: false, value: null })
+
+
+
+
+/**
  * Partial application.
  *
  * Bind `init` arguments to function `f` and construct
@@ -224,20 +258,20 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
  * arguments will be passed, a new function will be returned
  * expecting _rest_ of the arguments.
  *
- * In other words - function returned by `rearg` is _curried_.
+ * In other words - function returned by `rearg` is *curried*.
  *
  * Example:
  *
  * ```
  * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
  *
- * let rePad = rearg(string.padLeft)(1, 2, 0)  // *curried* form
+ * let rePad = func.rearg(string.padLeft)(1, 2, 0)  // *curried* form
  * rePad(10, ".", "Bar")  ->  ".......Bar"
  *
  * console.log("a", "b", "c", "d", "e")
  * a b c d e
  *
- * let revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+ * let revConsole = func.rearg(console.log)(4, 3, 2, 1, 0)
  * revConsole("a", "b", "c", "d", "e")
  * e d c b a
  *
