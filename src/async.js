@@ -15,6 +15,7 @@ import {
     identity,
     Y,
 } from "./func"
+import { inc } from "./math"
 import { quote } from "./string"
 import {
     isArray,
@@ -227,7 +228,7 @@ export const map = curry((arr, f) => {
         promise = new Promise((res) => { resolve = res }),
         progress = (r) => {
             results.push(r)
-            i += 1
+            i = inc(i)
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, arr[i], i))
@@ -380,7 +381,7 @@ export const reduce = curry((arr, f, initAcc) => {
         resolve = null,
         promise = new Promise((res) => { resolve = res }),
         progress = (r) => {
-            i += 1
+            i = inc(i)
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, r, arr[i], i))

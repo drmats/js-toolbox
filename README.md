@@ -317,6 +317,8 @@ math
 > { add: [Function: add],
 >   average: [Function: average],
 >   clamp: [Function: clamp],
+>   dec: [Function],
+>   inc: [Function],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
 >   randomInt: [Function: randomInt],

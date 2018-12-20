@@ -17,7 +17,10 @@ import {
     compose,
     curry,
 } from "./func"
-import { sum } from "./math"
+import {
+    inc,
+    sum,
+} from "./math"
 import { empty } from "./string"
 import { isNumber } from "./type"
 import { isBrowser } from "./utils"
@@ -66,7 +69,7 @@ export const compareBytes = curry((u8a1, u8a2) => {
         u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||
         u8a1.length !== u8a2.length
     ) return false
-    for (let i = 0;  i < u8a1.length;  i += 1)
+    for (let i = 0;  i < u8a1.length;  i = inc(i))
         if (u8a1[i] !== u8a2[i]) return false
     return true
 })

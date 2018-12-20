@@ -23,7 +23,7 @@ import { maxInt } from "./type"
  * @param {Number} b
  * @returns {Number}
  */
-export const add = curry((a, b) => a + b)
+export const add = curry((a, b) => Number(a) + Number(b))
 
 
 
@@ -48,6 +48,30 @@ export const average = (arr) => sum(arr) / arr.length
  * @returns {Number}
  */
 export const clamp = (n) => n > 0 ? n : 0
+
+
+
+
+/**
+ * Decrement given value by one.
+ *
+ * @function dec
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const dec = add(-1)
+
+
+
+
+/**
+ * Increment given value by one.
+ *
+ * @function inc
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const inc = add(1)
 
 
 

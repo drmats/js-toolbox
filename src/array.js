@@ -14,7 +14,11 @@ import {
     identity,
     pipe,
 } from "./func"
-import { randomInt } from "./math"
+import {
+    add,
+    inc,
+    randomInt,
+} from "./math"
 import { objectReduce } from "./struct"
 import {
     isArray,
@@ -245,7 +249,7 @@ export const range = (...args) => {
         (start > stop  &&  step < 0)
     ) {
         arr[arr.length] = start
-        start += step
+        start = add(start, step)
     }
 
     return arr
@@ -410,7 +414,7 @@ export const takeLast = (n) => (arr) => arr.slice(arr.length - n)
  * Example:
  *
  * ```
- * zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+ * array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
  * [ 11, 22, 33, 44 ]
  * ```
  *
@@ -427,7 +431,7 @@ export const zipWith = (f) => (...arrs) => {
         ),
         out = new Array(length)
 
-    for (let i = 0;  i < length;  i += 1) {
+    for (let i = 0;  i < length;  i = inc(i)) {
         out[i] = f(...arrs.map((arr) => arr[i]))
     }
 

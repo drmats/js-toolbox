@@ -198,7 +198,7 @@ declare module "@xcmats/js-toolbox" {
          * Example:
          *
          * ```
-         * zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+         * array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
          * [ 11, 22, 33, 44 ]
          * ```
          */
@@ -873,6 +873,18 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Decrement given value by one.
+         */
+        export function dec (n: number): number;
+
+
+        /**
+         * Increment given value by one.
+         */
+        export function inc (n: number): number;
+
+
+        /**
          * Base 10 logarithm.
          */
         export function log10 (x: number): number;
@@ -909,6 +921,8 @@ declare module "@xcmats/js-toolbox" {
     export const add: typeof math.add;
     export const average: typeof math.average;
     export const clamp: typeof math.clamp;
+    export const dec: typeof math.dec;
+    export const inc: typeof math.inc;
     export const log10: typeof math.log10;
     export const log2: typeof math.log2;
     export const randomInt: typeof math.randomInt;

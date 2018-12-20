@@ -113,6 +113,8 @@ export const func = funcModule
 export {
     add,
     average,
+    dec,
+    inc,
     clamp,
     log10,
     log2,
