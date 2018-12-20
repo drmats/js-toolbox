@@ -655,7 +655,7 @@ declare module "@xcmats/js-toolbox" {
          * Return curried form of a given function `f`.
          *
          * If funcion `f` has arity 3, and `g = curry(f)` then
-         * a following invocations has the same result:
+         * a following invocations have the same result:
          *
          * ```
          * g(a, b, c)
