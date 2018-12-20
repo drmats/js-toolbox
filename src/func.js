@@ -62,6 +62,33 @@ export const compose = (...fs) => (...args) =>
 
 
 /**
+ * Return curried form of a given function `f`.
+ *
+ * If funcion `f` has arity 3, and `g = curry(f)` then
+ * a following invocations has the same result:
+ *
+ * ```
+ * g(a, b, c)
+ * g(a, b)(c)
+ * g(a)(b, c)
+ * g(a)(b)(c)
+ * ```
+ *
+ * Function `f` arity is obtained by checking it's `.length`
+ * property, so if function `f` is defined with a _rest parameter_
+ * then this parameter is excluded. Also only parameters before
+ * the first one with a default value are included.
+ *
+ * @function curry
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curry = (f) => curryN(f.length, f)
+
+
+
+
+/**
  * Translate the evaluation of function `f` taking `n` arguments
  * into an evaluation of sequence of `n` functions, where each
  * next function is a result of previous function evaluation.
@@ -75,8 +102,11 @@ export const compose = (...fs) => (...args) =>
  * @param {Function} f
  * @returns {Function}
  */
-export const curryN = (n, f) => (...args) =>
-    n <= 1  ?  f(...args)  :  curryN(n - 1, partial(f)(...args))
+export const curryN = (n, f) =>
+    (...args) =>
+        n <= args.length  ?
+            f(...args)  :
+            curryN(n - args.length, partial(f)(...args))
 
 
 

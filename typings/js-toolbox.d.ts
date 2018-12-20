@@ -652,6 +652,27 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Return curried form of a given function `f`.
+         *
+         * If funcion `f` has arity 3, and `g = curry(f)` then
+         * a following invocations has the same result:
+         *
+         * ```
+         * g(a, b, c)
+         * g(a, b)(c)
+         * g(a)(b, c)
+         * g(a)(b)(c)
+         * ```
+         *
+         * Function `f` arity is obtained by checking it's `.length`
+         * property, so if function `f` is defined with a _rest parameter_
+         * then this parameter is excluded. Also only parameters before
+         * the first one with a default value are included.
+         */
+        export function curry (f: Function): Function;
+
+
+        /**
          * Translate the evaluation of function `f` taking `n` arguments
          * into an evaluation of sequence of `n` functions, where each
          * next function is a result of previous function evaluation.
@@ -782,6 +803,7 @@ declare module "@xcmats/js-toolbox" {
 
     export const choose: typeof func.choose;
     export const compose: typeof func.compose;
+    export const curry: typeof func.curry;
     export const curryN: typeof func.curryN;
     export const curryThunk: typeof func.curryThunk;
     export const flow: typeof func.flow;

@@ -294,6 +294,7 @@ func
 > ```javascript
 > { choose: [Function: choose],
 >   compose: [Function: compose],
+>   curry: [Function: curry],
 >   curryN: [Function: curryN],
 >   curryThunk: [Function: curryThunk],
 >   flow: [Function: flow],
@@ -868,19 +869,19 @@ utils
     into an evaluation of sequence of functions, each with a single argument.
 
     ```javascript
-    sum = (...args) => math.sum(args)
+    addition = (a, b, c) => a + b + c
     ```
 
     > ```javascript
-    > [Function: sum]
+    > [Function: addition]
     > ```
 
     ```javascript
-    func.curryThunk(sum)(1)(2)(3)(4)(5)()
+    func.curry(addition)(1)(2)(3)
     ```
 
     > ```javascript
-    > 15
+    > 6
     > ```
 
 
