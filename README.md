@@ -294,6 +294,7 @@ func
 > ```javascript
 > { choose: [Function: choose],
 >   compose: [Function: compose],
+>   curryN: [Function: curryN],
 >   curryThunk: [Function: curryThunk],
 >   flow: [Function: flow],
 >   identity: [Function: identity],

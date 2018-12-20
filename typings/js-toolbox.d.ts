@@ -652,6 +652,21 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Translate the evaluation of function `f` taking `n` arguments
+         * into an evaluation of sequence of `n` functions, where each
+         * next function is a result of previous function evaluation.
+         *
+         * ```
+         * f(a, b, c, d, e)  <=>  curryN(5, f)(a)(b)(c)(d)(e)
+         * ```
+         */
+        export function curryN<T> (
+            n: number,
+            f: (...args: any[]) => T
+        ): (...args: any[]) => Function | T;
+
+
+        /**
          * Translate the evaluation of function `f` taking multiple arguments
          * into an evaluation of sequence of functions,
          * each with a single argument.
@@ -767,6 +782,7 @@ declare module "@xcmats/js-toolbox" {
 
     export const choose: typeof func.choose;
     export const compose: typeof func.compose;
+    export const curryN: typeof func.curryN;
     export const curryThunk: typeof func.curryThunk;
     export const flow: typeof func.flow;
     export const identity: typeof func.identity;

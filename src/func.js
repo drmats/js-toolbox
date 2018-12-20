@@ -62,6 +62,26 @@ export const compose = (...fs) => (...args) =>
 
 
 /**
+ * Translate the evaluation of function `f` taking `n` arguments
+ * into an evaluation of sequence of `n` functions, where each
+ * next function is a result of previous function evaluation.
+ *
+ * ```
+ * f(a, b, c, d, e)  <=>  curryN(5, f)(a)(b)(c)(d)(e)
+ * ```
+ *
+ * @function curryN
+ * @param {Number} n
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curryN = (n, f) => (...args) =>
+    n <= 1  ?  f(...args)  :  curryN(n - 1, partial(f)(...args))
+
+
+
+
+/**
  * Translate the evaluation of function `f` taking multiple arguments
  * into an evaluation of sequence of functions, each with a single argument.
  *

@@ -90,6 +90,7 @@ export const codec = codecModule
 export {
     choose,
     compose,
+    curryN,
     curryThunk,
     flow,
     identity,
