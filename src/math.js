@@ -152,6 +152,18 @@ export const neg = mul(-1)
 
 
 /**
+ * Compute product of numbers in a passed array.
+ *
+ * @function product
+ * @param {Array.<Number>} arr
+ * @returns {Number}
+ */
+export const product = (arr) => arr.reduce(mul, 1)
+
+
+
+
+/**
  * Generate a random positive integer.
  * NOT CRYPTOGRAPHICALLY SECURE.
  *
@@ -195,7 +207,7 @@ export const sub = curry((a, b) => Number(a) - Number(b))
 
 
 /**
- * Compute sum of numbers in passed array.
+ * Compute sum of numbers in a passed array.
  *
  * @function sum
  * @param {Array.<Number>} arr

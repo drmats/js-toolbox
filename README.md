@@ -326,6 +326,7 @@ math
 >   mod: [Function],
 >   mul: [Function],
 >   neg: [Function],
+>   product: [Function: product],
 >   randomInt: [Function: randomInt],
 >   roundIfClose: [Function: roundIfClose],
 >   sub: [Function],

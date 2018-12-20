@@ -122,6 +122,7 @@ export {
     mod,
     mul,
     neg,
+    product,
     randomInt,
     roundIfClose,
     sub,

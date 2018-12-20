@@ -921,6 +921,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Compute product of numbers in a passed array.
+         */
+        export function product (arr: number[]): number;
+
+
+        /**
          * Generate a random positive integer.
          * NOT CRYPTOGRAPHICALLY SECURE.
          */
@@ -942,7 +948,7 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * Compute sum of numbers in passed array.
+         * Compute sum of numbers in a passed array.
          */
         export function sum (arr: number[]): number;
 
@@ -959,6 +965,7 @@ declare module "@xcmats/js-toolbox" {
     export const mod: typeof math.mod;
     export const mul: typeof math.mul;
     export const neg: typeof math.neg;
+    export const product: typeof math.product;
     export const randomInt: typeof math.randomInt;
     export const roundIfClose: typeof math.roundIfClose;
     export const sub: typeof math.sub;
