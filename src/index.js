@@ -111,6 +111,7 @@ export const func = funcModule
  * @see {@link module:math}
  */
 export {
+    add,
     average,
     clamp,
     log10,

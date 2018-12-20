@@ -654,7 +654,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return curried form of a given function `f`.
          *
-         * If funcion `f` has arity 3, and `g = curry(f)` then
+         * If funcion `f` has _arity_ 3, and `g = curry(f)` then
          * a following invocations have the same result:
          *
          * ```
@@ -664,7 +664,7 @@ declare module "@xcmats/js-toolbox" {
          * g(a)(b)(c)
          * ```
          *
-         * Function `f` arity is obtained by checking it's `.length`
+         * Function `f` _arity_ is obtained by checking it's `.length`
          * property, so if function `f` is defined with a _rest parameter_
          * then this parameter is excluded. Also only parameters before
          * the first one with a default value are included.
@@ -693,7 +693,7 @@ declare module "@xcmats/js-toolbox" {
          * each with a single argument.
          *
          * Because `curryThunk` doesn't assume anything on passed function
-         * `f` arity, final invocation has to be done with no arguments.
+         * `f` _arity_, final invocation has to be done with no arguments.
          *
          * ```
          * f(a, b, c, d)  <=>  curryThunk(f)(a)(b)(c)(d)()
@@ -752,7 +752,7 @@ declare module "@xcmats/js-toolbox" {
          * Partial application.
          *
          * Bind `init` arguments to function `f` and construct
-         * a function of smaller arity which accept `rest` of the arguments.
+         * a function of smaller _arity_ which accept `rest` of the arguments.
          *
          * Example:
          *
@@ -853,6 +853,13 @@ declare module "@xcmats/js-toolbox" {
      */
     export namespace math {
 
+
+        /**
+         * Add two values.
+         */
+        export function add (a: number, b: number): number;
+
+
         /**
          * Compute mathematical average of array of numbers.
          */
@@ -899,6 +906,7 @@ declare module "@xcmats/js-toolbox" {
 
     }
 
+    export const add: typeof math.add;
     export const average: typeof math.average;
     export const clamp: typeof math.clamp;
     export const log10: typeof math.log10;

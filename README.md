@@ -314,7 +314,8 @@ math
 ```
 
 > ```javascript
-> { average: [Function: average],
+> { add: [Function: add],
+>   average: [Function: average],
 >   clamp: [Function: clamp],
 >   log10: [Function: log10],
 >   log2: [Function: log2],

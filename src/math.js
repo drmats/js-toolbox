@@ -9,7 +9,21 @@
 
 
 
+import { curry } from "./func"
 import { maxInt } from "./type"
+
+
+
+
+/**
+ * Add two values.
+ *
+ * @function add
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const add = curry((a, b) => a + b)
 
 
 
@@ -99,4 +113,4 @@ export const roundIfClose = (x, precision = 9) => (
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const sum = (arr) => arr.reduce((acc, x) => acc + x, 0)
+export const sum = (arr) => arr.reduce(add, 0)
