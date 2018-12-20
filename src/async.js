@@ -11,6 +11,7 @@
 
 import { head } from "./array"
 import {
+    curry,
     identity,
     partial,
     rearg,
@@ -220,7 +221,7 @@ export const interval = (
  * @param {Function} f
  * @returns {Promise.<Array>}
  */
-export const map = (arr, f) => {
+export const map = curry((arr, f) => {
     let
         results = [],
         i = 0,
@@ -249,7 +250,7 @@ export const map = (arr, f) => {
     )
 
     return promise
-}
+})
 
 
 
@@ -285,8 +286,9 @@ export const map = (arr, f) => {
  * @param {Function} f
  * @returns {Promise.<Array>}
  */
-export const parMap = (arr, f) =>
+export const parMap = curry((arr, f) =>
     Promise.all(arr.map((el) => Promise.resolve(f(el))))
+)
 
 
 
@@ -374,7 +376,7 @@ export const race = (...ps) => {
  * @param {any} [initAcc]
  * @returns {Promise.<any>}
  */
-export const reduce = (arr, f, initAcc) => {
+export const reduce = curry((arr, f, initAcc) => {
     let
         i = 0,
         resolve = null,
@@ -401,7 +403,7 @@ export const reduce = (arr, f, initAcc) => {
     )
 
     return promise
-}
+})
 
 
 
@@ -418,12 +420,12 @@ export const reduce = (arr, f, initAcc) => {
  * @param {Function} condition
  * @returns {Promise.<any>}
  */
-export const repeat = (f, condition) => Y(
+export const repeat = curry((f, condition) => Y(
     (act) => (result) =>
         condition() ?
             Promise.resolve().then(f).then(act) :
             Promise.resolve(result)
-)()
+)())
 
 
 
