@@ -11,6 +11,7 @@
 
 import {
     choose,
+    curry,
     flow,
     Y,
 } from "./func"
@@ -210,14 +211,14 @@ export const dict = (entries) => entries.reduce(
  * @param {Function} f
  * @returns {Object}
  */
-export const objectMap = (o, f) => {
+export const objectMap = curry((o, f) => {
     let bquote = (x) => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
     )
     return dict(Object.entries(o).map((kv) => f.call(o, kv)))
-}
+})
 
 
 
@@ -240,14 +241,14 @@ export const objectMap = (o, f) => {
  * @param {any} init
  * @returns {any}
  */
-export const objectReduce = (o, f, init) => {
+export const objectReduce = curry((o, f, init) => {
     let bquote = (x) => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
     )
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
-}
+})
 
 
 
