@@ -114,12 +114,17 @@ export {
     add,
     average,
     dec,
+    div,
     inc,
     clamp,
     log10,
     log2,
+    mod,
+    mul,
+    neg,
     randomInt,
     roundIfClose,
+    sub,
     sum,
 } from "./math"
 import * as mathModule from "./math"

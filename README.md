@@ -84,6 +84,7 @@ to bundle it with your project).
     > ```javascript
     > [ "Y",
     >   "access",
+    >   "add",
     >   "array",
     >   "asciiLetters",
     >   "asciiLowercase",
@@ -314,15 +315,20 @@ math
 ```
 
 > ```javascript
-> { add: [Function: add],
+> { add: [Function],
 >   average: [Function: average],
 >   clamp: [Function: clamp],
 >   dec: [Function],
+>   div: [Function],
 >   inc: [Function],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
+>   mod: [Function],
+>   mul: [Function],
+>   neg: [Function],
 >   randomInt: [Function: randomInt],
 >   roundIfClose: [Function: roundIfClose],
+>   sub: [Function],
 >   sum: [Function: sum] }
 > ```
 

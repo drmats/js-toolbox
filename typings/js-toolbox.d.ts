@@ -879,6 +879,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Divide first value by the second value.
+         */
+        export function div (a: number, b: number): number;
+
+
+        /**
          * Increment given value by one.
          */
         export function inc (n: number): number;
@@ -897,6 +903,24 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Divides the first argument by the second and returns the remainder.
+         */
+        export function mod (a: number, b: number): number;
+
+
+        /**
+         * Multiply two values.
+         */
+        export function mul (a: number, b: number): number;
+
+
+        /**
+         * Negate a given value.
+         */
+        export function neg (n: number): number;
+
+
+        /**
          * Generate a random positive integer.
          * NOT CRYPTOGRAPHICALLY SECURE.
          */
@@ -912,6 +936,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Subtract second value from the first value.
+         */
+        export function sub (a: number, b: number): number;
+
+
+        /**
          * Compute sum of numbers in passed array.
          */
         export function sum (arr: number[]): number;
@@ -922,11 +952,16 @@ declare module "@xcmats/js-toolbox" {
     export const average: typeof math.average;
     export const clamp: typeof math.clamp;
     export const dec: typeof math.dec;
+    export const div: typeof math.div;
     export const inc: typeof math.inc;
     export const log10: typeof math.log10;
     export const log2: typeof math.log2;
+    export const mod: typeof math.mod;
+    export const mul: typeof math.mul;
+    export const neg: typeof math.neg;
     export const randomInt: typeof math.randomInt;
     export const roundIfClose: typeof math.roundIfClose;
+    export const sub: typeof math.sub;
     export const sum: typeof math.sum;
 
 

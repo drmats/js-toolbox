@@ -65,6 +65,19 @@ export const dec = add(-1)
 
 
 /**
+ * Divide first value by the second value.
+ *
+ * @function div
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const div = curry((a, b) => Number(a) / Number(b))
+
+
+
+
+/**
  * Increment given value by one.
  *
  * @function inc
@@ -101,6 +114,44 @@ export const log2 = (x) => roundIfClose(Math.log(x) / Math.LN2)
 
 
 /**
+ * Divides the first argument by the second and returns the remainder.
+ *
+ * @function mod
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const mod = curry((a, b) => Number(a) % Number(b))
+
+
+
+
+/**
+ * Multiply two values.
+ *
+ * @function mul
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const mul = curry((a, b) => Number(a) * Number(b))
+
+
+
+
+/**
+ * Negate a given value.
+ *
+ * @function neg
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const neg = mul(-1)
+
+
+
+
+/**
  * Generate a random positive integer.
  * NOT CRYPTOGRAPHICALLY SECURE.
  *
@@ -126,6 +177,19 @@ export const roundIfClose = (x, precision = 9) => (
     (rounded) =>
         Math.abs(rounded - x) <= 10**(-precision)  ?  rounded  :  x
 )(Math.round(x))
+
+
+
+
+/**
+ * Subtract second value from the first value.
+ *
+ * @function sub
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const sub = curry((a, b) => Number(a) - Number(b))
 
 
 

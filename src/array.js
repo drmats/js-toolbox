@@ -16,8 +16,10 @@ import {
 } from "./func"
 import {
     add,
+    dec,
     inc,
     randomInt,
+    sub,
 } from "./math"
 import { objectReduce } from "./struct"
 import {
@@ -289,7 +291,7 @@ export const shuffle = (arr) => {
         `array.shuffle() expected array as argument, got [${typeof arr}]`
     )
 
-    for (let i = arr.length-1;  i > 0;  i -= 1) {
+    for (let i = dec(arr.length);  i > 0;  i = dec(i)) {
         let j = randomInt() % (i+1);
         [arr[i], arr[j]] = [arr[j], arr[i]]
     }
@@ -337,11 +339,11 @@ export const sparse = (...args) => {
         let val = (randomInt() % interval) + start
         if (!Object.hasOwnProperty.call(hash, val)) {
             hash[val] = val
-            size -= 1
+            size = dec(size)
         }
     }
 
-    return Object.values(hash).sort((a, b) => a - b)
+    return Object.values(hash).sort(sub)
 }
 
 
@@ -427,7 +429,7 @@ export const zipWith = (f) => (...arrs) => {
         length = head(
             arrs
                 .map((arr) => arr.length)
-                .sort((a, b) => a - b)
+                .sort(sub)
         ),
         out = new Array(length)
 
