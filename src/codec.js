@@ -13,7 +13,10 @@ import {
     head,
     tail,
 } from "./array"
-import { compose } from "./func"
+import {
+    compose,
+    curry,
+} from "./func"
 import { sum } from "./math"
 import { empty } from "./string"
 import { isNumber } from "./type"
@@ -54,7 +57,7 @@ export const concatBytes = (...u8as) => {
  * @param {Uint8Array} u8a2
  * @returns {Boolean}
  */
-export const compareBytes = (u8a1, u8a2) => {
+export const compareBytes = curry((u8a1, u8a2) => {
     if (
         !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
         !isNumber(u8a2.BYTES_PER_ELEMENT)
@@ -66,7 +69,7 @@ export const compareBytes = (u8a1, u8a2) => {
     for (let i = 0;  i < u8a1.length;  i += 1)
         if (u8a1[i] !== u8a2[i]) return false
     return true
-}
+})
 
 
 
