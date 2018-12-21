@@ -17,7 +17,6 @@ import {
     tail,
 } from "./array"
 import { Y } from "./func"
-import { dec } from "./math"
 
 
 
@@ -77,7 +76,7 @@ export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
  * @param {String} [c="x"]
  * @returns {String}
  */
-export const big = Y((r) => (n, c = "x") => n > 0  ?  r(dec(n), c + c)  :  c)
+export const big = Y((r) => (n, c = "x") => n > 0  ?  r(n - 1, c + c)  :  c)
 
 
 

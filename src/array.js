@@ -15,7 +15,6 @@ import {
     pipe,
 } from "./func"
 import {
-    add,
     dec,
     inc,
     randomInt,
@@ -251,7 +250,7 @@ export const range = (...args) => {
         (start > stop  &&  step < 0)
     ) {
         arr[arr.length] = start
-        start = add(start, step)
+        start += step
     }
 
     return arr
@@ -291,8 +290,8 @@ export const shuffle = (arr) => {
         `array.shuffle() expected array as argument, got [${typeof arr}]`
     )
 
-    for (let i = dec(arr.length);  i > 0;  i = dec(i)) {
-        let j = randomInt() % (i+1);
+    for (let i = dec(arr.length);  i > 0;  i -= 1) {
+        let j = randomInt() % inc(i);
         [arr[i], arr[j]] = [arr[j], arr[i]]
     }
 
@@ -433,7 +432,7 @@ export const zipWith = (f) => (...arrs) => {
         ),
         out = new Array(length)
 
-    for (let i = 0;  i < length;  i = inc(i)) {
+    for (let i = 0;  i < length;  i += 1) {
         out[i] = f(...arrs.map((arr) => arr[i]))
     }
 
