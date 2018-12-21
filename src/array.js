@@ -423,21 +423,10 @@ export const takeLast = (n) => (arr) => arr.slice(arr.length - n)
  * @param {Function} f (...any[]) => any
  * @return {Funcion} (...any[][]) => any[]
  */
-export const zipWith = (f) => (...arrs) => {
-    let
-        length = head(
-            arrs
-                .map((arr) => arr.length)
-                .sort(sub)
-        ),
-        out = new Array(length)
-
-    for (let i = 0;  i < length;  i += 1) {
-        out[i] = f(...arrs.map((arr) => arr[i]))
-    }
-
-    return out
-}
+export const zipWith = (f) => (...arrs) =>
+    range(
+        head(arrs.map((arr) => arr.length).sort(sub))
+    ).map((i) => f(...arrs.map((arr) => arr[i])))
 
 
 
