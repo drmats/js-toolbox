@@ -41,13 +41,20 @@ export const average = (arr) => sum(arr) / arr.length
 
 
 /**
- * If input is greater than zero then return it, else return zero.
+ * Fit `n` in a [`low`, `high`] range
+ * (inclusive of `low` and `high`).
  *
  * @function clamp
+ * @param {Number} low
+ * @param {Nunmer} high
  * @param {Number} n
  * @returns {Number}
  */
-export const clamp = (n) => n > 0 ? n : 0
+export const clamp = curry((low, high, n) =>
+    n < low  ?  low  :
+        n >= low  &&  n < high  ?  n  :
+            high
+)
 
 
 

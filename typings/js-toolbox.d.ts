@@ -879,9 +879,10 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
-         * If input is greater than zero then return it, else return zero.
+         * Fit `n` in a [`low`, `high`] range
+         * (inclusive of `low` and `high`).
          */
-        export function clamp (n: number): number;
+        export function clamp (low: number, high: number, n: number): number;
 
 
         /**
