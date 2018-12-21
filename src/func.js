@@ -10,10 +10,12 @@
 
 
 import {
-    drop,
+    findDuplicates,
     head,
-    isContinuous,
+    last,
+    range,
 } from "./array"
+import { isArray } from "./type"
 
 
 
@@ -300,23 +302,52 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
 export const rearg = (f) => (...indices) => {
     if (indices.length === 0) return f
 
+    if (findDuplicates(indices).length > 0) throw RangeError(
+        "func.rearg: duplicate indices are forbidden"
+    )
+
+    // index mapping "new" -> "old"
     let indexPairs = indices
         .map((n, o) => [n, o])
         .sort(([n1], [n2]) => n1 - n2)
 
-    if (
-        !isContinuous(indexPairs, ([n1], [n2]) => n2 - n1 === 1)  ||
-        compose(head, head)(indexPairs) !== 0
-    ) {
-        throw new RangeError("Not all of the required arguments are covered.")
-    }
-
     return curryN(
         indices.length,
-        (...args) => f(...[
-            ...indexPairs.map(([_, o]) => args[o]),
-            ...drop(indexPairs.length)(args),
-        ])
+        (...args) => {
+            let
+                // source arguments: [argument, usageCount]
+                sargs = args.map((a) => [a, 0]),
+
+                // destination arguments: [argument, usageCount]
+                dargs = range(Math.max(
+                    head(last(indexPairs)) + 1,
+                    args.length)
+                ).map(() => [null, 0]),
+
+                // not used source arguments
+                rest = null
+
+            // fill destination arguments with source arguments
+            // (through index mapping) and mark valid destination arguments
+            // and used source arguments
+            indexPairs.forEach(([n, o]) => {
+                dargs[n][0] = head(sargs[o])
+                dargs[n][1] += 1
+                sargs[o][1] += 1
+            })
+
+            // filter-out all used source arguments and leave only unused ones
+            rest = sargs.filter((a) => last(a) === 0).reverse()
+
+            // return function `f` invocation with valid destination arguments
+            // and not-valid ones replaced with the unused source arguments
+            return f(...dargs.map((a) => {
+                if (last(a) !== 0) return head(a)
+                let rel = rest.pop()
+                if (isArray(rel)) return head(rel)
+                return rel
+            }))
+        }
     )
 }
 
