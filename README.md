@@ -13,7 +13,7 @@ $ npm i @xcmats/js-toolbox
 ```
 
 Works in [node.js](https://nodejs.org/) and browser environments
-(use [WebPack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/)
+(use [webpack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/)
 to bundle it with your project).
 
 <br />
