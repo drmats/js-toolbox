@@ -90,6 +90,18 @@ export const inc = add(1)
 
 
 /**
+ * Invert a given value.
+ *
+ * @function inv
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const inv = div(1)
+
+
+
+
+/**
  * Base 10 logarithm.
  *
  * @function log10

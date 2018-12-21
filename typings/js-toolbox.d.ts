@@ -891,6 +891,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Invert a given value.
+         */
+        export function inv (n: number): number;
+
+
+        /**
          * Base 10 logarithm.
          */
         export function log10 (x: number): number;
@@ -966,6 +972,7 @@ declare module "@xcmats/js-toolbox" {
     export const dec: typeof math.dec;
     export const div: typeof math.div;
     export const inc: typeof math.inc;
+    export const inv: typeof math.inv;
     export const log10: typeof math.log10;
     export const log2: typeof math.log2;
     export const mod: typeof math.mod;

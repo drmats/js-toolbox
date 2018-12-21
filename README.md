@@ -321,6 +321,7 @@ math
 >   dec: [Function],
 >   div: [Function],
 >   inc: [Function],
+>   inv: [Function],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
 >   mod: [Function],

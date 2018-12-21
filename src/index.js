@@ -116,6 +116,7 @@ export {
     dec,
     div,
     inc,
+    inv,
     clamp,
     log10,
     log2,
