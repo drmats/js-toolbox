@@ -170,7 +170,8 @@ export const identity = (val) => val
 /**
  * Create function that can "lock the thing".
  *
- * During the first invocation the argument `thing` is memoized
+ * During the first `n` invocations returned function acts as identity.
+ * During the `n+1` invocation the argument `thing` is memoized
  * and on all subsequent invocations passed arguments are ignored
  * and memoized `thing` is returned.
  *
@@ -182,21 +183,33 @@ export const identity = (val) => val
  *
  * lock("I hate you.")
  * 'I like you!'
+ *
+ * let lock2 = func.locker(2)
+ *
+ * lock2("Repeat after me!")
+ * 'Repeat after me!'
+ *
+ * lock2(42)
+ * 42
+ *
+ * lock2("All right...")
+ * 42
  * ```
  *
  * @function locker
+ * @param {Number} [n=1]
  * @returns {Function} (any) => any
  */
-export const locker = () => (
+export const locker = (n = 1) => (
     ({ memoized, value }) =>
         (thing) => {
-            if (!memoized) {
-                memoized = true
+            if (memoized < n) {
+                memoized += 1
                 value = thing
             }
             return value
         }
-)({ memoized: false, value: null })
+)({ memoized: 0, value: null })
 
 
 

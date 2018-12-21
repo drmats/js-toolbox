@@ -731,7 +731,8 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Create function that can "lock the thing".
          *
-         * During the first invocation the argument `thing` is memoized
+         * During the first `n` invocations returned function acts as identity.
+         * During the `n+1` invocation the argument `thing` is memoized
          * and on all subsequent invocations passed arguments are ignored
          * and memoized `thing` is returned.
          *
@@ -743,9 +744,20 @@ declare module "@xcmats/js-toolbox" {
          *
          * lock("I hate you.")
          * 'I like you!'
+         *
+         * let lock2 = func.locker(2)
+         *
+         * lock2("Repeat after me!")
+         * 'Repeat after me!'
+         *
+         * lock2(42)
+         * 42
+         *
+         * lock2("All right...")
+         * 42
          * ```
          */
-        export function locker<T> (): (val: T) => T
+        export function locker<T> (n?: number): (val: T) => T
 
 
         /**
