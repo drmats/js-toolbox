@@ -17,7 +17,10 @@ import {
     name,
     version,
 } from "../package.json"
-import { quote } from "./string"
+import {
+    quote,
+    wrap,
+} from "./string"
 import { access } from "./struct"
 import {
     isFunction,
@@ -164,6 +167,30 @@ export const handleRejection = async (fn, handler = null) => {
  * @returns {Boolean}
  */
 export const isBrowser = () => toBool(getProcess().browser)
+
+
+
+
+/**
+ * JSS color helper.
+ *
+ * @function rgb
+ * @returns {String}
+ */
+export const rgb = (r, g, b) =>
+    wrap([r, g, b].join(", "), "rgb(", ")")
+
+
+
+
+/**
+ * JSS color helper (with alpha).
+ *
+ * @function rgba
+ * @returns {String}
+ */
+export const rgba = (r, g, b, a) =>
+    wrap([r, g, b, a].join(", "), "rgba(", ")")
 
 
 

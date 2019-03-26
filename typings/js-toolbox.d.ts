@@ -1517,6 +1517,23 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * JSS color helper.
+         */
+        export function rgb (r: number, g: number, b: number): string;
+
+
+        /**
+         * JSS color helper (with alpha).
+         */
+        export function rgba (
+            r: number,
+            g: number,
+            b: number,
+            a: number
+        ): string;
+
+
+        /**
          * Time units represented in milliseconds.
          *
          * - `second` - `1000 milliseconds`
@@ -1555,6 +1572,8 @@ declare module "@xcmats/js-toolbox" {
     export const handleException: typeof utils.handleException;
     export const handleRejection: typeof utils.handleRejection;
     export const isBrowser: typeof utils.isBrowser;
+    export const rgb: typeof utils.rgb;
+    export const rgba: typeof utils.rgba;
     export const timeUnit: typeof utils.timeUnit;
     export const to_: typeof utils.to_;
 

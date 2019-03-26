@@ -431,6 +431,8 @@ utils
 >   handleException: [Function: handleException],
 >   handleRejection: [Function: handleRejection],
 >   isBrowser: [Function: isBrowser],
+>   rgb: [Function: rgb],
+>   rgba: [Function: rgba],
 >   timeUnit: { ... },
 >   to_: [Function: to_] }
 > ```

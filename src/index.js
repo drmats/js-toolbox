@@ -232,6 +232,8 @@ export {
     handleException,
     handleRejection,
     isBrowser,
+    rgb,
+    rgba,
     timeUnit,
     to_,
 } from "./utils"
