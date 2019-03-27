@@ -434,7 +434,8 @@ utils
 >   rgb: [Function: rgb],
 >   rgba: [Function: rgba],
 >   timeUnit: { ... },
->   to_: [Function: to_] }
+>   to_: [Function: to_],
+>   url: [Function: url] }
 > ```
 
 <br />

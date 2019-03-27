@@ -254,3 +254,14 @@ export const to_ = (name = "_") =>
         )
         return val
     }
+
+
+
+
+/**
+ * JSS url helper.
+ *
+ * @function url
+ * @returns {String}
+ */
+export const url = (x) => wrap(quote(x), "url(", ")")

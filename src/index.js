@@ -236,6 +236,7 @@ export {
     rgba,
     timeUnit,
     to_,
+    url,
 } from "./utils"
 import * as utilsModule from "./utils"
 export const utils = utilsModule

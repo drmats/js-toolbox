@@ -1564,6 +1564,12 @@ declare module "@xcmats/js-toolbox" {
          */
         export function to_(name?: string): Function;
 
+
+        /**
+         * JSS url helper.
+         */
+        export function url (x: string): string;
+
     }
 
     export const devEnv: typeof utils.devEnv;
@@ -1576,6 +1582,7 @@ declare module "@xcmats/js-toolbox" {
     export const rgba: typeof utils.rgba;
     export const timeUnit: typeof utils.timeUnit;
     export const to_: typeof utils.to_;
+    export const url: typeof utils.url;
 
 
 
