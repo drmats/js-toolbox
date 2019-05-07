@@ -202,6 +202,7 @@ export const rgba = (r, g, b, a) =>
  *
  * @function run
  * @param {Function} main
+ * @returns {undefined}
  */
 export const run = (main) => {
     typeof window !== "undefined"  &&

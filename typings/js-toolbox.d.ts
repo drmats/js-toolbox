@@ -1541,7 +1541,7 @@ declare module "@xcmats/js-toolbox" {
          * @function run
          * @param {Function} main
          */
-        export function run (main: Function): undefined
+        export function run (main: Function): undefined;
 
 
         /**
