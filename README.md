@@ -433,6 +433,7 @@ utils
 >   isBrowser: [Function: isBrowser],
 >   rgb: [Function: rgb],
 >   rgba: [Function: rgba],
+>   run: [Function: run],
 >   timeUnit: { ... },
 >   to_: [Function: to_],
 >   url: [Function: url] }

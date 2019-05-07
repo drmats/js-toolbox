@@ -234,6 +234,7 @@ export {
     isBrowser,
     rgb,
     rgba,
+    run,
     timeUnit,
     to_,
     url,

@@ -196,6 +196,25 @@ export const rgba = (r, g, b, a) =>
 
 
 /**
+ * Run "main" function:
+ *     - in browser on "load" event,
+ *     - via setTimeout if there's no event API available
+ *
+ * @function run
+ * @param {Function} main
+ */
+export const run = (main) => {
+    typeof window !== "undefined"  &&
+    isObject(window)  &&
+    isFunction(window.addEventListener) ?
+        window.addEventListener("load", main) :
+        setTimeout(main, 10)
+}
+
+
+
+
+/**
  * Time units represented in milliseconds.
  *
  * - `second` - `1000 milliseconds`

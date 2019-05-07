@@ -1534,6 +1534,17 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Run "main" function:
+         *     - in browser on "load" event,
+         *     - via setTimeout if there's no event API available
+         *
+         * @function run
+         * @param {Function} main
+         */
+        export function run (main: Function): undefined
+
+
+        /**
          * Time units represented in milliseconds.
          *
          * - `second` - `1000 milliseconds`
@@ -1580,6 +1591,7 @@ declare module "@xcmats/js-toolbox" {
     export const isBrowser: typeof utils.isBrowser;
     export const rgb: typeof utils.rgb;
     export const rgba: typeof utils.rgba;
+    export const run: typeof utils.run;
     export const timeUnit: typeof utils.timeUnit;
     export const to_: typeof utils.to_;
     export const url: typeof utils.url;
