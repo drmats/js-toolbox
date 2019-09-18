@@ -10,38 +10,38 @@
         }
     ],
     "dependencies": {
-        "@babel/runtime": "^7.4.5"
+        "@babel/runtime": "^7.6.0"
     },
     "description": "Useful JS utilities.",
     "devDependencies": {
-        "@babel/cli": "^7.4.4",
-        "@babel/core": "^7.4.5",
-        "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+        "@babel/cli": "^7.6.0",
+        "@babel/core": "^7.6.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
         "@babel/plugin-transform-arrow-functions": "^7.2.0",
         "@babel/plugin-transform-block-scoped-functions": "^7.2.0",
-        "@babel/plugin-transform-block-scoping": "^7.4.4",
+        "@babel/plugin-transform-block-scoping": "^7.6.0",
         "@babel/plugin-transform-computed-properties": "^7.2.0",
-        "@babel/plugin-transform-destructuring": "^7.4.4",
+        "@babel/plugin-transform-destructuring": "^7.6.0",
         "@babel/plugin-transform-exponentiation-operator": "^7.2.0",
         "@babel/plugin-transform-literals": "^7.2.0",
-        "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+        "@babel/plugin-transform-modules-commonjs": "^7.6.0",
         "@babel/plugin-transform-parameters": "^7.4.4",
-        "@babel/plugin-transform-runtime": "^7.4.4",
+        "@babel/plugin-transform-runtime": "^7.6.0",
         "@babel/plugin-transform-shorthand-properties": "^7.2.0",
         "@babel/plugin-transform-spread": "^7.2.2",
         "@babel/plugin-transform-template-literals": "^7.4.4",
-        "@babel/preset-env": "^7.4.5",
-        "babel-eslint": "^10.0.1",
-        "cross-env": "^5.2.0",
-        "eslint": "^5.16.0",
-        "gh-pages": "^2.0.1",
-        "jsdoc": "^3.6.2",
+        "@babel/preset-env": "^7.6.0",
+        "babel-eslint": "^10.0.3",
+        "cross-env": "^6.0.0",
+        "eslint": "^6.4.0",
+        "gh-pages": "^2.1.1",
+        "jsdoc": "3.5.5",
         "minami": "^1.2.3",
-        "rimraf": "^2.6.3"
+        "rimraf": "^3.0.0"
     },
     "engines": {
-        "node": ">=6.0.0",
-        "npm": ">=5.0.0"
+        "node": ">=8.0.0",
+        "npm": ">=6.0.0"
     },
     "files": [
         "doc",
