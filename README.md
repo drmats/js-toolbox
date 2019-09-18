@@ -1211,8 +1211,27 @@ if you found a bug 🐞.
 
 
 
+## support
+
+You can support this project via [stellar][stellar] network:
+
+* Payment address: [xcmats*keybase.io][xcmatspayment]
+* Stellar account ID: [`GBYUN4PMACWBJ2CXVX2KID3WQOONPKZX2UL4J6ODMIRFCYOB3Z3C44UZ`][addressproof]
+
+<br />
+
+
+
+
 ## license
 
 **js-toolbox** is released under the Apache License, Version 2.0. See the
 [LICENSE](https://github.com/drmats/js-toolbox/blob/master/LICENSE)
 for more details.
+
+
+
+
+[stellar]: https://learn.stellar.org
+[xcmatspayment]: https://keybase.io/xcmats
+[addressproof]: https://keybase.io/xcmats/sigchain#d0999a36b501c4818c15cf813f5a53da5bfe437875d92262be8d285bbb67614e22
