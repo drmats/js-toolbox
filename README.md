@@ -1087,7 +1087,7 @@ utils
 * Apply `path` to an object.
 
     ```javascript
-    utils.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+    struct.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
     ```
 
     > ```javascript
@@ -1099,7 +1099,7 @@ utils
     `entries = [[k1, v1,], ..., [kn, vn,]]`
 
     ```javascript
-    utils.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+    struct.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
     ```
 
     > ```javascript
@@ -1110,7 +1110,7 @@ utils
 * Shallow map (iteration) on objects.
 
     ```javascript
-    utils.objectMap(
+    struct.objectMap(
         { what: 'od', i: '?rof dnats' },
         ([k, v,]) => [
             string.capitalize(k),
@@ -1127,7 +1127,7 @@ utils
 * Swap keys with values in a given `Object`.
 
     ```javascript
-    utils.swap({ a: 'b', c: 'd', e: 'f' })
+    struct.swap({ a: 'b', c: 'd', e: 'f' })
     ```
 
     > ```javascript
