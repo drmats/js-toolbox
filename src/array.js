@@ -262,7 +262,7 @@ export const range = (...args) => {
 /**
  * Create a new array with removed duplicates.
  *
- * @function removeDupliates
+ * @function removeDuplicates
  * @param {Array} arr
  * @param {Function} [iteratee=identity]
  * @returns {Array.<String>}
