@@ -25,9 +25,9 @@ import { isArray } from "./type"
  *
  * @function choose
  * @param {String} key
- * @param {Object.<String, Function>} actions
- * @param {Function} defaultAction
- * @param {Array} args
+ * @param {Object.<String, Function>} [actions]
+ * @param {Function} [defaultAction]
+ * @param {Array} [args]
  * @returns {any}
  */
 export const choose = (
