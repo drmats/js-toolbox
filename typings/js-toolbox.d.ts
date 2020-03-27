@@ -99,6 +99,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Compute array that is an intersection of `a` and `b` arrays.
+         */
+        export function intersection (a: any[], b: any[]): any[];
+
+
+        /**
          * Checks if a given array is a continuous block.
          */
         export function isContinuous<T> (
@@ -114,6 +120,12 @@ declare module "@xcmats/js-toolbox" {
             arr: T[],
             cmp?: (a: T, b: T) => boolean
         ): boolean;
+
+
+        /**
+         * Check if array `a` is a subset of array `b`.
+         */
+        export function isSubset (a: any[], b: any[]): boolean;
 
 
         /**
@@ -229,8 +241,10 @@ declare module "@xcmats/js-toolbox" {
     export const flatten: typeof array.flatten;
     export const head: typeof array.head;
     export const init: typeof array.init;
+    export const arrayIntersection: typeof array.intersection;
     export const isContinuous: typeof array.isContinuous;
     export const isSorted: typeof array.isSorted;
+    export const arrayIsSubset: typeof array.isSubset;
     export const last: typeof array.last;
     export const range: typeof array.range;
     export const removeDuplicates: typeof array.removeDuplicates;

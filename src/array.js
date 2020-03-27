@@ -169,6 +169,29 @@ export const init = (arr) => arr.slice(0, arr.length-1)
 
 
 /**
+ * Compute array that is an intersection of `a` and `b` arrays.
+ *
+ * @function intersection
+ * @param {Array} a
+ * @param {Array} b
+ * @returns {Array}
+ */
+export const intersection = (a, b) => {
+    let
+        aa = new Set(a),
+        bb = new Set(b),
+        intersection = new Set()
+
+    for (let element of bb)
+        if (aa.has(element)) intersection.add(element)
+
+    return Array.from(intersection)
+}
+
+
+
+
+/**
  * Checks if a given array is a continuous block.
  *
  * @function isContinuous
@@ -196,6 +219,29 @@ export const isSorted = (arr, cmp = (a, b) => a <= b) =>
     isArray(arr) ?
         zip(arr, tail(arr)).every((pair) => cmp(...pair)) :
         false
+
+
+
+
+/**
+ * Check if array `a` is a subset of array `b`.
+ *
+ * @function isSubset
+ * @param {Array} a
+ * @param {Array} b
+ * @returns {Boolean}
+ */
+export const isSubset = (a, b) => {
+    let
+        aa = new Set(a),
+        bb = new Set(b)
+
+    if (aa.size > bb.size) return false
+    for (let element of aa)
+        if (!bb.has(element)) return false
+
+    return true
+}
 
 
 
