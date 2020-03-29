@@ -43,6 +43,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Compute array as `a` \ `b` (set difference).
+         */
+        export function difference (a: any[], b: any[]): any[];
+
+
+        /**
          * Choose a random element from a non-empty array.
          */
         export function draw (arr: any[] | string): any | string;
@@ -234,6 +240,7 @@ declare module "@xcmats/js-toolbox" {
     }
 
     export const countBy: typeof array.countBy;
+    export const arrayDifference: typeof array.difference;
     export const draw: typeof array.draw;
     export const drop: typeof array.drop;
     export const dropLast: typeof array.dropLast;

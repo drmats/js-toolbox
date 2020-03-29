@@ -62,6 +62,26 @@ export const countBy = (arr, iteratee = identity) =>
 
 
 /**
+ * Compute array as `a` \ `b` (set difference).
+ *
+ * @function difference
+ * @param {Array} a
+ * @param {Array} b
+ * @returns {Array}
+ */
+export const difference = (a, b) => {
+    let diff = new Set(a)
+
+    for (let element of b)
+        diff.delete(element)
+
+    return Array.from(diff)
+}
+
+
+
+
+/**
  * Choose a random element from a non-empty array.
  *
  * @function draw
@@ -179,10 +199,9 @@ export const init = (arr) => arr.slice(0, arr.length-1)
 export const intersection = (a, b) => {
     let
         aa = new Set(a),
-        bb = new Set(b),
         intersection = new Set()
 
-    for (let element of bb)
+    for (let element of b)
         if (aa.has(element)) intersection.add(element)
 
     return Array.from(intersection)

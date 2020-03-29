@@ -13,6 +13,7 @@
  */
 export {
     countBy,
+    difference as arrayDifference,
     draw,
     drop,
     dropLast,

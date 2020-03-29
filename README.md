@@ -221,6 +221,7 @@ array
 
 > ```javascript
 > { countBy: [Function: countBy],
+>   difference: [Function: difference],
 >   draw: [Function: draw],
 >   drop: [Function: drop],
 >   dropLast: [Function: dropLast],
