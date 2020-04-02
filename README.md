@@ -286,7 +286,8 @@ codec
 >   b64ToString: [Function],
 >   stringToB64: [Function],
 >   b64ToHex: [Function],
->   hexToB64: [Function] }
+>   hexToB64: [Function],
+>   randomBytes: [AsyncFunction] }
 > ```
 
 

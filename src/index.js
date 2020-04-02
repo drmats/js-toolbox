@@ -79,6 +79,7 @@ export {
     compareBytes,
     hexToB64,
     hexToBytes,
+    randomBytes,
     stringToB64,
     stringToBytes,
 } from "./codec"

@@ -242,3 +242,34 @@ export const b64ToHex = compose(bytesToHex, b64dec)
  * @returns {String}
  */
 export const hexToB64 = compose(b64enc, hexToBytes)
+
+
+
+
+/**
+ * Get random bytes.
+ * Uses Web Crypto API when in browser
+ * and `crypto` module when in node.js.
+ *
+ * @async
+ * @function randomBytes
+ * @param {Number} [size=64]
+ * @returns {Promise.<Uint8Array>}
+ */
+export const randomBytes = isBrowser() ?
+    async (size = 64) => new Promise((resolve, reject) => {
+        try {
+            let bytes = new Uint8Array(size)
+            window.crypto.getRandomValues(bytes)
+            resolve(bytes)
+        } catch (ex) {
+            reject(ex)
+        }
+    }) :
+    async (size = 64) => {
+        const nodeRandomBytes = (await import("crypto")).randomBytes
+        return new Promise((resolve, reject) => nodeRandomBytes(
+            size,
+            (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf))
+        ))
+    }

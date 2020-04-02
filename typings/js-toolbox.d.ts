@@ -628,6 +628,14 @@ declare module "@xcmats/js-toolbox" {
          */
         export function hexToB64 (s: string): string;
 
+
+        /**
+         * Get random bytes.
+         * Uses Web Crypto API when in browser
+         * and `crypto` module when in node.js.
+         */
+        export function randomBytes (size?: number): Promise<Uint8Array>;
+
     }
 
     export const concatBytes: typeof codec.concatBytes;
