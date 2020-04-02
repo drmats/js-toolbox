@@ -28,6 +28,7 @@ export {
     last,
     range,
     removeDuplicates,
+    setEqual as arraySetEqual,
     shuffle,
     sparse,
     tail,

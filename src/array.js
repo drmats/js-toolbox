@@ -341,6 +341,20 @@ export const removeDuplicates = flow(
 
 
 /**
+ * Check set equality of two arrays treated as sets.
+ *
+ * @function setEqual
+ * @param {Array} a
+ * @param {Array} b
+ * @returns {Boolean}
+ */
+export const setEqual = (a, b) =>
+    isSubset(a, b)  &&  isSubset(b, a)
+
+
+
+
+/**
  * Shuffle all elements in the given array
  * (Durstenfeld's modification to the Fisher-Yates shuffle algorithm).
  *

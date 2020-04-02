@@ -236,6 +236,7 @@ array
 >   last: [Function: last],
 >   range: [Function: range],
 >   removeDuplicates: [Function],
+>   setEqual: [Function: setEqual],
 >   shuffle: [Function: shuffle],
 >   sparse: [Function: sparse],
 >   tail: [Function: tail],

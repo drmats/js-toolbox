@@ -166,6 +166,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Check set equality of two arrays treated as sets.
+         */
+        export function setEqual (a: any[], b: any[]): boolean;
+
+
+        /**
          * Shuffle all elements in the given array
          * (Durstenfeld's modification to the Fisher-Yates shuffle algorithm).
          *
@@ -235,7 +241,7 @@ declare module "@xcmats/js-toolbox" {
          * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
          * ```
          */
-        export function zip (...arrs: any[][]): any[][]
+        export function zip (...arrs: any[][]): any[][];
 
     }
 
@@ -255,6 +261,7 @@ declare module "@xcmats/js-toolbox" {
     export const last: typeof array.last;
     export const range: typeof array.range;
     export const removeDuplicates: typeof array.removeDuplicates;
+    export const arraySetEqual: typeof array.setEqual;
     export const shuffle: typeof array.shuffle;
     export const sparse: typeof array.sparse;
     export const tail: typeof array.tail;
