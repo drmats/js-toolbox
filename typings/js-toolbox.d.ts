@@ -634,7 +634,13 @@ declare module "@xcmats/js-toolbox" {
          * Uses Web Crypto API when in browser
          * and `crypto` module when in node.js.
          */
-        export function randomBytes (size?: number): Promise<Uint8Array>;
+        export function random (size?: number): Promise<Uint8Array>;
+
+
+        /**
+         * Generate 48 bits (6 bytes) timestamp - milliseconds since epoch.
+         */
+        export function timestamp (): Uint8Array;
 
     }
 
@@ -650,6 +656,8 @@ declare module "@xcmats/js-toolbox" {
     export const stringToB64: typeof codec.stringToB64;
     export const b64ToHex: typeof codec.b64ToHex;
     export const hexToB64: typeof codec.hexToB64;
+    export const randomBytes: typeof codec.random;
+    export const timestampBytes: typeof codec.timestamp;
 
 
 

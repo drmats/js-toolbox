@@ -16,12 +16,17 @@ import {
 import {
     compose,
     curry,
+    pipe,
+    rearg,
 } from "./func"
 import {
     inc,
     sum,
 } from "./math"
-import { empty } from "./string"
+import {
+    empty,
+    padLeft,
+} from "./string"
 import { isNumber } from "./type"
 import { isBrowser } from "./utils"
 
@@ -252,11 +257,11 @@ export const hexToB64 = compose(b64enc, hexToBytes)
  * and `crypto` module when in node.js.
  *
  * @async
- * @function randomBytes
+ * @function random
  * @param {Number} [size=64]
  * @returns {Promise.<Uint8Array>}
  */
-export const randomBytes = isBrowser() ?
+export const random = isBrowser() ?
     async (size = 64) => new Promise((resolve, reject) => {
         try {
             let bytes = new Uint8Array(size)
@@ -273,3 +278,19 @@ export const randomBytes = isBrowser() ?
             (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf))
         ))
     }
+
+
+
+
+/**
+ * Generate 48 bits (6 bytes) timestamp - milliseconds since epoch.
+ *
+ * @function timestamp
+ * @returns {Uint8Array}
+ */
+export const timestamp = () =>
+    pipe(Date.now())(
+        (d) => d.toString(16),
+        rearg(padLeft)(1, 2, 0)(6*2, "0"),
+        hexToBytes
+    )

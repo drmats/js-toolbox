@@ -79,9 +79,10 @@ export {
     compareBytes,
     hexToB64,
     hexToBytes,
-    randomBytes,
+    random as randomBytes,
     stringToB64,
     stringToBytes,
+    timestamp as timestampBytes,
 } from "./codec"
 import * as codecModule from "./codec"
 export const codec = codecModule
