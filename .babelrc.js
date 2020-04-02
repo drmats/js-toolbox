@@ -6,6 +6,7 @@
 // common plugins
 var commonPlugins = [
     "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-arrow-functions",
     "@babel/plugin-transform-block-scoped-functions",
     "@babel/plugin-transform-block-scoping",
