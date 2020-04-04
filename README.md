@@ -307,6 +307,7 @@ func
 >   flow: [Function: flow],
 >   identity: [Function: identity],
 >   locker: [Function: locker],
+>   lazyish: [Function: lazyish],
 >   partial: [Function: partial],
 >   pipe: [Function: pipe],
 >   rearg: [Function: rearg],

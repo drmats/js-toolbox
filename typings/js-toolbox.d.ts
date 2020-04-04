@@ -773,6 +773,12 @@ declare module "@xcmats/js-toolbox" {
 
 
         /**
+         * Put a given argument under function abstraction.
+         */
+        export function lazyish<T> (x: T): () => T;
+
+
+        /**
          * Create function that can "lock the thing".
          *
          * During the first `n` invocations returned function acts as identity.

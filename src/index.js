@@ -101,6 +101,7 @@ export {
     curryThunk,
     flow,
     identity,
+    lazyish,
     locker,
     partial,
     pipe,

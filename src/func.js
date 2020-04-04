@@ -170,6 +170,18 @@ export const identity = (val) => val
 
 
 /**
+ * Put a given argument under function abstraction.
+ *
+ * @function lazyish
+ * @param {any} x
+ * @return {Function}
+ */
+export const lazyish = x => () => x
+
+
+
+
+/**
  * Create function that can "lock the thing".
  *
  * During the first `n` invocations returned function acts as identity.
