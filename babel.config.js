@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 
 
@@ -18,23 +18,24 @@ var commonPlugins = [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-shorthand-properties",
     "@babel/plugin-transform-spread",
-    "@babel/plugin-transform-template-literals"
-];
+    "@babel/plugin-transform-template-literals",
+]
 
 
 
 
 // configuration
 module.exports = function (api) {
-    api.cache.using(() => process.env.BABEL_ENV);
-    console.log("Compiling for", "'" + api.env() + "'", "...");
+    api.cache.using(() => process.env.BABEL_ENV)
+    // eslint-disable-next-line
+    console.log("Compiling for", "'" + api.env() + "'", "...")
 
     return {
         "env": {
             "commonjs": {
                 "comments": false,
                 "plugins": commonPlugins.concat([
-                    "@babel/plugin-transform-modules-commonjs"
+                    "@babel/plugin-transform-modules-commonjs",
                 ]),
                 "presets": [
                     [
@@ -43,11 +44,11 @@ module.exports = function (api) {
                             "modules": "commonjs",
                             "shippedProposals": true,
                             "targets": {
-                                "node": "8.0.0"
-                            }
-                        }
-                    ]
-                ]
+                                "node": "8.0.0",
+                            },
+                        },
+                    ],
+                ],
             },
             "es": {
                 "comments": false,
@@ -59,12 +60,12 @@ module.exports = function (api) {
                             "modules": false,
                             "shippedProposals": true,
                             "targets": {
-                                "esmodules": true
-                            }
-                        }
-                    ]
-                ]
-            }
-        }
-    };
-};
+                                "esmodules": true,
+                            },
+                        },
+                    ],
+                ],
+            },
+        },
+    }
+}
