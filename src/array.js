@@ -171,7 +171,7 @@ export const flatten = (arr) => arr.reduce((acc, el) => [...acc, ...el], [])
  * @param {Array|String} arr
  * @returns {any}
  */
-export const head = (arr) => arr[0]
+export const head = ([x] = []) => x
 
 
 
@@ -180,10 +180,13 @@ export const head = (arr) => arr[0]
  * Return array without its last element.
  *
  * @function init
- * @param {Array|String} arr
+ * @param {Array|String} [arr]
  * @returns {Array|String}
  */
-export const init = (arr) => arr.slice(0, arr.length-1)
+export const init = (arr) =>
+    arr || arr === "" ?
+        arr.slice(0, arr.length-1) :
+        undefined
 
 
 
@@ -272,7 +275,7 @@ export const isSubset = (a, b) => {
  * @param {Array|String} arr
  * @returns {any}
  */
-export const last = (arr) => arr[arr.length-1]
+export const last = (arr) => arr  &&  arr[arr.length-1]
 
 
 
@@ -434,7 +437,7 @@ export const sparse = (...args) => {
  * @param {Array|String} arr
  * @returns {Array|String}
  */
-export const tail = (arr) => arr.slice(1)
+export const tail = (arr) => arr  &&  arr.slice(1)
 
 
 

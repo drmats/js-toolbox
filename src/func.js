@@ -161,10 +161,10 @@ export const flow = (...fs) => compose(...fs.reverse())
  * Return value passed as a first argument.
  *
  * @function identity
- * @param {any} val
+ * @param {any} x
  * @returns {any}
  */
-export const identity = (val) => val
+export const identity = x => x
 
 
 

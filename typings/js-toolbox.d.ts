@@ -769,7 +769,7 @@ declare module "@xcmats/js-toolbox" {
         /**
          * Return value passed as a first argument.
          */
-        export function identity<T> (val: T): T;
+        export function identity<T> (x: T): T;
 
 
         /**
