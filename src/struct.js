@@ -155,22 +155,21 @@ export const dfs = (
     f = (_accs, node, _path, _position) => node,
     children = keyAccessor()
 ) => {
-    let bquote = (x) => quote(typeof x, "[]")
+    let bquote = x => quote(typeof x, "[]")
     if (
         !isObject(tree) || !isFunction(f) || !isFunction(children)
     ) throw new TypeError(
         "struct.dfs() expected object and 2 functions, " +
         `got ${bquote(tree)}, ${bquote(f)} and ${bquote(children)}`
     )
-    return Y(
-        (aux) =>
-            (node, path, position) => f(
-                children(node).map(
-                    ([child, childPath], p) =>
-                        aux(child, path.concat(childPath), p)
-                ), node, path, position
-            )
-    )(tree, [], 0)
+    return Y(aux =>
+        (node, path, position) => f(
+            children(node).map(
+                ([child, childPath], p) =>
+                    aux(child, path.concat(childPath), p)
+            ), node, path, position
+        )
+    ) (tree, [], 0)
 }
 
 
@@ -212,7 +211,7 @@ export const dict = (entries) => entries.reduce(
  * @returns {Object}
  */
 export const objectMap = curry((o, f) => {
-    let bquote = (x) => quote(typeof x, "[]")
+    let bquote = x => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
@@ -242,7 +241,7 @@ export const objectMap = curry((o, f) => {
  * @returns {any}
  */
 export const objectReduce = curry((o, f, init) => {
-    let bquote = (x) => quote(typeof x, "[]")
+    let bquote = x => quote(typeof x, "[]")
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`

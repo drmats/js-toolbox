@@ -235,7 +235,7 @@ export const map = curry((arr, f) => {
                     .then(progress).catch(progress)
             } else resolve(results)
         },
-        bquote = (x) => quote(typeof x, "[]")
+        bquote = x => quote(typeof x, "[]")
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
@@ -388,7 +388,7 @@ export const reduce = curry((arr, f, initAcc) => {
                     .then(progress).catch(progress)
             } else resolve(r)
         },
-        bquote = (x) => quote(typeof x, "[]")
+        bquote = x => quote(typeof x, "[]")
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
@@ -419,8 +419,8 @@ export const reduce = curry((arr, f, initAcc) => {
  * @param {Function} condition
  * @returns {Promise.<any>}
  */
-export const repeat = curry((f, condition) => Y(
-    (act) => (result) =>
+export const repeat = curry((f, condition) => Y(act =>
+    result =>
         condition() ?
             Promise.resolve().then(f).then(act) :
             Promise.resolve(result)

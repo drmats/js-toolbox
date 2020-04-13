@@ -367,10 +367,10 @@ export const rearg = (f) => (...indices) => {
 
 
 /**
- * Y-combinator (returns fixed point of a higher-order function passed as `f`).
+ * Y-combinator (fixed point of `f`).
  *
  * @function Y
- * @param {Function} f
+ * @param {Function} f f: recf => (...args) => { ... recf(...args) ... }
  * @returns {Function}
  */
-export const Y = (f) => ((g) => g(g))((h) => (...args) => f(h(h))(...args))
+export const Y = f => (...args) => f(Y(f)) (...args)
