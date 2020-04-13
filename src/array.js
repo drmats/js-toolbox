@@ -450,7 +450,7 @@ export const tail = (arr) => arr  &&  arr.slice(1)
  * @returns {Function} which takes `arr` and return first `n` elements
  *
  */
-export const take = (n) => (arr) => arr.slice(0, n)
+export const take = (n) => (arr) => arr  &&  arr.slice(0, n)
 
 
 
@@ -486,7 +486,7 @@ export const takeEvery = (nth) => (arr) =>
  * @returns {Function} which takes `arr` and return last `n` elements
  *
  */
-export const takeLast = (n) => (arr) => arr.slice(arr.length - n)
+export const takeLast = (n) => (arr) => arr && arr.slice(arr.length - n)
 
 
 
