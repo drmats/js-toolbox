@@ -66,6 +66,12 @@ module.exports = function (api) {
                     ],
                 ],
             },
+            "copy": {
+                "comments": true,
+                "plugins": [
+                    "babel-plugin-inline-json-import",
+                ],
+            },
         },
     }
 }
