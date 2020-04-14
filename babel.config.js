@@ -52,7 +52,9 @@ module.exports = function (api) {
             },
             "es": {
                 "comments": false,
-                "plugins": commonPlugins,
+                "plugins": commonPlugins.concat([
+                    "babel-plugin-inline-json-import",
+                ]),
                 "presets": [
                     [
                         "@babel/preset-env",
@@ -64,12 +66,6 @@ module.exports = function (api) {
                             },
                         },
                     ],
-                ],
-            },
-            "copy": {
-                "comments": false,
-                "plugins": [
-                    "babel-plugin-inline-json-import",
                 ],
             },
         },
