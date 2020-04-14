@@ -67,7 +67,7 @@ module.exports = function (api) {
                 ],
             },
             "copy": {
-                "comments": true,
+                "comments": false,
                 "plugins": [
                     "babel-plugin-inline-json-import",
                 ],
