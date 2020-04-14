@@ -48,8 +48,17 @@
         "doc",
         "es",
         "lib",
-        "src",
-        "typings"
+        "typings",
+        "array.js",
+        "async.js",
+        "codec.js",
+        "func.js",
+        "math.js",
+        "redux.js",
+        "string.js",
+        "struct.js",
+        "type.js",
+        "utils.js"
     ],
     "homepage": "https://github.com/drmats/js-toolbox",
     "keywords": [
@@ -77,22 +86,25 @@
         "url": "git+https://github.com/drmats/js-toolbox.git"
     },
     "scripts": {
-        "build": "npm run clean:build && npm run build:commonjs && npm run build:es",
         "build:commonjs": "cross-env BABEL_ENV=commonjs babel ./src/ -d ./lib/",
         "build:es": "cross-env BABEL_ENV=es babel ./src/ -d ./es/",
-        "clean": "npm run clean:build && npm run clean:doc",
+        "build": "npm run clean:build && npm run build:commonjs && npm run build:es",
         "clean:build": "rimraf ./es ./lib",
         "clean:doc": "rimraf ./doc",
         "clean:modules": "rimraf package-lock.json && rimraf node_modules",
+        "clean": "npm run clean:build && npm run clean:doc",
         "deploy": "gh-pages -d doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
         "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
         "lint": "eslint ./src/",
+        "postpack": "node ./scripts/delete.js",
         "predeploy": "npm run doc",
+        "prepack": "node ./scripts/copy.js",
         "prepublishOnly": "npm run test && npm run doc && npm run build",
-        "start": "npm run build:commonjs && node ./scripts/start.js",
+        "prestart": "npm run build:commonjs",
+        "start": "node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
     "typings": "typings/js-toolbox.d.ts",
-    "version": "0.9.0"
+    "version": "0.9.1"
 }
