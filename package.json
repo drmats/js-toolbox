@@ -49,17 +49,27 @@
         "doc",
         "lib",
         "src",
-        "typings",
+        "array.d.ts",
         "array.js",
+        "async.d.ts",
         "async.js",
+        "codec.d.ts",
         "codec.js",
+        "func.d.ts",
         "func.js",
+        "index.d.ts",
         "index.js",
+        "math.d.ts",
         "math.js",
+        "redux.d.ts",
         "redux.js",
+        "string.d.ts",
         "string.js",
+        "struct.d.ts",
         "struct.js",
+        "type.d.ts",
         "type.js",
+        "utils.d.ts",
         "utils.js"
     ],
     "homepage": "https://github.com/drmats/js-toolbox",
@@ -107,6 +117,6 @@
         "start": "node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
-    "typings": "typings/js-toolbox.d.ts",
-    "version": "0.9.3"
+    "typings": "index.d.ts",
+    "version": "0.9.4"
 }
