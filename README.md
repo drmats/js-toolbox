@@ -86,16 +86,20 @@ to bundle it with your project).
     >   "access",
     >   "add",
     >   "array",
+    >   "arrayDifference",
+    >   "arrayIntersection",
+    >   "arrayIsSubset",
+    >   "arraySetEqual",
     >   "asciiLetters",
     >   "asciiLowercase",
     >   "asciiUppercase",
     >   "async",
     >   "asyncMap",
+    >   "asyncRace",
     >   "asyncReduce",
     >   "asyncRepeat",
     >   "average",
-    >   "b64dec",
-    >   "b64enc",
+    >   "b64ToHex",
     >   ... ]
     > ```
 
@@ -220,7 +224,8 @@ array
 ```
 
 > ```javascript
-> { countBy: [Function: countBy],
+> { append: [Function: append],
+>   countBy: [Function: countBy],
 >   difference: [Function: difference],
 >   draw: [Function: draw],
 >   drop: [Function: drop],

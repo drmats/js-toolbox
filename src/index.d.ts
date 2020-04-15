@@ -12,6 +12,7 @@
 import * as arrayModule from "./array";
 export const array = arrayModule;
 
+export const append: typeof array.append;
 export const countBy: typeof array.countBy;
 export const arrayDifference: typeof array.difference;
 export const draw: typeof array.draw;

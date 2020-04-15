@@ -12,6 +12,7 @@
  * @see {@link module:array}
  */
 export {
+    append,
     countBy,
     difference as arrayDifference,
     draw,

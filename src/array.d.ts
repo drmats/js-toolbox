@@ -10,6 +10,14 @@
 
 
 /**
+ * Append `ys` to `xs` and return xs.
+ */
+export function append (xs: any[]): (ys: any[]) => any[];
+
+
+
+
+/**
  * Create object composed of keys resulting from application
  * of `iteratee` function to each element of the passed array `arr`.
  * Values corresponds to the number of occurences of an element

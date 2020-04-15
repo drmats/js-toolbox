@@ -30,6 +30,21 @@ import {
 
 
 /**
+ * Append `ys` to `xs` and return xs.
+ *
+ * @function append
+ * @param {Array} xs
+ * @returns {Function} (any[]) => any[]
+ */
+export const append = xs => ys => {
+    Array.prototype.push.apply(xs, ys)
+    return xs
+}
+
+
+
+
+/**
  * Create object composed of keys resulting from application
  * of `iteratee` function to each element of the passed array `arr`.
  * Values corresponds to the number of occurences of an element
@@ -88,7 +103,7 @@ export const difference = (a, b) => {
  * @param {Array|String} arr
  * @returns {any}
  */
-export const draw = (arr) => arr[randomInt() % arr.length]
+export const draw = arr => arr[randomInt() % arr.length]
 
 
 
@@ -102,7 +117,7 @@ export const draw = (arr) => arr[randomInt() % arr.length]
  * @returns {Function} which takes `arr` and returns
  *      array without the first `n` elements.
  */
-export const drop = (n) => (arr) => arr.slice(n)
+export const drop = n => arr => arr.slice(n)
 
 
 
@@ -116,7 +131,7 @@ export const drop = (n) => (arr) => arr.slice(n)
  * @returns {Function} which takes `arr` and returns
  *      array without the last `n` elements.
  */
-export const dropLast = (n) => (arr) => arr.slice(0, arr.length - n)
+export const dropLast = n => arr => arr.slice(0, arr.length - n)
 
 
 
@@ -159,7 +174,7 @@ export const findDuplicates = (arr, iteratee = identity) =>
  * @param {Array.<Array>} arr
  * @returns {Array}
  */
-export const flatten = (arr) => arr.reduce((acc, el) => [...acc, ...el], [])
+export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
 
 
 
@@ -183,7 +198,7 @@ export const head = ([x] = []) => x
  * @param {Array|String} [arr]
  * @returns {Array|String}
  */
-export const init = (arr) =>
+export const init = arr =>
     arr || arr === "" ?
         arr.slice(0, arr.length-1) :
         undefined
@@ -275,7 +290,7 @@ export const isSubset = (a, b) => {
  * @param {Array|String} arr
  * @returns {any}
  */
-export const last = (arr) => arr  &&  arr[arr.length-1]
+export const last = arr => arr  &&  arr[arr.length-1]
 
 
 
@@ -367,7 +382,7 @@ export const setEqual = (a, b) =>
  * @param {Array} arr
  * @returns {Array}
  */
-export const shuffle = (arr) => {
+export const shuffle = arr => {
     if (!isArray(arr)) throw new TypeError(
         `array.shuffle() expected array as argument, got [${typeof arr}]`
     )
@@ -437,7 +452,7 @@ export const sparse = (...args) => {
  * @param {Array|String} arr
  * @returns {Array|String}
  */
-export const tail = (arr) => arr  &&  arr.slice(1)
+export const tail = arr => arr  &&  arr.slice(1)
 
 
 
@@ -450,7 +465,7 @@ export const tail = (arr) => arr  &&  arr.slice(1)
  * @returns {Function} which takes `arr` and return first `n` elements
  *
  */
-export const take = (n) => (arr) => arr  &&  arr.slice(0, n)
+export const take = n => arr => arr  &&  arr.slice(0, n)
 
 
 
@@ -462,12 +477,12 @@ export const take = (n) => (arr) => arr  &&  arr.slice(0, n)
  * @param {Number} nth
  * @returns {Function} (any[]) => any[]
  */
-export const takeEvery = (nth) => (arr) =>
+export const takeEvery = nth => arr =>
     isNumber(nth)  &&  nth > 0  &&  isArray(arr) ?
         pipe(
             range(Math.ceil(arr.length / nth))
                 .reduce(([taken, rest]) => [
-                    take(1)(rest).concat(taken),
+                    append(take(1)(rest)) (taken),
                     drop(nth)(rest),
                 ], [[], arr])
         )(
@@ -486,7 +501,7 @@ export const takeEvery = (nth) => (arr) =>
  * @returns {Function} which takes `arr` and return last `n` elements
  *
  */
-export const takeLast = (n) => (arr) => arr && arr.slice(arr.length - n)
+export const takeLast = n => arr => arr && arr.slice(arr.length - n)
 
 
 
@@ -505,7 +520,7 @@ export const takeLast = (n) => (arr) => arr && arr.slice(arr.length - n)
  * @param {Function} f (...any[]) => any
  * @return {Funcion} (...any[][]) => any[]
  */
-export const zipWith = (f) => (...arrs) =>
+export const zipWith = f => (...arrs) =>
     range(
         head(arrs.map((arr) => arr.length).sort(sub))
     ).map((i) => f(...arrs.map((arr) => arr[i])))
