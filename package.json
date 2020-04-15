@@ -107,7 +107,7 @@
         "clean": "npm run clean:build && npm run clean:doc",
         "deploy": "gh-pages -d doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
-        "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/ -d ./doc/",
+        "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/**/* -d ./doc/",
         "lint": "eslint ./src/",
         "postpack": "node ./scripts/delete.js",
         "predeploy": "npm run doc",
