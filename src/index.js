@@ -39,8 +39,7 @@ export {
     zipWith,
     zip,
 } from "./array"
-import * as arrayModule from "./array"
-export const array = arrayModule
+export * as array from "./array"
 
 
 
@@ -60,8 +59,7 @@ export {
     repeat as asyncRepeat,
     timeout,
 } from "./async"
-import * as asyncModule from "./async"
-export const async = asyncModule
+export * as async from "./async"
 
 
 
@@ -85,8 +83,7 @@ export {
     stringToBytes,
     timestamp as timestampBytes,
 } from "./codec"
-import * as codecModule from "./codec"
-export const codec = codecModule
+export * as codec from "./codec"
 
 
 
@@ -109,8 +106,7 @@ export {
     rearg,
     Y,
 } from "./func"
-import * as funcModule from "./func"
-export const func = funcModule
+export * as func from "./func"
 
 
 
@@ -138,8 +134,7 @@ export {
     sub,
     sum,
 } from "./math"
-import * as mathModule from "./math"
-export const math = mathModule
+export * as math from "./math"
 
 
 
@@ -150,8 +145,7 @@ export const math = mathModule
 export {
     createReducer,
 } from "./redux"
-import * as reduxModule from "./redux"
-export const redux = reduxModule
+export * as redux from "./redux"
 
 
 
@@ -184,8 +178,7 @@ export {
     snakeToPascal,
     wrap,
 } from "./string"
-import * as stringModule from "./string"
-export const string = stringModule
+export * as string from "./string"
 
 
 
@@ -204,8 +197,7 @@ export {
     objectReduce,
     swap,
 } from "./struct"
-import * as structModule from "./struct"
-export const struct = structModule
+export * as struct from "./struct"
 
 
 
@@ -224,8 +216,7 @@ export {
     nullToUndefined,
     toBool,
 } from "./type"
-import * as typeModule from "./type"
-export const type = typeModule
+export * as type from "./type"
 
 
 
@@ -247,5 +238,4 @@ export {
     to_,
     url,
 } from "./utils"
-import * as utilsModule from "./utils"
-export const utils = utilsModule
+export * as utils from "./utils"

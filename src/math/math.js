@@ -9,8 +9,8 @@
 
 
 
-import { curry } from "./func"
-import { maxInt } from "./type"
+import { curry } from "../func"
+import { maxInt } from "../type"
 
 
 
@@ -35,7 +35,7 @@ export const add = curry((a, b) => Number(a) + Number(b))
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const average = (arr) => sum(arr) / arr.length
+export const average = arr => sum(arr) / arr.length
 
 
 
@@ -115,7 +115,7 @@ export const inv = div(1)
  * @param {Number} x
  * @returns {Number}
  */
-export const log10 = (x) => roundIfClose(Math.log(x) / Math.LN10)
+export const log10 = x => roundIfClose(Math.log(x) / Math.LN10)
 
 
 
@@ -127,7 +127,7 @@ export const log10 = (x) => roundIfClose(Math.log(x) / Math.LN10)
  * @param {Number} x
  * @returns {Number}
  */
-export const log2 = (x) => roundIfClose(Math.log(x) / Math.LN2)
+export const log2 = x => roundIfClose(Math.log(x) / Math.LN2)
 
 
 
@@ -190,7 +190,7 @@ export const pow = curry((a, b) => Number(a) ** Number(b))
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const product = (arr) => arr.reduce(mul, 1)
+export const product = arr => arr.reduce(mul, 1)
 
 
 
@@ -245,4 +245,4 @@ export const sub = curry((a, b) => Number(a) - Number(b))
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const sum = (arr) => arr.reduce(add, 0)
+export const sum = arr => arr.reduce(add, 0)

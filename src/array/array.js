@@ -13,18 +13,18 @@ import {
     flow,
     identity,
     pipe,
-} from "./func"
+} from "../func"
 import {
     dec,
     inc,
     randomInt,
     sub,
-} from "./math"
-import { objectReduce } from "./struct"
+} from "../math"
+import { objectReduce } from "../struct"
 import {
     isArray,
     isNumber,
-} from "./type"
+} from "../type"
 
 
 
@@ -482,10 +482,10 @@ export const takeEvery = nth => arr =>
         pipe(
             range(Math.ceil(arr.length / nth))
                 .reduce(([taken, rest]) => [
-                    append(take(1)(rest)) (taken),
-                    drop(nth)(rest),
+                    append(take(1) (rest)) (taken),
+                    drop(nth) (rest),
                 ], [[], arr])
-        )(
+        ) (
             head,
             (arr) => arr.reverse()
         ) : arr
@@ -512,7 +512,7 @@ export const takeLast = n => arr => arr && arr.slice(arr.length - n)
  * Example:
  *
  * ```
- * array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+ * array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
  * [ 11, 22, 33, 44 ]
  * ```
  *
@@ -522,8 +522,8 @@ export const takeLast = n => arr => arr && arr.slice(arr.length - n)
  */
 export const zipWith = f => (...arrs) =>
     range(
-        head(arrs.map((arr) => arr.length).sort(sub))
-    ).map((i) => f(...arrs.map((arr) => arr[i])))
+        head(arrs.map(arr => arr.length).sort(sub))
+    ).map(i => f(...arrs.map(arr => arr[i])))
 
 
 

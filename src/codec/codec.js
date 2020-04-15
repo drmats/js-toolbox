@@ -12,23 +12,23 @@
 import {
     head,
     tail,
-} from "./array"
+} from "../array"
 import {
     compose,
     curry,
     pipe,
     rearg,
-} from "./func"
+} from "../func"
 import {
     inc,
     sum,
-} from "./math"
+} from "../math"
 import {
     empty,
     padLeft,
-} from "./string"
-import { isNumber } from "./type"
-import { isBrowser } from "./utils"
+} from "../string"
+import { isNumber } from "../type"
+import { isBrowser } from "../utils"
 
 
 
@@ -46,7 +46,7 @@ export const concatBytes = (...u8as) => {
     if (
         u8as.some((u8a) => !isNumber(u8a.BYTES_PER_ELEMENT))
     ) throw new TypeError("Arguments must be of [TypedArray] type.")
-    let result = new Uint8Array(sum(u8as.map((u8a) => u8a.length)))
+    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)))
     u8as.reduce((pointer, u8a) => {
         result.set(u8a, pointer)
         return pointer + u8a.length
@@ -144,7 +144,7 @@ export const hexToBytes = ((hexInput) => (
                         [el + head(acc), ...tail(acc)],
                 []
             )
-            .map((hexByte) => parseInt(hexByte, 16))
+            .map(hexByte => parseInt(hexByte, 16))
     )
 )(hexInput.replace(/(\s)|(^0x)/g, empty())))
 
@@ -159,9 +159,9 @@ export const hexToBytes = ((hexInput) => (
  * @param {Uint8Array} bytes
  * @return {String}
  */
-export const bytesToHex = (bytes) =>
+export const bytesToHex = bytes =>
     Array.from(bytes)
-        .map((b) =>
+        .map(b =>
             b < 16  ?
                 "0" + b.toString(16) :
                 b.toString(16)
@@ -179,9 +179,9 @@ export const bytesToHex = (bytes) =>
  * @returns {Uint8Array}
  */
 export const b64dec = isBrowser() ?
-    (s) =>
+    s =>
         Uint8Array.from(atob(s).split(empty()).map(c => c.charCodeAt(0))) :
-    (s) =>
+    s =>
         Uint8Array.from(Buffer.from(s, "base64"))
 
 
@@ -195,9 +195,9 @@ export const b64dec = isBrowser() ?
  * @returns {String}
  */
 export const b64enc = isBrowser() ?
-    (bytes) =>
-        btoa([...bytes].map((b) => String.fromCharCode(b)).join(empty())) :
-    (bytes) =>
+    bytes =>
+        btoa([...bytes].map(b => String.fromCharCode(b)).join(empty())) :
+    bytes =>
         Buffer.from(bytes).toString("base64")
 
 
@@ -289,8 +289,8 @@ export const random = isBrowser() ?
  * @returns {Uint8Array}
  */
 export const timestamp = () =>
-    pipe(Date.now())(
+    pipe(Date.now()) (
         (d) => d.toString(16),
-        rearg(padLeft)(1, 2, 0)(6*2, "0"),
+        rearg(padLeft) (1, 2, 0) (6*2, "0"),
         hexToBytes
     )

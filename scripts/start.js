@@ -7,6 +7,6 @@
 Object.assign(
     require("repl").start({}).context,
     require("./module_names").reduce(
-        (e, mn) => (e[mn] = require("../lib/" + mn + ".js"), e), {}
+        (e, mn) => (e[mn] = require("../lib/" + mn), e), {}
     )
 )

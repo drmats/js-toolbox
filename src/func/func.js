@@ -14,8 +14,8 @@ import {
     head,
     last,
     range,
-} from "./array"
-import { isArray } from "./type"
+} from "../array"
+import { isArray } from "../type"
 
 
 
@@ -51,7 +51,7 @@ export const choose = (
  * f: X -> Y,  g: Y -> Z
  *
  * then:
- * g(f(x))  <=>  (g . f)(x)  <=>  compose(g, f)(x)
+ * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  *
  * @function compose
@@ -71,10 +71,10 @@ export const compose = (...fs) => (...args) =>
  * a following invocations have the same result:
  *
  * ```
- * g(a, b, c)
- * g(a, b)(c)
- * g(a)(b, c)
- * g(a)(b)(c)
+ * g(a,  b,  c)
+ * g(a,  b) (c)
+ * g(a) (b,  c)
+ * g(a) (b) (c)
  * ```
  *
  * Function `f` _arity_ is obtained by checking it's `.length`
@@ -86,7 +86,7 @@ export const compose = (...fs) => (...args) =>
  * @param {Function} f
  * @returns {Function}
  */
-export const curry = (f) => curryN(f.length, f)
+export const curry = f => curryN(f.length, f)
 
 
 
@@ -97,7 +97,7 @@ export const curry = (f) => curryN(f.length, f)
  * next function is a result of previous function evaluation.
  *
  * ```
- * f(a, b, c, d, e)  <=>  curryN(5, f)(a)(b)(c)(d)(e)
+ * f(a, b, c, d, e)  <=>  curryN(5, f) (a) (b) (c) (d) (e)
  * ```
  *
  * @function curryN
@@ -109,7 +109,7 @@ export const curryN = (n, f) =>
     (...args) =>
         n <= args.length  ?
             f(...args)  :
-            curryN(n - args.length, partial(f)(...args))
+            curryN(n - args.length, partial(f) (...args))
 
 
 
@@ -122,15 +122,15 @@ export const curryN = (n, f) =>
  * `f` _arity_, final invocation has to be done with no arguments.
  *
  * ```
- * f(a, b, c, d)  <=>  curryThunk(f)(a)(b)(c)(d)()
+ * f(a, b, c, d)  <=>  curryThunk(f) (a) (b) (c) (d) ()
  * ```
  *
  * @function curryThunk
  * @param {Function} f
  * @returns {Function}
  */
-export const curryThunk = (f) => (...args) =>
-    args.length === 0  ?  f()  :  curryThunk(partial(f)(...args))
+export const curryThunk = f => (...args) =>
+    args.length === 0  ?  f()  :  curryThunk(partial(f) (...args))
 
 
 
@@ -143,7 +143,7 @@ export const curryThunk = (f) => (...args) =>
  * f: X -> Y,  g: Y -> Z
  *
  * then:
- * g(f(x))  <=>  (g . f)(x)  <=>  flow(f, g)(x)
+ * g(f(x))  <=>  (g . f) (x)  <=>  flow(f, g) (x)
  * ```
  *
  * Inspired by {@link https://github.com/tfausak/flow}.
@@ -223,7 +223,7 @@ export const locker = (n = 1) => (
             }
             return value
         }
-)({ memoized: 0, value: null })
+) ({ memoized: 0, value: null })
 
 
 
@@ -239,7 +239,7 @@ export const locker = (n = 1) => (
  * ```
  * let f = (a, b) => a + b
  * f(3, 4)  ->  7
- * let g = partial(f)(3)  // note that `partial` is in *curried* form
+ * let g = partial(f) (3)  // note that `partial` is in *curried* form
  * g(4)  ->  7
  * ```
  *
@@ -247,7 +247,7 @@ export const locker = (n = 1) => (
  * @param {Function} f
  * @returns {Function}
  */
-export const partial = (f) => (...init) =>
+export const partial = f => (...init) =>
     (...rest) => f(...[...init, ...rest])
 
 
@@ -263,14 +263,14 @@ export const partial = (f) => (...init) =>
  * f: X -> Y,  g: Y -> Z
  *
  * then:
- * g(f(x))  <=>  (g . f)(x)  <=>  pipe(x)(f, g)
+ * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  *
  * @function pipe
  * @param {...Function} args
  * @returns {Function}
  */
-export const pipe = (...args) => (...fs) => flow(...fs)(...args)
+export const pipe = (...args) => (...fs) => flow(...fs) (...args)
 
 
 
@@ -293,17 +293,17 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
  * ```
  * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
  *
- * let rePad = func.rearg(string.padLeft)(1, 2, 0)  // *curried* form
+ * let rePad = func.rearg(string.padLeft) (1, 2, 0)  // *curried* form
  * rePad(10, ".", "Bar")  ->  ".......Bar"
  *
  * console.log("a", "b", "c", "d", "e")
  * a b c d e
  *
- * let revConsole = func.rearg(console.log)(4, 3, 2, 1, 0)
+ * let revConsole = func.rearg(console.log) (4, 3, 2, 1, 0)
  * revConsole("a", "b", "c", "d", "e")
  * e d c b a
  *
- * revConsole("f")("g", "h")("i")("j")
+ * revConsole("f") ("g", "h") ("i") ("j")
  * j i h g f
  * ```
  *
@@ -311,7 +311,7 @@ export const pipe = (...args) => (...fs) => flow(...fs)(...args)
  * @param {Function} f
  * @returns {Function}
  */
-export const rearg = (f) => (...indices) => {
+export const rearg = f => (...indices) => {
     if (indices.length === 0) return f
 
     if (findDuplicates(indices).length > 0) throw RangeError(
@@ -328,7 +328,7 @@ export const rearg = (f) => (...indices) => {
         (...args) => {
             let
                 // source arguments: [argument, usageCount]
-                sargs = args.map((a) => [a, 0]),
+                sargs = args.map(a => [a, 0]),
 
                 // destination arguments: [argument, usageCount]
                 dargs = range(Math.max(
@@ -353,7 +353,7 @@ export const rearg = (f) => (...indices) => {
 
             // return function `f` invocation with valid destination arguments
             // and not-valid ones replaced with the unused source arguments
-            return f(...dargs.map((a) => {
+            return f(...dargs.map(a => {
                 if (last(a) !== 0) return head(a)
                 let rel = rest.pop()
                 if (isArray(rel)) return head(rel)

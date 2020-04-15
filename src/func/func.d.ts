@@ -30,7 +30,7 @@ export function choose (
  * f: X -> Y,  g: Y -> Z
  *
  * then:
- * g(f(x))  <=>  (g . f)(x)  <=>  compose(g, f)(x)
+ * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  */
 export function compose (
@@ -47,10 +47,10 @@ export function compose (
  * a following invocations have the same result:
  *
  * ```
- * g(a, b, c)
- * g(a, b)(c)
- * g(a)(b, c)
- * g(a)(b)(c)
+ * g(a,  b,  c)
+ * g(a,  b) (c)
+ * g(a) (b,  c)
+ * g(a) (b) (c)
  * ```
  *
  * Function `f` _arity_ is obtained by checking it's `.length`
@@ -69,7 +69,7 @@ export function curry (f: Function): Function;
  * next function is a result of previous function evaluation.
  *
  * ```
- * f(a, b, c, d, e)  <=>  curryN(5, f)(a)(b)(c)(d)(e)
+ * f(a, b, c, d, e)  <=>  curryN(5, f) (a) (b) (c) (d) (e)
  * ```
  */
 export function curryN<T> (
@@ -89,7 +89,7 @@ export function curryN<T> (
  * `f` _arity_, final invocation has to be done with no arguments.
  *
  * ```
- * f(a, b, c, d)  <=>  curryThunk(f)(a)(b)(c)(d)()
+ * f(a, b, c, d)  <=>  curryThunk(f) (a) (b) (c) (d) ()
  * ```
  */
 export function curryThunk<T> (
@@ -100,17 +100,17 @@ export function curryThunk<T> (
 
 
 /**
-     * Function composition - read as "compose forward" or "and then".
-     *
-     * ```
-     * let:
-     * f: X -> Y,  g: Y -> Z
-     *
-     * then:
-     * g(f(x))  <=>  (g . f)(x)  <=>  flow(f, g)(x)
-     * ```
-     *
-     * Inspired by {@link https://github.com/tfausak/flow}.
+ * Function composition - read as "compose forward" or "and then".
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  <=>  (g . f) (x)  <=>  flow(f, g) (x)
+ * ```
+ *
+ * Inspired by {@link https://github.com/tfausak/flow}.
  */
 export function flow (
     ...fs: Function[]
@@ -164,7 +164,9 @@ export function lazyish<T> (x: T): () => T;
  * 42
  * ```
  */
-export function locker<T> (n?: number): (val: T) => T
+export function locker<T> (n?: number): (val: T) => T;
+
+
 
 
 /**
@@ -178,7 +180,7 @@ export function locker<T> (n?: number): (val: T) => T
  * ```
  * let f = (a, b) => a + b
  * f(3, 4)  ->  7
- * let g = partial(f)(3)  // note that `partial` is in *curried* form
+ * let g = partial(f) (3)  // note that `partial` is in *curried* form
  * g(4)  ->  7
  * ```
  */
@@ -199,7 +201,7 @@ export function partial<T> (
  * f: X -> Y,  g: Y -> Z
  *
  * then:
- * g(f(x))  <=>  (g . f)(x)  <=>  pipe(x)(f, g)
+ * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  */
 export function pipe (
@@ -227,17 +229,17 @@ export function pipe (
  * ```
  * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
  *
- * let rePad = func.rearg(string.padLeft)(1, 2, 0)  // *curried* form
+ * let rePad = func.rearg(string.padLeft) (1, 2, 0)  // *curried* form
  * rePad(10, ".", "Bar")  ->  ".......Bar"
  *
  * console.log("a", "b", "c", "d", "e")
  * a b c d e
  *
- * let revConsole = func.rearg(console.log)(4, 3, 2, 1, 0)
+ * let revConsole = func.rearg(console.log) (4, 3, 2, 1, 0)
  * revConsole("a", "b", "c", "d", "e")
  * e d c b a
  *
- * revConsole("f")("g", "h")("i")("j")
+ * revConsole("f") ("g", "h") ("i") ("j")
  * j i h g f
  * ```
  */

@@ -16,18 +16,18 @@ import {
     license,
     name,
     version,
-} from "../package.json"
+} from "../../package.json"
 import {
     quote,
     wrap,
-} from "./string"
-import { access } from "./struct"
+} from "../string"
+import { access } from "../struct"
 import {
     isFunction,
     isObject,
     isString,
     toBool,
-} from "./type"
+} from "../type"
 
 
 
@@ -204,7 +204,7 @@ export const rgba = (r, g, b, a) =>
  * @param {Function} main
  * @returns {undefined}
  */
-export const run = (main) => {
+export const run = main => {
     typeof window !== "undefined"  &&
     isObject(window)  &&
     isFunction(window.addEventListener) ?
@@ -284,4 +284,4 @@ export const to_ = (name = "_") =>
  * @function url
  * @returns {String}
  */
-export const url = (x) => wrap(quote(x), "url(", ")")
+export const url = x => wrap(quote(x), "url(", ")")

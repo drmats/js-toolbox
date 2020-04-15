@@ -15,8 +15,8 @@ import {
     last,
     range,
     tail,
-} from "./array"
-import { Y } from "./func"
+} from "../array"
+import { Y } from "../func"
 
 
 
@@ -93,7 +93,7 @@ export const big = Y(r =>
  * @param {String} str
  * @returns {String}
  */
-export const camelToPascal = (str) =>
+export const camelToPascal = str =>
     str  &&  str.length > 0  ?
         head(str).toUpperCase() + tail(str)  :
         empty()
@@ -108,8 +108,10 @@ export const camelToPascal = (str) =>
  * @param {String} str
  * @returns {String}
  */
-export const camelToSnake = (str) =>
-    str  ?  str.replace(/([A-Z])/g, "_$1").toLowerCase()  :  empty()
+export const camelToSnake = str =>
+    str  ?
+        str.replace(/([A-Z])/g, "_$1").toLowerCase()  :
+        empty()
 
 
 
@@ -121,7 +123,7 @@ export const camelToSnake = (str) =>
  * @param {String} str
  * @returns {String}
  */
-export const capitalize = (str) =>
+export const capitalize = str =>
     str  &&  str.length > 0  ?
         head(str).toUpperCase() + tail(str).toLowerCase()  :
         empty()
@@ -279,7 +281,7 @@ export const padRight = (input = empty(), len = 0, ch = space()) => (
  * @param {String} str
  * @returns {String}
  */
-export const pascalToCamel = (str) =>
+export const pascalToCamel = str =>
     str  &&  str.length > 0  ?
         head(str).toLowerCase() + tail(str)  :
         empty()
@@ -294,7 +296,7 @@ export const pascalToCamel = (str) =>
  * @param {String} str
  * @returns {String}
  */
-export const pascalToSnake = (str) =>
+export const pascalToSnake = str =>
     str  ?  tail(camelToSnake(str))  :  empty()
 
 
@@ -365,7 +367,7 @@ Object.freeze(Object.assign(shorten, position))
  * @param {String} str
  * @returns {String}
  */
-export const snakeToCamel = (str) => (
+export const snakeToCamel = str => (
     (pascal) =>
         pascal.length > 0  ?
             head(pascal).toLowerCase() + tail(pascal)  :
@@ -382,9 +384,9 @@ export const snakeToCamel = (str) => (
  * @param {String} str
  * @returns {String}
  */
-export const snakeToPascal = (str) =>
+export const snakeToPascal = str =>
     str  ?
-        str.split(/_+/g).map((w) => capitalize(w)).join(empty())  :
+        str.split(/_+/g).map(w => capitalize(w)).join(empty())  :
         empty()
 
 

@@ -265,7 +265,7 @@ export function takeLast (n: number): (arr: any[]) => any[];
  * Example:
  *
  * ```
- * array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+ * array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
  * [ 11, 22, 33, 44 ]
  * ```
  */

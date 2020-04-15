@@ -9,19 +9,19 @@
 
 
 
-import { head } from "./array"
+import { head } from "../array"
 import {
     curry,
     identity,
     Y,
-} from "./func"
-import { inc } from "./math"
-import { quote } from "./string"
+} from "../func"
+import { inc } from "../math"
+import { quote } from "../string"
 import {
     isArray,
     isFunction,
-} from "./type"
-import { timeUnit } from "./utils"
+} from "../type"
+import { timeUnit } from "../utils"
 
 
 
@@ -45,7 +45,7 @@ import { timeUnit } from "./utils"
  * @param {Promise} p
  * @returns {Object} { promise, cancel, resolve }
  */
-export const cancellable = (p) => {
+export const cancellable = p => {
     let mutex = createMutex()
 
     return {
@@ -286,7 +286,7 @@ export const map = curry((arr, f) => {
  * @returns {Promise.<Array>}
  */
 export const parMap = curry((arr, f) =>
-    Promise.all(arr.map((el) => Promise.resolve(f(el))))
+    Promise.all(arr.map(el => Promise.resolve(f(el))))
 )
 
 

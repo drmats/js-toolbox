@@ -28,7 +28,7 @@ export const isArray = Array.isArray
  * @param {any} f
  * @returns {Boolean}
  */
-export const isFunction = (f) =>
+export const isFunction = f =>
     f != null  &&  "function" === typeof f
 
 
@@ -42,7 +42,7 @@ export const isFunction = (f) =>
  * @param {any} n
  * @returns {Boolean}
  */
-export const isNumber = (n) =>
+export const isNumber = n =>
     n != null  &&  "number" === typeof n  &&
     !Number.isNaN(n)  &&  Number.isFinite(n)
 
@@ -57,7 +57,7 @@ export const isNumber = (n) =>
  * @param {any} o
  * @returns {Boolean}
  */
-export const isObject = (o) =>
+export const isObject = o =>
     o != null  &&  "object" === typeof o  &&  !isArray(o)
 
 
@@ -70,7 +70,7 @@ export const isObject = (o) =>
  * @param {any} s
  * @returns {Boolean}
  */
-export const isString = (s) =>
+export const isString = s =>
     s != null  &&  "string" === typeof s
 
 
@@ -103,7 +103,7 @@ export const minInt = Number.MIN_SAFE_INTEGER  ||  -(2 ** 53) + 1
  * @param {any} val
  * @returns {any}
  */
-export const nullToUndefined = (val) =>
+export const nullToUndefined = val =>
     val === null  ?  undefined  :  val
 
 
@@ -118,4 +118,4 @@ export const nullToUndefined = (val) =>
  * @param {any} x
  * @returns {Boolean}
  */
-export const toBool = (x) => !!x
+export const toBool = x => !!x

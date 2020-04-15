@@ -14,17 +14,17 @@ import {
     curry,
     flow,
     Y,
-} from "./func"
+} from "../func"
 import {
     empty,
     quote,
-} from "./string"
+} from "../string"
 import {
     isArray,
     isFunction,
     isObject,
-} from "./type"
-import { handleException } from "./utils"
+} from "../type"
+import { handleException } from "../utils"
 
 
 
@@ -78,8 +78,8 @@ export const clone = flow(JSON.stringify, JSON.parse)
  */
 export const hashAccessor = () =>
     (n) => choose(
-        [isObject(n), isArray(n)].map((v) => v ? 1 : 0).join(empty()), {
-            "10": () => Object.keys(n).map((k) => [n[k], [k]]),
+        [isObject(n), isArray(n)].map(v => v ? 1 : 0).join(empty()), {
+            "10": () => Object.keys(n).map(k => [n[k], [k]]),
             "01": () => n.map((v, i) => [v, [i]]),
         }, () => []
     )
@@ -188,7 +188,7 @@ export const dfs = (
  * @param {Array.<Array>} entries
  * @returns {Object}
  */
-export const dict = (entries) => entries.reduce(
+export const dict = entries => entries.reduce(
     (acc, [k, v]) => ({ ...acc, [k]: v }), {}
 )
 
@@ -216,7 +216,7 @@ export const objectMap = curry((o, f) => {
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
     )
-    return dict(Object.entries(o).map((kv) => f.call(o, kv)))
+    return dict(Object.entries(o).map(kv => f.call(o, kv)))
 })
 
 
@@ -260,4 +260,4 @@ export const objectReduce = curry((o, f, init) => {
  * @param {Object.<String, String>} o
  * @returns {Object.<String, String>}
  */
-export const swap = (o) => objectMap(o, ([k, v]) => [v, k])
+export const swap = o => objectMap(o, ([k, v]) => [v, k])

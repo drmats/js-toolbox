@@ -5,6 +5,7 @@
 
 // common plugins
 var commonPlugins = [
+    "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-arrow-functions",
