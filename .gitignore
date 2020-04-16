@@ -2,9 +2,7 @@
 /node_modules
 
 # production
-/doc
-/es
-/lib
+/dist
 
 # npm
 package-lock.json
