@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils - Documentation</title>
+    <title>string/string.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,1749 +29,424 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils</h1>
+    <h1 class="page-title">string/string.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Various tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="~timeUnit"><span class="type-signature">(inner) </span>timeUnit<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>Time units represented in milliseconds.</p>
-<ul>
-<li><code>second</code> - <code>1000 milliseconds</code></li>
-<li><code>minute</code> - <code>60 seconds</code></li>
-<li><code>hour</code> - <code>60 minutes</code></li>
-<li><code>day</code> - <code>24 hours</code></li>
-<li><code>week</code> - <code>7 days</code></li>
-<li><code>month</code> - [<strong>average</strong> month]: <code>30.4375 days</code> (<code>365.25 days / 12</code>)</li>
-<li><code>quarter</code> - [<strong>average</strong> quarter]: <code>3 months</code> (<code>365.25 days / 4</code>)</li>
-<li><code>year</code> - [<strong>average</strong> year]: <code>365.25 days</code></li>
-</ul>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line218">line 218</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~devEnv"><span class="type-signature">(inner) </span>devEnv<span class="signature">(strict<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Determine runtime environment (is it development or not?).
-<code>devEnv() -&gt; true/false</code></p>
-<p>When <code>strict</code> is not set to <code>true</code> then &quot;development environment&quot;
-can be simulated by storing value of any type under &quot;dev&quot; key
-in browser's sessionStorage, e.g. <code>sessionStorage[dev] = true</code>.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line35">line 35</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>strict</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Boolean</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Boolean</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~getLibConfig"><span class="type-signature">(inner) </span>getLibConfig<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get useful library configuration variables.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line74">line 74</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~getProcess"><span class="type-signature">(inner) </span>getProcess<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Return global <code>process</code> variable if it exists.
-Also give &quot;transform-inline-environment-variables&quot; plugin a chance.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line92">line 92</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~handleException"><span class="type-signature">(inner) </span>handleException<span class="signature">(fn, handler<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {any}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Handle exceptions in expressions.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line129">line 129</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>any</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~handleRejection"><span class="type-signature">(async, inner) </span>handleRejection<span class="signature">(fn, handler<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Handle rejections in expressions.
-Async version of <code>handleException</code>.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line145">line 145</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~isBrowser"><span class="type-signature">(inner) </span>isBrowser<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Check current runtime environment.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line163">line 163</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Boolean</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~rgb"><span class="type-signature">(inner) </span>rgb<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>JSS color helper.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line174">line 174</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~rgba"><span class="type-signature">(inner) </span>rgba<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>JSS color helper (with alpha).</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line186">line 186</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~run"><span class="type-signature">(inner) </span>run<span class="signature">(main)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Run &quot;main&quot; function:
-- in browser on &quot;load&quot; event,
-- via setTimeout if there's no event API available</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line198">line 198</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>main</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>undefined</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~to_"><span class="type-signature">(inner) </span>to_<span class="signature">(name)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Assign argument to the global object.
-Async-console-dev-helper.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line246">line 246</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>String</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>(*) =&gt; *</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * String tools.
+ *
+ * @module string
+ * @license Apache-2.0
+ * @author drmats
+ */
 
-    <h4 class="name" id="~url"><span class="type-signature">(inner) </span>url<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
 
 
 
-<div class="description">
-    <p>JSS url helper.</p>
-</div>
+import {
+    draw,
+    head,
+    last,
+    range,
+    tail,
+} from "../array"
+import { Y } from "../func"
 
 
 
 
+/**
+ * Return full set of ASCII letters.
+ *
+ * @function asciiLetters
+ * @returns {String}
+ */
+export const asciiLetters = () =>
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-<dl class="details">
 
-    
 
-    
 
-    
+/**
+ * Return lowercase ASCII letters.
+ *
+ * @function asciiLowercase
+ * @returns {String}
+ */
+export const asciiLowercase = () => "abcdefghijklmnopqrstuvwxyz"
 
-    
 
-    
 
-    
 
-    
+/**
+ * Return uppercase ASCII letters.
+ *
+ * @function asciiUppercase
+ * @returns {String}
+ */
+export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    
 
-    
 
-    
 
-    
+/**
+ * Allocate a big string (of size 2^n). Use with caution!
+ *
+ * - `big(16)` makes `2^16 = 65536` string size.
+ * - `big(23)` makes `2^23 = 8M` string size,
+ * - `big(24)` makes `16M` and so on.
+ *
+ * `c = "x"` - Character used during string generation.
+ *
+ * Example:
+ *
+ * ```
+ * big(2) === "xxxx"
+ * big(3, "a") === "aaaaaaaa"
+ * ```
+ *
+ * @function big
+ * @param {Number} n
+ * @param {String} [c="x"]
+ * @returns {String}
+ */
+export const big = Y(r =>
+    (n, c = "x") =>
+        n > 0 ?
+            r(n - 1, c + c) :
+            c
+)
 
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line281">line 281</a>
-    </li></ul></dd>
-    
 
-    
 
-    
+/**
+ * Convert `thisKindOfText` to `ThisKindOfText`.
+ *
+ * @function camelToPascal
+ * @param {String} str
+ * @returns {String}
+ */
+export const camelToPascal = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toUpperCase() + tail(str)  :
+        empty()
+
+
+
+
+/**
+ * Convert `thisKindOfText` to `this_kind_of_text`.
+ *
+ * @function camelToSnake
+ * @param {String} str
+ * @returns {String}
+ */
+export const camelToSnake = str =>
+    str  ?
+        str.replace(/([A-Z])/g, "_$1").toLowerCase()  :
+        empty()
+
+
 
-    
-</dl>
 
+/**
+ * Ensure given string is in form `Aaaaaaaa`.
+ *
+ * @function capitalize
+ * @param {String} str
+ * @returns {String}
+ */
+export const capitalize = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toUpperCase() + tail(str).toLowerCase()  :
+        empty()
 
 
 
 
+/**
+ * Return all digits.
+ *
+ * @function digits
+ * @returns {String}
+ */
+export const digits = () => "0123456789"
 
 
 
 
+/**
+ * Enumeration (used by `ellipsis` and `shorten`)
+ * indicating position in a string.
+ *
+ * @private
+ * @constant position
+ */
+const position = Object.freeze({
+    BEGIN: 0,
+    MIDDLE: 1,
+    END: 2,
+})
 
 
 
 
+/**
+ * Constructs new string with inserted `sep` (of default value `…`)
+ * at the `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
+ * Returned string has the same length as input string
+ * (thus some original characters are replaced with `sep` contents).
+ *
+ * @function ellipsis
+ * @param {String} str Text to insert `sep` (`…`) into.
+ * @param {Number} [placing=ellipsis.MIDDLE] Place to insert.
+ *     Can be `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
+ * @param {String} [sep="…"] Separator.
+ * @returns {String}
+ */
+export const ellipsis = (str, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (str.length >= sep.length) {
+        if (placing === position.MIDDLE) {
+            x.splice(
+                Math.floor(x.length / 2) - Math.floor(sep.length / 2),
+                sep.length, sep
+            )
+        } else if (placing === position.BEGIN) {
+            x.splice(0, sep.length, sep)
+        } else if (placing === position.END) {
+            x.splice(x.length - sep.length, sep.length, sep)
+        }
+    }
+    return x.join(empty())
+}
+Object.freeze(Object.assign(ellipsis, position))
 
 
 
 
+/**
+ * Construct empty string.
+ *
+ * @function empty
+ * @returns {String}
+ */
+export const empty = () => ""
 
 
 
 
-<div class="section-returns">
-<h5>Returns:</h5>
+/**
+ * Construct space.
+ *
+ * @function space
+ * @returns {String}
+ */
+export const space = () => " "
 
-        
 
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
 
 
-    </dd>
-</dl>
+/**
+ * Construct newline.
+ *
+ * @function nl
+ * @returns {String}
+ */
+export const nl = () => "\n"
 
 
-    
-</div>
 
 
+/**
+ * Construct tab.
+ *
+ * @function tab
+ * @returns {String}
+ */
+export const tab = () => "\t"
 
-</div>
-        
-    
 
-    
 
-    
-</article>
 
-</section>
+/**
+ * Prepend given `input` string with an appropriate amount of
+ * `ch` characters so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padLeft
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padLeft = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => range(len - ilen).map(() => c).join(empty()) + input
+)(input.length, head(ch))
+
+
+
+
+/**
+ * Append an appropriate amount of `ch` characters to the given `input`
+ * string so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padRight
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padRight = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => input + range(len - ilen).map(() => c).join(empty())
+)(input.length, head(ch))
+
+
+
+
+/**
+ * Convert `ThisKindOfText` to `thisKindOfText`.
+ *
+ * @function pascalToCamel
+ * @param {String} str
+ * @returns {String}
+ */
+export const pascalToCamel = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toLowerCase() + tail(str)  :
+        empty()
+
+
+
+
+/**
+ * Convert `ThisKindOfText` to `this_kind_of_text`.
+ *
+ * @function pascalToSnake
+ * @param {String} str
+ * @returns {String}
+ */
+export const pascalToSnake = str =>
+    str  ?  tail(camelToSnake(str))  :  empty()
+
+
+
+
+/**
+ * Quote text.
+ *
+ * @function quote
+ * @param {String} [str=empty()]
+ * @param {String} [q="\"\""]
+ * @returns {String}
+ */
+export const quote = (str = empty(), q = "\"\"") =>
+    `${head(q)}${str}${last(q)}`
+
+
+
+
+/**
+ * Construct random string of desired length.
+ *
+ * @function random
+ * @param {Number} [size=0]
+ * @param {String} [letters=asciiLetters()+digits()]
+ * @returns {String}
+ */
+export const random = (size = 0, letters = asciiLetters() + digits()) =>
+    range(size).map(() => draw(letters.split(empty()))).join(empty())
+
+
+
+
+/**
+ * Constructs new string not longer than `len`.
+ *
+ * @function shorten
+ * @param {String} str Text to be shortened.
+ * @param {Number} [len=Infinity] Desired text length.
+ * @param {Number} [placing=shorten.MIDDLE] Character cutting place.
+ *     Can be `shorten.BEGIN`, `shorten.MIDDLE` or `shorten.END`.
+ * @param {String} [sep="…"] Separator.
+ * @returns {String}
+ */
+export const shorten = (str, len = Infinity, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (len &lt; str.length) {
+        if (placing === position.MIDDLE) {
+            x.splice(Math.floor(len/2), str.length - len)
+        } else if (placing === position.BEGIN) {
+            x.splice(0, x.length - len)
+        } else if (placing === position.END) {
+            x.splice(len, x.length - len)
+        }
+        return ellipsis(x.join(empty()), placing, sep)
+    }
+    return str
+}
+Object.freeze(Object.assign(shorten, position))
+
+
+
+
+/**
+ * Convert `this_kind_of_text` to `thisKindOfText`.
+ *
+ * @function snakeToCamel
+ * @param {String} str
+ * @returns {String}
+ */
+export const snakeToCamel = str => (
+    (pascal) =>
+        pascal.length > 0  ?
+            head(pascal).toLowerCase() + tail(pascal)  :
+            empty()
+)(snakeToPascal(str))
+
+
+
+
+/**
+ * Convert `this_kind_of_text` to `ThisKindOfText`.
+ *
+ * @function snakeToPascal
+ * @param {String} str
+ * @returns {String}
+ */
+export const snakeToPascal = str =>
+    str  ?
+        str.split(/_+/g).map(w => capitalize(w)).join(empty())  :
+        empty()
+
+
+
+
+/**
+ * Wrap passed string with `prefix` and `suffix`.
+ *
+ * @function wrap
+ * @param {String} [str=empty()]
+ * @param {String} [prefix=empty()]
+ * @param {String} [suffix=empty()]
+ * @returns {String}
+ */
+export const wrap = (str = empty(), prefix = empty(), suffix = empty()) =>
+    `${prefix}${str}${suffix}`
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -1781,7 +456,7 @@ Async-console-dev-helper.</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Apr 16 2020 13:32:47 GMT+0200 (Central European Summer Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Apr 16 2020 13:32:46 GMT+0200 (Central European Summer Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

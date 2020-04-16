@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils - Documentation</title>
+    <title>func/func.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,1749 +29,395 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils</h1>
-    
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Various tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="~timeUnit"><span class="type-signature">(inner) </span>timeUnit<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>Time units represented in milliseconds.</p>
-<ul>
-<li><code>second</code> - <code>1000 milliseconds</code></li>
-<li><code>minute</code> - <code>60 seconds</code></li>
-<li><code>hour</code> - <code>60 minutes</code></li>
-<li><code>day</code> - <code>24 hours</code></li>
-<li><code>week</code> - <code>7 days</code></li>
-<li><code>month</code> - [<strong>average</strong> month]: <code>30.4375 days</code> (<code>365.25 days / 12</code>)</li>
-<li><code>quarter</code> - [<strong>average</strong> quarter]: <code>3 months</code> (<code>365.25 days / 4</code>)</li>
-<li><code>year</code> - [<strong>average</strong> year]: <code>365.25 days</code></li>
-</ul>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line218">line 218</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~devEnv"><span class="type-signature">(inner) </span>devEnv<span class="signature">(strict<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Determine runtime environment (is it development or not?).
-<code>devEnv() -&gt; true/false</code></p>
-<p>When <code>strict</code> is not set to <code>true</code> then &quot;development environment&quot;
-can be simulated by storing value of any type under &quot;dev&quot; key
-in browser's sessionStorage, e.g. <code>sessionStorage[dev] = true</code>.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line35">line 35</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>strict</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Boolean</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Boolean</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~getLibConfig"><span class="type-signature">(inner) </span>getLibConfig<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get useful library configuration variables.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line74">line 74</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~getProcess"><span class="type-signature">(inner) </span>getProcess<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Return global <code>process</code> variable if it exists.
-Also give &quot;transform-inline-environment-variables&quot; plugin a chance.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line92">line 92</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~handleException"><span class="type-signature">(inner) </span>handleException<span class="signature">(fn, handler<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {any}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Handle exceptions in expressions.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line129">line 129</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>any</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~handleRejection"><span class="type-signature">(async, inner) </span>handleRejection<span class="signature">(fn, handler<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Handle rejections in expressions.
-Async version of <code>handleException</code>.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line145">line 145</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fn</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~isBrowser"><span class="type-signature">(inner) </span>isBrowser<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Check current runtime environment.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line163">line 163</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Boolean</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~rgb"><span class="type-signature">(inner) </span>rgb<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>JSS color helper.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line174">line 174</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~rgba"><span class="type-signature">(inner) </span>rgba<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>JSS color helper (with alpha).</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line186">line 186</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~run"><span class="type-signature">(inner) </span>run<span class="signature">(main)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Run &quot;main&quot; function:
-- in browser on &quot;load&quot; event,
-- via setTimeout if there's no event API available</p>
-</div>
-
-
-
+    <h1 class="page-title">func/func.js</h1>
+    
 
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line198">line 198</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>main</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>function</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>undefined</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~to_"><span class="type-signature">(inner) </span>to_<span class="signature">(name)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Assign argument to the global object.
-Async-console-dev-helper.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line246">line 246</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>String</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>(*) =&gt; *</p>
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~url"><span class="type-signature">(inner) </span>url<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>JSS url helper.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_utils.js.html">utils/utils.js</a>, <a href="utils_utils.js.html#line281">line 281</a>
-    </li></ul></dd>
-    
-
-    
-
     
 
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Functional programming tools.
+ *
+ * @module func
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import {
+    findDuplicates,
+    head,
+    last,
+    range,
+} from "../array"
+import { isArray } from "../type"
+
+
+
+
+/**
+ * Functional replacement of a `switch` statement.
+ *
+ * @function choose
+ * @param {String} key
+ * @param {Object.&lt;String, Function>} [actions]
+ * @param {Function} [defaultAction]
+ * @param {Array} [args]
+ * @returns {any}
+ */
+export const choose = (
+    key,
+    actions = {},
+    defaultAction = () => null,
+    args = []
+) =>
+    key in actions ?
+        actions[key](...args) :
+        defaultAction(...args)
+
+
+
+
+/**
+ * Function composition - read as "compose backward" or "but first".
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  compose(g, f) (x)
+ * ```
+ *
+ * @function compose
+ * @param {...Function} fs
+ * @returns {Function}
+ */
+export const compose = (...fs) => (...args) =>
+    head(fs.reduceRight((result, f) => [f(...result)], args))
+
+
+
+
+/**
+ * Return curried form of a given function `f`.
+ *
+ * If funcion `f` has _arity_ 3, and `g = curry(f)` then
+ * a following invocations have the same result:
+ *
+ * ```
+ * g(a,  b,  c)
+ * g(a,  b) (c)
+ * g(a) (b,  c)
+ * g(a) (b) (c)
+ * ```
+ *
+ * Function `f` _arity_ is obtained by checking it's `.length`
+ * property, so if function `f` is defined with a _rest parameter_
+ * then this parameter is excluded. Also only parameters before
+ * the first one with a default value are included.
+ *
+ * @function curry
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curry = f => curryN(f.length, f)
+
+
 
-    
-
-    
-</article>
 
-</section>
+/**
+ * Translate the evaluation of function `f` taking `n` arguments
+ * into an evaluation of sequence of `n` functions, where each
+ * next function is a result of previous function evaluation.
+ *
+ * ```
+ * f(a, b, c, d, e)  &lt;=>  curryN(5, f) (a) (b) (c) (d) (e)
+ * ```
+ *
+ * @function curryN
+ * @param {Number} n
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curryN = (n, f) =>
+    (...args) =>
+        n &lt;= args.length  ?
+            f(...args)  :
+            curryN(n - args.length, partial(f) (...args))
+
+
+
+
+/**
+ * Translate the evaluation of function `f` taking multiple arguments
+ * into an evaluation of sequence of functions, each with a single argument.
+ *
+ * Because `curryThunk` doesn't assume anything on passed function
+ * `f` _arity_, final invocation has to be done with no arguments.
+ *
+ * ```
+ * f(a, b, c, d)  &lt;=>  curryThunk(f) (a) (b) (c) (d) ()
+ * ```
+ *
+ * @function curryThunk
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curryThunk = f => (...args) =>
+    args.length === 0  ?  f()  :  curryThunk(partial(f) (...args))
+
+
+
+
+/**
+ * Function composition - read as "compose forward" or "and then".
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  flow(f, g) (x)
+ * ```
+ *
+ * Inspired by {@link https://github.com/tfausak/flow}.
+ *
+ * @function flow
+ * @param {...Function} fs
+ * @returns {Function}
+ */
+export const flow = (...fs) => compose(...fs.reverse())
+
+
+
+
+/**
+ * Return value passed as a first argument.
+ *
+ * @function identity
+ * @param {any} x
+ * @returns {any}
+ */
+export const identity = x => x
+
+
+
+
+/**
+ * Put a given argument under function abstraction.
+ *
+ * @function lazyish
+ * @param {any} x
+ * @return {Function}
+ */
+export const lazyish = x => () => x
+
+
+
+
+/**
+ * Create function that can "lock the thing".
+ *
+ * During the first `n` invocations returned function acts as identity.
+ * During the `n+1` invocation the argument `thing` is memoized
+ * and on all subsequent invocations passed arguments are ignored
+ * and memoized `thing` is returned.
+ *
+ * ```
+ * let lock = func.locker()
+ *
+ * lock("I like you!")
+ * 'I like you!'
+ *
+ * lock("I hate you.")
+ * 'I like you!'
+ *
+ * let lock2 = func.locker(2)
+ *
+ * lock2("Repeat after me!")
+ * 'Repeat after me!'
+ *
+ * lock2(42)
+ * 42
+ *
+ * lock2("All right...")
+ * 42
+ * ```
+ *
+ * @function locker
+ * @param {Number} [n=1]
+ * @returns {Function} (any) => any
+ */
+export const locker = (n = 1) => (
+    ({ memoized, value }) =>
+        (thing) => {
+            if (memoized &lt; n) {
+                memoized += 1
+                value = thing
+            }
+            return value
+        }
+) ({ memoized: 0, value: null })
+
+
+
+
+/**
+ * Partial application.
+ *
+ * Bind `init` arguments to function `f` and construct
+ * a function of smaller _arity_ which accept `rest` of the arguments.
+ *
+ * Example:
+ *
+ * ```
+ * let f = (a, b) => a + b
+ * f(3, 4)  ->  7
+ * let g = partial(f) (3)  // note that `partial` is in *curried* form
+ * g(4)  ->  7
+ * ```
+ *
+ * @function partial
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const partial = f => (...init) =>
+    (...rest) => f(...[...init, ...rest])
+
+
+
+
+/**
+ * Function composition - read as "compose forward" or "and then".
+ * Version of `flow` taking _arguments_ (`args`) first
+ * and then _functions_ (`fs`).
+ *
+ * ```
+ * let:
+ * f: X -> Y,  g: Y -> Z
+ *
+ * then:
+ * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  pipe(x) (f, g)
+ * ```
+ *
+ * @function pipe
+ * @param {...Function} args
+ * @returns {Function}
+ */
+export const pipe = (...args) => (...fs) => flow(...fs) (...args)
+
+
+
+
+/**
+ * Function arguments rearrangement.
+ *
+ * Takes function `f` and `indices` and returns a new function,
+ * which has it's arguments arranged according to `indices`.
+ *
+ * Returned function will expect the number of arguments to be
+ * no less than the number of `indices`. If not all of the required
+ * arguments will be passed, a new function will be returned
+ * expecting _rest_ of the arguments.
+ *
+ * In other words - function returned by `rearg` is *curried*.
+ *
+ * Example:
+ *
+ * ```
+ * string.padLeft("Foo", 10, ".")  ->  ".......Foo"
+ *
+ * let rePad = func.rearg(string.padLeft) (1, 2, 0)  // *curried* form
+ * rePad(10, ".", "Bar")  ->  ".......Bar"
+ *
+ * console.log("a", "b", "c", "d", "e")
+ * a b c d e
+ *
+ * let revConsole = func.rearg(console.log) (4, 3, 2, 1, 0)
+ * revConsole("a", "b", "c", "d", "e")
+ * e d c b a
+ *
+ * revConsole("f") ("g", "h") ("i") ("j")
+ * j i h g f
+ * ```
+ *
+ * @function rearg
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const rearg = f => (...indices) => {
+    if (indices.length === 0) return f
+
+    if (findDuplicates(indices).length > 0) throw RangeError(
+        "func.rearg: duplicate indices are forbidden"
+    )
+
+    // index mapping "new" -> "old"
+    let indexPairs = indices
+        .map((n, o) => [n, o])
+        .sort(([n1], [n2]) => n1 - n2)
+
+    return curryN(
+        indices.length,
+        (...args) => {
+            let
+                // source arguments: [argument, usageCount]
+                sargs = args.map(a => [a, 0]),
+
+                // destination arguments: [argument, usageCount]
+                dargs = range(Math.max(
+                    head(last(indexPairs)) + 1,
+                    args.length)
+                ).map(() => [null, 0]),
+
+                // not used source arguments
+                rest = null
+
+            // fill destination arguments with source arguments
+            // (through index mapping) and mark valid destination arguments
+            // and used source arguments
+            indexPairs.forEach(([n, o]) => {
+                dargs[n][0] = head(sargs[o])
+                dargs[n][1] += 1
+                sargs[o][1] += 1
+            })
+
+            // filter-out all used source arguments and leave only unused ones
+            rest = sargs.filter((a) => last(a) === 0).reverse()
+
+            // return function `f` invocation with valid destination arguments
+            // and not-valid ones replaced with the unused source arguments
+            return f(...dargs.map(a => {
+                if (last(a) !== 0) return head(a)
+                let rel = rest.pop()
+                if (isArray(rel)) return head(rel)
+                return rel
+            }))
+        }
+    )
+}
+
+
+
+
+/**
+ * Y-combinator (fixed point of `f`).
+ *
+ * @function Y
+ * @param {Function} f f: recf => (...args) => { ... recf(...args) ... }
+ * @returns {Function}
+ */
+export const Y = f => (...args) => f(Y(f)) (...args)
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -1781,7 +427,7 @@ Async-console-dev-helper.</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Apr 16 2020 13:32:47 GMT+0200 (Central European Summer Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Apr 16 2020 13:32:46 GMT+0200 (Central European Summer Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
