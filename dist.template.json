@@ -1,48 +1,10 @@
 {
-    "bugs": {
-        "url": "https://github.com/drmats/js-toolbox/issues"
-    },
-    "contributors": [
-        {
-            "name": "drmats",
-            "email": "xcmats@protonmail.com",
-            "url": "https://twitter.com/xcmats/"
-        }
-    ],
-    "dependencies": {
-        "@babel/runtime": "^7.9.2"
-    },
-    "description": "Useful JS utilities.",
-    "engines": {
-        "node": ">=8.0.0",
-        "npm": ">=6.0.0"
-    },
-    "homepage": "https://github.com/drmats/js-toolbox",
-    "keywords": [
-        "array",
-        "async",
-        "byte-array",
-        "codec",
-        "es6",
-        "functional",
-        "javascript",
-        "library",
-        "string",
-        "type"
-    ],
-    "license": "Apache-2.0",
     "main": "index.js",
     "module": "es/index.js",
-    "name": "@xcmats/js-toolbox",
     "private": false,
     "publishConfig": {
         "access": "public"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/drmats/js-toolbox.git"
-    },
     "sideEffects": false,
-    "typings": "index.d.ts",
-    "version": "0.9.5"
+    "typings": "index.d.ts"
 }
