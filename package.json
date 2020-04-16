@@ -94,5 +94,5 @@
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
     },
     "typings": "dist/index.d.ts",
-    "version": "0.9.6"
+    "version": "0.9.7"
 }
