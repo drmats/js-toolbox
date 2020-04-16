@@ -313,6 +313,7 @@ func
 >   identity: [Function: identity],
 >   locker: [Function: locker],
 >   lazyish: [Function: lazyish],
+>   local: [Function: local],
 >   partial: [Function: partial],
 >   pipe: [Function: pipe],
 >   rearg: [Function: rearg],

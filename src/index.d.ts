@@ -89,6 +89,7 @@ export {
     flow,
     identity,
     lazyish,
+    local,
     locker,
     partial,
     pipe,

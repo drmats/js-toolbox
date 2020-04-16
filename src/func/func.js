@@ -174,9 +174,23 @@ export const identity = x => x
  *
  * @function lazyish
  * @param {any} x
- * @return {Function}
+ * @returns {Function}
  */
 export const lazyish = x => () => x
+
+
+
+
+/**
+ * Local binding.
+ *
+ * Inspired by {@link https://github.com/kongware/scriptum}
+ *
+ * @function local
+ * @param {Function} () => T
+ * @returns {*} T
+ */
+export const local = (f = identity) => f()
 
 
 

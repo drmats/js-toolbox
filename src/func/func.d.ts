@@ -136,6 +136,16 @@ export function lazyish<T> (x: T): () => T;
 
 
 /**
+ * Local binding.
+ *
+ * Inspired by {@link https://github.com/kongware/scriptum}
+ */
+export function local<T> (f?: () => T): T;
+
+
+
+
+/**
  * Create function that can "lock the thing".
  *
  * During the first `n` invocations returned function acts as identity.
