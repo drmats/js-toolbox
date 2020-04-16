@@ -1,8 +1,3 @@
-#!/bin/node
-
-
-
-
 // ...
 var { readdirSync } = require("fs");
 
