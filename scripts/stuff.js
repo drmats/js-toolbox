@@ -9,6 +9,7 @@ var
     {
         copyFileSync,
         mkdirSync,
+        readdirSync,
         writeFileSync,
     } = require("fs"),
 
@@ -20,6 +21,11 @@ var
         "module": `../es/${mn}/index.js`,
         "typings": "./index.d.ts",
     }),
+
+    tsFiles = dir =>
+        readdirSync(dir, { withFileTypes: true })
+            .filter(de => de.isFile() && de.name.endsWith(".d.ts"))
+            .map(de => de.name),
 
     packageJson = require("../package.json"),
 
@@ -38,8 +44,9 @@ require("./module_names")
     .forEach(mn => {
         let src = `${srcDir}/${mn}`, dst = `${distDir}/${mn}`;
         mkdirSync(dst, { recursive: true });
-        copyFileSync(`${src}/${mn}.d.ts`, `${dst}/${mn}.d.ts`);
-        copyFileSync(`${src}/index.d.ts`, `${dst}/index.d.ts`);
+        tsFiles(`${src}/`).forEach(f => {
+            copyFileSync(`${src}/${f}`, `${dst}/${f}`);
+        });
         writeFileSync(
             `${dst}/package.json`,
             JSON.stringify(esConfig(mn))
