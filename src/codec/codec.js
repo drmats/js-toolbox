@@ -157,7 +157,7 @@ export const hexToBytes = ((hexInput) => (
  *
  * @function bytesToHex
  * @param {Uint8Array} bytes
- * @return {String}
+ * @returns {String}
  */
 export const bytesToHex = bytes =>
     Array.from(bytes)

@@ -518,7 +518,7 @@ export const takeLast = n => arr => arr && arr.slice(arr.length - n)
  *
  * @function zipWith
  * @param {Function} f (...any[]) => any
- * @return {Funcion} (...any[][]) => any[]
+ * @returns {Funcion} (...any[][]) => any[]
  */
 export const zipWith = f => (...arrs) =>
     range(
@@ -540,6 +540,6 @@ export const zipWith = f => (...arrs) =>
  *
  * @function zip
  * @param {...Array} arrs Arrays to zip.
- * @return {Array}
+ * @returns {Array}
  */
 export const zip = zipWith((...args) => args)
