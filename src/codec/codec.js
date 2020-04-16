@@ -12,13 +12,13 @@
 import {
     head,
     tail,
-} from "../array"
+} from "../array/list"
+import { curry } from "../func/curry"
 import {
     compose,
-    curry,
     pipe,
-    rearg,
-} from "../func"
+} from "../func/combinators"
+import { rearg } from "../func/misc"
 import {
     inc,
     sum,

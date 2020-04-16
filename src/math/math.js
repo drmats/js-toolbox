@@ -9,7 +9,7 @@
 
 
 
-import { curry } from "../func"
+import { curry } from "../func/curry"
 import { maxInt } from "../type"
 
 

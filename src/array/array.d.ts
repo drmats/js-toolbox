@@ -10,14 +10,6 @@
 
 
 /**
- * Append `ys` to `xs` and return xs.
- */
-export function append (xs: any[]): (ys: any[]) => any[];
-
-
-
-
-/**
  * Create object composed of keys resulting from application
  * of `iteratee` function to each element of the passed array `arr`.
  * Values corresponds to the number of occurences of an element
@@ -58,24 +50,6 @@ export function draw (arr: any[] | string): any | string;
 
 
 /**
- * Drop the first `n` elements of a given array.
- * Returns array without the first `n` elements.
- */
-export function drop (n: number): (arr: any[]) => any[];
-
-
-
-
-/**
- * Drop the last `n` elements of a given array.
- * Returns array without the last `n` elements.
- */
-export function dropLast (n: number): (arr: any[]) => any[];
-
-
-
-
-/**
  * Find duplicates in a given array.
  *
  * Optionally, before comparision, each element is transformed by
@@ -99,22 +73,6 @@ export function findDuplicates (
  * Simple array flattener.
  */
 export function flatten (arr: any[][]): any[];
-
-
-
-
-/**
- * Return first element of the given array.
- */
-export function head (arr: any[] | string): any | string;
-
-
-
-
-/**
- * Return array without its last element.
- */
-export function init (arr: any[] | string): any[] | string;
 
 
 
@@ -153,32 +111,6 @@ export function isSorted<T> (
  * Check if array `a` is a subset of array `b`.
  */
 export function isSubset (a: any[], b: any[]): boolean;
-
-
-
-
-/**
- * Return last element of the given array.
- */
-export function last (arr: any[] | string): any | string;
-
-
-
-
-/**
- * - `range(stop)` -> array of numbers; start defaults to `0`
- * - `range(start, stop[, step])` -> array of numbers
- *
- * Return a list containing an arithmetic progression.
- * - `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
- *
- * When step is given, it specifies the increment (or decrement).
- * For example:
- * - `range(4)` returns `[0, 1, 2, 3]`.
- *
- * Imitates Python's `range()`.
- */
-export function range (...args: number[]): number[];
 
 
 
@@ -228,33 +160,9 @@ export function sparse (...args: number[]): number[];
 
 
 /**
- * Return array without its head (first element).
- */
-export function tail (arr: any[] | string): any[] | string;
-
-
-
-
-/**
- * Take the first `n` elements of a given array.
- */
-export function take (n: number): (arr: any[]) => any[];
-
-
-
-
-/**
  * Take every `nth` element from an `arr` array.
  */
 export function takeEvery (nth: number): (arr: any[]) => any[];
-
-
-
-
-/**
- * Take the last `n` elements of a given array.
- */
-export function takeLast (n: number): (arr: any[]) => any[];
 
 
 

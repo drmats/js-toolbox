@@ -11,9 +11,17 @@
 
 import {
     flow,
-    identity,
     pipe,
-} from "../func"
+} from "../func/combinators"
+import { identity } from "../func/misc"
+import {
+    append,
+    drop,
+    head,
+    range,
+    take,
+    tail,
+} from "./list"
 import {
     dec,
     inc,
@@ -25,21 +33,6 @@ import {
     isArray,
     isNumber,
 } from "../type"
-
-
-
-
-/**
- * Append `ys` to `xs` and return xs.
- *
- * @function append
- * @param {Array} xs
- * @returns {Function} (any[]) => any[]
- */
-export const append = xs => ys => {
-    Array.prototype.push.apply(xs, ys)
-    return xs
-}
 
 
 
@@ -109,34 +102,6 @@ export const draw = arr => arr[randomInt() % arr.length]
 
 
 /**
- * Drop the first `n` elements of a given array.
- * Returns array without the first `n` elements.
- *
- * @function drop
- * @param {Number} n
- * @returns {Function} which takes `arr` and returns
- *      array without the first `n` elements.
- */
-export const drop = n => arr => arr.slice(n)
-
-
-
-
-/**
- * Drop the last `n` elements of a given array.
- * Returns array without the last `n` elements.
- *
- * @function dropLast
- * @param {Number} n
- * @returns {Function} which takes `arr` and returns
- *      array without the last `n` elements.
- */
-export const dropLast = n => arr => arr.slice(0, arr.length - n)
-
-
-
-
-/**
  * Find duplicates in a given array.
  *
  * Optionally, before comparision, each element is transformed by
@@ -175,33 +140,6 @@ export const findDuplicates = (arr, iteratee = identity) =>
  * @returns {Array}
  */
 export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
-
-
-
-
-/**
- * Return first element of the given array.
- *
- * @function head
- * @param {Array|String} arr
- * @returns {any}
- */
-export const head = ([x] = []) => x
-
-
-
-
-/**
- * Return array without its last element.
- *
- * @function init
- * @param {Array|String} [arr]
- * @returns {Array|String}
- */
-export const init = arr =>
-    arr || arr === "" ?
-        arr.slice(0, arr.length-1) :
-        undefined
 
 
 
@@ -278,65 +216,6 @@ export const isSubset = (a, b) => {
         if (!bb.has(element)) return false
 
     return true
-}
-
-
-
-
-/**
- * Return last element of the given array.
- *
- * @function last
- * @param {Array|String} arr
- * @returns {any}
- */
-export const last = arr => arr  &&  arr[arr.length-1]
-
-
-
-
-/**
- * - `range(stop)` -> array of numbers; start defaults to `0`
- * - `range(start, stop[, step])` -> array of numbers
- *
- * Return a list containing an arithmetic progression.
- * - `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
- *
- * When step is given, it specifies the increment (or decrement).
- * For example:
- * - `range(4)` returns `[0, 1, 2, 3]`.
- *
- * Imitates Python's `range()`.
- *
- * @function range
- * @param {Number} [start=0]
- * @param {Number} stop
- * @param {Number} [step=1]
- * @returns {Array}
- */
-export const range = (...args) => {
-    let start = 0, stop = 0, step = 1, arr = []
-
-    if (args.length === 1) { [stop] = args }
-    else if (args.length === 2) { [start, stop] = args }
-    else if (args.length === 3) {
-        [start, stop, step] = args
-        if (step === 0) throw new RangeError(
-            "array.range() 'step' argument must not be zero"
-        )
-    } else throw new TypeError(
-        `array.range() expected at most 3 arguments, got ${args.length}`
-    )
-
-    while (
-        (start < stop  &&  step > 0)  ||
-        (start > stop  &&  step < 0)
-    ) {
-        arr[arr.length] = start
-        start += step
-    }
-
-    return arr
 }
 
 
@@ -446,31 +325,6 @@ export const sparse = (...args) => {
 
 
 /**
- * Return array without its head (first element).
- *
- * @function tail
- * @param {Array|String} arr
- * @returns {Array|String}
- */
-export const tail = arr => arr  &&  arr.slice(1)
-
-
-
-
-/**
- * Take the first `n` elements of a given array.
- *
- * @function take
- * @param {Number} n
- * @returns {Function} which takes `arr` and return first `n` elements
- *
- */
-export const take = n => arr => arr  &&  arr.slice(0, n)
-
-
-
-
-/**
  * Take every `nth` element from an `arr` array.
  *
  * @function takeEvery
@@ -489,19 +343,6 @@ export const takeEvery = nth => arr =>
             head,
             (arr) => arr.reverse()
         ) : arr
-
-
-
-
-/**
- * Take the last `n` elements of a given array.
- *
- * @function takeLast
- * @param {Number} n
- * @returns {Function} which takes `arr` and return last `n` elements
- *
- */
-export const takeLast = n => arr => arr && arr.slice(arr.length - n)
 
 
 

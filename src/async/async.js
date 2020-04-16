@@ -9,12 +9,10 @@
 
 
 
-import { head } from "../array"
-import {
-    curry,
-    identity,
-    Y,
-} from "../func"
+import { head } from "../array/list"
+import { identity } from "../func/misc"
+import { curry } from "../func/curry"
+import { Y } from "../func/combinators"
 import { inc } from "../math"
 import { quote } from "../string"
 import {

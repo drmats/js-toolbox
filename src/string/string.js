@@ -9,14 +9,14 @@
 
 
 
+import { draw } from "../array/array"
 import {
-    draw,
     head,
     last,
     range,
     tail,
-} from "../array"
-import { Y } from "../func"
+} from "../array/list"
+import { Y } from "../func/combinators"
 
 
 

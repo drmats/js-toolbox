@@ -9,12 +9,9 @@
 
 
 
-import {
-    choose,
-    curry,
-    flow,
-    Y,
-} from "../func"
+import { choose } from "../func"
+import { curry } from "../func/curry"
+import { flow, Y } from "../func/combinators"
 import {
     empty,
     quote,
