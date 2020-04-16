@@ -16,7 +16,7 @@ import {
     license,
     name,
     version,
-} from "../../package.json"
+} from "../../dist/package.json"
 import {
     quote,
     wrap,

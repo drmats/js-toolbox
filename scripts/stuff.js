@@ -8,6 +8,7 @@ var
 
     {
         copyFileSync,
+        mkdirSync,
         writeFileSync,
     } = require("fs"),
 
@@ -36,6 +37,7 @@ console.info("Copying type declarations and module configs ...");
 require("./module_names")
     .forEach(mn => {
         let src = `${srcDir}/${mn}`, dst = `${distDir}/${mn}`
+        mkdirSync(dst, { recursive: true })
         copyFileSync(`${src}/${mn}.d.ts`, `${dst}/${mn}.d.ts`);
         copyFileSync(`${src}/index.d.ts`, `${dst}/index.d.ts`);
         writeFileSync(

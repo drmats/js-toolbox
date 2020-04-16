@@ -20,6 +20,7 @@ var commonPlugins = [
     "@babel/plugin-transform-shorthand-properties",
     "@babel/plugin-transform-spread",
     "@babel/plugin-transform-template-literals",
+    "babel-plugin-inline-json-import",
 ]
 
 
@@ -53,9 +54,7 @@ module.exports = function (api) {
             },
             "es": {
                 "comments": false,
-                "plugins": commonPlugins.concat([
-                    "babel-plugin-inline-json-import",
-                ]),
+                "plugins": commonPlugins,
                 "presets": [
                     [
                         "@babel/preset-env",

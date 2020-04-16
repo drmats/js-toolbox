@@ -77,7 +77,7 @@
     "scripts": {
         "build:commonjs": "cross-env BABEL_ENV=commonjs babel ./src/ -d ./dist/",
         "build:es": "cross-env BABEL_ENV=es babel ./src/ -d ./dist/es/",
-        "build": "npm run clean:build && npm run build:commonjs && npm run build:es && npm run build:stuff",
+        "build": "npm run clean:build && npm run build:stuff && npm run build:commonjs && npm run build:es",
         "build:stuff": "node ./scripts/stuff.js",
         "clean:build": "rimraf ./dist",
         "clean:doc": "rimraf ./dist/doc",
@@ -88,7 +88,7 @@
         "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/**/* -d ./dist/doc/",
         "lint": "eslint ./src/",
         "prepublishOnly": "npm run test && npm run build && npm run doc",
-        "prestart": "npm run build:commonjs",
+        "prestart": "node ./scripts/stuff.js && npm run build:commonjs",
         "publishAll": "npm run prepublishOnly && echo \"Publishing ...\" && cd ./dist/ && npm publish && cd .. && npm run deploy && echo \"Done.\"",
         "start": "node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\""
