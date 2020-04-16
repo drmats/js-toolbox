@@ -36,8 +36,8 @@ console.info("Copying type declarations and module configs ...");
 // copy src type files and es configs to dist directory
 require("./module_names")
     .forEach(mn => {
-        let src = `${srcDir}/${mn}`, dst = `${distDir}/${mn}`
-        mkdirSync(dst, { recursive: true })
+        let src = `${srcDir}/${mn}`, dst = `${distDir}/${mn}`;
+        mkdirSync(dst, { recursive: true });
         copyFileSync(`${src}/${mn}.d.ts`, `${dst}/${mn}.d.ts`);
         copyFileSync(`${src}/index.d.ts`, `${dst}/index.d.ts`);
         writeFileSync(
@@ -74,4 +74,4 @@ copyFileSync("./LICENSE", `${distDir}/LICENSE`);
 
 
 
-console.log("OK.");
+console.info("OK.");

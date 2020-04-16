@@ -9,4 +9,4 @@ Object.assign(
     require("./module_names").reduce(
         (e, mn) => (e[mn] = require("../dist/" + mn), e), {}
     )
-)
+);
