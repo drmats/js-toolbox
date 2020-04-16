@@ -63,10 +63,10 @@
         "type"
     ],
     "license": "Apache-2.0",
-    "main": "lib/index.js",
-    "module": "index.js",
+    "main": "dist/index.js",
+    "module": "dist/es/index.js",
     "name": "@xcmats/js-toolbox",
-    "private": false,
+    "private": true,
     "publishConfig": {
         "access": "public"
     },
