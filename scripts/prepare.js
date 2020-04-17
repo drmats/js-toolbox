@@ -29,7 +29,7 @@ var
 
     packageJson = require("../package.json"),
 
-    distJson = require("../dist.template.json");
+    distJson = require("./dist.template.json");
 
 
 
