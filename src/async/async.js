@@ -10,7 +10,7 @@
 
 
 import { head } from "../array/list"
-import { identity } from "../func/misc"
+import { identity } from "../func/tools"
 import { curry } from "../func/curry"
 import { Y } from "../func/combinators"
 import { inc } from "../math"

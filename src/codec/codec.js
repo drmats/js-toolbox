@@ -18,7 +18,7 @@ import {
     compose,
     pipe,
 } from "../func/combinators"
-import { rearg } from "../func/misc"
+import { rearg } from "../func/tools"
 import {
     inc,
     sum,

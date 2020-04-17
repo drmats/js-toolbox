@@ -9,7 +9,7 @@
 
 
 
-import { draw } from "../array/array"
+import { draw } from "../array/random"
 import {
     head,
     last,

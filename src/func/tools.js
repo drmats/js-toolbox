@@ -9,7 +9,7 @@
 
 
 
-import { findDuplicates } from "../array/array"
+import { findDuplicates } from "../array/set"
 import {
     head,
     last,

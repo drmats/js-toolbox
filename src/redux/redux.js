@@ -9,7 +9,7 @@
 
 
 
-import { choose } from "../func/misc"
+import { choose } from "../func/tools"
 
 
 
