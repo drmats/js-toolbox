@@ -1,3 +1,3 @@
 export * from "./redux"
-import * as redux from "./redux"
-export default redux
+import * as tools from "./tools"
+export default tools
