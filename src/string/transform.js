@@ -9,79 +9,16 @@
 
 
 
-import { draw } from "../array/random"
+import {
+    empty,
+    space,
+} from "./consts"
 import {
     head,
     last,
     range,
     tail,
 } from "../array/list"
-import { Y } from "../func/combinators"
-
-
-
-
-/**
- * Return full set of ASCII letters.
- *
- * @function asciiLetters
- * @returns {String}
- */
-export const asciiLetters = () =>
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-
-
-
-/**
- * Return lowercase ASCII letters.
- *
- * @function asciiLowercase
- * @returns {String}
- */
-export const asciiLowercase = () => "abcdefghijklmnopqrstuvwxyz"
-
-
-
-
-/**
- * Return uppercase ASCII letters.
- *
- * @function asciiUppercase
- * @returns {String}
- */
-export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-
-
-
-/**
- * Allocate a big string (of size 2^n). Use with caution!
- *
- * - `big(16)` makes `2^16 = 65536` string size.
- * - `big(23)` makes `2^23 = 8M` string size,
- * - `big(24)` makes `16M` and so on.
- *
- * `c = "x"` - Character used during string generation.
- *
- * Example:
- *
- * ```
- * big(2) === "xxxx"
- * big(3, "a") === "aaaaaaaa"
- * ```
- *
- * @function big
- * @param {Number} n
- * @param {String} [c="x"]
- * @returns {String}
- */
-export const big = Y(r =>
-    (n, c = "x") =>
-        n > 0 ?
-            r(n - 1, c + c) :
-            c
-)
 
 
 
@@ -132,17 +69,6 @@ export const capitalize = str =>
 
 
 /**
- * Return all digits.
- *
- * @function digits
- * @returns {String}
- */
-export const digits = () => "0123456789"
-
-
-
-
-/**
  * Enumeration (used by `ellipsis` and `shorten`)
  * indicating position in a string.
  *
@@ -188,50 +114,6 @@ export const ellipsis = (str, placing = 1, sep = "…") => {
     return x.join(empty())
 }
 Object.freeze(Object.assign(ellipsis, position))
-
-
-
-
-/**
- * Construct empty string.
- *
- * @function empty
- * @returns {String}
- */
-export const empty = () => ""
-
-
-
-
-/**
- * Construct space.
- *
- * @function space
- * @returns {String}
- */
-export const space = () => " "
-
-
-
-
-/**
- * Construct newline.
- *
- * @function nl
- * @returns {String}
- */
-export const nl = () => "\n"
-
-
-
-
-/**
- * Construct tab.
- *
- * @function tab
- * @returns {String}
- */
-export const tab = () => "\t"
 
 
 
@@ -312,20 +194,6 @@ export const pascalToSnake = str =>
  */
 export const quote = (str = empty(), q = "\"\"") =>
     `${head(q)}${str}${last(q)}`
-
-
-
-
-/**
- * Construct random string of desired length.
- *
- * @function random
- * @param {Number} [size=0]
- * @param {String} [letters=asciiLetters()+digits()]
- * @returns {String}
- */
-export const random = (size = 0, letters = asciiLetters() + digits()) =>
-    range(size).map(() => draw(letters.split(empty()))).join(empty())
 
 
 

@@ -14,7 +14,7 @@ import {
     tail,
 } from "../array/list"
 import { compose } from "../func/combinators"
-import { empty } from "../string"
+import { empty } from "../string/consts"
 import { isBrowser } from "../utils"
 
 

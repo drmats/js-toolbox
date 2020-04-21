@@ -9,13 +9,14 @@
 
 
 
-import { choose } from "../func"
 import { curry } from "../func/curry"
-import { flow, Y } from "../func/combinators"
+import { choose } from "../func/tools"
 import {
-    empty,
-    quote,
-} from "../string"
+    flow,
+    Y,
+} from "../func/combinators"
+import { empty } from "../string/consts"
+import { quote } from "../string/transform"
 import {
     isArray,
     isFunction,

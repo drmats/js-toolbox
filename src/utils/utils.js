@@ -20,7 +20,7 @@ import {
 import {
     quote,
     wrap,
-} from "../string"
+} from "../string/transform"
 import { access } from "../struct"
 import {
     isFunction,

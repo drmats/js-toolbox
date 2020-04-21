@@ -12,7 +12,7 @@
 import { head } from "../array/list"
 import { curry } from "../func/curry"
 import { inc } from "../math/arithmetic"
-import { quote } from "../string"
+import { quote } from "../string/transform"
 import {
     isArray,
     isFunction,
