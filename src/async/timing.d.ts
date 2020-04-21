@@ -1,0 +1,75 @@
+/**
+ * Async - type declarations.
+ *
+ * @module @xcmats/js-toolbox/async
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+/**
+ * Delay current async execution by `time` miliseconds.
+ *
+ * Example:
+ *
+ * ```
+ * (async () => {
+ *     await async.delay()
+ *     console.log("Hello ...")
+ *     await async.delay()
+ *     console.log("... world")
+ * })()
+ * ```
+ */
+export function delay (
+    time?: number,
+    passCancel?: (canceller: (reason: any) => void) => void
+): Promise<number>;
+
+
+
+
+/**
+ * `setInterval` in `Promise` / `async` skin.
+ *
+ * Example:
+ *
+ * ```
+ * interval(
+ *     () => { console.log("Hey!"); return 42 },
+ *     (c) => timeout(() => c(), 4 * timeUnit.second)
+ * )
+ * .then((x) => console.log("Finished:", x))
+ * .catch((c) => console.log("Error:", c))
+ * ```
+ */
+export function interval<T> (
+    f: (clear: (reason: any) => T) => T,
+    passClear: (clear: (reason: any) => T) => void,
+    time?: number
+): Promise<T>;
+
+
+
+
+/**
+ * `setTimeout` in `Promise` / `async` skin.
+ *
+ * Example:
+ *
+ * ```
+ * async.timeout(
+ *     () => { console.log("Hey!"); return 42 }, 2000,
+ *     (c) => async.timeout(() => c("Cancelled!"), 1000)
+ * )
+ * .then((x) => console.log("Success:", x))
+ * .catch((c) => console.log("Error or cancel:", c))
+ * ```
+ */
+export function timeout<T> (
+    f: () => T,
+    passCancel?: (cancel: () => T) => void,
+    time?: number
+): Promise<T>;

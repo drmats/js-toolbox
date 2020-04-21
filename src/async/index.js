@@ -1,5 +1,7 @@
-export * from "./async"
 export * from "./iterators"
-import * as async from "./async"
+export * from "./timing"
+export * from "./tools"
 import * as iterators from "./iterators"
-export default Object.assign({}, async, iterators)
+import * as timing from "./timing"
+import * as tools from "./tools"
+export default Object.assign({}, iterators, timing, tools)
