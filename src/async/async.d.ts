@@ -98,70 +98,6 @@ export function interval<T> (
 
 
 /**
- * Asynchronous version of standard `Array.prototype.map` function.
- *
- * - `arr` - array to operate on
- * - `f` - async or sync function with signature:
- *     - `this` - bound to `arr`
- *     - `element` - currently processed element
- *     - `index` - current index
- *
- * `f` can return `Promise.<any>` or `<any>`
- *
- * Example:
- *
- * ```
- * (async () => {
- *     let x = await async.map(
- *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
- *     )
- *     console.log(x)
- * })()
- * ```
- */
-export function map<T> (
-    arr: any[],
-    f: (el: any, i: number) => Promise<T> | T
-): Promise<T[]>;
-
-
-
-
-/**
- * Asynchronous version of standard `Array.prototype.map` function.
- *
- * *Implementation that does paralell execution*.
- *
- * - `arr` - array to operate on
- * - `f` - async or sync function with signature:
- *     - `this` - bound to `arr`
- *     - `element` - currently processed element
- *     - `index` - current index
- *
- * `f` can return `Promise.<any>` or `<any>`
- *
- * Example:
- *
- * ```
- * (async () => {
- *     let x = await parMap(
- *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
- *     )
- *     console.log(x)
- * })()
- * ```
- */
-export function parMap<T> (
-    arr: any[],
-    f: (el: any, i: number) => Promise<T> | T
-): Promise<T[]>;
-
-
-
-
-/**
  * Resolve or reject when any of the promises
  * passed as arguments resolve or reject.
  *
@@ -181,45 +117,6 @@ export function parMap<T> (
  * ```
  */
 export function race (...ps: Promise<any>[]): Promise<any>;
-
-
-
-
-/**
- * Asynchronous version of standard `Array.prototype.reduce` function.
- *
- * - `arr` - array to operate on
- * - `f` - async or sync function with signature:
- *     - `this` - bound to `arr`
- *     - `acc` - accumulates the `f`'s return values; it is
- *         the accumulated value previously returned
- *         in the last invocation of `f`, or `initAcc`, if supplied.
- *     - `element` - currently processed element
- *     - `index` - current index
- * - `initAcc` - value to use as the first argument to the first call
- *     of the `f`. If no initial value is supplied, the first element
- *     in the array will be used.
- *
- * `f` can return `Promise.<any>` or `<any>`
- *
- * Example:
- *
- * ```
- * (async () => {
- *     let x = await async.reduce(
- *         array.range(10),
- *         (acc, x) => async.timeout(() => acc+x, 100*x),
- *         0
- *     )
- *     console.log(x)
- * })()
- * ```
- */
-export function reduce<T> (
-    arr: any[],
-    f: (acc: T, el: any, i: number) => Promise<T> | T,
-    initAcc: T
-): Promise<T>;
 
 
 
