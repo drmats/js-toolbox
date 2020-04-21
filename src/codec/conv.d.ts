@@ -10,28 +10,6 @@
 
 
 /**
- * Concatenate contents of a given byte arrays (Uint8Array)
- * into a new byte array (Uint8Array).
- */
-export function concatBytes (
-    ...u8as: Uint8Array[]
-): Uint8Array;
-
-
-
-
-/**
- * Compare two byte arrays.
- */
-export function compareBytes (
-    u8a1: Uint8Array,
-    u8a2: Uint8Array
-): Uint8Array;
-
-
-
-
-/**
  * Convert given a utf8-encoded string to byte array (Uint8Array).
  */
 export function stringToBytes (s: string): Uint8Array;
@@ -125,21 +103,3 @@ export function b64ToHex (s: string): string;
  * Covert a given hex-encoded string to a b64-encoded string.
  */
 export function hexToB64 (s: string): string;
-
-
-
-
-/**
- * Get random bytes.
- * Uses Web Crypto API when in browser
- * and `crypto` module when in node.js.
- */
-export function random (size?: number): Promise<Uint8Array>;
-
-
-
-
-/**
- * Generate 48 bits (6 bytes) timestamp - milliseconds since epoch.
- */
-export function timestamp (): Uint8Array;
