@@ -9,8 +9,8 @@
 
 
 
+import { roundIfClose } from "./rounding"
 import { curry } from "../func/curry"
-import { maxInt } from "../type"
 
 
 
@@ -24,37 +24,6 @@ import { maxInt } from "../type"
  * @returns {Number}
  */
 export const add = curry((a, b) => Number(a) + Number(b))
-
-
-
-
-/**
- * Compute mathematical average of array of numbers.
- *
- * @function average
- * @param {Array.<Number>} arr
- * @returns {Number}
- */
-export const average = arr => sum(arr) / arr.length
-
-
-
-
-/**
- * Fit `n` in a [`low`, `high`] range
- * (inclusive of `low` and `high`).
- *
- * @function clamp
- * @param {Number} low
- * @param {Nunmer} high
- * @param {Number} n
- * @returns {Number}
- */
-export const clamp = curry((low, high, n) =>
-    n < low  ?  low  :
-        n >= low  &&  n < high  ?  n  :
-            high
-)
 
 
 
@@ -184,48 +153,6 @@ export const pow = curry((a, b) => Number(a) ** Number(b))
 
 
 /**
- * Compute product of numbers in a passed array.
- *
- * @function product
- * @param {Array.<Number>} arr
- * @returns {Number}
- */
-export const product = arr => arr.reduce(mul, 1)
-
-
-
-
-/**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
- *
- * @function randomInt
- * @returns {Number}
- */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
-
-
-
-
-/**
- * Round to the nearest integer if the given value is within
- * epsilon range of that integer. Default epsilon is `1e-9`,
- * which can be changed through `precision` parameter.
- *
- * @function roundIfClose
- * @param {Number} x
- * @param {Number} [precision=9]
- * @returns {Number}
- */
-export const roundIfClose = (x, precision = 9) => (
-    (rounded) =>
-        Math.abs(rounded - x) <= 10**(-precision)  ?  rounded  :  x
-)(Math.round(x))
-
-
-
-
-/**
  * Subtract second value from the first value.
  *
  * @function sub
@@ -234,15 +161,3 @@ export const roundIfClose = (x, precision = 9) => (
  * @returns {Number}
  */
 export const sub = curry((a, b) => Number(a) - Number(b))
-
-
-
-
-/**
- * Compute sum of numbers in a passed array.
- *
- * @function sum
- * @param {Array.<Number>} arr
- * @returns {Number}
- */
-export const sum = arr => arr.reduce(add, 0)

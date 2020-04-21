@@ -13,9 +13,9 @@ import { range } from "./list"
 import {
     dec,
     inc,
-    randomInt,
     sub,
-} from "../math"
+} from "../math/arithmetic"
+import { randomInt } from "../math/random"
 import { isArray } from "../type"
 
 

@@ -1,3 +1,9 @@
-export * from "./math"
-import * as math from "./math"
-export default math
+export * from "./arithmetic"
+export * from "./random"
+export * from "./rounding"
+export * from "./series"
+import * as arithmetic from "./arithmetic"
+import * as random from "./random"
+import * as rounding from "./rounding"
+import * as series from "./series"
+export default Object.assign({}, arithmetic, random, rounding, series)

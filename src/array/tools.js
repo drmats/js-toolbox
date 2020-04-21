@@ -18,7 +18,7 @@ import {
     take,
     tail,
 } from "./list"
-import { sub } from "../math"
+import { sub } from "../math/arithmetic"
 import {
     isArray,
     isNumber,

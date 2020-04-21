@@ -10,10 +10,8 @@
 
 
 import { curry } from "../func/curry"
-import {
-    inc,
-    sum,
-} from "../math"
+import { inc } from "../math/arithmetic"
+import { sum } from "../math/series"
 import { isNumber } from "../type"
 
 

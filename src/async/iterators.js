@@ -11,7 +11,7 @@
 
 import { head } from "../array/list"
 import { curry } from "../func/curry"
-import { inc } from "../math"
+import { inc } from "../math/arithmetic"
 import { quote } from "../string"
 import {
     isArray,
