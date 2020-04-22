@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>math/arithmetic.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,182 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">math/arithmetic.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Mathematical tools.
+ *
+ * @module math
+ * @license Apache-2.0
+ * @author drmats
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
 
-        
-            
-<div class="section-method">
 
 
+import { roundIfClose } from "./rounding"
+import { curry } from "../func/curry"
 
 
 
 
+/**
+ * Add two values.
+ *
+ * @function add
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const add = curry((a, b) => Number(a) + Number(b))
 
-<dl class="details">
 
-    
 
-    
 
-    
+/**
+ * Decrement given value by one.
+ *
+ * @function dec
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const dec = add(-1)
 
-    
 
-    
 
-    
 
-    
+/**
+ * Divide first value by the second value.
+ *
+ * @function div
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const div = curry((a, b) => Number(a) / Number(b))
 
-    
 
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
 
-    
 
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
+/**
+ * Increment given value by one.
+ *
+ * @function inc
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const inc = add(1)
 
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
 
-    
 
-    
+/**
+ * Invert a given value.
+ *
+ * @function inv
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const inv = div(1)
 
-    
-</dl>
 
 
 
+/**
+ * Base 10 logarithm.
+ *
+ * @function log10
+ * @param {Number} x
+ * @returns {Number}
+ */
+export const log10 = x => roundIfClose(Math.log(x) / Math.LN10)
 
 
 
 
+/**
+ * Base 2 logarithm.
+ *
+ * @function log2
+ * @param {Number} x
+ * @returns {Number}
+ */
+export const log2 = x => roundIfClose(Math.log(x) / Math.LN2)
 
 
 
 
+/**
+ * Divides the first argument by the second and returns the remainder.
+ *
+ * @function mod
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const mod = curry((a, b) => Number(a) % Number(b))
 
 
 
 
+/**
+ * Multiply two values.
+ *
+ * @function mul
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const mul = curry((a, b) => Number(a) * Number(b))
 
 
 
 
+/**
+ * Negate a given value.
+ *
+ * @function neg
+ * @param {Number} n
+ * @returns {Number}
+ */
+export const neg = mul(-1)
 
 
 
 
-</div>
-        
-    
-    </div>
+/**
+ * Raise one value to the power of the second value.
+ *
+ * @function pow
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const pow = curry((a, b) => Number(a) ** Number(b))
 
-    
 
-    
 
-    
 
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+/**
+ * Subtract second value from the first value.
+ *
+ * @function sub
+ * @param {Number} a
+ * @param {Number} b
+ * @returns {Number}
+ */
+export const sub = curry((a, b) => Number(a) - Number(b))
+</code></pre>
+        </article>
+    </section>
 
 
 

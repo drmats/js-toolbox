@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>struct/tree.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,148 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">struct/tree.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Data structure manipulation tools.
+ *
+ * @module struct
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import { access } from "./object"
+import { choose } from "../func/tools"
+import { Y } from "../func/combinators"
+import { empty } from "../string/consts"
+import { quote } from "../string/transform"
+import {
+    isArray,
+    isFunction,
+    isObject,
+} from "../type/check"
+
+
+
+
+/**
+ * Construct function appropriate to use as the `children` argument
+ * in the `struct.dfs` function. Use it with `struct.dfs` to
+ * enumerate on any javascript object.
+ *
+ * @function hashAccessor
+ * @see {@link module:struct~dfs}
+ * @returns {Function}
+ */
+export const hashAccessor = () =>
+    (n) => choose(
+        [isObject(n), isArray(n)].map(v => v ? 1 : 0).join(empty()), {
+            "10": () => Object.keys(n).map(k => [n[k], [k]]),
+            "01": () => n.map((v, i) => [v, [i]]),
+        }, () => []
+    )
+
+
+
+
+/**
+ * Construct function appropriate to use as the `children` argument
+ * in the `struct.dfs` function. Use it with `struct.dfs` if your
+ * tree-like structure contains children organized as arrays.
+ *
+ * E.g. if a `node` is defined as follows:
+ *
+ * ```
+ * node = { val: "something", props: { num: 14, ch: [node1, node2] } }
+ * ```
+ *
+ * then `keyAccessor` should be defined in this way:
+ *
+ * ```
+ * keyAccessor("props", "ch")
+ * ```
+ *
+ * `keyAccessor` called without arguments (`keyAccessor()`) returns
+ * `hashAccessor`.
+ *
+ * @function keyAccessor
+ * @see {@link module:struct~dfs}
+ * @see {@link module:struct~hashAccessor}
+ * @param  {...(Number|String)} path A path leading from the `node`
+ *      to the `children` array.
+ * @returns {Function}
+ */
+export const keyAccessor = (...path) =>
+    path.length > 0 ?
+        (n) => access(n, path, []).map((c, i) => [c, [...path, i]]) :
+        hashAccessor()
+
+
+
+
+/**
+ * Depth-first search. Executes certain operation `f`
+ * on each `tree` node in reduce-like fashion, accumulating
+ * intermediate results.
+ *
+ * @function dfs
+ * @see {@link module:struct~keyAccessor}
+ * @param {Object} tree Tree-like structure.
+ * @param {Function} f Function to be executed on each node.
+ *      Its signature is as follows: `function (accs, node, path, position)`,
+ *      where:
+ *      &lt;ul>
+ *          &lt;li>`accs` - array of accumulated results,
+ *              for each subtree of current `node`&lt;/li>
+ *          &lt;li>`node` - reference to current node&lt;/li>
+ *          &lt;li>`path` - current `node` is reachable by applying
+ *              `struct.access` to `tree` and `path`&lt;/li>
+ *          &lt;li>`position` - position of currently processed node
+ *              in an array of children (current node is "position-th"
+ *              child of its parent)&lt;/li>
+ *      &lt;/ul>
+ * @param {Function} [children] Function that should accept `node` and return
+ *      array of `n` tuples. In each tuple first element should be the `n`-th
+ *      `child` of the `node` and second element should be the `path` leading
+ *      from the `node` to the `n`-th `child`. If there is no children
+ *      under given `node` then returned array should be empty.
+ * @returns {any} Accumulated result for all subtree nodes.
+ */
+export const dfs = (
+    tree = {},
+    f = (_accs, node, _path, _position) => node,
+    children = keyAccessor()
+) => {
+    let bquote = x => quote(typeof x, "[]")
+    if (
+        !isObject(tree) || !isFunction(f) || !isFunction(children)
+    ) throw new TypeError(
+        "struct.dfs() expected object and 2 functions, " +
+        `got ${bquote(tree)}, ${bquote(f)} and ${bquote(children)}`
+    )
+    return Y(aux =>
+        (node, path, position) => f(
+            children(node).map(
+                ([child, childPath], p) =>
+                    aux(child, path.concat(childPath), p)
+            ), node, path, position
+        )
+    ) (tree, [], 0)
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

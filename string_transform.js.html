@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>string/transform.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,292 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">string/transform.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * String tools.
+ *
+ * @module string
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import {
+    empty,
+    space,
+} from "./consts"
+import {
+    head,
+    last,
+    range,
+    tail,
+} from "../array/list"
+
+
+
+
+/**
+ * Convert `thisKindOfText` to `ThisKindOfText`.
+ *
+ * @function camelToPascal
+ * @param {String} str
+ * @returns {String}
+ */
+export const camelToPascal = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toUpperCase() + tail(str)  :
+        empty()
+
+
+
+
+/**
+ * Convert `thisKindOfText` to `this_kind_of_text`.
+ *
+ * @function camelToSnake
+ * @param {String} str
+ * @returns {String}
+ */
+export const camelToSnake = str =>
+    str  ?
+        str.replace(/([A-Z])/g, "_$1").toLowerCase()  :
+        empty()
+
+
+
+
+/**
+ * Ensure given string is in form `Aaaaaaaa`.
+ *
+ * @function capitalize
+ * @param {String} str
+ * @returns {String}
+ */
+export const capitalize = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toUpperCase() + tail(str).toLowerCase()  :
+        empty()
+
+
+
+
+/**
+ * Enumeration (used by `ellipsis` and `shorten`)
+ * indicating position in a string.
+ *
+ * @private
+ * @constant position
+ */
+const position = Object.freeze({
+    BEGIN: 0,
+    MIDDLE: 1,
+    END: 2,
+})
+
+
+
+
+/**
+ * Constructs new string with inserted `sep` (of default value `…`)
+ * at the `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
+ * Returned string has the same length as input string
+ * (thus some original characters are replaced with `sep` contents).
+ *
+ * @function ellipsis
+ * @param {String} str Text to insert `sep` (`…`) into.
+ * @param {Number} [placing=ellipsis.MIDDLE] Place to insert.
+ *     Can be `ellipsis.BEGIN`, `ellipsis.MIDDLE` or `ellipsis.END`.
+ * @param {String} [sep="…"] Separator.
+ * @returns {String}
+ */
+export const ellipsis = (str, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (str.length >= sep.length) {
+        if (placing === position.MIDDLE) {
+            x.splice(
+                Math.floor(x.length / 2) - Math.floor(sep.length / 2),
+                sep.length, sep
+            )
+        } else if (placing === position.BEGIN) {
+            x.splice(0, sep.length, sep)
+        } else if (placing === position.END) {
+            x.splice(x.length - sep.length, sep.length, sep)
+        }
+    }
+    return x.join(empty())
+}
+Object.freeze(Object.assign(ellipsis, position))
+
+
+
+
+/**
+ * Prepend given `input` string with an appropriate amount of
+ * `ch` characters so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padLeft
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padLeft = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => range(len - ilen).map(() => c).join(empty()) + input
+)(input.length, head(ch))
+
+
+
+
+/**
+ * Append an appropriate amount of `ch` characters to the given `input`
+ * string so that returning string length is equal to `len`.
+ * If `len` is smaller than length of `input` then `input` is being
+ * returned untouched (padding doesn't shorten the `input`).
+ *
+ * @function padRight
+ * @param {String} input
+ * @param {Number} len
+ * @param {String} [space=" "]
+ * @returns {String}
+ */
+export const padRight = (input = empty(), len = 0, ch = space()) => (
+    (ilen, c) => input + range(len - ilen).map(() => c).join(empty())
+)(input.length, head(ch))
+
+
+
+
+/**
+ * Convert `ThisKindOfText` to `thisKindOfText`.
+ *
+ * @function pascalToCamel
+ * @param {String} str
+ * @returns {String}
+ */
+export const pascalToCamel = str =>
+    str  &amp;&amp;  str.length > 0  ?
+        head(str).toLowerCase() + tail(str)  :
+        empty()
+
+
+
+
+/**
+ * Convert `ThisKindOfText` to `this_kind_of_text`.
+ *
+ * @function pascalToSnake
+ * @param {String} str
+ * @returns {String}
+ */
+export const pascalToSnake = str =>
+    str  ?  tail(camelToSnake(str))  :  empty()
+
+
+
+
+/**
+ * Quote text.
+ *
+ * @function quote
+ * @param {String} [str=empty()]
+ * @param {String} [q="\"\""]
+ * @returns {String}
+ */
+export const quote = (str = empty(), q = "\"\"") =>
+    `${head(q)}${str}${last(q)}`
+
+
+
+
+/**
+ * Constructs new string not longer than `len`.
+ *
+ * @function shorten
+ * @param {String} str Text to be shortened.
+ * @param {Number} [len=Infinity] Desired text length.
+ * @param {Number} [placing=shorten.MIDDLE] Character cutting place.
+ *     Can be `shorten.BEGIN`, `shorten.MIDDLE` or `shorten.END`.
+ * @param {String} [sep="…"] Separator.
+ * @returns {String}
+ */
+export const shorten = (str, len = Infinity, placing = 1, sep = "…") => {
+    let x = str.split(empty())
+    if (len &lt; str.length) {
+        if (placing === position.MIDDLE) {
+            x.splice(Math.floor(len/2), str.length - len)
+        } else if (placing === position.BEGIN) {
+            x.splice(0, x.length - len)
+        } else if (placing === position.END) {
+            x.splice(len, x.length - len)
+        }
+        return ellipsis(x.join(empty()), placing, sep)
+    }
+    return str
+}
+Object.freeze(Object.assign(shorten, position))
+
+
+
+
+/**
+ * Convert `this_kind_of_text` to `thisKindOfText`.
+ *
+ * @function snakeToCamel
+ * @param {String} str
+ * @returns {String}
+ */
+export const snakeToCamel = str => (
+    (pascal) =>
+        pascal.length > 0  ?
+            head(pascal).toLowerCase() + tail(pascal)  :
+            empty()
+)(snakeToPascal(str))
+
+
+
+
+/**
+ * Convert `this_kind_of_text` to `ThisKindOfText`.
+ *
+ * @function snakeToPascal
+ * @param {String} str
+ * @returns {String}
+ */
+export const snakeToPascal = str =>
+    str  ?
+        str.split(/_+/g).map(w => capitalize(w)).join(empty())  :
+        empty()
+
+
+
+
+/**
+ * Wrap passed string with `prefix` and `suffix`.
+ *
+ * @function wrap
+ * @param {String} [str=empty()]
+ * @param {String} [prefix=empty()]
+ * @param {String} [suffix=empty()]
+ * @returns {String}
+ */
+export const wrap = (str = empty(), prefix = empty(), suffix = empty()) =>
+    `${prefix}${str}${suffix}`
+</code></pre>
+        </article>
+    </section>
 
 
 

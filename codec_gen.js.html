@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>codec/gen.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,82 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">codec/gen.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * String, TypedArray and Base64 encoders/decoders.
+ *
+ * @module codec
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import { hexToBytes } from "./conv"
+import { pipe } from "../func/combinators"
+import { rearg } from "../func/tools"
+import { padLeft } from "../string/transform"
+import { isBrowser } from "../utils/dev"
+
+
+
+
+/**
+ * Get random bytes.
+ * Uses Web Crypto API when in browser
+ * and `crypto` module when in node.js.
+ *
+ * @async
+ * @function random
+ * @param {Number} [size=64]
+ * @returns {Promise.&lt;Uint8Array>}
+ */
+export const random = isBrowser() ?
+    async (size = 64) => new Promise((resolve, reject) => {
+        try {
+            let bytes = new Uint8Array(size)
+            window.crypto.getRandomValues(bytes)
+            resolve(bytes)
+        } catch (ex) {
+            reject(ex)
+        }
+    }) :
+    async (size = 64) => {
+        const nodeRandomBytes = (await import("crypto")).randomBytes
+        return new Promise((resolve, reject) => nodeRandomBytes(
+            size,
+            (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf))
+        ))
+    }
+
+
+
+
+/**
+ * Generate 48 bits (6 bytes) timestamp - milliseconds since epoch.
+ *
+ * @function timestamp
+ * @returns {Uint8Array}
+ */
+export const timestamp = () =>
+    pipe(Date.now()) (
+        (d) => d.toString(16),
+        rearg(padLeft) (1, 2, 0) (6*2, "0"),
+        hexToBytes
+    )
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>array/tools.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,156 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">array/tools.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Array tools.
+ *
+ * @module array
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import { pipe } from "../func/combinators"
+import {
+    append,
+    drop,
+    head,
+    range,
+    take,
+    tail,
+} from "./list"
+import { sub } from "../math/arithmetic"
+import {
+    isArray,
+    isNumber,
+} from "../type/check"
+
+
+
+
+/**
+ * Simple array flattener.
+ *
+ * ```
+ * [[1, 2,], ..., [3, 4,],]  ->  [1, 2, ..., 3, 4,]
+ * ```
+ *
+ * @function flatten
+ * @param {Array.&lt;Array>} arr
+ * @returns {Array}
+ */
+export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
+
+
+
+
+/**
+ * Checks if a given array is a continuous block.
+ *
+ * @function isContinuous
+ * @param {Array.&lt;T>} arr Array to check.
+ * @param {Function} [neighbour] Comparison function.
+ * @returns {Boolean}
+ */
+export const isContinuous = (
+    arr = [], neighbour = (a, b) => b - a === 1
+) =>
+    isSorted(arr, neighbour)
+
+
+
+
+/**
+ * Checks if a given array is sorted.
+ *
+ * @function isSorted
+ * @param {Array.&lt;T>} arr Array to check.
+ * @param {Function} [cmp] Comparison function.
+ * @returns {Boolean}
+ */
+export const isSorted = (arr, cmp = (a, b) => a &lt;= b) =>
+    isArray(arr) ?
+        zip(arr, tail(arr)).every((pair) => cmp(...pair)) :
+        false
+
+
+
+
+/**
+ * Take every `nth` element from an `arr` array.
+ *
+ * @function takeEvery
+ * @param {Number} nth
+ * @returns {Function} (any[]) => any[]
+ */
+export const takeEvery = nth => arr =>
+    isNumber(nth)  &amp;&amp;  nth > 0  &amp;&amp;  isArray(arr) ?
+        pipe(
+            range(Math.ceil(arr.length / nth))
+                .reduce(([taken, rest]) => [
+                    append(take(1) (rest)) (taken),
+                    drop(nth) (rest),
+                ], [[], arr])
+        ) (
+            head,
+            (arr) => arr.reverse()
+        ) : arr
+
+
+
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+/**
+ * Zip given arrays using provided `f` operator.
+ *
+ * Example:
+ *
+ * ```
+ * array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
+ * [ 11, 22, 33, 44 ]
+ * ```
+ *
+ * @function zipWith
+ * @param {Function} f (...any[]) => any
+ * @returns {Funcion} (...any[][]) => any[]
+ */
+export const zipWith = f => (...arrs) =>
+    range(
+        head(arrs.map(arr => arr.length).sort(sub))
+    ).map(i => f(...arrs.map(arr => arr[i])))
+
+
+
+
+/**
+ * Zip given arrays.
+ *
+ * Example:
+ *
+ * ```
+ * zip([1, 2, 3, 4, 5], ["a", "b", "c", "d", "e"])
+ * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
+ * ```
+ *
+ * @function zip
+ * @param {...Array} arrs Arrays to zip.
+ * @returns {Array}
+ */
+export const zip = zipWith((...args) => args)
+</code></pre>
+        </article>
+    </section>
 
 
 

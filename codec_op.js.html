@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>codec/op.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,83 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">codec/op.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * String, TypedArray and Base64 encoders/decoders.
+ *
+ * @module codec
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import { curry } from "../func/curry"
+import { inc } from "../math/arithmetic"
+import { sum } from "../math/series"
+import { isNumber } from "../type/check"
+
+
+
+
+/**
+ * Concatenate contents of a given byte arrays (Uint8Array)
+ * into a new byte array (Uint8Array).
+ *
+ * @function concatBytes
+ * @param {...Uint8Array} u8as
+ * @returns {Uint8Array}
+ */
+export const concatBytes = (...u8as) => {
+    if (u8as.length === 0) return new Uint8Array()
+    if (
+        u8as.some((u8a) => !isNumber(u8a.BYTES_PER_ELEMENT))
+    ) throw new TypeError("Arguments must be of [TypedArray] type.")
+    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)))
+    u8as.reduce((pointer, u8a) => {
+        result.set(u8a, pointer)
+        return pointer + u8a.length
+    }, 0)
+    return result
+}
+
+
+
+
+/**
+ * Compare two byte arrays.
+ *
+ * @function compareBytes
+ * @param {Uint8Array} u8a1
+ * @param {Uint8Array} u8a2
+ * @returns {Boolean}
+ */
+export const compareBytes = curry((u8a1, u8a2) => {
+    if (
+        !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
+        !isNumber(u8a2.BYTES_PER_ELEMENT)
+    ) throw new TypeError("Arguments must be of [TypedArray] type.")
+    if (
+        u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||
+        u8a1.length !== u8a2.length
+    ) return false
+    for (let i = 0;  i &lt; u8a1.length;  i = inc(i))
+        if (u8a1[i] !== u8a2[i]) return false
+    return true
+})
+</code></pre>
+        </article>
+    </section>
 
 
 

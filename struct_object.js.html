@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>struct/object.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,166 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">struct/object.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Data structure manipulation tools.
+ *
+ * @module struct
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+import { curry } from "../func/curry"
+import { flow } from "../func/combinators"
+import { handleException } from "../func/tools"
+import { quote } from "../string/transform"
+import {
+    isFunction,
+    isObject,
+} from "../type/check"
+
+
+
+
+/**
+ * Apply `path` to an object `o`. Return element reachable through
+ * that `path` or `def` value.
+ *
+ * Example:
+ *
+ * ```
+ * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
+ * ```
+ *
+ * @function access
+ * @param {Object} [o={}]
+ * @param {Array.&lt;String>} [path=[]]
+ * @param {any} [def]
+ * @returns {any}
+ */
+export const access = (o = {}, path = [], def = undefined) =>
+    handleException(
+        () => path.reduce((acc, p) => acc[p], o) || def,
+        () => def
+    )
+
+
+
+
+/**
+ * Do the deep-copy of any JavaScript object
+ * that doesn't contain functions.
+ *
+ * @function clone
+ * @param {Object} o
+ * @returns {Object}
+ */
+export const clone = flow(JSON.stringify, JSON.parse)
+
+
+
+
+/**
+ * Construct `Object` from the result of `Object.entries()` call.
+ *
+ * ```
+ * entries = [[k1, v1,], ..., [kn, vn,]]
+ * ```
+ *
+ * Imitates Python's `dict()`.
+ *
+ * @function dict
+ * @param {Array.&lt;Array>} entries
+ * @returns {Object}
+ */
+export const dict = entries => entries.reduce(
+    (acc, [k, v]) => ({ ...acc, [k]: v }), {}
+)
+
+
+
+
+/**
+ * Map (iteration) on objects - shallow.
+ *
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `kv` - current `[key, value]` array,
+ *
+ * `f` should return `[key, value]` array.
+ *
+ * @function objectMap
+ * @param {Object} o
+ * @param {Function} f
+ * @returns {Object}
+ */
+export const objectMap = curry((o, f) => {
+    let bquote = x => quote(typeof x, "[]")
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectMap() expected object and function, " +
+        `got ${bquote(o)} and ${bquote(f)}`
+    )
+    return dict(Object.entries(o).map(kv => f.call(o, kv)))
+})
+
+
+
+
+/**
+ * Reduce (fold) on objects - shallow.
+ *
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `acc` - accumulated value,
+ *     - `kv` - current `[key, value]` array,
+ * - `init` - accumulated value initializer,
+ *
+ * `f` should return value of the same type as `init`.
+ *
+ * @function objectReduce
+ * @param {Object} o
+ * @param {Function} f
+ * @param {any} init
+ * @returns {any}
+ */
+export const objectReduce = curry((o, f, init) => {
+    let bquote = x => quote(typeof x, "[]")
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectReduce() expected object and function, " +
+        `got ${bquote(o)} and ${bquote(f)}`
+    )
+    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
+})
+
+
+
+
+/**
+ * When `o == { a: "b", c: "d" }`
+ * then `swap(o) == { b: "a", d: "c" }`.
+ *
+ * @function swap
+ * @param {Object.&lt;String, String>} o
+ * @returns {Object.&lt;String, String>}
+ */
+export const swap = o => objectMap(o, ([k, v]) => [v, k])
+</code></pre>
+        </article>
+    </section>
 
 
 

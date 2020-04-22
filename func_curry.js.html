@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>redux - Documentation</title>
+    <title>func/curry.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,318 +29,124 @@
 
 <div id="main">
     
-    <h1 class="page-title">redux</h1>
+    <h1 class="page-title">func/curry.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Redux tools.</p></div>
-        
-
-        
-            
-<div class="section-method">
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>drmats</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~createReducer"><span class="type-signature">(inner) </span>createReducer<span class="signature">(initState<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create clean and readable reducers for redux.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="redux_tools.js.html">redux/tools.js</a>, <a href="redux_tools.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>initState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Functional programming tools.
+ *
+ * @module func
+ * @license Apache-2.0
+ * @author drmats
+ */
+
+
+
+
+/**
+ * Return curried form of a given function `f`.
+ *
+ * If funcion `f` has _arity_ 3, and `g = curry(f)` then
+ * a following invocations have the same result:
+ *
+ * ```
+ * g(a,  b,  c)
+ * g(a,  b) (c)
+ * g(a) (b,  c)
+ * g(a) (b) (c)
+ * ```
+ *
+ * Function `f` _arity_ is obtained by checking it's `.length`
+ * property, so if function `f` is defined with a _rest parameter_
+ * then this parameter is excluded. Also only parameters before
+ * the first one with a default value are included.
+ *
+ * @function curry
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curry = f => curryN(f.length, f)
+
+
+
+
+/**
+ * Translate the evaluation of function `f` taking `n` arguments
+ * into an evaluation of sequence of `n` functions, where each
+ * next function is a result of previous function evaluation.
+ *
+ * ```
+ * f(a, b, c, d, e)  &lt;=>  curryN(5, f) (a) (b) (c) (d) (e)
+ * ```
+ *
+ * @function curryN
+ * @param {Number} n
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curryN = (n, f) =>
+    (...args) =>
+        n &lt;= args.length  ?
+            f(...args)  :
+            curryN(n - args.length, partial(f) (...args))
+
+
+
+
+/**
+ * Translate the evaluation of function `f` taking multiple arguments
+ * into an evaluation of sequence of functions, each with a single argument.
+ *
+ * Because `curryThunk` doesn't assume anything on passed function
+ * `f` _arity_, final invocation has to be done with no arguments.
+ *
+ * ```
+ * f(a, b, c, d)  &lt;=>  curryThunk(f) (a) (b) (c) (d) ()
+ * ```
+ *
+ * @function curryThunk
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const curryThunk = f => (...args) =>
+    args.length === 0  ?  f()  :  curryThunk(partial(f) (...args))
+
+
+
+
+
+
+/**
+ * Partial application.
+ *
+ * Bind `init` arguments to function `f` and construct
+ * a function of smaller _arity_ which accept `rest` of the arguments.
+ *
+ * Example:
+ *
+ * ```
+ * let f = (a, b) => a + b
+ * f(3, 4)  ->  7
+ * let g = partial(f) (3)  // note that `partial` is in *curried* form
+ * g(4)  ->  7
+ * ```
+ *
+ * @function partial
+ * @param {Function} f
+ * @returns {Function}
+ */
+export const partial = f => (...init) =>
+    (...rest) => f(...[...init, ...rest])
+</code></pre>
+        </article>
+    </section>
 
 
 
