@@ -10,7 +10,7 @@
 
 
 import { identity } from "../func/tools"
-import { timeUnit } from "../utils"
+import { timeUnit } from "../utils/misc"
 
 
 

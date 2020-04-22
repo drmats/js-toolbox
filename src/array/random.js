@@ -16,7 +16,7 @@ import {
     sub,
 } from "../math/arithmetic"
 import { randomInt } from "../math/random"
-import { isArray } from "../type"
+import { isArray } from "../type/check"
 
 
 

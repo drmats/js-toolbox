@@ -10,35 +10,6 @@
 
 
 /**
- * Determine runtime environment (is it development or not?).
- * `devEnv() -> true/false`
- *
- * When `strict` is not set to `true` then "development environment"
- * can be simulated by storing value of any type under "dev" key
- * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
- */
-export function devEnv (strict: boolean): boolean;
-
-
-
-
-/**
- * Get useful library configuration variables.
- */
-export function getLibConfig (): object;
-
-
-
-
-/**
- * Return global `process` variable if it exists.
- */
-export function getProcess (): object;
-
-
-
-
-/**
  * Handle exceptions in expressions.
  */
 export function handleException<T> (
@@ -57,35 +28,6 @@ export function handleRejection<T> (
     fn: () => Promise<T>,
     handler?: (ex: any) => Promise<T>
 ): Promise<T>;
-
-
-
-
-/**
- * Check current runtime environment.
- */
-export function isBrowser (): boolean;
-
-
-
-
-/**
- * JSS color helper.
- */
-export function rgb (r: number, g: number, b: number): string;
-
-
-
-
-/**
- * JSS color helper (with alpha).
- */
-export function rgba (
-    r: number,
-    g: number,
-    b: number,
-    a: number
-): string;
 
 
 
@@ -123,20 +65,3 @@ export interface TimeUnit {
     year: number;
 }
 export const timeUnit: TimeUnit;
-
-
-
-
-/**
- * Assign argument to the global object.
- * Async-console-dev-helper.
- */
-export function to_(name?: string): Function;
-
-
-
-
-/**
- * JSS url helper.
- */
-export function url (x: string): string;

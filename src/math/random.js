@@ -9,7 +9,7 @@
 
 
 
-import { maxInt } from "../type"
+import { maxInt } from "../type/consts"
 
 
 

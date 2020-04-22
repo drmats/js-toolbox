@@ -15,7 +15,7 @@ import {
 } from "../array/list"
 import { compose } from "../func/combinators"
 import { empty } from "../string/consts"
-import { isBrowser } from "../utils"
+import { isBrowser } from "../utils/dev"
 
 
 

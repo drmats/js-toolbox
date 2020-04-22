@@ -16,7 +16,7 @@ import { quote } from "../string/transform"
 import {
     isArray,
     isFunction,
-} from "../type"
+} from "../type/check"
 
 
 

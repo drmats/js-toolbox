@@ -12,7 +12,7 @@
 import { curry } from "../func/curry"
 import { inc } from "../math/arithmetic"
 import { sum } from "../math/series"
-import { isNumber } from "../type"
+import { isNumber } from "../type/check"
 
 
 

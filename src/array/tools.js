@@ -22,7 +22,7 @@ import { sub } from "../math/arithmetic"
 import {
     isArray,
     isNumber,
-} from "../type"
+} from "../type/check"
 
 
 

@@ -13,7 +13,7 @@ import { hexToBytes } from "./conv"
 import { pipe } from "../func/combinators"
 import { rearg } from "../func/tools"
 import { padLeft } from "../string/transform"
-import { isBrowser } from "../utils"
+import { isBrowser } from "../utils/dev"
 
 
 

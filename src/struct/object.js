@@ -15,8 +15,8 @@ import { quote } from "../string/transform"
 import {
     isFunction,
     isObject,
-} from "../type"
-import { handleException } from "../utils"
+} from "../type/check"
+import { handleException } from "../utils/misc"
 
 
 

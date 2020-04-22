@@ -16,7 +16,7 @@ import {
     range,
 } from "../array/list"
 import { curryN } from "./curry"
-import { isArray } from "../type"
+import { isArray } from "../type/check"
 
 
 

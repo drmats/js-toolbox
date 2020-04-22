@@ -18,7 +18,7 @@ import {
     isArray,
     isFunction,
     isObject,
-} from "../type"
+} from "../type/check"
 
 
 
