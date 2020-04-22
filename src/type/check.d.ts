@@ -47,37 +47,3 @@ export function isObject (o: any): boolean;
  * Determine if a given value is a `String`.
  */
 export function isString (s: any): boolean;
-
-
-
-
-/**
- * Maximum representable safe integer in JavaScript.
- */
-export const maxInt: number;
-
-
-
-
-/**
- * Minimum representable safe integer in JavaScript.
- */
-export const minInt: number;
-
-
-
-
-/**
- * If `val` is `null` then return `undefined`, else return `val`.
- */
-export function nullToUndefined (val: any): any;
-
-
-
-
-/**
- * Returns `false` for all **falsy** values
- * (`false`, `0`, `""`, `null`, `undefined`, and `NaN`),
- * and `true` for all **truthy** values.
- */
-export function toBool (x: any): boolean;
