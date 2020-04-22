@@ -16,7 +16,10 @@ import {
     range,
 } from "../array/list"
 import { curryN } from "./curry"
-import { isArray } from "../type/check"
+import {
+    isArray,
+    isFunction,
+} from "../type/check"
 
 
 
@@ -40,6 +43,22 @@ export const choose = (
     key in actions ?
         actions[key](...args) :
         defaultAction(...args)
+
+
+
+
+/**
+ * Handle exceptions in expressions.
+ *
+ * @function handleException
+ * @param {Function} fn
+ * @param {Function} [handler]
+ * @returns {any}
+ */
+export const handleException = (fn, handler = null) => {
+    try { return fn() }
+    catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
+}
 
 
 

@@ -23,6 +23,17 @@ export function choose (
 
 
 /**
+ * Handle exceptions in expressions.
+ */
+export function handleException<T> (
+    fn: () => T,
+    handler?: (ex: any) => T
+): T;
+
+
+
+
+/**
  * Return value passed as a first argument.
  */
 export function identity<T> (x: T): T;

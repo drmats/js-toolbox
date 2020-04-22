@@ -18,22 +18,6 @@ import {
 
 
 /**
- * Handle exceptions in expressions.
- *
- * @function handleException
- * @param {Function} fn
- * @param {Function} [handler]
- * @returns {any}
- */
-export const handleException = (fn, handler = null) => {
-    try { return fn() }
-    catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
-}
-
-
-
-
-/**
  * Run "main" function:
  *     - in browser on "load" event,
  *     - via setTimeout if there's no event API available

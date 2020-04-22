@@ -10,17 +10,6 @@
 
 
 /**
- * Handle exceptions in expressions.
- */
-export function handleException<T> (
-    fn: () => T,
-    handler?: (ex: any) => T
-): T;
-
-
-
-
-/**
  * Run "main" function:
  *     - in browser on "load" event,
  *     - via setTimeout if there's no event API available

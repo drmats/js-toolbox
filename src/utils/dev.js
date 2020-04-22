@@ -9,7 +9,7 @@
 
 
 
-import { handleException } from "./misc"
+import { handleException } from "../func/tools"
 import { quote } from "../string/transform"
 import { access } from "../struct/object"
 import {

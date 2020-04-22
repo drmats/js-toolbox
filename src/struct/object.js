@@ -11,12 +11,12 @@
 
 import { curry } from "../func/curry"
 import { flow } from "../func/combinators"
+import { handleException } from "../func/tools"
 import { quote } from "../string/transform"
 import {
     isFunction,
     isObject,
 } from "../type/check"
-import { handleException } from "../utils/misc"
 
 
 
