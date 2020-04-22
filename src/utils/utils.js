@@ -21,7 +21,7 @@ import {
     quote,
     wrap,
 } from "../string/transform"
-import { access } from "../struct"
+import { access } from "../struct/object"
 import {
     isFunction,
     isObject,

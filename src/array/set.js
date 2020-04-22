@@ -11,7 +11,7 @@
 
 import { flow } from "../func/combinators"
 import { identity } from "../func/tools"
-import { objectReduce } from "../struct"
+import { objectReduce } from "../struct/object"
 import { isNumber } from "../type"
 
 
