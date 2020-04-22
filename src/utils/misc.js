@@ -34,24 +34,6 @@ export const handleException = (fn, handler = null) => {
 
 
 /**
- * Handle rejections in expressions.
- * Async version of `handleException`.
- *
- * @async
- * @function handleRejection
- * @param {Function} fn
- * @param {Function} [handler]
- * @returns {Promise}
- */
-export const handleRejection = async (fn, handler = null) => {
-    try { return await fn() }
-    catch (ex) { return isFunction(handler)  ?  await handler(ex)  :  ex }
-}
-
-
-
-
-/**
  * Run "main" function:
  *     - in browser on "load" event,
  *     - via setTimeout if there's no event API available

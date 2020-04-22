@@ -201,7 +201,6 @@ export {
     getLibConfig,
     getProcess,
     handleException,
-    handleRejection,
     isBrowser,
     rgb,
     rgba,

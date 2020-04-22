@@ -442,7 +442,6 @@ utils
 >   getLibConfig: [Function: getLibConfig],
 >   getProcess: [Function: getProcess],
 >   handleException: [Function: handleException],
->   handleRejection: [Function: handleRejection],
 >   isBrowser: [Function: isBrowser],
 >   rgb: [Function: rgb],
 >   rgba: [Function: rgba],

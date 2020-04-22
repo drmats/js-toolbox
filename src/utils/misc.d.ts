@@ -21,18 +21,6 @@ export function handleException<T> (
 
 
 /**
- * Handle rejections in expressions.
- * Async version of `handleException`.
- */
-export function handleRejection<T> (
-    fn: () => Promise<T>,
-    handler?: (ex: any) => Promise<T>
-): Promise<T>;
-
-
-
-
-/**
  * Run "main" function:
  *     - in browser on "load" event,
  *     - via setTimeout if there's no event API available
