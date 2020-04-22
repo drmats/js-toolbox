@@ -85,6 +85,7 @@ to bundle it with your project).
     > [ "Y",
     >   "access",
     >   "add",
+    >   "app",
     >   "array",
     >   "arrayDifference",
     >   "arrayIntersection",
@@ -304,7 +305,8 @@ func
 ```
 
 > ```javascript
-> { choose: [Function: choose],
+> { app: [Function: app],
+>   choose: [Function: choose],
 >   compose: [Function: compose],
 >   curry: [Function: curry],
 >   curryN: [Function: curryN],
@@ -312,8 +314,8 @@ func
 >   flow: [Function: flow],
 >   handleException: [Function: handleException],
 >   identity: [Function: identity],
->   locker: [Function: locker],
 >   lazyish: [Function: lazyish],
+>   locker: [Function: locker],
 >   local: [Function: local],
 >   partial: [Function: partial],
 >   pipe: [Function: pipe],

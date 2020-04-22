@@ -81,6 +81,7 @@ export * as codec from "./codec"
 
 
 export {
+    app,
     choose,
     compose,
     curry,

@@ -10,6 +10,14 @@
 
 
 /**
+ * Basic function application.
+ */
+export function app<T, S> (f: ((T) => S)): (T) => S;
+
+
+
+
+/**
  * Function composition - read as "compose backward" or "but first".
  *
  * ```

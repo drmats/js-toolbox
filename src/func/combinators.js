@@ -15,6 +15,18 @@ import { head } from "../array/list"
 
 
 /**
+ * Basic function application.
+ *
+ * @function app
+ * @param {Funcion} f
+ * @returns {Function} x => f(x)
+ */
+export const app = f => x => f(x)
+
+
+
+
+/**
  * Function composition - read as "compose backward" or "but first".
  *
  * ```

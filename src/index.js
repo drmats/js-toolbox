@@ -92,6 +92,7 @@ export * as codec from "./codec"
  * @see {@link module:func}
  */
 export {
+    app,
     choose,
     compose,
     curry,
