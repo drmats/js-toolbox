@@ -33,36 +33,38 @@ module.exports = function (api) {
     console.log("Compiling for", "'" + api.env() + "'", "...")
 
     return {
-        "env": {
-            "commonjs": {
-                "comments": false,
-                "plugins": commonPlugins.concat([
+        env: {
+            commonjs: {
+                comments: false,
+                shouldPrintComment: () => false,
+                plugins: commonPlugins.concat([
                     "@babel/plugin-transform-modules-commonjs",
                 ]),
-                "presets": [
+                presets: [
                     [
                         "@babel/preset-env",
                         {
-                            "modules": "commonjs",
-                            "shippedProposals": true,
-                            "targets": {
-                                "node": "8.0.0",
+                            modules: "commonjs",
+                            shippedProposals: true,
+                            targets: {
+                                node: "8.0.0",
                             },
                         },
                     ],
                 ],
             },
-            "es": {
-                "comments": false,
-                "plugins": commonPlugins,
-                "presets": [
+            es: {
+                comments: false,
+                shouldPrintComment: () => false,
+                plugins: commonPlugins,
+                presets: [
                     [
                         "@babel/preset-env",
                         {
-                            "modules": false,
-                            "shippedProposals": true,
-                            "targets": {
-                                "esmodules": true,
+                            modules: false,
+                            shippedProposals: true,
+                            targets: {
+                                esmodules: true,
                             },
                         },
                     ],
