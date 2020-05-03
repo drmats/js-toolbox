@@ -7,7 +7,7 @@
 var conf = {
     comments: false,
     shouldPrintComment: () => false,
-    plugins:  [
+    plugins: [
         "@babel/plugin-proposal-export-namespace-from",
         "@babel/plugin-transform-runtime",
         "babel-plugin-inline-json-import",

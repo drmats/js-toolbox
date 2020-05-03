@@ -160,29 +160,27 @@ t = require("@xcmats/js-toolbox")
 <br />
 
 
-### example use in your source code
+### example use in ES6 modules code
 
 ```javascript
-import {
-    array,
-    codec,
-    func,
-    string,
-} from "@xcmats/js-toolbox"
+import { range } from "@xcmats/js-toolbox/array"
+import { stringToB64 } from "@xcmats/js-toolbox/codec"
+import { flow } from "@xcmats/js-toolbox/func"
+import { random } from "@xcmats/js-toolbox/string"
 
-const b64stringify = func.flow(
+const b64stringify = flow(
     JSON.stringify,
-    codec.stringToB64
+    stringToB64
 )
 
-let stupidIdea = b64stringify({
-    tenNumbers: array.range(10),
-    randomLetters: string.random(20)
+let spam = b64stringify({
+    tenNumbers: range(10),
+    randomLetters: random(20)
 })
 
 console.log(
     "Stringified and b64-encoded object: ",
-    stupidIdea
+    spam
 )
 ```
 
