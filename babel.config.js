@@ -3,25 +3,16 @@
 
 
 
-// common plugins
-var commonPlugins = [
-    "@babel/plugin-proposal-export-namespace-from",
-    // "@babel/plugin-proposal-object-rest-spread",
-    // "@babel/plugin-syntax-dynamic-import",
-    // "@babel/plugin-transform-arrow-functions",
-    // "@babel/plugin-transform-block-scoped-functions",
-    // "@babel/plugin-transform-block-scoping",
-    // "@babel/plugin-transform-computed-properties",
-    // "@babel/plugin-transform-destructuring",
-    // "@babel/plugin-transform-exponentiation-operator",
-    // "@babel/plugin-transform-literals",
-    // "@babel/plugin-transform-parameters",
-    "@babel/plugin-transform-runtime",
-    // "@babel/plugin-transform-shorthand-properties",
-    // "@babel/plugin-transform-spread",
-    // "@babel/plugin-transform-template-literals",
-    "babel-plugin-inline-json-import",
-]
+// ...
+var conf = {
+    comments: false,
+    shouldPrintComment: () => false,
+    plugins:  [
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-transform-runtime",
+        "babel-plugin-inline-json-import",
+    ],
+}
 
 
 
@@ -35,9 +26,7 @@ module.exports = function (api) {
     return {
         env: {
             commonjs: {
-                comments: false,
-                shouldPrintComment: () => false,
-                plugins: commonPlugins,
+                ...conf,
                 presets: [
                     [
                         "@babel/preset-env",
@@ -52,9 +41,7 @@ module.exports = function (api) {
                 ],
             },
             es: {
-                comments: false,
-                shouldPrintComment: () => false,
-                plugins: commonPlugins,
+                ...conf,
                 presets: [
                     [
                         "@babel/preset-env",
