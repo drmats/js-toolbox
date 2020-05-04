@@ -9,6 +9,7 @@ var conf = {
     shouldPrintComment: () => false,
     plugins: [
         "@babel/plugin-proposal-export-namespace-from",
+        ["@babel/plugin-transform-arrow-functions", { "spec": true }],
         "@babel/plugin-transform-runtime",
         "babel-plugin-inline-json-import",
     ],
