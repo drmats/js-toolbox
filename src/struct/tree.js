@@ -33,7 +33,7 @@ import {
  * @returns {Function}
  */
 export const hashAccessor = () =>
-    (n) => choose(
+    n => choose(
         [isObject(n), isArray(n)].map(v => v ? 1 : 0).join(empty()), {
             "10": () => Object.keys(n).map(k => [n[k], [k]]),
             "01": () => n.map((v, i) => [v, [i]]),
@@ -72,7 +72,7 @@ export const hashAccessor = () =>
  */
 export const keyAccessor = (...path) =>
     path.length > 0 ?
-        (n) => access(n, path, []).map((c, i) => [c, [...path, i]]) :
+        n => access(n, path, []).map((c, i) => [c, [...path, i]]) :
         hashAccessor()
 
 

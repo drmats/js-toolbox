@@ -57,7 +57,7 @@ export const random = isBrowser() ?
  */
 export const timestamp = () =>
     pipe(Date.now()) (
-        (d) => d.toString(16),
+        d => d.toString(16),
         rearg(padLeft) (1, 2, 0) (6*2, "0"),
         hexToBytes
     )

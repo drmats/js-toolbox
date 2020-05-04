@@ -22,12 +22,12 @@
  * ```
  * countBy(
  *     "exemplo plus quam ratione vivimus".split(" "),
- *     (w) => w.length
+ *     w => w.length
  * )
  * ```
  */
 export declare function countBy (
-    arr: unknown[], iteratee?: (el: unknown) => (unknown)
+    arr: unknown[], iteratee?: (el: unknown) => unknown
 ): object;
 
 
@@ -55,7 +55,7 @@ export declare function difference (a: unknown[], b: unknown[]): unknown[];
  */
 export declare function findDuplicates (
     arr: unknown[],
-    iteratee?: (el: unknown) => (unknown)
+    iteratee?: (el: unknown) => unknown
 ): string[];
 
 
@@ -82,7 +82,7 @@ export declare function isSubset (a: unknown[], b: unknown[]): boolean;
  */
 export declare function removeDuplicates (
     arr: unknown[],
-    iteratee?: (el: unknown) => (unknown)
+    iteratee?: (el: unknown) => unknown
 ): string[];
 
 

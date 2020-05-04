@@ -39,10 +39,10 @@ export declare function delay (
  * ```
  * interval(
  *     () => { console.log("Hey!"); return 42 },
- *     (c) => timeout(() => c(), 4 * timeUnit.second)
+ *     c => timeout(() => c(), 4 * timeUnit.second)
  * )
- * .then((x) => console.log("Finished:", x))
- * .catch((c) => console.log("Error:", c))
+ * .then(x => console.log("Finished:", x))
+ * .catch(c => console.log("Error:", c))
  * ```
  */
 export declare function interval<T> (
@@ -62,10 +62,10 @@ export declare function interval<T> (
  * ```
  * async.timeout(
  *     () => { console.log("Hey!"); return 42 }, 2000,
- *     (c) => async.timeout(() => c("Cancelled!"), 1000)
+ *     c => async.timeout(() => c("Cancelled!"), 1000)
  * )
- * .then((x) => console.log("Success:", x))
- * .catch((c) => console.log("Error or cancel:", c))
+ * .then(x => console.log("Success:", x))
+ * .catch(c => console.log("Error or cancel:", c))
  * ```
  */
 export declare function timeout<T> (

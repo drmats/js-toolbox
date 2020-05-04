@@ -37,7 +37,7 @@ export declare function cancellable (p: Promise<unknown>): object;
  * ```
  * const mutex = async.createMutex()
  *
- * let f = async (m) => {
+ * let f = async m => {
  *     let val = await m.lock()
  *     return `Freed with val: ${val}`
  * }

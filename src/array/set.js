@@ -30,7 +30,7 @@ import { isNumber } from "../type/check"
  * ```
  * countBy(
  *     "exemplo plus quam ratione vivimus".split(" "),
- *     (w) => w.length
+ *     w => w.length
  * )
  * ```
  *
@@ -41,7 +41,7 @@ import { isNumber } from "../type/check"
  */
 export const countBy = (arr, iteratee = identity) =>
     arr.reduce((acc, el) => (
-        (key) => isNumber(acc[key]) ?
+        key => isNumber(acc[key]) ?
             { ...acc, [key]: acc[key] + 1 } :
             { ...acc, [key]: 1 }
     )(iteratee(el)), Object.create(null))

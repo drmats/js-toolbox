@@ -236,7 +236,7 @@ Object.freeze(Object.assign(shorten, position))
  * @returns {String}
  */
 export const snakeToCamel = str => (
-    (pascal) =>
+    pascal =>
         pascal.length > 0  ?
             head(pascal).toLowerCase() + tail(pascal)  :
             empty()

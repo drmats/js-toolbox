@@ -55,7 +55,7 @@ export const cancellable = p => {
  * ```
  * const mutex = async.createMutex()
  *
- * let f = async (m) => {
+ * let f = async m => {
  *     let val = await m.lock()
  *     return `Freed with val: ${val}`
  * }
@@ -113,7 +113,7 @@ export const race = (...ps) => {
         mutex = createMutex(),
         resolved = false
 
-    ps.forEach(async (p) => {
+    ps.forEach(async p => {
         let v = null, e = null, thrown = false
         try { v = await p }
         catch (ex) { e = ex; thrown = true }

@@ -38,7 +38,7 @@ import {
  * (async () => {
  *     let x = await async.map(
  *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
+ *         x => async.timeout(() => 4*x, 100*x)
  *     )
  *     console.log(x)
  * })()
@@ -55,8 +55,8 @@ export const map = curry((arr, f) => {
         results = [],
         i = 0,
         resolve = null,
-        promise = new Promise((res) => { resolve = res }),
-        progress = (r) => {
+        promise = new Promise(res => { resolve = res }),
+        progress = r => {
             results.push(r)
             i = inc(i)
             if (i < arr.length) {
@@ -103,7 +103,7 @@ export const map = curry((arr, f) => {
  * (async () => {
  *     let x = await async.parMap(
  *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
+ *         x => async.timeout(() => 4*x, 100*x)
  *     )
  *     console.log(x)
  * })()
@@ -163,8 +163,8 @@ export const reduce = curry((arr, f, initAcc) => {
     let
         i = 0,
         resolve = null,
-        promise = new Promise((res) => { resolve = res }),
-        progress = (r) => {
+        promise = new Promise(res => { resolve = res }),
+        progress = r => {
             i = inc(i)
             if (i < arr.length) {
                 Promise

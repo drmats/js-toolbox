@@ -466,7 +466,7 @@ utils
     ```javascript
     array.countBy(
         'exemplo plus quam ratione vivimus'.split(' '),
-        (w) => w.length
+        w => w.length
     )
     ```
 
@@ -611,7 +611,7 @@ utils
     (async () => {
         let x = await async.map(
             array.range(10),
-            (x) => async.timeout(() => {
+            x => async.timeout(() => {
                 console.log(4*x);
                 return 4*x;
             }, array.head(array.sparse(1000, 1)))
@@ -642,7 +642,7 @@ utils
     (async () => {
         let x = await async.parMap(
             array.range(10),
-            (x) => async.timeout(() => {
+            x => async.timeout(() => {
                 console.log(4*x);
                 return 4*x;
             }, array.head(array.sparse(1000, 1)))
@@ -946,7 +946,7 @@ utils
     **Anonymous recursion in Javascript**.
 
     ```javascript
-    factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1))
+    factorial = func.Y(r => n => n <= 0  ?  1  :  n * r(n - 1))
     ```
 
     > ```javascript

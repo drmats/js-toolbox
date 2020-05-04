@@ -94,7 +94,7 @@ export const getLibConfig = () => ({
  * @returns {Object}
  */
 export const getProcess = () => (
-    (envvars) =>
+    envvars =>
         // eslint-disable-next-line
         isObject(process) ? {
             ...process,
@@ -143,7 +143,7 @@ export const isBrowser = () => toBool(getProcess().browser)
  * @returns {Function} (*) => *
  */
 export const to_ = (name = "_") =>
-    (val) => {
+    val => {
         // eslint-disable-next-line no-console
         console.log(`${name} = ${quote(typeof val, "[]")}`)
         handleException(

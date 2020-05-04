@@ -92,7 +92,7 @@ export const takeEvery = nth => arr =>
                 ], [[], arr])
         ) (
             head,
-            (arr) => arr.reverse()
+            arr => arr.reverse()
         ) : arr
 
 

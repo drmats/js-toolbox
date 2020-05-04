@@ -26,7 +26,7 @@
  * (async () => {
  *     let x = await async.map(
  *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
+ *         x => async.timeout(() => 4*x, 100*x)
  *     )
  *     console.log(x)
  * })()
@@ -59,7 +59,7 @@ export declare function map<T> (
  * (async () => {
  *     let x = await parMap(
  *         array.range(10),
- *         (x) => async.timeout(() => 4*x, 100*x)
+ *         x => async.timeout(() => 4*x, 100*x)
  *     )
  *     console.log(x)
  * })()

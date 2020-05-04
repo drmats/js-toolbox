@@ -28,8 +28,8 @@ import { isBrowser } from "../utils/dev"
  * @returns {Uint8Array}
  */
 export const stringToBytes = isBrowser() ?
-    (s) => (new TextEncoder("utf-8")).encode(s) :
-    (s) => Uint8Array.from(Buffer.from(s))
+    s => (new TextEncoder("utf-8")).encode(s) :
+    s => Uint8Array.from(Buffer.from(s))
 
 
 
@@ -42,8 +42,8 @@ export const stringToBytes = isBrowser() ?
  * @returns {String}
  */
 export const bytesToString = isBrowser() ?
-    (bytes) => (new TextDecoder("utf-8")).decode(bytes) :
-    (bytes) => Buffer.from(bytes).toString()
+    bytes => (new TextDecoder("utf-8")).decode(bytes) :
+    bytes => Buffer.from(bytes).toString()
 
 
 
@@ -72,8 +72,8 @@ export const bytesToString = isBrowser() ?
  * @param {String} input
  * @returns {Uint8Array}
  */
-export const hexToBytes = ((hexInput) => (
-    (hex) => Uint8Array.from(
+export const hexToBytes = (hexInput => (
+    hex => Uint8Array.from(
         hex.split(empty())
             .reduceRight(
                 (acc, el, i) =>
