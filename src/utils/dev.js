@@ -63,6 +63,12 @@ export const devEnv = (strict = false) =>
         // which happens in "bare" node.js console
         !isBrowser()  &&
         !isString(access(getProcess(), ["env", "NODE_ENV"]))
+    )  ||  (
+        // or... you're in babel context and appropriate env. var is set
+        !isBrowser()  &&
+        access(
+            getProcess(), ["env", "BABEL_ENV"], "production"
+        ) !== "production"
     )
 
 
