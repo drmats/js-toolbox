@@ -12,7 +12,7 @@
 /**
  * Determine if a given value is an `Array`.
  */
-export function isArray (a: any): boolean;
+export declare function isArray (a: any): boolean;
 
 
 
@@ -20,7 +20,7 @@ export function isArray (a: any): boolean;
 /**
  * Determine if a given value is a `Function`.
  */
-export function isFunction (f: any): boolean;
+export declare function isFunction (f: any): boolean;
 
 
 
@@ -29,7 +29,7 @@ export function isFunction (f: any): boolean;
  * Determine if a given value is a proper `Number`
  * (not `NaN` and not `Infinity`).
  */
-export function isNumber (n: any): boolean;
+export declare function isNumber (n: any): boolean;
 
 
 
@@ -38,7 +38,7 @@ export function isNumber (n: any): boolean;
  * Determine if a given value is an `Object`
  * (not `null`, not `undefined` and not `Array`).
  */
-export function isObject (o: any): boolean;
+export declare function isObject (o: any): boolean;
 
 
 
@@ -46,4 +46,4 @@ export function isObject (o: any): boolean;
 /**
  * Determine if a given value is a `String`.
  */
-export function isString (s: any): boolean;
+export declare function isString (s: any): boolean;

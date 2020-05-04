@@ -32,7 +32,7 @@
  * })()
  * ```
  */
-export function map<T> (
+export declare function map<T> (
     arr: any[],
     f: (el: any, i: number) => Promise<T> | T
 ): Promise<T[]>;
@@ -65,7 +65,7 @@ export function map<T> (
  * })()
  * ```
  */
-export function parMap<T> (
+export declare function parMap<T> (
     arr: any[],
     f: (el: any, i: number) => Promise<T> | T
 ): Promise<T[]>;
@@ -103,7 +103,7 @@ export function parMap<T> (
  * })()
  * ```
  */
-export function reduce<T> (
+export declare function reduce<T> (
     arr: any[],
     f: (acc: T, el: any, i: number) => Promise<T> | T,
     initAcc: T

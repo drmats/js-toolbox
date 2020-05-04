@@ -12,7 +12,7 @@
 /**
  * Convert given a utf8-encoded string to byte array (Uint8Array).
  */
-export function stringToBytes (s: string): Uint8Array;
+export declare function stringToBytes (s: string): Uint8Array;
 
 
 
@@ -20,7 +20,7 @@ export function stringToBytes (s: string): Uint8Array;
 /**
  * Convert a given byte array (Uint8Array) to an utf8-encoded string.
  */
-export function bytesToString (bytes: Uint8Array): string;
+export declare function bytesToString (bytes: Uint8Array): string;
 
 
 
@@ -45,7 +45,7 @@ export function bytesToString (bytes: Uint8Array): string;
  * All whitespaces, tabs and carriage returns
  * are stripped out from the input.
  */
-export function hexToBytes (hexInput: string): Uint8Array;
+export declare function hexToBytes (hexInput: string): Uint8Array;
 
 
 
@@ -54,7 +54,7 @@ export function hexToBytes (hexInput: string): Uint8Array;
  * Convert a given byte array (Uint8Array) to a hex-encoded string.
  * Each byte is encoded on the two hexadecimal digits.
  */
-export function bytesToHex (bytes: Uint8Array): string;
+export declare function bytesToHex (bytes: Uint8Array): string;
 
 
 
@@ -62,7 +62,7 @@ export function bytesToHex (bytes: Uint8Array): string;
 /**
  * Decode given Base64-encoded string into byte array (Uint8Array).
  */
-export function b64dec (s: string): Uint8Array;
+export declare function b64dec (s: string): Uint8Array;
 
 
 
@@ -70,7 +70,7 @@ export function b64dec (s: string): Uint8Array;
 /**
  * Base64-encode given byte array (Uint8Array).
  */
-export function b64enc (bytes: Uint8Array): string;
+export declare function b64enc (bytes: Uint8Array): string;
 
 
 
@@ -78,7 +78,7 @@ export function b64enc (bytes: Uint8Array): string;
 /**
  * Base64 decoding for strings (b64-string to utf8-string).
  */
-export function b64ToString (s: string): string;
+export declare function b64ToString (s: string): string;
 
 
 
@@ -86,7 +86,7 @@ export function b64ToString (s: string): string;
 /**
  * Base64 encoding for strings (utf8-string to b64-string)
  */
-export function stringToB64 (s: string): string;
+export declare function stringToB64 (s: string): string;
 
 
 
@@ -94,7 +94,7 @@ export function stringToB64 (s: string): string;
 /**
  * Covert a given b64-encoded string to a hex-encoded string.
  */
-export function b64ToHex (s: string): string;
+export declare function b64ToHex (s: string): string;
 
 
 
@@ -102,4 +102,4 @@ export function b64ToHex (s: string): string;
 /**
  * Covert a given hex-encoded string to a b64-encoded string.
  */
-export function hexToB64 (s: string): string;
+export declare function hexToB64 (s: string): string;

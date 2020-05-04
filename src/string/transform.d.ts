@@ -12,7 +12,7 @@
 /**
  * Convert `thisKindOfText` to `ThisKindOfText`.
  */
-export function camelToPascal (str: string): string;
+export declare function camelToPascal (str: string): string;
 
 
 
@@ -20,7 +20,7 @@ export function camelToPascal (str: string): string;
 /**
  * Convert `thisKindOfText` to `this_kind_of_text`.
  */
-export function camelToSnake (str: string): string;
+export declare function camelToSnake (str: string): string;
 
 
 
@@ -28,7 +28,7 @@ export function camelToSnake (str: string): string;
 /**
  * Ensure given string is in form `Aaaaaaaa`.
  */
-export function capitalize (str: string): string;
+export declare function capitalize (str: string): string;
 
 
 
@@ -39,7 +39,7 @@ export function capitalize (str: string): string;
  * Returned string has the same length as input string
  * (thus some original characters are replaced with `sep` contents).
  */
-export function ellipsis (
+export declare function ellipsis (
     str: string,
     placing?: number,
     sep?: string
@@ -54,7 +54,7 @@ export function ellipsis (
  * If `len` is smaller than length of `input` then `input` is being
  * returned untouched (padding doesn't shorten the `input`).
  */
-export function padLeft (
+export declare function padLeft (
     input: string,
     len: number,
     ch?: string
@@ -69,7 +69,7 @@ export function padLeft (
  * If `len` is smaller than length of `input` then `input` is being
  * returned untouched (padding doesn't shorten the `input`).
  */
-export function padRight (
+export declare function padRight (
     input: string,
     len: number,
     ch?: string
@@ -81,7 +81,7 @@ export function padRight (
 /**
  * Convert `ThisKindOfText` to `thisKindOfText`.
  */
-export function pascalToCamel (str: string): string;
+export declare function pascalToCamel (str: string): string;
 
 
 
@@ -89,7 +89,7 @@ export function pascalToCamel (str: string): string;
 /**
  * Convert `ThisKindOfText` to `this_kind_of_text`.
  */
-export function pascalToSnake (str: string): string;
+export declare function pascalToSnake (str: string): string;
 
 
 
@@ -97,7 +97,7 @@ export function pascalToSnake (str: string): string;
 /**
  * Quote text.
  */
-export function quote (str?: string, q?: string): string;
+export declare function quote (str?: string, q?: string): string;
 
 
 
@@ -105,7 +105,7 @@ export function quote (str?: string, q?: string): string;
 /**
  * Constructs new string not longer than `len`.
  */
-export function shorten (
+export declare function shorten (
     str: string,
     len?: number,
     placing?: number,
@@ -118,7 +118,7 @@ export function shorten (
 /**
  * Convert `this_kind_of_text` to `thisKindOfText`.
  */
-export function snakeToCamel (str: string): string;
+export declare function snakeToCamel (str: string): string;
 
 
 
@@ -126,7 +126,7 @@ export function snakeToCamel (str: string): string;
 /**
  * Convert `this_kind_of_text` to `ThisKindOfText`.
  */
-export function snakeToPascal (str: string): string;
+export declare function snakeToPascal (str: string): string;
 
 
 
@@ -134,7 +134,7 @@ export function snakeToPascal (str: string): string;
 /**
  * Wrap passed string with `prefix` and `suffix`.
  */
-export function wrap (
+export declare function wrap (
     str?: string,
     prefix?: string,
     suffix?: string

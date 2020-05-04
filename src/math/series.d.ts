@@ -12,7 +12,7 @@
 /**
  * Compute mathematical average of array of numbers.
  */
-export function average (arr: number[]): number;
+export declare function average (arr: number[]): number;
 
 
 
@@ -20,7 +20,7 @@ export function average (arr: number[]): number;
 /**
  * Compute product of numbers in a passed array.
  */
-export function product (arr: number[]): number;
+export declare function product (arr: number[]): number;
 
 
 
@@ -28,4 +28,4 @@ export function product (arr: number[]): number;
 /**
  * Compute sum of numbers in a passed array.
  */
-export function sum (arr: number[]): number;
+export declare function sum (arr: number[]): number;

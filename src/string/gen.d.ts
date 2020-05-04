@@ -25,7 +25,7 @@
  * big(3, "a") === "aaaaaaaa"
  * ```
  */
-export function big (n: number, c?: string): string;
+export declare function big (n: number, c?: string): string;
 
 
 
@@ -33,7 +33,7 @@ export function big (n: number, c?: string): string;
 /**
  * Construct random string of desired length.
  */
-export function random (
+export declare function random (
     size?: number,
     letters?: string
 ): string;

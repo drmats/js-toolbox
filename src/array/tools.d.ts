@@ -12,7 +12,7 @@
 /**
  * Simple array flattener.
  */
-export function flatten (arr: any[][]): any[];
+export declare function flatten (arr: any[][]): any[];
 
 
 
@@ -20,7 +20,7 @@ export function flatten (arr: any[][]): any[];
 /**
  * Checks if a given array is a continuous block.
  */
-export function isContinuous<T> (
+export declare function isContinuous<T> (
     arr: T[],
     cmp?: (a: T, b: T) => boolean
 ): boolean;
@@ -31,7 +31,7 @@ export function isContinuous<T> (
 /**
  * Checks if a given array is sorted.
  */
-export function isSorted<T> (
+export declare function isSorted<T> (
     arr: T[],
     cmp?: (a: T, b: T) => boolean
 ): boolean;
@@ -42,7 +42,7 @@ export function isSorted<T> (
 /**
  * Take every `nth` element from an `arr` array.
  */
-export function takeEvery (nth: number): (arr: any[]) => any[];
+export declare function takeEvery (nth: number): (arr: any[]) => any[];
 
 
 
@@ -57,7 +57,7 @@ export function takeEvery (nth: number): (arr: any[]) => any[];
  * [ 11, 22, 33, 44 ]
  * ```
  */
-export function zipWith<T> (
+export declare function zipWith<T> (
     f: (...args: any[]) => T
 ): (...arrs: any[][]) => T[];
 
@@ -74,4 +74,4 @@ export function zipWith<T> (
  * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
  * ```
  */
-export function zip (...arrs: any[][]): any[][];
+export declare function zip (...arrs: any[][]): any[][];

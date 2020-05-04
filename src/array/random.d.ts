@@ -12,7 +12,7 @@
 /**
  * Choose a random element from a non-empty array.
  */
-export function draw (arr: any[] | string): any | string;
+export declare function draw (arr: any[] | string): any | string;
 
 
 
@@ -23,7 +23,7 @@ export function draw (arr: any[] | string): any | string;
  *
  * The operation is taken in-place.
  */
-export function shuffle (arr: any[]): any[];
+export declare function shuffle (arr: any[]): any[];
 
 
 
@@ -37,4 +37,4 @@ export function shuffle (arr: any[]): any[];
  * Generate sparse array of distinct integers
  * with (almost) uniform distribution.
  */
-export function sparse (...args: number[]): number[];
+export declare function sparse (...args: number[]): number[];

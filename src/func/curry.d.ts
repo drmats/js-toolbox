@@ -27,7 +27,7 @@
  * then this parameter is excluded. Also only parameters before
  * the first one with a default value are included.
  */
-export function curry (f: Function): Function;
+export declare function curry (f: Function): Function;
 
 
 
@@ -41,7 +41,7 @@ export function curry (f: Function): Function;
  * f(a, b, c, d, e)  <=>  curryN(5, f) (a) (b) (c) (d) (e)
  * ```
  */
-export function curryN<T> (
+export declare function curryN<T> (
     n: number,
     f: (...args: any[]) => T
 ): (...args: any[]) => Function | T;
@@ -61,7 +61,7 @@ export function curryN<T> (
  * f(a, b, c, d)  <=>  curryThunk(f) (a) (b) (c) (d) ()
  * ```
  */
-export function curryThunk<T> (
+export declare function curryThunk<T> (
     f: (...args: any[]) => T
 ): (...args: any[]) => Function | T;
 
@@ -83,6 +83,6 @@ export function curryThunk<T> (
  * g(4)  ->  7
  * ```
  */
-export function partial<T> (
+export declare function partial<T> (
     f: (...args: any[]) => T
 ): (...init: any[]) => (...rest: any[]) => T;

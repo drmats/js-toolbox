@@ -23,7 +23,7 @@
  * })()
  * ```
  */
-export function delay (
+export declare function delay (
     time?: number,
     passCancel?: (canceller: (reason: any) => void) => void
 ): Promise<number>;
@@ -45,7 +45,7 @@ export function delay (
  * .catch((c) => console.log("Error:", c))
  * ```
  */
-export function interval<T> (
+export declare function interval<T> (
     f: (clear: (reason: any) => T) => T,
     passClear: (clear: (reason: any) => T) => void,
     time?: number
@@ -68,7 +68,7 @@ export function interval<T> (
  * .catch((c) => console.log("Error or cancel:", c))
  * ```
  */
-export function timeout<T> (
+export declare function timeout<T> (
     f: () => T,
     passCancel?: (cancel: () => T) => void,
     time?: number

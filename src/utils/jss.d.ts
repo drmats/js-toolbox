@@ -12,7 +12,7 @@
 /**
  * JSS color helper.
  */
-export function rgb (r: number, g: number, b: number): string;
+export declare function rgb (r: number, g: number, b: number): string;
 
 
 
@@ -20,7 +20,7 @@ export function rgb (r: number, g: number, b: number): string;
 /**
  * JSS color helper (with alpha).
  */
-export function rgba (
+export declare function rgba (
     r: number,
     g: number,
     b: number,
@@ -33,4 +33,4 @@ export function rgba (
 /**
  * JSS url helper.
  */
-export function url (x: string): string;
+export declare function url (x: string): string;

@@ -12,7 +12,7 @@
 /**
  * Functional replacement of a `switch` statement.
  */
-export function choose (
+export declare function choose (
     key: string,
     actions?: object,
     defaultAction?: Function,
@@ -25,7 +25,7 @@ export function choose (
 /**
  * Handle exceptions in expressions.
  */
-export function handleException<T> (
+export declare function handleException<T> (
     fn: () => T,
     handler?: (ex: any) => T
 ): T;
@@ -36,7 +36,7 @@ export function handleException<T> (
 /**
  * Return value passed as a first argument.
  */
-export function identity<T> (x: T): T;
+export declare function identity<T> (x: T): T;
 
 
 
@@ -44,7 +44,7 @@ export function identity<T> (x: T): T;
 /**
  * Put a given argument under function abstraction.
  */
-export function lazyish<T> (x: T): () => T;
+export declare function lazyish<T> (x: T): () => T;
 
 
 
@@ -54,7 +54,7 @@ export function lazyish<T> (x: T): () => T;
  *
  * Inspired by {@link https://github.com/kongware/scriptum}
  */
-export function local<T> (f?: () => T): T;
+export declare function local<T> (f?: () => T): T;
 
 
 
@@ -88,7 +88,7 @@ export function local<T> (f?: () => T): T;
  * 42
  * ```
  */
-export function locker<T> (n?: number): (val: T) => T;
+export declare function locker<T> (n?: number): (val: T) => T;
 
 
 
@@ -125,6 +125,6 @@ export function locker<T> (n?: number): (val: T) => T;
  * j i h g f
  * ```
  */
-export function rearg<T> (
+export declare function rearg<T> (
     f: (...args: any[]) => T
 ): (...indices: number[]) => (...args: any[]) => T;

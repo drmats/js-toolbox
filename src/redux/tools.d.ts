@@ -12,4 +12,4 @@
 /**
  * Create clean and readable reducers for redux.
  */
-export function createReducer (initState?: object): Function;
+export declare function createReducer (initState?: object): Function;

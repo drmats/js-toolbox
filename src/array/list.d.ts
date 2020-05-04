@@ -12,7 +12,7 @@
 /**
  * Append `ys` to `xs` and return xs.
  */
-export function append (xs: any[]): (ys: any[]) => any[];
+export declare function append (xs: any[]): (ys: any[]) => any[];
 
 
 
@@ -21,7 +21,7 @@ export function append (xs: any[]): (ys: any[]) => any[];
  * Drop the first `n` elements of a given array.
  * Returns array without the first `n` elements.
  */
-export function drop (n: number): (arr: any[]) => any[];
+export declare function drop (n: number): (arr: any[]) => any[];
 
 
 
@@ -30,7 +30,7 @@ export function drop (n: number): (arr: any[]) => any[];
  * Drop the last `n` elements of a given array.
  * Returns array without the last `n` elements.
  */
-export function dropLast (n: number): (arr: any[]) => any[];
+export declare function dropLast (n: number): (arr: any[]) => any[];
 
 
 
@@ -38,7 +38,7 @@ export function dropLast (n: number): (arr: any[]) => any[];
 /**
  * Return first element of the given array.
  */
-export function head (arr: any[] | string): any | string;
+export declare function head (arr: any[] | string): any | string;
 
 
 
@@ -46,7 +46,7 @@ export function head (arr: any[] | string): any | string;
 /**
  * Return array without its last element.
  */
-export function init (arr: any[] | string): any[] | string;
+export declare function init (arr: any[] | string): any[] | string;
 
 
 
@@ -54,7 +54,7 @@ export function init (arr: any[] | string): any[] | string;
 /**
  * Return last element of the given array.
  */
-export function last (arr: any[] | string): any | string;
+export declare function last (arr: any[] | string): any | string;
 
 
 
@@ -72,7 +72,7 @@ export function last (arr: any[] | string): any | string;
  *
  * Imitates Python's `range()`.
  */
-export function range (...args: number[]): number[];
+export declare function range (...args: number[]): number[];
 
 
 
@@ -80,7 +80,7 @@ export function range (...args: number[]): number[];
 /**
  * Return array without its head (first element).
  */
-export function tail (arr: any[] | string): any[] | string;
+export declare function tail (arr: any[] | string): any[] | string;
 
 
 
@@ -88,7 +88,7 @@ export function tail (arr: any[] | string): any[] | string;
 /**
  * Take the first `n` elements of a given array.
  */
-export function take (n: number): (arr: any[]) => any[];
+export declare function take (n: number): (arr: any[]) => any[];
 
 
 
@@ -96,4 +96,4 @@ export function take (n: number): (arr: any[]) => any[];
 /**
  * Take the last `n` elements of a given array.
  */
-export function takeLast (n: number): (arr: any[]) => any[];
+export declare function takeLast (n: number): (arr: any[]) => any[];

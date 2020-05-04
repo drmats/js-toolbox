@@ -12,7 +12,7 @@
 /**
  * Basic function application.
  */
-export function app<T, S> (f: ((T) => S)): (T) => S;
+export declare function app<T, S> (f: ((T) => S)): (T) => S;
 
 
 
@@ -28,7 +28,7 @@ export function app<T, S> (f: ((T) => S)): (T) => S;
  * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  */
-export function compose (
+export declare function compose (
     ...fs: Function[]
 ): (...args: any[]) => Function;
 
@@ -48,7 +48,7 @@ export function compose (
  *
  * Inspired by {@link https://github.com/tfausak/flow}.
  */
-export function flow (
+export declare function flow (
     ...fs: Function[]
 ): (...args: any[]) => Function;
 
@@ -68,7 +68,7 @@ export function flow (
  * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  */
-export function pipe (
+export declare function pipe (
     ...args: any[]
 ): (...fs: Function[]) => Function;
 
@@ -79,4 +79,4 @@ export function pipe (
  * Y-combinator (returns fixed point of a higher-order function
  * passed as `f`).
  */
-export function Y (f: Function): Function;
+export declare function Y (f: Function): Function;

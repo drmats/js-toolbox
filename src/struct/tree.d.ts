@@ -14,7 +14,7 @@
  * in the `struct.dfs` function. Use it with `struct.dfs` to
  * enumerate on any javascript object.
  */
-export function hashAccessor ():
+export declare function hashAccessor ():
     (n: object) => [object, (string | number)[]][];
 
 
@@ -40,7 +40,7 @@ export function hashAccessor ():
  * `keyAccessor` called without arguments (`keyAccessor()`) returns
  * `hashAccessor`.
  */
-export function keyAccessor (
+export declare function keyAccessor (
     ...path: (string | number)[]
 ): (n: object) => [object, (string | number)[]][];
 
@@ -52,7 +52,7 @@ export function keyAccessor (
  * on each `tree` node in reduce-like fashion, accumulating
  * intermediate results.
  */
-export function dfs<T> (
+export declare function dfs<T> (
     tree?: object,
     f?: (
         accs: T[],

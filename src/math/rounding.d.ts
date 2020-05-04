@@ -13,7 +13,7 @@
  * Fit `n` in a [`low`, `high`] range
  * (inclusive of `low` and `high`).
  */
-export function clamp (low: number, high: number, n: number): number;
+export declare function clamp (low: number, high: number, n: number): number;
 
 
 
@@ -23,4 +23,4 @@ export function clamp (low: number, high: number, n: number): number;
  * epsilon range of that integer. Default epsilon is `1e-9`,
  * which can be changed through `precision` parameter.
  */
-export function roundIfClose (x: number, precision?: number): number;
+export declare function roundIfClose (x: number, precision?: number): number;

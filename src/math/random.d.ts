@@ -13,4 +13,4 @@
  * Generate a random positive integer.
  * NOT CRYPTOGRAPHICALLY SECURE.
  */
-export function randomInt (): number;
+export declare function randomInt (): number;

@@ -24,7 +24,7 @@
  * cancel("I've changed my mind")
  * ```
  */
-export function cancellable (p: Promise<any>): object;
+export declare function cancellable (p: Promise<any>): object;
 
 
 
@@ -47,7 +47,7 @@ export function cancellable (p: Promise<any>): object;
  * mutex.resolve(42)  //  mutex.reject("ERROR")
  * ```
  */
-export function createMutex (): object;
+export declare function createMutex (): object;
 
 
 
@@ -71,7 +71,7 @@ export function createMutex (): object;
  * m1.resolve("All right!")  //  or, e.g: m2.reject("Some left!")
  * ```
  */
-export function race (...ps: Promise<any>[]): Promise<any>;
+export declare function race (...ps: Promise<any>[]): Promise<any>;
 
 
 
@@ -82,7 +82,7 @@ export function race (...ps: Promise<any>[]): Promise<any>;
  * Resolves with result of last `f` execution
  * when `condition` evaluates to `false`.
  */
-export function repeat<T> (
+export declare function repeat<T> (
     f: () => Promise<T> | T,
     condition: () => boolean
 ): Promise<T>;

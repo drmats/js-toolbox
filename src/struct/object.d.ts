@@ -19,7 +19,7 @@
  * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
  * ```
  */
-export function access (
+export declare function access (
     o?: object,
     path?: (string | number)[],
     def?: any
@@ -32,7 +32,7 @@ export function access (
  * Do the deep-copy of any JavaScript object
  * that doesn't contain functions.
  */
-export function clone (o: object): object;
+export declare function clone (o: object): object;
 
 
 
@@ -46,7 +46,7 @@ export function clone (o: object): object;
  *
  * Imitates Python's `dict()`.
  */
-export function dict (entries: [string, any][]): object;
+export declare function dict (entries: [string, any][]): object;
 
 
 
@@ -61,7 +61,7 @@ export function dict (entries: [string, any][]): object;
  *
  * `f` should return `[key, value]` array.
  */
-export function objectMap (
+export declare function objectMap (
     o: object,
     f: (kv: [string, any]) => [string, any]
 ): object;
@@ -81,7 +81,7 @@ export function objectMap (
  *
  * `f` should return value of the same type as `init`.
  */
-export function objectReduce<T> (
+export declare function objectReduce<T> (
     o: object,
     f: (acc: T, kv: [string, any]) => T,
     init: T
@@ -94,4 +94,4 @@ export function objectReduce<T> (
  * When `o == { a: "b", c: "d" }`
  * then `swap(o) == { b: "a", d: "c" }`.
  */
-export function swap (o: object): object;
+export declare function swap (o: object): object;

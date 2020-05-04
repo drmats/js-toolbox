@@ -12,7 +12,7 @@
 /**
  * Return full set of ASCII letters.
  */
-export function asciiLetters (): string;
+export declare function asciiLetters (): string;
 
 
 
@@ -20,7 +20,7 @@ export function asciiLetters (): string;
 /**
  * Return lowercase ASCII letters.
  */
-export function asciiLowercase (): string;
+export declare function asciiLowercase (): string;
 
 
 
@@ -28,7 +28,7 @@ export function asciiLowercase (): string;
 /**
  * Return uppercase ASCII letters.
  */
-export function asciiUppercase (): string;
+export declare function asciiUppercase (): string;
 
 
 
@@ -36,7 +36,7 @@ export function asciiUppercase (): string;
 /**
  * Return all digits.
  */
-export function digits (): string;
+export declare function digits (): string;
 
 
 
@@ -44,7 +44,7 @@ export function digits (): string;
 /**
  * Construct empty string.
  */
-export function empty (): string;
+export declare function empty (): string;
 
 
 
@@ -52,7 +52,7 @@ export function empty (): string;
 /**
  * Construct space.
  */
-export function space (): string;
+export declare function space (): string;
 
 
 
@@ -60,7 +60,7 @@ export function space (): string;
 /**
  * Construct newline.
  */
-export function nl (): string;
+export declare function nl (): string;
 
 
 
@@ -68,4 +68,4 @@ export function nl (): string;
 /**
  * Construct tab.
  */
-export function tab (): string;
+export declare function tab (): string;

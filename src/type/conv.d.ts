@@ -12,7 +12,7 @@
 /**
  * If `val` is `null` then return `undefined`, else return `val`.
  */
-export function nullToUndefined (val: any): any;
+export declare function nullToUndefined (val: any): any;
 
 
 
@@ -22,4 +22,4 @@ export function nullToUndefined (val: any): any;
  * (`false`, `0`, `""`, `null`, `undefined`, and `NaN`),
  * and `true` for all **truthy** values.
  */
-export function toBool (x: any): boolean;
+export declare function toBool (x: any): boolean;
