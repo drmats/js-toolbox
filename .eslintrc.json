@@ -1,0 +1,77 @@
+{
+
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+
+    "extends": [
+        "eslint:recommended"
+    ],
+
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": false
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+
+    "plugins": [
+        "import"
+    ],
+
+    "root": true,
+
+    "rules": {
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "ignore",
+                "exports": "ignore",
+                "functions": "ignore"
+            }
+        ],
+        "indent": ["warn", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "no-console": "warn",
+        "no-dupe-args": "error",
+        "no-dupe-class-members": "error",
+        "no-dupe-keys": "error",
+        "no-redeclare": "error",
+        "no-undef": "error",
+        "no-unexpected-multiline": "error",
+        "no-unused-vars": ["warn", {"args": "all", "argsIgnorePattern": "^_"}],
+        "object-curly-newline": "off",
+        "quotes": ["error", "double"],
+        "semi": ["error", "never"],
+        "space-before-function-paren": ["error", "always"],
+        "strict": "off",
+
+        "import/first": "error",
+        "import/no-amd": "error",
+        "import/no-webpack-loader-syntax": "error"
+    },
+
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parser": "@typescript-eslint/parser",
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "plugins": [
+                "@typescript-eslint"
+            ]
+        }
+    ]
+
+}

@@ -19,14 +19,18 @@
         "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
         "@babel/plugin-transform-runtime": "^7.9.6",
         "@babel/preset-env": "^7.9.6",
+        "@typescript-eslint/eslint-plugin": "^2.30.0",
+        "@typescript-eslint/parser": "^2.30.0",
         "babel-eslint": "^10.1.0",
         "babel-plugin-inline-json-import": "^0.3.2",
         "cross-env": "^7.0.2",
         "eslint": "^6.8.0",
+        "eslint-plugin-import": "^2.20.2",
         "gh-pages": "^2.2.0",
         "jsdoc": "^3.6.4",
         "minami": "^1.2.3",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "typescript": "^3.8.3"
     },
     "engines": {
         "node": ">=10.0.0",
@@ -72,7 +76,7 @@
         "deploy": "gh-pages -d ./dist/doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
         "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/**/* -d ./dist/doc/",
-        "lint": "eslint ./src/",
+        "lint": "eslint ./src/ --ext .js,.ts",
         "prepublishOnly": "npm run test && npm run build && npm run doc",
         "prestart": "node ./scripts/prepare.js && npm run build:commonjs",
         "publishAll": "npm run prepublishOnly && echo \"Publishing ...\" && cd ./dist/ && npm publish && cd .. && npm run deploy && echo \"Done.\"",

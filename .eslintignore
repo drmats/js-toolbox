@@ -1,6 +1,3 @@
-doc/*
-es/*
-lib/*
+dist/*
 node_modules/*
 scripts/*
-typings/*
