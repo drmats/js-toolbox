@@ -1,3 +1,3 @@
 export * from "./tools"
-import * as tools from "./tools"
-export default tools
+declare const _default: object
+export default _default
