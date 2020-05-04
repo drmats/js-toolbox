@@ -24,7 +24,7 @@
  * cancel("I've changed my mind")
  * ```
  */
-export declare function cancellable (p: Promise<any>): object;
+export declare function cancellable (p: Promise<unknown>): object;
 
 
 
@@ -71,7 +71,7 @@ export declare function createMutex (): object;
  * m1.resolve("All right!")  //  or, e.g: m2.reject("Some left!")
  * ```
  */
-export declare function race (...ps: Promise<any>[]): Promise<any>;
+export declare function race (...ps: Promise<unknown>[]): Promise<unknown>;
 
 
 

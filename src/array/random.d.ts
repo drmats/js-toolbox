@@ -12,7 +12,7 @@
 /**
  * Choose a random element from a non-empty array.
  */
-export declare function draw (arr: any[] | string): any | string;
+export declare function draw (arr: unknown[] | string): unknown | string;
 
 
 
@@ -23,7 +23,7 @@ export declare function draw (arr: any[] | string): any | string;
  *
  * The operation is taken in-place.
  */
-export declare function shuffle (arr: any[]): any[];
+export declare function shuffle (arr: unknown[]): unknown[];
 
 
 

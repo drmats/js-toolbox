@@ -16,8 +16,8 @@ export declare function choose (
     key: string,
     actions?: object,
     defaultAction?: Function,
-    args?: any[]
-): any;
+    args?: unknown[]
+): unknown;
 
 
 
@@ -27,7 +27,7 @@ export declare function choose (
  */
 export declare function handleException<T> (
     fn: () => T,
-    handler?: (ex: any) => T
+    handler?: (ex: unknown) => T
 ): T;
 
 
@@ -126,5 +126,5 @@ export declare function locker<T> (n?: number): (val: T) => T;
  * ```
  */
 export declare function rearg<T> (
-    f: (...args: any[]) => T
-): (...indices: number[]) => (...args: any[]) => T;
+    f: (...args: unknown[]) => T
+): (...indices: number[]) => (...args: unknown[]) => T;

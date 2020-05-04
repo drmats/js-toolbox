@@ -18,7 +18,7 @@
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -33,8 +33,8 @@
  * ```
  */
 export declare function map<T> (
-    arr: any[],
-    f: (el: any, i: number) => Promise<T> | T
+    arr: unknown[],
+    f: (el: unknown, i: number) => Promise<T> | T
 ): Promise<T[]>;
 
 
@@ -51,7 +51,7 @@ export declare function map<T> (
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -66,8 +66,8 @@ export declare function map<T> (
  * ```
  */
 export declare function parMap<T> (
-    arr: any[],
-    f: (el: any, i: number) => Promise<T> | T
+    arr: unknown[],
+    f: (el: unknown, i: number) => Promise<T> | T
 ): Promise<T[]>;
 
 
@@ -88,7 +88,7 @@ export declare function parMap<T> (
  *     of the `f`. If no initial value is supplied, the first element
  *     in the array will be used.
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -104,7 +104,7 @@ export declare function parMap<T> (
  * ```
  */
 export declare function reduce<T> (
-    arr: any[],
-    f: (acc: T, el: any, i: number) => Promise<T> | T,
+    arr: unknown[],
+    f: (acc: T, el: unknown, i: number) => Promise<T> | T,
     initAcc: T
 ): Promise<T>;

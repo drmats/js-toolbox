@@ -27,7 +27,7 @@
  * ```
  */
 export declare function countBy (
-    arr: any[], iteratee?: (el: any) => (any)
+    arr: unknown[], iteratee?: (el: unknown) => (unknown)
 ): object;
 
 
@@ -36,7 +36,7 @@ export declare function countBy (
 /**
  * Compute array as `a` \ `b` (set difference).
  */
-export declare function difference (a: any[], b: any[]): any[];
+export declare function difference (a: unknown[], b: unknown[]): unknown[];
 
 
 
@@ -54,8 +54,8 @@ export declare function difference (a: any[], b: any[]): any[];
  * ```
  */
 export declare function findDuplicates (
-    arr: any[],
-    iteratee?: (el: any) => (any)
+    arr: unknown[],
+    iteratee?: (el: unknown) => (unknown)
 ): string[];
 
 
@@ -64,7 +64,7 @@ export declare function findDuplicates (
 /**
  * Compute array that is an intersection of `a` and `b` arrays.
  */
-export declare function intersection (a: any[], b: any[]): any[];
+export declare function intersection (a: unknown[], b: unknown[]): unknown[];
 
 
 
@@ -72,7 +72,7 @@ export declare function intersection (a: any[], b: any[]): any[];
 /**
  * Check if array `a` is a subset of array `b`.
  */
-export declare function isSubset (a: any[], b: any[]): boolean;
+export declare function isSubset (a: unknown[], b: unknown[]): boolean;
 
 
 
@@ -81,8 +81,8 @@ export declare function isSubset (a: any[], b: any[]): boolean;
  * Create a new array with removed duplicates.
  */
 export declare function removeDuplicates (
-    arr: any[],
-    iteratee?: (el: any) => (any)
+    arr: unknown[],
+    iteratee?: (el: unknown) => (unknown)
 ): string[];
 
 
@@ -91,4 +91,4 @@ export declare function removeDuplicates (
 /**
  * Check set equality of two arrays treated as sets.
  */
-export declare function setEqual (a: any[], b: any[]): boolean;
+export declare function setEqual (a: unknown[], b: unknown[]): boolean;

@@ -30,7 +30,7 @@ import {
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -95,7 +95,7 @@ export const map = curry((arr, f) => {
  *     - `element` - currently processed element
  *     - `index` - current index
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -137,7 +137,7 @@ export const parMap = curry((arr, f) =>
  *     of the `f`. If no initial value is supplied, the first element
  *     in the array will be used.
  *
- * `f` can return `Promise.<any>` or `<any>`
+ * `f` can return `Promise.<unknown>` or `<unknown>`
  *
  * Example:
  *
@@ -156,8 +156,8 @@ export const parMap = curry((arr, f) =>
  * @function reduce
  * @param {Array} arr
  * @param {Function} f
- * @param {any} [initAcc]
- * @returns {Promise.<any>}
+ * @param {unknown} [initAcc]
+ * @returns {Promise.<unknown>}
  */
 export const reduce = curry((arr, f, initAcc) => {
     let

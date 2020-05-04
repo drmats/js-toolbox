@@ -30,7 +30,7 @@ export declare function app<T, S> (f: ((T) => S)): (T) => S;
  */
 export declare function compose (
     ...fs: Function[]
-): (...args: any[]) => Function;
+): (...args: unknown[]) => Function;
 
 
 
@@ -50,7 +50,7 @@ export declare function compose (
  */
 export declare function flow (
     ...fs: Function[]
-): (...args: any[]) => Function;
+): (...args: unknown[]) => Function;
 
 
 
@@ -69,7 +69,7 @@ export declare function flow (
  * ```
  */
 export declare function pipe (
-    ...args: any[]
+    ...args: unknown[]
 ): (...fs: Function[]) => Function;
 
 

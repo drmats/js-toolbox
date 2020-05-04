@@ -43,8 +43,8 @@ export declare function curry (f: Function): Function;
  */
 export declare function curryN<T> (
     n: number,
-    f: (...args: any[]) => T
-): (...args: any[]) => Function | T;
+    f: (...args: unknown[]) => T
+): (...args: unknown[]) => Function | T;
 
 
 
@@ -62,8 +62,8 @@ export declare function curryN<T> (
  * ```
  */
 export declare function curryThunk<T> (
-    f: (...args: any[]) => T
-): (...args: any[]) => Function | T;
+    f: (...args: unknown[]) => T
+): (...args: unknown[]) => Function | T;
 
 
 
@@ -84,5 +84,5 @@ export declare function curryThunk<T> (
  * ```
  */
 export declare function partial<T> (
-    f: (...args: any[]) => T
-): (...init: any[]) => (...rest: any[]) => T;
+    f: (...args: unknown[]) => T
+): (...init: unknown[]) => (...rest: unknown[]) => T;

@@ -25,7 +25,7 @@
  */
 export declare function delay (
     time?: number,
-    passCancel?: (canceller: (reason: any) => void) => void
+    passCancel?: (canceller: (reason: unknown) => void) => void
 ): Promise<number>;
 
 
@@ -46,8 +46,8 @@ export declare function delay (
  * ```
  */
 export declare function interval<T> (
-    f: (clear: (reason: any) => T) => T,
-    passClear: (clear: (reason: any) => T) => void,
+    f: (clear: (reason: unknown) => T) => T,
+    passClear: (clear: (reason: unknown) => T) => void,
     time?: number
 ): Promise<T>;
 

@@ -22,8 +22,8 @@
 export declare function access (
     o?: object,
     path?: (string | number)[],
-    def?: any
-): any;
+    def?: unknown
+): unknown;
 
 
 
@@ -46,7 +46,7 @@ export declare function clone (o: object): object;
  *
  * Imitates Python's `dict()`.
  */
-export declare function dict (entries: [string, any][]): object;
+export declare function dict (entries: [string, unknown][]): object;
 
 
 
@@ -63,7 +63,7 @@ export declare function dict (entries: [string, any][]): object;
  */
 export declare function objectMap (
     o: object,
-    f: (kv: [string, any]) => [string, any]
+    f: (kv: [string, unknown]) => [string, unknown]
 ): object;
 
 
@@ -83,7 +83,7 @@ export declare function objectMap (
  */
 export declare function objectReduce<T> (
     o: object,
-    f: (acc: T, kv: [string, any]) => T,
+    f: (acc: T, kv: [string, unknown]) => T,
     init: T
 ): T;
 
