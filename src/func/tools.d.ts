@@ -12,12 +12,12 @@
 /**
  * Functional replacement of a `switch` statement.
  */
-export declare function choose (
-    key: string,
+export declare function choose<T> (
+    key: string | number,
     actions?: object,
-    defaultAction?: Function,
+    defaultAction?: (...args: unknown[]) => T,
     args?: unknown[]
-): unknown;
+): T;
 
 
 
