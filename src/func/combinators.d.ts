@@ -12,7 +12,7 @@
 /**
  * Basic function application.
  */
-export declare function app<T, S> (f: ((T) => S)): (T) => S;
+export declare function app<T, S> (f: ((a: T) => S)): (a: T) => S;
 
 
 
