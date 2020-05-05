@@ -55,14 +55,18 @@ export const map = curry((arr, f) => {
         results = [],
         i = 0,
         resolve = null,
-        promise = new Promise(res => { resolve = res }),
+        reject = null,
+        promise = new Promise((res, rej) => {
+            resolve = res
+            reject = rej
+        }),
         progress = r => {
             results.push(r)
             i = inc(i)
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, arr[i], i))
-                    .then(progress).catch(progress)
+                    .then(progress).catch(reject)
             } else resolve(results)
         },
         bquote = x => quote(typeof x, "[]")
@@ -71,7 +75,7 @@ export const map = curry((arr, f) => {
         if (arr.length > 0) {
             Promise
                 .resolve(f.call(arr, head(arr), 0))
-                .then(progress).catch(progress)
+                .then(progress).catch(reject)
         } else return Promise.resolve(results)
     } else throw new TypeError(
         "async.map() expected array and function, " +
@@ -163,13 +167,17 @@ export const reduce = curry((arr, f, initAcc) => {
     let
         i = 0,
         resolve = null,
-        promise = new Promise(res => { resolve = res }),
+        reject = null,
+        promise = new Promise((res, rej) => {
+            resolve = res
+            reject = rej
+        }),
         progress = r => {
             i = inc(i)
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, r, arr[i], i))
-                    .then(progress).catch(progress)
+                    .then(progress).catch(reject)
             } else resolve(r)
         },
         bquote = x => quote(typeof x, "[]")
@@ -178,7 +186,7 @@ export const reduce = curry((arr, f, initAcc) => {
         if (arr.length > 0) {
             Promise
                 .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
-                .then(progress).catch(progress)
+                .then(progress).catch(reject)
         } else return Promise.resolve(initAcc)
     } else throw new TypeError(
         "async.reduce() expected array and function, " +
