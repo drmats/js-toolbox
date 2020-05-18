@@ -28,7 +28,7 @@ to bundle it with your project).
 * [use the package](#use-the-package)
     - [install](#install)
     - [play in node.js](#play-in-nodejs)
-    - [example use in your source code](#example-use-in-your-source-code)
+    - [example use in ES6 modules code](#example-use-in-es6-modules-code)
 * [use the source](#use-the-source)
 * [namespaces](#namespaces)
     - [array](#array-utilities)
