@@ -17,7 +17,7 @@
  * can be simulated by storing value of any type under "dev" key
  * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
  */
-export declare function devEnv (strict: boolean): boolean;
+export declare function devEnv (strict?: boolean): boolean;
 
 
 
