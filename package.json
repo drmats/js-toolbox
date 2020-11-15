@@ -10,28 +10,28 @@
         }
     ],
     "dependencies": {
-        "@babel/runtime": "^7.9.6"
+        "@babel/runtime": "^7.12.5"
     },
     "description": "Useful JS utilities.",
     "devDependencies": {
-        "@babel/cli": "^7.8.4",
-        "@babel/core": "^7.9.6",
-        "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
-        "@babel/plugin-transform-arrow-functions": "^7.8.3",
-        "@babel/plugin-transform-runtime": "^7.9.6",
-        "@babel/preset-env": "^7.9.6",
-        "@typescript-eslint/eslint-plugin": "^2.33.0",
-        "@typescript-eslint/parser": "^2.33.0",
+        "@babel/cli": "^7.12.1",
+        "@babel/core": "^7.12.3",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
+        "@babel/plugin-transform-arrow-functions": "^7.12.1",
+        "@babel/plugin-transform-runtime": "^7.12.1",
+        "@babel/preset-env": "^7.12.1",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
         "babel-eslint": "^10.1.0",
         "babel-plugin-inline-json-import": "^0.3.2",
         "cross-env": "^7.0.2",
         "eslint": "^6.8.0",
-        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-import": "^2.22.1",
         "gh-pages": "^2.2.0",
-        "jsdoc": "^3.6.4",
+        "jsdoc": "^3.6.6",
         "minami": "^1.2.3",
         "rimraf": "^3.0.2",
-        "typescript": "^3.9.2"
+        "typescript": "^3.9.7"
     },
     "engines": {
         "node": ">=10.0.0",
