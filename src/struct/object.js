@@ -141,7 +141,7 @@ export const objectReduce = curry((o, f, init) => {
  * then `swap(o) == { b: "a", d: "c" }`.
  *
  * @function swap
- * @param {Object.<String, String>} o
- * @returns {Object.<String, String>}
+ * @param {Record<String, String>} o
+ * @returns {Record<String, String>}
  */
 export const swap = o => objectMap(o, ([k, v]) => [v, k])

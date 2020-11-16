@@ -9,6 +9,14 @@
 
 
 
+import {
+    JSAnyArrObj,
+    JSAnyObj,
+} from "../type"
+
+
+
+
 /**
  * Apply `path` to an object `o`. Return element reachable through
  * that `path` or `def` value.
@@ -19,11 +27,12 @@
  * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
  * ```
  */
-export declare function access (
-    o?: object,
+export declare function access<T> (
+    o?: JSAnyArrObj,
     path?: (string | number)[],
-    def?: unknown
-): unknown;
+    def?: T
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): T | any;
 
 
 
@@ -32,7 +41,7 @@ export declare function access (
  * Do the deep-copy of any JavaScript object
  * that doesn't contain functions.
  */
-export declare function clone (o: object): object;
+export declare function clone (o: JSAnyArrObj): JSAnyArrObj;
 
 
 
@@ -46,7 +55,7 @@ export declare function clone (o: object): object;
  *
  * Imitates Python's `dict()`.
  */
-export declare function dict (entries: [string, unknown][]): object;
+export declare function dict (entries: [string, unknown][]): JSAnyObj;
 
 
 
@@ -62,9 +71,9 @@ export declare function dict (entries: [string, unknown][]): object;
  * `f` should return `[key, value]` array.
  */
 export declare function objectMap (
-    o: object,
+    o: JSAnyObj,
     f: (kv: [string, unknown]) => [string, unknown]
-): object;
+): JSAnyObj;
 
 
 
@@ -82,7 +91,7 @@ export declare function objectMap (
  * `f` should return value of the same type as `init`.
  */
 export declare function objectReduce<T> (
-    o: object,
+    o: JSAnyObj,
     f: (acc: T, kv: [string, unknown]) => T,
     init: T
 ): T;
@@ -94,4 +103,5 @@ export declare function objectReduce<T> (
  * When `o == { a: "b", c: "d" }`
  * then `swap(o) == { b: "a", d: "c" }`.
  */
-export declare function swap (o: object): object;
+export declare function swap (o: Record<string, string>):
+    Record<string, string>;

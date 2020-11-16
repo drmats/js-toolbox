@@ -9,13 +9,22 @@
 
 
 
+import {
+    JSAnyArrObj,
+    JSAnyObj,
+} from "../type"
+
+
+
+
 /**
  * Construct function appropriate to use as the `children` argument
  * in the `struct.dfs` function. Use it with `struct.dfs` to
  * enumerate on any javascript object.
  */
 export declare function hashAccessor ():
-    (n: object) => [object, (string | number)[]][];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (n: JSAnyArrObj) => [any, (string | number)[]][];
 
 
 
@@ -40,9 +49,9 @@ export declare function hashAccessor ():
  * `keyAccessor` called without arguments (`keyAccessor()`) returns
  * `hashAccessor`.
  */
-export declare function keyAccessor (
-    ...path: (string | number)[]
-): (n: object) => [object, (string | number)[]][];
+export declare function keyAccessor (...path: (string | number)[]):
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (n: JSAnyArrObj) => [any, (string | number)[]][];
 
 
 
@@ -53,14 +62,13 @@ export declare function keyAccessor (
  * intermediate results.
  */
 export declare function dfs<T> (
-    tree?: object,
+    tree?: JSAnyObj,
     f?: (
         accs: T[],
-        node: object,
+        node: JSAnyObj,
         path: (string | number)[],
         position: number
     ) => T,
-    children?: (
-        n: object
-    ) => [object, (string | number)[]][]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    children?: (n: JSAnyArrObj) => [any, (string | number)[]][]
 ): T;
