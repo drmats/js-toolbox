@@ -24,7 +24,9 @@
  * cancel("I've changed my mind")
  * ```
  */
-export declare function cancellable (p: Promise<unknown>): object;
+export declare function cancellable (
+    p: Promise<unknown>
+): Record<string, unknown>;
 
 
 
@@ -47,7 +49,12 @@ export declare function cancellable (p: Promise<unknown>): object;
  * mutex.resolve(42)  //  mutex.reject("ERROR")
  * ```
  */
-export declare function createMutex (): object;
+export declare function createMutex (): {
+    lock: <T>() => Promise<T>,
+    resolve: <T>(value?: T | PromiseLike<T>) => void,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    reject: (reason?: any) => void,
+};
 
 
 

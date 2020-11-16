@@ -28,7 +28,7 @@
  */
 export declare function countBy (
     arr: unknown[], iteratee?: (el: unknown) => unknown
-): object;
+): Record<string, unknown>;
 
 
 
