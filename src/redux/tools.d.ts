@@ -9,7 +9,16 @@
 
 
 
+// ...
+export type ReduxAction = <T>(s: T, a:? string) => T;
+
+
+
+
 /**
  * Create clean and readable reducers for redux.
  */
-export declare function createReducer (initState?: object): Function;
+export declare function createReducer<T> (initState?: T): (
+    actions: Record<string, ReduxAction<T>>,
+    defAct?: ReduxAction<T>
+) => ReduxAction<T>;
