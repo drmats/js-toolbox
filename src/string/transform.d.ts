@@ -55,8 +55,8 @@ export declare function ellipsis (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padLeft (
-    input: string,
-    len: number,
+    input?: string,
+    len?: number,
     ch?: string
 ): string;
 
@@ -70,8 +70,8 @@ export declare function padLeft (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padRight (
-    input: string,
-    len: number,
+    input?: string,
+    len?: number,
     ch?: string
 ): string;
 
