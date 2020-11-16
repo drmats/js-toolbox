@@ -24,7 +24,7 @@ import {
  *
  * @function run
  * @param {Function} main
- * @returns {undefined}
+ * @returns {void}
  */
 export const run = main => {
     typeof window !== "undefined"  &&

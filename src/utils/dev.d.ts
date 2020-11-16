@@ -25,7 +25,14 @@ export declare function devEnv (strict?: boolean): boolean;
 /**
  * Get useful library configuration variables.
  */
-export declare function getLibConfig (): object;
+export declare function getLibConfig (): {
+    dependencies: Record<string, string>,
+    description: string,
+    homepage: string,
+    license: string,
+    name: string,
+    version: string,
+};
 
 
 
@@ -33,7 +40,7 @@ export declare function getLibConfig (): object;
 /**
  * Return global `process` variable if it exists.
  */
-export declare function getProcess (): object;
+export declare function getProcess (): Record<string, unknown>;
 
 
 
@@ -50,4 +57,4 @@ export declare function isBrowser (): boolean;
  * Assign argument to the global object.
  * Async-console-dev-helper.
  */
-export declare function to_ (name?: string): Function;
+export declare function to_ <T>(name?: string): (val: T) => T;
