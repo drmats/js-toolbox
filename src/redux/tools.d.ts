@@ -10,7 +10,7 @@
 
 
 // ...
-export type ReduxAction = <T>(s: T, a:? string) => T;
+export type ReduxAction<T> = (s: T, a?: string) => T;
 
 
 
