@@ -14,7 +14,7 @@
  */
 export declare function choose<T> (
     key: string | number,
-    actions?: object,
+    actions?: Record<string, (...args: unknown[]) => T>,
     defaultAction?: (...args: unknown[]) => T,
     args?: unknown[]
 ): T;

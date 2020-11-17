@@ -9,6 +9,15 @@
 
 
 
+// ...
+export type CurryFun<T> = (...args: unknown[]) => CurryFun<T> | T;
+
+// ...
+export type ThunkFun<T> = (arg: unknown) => ThunkFun<T> | (() => T);
+
+
+
+
 /**
  * Return curried form of a given function `f`.
  *
@@ -27,7 +36,7 @@
  * then this parameter is excluded. Also only parameters before
  * the first one with a default value are included.
  */
-export declare function curry (f: Function): Function;
+export declare function curry<T> (f: (...args: unknown[]) => T): CurryFun<T>;
 
 
 
@@ -44,7 +53,7 @@ export declare function curry (f: Function): Function;
 export declare function curryN<T> (
     n: number,
     f: (...args: unknown[]) => T
-): (...args: unknown[]) => Function | T;
+): CurryFun<T>;
 
 
 
@@ -63,7 +72,7 @@ export declare function curryN<T> (
  */
 export declare function curryThunk<T> (
     f: (...args: unknown[]) => T
-): (...args: unknown[]) => Function | T;
+): ThunkFun<T>;
 
 
 
