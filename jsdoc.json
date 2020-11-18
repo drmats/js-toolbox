@@ -1,7 +1,33 @@
 {
-    "plugins": ["plugins/markdown"],
+    "source": {
+        "includePattern": ".+\\.(j|t)s(doc)?$",
+        "excludePattern": ".+\\.d\\.ts$"
+    },
+    "plugins": [
+        "plugins/markdown",
+        "node_modules/jsdoc-babel"
+    ],
+    "babel": {
+        "extensions": ["js", "ts"],
+        "ignore": ["**/*.d.ts"],
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "node": true
+                    }
+                }
+            ],
+            "@babel/preset-typescript"
+        ],
+        "plugins": ["@babel/proposal-class-properties"]
+    },
     "opts": {
         "encoding": "utf8",
         "template": "node_modules/minami"
+    },
+    "templates": {
+        "cleverLinks": true
     }
 }

@@ -5,8 +5,6 @@
 
 // ...
 var conf = {
-    comments: false,
-    shouldPrintComment: () => false,
     plugins: [
         "@babel/plugin-proposal-export-namespace-from",
         "@babel/plugin-transform-runtime",
@@ -25,12 +23,21 @@ module.exports = function (api) {
 
     return {
         env: {
+
+            // linting and jsdoc generation
             development: {
                 ...conf,
-                presets: ["@babel/preset-env"],
+                presets: [
+                    "@babel/preset-env",
+                    "@babel/preset-typescript",
+                ],
             },
+
+            // node-compatible modules generation
             commonjs: {
                 ...conf,
+                comments: false,
+                shouldPrintComment: () => false,
                 presets: [
                     [
                         "@babel/preset-env",
@@ -38,14 +45,21 @@ module.exports = function (api) {
                             modules: "commonjs",
                             shippedProposals: true,
                             targets: {
-                                node: "10.0.0",
+                                node: true,
                             },
                         },
                     ],
+                    [
+                        "@babel/preset-typescript",
+                    ],
                 ],
             },
+
+            // es-modules generation
             es: {
                 ...conf,
+                comments: false,
+                shouldPrintComment: () => false,
                 presets: [
                     [
                         "@babel/preset-env",
@@ -57,8 +71,12 @@ module.exports = function (api) {
                             },
                         },
                     ],
+                    [
+                        "@babel/preset-typescript",
+                    ],
                 ],
             },
+
         },
     }
 }
