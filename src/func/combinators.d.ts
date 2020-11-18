@@ -9,10 +9,28 @@
 
 
 
+// Idea for the bright, unspecified future (on how to type `flow`).
+
+// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// export type FunChain<In, Out, Intermediate = any> = []
+//     | [(arg: In) => Out]
+//     | [(arg: In) => Intermediate, ...FunChain<Intermediate, Out>];
+
+// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// export type FunMultiChain<In extends any[], Out, Intermediate = any> = []
+//     | [(...arg: In) => Out]
+//     | [(...arg: In) => Intermediate, ...FunChain<Intermediate, Out>];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyFun = (...arg: any[]) => any;
+
+
+
+
 /**
  * Basic function application.
  */
-export declare function app<T, S> (f: ((a: T) => S)): (a: T) => S;
+export declare function app<T, S> (f: (a: T) => S): (a: T) => S;
 
 
 
@@ -28,9 +46,8 @@ export declare function app<T, S> (f: ((a: T) => S)): (a: T) => S;
  * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  */
-export declare function compose (
-    ...fs: Function[]
-): (...args: unknown[]) => Function;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare function compose (...fs: AnyFun[]): (...args: any[]) => any;
 
 
 
@@ -48,9 +65,8 @@ export declare function compose (
  *
  * Inspired by {@link https://github.com/tfausak/flow}.
  */
-export declare function flow (
-    ...fs: Function[]
-): (...args: unknown[]) => Function;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare function flow (...fs: AnyFun[]): (...args: any[]) => any;
 
 
 
@@ -68,9 +84,8 @@ export declare function flow (
  * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  */
-export declare function pipe (
-    ...args: unknown[]
-): (...fs: Function[]) => Function;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare function pipe (...args: any[]): (...fs: AnyFun[]) => any;
 
 
 
@@ -79,4 +94,8 @@ export declare function pipe (
  * Y-combinator (returns fixed point of a higher-order function
  * passed as `f`).
  */
-export declare function Y (f: Function): Function;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type F<In extends any[], Out> = (f: F<In, Out>) => (...args: In) => Out;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare function Y<In extends any[], Out> (f: F<In, Out>):
+    (...args: In) => Out;
