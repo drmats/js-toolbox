@@ -36,8 +36,8 @@ export {
     takeLast,
     zipWith,
     zip,
-} from "./array"
-export * as array from "./array"
+} from "./array";
+export * as array from "./array";
 
 
 
@@ -53,8 +53,8 @@ export {
     reduce as asyncReduce,
     repeat as asyncRepeat,
     timeout,
-} from "./async"
-export * as async from "./async"
+} from "./async";
+export * as async from "./async";
 
 
 
@@ -74,8 +74,8 @@ export {
     stringToB64,
     stringToBytes,
     timestamp as timestampBytes,
-} from "./codec"
-export * as codec from "./codec"
+} from "./codec";
+export * as codec from "./codec";
 
 
 
@@ -97,8 +97,8 @@ export {
     pipe,
     rearg,
     Y,
-} from "./func"
-export * as func from "./func"
+} from "./func";
+export * as func from "./func";
 
 
 
@@ -122,16 +122,16 @@ export {
     roundIfClose,
     sub,
     sum,
-} from "./math"
-export * as math from "./math"
+} from "./math";
+export * as math from "./math";
 
 
 
 
 export {
     createReducer,
-} from "./redux"
-export * as redux from "./redux"
+} from "./redux";
+export * as redux from "./redux";
 
 
 
@@ -160,8 +160,8 @@ export {
     snakeToCamel,
     snakeToPascal,
     wrap,
-} from "./string"
-export * as string from "./string"
+} from "./string";
+export * as string from "./string";
 
 
 
@@ -176,8 +176,8 @@ export {
     objectMap,
     objectReduce,
     swap,
-} from "./struct"
-export * as struct from "./struct"
+} from "./struct";
+export * as struct from "./struct";
 
 
 
@@ -192,8 +192,8 @@ export {
     minInt,
     nullToUndefined,
     toBool,
-} from "./type"
-export * as type from "./type"
+} from "./type";
+export * as type from "./type";
 
 
 
@@ -209,5 +209,5 @@ export {
     timeUnit,
     to_,
     url,
-} from "./utils"
-export * as utils from "./utils"
+} from "./utils";
+export * as utils from "./utils";

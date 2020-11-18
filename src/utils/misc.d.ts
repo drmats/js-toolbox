@@ -41,4 +41,4 @@ export interface TimeUnit {
     quarter: number;
     year: number;
 }
-export declare const timeUnit: TimeUnit
+export declare const timeUnit: TimeUnit;

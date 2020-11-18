@@ -12,7 +12,7 @@
 /**
  * Maximum representable safe integer in JavaScript.
  */
-export declare const maxInt: number
+export declare const maxInt: number;
 
 
 
@@ -20,4 +20,4 @@ export declare const maxInt: number
 /**
  * Minimum representable safe integer in JavaScript.
  */
-export declare const minInt: number
+export declare const minInt: number;
