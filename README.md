@@ -36,6 +36,7 @@ to bundle it with your project).
     - [codec](#typedarray-codersdecoders)
     - [func](#functional-programming-tools)
     - [math](#basic-math)
+    - [memory](#shared-memory)
     - [redux](#some-goodies-for-redux)
     - [string](#string-utilities)
     - [struct](#data-structure-manipulation-tools)
@@ -49,6 +50,7 @@ to bundle it with your project).
     - [byte array manipulation](#byte-array-manipulation)
     - [functional programming](#functional-programming)
     - [simple math](#simple-math)
+    - [shared memory pattern](#shared-memory-pattern)
     - [operating on strings](#operating-on-strings)
     - [data structure manipulation](#data-structure-manipulation)
     - [type primitives](#type-primitives)
@@ -347,6 +349,18 @@ math
 >   roundIfClose: [Function: roundIfClose],
 >   sub: [Function],
 >   sum: [Function: sum] }
+> ```
+
+
+### shared **memory**
+
+```javascript
+memory
+```
+
+> ```javascript
+> { useMemory: [Function: useMemory],
+>   share: [Function: share] }
 > ```
 
 
@@ -1008,6 +1022,78 @@ utils
     > ```javascript
     > 45
     > ```
+
+<br />
+
+
+### shared memory pattern
+
+Frontend and backend applications often use some globally-configured objects,
+like axios instance with custom headers and base url, authenticated cloud
+services provider, express.js instance, database connection object,
+configured redux store, etc...
+
+One might stick these to `window` (or `global`) object, but it's considered
+anti-pattern.
+
+Another solution is to pass these objects as parameters to functions that
+needs to use them, but it's cumbersome and scales poorly.
+
+Using `memory` module solves these problems and reminds the usage of react's
+hooks.
+
+Example:
+
+* `main.js` file of an express.js-based microservice application:
+
+    ```javascript
+    import express, { json } from "express"
+    import { share } from "@xcmats/js-toolbox/memory"
+    import configureRoutes from "./routes"
+
+    // main express application
+    const app = express()
+
+    // share it with any other module interested
+    share({ app })
+
+    // some configuration
+    app.enable("trust proxy")
+    app.use(json())
+
+    // complex configuration - e.g. enable CORS,
+    // authentication, redirects, etc.
+
+    // configureHeaders()
+    // configureAuth()
+    // configureRedirects()
+
+    // ...
+
+    // routes configuration
+    configureRoutes()
+
+    app.listen(/* ... */)
+    ```
+
+* example `routes.js` file:
+
+    ```javascript
+    import { useMemory } from "@xcmats/js-toolbox/memory"
+
+    export default configureRoutes () {
+
+        // get access to main express application
+        const { app } = useMemory()
+
+        // add "hello world" route
+        app.get("/hello/", (req, res, next) => {
+            res.status(200).send({ hello: "world" })
+            return next()
+        })
+
+    }
+    ```
 
 <br />
 

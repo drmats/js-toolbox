@@ -129,6 +129,15 @@ export * as math from "./math";
 
 
 export {
+    useMemory,
+    share,
+} from "./memory";
+export * as memory from "./memory";
+
+
+
+
+export {
     createReducer,
 } from "./redux";
 export * as redux from "./redux";
