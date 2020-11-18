@@ -9,7 +9,6 @@ var conf = {
     shouldPrintComment: () => false,
     plugins: [
         "@babel/plugin-proposal-export-namespace-from",
-        "@babel/plugin-transform-arrow-functions",
         "@babel/plugin-transform-runtime",
         "babel-plugin-inline-json-import",
     ],
@@ -26,6 +25,10 @@ module.exports = function (api) {
 
     return {
         env: {
+            development: {
+                ...conf,
+                presets: ["@babel/preset-env"],
+            },
             commonjs: {
                 ...conf,
                 presets: [
