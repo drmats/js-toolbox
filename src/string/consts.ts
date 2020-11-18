@@ -15,8 +15,8 @@
  * @function asciiLetters
  * @returns {String}
  */
-export const asciiLetters = () =>
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+export const asciiLetters = (): string =>
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 
@@ -27,7 +27,7 @@ export const asciiLetters = () =>
  * @function asciiLowercase
  * @returns {String}
  */
-export const asciiLowercase = () => "abcdefghijklmnopqrstuvwxyz"
+export const asciiLowercase = (): string => "abcdefghijklmnopqrstuvwxyz";
 
 
 
@@ -38,7 +38,7 @@ export const asciiLowercase = () => "abcdefghijklmnopqrstuvwxyz"
  * @function asciiUppercase
  * @returns {String}
  */
-export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+export const asciiUppercase = (): string => "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 
@@ -49,7 +49,7 @@ export const asciiUppercase = () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
  * @function digits
  * @returns {String}
  */
-export const digits = () => "0123456789"
+export const digits = (): string => "0123456789";
 
 
 
@@ -60,7 +60,7 @@ export const digits = () => "0123456789"
  * @function empty
  * @returns {String}
  */
-export const empty = () => ""
+export const empty = (): string => "";
 
 
 
@@ -71,7 +71,7 @@ export const empty = () => ""
  * @function space
  * @returns {String}
  */
-export const space = () => " "
+export const space = (): string => " ";
 
 
 
@@ -82,7 +82,7 @@ export const space = () => " "
  * @function nl
  * @returns {String}
  */
-export const nl = () => "\n"
+export const nl = (): string => "\n";
 
 
 
@@ -93,4 +93,4 @@ export const nl = () => "\n"
  * @function tab
  * @returns {String}
  */
-export const tab = () => "\t"
+export const tab = (): string => "\t";
