@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.js - Documentation</title>
+    <title>string/consts.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.js</h1>
+    <h1 class="page-title">string/consts.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Type tools.
+ * String tools.
  *
- * @module type
+ * @module string
  * @license Apache-2.0
  * @author drmats
  */
@@ -51,68 +51,90 @@
 
 
 /**
- * Determine if a given value is an `Array`.
+ * Return full set of ASCII letters.
  *
- * @function isArray
- * @param {any} a
- * @returns {Boolean}
+ * @function asciiLetters
+ * @returns {String}
  */
-export const isArray = Array.isArray
+export const asciiLetters = (): string =>
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 
 
 /**
- * Determine if a given value is a `Function`.
+ * Return lowercase ASCII letters.
  *
- * @function isFunction
- * @param {any} f
- * @returns {Boolean}
+ * @function asciiLowercase
+ * @returns {String}
  */
-export const isFunction = f =>
-    f != null  &amp;&amp;  "function" === typeof f
+export const asciiLowercase = (): string => "abcdefghijklmnopqrstuvwxyz";
 
 
 
 
 /**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
+ * Return uppercase ASCII letters.
  *
- * @function isNumber
- * @param {any} n
- * @returns {Boolean}
+ * @function asciiUppercase
+ * @returns {String}
  */
-export const isNumber = n =>
-    n != null  &amp;&amp;  "number" === typeof n  &amp;&amp;
-    !Number.isNaN(n)  &amp;&amp;  Number.isFinite(n)
+export const asciiUppercase = (): string => "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 
 
 /**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
+ * Return all digits.
  *
- * @function isObject
- * @param {any} o
- * @returns {Boolean}
+ * @function digits
+ * @returns {String}
  */
-export const isObject = o =>
-    o != null  &amp;&amp;  "object" === typeof o  &amp;&amp;  !isArray(o)
+export const digits = (): string => "0123456789";
 
 
 
 
 /**
- * Determine if a given value is a `String`.
+ * Construct empty string.
  *
- * @function isString
- * @param {any} s
- * @returns {Boolean}
+ * @function empty
+ * @returns {String}
  */
-export const isString = s =>
-    s != null  &amp;&amp;  "string" === typeof s
+export const empty = (): string => "";
+
+
+
+
+/**
+ * Construct space.
+ *
+ * @function space
+ * @returns {String}
+ */
+export const space = (): string => " ";
+
+
+
+
+/**
+ * Construct newline.
+ *
+ * @function nl
+ * @returns {String}
+ */
+export const nl = (): string => "\n";
+
+
+
+
+/**
+ * Construct tab.
+ *
+ * @function tab
+ * @returns {String}
+ */
+export const tab = (): string => "\t";
 </code></pre>
         </article>
     </section>

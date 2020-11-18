@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.js - Documentation</title>
+    <title>memory/index.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.js</h1>
+    <h1 class="page-title">memory/index.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Type tools.
+ * Shared memory.
  *
- * @module type
+ * @module memory
  * @license Apache-2.0
  * @author drmats
  */
@@ -50,69 +50,67 @@
 
 
 
-/**
- * Determine if a given value is an `Array`.
- *
- * @function isArray
- * @param {any} a
- * @returns {Boolean}
- */
-export const isArray = Array.isArray
+import { intersection } from "../array/set";
+import {
+    identity,
+    lazyish,
+} from "../func/tools";
+import { quote } from "../string/transform";
+import { space } from "../string/consts";
 
 
 
 
 /**
- * Determine if a given value is a `Function`.
+ * Application logic shared memory structure.
  *
- * @function isFunction
- * @param {any} f
- * @returns {Boolean}
+ * @function memory
+ * @returns memory object
  */
-export const isFunction = f =>
-    f != null  &amp;&amp;  "function" === typeof f
+const memory = lazyish({});
 
 
 
 
 /**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
+ * Invoke function argument with a reference to shared memory.
  *
- * @function isNumber
- * @param {any} n
- * @returns {Boolean}
+ * @function useMemory
+ * @param f function to invoke on a shared memory
+ * @returns {*}
  */
-export const isNumber = n =>
-    n != null  &amp;&amp;  "number" === typeof n  &amp;&amp;
-    !Number.isNaN(n)  &amp;&amp;  Number.isFinite(n)
+export function useMemory&lt;T> (f: (x: T) => T = identity): T {
+    return f(memory() as T);
+}
 
 
 
 
 /**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
+ * Extend shared memory with keys from provided extension object.
+ * It throws when shared memory already have those keys.
  *
- * @function isObject
- * @param {any} o
- * @returns {Boolean}
+ * @function share
+ * @param ext extension object
+ * @returns extended memory object
  */
-export const isObject = o =>
-    o != null  &amp;&amp;  "object" === typeof o  &amp;&amp;  !isArray(o)
-
-
-
-
-/**
- * Determine if a given value is a `String`.
- *
- * @function isString
- * @param {any} s
- * @returns {Boolean}
- */
-export const isString = s =>
-    s != null  &amp;&amp;  "string" === typeof s
+export const share = (
+    ext: Record&lt;string, unknown>
+): Record&lt;string, unknown> =>
+    useMemory(ctx => {
+        const overlap = intersection(
+            Object.keys(ctx), Object.keys(ext)
+        ) as string[];
+        if (overlap.length === 0) {
+            Object.assign(ctx, ext);
+        } else {
+            throw new Error([
+                "conflicting keys:",
+                overlap.map(x => quote(x)).join(", "),
+            ].join(space()));
+        }
+        return ctx;
+    });
 </code></pre>
         </article>
     </section>
