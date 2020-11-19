@@ -13,10 +13,10 @@ import {
     asciiLetters,
     digits,
     empty,
-} from "./consts"
-import { draw } from "../array/random"
-import { range } from "../array/list"
-import { Y } from "../func/combinators"
+} from "./consts";
+import { draw } from "../array/random";
+import { range } from "../array/list";
+import { Y } from "../func/combinators";
 
 
 
@@ -38,8 +38,8 @@ import { Y } from "../func/combinators"
  * ```
  *
  * @function big
- * @param {Number} n
- * @param {String} [c="x"]
+ * @param n
+ * @param [c="x"]
  * @returns {String}
  */
 export const big = Y(r =>
@@ -47,7 +47,7 @@ export const big = Y(r =>
         n > 0 ?
             r(n - 1, c + c) :
             c
-)
+) as (n: number, c?: string) => string;
 
 
 
@@ -56,9 +56,16 @@ export const big = Y(r =>
  * Construct random string of desired length.
  *
  * @function random
- * @param {Number} [size=0]
- * @param {String} [letters=asciiLetters()+digits()]
+ * @param [size=0]
+ * @param [letters=asciiLetters()+digits()]
  * @returns {String}
  */
-export const random = (size = 0, letters = asciiLetters() + digits()) =>
-    range(size).map(() => draw(letters.split(empty()))).join(empty())
+export const random = (
+    size = 0,
+    letters = asciiLetters() + digits()
+): string =>
+    range(size)
+        .map(() => draw(
+            letters.split(empty()))
+        )
+        .join(empty());
