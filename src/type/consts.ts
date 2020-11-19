@@ -9,6 +9,18 @@
 
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type JSAnyObj = Record<string, any>
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type JSAnyArr = any[]
+
+// ...
+export type JSAnyArrObj = JSAnyArr | JSAnyObj
+
+
+
+
 /**
  * Maximum representable safe integer in JavaScript.
  *
