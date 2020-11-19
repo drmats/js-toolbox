@@ -16,7 +16,7 @@
  * @param {any} a
  * @returns {Boolean}
  */
-export const isArray = Array.isArray
+export const isArray = Array.isArray;
 
 
 
@@ -28,8 +28,8 @@ export const isArray = Array.isArray
  * @param {any} f
  * @returns {Boolean}
  */
-export const isFunction = f =>
-    f != null  &&  "function" === typeof f
+export const isFunction = (f: unknown): boolean =>
+    f != null  &&  "function" === typeof f;
 
 
 
@@ -42,9 +42,9 @@ export const isFunction = f =>
  * @param {any} n
  * @returns {Boolean}
  */
-export const isNumber = n =>
+export const isNumber = (n: unknown): boolean =>
     n != null  &&  "number" === typeof n  &&
-    !Number.isNaN(n)  &&  Number.isFinite(n)
+    !Number.isNaN(n)  &&  Number.isFinite(n);
 
 
 
@@ -57,8 +57,8 @@ export const isNumber = n =>
  * @param {any} o
  * @returns {Boolean}
  */
-export const isObject = o =>
-    o != null  &&  "object" === typeof o  &&  !isArray(o)
+export const isObject = (o: unknown): boolean =>
+    o != null  &&  "object" === typeof o  &&  !isArray(o);
 
 
 
@@ -70,5 +70,5 @@ export const isObject = o =>
  * @param {any} s
  * @returns {Boolean}
  */
-export const isString = s =>
-    s != null  &&  "string" === typeof s
+export const isString = (s: unknown): boolean =>
+    s != null  &&  "string" === typeof s;
