@@ -54,8 +54,6 @@ require("./module_names")
     });
 
 
-// copy index type file
-copyFileSync(`${srcDir}/index.d.ts`, `${distDir}/index.d.ts`);
 
 
 // prepare dist package.json and store it
