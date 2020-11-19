@@ -10,22 +10,22 @@
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type JSAnyObj = Record<string, any>
+export type JSAnyObj = Record<string, any>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type JSAnyArr = any[]
+export type JSAnyArr = any[];
 
 // ...
-export type JSAnyArrObj = JSAnyArr | JSAnyObj
+export type JSAnyArrObj = JSAnyArr | JSAnyObj;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type JSAnyFun<T = any> = (...args: any[]) => T
+export type JSAnyFun<T = any> = (...args: any[]) => T;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T
+export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T)
+export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
 
 
 
