@@ -9,11 +9,12 @@
 
 
 
-// ...
-export type CurryFun<T> = (...args: unknown[]) => CurryFun<T> | T;
-
-// ...
-export type ThunkFun<T> = (arg: unknown) => ThunkFun<T> | (() => T);
+import {
+    CurryFun,
+    JSAnyArr,
+    JSAnyFun,
+    ThunkFun,
+} from "../type";
 
 
 
@@ -36,7 +37,7 @@ export type ThunkFun<T> = (arg: unknown) => ThunkFun<T> | (() => T);
  * then this parameter is excluded. Also only parameters before
  * the first one with a default value are included.
  */
-export declare function curry<T> (f: (...args: unknown[]) => T): CurryFun<T>;
+export declare function curry<T> (f: JSAnyFun<T>): CurryFun<T>;
 
 
 
@@ -50,10 +51,7 @@ export declare function curry<T> (f: (...args: unknown[]) => T): CurryFun<T>;
  * f(a, b, c, d, e)  <=>  curryN(5, f) (a) (b) (c) (d) (e)
  * ```
  */
-export declare function curryN<T> (
-    n: number,
-    f: (...args: unknown[]) => T
-): CurryFun<T>;
+export declare function curryN<T> (n: number, f: JSAnyFun<T>): CurryFun<T>;
 
 
 
@@ -70,9 +68,7 @@ export declare function curryN<T> (
  * f(a, b, c, d)  <=>  curryThunk(f) (a) (b) (c) (d) ()
  * ```
  */
-export declare function curryThunk<T> (
-    f: (...args: unknown[]) => T
-): ThunkFun<T>;
+export declare function curryThunk<T> (f: JSAnyFun<T>): ThunkFun<T>;
 
 
 
@@ -93,5 +89,5 @@ export declare function curryThunk<T> (
  * ```
  */
 export declare function partial<T> (
-    f: (...args: unknown[]) => T
-): (...init: unknown[]) => (...rest: unknown[]) => T;
+    f: JSAnyFun<T>
+): (...init: JSAnyArr) => JSAnyFun<T>;

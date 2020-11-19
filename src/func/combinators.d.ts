@@ -9,6 +9,11 @@
 
 
 
+import { JSAnyFun } from "../type";
+
+
+
+
 // Idea for the bright, unspecified future (on how to type `flow`).
 
 // // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,9 +25,6 @@
 // export type FunMultiChain<In extends any[], Out, Intermediate = any> = []
 //     | [(...arg: In) => Out]
 //     | [(...arg: In) => Intermediate, ...FunChain<Intermediate, Out>];
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyFun = (...arg: any[]) => any;
 
 
 
@@ -47,7 +49,7 @@ export declare function app<T, S> (f: (a: T) => S): (a: T) => S;
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare function compose (...fs: AnyFun[]): (...args: any[]) => any;
+export declare function compose (...fs: JSAnyFun[]): JSAnyFun;
 
 
 
@@ -66,7 +68,7 @@ export declare function compose (...fs: AnyFun[]): (...args: any[]) => any;
  * Inspired by {@link https://github.com/tfausak/flow}.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare function flow (...fs: AnyFun[]): (...args: any[]) => any;
+export declare function flow (...fs: JSAnyFun[]): JSAnyFun;
 
 
 
@@ -85,7 +87,7 @@ export declare function flow (...fs: AnyFun[]): (...args: any[]) => any;
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare function pipe (...args: any[]): (...fs: AnyFun[]) => any;
+export declare function pipe (...args: any[]): (...fs: JSAnyFun[]) => any;
 
 
 
