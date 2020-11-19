@@ -10,7 +10,17 @@
 
 
 // ...
-export type ReduxAction<T> = (s: T, a?: string) => T;
+export interface ReduxActionObject {
+    type: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+}
+
+
+
+
+// ...
+export type ReduxAction<T> = (s: T, a?: ReduxActionObject) => T;
 
 
 
