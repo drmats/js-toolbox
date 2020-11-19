@@ -97,7 +97,8 @@ export declare function pipe (...args: any[]): (...fs: JSAnyFun[]) => any;
  * passed as `f`).
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type F<In extends any[], Out> = (f: F<In, Out>) => (...args: In) => Out;
+type R<In extends any[], Out> = (...args: In) => Out;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare function Y<In extends any[], Out> (f: F<In, Out>):
-    (...args: In) => Out;
+type F<In extends any[], Out> = (f: R<In, Out>) => (...args: In) => Out;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export declare function Y<In extends any[], Out> (f: F<In, Out>): R<In, Out>;
