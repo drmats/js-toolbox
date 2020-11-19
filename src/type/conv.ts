@@ -13,11 +13,11 @@
  * If `val` is `null` then return `undefined`, else return `val`.
  *
  * @function nullToUndefined
- * @param {any} val
- * @returns {any}
+ * @param {T} val
+ * @returns {undefined | T}
  */
-export const nullToUndefined = val =>
-    val === null  ?  undefined  :  val
+export const nullToUndefined = <T extends unknown>(val: T): undefined | T =>
+    val === null  ?  undefined  :  val;
 
 
 
@@ -28,7 +28,7 @@ export const nullToUndefined = val =>
  * and `true` for all **truthy** values.
  *
  * @function toBool
- * @param {any} x
+ * @param {unknown} x
  * @returns {Boolean}
  */
-export const toBool = x => !!x
+export const toBool = (x: unknown): boolean => !!x;
