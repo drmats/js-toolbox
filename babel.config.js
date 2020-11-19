@@ -6,7 +6,7 @@
 // ...
 var
 
-    corejsversion = require(
+    runtimeVersion = require(
         "./package.json"
     ).dependencies["@babel/runtime-corejs3"],
 
@@ -46,7 +46,7 @@ module.exports = function (api) {
                         {
                             absoluteRuntime: false,
                             corejs: 3,
-                            version: corejsversion,
+                            version: runtimeVersion,
                         },
                     ],
                 ],
@@ -57,8 +57,7 @@ module.exports = function (api) {
                         "@babel/preset-env",
                         {
                             modules: "commonjs",
-                            useBuiltIns: "usage",
-                            corejs: { version: 3, proposals: true },
+                            useBuiltIns: false,
                             targets: {
                                 node: "12.0.0",
                             },
@@ -78,8 +77,7 @@ module.exports = function (api) {
                         {
                             absoluteRuntime: false,
                             corejs: 3,
-                            version: corejsversion,
-                            useESModules: true,
+                            version: runtimeVersion,
                         },
                     ],
                 ],
