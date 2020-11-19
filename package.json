@@ -10,7 +10,7 @@
         }
     ],
     "dependencies": {
-        "@babel/runtime": "^7.12.5"
+        "@babel/runtime-corejs3": "^7.12.5"
     },
     "description": "Useful JS utilities.",
     "devDependencies": {
@@ -36,7 +36,7 @@
         "typescript": "^4.0.5"
     },
     "engines": {
-        "node": ">=10.0.0",
+        "node": ">=12.0.0",
         "npm": ">=6.0.0"
     },
     "files": [
@@ -82,12 +82,12 @@
         "jsdoc": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/**/* -d ./dist/doc/",
         "lint": "echo \"Linting and typechecking...\" && eslint ./src/ --ext .js,.ts && npm run type-check",
         "prepublishOnly": "npm run test && npm run build && npm run doc",
-        "prestart": "node ./scripts/prepare.js && npm run build:commonjs",
+        "prestart": "npm run build:prepare && npm run build:types && npm run build:commonjs",
         "publishAll": "npm run prepublishOnly && echo \"Publishing ...\" && cd ./dist/ && npm publish && cd .. && npm run deploy && echo \"Done.\"",
         "start": "node ./scripts/start.js",
         "test": "npm run lint && echo \"Warning: no tests specified (yet)\"",
         "type-check": "tsc --noEmit"
     },
     "typings": "dist/index.d.ts",
-    "version": "0.9.13"
+    "version": "0.9.14"
 }

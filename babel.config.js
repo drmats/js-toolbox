@@ -4,13 +4,18 @@
 
 
 // ...
-var conf = {
-    plugins: [
-        "@babel/plugin-proposal-export-namespace-from",
-        "@babel/plugin-transform-runtime",
-        "babel-plugin-inline-json-import",
-    ],
-}
+var
+
+    corejsversion = require(
+        "./package.json"
+    ).dependencies["@babel/runtime-corejs3"],
+
+    conf = {
+        plugins: [
+            "babel-plugin-inline-json-import",
+            "@babel/plugin-proposal-export-namespace-from",
+        ],
+    }
 
 
 
@@ -26,7 +31,7 @@ module.exports = function (api) {
 
             // linting and jsdoc generation
             development: {
-                ...conf,
+                plugins: [...conf.plugins, "@babel/plugin-transform-runtime"],
                 presets: [
                     "@babel/preset-env",
                     "@babel/preset-typescript",
@@ -35,7 +40,16 @@ module.exports = function (api) {
 
             // node-compatible modules generation
             commonjs: {
-                ...conf,
+                plugins: [
+                    ...conf.plugins, [
+                        "@babel/plugin-transform-runtime",
+                        {
+                            absoluteRuntime: false,
+                            corejs: 3,
+                            version: corejsversion,
+                        },
+                    ],
+                ],
                 comments: false,
                 shouldPrintComment: () => false,
                 presets: [
@@ -43,9 +57,10 @@ module.exports = function (api) {
                         "@babel/preset-env",
                         {
                             modules: "commonjs",
-                            shippedProposals: true,
+                            useBuiltIns: "usage",
+                            corejs: { version: 3, proposals: true },
                             targets: {
-                                node: true,
+                                node: "12.0.0",
                             },
                         },
                     ],
@@ -57,7 +72,17 @@ module.exports = function (api) {
 
             // es-modules generation
             es: {
-                ...conf,
+                plugins: [
+                    ...conf.plugins, [
+                        "@babel/plugin-transform-runtime",
+                        {
+                            absoluteRuntime: false,
+                            corejs: 3,
+                            version: corejsversion,
+                            useESModules: true,
+                        },
+                    ],
+                ],
                 comments: false,
                 shouldPrintComment: () => false,
                 presets: [
@@ -65,7 +90,7 @@ module.exports = function (api) {
                         "@babel/preset-env",
                         {
                             modules: false,
-                            shippedProposals: true,
+                            useBuiltIns: false,
                             targets: {
                                 esmodules: true,
                             },
