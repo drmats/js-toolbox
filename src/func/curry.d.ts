@@ -9,7 +9,7 @@
 
 
 
-import {
+import type {
     CurryFun,
     JSAnyArr,
     JSAnyFun,

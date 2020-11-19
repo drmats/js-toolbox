@@ -9,7 +9,7 @@
 
 
 
-import {
+import type {
     JSAnyArrObj,
     JSAnyObj,
 } from "../type";
