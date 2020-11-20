@@ -158,8 +158,9 @@ export * as memory from "./memory";
  * @see {@link module:redux}
  */
 export type {
-    ReduxAction,
-    ReduxActionObject,
+    ReduxAnyAction,
+    ReduxBoundReducer,
+    ReduxReducer,
 } from "./redux/tools";
 export {
     createReducer,
