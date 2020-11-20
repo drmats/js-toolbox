@@ -157,6 +157,10 @@ export * as memory from "./memory";
 /**
  * @see {@link module:redux}
  */
+export type {
+    ReduxAction,
+    ReduxActionObject,
+} from "./redux/tools";
 export {
     createReducer,
 } from "./redux";
@@ -220,6 +224,15 @@ export * as struct from "./struct";
 /**
  * @see {@link module:type}
  */
+export type {
+    CurryFun,
+    JSAnyArr,
+    JSAnyArrObj,
+    JSAnyFun,
+    JSAnyObj,
+    JSOneArgFun,
+    ThunkFun,
+} from "./type/consts";
 export {
     isArray,
     isFunction,
@@ -239,6 +252,9 @@ export * as type from "./type";
 /**
  * @see {@link module:utils}
  */
+export type {
+    TimeUnit,
+} from "./utils/misc";
 export {
     devEnv,
     getLibConfig,
