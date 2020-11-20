@@ -27,12 +27,12 @@ import type {
  * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
  * ```
  */
-export declare function access<T> (
-    o?: JSAnyArrObj,
-    path?: (string | number)[],
-    def?: T
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): T | any;
+export declare function access<T extends any> (
+    o: JSAnyArrObj = {},
+    path: (string | number)[] = [],
+    def?: T
+): T;
 
 
 

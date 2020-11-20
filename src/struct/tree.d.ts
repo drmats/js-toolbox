@@ -62,13 +62,13 @@ export declare function keyAccessor (...path: (string | number)[]):
  * intermediate results.
  */
 export declare function dfs<T> (
-    tree?: JSAnyObj,
-    f?: (
+    tree: JSAnyObj = {},
+    f: (
         accs: T[],
         node: JSAnyObj,
         path: (string | number)[],
         position: number
-    ) => T,
+    ) => T = (_accs, node, _path, _position) => node,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    children?: (n: JSAnyArrObj) => [any, (string | number)[]][]
+    children: (n: JSAnyArrObj) => [any, (string | number)[]][] = keyAccessor()
 ): T;
