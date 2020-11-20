@@ -9,6 +9,12 @@
 
 
 
+import { identity } from "../func/tools";
+import { timeUnit } from "../utils/misc";
+
+
+
+
 /**
  * Delay current async execution by `time` miliseconds.
  *
@@ -24,8 +30,8 @@
  * ```
  */
 export declare function delay (
-    time?: number,
-    passCancel?: (canceller: (reason: unknown) => void) => void
+    time: number = timeUnit.second,
+    passCancel: (canceller: (reason: unknown) => void) => void = identity
 ): Promise<number>;
 
 
@@ -47,8 +53,8 @@ export declare function delay (
  */
 export declare function interval<T> (
     f: (clear: (reason: unknown) => T) => T,
-    passClear: (clear: (reason: unknown) => T) => void,
-    time?: number
+    passClear: (clear: (reason: unknown) => T) => void = identity,
+    time: number = timeUnit.second
 ): Promise<T>;
 
 
@@ -70,6 +76,6 @@ export declare function interval<T> (
  */
 export declare function timeout<T> (
     f: () => T,
-    passCancel?: (cancel: () => T) => void,
-    time?: number
+    time: number = timeUnit.second,
+    passCancel: (cancel: () => T) => void = identity
 ): Promise<T>;
