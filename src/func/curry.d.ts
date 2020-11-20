@@ -14,7 +14,7 @@ import type {
     JSAnyArr,
     JSAnyFun,
     ThunkFun,
-} from "../type";
+} from "../type/consts";
 
 
 

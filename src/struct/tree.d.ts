@@ -12,7 +12,7 @@
 import type {
     JSAnyArrObj,
     JSAnyObj,
-} from "../type";
+} from "../type/consts";
 
 
 

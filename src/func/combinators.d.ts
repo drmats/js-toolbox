@@ -9,7 +9,7 @@
 
 
 
-import type { JSAnyFun } from "../type";
+import type { JSAnyFun } from "../type/consts";
 
 
 

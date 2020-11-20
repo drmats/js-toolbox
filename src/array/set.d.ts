@@ -9,7 +9,7 @@
 
 
 
-import type { JSOneArgFun } from "../type";
+import type { JSOneArgFun } from "../type/consts";
 import { identity } from "../func/tools";
 
 
