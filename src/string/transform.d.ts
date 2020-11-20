@@ -9,6 +9,14 @@
 
 
 
+import {
+    empty,
+    space,
+} from "./consts";
+
+
+
+
 /**
  * Convert `thisKindOfText` to `ThisKindOfText`.
  */
@@ -41,8 +49,8 @@ export declare function capitalize (str: string): string;
  */
 export declare function ellipsis (
     str: string,
-    placing?: number,
-    sep?: string
+    placing: number = 1,
+    sep: string = "…"
 ): string;
 
 
@@ -55,9 +63,9 @@ export declare function ellipsis (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padLeft (
-    input?: string,
-    len?: number,
-    ch?: string
+    input: string = empty(),
+    len: number = 0,
+    ch: string = space()
 ): string;
 
 
@@ -70,9 +78,9 @@ export declare function padLeft (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padRight (
-    input?: string,
-    len?: number,
-    ch?: string
+    input: string = empty(),
+    len: number = 0,
+    ch: string = space()
 ): string;
 
 
@@ -97,7 +105,10 @@ export declare function pascalToSnake (str: string): string;
 /**
  * Quote text.
  */
-export declare function quote (str?: string, q?: string): string;
+export declare function quote (
+    str: string = empty(),
+    q: string = "\"\""
+): string;
 
 
 
@@ -107,9 +118,9 @@ export declare function quote (str?: string, q?: string): string;
  */
 export declare function shorten (
     str: string,
-    len?: number,
-    placing?: number,
-    sep?: string
+    len: number = Infinity,
+    placing: number = 1,
+    sep: string = "…"
 ): string;
 
 
@@ -135,7 +146,7 @@ export declare function snakeToPascal (str: string): string;
  * Wrap passed string with `prefix` and `suffix`.
  */
 export declare function wrap (
-    str?: string,
-    prefix?: string,
-    suffix?: string
+    str: string = empty(),
+    prefix: string = empty(),
+    suffix: string = empty()
 ): string;
