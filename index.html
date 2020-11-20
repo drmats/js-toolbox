@@ -49,7 +49,7 @@
 
     <section class="readme">
         <article><h1>js-toolbox</h1>
-<p>Useful JavaScript utilities.</p>
+<p>Useful JavaScript utilities (with TypeScript typings).</p>
 <p><a href="https://www.npmjs.com/package/@xcmats/js-toolbox"><img src="https://img.shields.io/npm/v/@xcmats/js-toolbox.svg" alt="npm version"></a>
 <a href="https://www.npmjs.com/package/@xcmats/js-toolbox"><img src="https://img.shields.io/npm/l/@xcmats/js-toolbox.svg" alt="npm license"></a>
 <a href="https://github.com/drmats/js-toolbox"><img src="https://img.shields.io/github/languages/top/drmats/js-toolbox.svg" alt="GitHub top language"></a>
@@ -203,10 +203,7 @@ let spam = b64stringify({
     randomLetters: random(20)
 })
 
-console.log(
-    &quot;Stringified and b64-encoded object: &quot;,
-    spam
-)
+console.log(&quot;Stringified and b64-encoded object: &quot;, spam)
 </code></pre>
 <br />
 <h2>use the source</h2>
@@ -521,7 +518,7 @@ integers in range <code>[start..stop-1]</code>.</p>
 </li>
 <li>
 <p>&quot;Zip&quot; given arrays using provided <code>f</code> operator.</p>
-<pre class="prettyprint source lang-javascript"><code>array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+<pre class="prettyprint source lang-javascript"><code>array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 11, 22, 33, 44 ]
@@ -530,7 +527,7 @@ integers in range <code>[start..stop-1]</code>.</p>
 </li>
 <li>
 <p>Take every 3rd element from a given array.</p>
-<pre class="prettyprint source lang-javascript"><code>array.takeEvery(3)([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+<pre class="prettyprint source lang-javascript"><code>array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[0, 3, 6, 9]
@@ -548,7 +545,7 @@ integers in range <code>[start..stop-1]</code>.</p>
     console.log('Hello ...')
     await async.delay()
     console.log('... world')
-})()
+}) ()
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -568,7 +565,7 @@ Hello ...
         }, array.head(array.sparse(1000, 1)))
     )
     console.log(`Result: ${x}`)
-})()
+}) ()
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -597,7 +594,7 @@ Result: 0,4,8,12,16,20,24,28,32,36
         }, array.head(array.sparse(1000, 1)))
     )
     console.log(`Result: ${x}`)
-})()
+}) ()
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -626,7 +623,7 @@ Result: 0,4,8,12,16,20,24,28,32,36
         }, 100*x)
     )
     console.log(`Accumulated value: ${x}`)
-})()
+}) ()
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -776,7 +773,7 @@ Accumulated value: 45
 <pre class="prettyprint source lang-javascript"><code>func.compose(
     string.quote,
     string.shorten
-)(
+) (
     &quot;When I find myself in times of trouble&quot;,
     20, string.shorten.END
 )
@@ -797,7 +794,7 @@ Accumulated value: 45
 <pre class="prettyprint source lang-javascript"><code>'4b61626f6f6d2120f09f92a5'
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>func.pipe('4b61626f6f6d2120f09f92a5')(
+<pre class="prettyprint source lang-javascript"><code>func.pipe('4b61626f6f6d2120f09f92a5') (
     codec.hexToBytes, codec.bytesToString
 )
 </code></pre>
@@ -815,7 +812,7 @@ into an evaluation of sequence of functions, each with a single argument.</p>
 <pre class="prettyprint source lang-javascript"><code>[Function: addition]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>func.curry(addition)(1)(2)(3)
+<pre class="prettyprint source lang-javascript"><code>func.curry(addition) (1) (2) (3)
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>6
@@ -830,14 +827,14 @@ into an evaluation of sequence of functions, each with a single argument.</p>
 <pre class="prettyprint source lang-javascript"><code>a b c d e
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+<pre class="prettyprint source lang-javascript"><code>revConsole = rearg(console.log) (4, 3, 2, 1, 0)
 revConsole('a', 'b', 'c', 'd', 'e')
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>e d c b a
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>revConsole('f')('g', 'h')('i')('j')
+<pre class="prettyprint source lang-javascript"><code>revConsole('f') ('g', 'h') ('i') ('j')
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>j i h g f
@@ -1086,44 +1083,20 @@ export default configureRoutes () {
 <li>
 <p>Determine if a given value is a proper <code>Number</code>
 (not <code>NaN</code> and not <code>Infinity</code>).</p>
-<pre class="prettyprint source lang-javascript"><code>type.isNumber(NaN)
+<pre class="prettyprint source lang-javascript"><code>[type.isNumber(NaN), type.isNumber(-Infinity), type.isNumber(1234.5678)]
 </code></pre>
 <blockquote>
-<pre class="prettyprint source lang-javascript"><code>false
-</code></pre>
-</blockquote>
-<pre class="prettyprint source lang-javascript"><code>type.isNumber(-Infinity)
-</code></pre>
-<blockquote>
-<pre class="prettyprint source lang-javascript"><code>false
-</code></pre>
-</blockquote>
-<pre class="prettyprint source lang-javascript"><code>type.isNumber(1234.5678)
-</code></pre>
-<blockquote>
-<pre class="prettyprint source lang-javascript"><code>true
+<pre class="prettyprint source lang-javascript"><code>[ false, false, true ]
 </code></pre>
 </blockquote>
 </li>
 <li>
 <p>Determine if a given value is an <code>Object</code>
 (not <code>null</code>, not <code>undefined</code> and not <code>Array</code>).</p>
-<pre class="prettyprint source lang-javascript"><code>type.isObject(null)
+<pre class="prettyprint source lang-javascript"><code>[type.isObject(null), type.isObject([]), type.isObject({})]
 </code></pre>
 <blockquote>
-<pre class="prettyprint source lang-javascript"><code>false
-</code></pre>
-</blockquote>
-<pre class="prettyprint source lang-javascript"><code>type.isObject([])
-</code></pre>
-<blockquote>
-<pre class="prettyprint source lang-javascript"><code>false
-</code></pre>
-</blockquote>
-<pre class="prettyprint source lang-javascript"><code>type.isObject({})
-</code></pre>
-<blockquote>
-<pre class="prettyprint source lang-javascript"><code>true
+<pre class="prettyprint source lang-javascript"><code>[ false, false, true ]
 </code></pre>
 </blockquote>
 </li>
@@ -1158,7 +1131,7 @@ for more details.</p></article>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu Nov 19 2020 18:38:11 GMT+0100 (Central European Standard Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Nov 20 2020 16:18:40 GMT+0100 (Central European Standard Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
