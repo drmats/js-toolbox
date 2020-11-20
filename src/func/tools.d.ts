@@ -134,5 +134,5 @@ export declare function locker<T> (n: number = 1): (val: T) => T;
  * ```
  */
 export declare function rearg<T> (
-    f: (...args: unknown[]) => T
-): (...indices: number[]) => (...args: unknown[]) => T;
+    f: JSAnyFun<T>
+): (...indices: number[]) => JSAnyFun<T>;
