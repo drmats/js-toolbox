@@ -9,14 +9,22 @@
 
 
 
+import type {
+    JSAnyArr,
+    JSAnyFun,
+} from "../type";
+
+
+
+
 /**
  * Functional replacement of a `switch` statement.
  */
 export declare function choose<T> (
     key: string | number,
-    actions?: Record<string, (...args: unknown[]) => T>,
-    defaultAction?: (...args: unknown[]) => T,
-    args?: unknown[]
+    actions: Record<string, JSAnyFun<T>> = {},
+    defaultAction: JSAnyFun<T> = () => null,
+    args: JSAnyArr = []
 ): T;
 
 
@@ -27,7 +35,7 @@ export declare function choose<T> (
  */
 export declare function handleException<T> (
     fn: () => T,
-    handler?: (ex: unknown) => T
+    handler: (ex: unknown) => T = identity
 ): T;
 
 
@@ -54,7 +62,7 @@ export declare function lazyish<T> (x: T): () => T;
  *
  * Inspired by {@link https://github.com/kongware/scriptum}
  */
-export declare function local<T> (f?: () => T): T;
+export declare function local<T> (f: () => T = identity): T;
 
 
 
@@ -88,7 +96,7 @@ export declare function local<T> (f?: () => T): T;
  * 42
  * ```
  */
-export declare function locker<T> (n?: number): (val: T) => T;
+export declare function locker<T> (n: number = 1): (val: T) => T;
 
 
 

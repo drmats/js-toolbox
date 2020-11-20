@@ -55,9 +55,9 @@ export const choose = (
  * @param {Function} [handler]
  * @returns {any}
  */
-export const handleException = (fn, handler = null) => {
+export const handleException = (fn, handler = identity) => {
     try { return fn() }
-    catch (ex) { return isFunction(handler)  ?  handler(ex)  :  ex }
+    catch (ex) { return isFunction(handler) ? handler(ex) : ex }
 }
 
 
