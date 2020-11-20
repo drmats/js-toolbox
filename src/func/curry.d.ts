@@ -10,11 +10,18 @@
 
 
 import type {
-    CurryFun,
     JSAnyArr,
     JSAnyFun,
-    ThunkFun,
 } from "../type/consts";
+
+
+
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
 
 
 

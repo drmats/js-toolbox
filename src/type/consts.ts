@@ -6,29 +6,17 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type JSAnyObj = Record<string, any>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// "cheat" types
 export type JSAnyArr = any[];
-
-// ...
+export type JSAnyObj = Record<string, any>;
 export type JSAnyArrObj = JSAnyArr | JSAnyObj;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type JSAnyFun<T = any> = (...args: any[]) => T;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type JSOneArgFun<T = any> = (arg: any) => T;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
 
 
 

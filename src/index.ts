@@ -91,6 +91,10 @@ export * as codec from "./codec";
 /**
  * @see {@link module:func}
  */
+export type {
+    CurryFun,
+    ThunkFun,
+} from "./func/curry";
 export {
     app,
     choose,
@@ -158,9 +162,12 @@ export * as memory from "./memory";
  * @see {@link module:redux}
  */
 export type {
-    ReduxAnyAction,
+    Reducer,
+    ReducersMap,
+    ReduxCompatAction,
+    ReduxCompatAnyAction,
     ReduxBoundReducer,
-    ReduxReducer,
+    ReduxCompatReducer,
 } from "./redux/tools";
 export {
     createReducer,
@@ -226,13 +233,11 @@ export * as struct from "./struct";
  * @see {@link module:type}
  */
 export type {
-    CurryFun,
     JSAnyArr,
     JSAnyArrObj,
     JSAnyFun,
     JSAnyObj,
     JSOneArgFun,
-    ThunkFun,
 } from "./type/consts";
 export {
     isArray,
