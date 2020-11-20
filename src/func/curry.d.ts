@@ -24,6 +24,9 @@ import type {
  */
 export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
 
+
+
+
 /**
  * Recursive type for thunk-curried functions.
  */

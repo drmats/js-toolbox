@@ -29,7 +29,7 @@
  *
  * @function curry
  * @param {Function} f
- * @returns {Function}
+ * @returns {CurryFun}
  */
 export const curry = f => curryN(f.length, f)
 
@@ -48,7 +48,7 @@ export const curry = f => curryN(f.length, f)
  * @function curryN
  * @param {Number} n
  * @param {Function} f
- * @returns {Function}
+ * @returns {CurryFun}
  */
 export const curryN = (n, f) =>
     (...args) =>
@@ -72,7 +72,7 @@ export const curryN = (n, f) =>
  *
  * @function curryThunk
  * @param {Function} f
- * @returns {Function}
+ * @returns {ThunkFun}
  */
 export const curryThunk = f => (...args) =>
     args.length === 0  ?  f()  :  curryThunk(partial(f) (...args))
