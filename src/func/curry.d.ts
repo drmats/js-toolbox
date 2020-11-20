@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -17,10 +19,14 @@ import type {
 
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/**
+ * Recursive type for curried functions.
+ */
 export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/**
+ * Recursive type for thunk-curried functions.
+ */
 export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
 
 

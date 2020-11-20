@@ -11,7 +11,9 @@
 
 
 
-// "cheat" types
+/**
+ * js-toolbox "cheat" types.
+ */
 export type JSAnyArr = any[];
 export type JSAnyObj = Record<string, any>;
 export type JSAnyArrObj = JSAnyArr | JSAnyObj;
