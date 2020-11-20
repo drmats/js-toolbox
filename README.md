@@ -1,6 +1,6 @@
 # js-toolbox
 
-Useful JavaScript utilities.
+Useful JavaScript utilities (with TypeScript typings).
 
 [![npm version](https://img.shields.io/npm/v/@xcmats/js-toolbox.svg)](https://www.npmjs.com/package/@xcmats/js-toolbox)
 [![npm license](https://img.shields.io/npm/l/@xcmats/js-toolbox.svg)](https://www.npmjs.com/package/@xcmats/js-toolbox)
@@ -180,10 +180,7 @@ let spam = b64stringify({
     randomLetters: random(20)
 })
 
-console.log(
-    "Stringified and b64-encoded object: ",
-    spam
-)
+console.log("Stringified and b64-encoded object: ", spam)
 ```
 
 <br />
