@@ -578,7 +578,7 @@ utils
 * "Zip" given arrays using provided `f` operator.
 
     ```javascript
-    array.zipWith((a, b) => a + b)([1, 2, 3, 4], [10, 20, 30, 40])
+    array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
     ```
 
     > ```javascript
@@ -589,7 +589,7 @@ utils
 * Take every 3rd element from a given array.
 
     ```javascript
-    array.takeEvery(3)([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
     ```
 
     > ```javascript
@@ -609,7 +609,7 @@ utils
         console.log('Hello ...')
         await async.delay()
         console.log('... world')
-    })()
+    }) ()
     ```
 
     > ```javascript
@@ -631,7 +631,7 @@ utils
             }, array.head(array.sparse(1000, 1)))
         )
         console.log(`Result: ${x}`)
-    })()
+    }) ()
     ```
 
     > ```javascript
@@ -662,7 +662,7 @@ utils
             }, array.head(array.sparse(1000, 1)))
         )
         console.log(`Result: ${x}`)
-    })()
+    }) ()
     ```
 
     > ```javascript
@@ -693,7 +693,7 @@ utils
             }, 100*x)
         )
         console.log(`Accumulated value: ${x}`)
-    })()
+    }) ()
     ```
 
     > ```javascript
@@ -871,7 +871,7 @@ utils
     func.compose(
         string.quote,
         string.shorten
-    )(
+    ) (
         "When I find myself in times of trouble",
         20, string.shorten.END
     )
@@ -898,7 +898,7 @@ utils
     > ```
 
     ```javascript
-    func.pipe('4b61626f6f6d2120f09f92a5')(
+    func.pipe('4b61626f6f6d2120f09f92a5') (
         codec.hexToBytes, codec.bytesToString
     )
     ```
@@ -920,7 +920,7 @@ utils
     > ```
 
     ```javascript
-    func.curry(addition)(1)(2)(3)
+    func.curry(addition) (1) (2) (3)
     ```
 
     > ```javascript
@@ -939,7 +939,7 @@ utils
     > ```
 
     ```javascript
-    revConsole = rearg(console.log)(4, 3, 2, 1, 0)
+    revConsole = rearg(console.log) (4, 3, 2, 1, 0)
     revConsole('a', 'b', 'c', 'd', 'e')
     ```
 
@@ -948,7 +948,7 @@ utils
     > ```
 
     ```javascript
-    revConsole('f')('g', 'h')('i')('j')
+    revConsole('f') ('g', 'h') ('i') ('j')
     ```
 
     > ```javascript
@@ -1241,27 +1241,11 @@ Example:
     (not `NaN` and not `Infinity`).
 
     ```javascript
-    type.isNumber(NaN)
+    [type.isNumber(NaN), type.isNumber(-Infinity), type.isNumber(1234.5678)]
     ```
 
     > ```javascript
-    > false
-    > ```
-
-    ```javascript
-    type.isNumber(-Infinity)
-    ```
-
-    > ```javascript
-    > false
-    > ```
-
-    ```javascript
-    type.isNumber(1234.5678)
-    ```
-
-    > ```javascript
-    > true
+    > [ false, false, true ]
     > ```
 
 
@@ -1269,27 +1253,11 @@ Example:
     (not `null`, not `undefined` and not `Array`).
 
     ```javascript
-    type.isObject(null)
+    [type.isObject(null), type.isObject([]), type.isObject({})]
     ```
 
     > ```javascript
-    > false
-    > ```
-
-    ```javascript
-    type.isObject([])
-    ```
-
-    > ```javascript
-    > false
-    > ```
-
-    ```javascript
-    type.isObject({})
-    ```
-
-    > ```javascript
-    > true
+    > [ false, false, true ]
     > ```
 
 <br />
