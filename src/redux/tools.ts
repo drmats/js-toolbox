@@ -20,24 +20,41 @@ import { JSAnyFun } from "../type";
 
 
 
-// redux-compatible Action interface
+/**
+ * redux-compatible Action interface.
+ */
 export interface ReduxCompatAction<A = any> {
     type: A;
 }
 
-// redux-compatible AnyAction interface
+
+
+
+/**
+ * redux-compatible AnyAction interface.
+ */
 export interface ReduxCompatAnyAction extends ReduxCompatAction {
     [key: string]: any;
 }
 
-// js-toolbox own ActionCreatorsMap type
+
+
+
+/**
+ * js-toolbox own ActionCreatorsMap type.
+ */
 export type ActionCreatorsMap<
     A extends ReduxCompatAction = ReduxCompatAnyAction
 > = {
     [actionName: string]: JSAnyFun<A>,
 };
 
-// redux-compatible Reducer type
+
+
+
+/**
+ * redux-compatible Reducer type.
+ */
 export type ReduxCompatReducer<
     S = any,
     A extends ReduxCompatAction = ReduxCompatAnyAction
@@ -46,7 +63,12 @@ export type ReduxCompatReducer<
     action: A
 ) => S;
 
-// js-toolbox own Reducer type
+
+
+
+/**
+ * js-toolbox own Reducer type.
+ */
 export type Reducer<
     S = any,
     A extends ReduxCompatAction = ReduxCompatAnyAction
@@ -55,7 +77,12 @@ export type Reducer<
     action: A
 ) => S;
 
-// js-toolbox own ReducersMap type
+
+
+
+/**
+ * js-toolbox own ReducersMap type.
+ */
 export type ReducersMap<
     S,
     A extends ReduxCompatAction = ReduxCompatAction
@@ -63,7 +90,12 @@ export type ReducersMap<
     [actionType: string]: Reducer<S, A>,
 };
 
-// js-toolbox createReducer() return type
+
+
+
+/**
+ * createReducer() return type.
+ */
 export type ReduxBoundReducer<
     S,
     A extends ReduxCompatAction = ReduxCompatAnyAction
