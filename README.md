@@ -86,6 +86,7 @@ to bundle it with your project).
     > ```javascript
     > [ "Y",
     >   "access",
+    >   "actionCreators",
     >   "add",
     >   "app",
     >   "array",
@@ -368,7 +369,8 @@ redux
 ```
 
 > ```javascript
-> { createReducer: [Function: createReducer] }
+> { actionCreators: [Function: identity],
+>   createReducer: [Function: createReducer] }
 > ```
 
 

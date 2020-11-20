@@ -11,7 +11,11 @@
 
 
 
-import { choose } from "../func/tools";
+import {
+    choose,
+    identity,
+} from "../func/tools";
+import { JSAnyFun } from "../type";
 
 
 
@@ -25,6 +29,13 @@ export interface ReduxCompatAction<A = any> {
 export interface ReduxCompatAnyAction extends ReduxCompatAction {
     [key: string]: any;
 }
+
+// js-toolbox own ActionCreatorsMap type
+export type ActionCreatorsMap<
+    A extends ReduxCompatAction = ReduxCompatAnyAction
+> = {
+    [actionName: string]: JSAnyFun<A>,
+};
 
 // redux-compatible Reducer type
 export type ReduxCompatReducer<
@@ -49,7 +60,7 @@ export type ReducersMap<
     S,
     A extends ReduxCompatAction = ReduxCompatAction
 > = {
-    [actionType: string]: Reducer<S, A>
+    [actionType: string]: Reducer<S, A>,
 };
 
 // js-toolbox createReducer() return type
@@ -60,6 +71,20 @@ export type ReduxBoundReducer<
     reducers: ReducersMap<S, A>,
     defaultReducer?: ReduxCompatReducer<S, A>
 ) => ReduxCompatReducer<S, A>;
+
+
+
+
+/**
+ * Type-safe action creators helper.
+ *
+ * @function actionCreators
+ * @param ac
+ * @returns {ActionCreatorsMap}
+ */
+export const actionCreators: <A extends ReduxCompatAction>(
+    ac: ActionCreatorsMap<A>
+) => ActionCreatorsMap<A> = identity;
 
 
 
