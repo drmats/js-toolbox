@@ -16,17 +16,20 @@ import { choose } from "../func/tools";
 
 
 // ...
-export interface ReduxAnyAction<A> {
+export interface ReduxAnyAction<A = string> {
     type: A;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any;
 }
 
 // ...
-export type ReduxReducer<S, A> = (s: S, a: ReduxAnyAction<A>) => S;
+export type ReduxReducer<S = JSAnyObj, A = string> = (
+    s: S,
+    a: ReduxAnyAction<A>
+) => S;
 
 // ...
-export type ReduxBoundReducer<S, A> = (
+export type ReduxBoundReducer<S = JSAnyObj, A = string> = (
     reducers: Record<string, ReduxReducer<S, A>>,
     defaultReducer?: ReduxReducer<S, A>
 ) => ReduxReducer<S, A>;
@@ -37,7 +40,7 @@ export type ReduxBoundReducer<S, A> = (
 // overload for generic state
 export function createReducer<S> (
     initState: S
-): ReduxBoundReducer<S, string | number>;
+): ReduxBoundReducer<S, string>;
 
 /**
  * Create clean and readable reducers for redux.
@@ -48,7 +51,7 @@ export function createReducer<S> (
  */
 export function createReducer (
     initState: JSAnyObj = {}
-): ReduxBoundReducer<JSAnyObj, string | number> {
+): ReduxBoundReducer<JSAnyObj, string> {
     return (reducers, defaultReducer = (s, _a) => s) =>
         (state = initState, action) =>
             choose(

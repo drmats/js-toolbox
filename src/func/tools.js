@@ -28,7 +28,7 @@ import {
  * Functional replacement of a `switch` statement.
  *
  * @function choose
- * @param {String|Number} key
+ * @param {String} key
  * @param {Object.<String, Function>} [actions]
  * @param {Function} [defaultAction]
  * @param {Array} [args]

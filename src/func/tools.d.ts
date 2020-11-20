@@ -21,7 +21,7 @@ import type {
  * Functional replacement of a `switch` statement.
  */
 export declare function choose<T> (
-    key: string | number,
+    key: string,
     actions: Record<string, JSAnyFun<T>> = {},
     defaultAction: JSAnyFun<T> = () => null,
     args: JSAnyArr = []
