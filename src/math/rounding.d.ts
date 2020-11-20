@@ -23,4 +23,7 @@ export declare function clamp (low: number, high: number, n: number): number;
  * epsilon range of that integer. Default epsilon is `1e-9`,
  * which can be changed through `precision` parameter.
  */
-export declare function roundIfClose (x: number, precision?: number): number;
+export declare function roundIfClose (
+    x: number,
+    precision: number = 9
+): number;
