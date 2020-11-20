@@ -17,7 +17,7 @@
  * can be simulated by storing value of any type under "dev" key
  * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
  */
-export declare function devEnv (strict?: boolean): boolean;
+export declare function devEnv (strict: boolean = false): boolean;
 
 
 
@@ -57,4 +57,4 @@ export declare function isBrowser (): boolean;
  * Assign argument to the global object.
  * Async-console-dev-helper.
  */
-export declare function to_ <T>(name?: string): (val: T) => T;
+export declare function to_ <T>(name: string = "_"): (val: T) => T;
