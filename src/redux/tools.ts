@@ -1,7 +1,7 @@
 /**
  * Redux tools.
  *
- * @module @xcmats/js-toolbox/redux
+ * @module redux
  * @license Apache-2.0
  * @author drmats
  */
@@ -34,6 +34,11 @@ export type ReduxBoundReducer<S, A> = (
 
 
 
+// overload for generic state
+export function createReducer<S> (
+    initState: S
+): ReduxBoundReducer<S, string | number>;
+
 /**
  * Create clean and readable reducers for redux.
  *
@@ -41,9 +46,6 @@ export type ReduxBoundReducer<S, A> = (
  * @param {Object} [initState={}]
  * @returns {ReduxBoundReducer}
  */
-export function createReducer<S> (
-    initState: S
-): ReduxBoundReducer<S, string | number>;
 export function createReducer (
     initState: JSAnyObj = {}
 ): ReduxBoundReducer<JSAnyObj, string | number> {
