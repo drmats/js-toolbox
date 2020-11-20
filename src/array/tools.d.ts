@@ -22,7 +22,11 @@ export declare function flatten (arr: unknown[][]): unknown[];
  */
 export declare function isContinuous<T> (
     arr: T[],
-    cmp?: (a: T, b: T) => boolean
+    neighbour: (a: T, b: T) => boolean
+): boolean;
+export declare function isContinuous<T extends (number | bigint)> (
+    arr: T[],
+    neighbour: (a: T, b: T) => boolean = (a, b) => b - a === 1
 ): boolean;
 
 
@@ -33,7 +37,7 @@ export declare function isContinuous<T> (
  */
 export declare function isSorted<T> (
     arr: T[],
-    cmp?: (a: T, b: T) => boolean
+    cmp: (a: T, b: T) => boolean = (a, b) => a <= b
 ): boolean;
 
 

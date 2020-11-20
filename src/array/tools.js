@@ -52,7 +52,8 @@ export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
  * @returns {Boolean}
  */
 export const isContinuous = (
-    arr = [], neighbour = (a, b) => b - a === 1
+    arr,
+    neighbour = (a, b) => b - a === 1
 ) =>
     isSorted(arr, neighbour)
 

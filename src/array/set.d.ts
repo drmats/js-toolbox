@@ -9,6 +9,12 @@
 
 
 
+import type { JSOneArgFun } from "../type";
+import { identity } from "../func/tools";
+
+
+
+
 /**
  * Create object composed of keys resulting from application
  * of `iteratee` function to each element of the passed array `arr`.
@@ -27,7 +33,8 @@
  * ```
  */
 export declare function countBy (
-    arr: unknown[], iteratee?: (el: unknown) => unknown
+    arr: unknown[],
+    iteratee: JSOneArgFun = identity
 ): Record<string, unknown>;
 
 
@@ -55,7 +62,7 @@ export declare function difference (a: unknown[], b: unknown[]): unknown[];
  */
 export declare function findDuplicates (
     arr: unknown[],
-    iteratee?: (el: unknown) => unknown
+    iteratee: JSOneArgFun = identity
 ): string[];
 
 
@@ -82,7 +89,7 @@ export declare function isSubset (a: unknown[], b: unknown[]): boolean;
  */
 export declare function removeDuplicates (
     arr: unknown[],
-    iteratee?: (el: unknown) => unknown
+    iteratee: JSOneArgFun = identity
 ): string[];
 
 
