@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -15,13 +17,11 @@ import type { JSAnyFun } from "../type/consts";
 
 
 // Idea for the bright, unspecified future (on how to type `flow`).
-
-// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//
 // export type FunChain<In, Out, Intermediate = any> = []
 //     | [(arg: In) => Out]
 //     | [(arg: In) => Intermediate, ...FunChain<Intermediate, Out>];
-
-// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//
 // export type FunMultiChain<In extends any[], Out, Intermediate = any> = []
 //     | [(...arg: In) => Out]
 //     | [(...arg: In) => Intermediate, ...FunChain<Intermediate, Out>];
@@ -48,7 +48,6 @@ export declare function app<T, S> (f: (a: T) => S): (a: T) => S;
  * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export declare function compose (...fs: JSAnyFun[]): JSAnyFun;
 
 
@@ -67,7 +66,6 @@ export declare function compose (...fs: JSAnyFun[]): JSAnyFun;
  *
  * Inspired by {@link https://github.com/tfausak/flow}.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export declare function flow (...fs: JSAnyFun[]): JSAnyFun;
 
 
@@ -86,7 +84,6 @@ export declare function flow (...fs: JSAnyFun[]): JSAnyFun;
  * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export declare function pipe (...args: any[]): (...fs: JSAnyFun[]) => any;
 
 
@@ -96,9 +93,6 @@ export declare function pipe (...args: any[]): (...fs: JSAnyFun[]) => any;
  * Y-combinator (returns fixed point of a higher-order function
  * passed as `f`).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type R<In extends any[], Out> = (...args: In) => Out;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type F<In extends any[], Out> = (f: R<In, Out>) => (...args: In) => Out;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export declare function Y<In extends any[], Out> (f: F<In, Out>): R<In, Out>;

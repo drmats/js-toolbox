@@ -21,10 +21,22 @@ import type {
  * Functional replacement of a `switch` statement.
  */
 export declare function choose<T> (
+    key: string
+): T;
+export declare function choose<T> (
     key: string,
-    actions: Record<string, JSAnyFun<T>> = {},
-    defaultAction: JSAnyFun<T> = () => null,
-    args: JSAnyArr = []
+    actions: Record<string, JSAnyFun<T>>
+): T;
+export declare function choose<T> (
+    key: string,
+    actions: Record<string, JSAnyFun<T>>,
+    defaultAction: JSAnyFun<T>
+): T;
+export declare function choose<T> (
+    key: string,
+    actions: Record<string, JSAnyFun<T>>,
+    defaultAction: JSAnyFun<T>,
+    args: JSAnyArr
 ): T;
 
 
@@ -34,8 +46,11 @@ export declare function choose<T> (
  * Handle exceptions in expressions.
  */
 export declare function handleException<T> (
+    fn: () => T
+): T;
+export declare function handleException<T> (
     fn: () => T,
-    handler: (ex: unknown) => T = identity
+    handler: (ex: unknown) => T
 ): T;
 
 
@@ -62,7 +77,8 @@ export declare function lazyish<T> (x: T): () => T;
  *
  * Inspired by {@link https://github.com/kongware/scriptum}
  */
-export declare function local<T> (f: () => T = identity): T;
+export declare function local<T> (): T;
+export declare function local<T> (f: () => T): T;
 
 
 
@@ -96,7 +112,8 @@ export declare function local<T> (f: () => T = identity): T;
  * 42
  * ```
  */
-export declare function locker<T> (n: number = 1): (val: T) => T;
+export declare function locker<T> (): (val: T) => T;
+export declare function locker<T> (n: number): (val: T) => T;
 
 
 
