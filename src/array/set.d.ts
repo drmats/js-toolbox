@@ -10,7 +10,6 @@
 
 
 import type { JSOneArgFun } from "../type/consts";
-import { identity } from "../func/tools";
 
 
 
@@ -33,8 +32,11 @@ import { identity } from "../func/tools";
  * ```
  */
 export declare function countBy (
+    arr: unknown[]
+): Record<string, unknown>;
+export declare function countBy (
     arr: unknown[],
-    iteratee: JSOneArgFun = identity
+    iteratee: JSOneArgFun
 ): Record<string, unknown>;
 
 
@@ -61,8 +63,11 @@ export declare function difference (a: unknown[], b: unknown[]): unknown[];
  * ```
  */
 export declare function findDuplicates (
+    arr: unknown[]
+): string[];
+export declare function findDuplicates (
     arr: unknown[],
-    iteratee: JSOneArgFun = identity
+    iteratee: JSOneArgFun
 ): string[];
 
 
@@ -88,8 +93,11 @@ export declare function isSubset (a: unknown[], b: unknown[]): boolean;
  * Create a new array with removed duplicates.
  */
 export declare function removeDuplicates (
+    arr: unknown[]
+): string[];
+export declare function removeDuplicates (
     arr: unknown[],
-    iteratee: JSOneArgFun = identity
+    iteratee: JSOneArgFun
 ): string[];
 
 

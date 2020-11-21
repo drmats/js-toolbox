@@ -21,12 +21,11 @@ export declare function flatten (arr: unknown[][]): unknown[];
  * Checks if a given array is a continuous block.
  */
 export declare function isContinuous<T> (
-    arr: T[],
-    neighbour: (a: T, b: T) => boolean
+    arr: T[]
 ): boolean;
 export declare function isContinuous<T extends (number | bigint)> (
     arr: T[],
-    neighbour: (a: T, b: T) => boolean = (a, b) => b - a === 1
+    neighbour: (a: T, b: T) => boolean
 ): boolean;
 
 
@@ -36,8 +35,11 @@ export declare function isContinuous<T extends (number | bigint)> (
  * Checks if a given array is sorted.
  */
 export declare function isSorted<T> (
+    arr: T[]
+): boolean;
+export declare function isSorted<T> (
     arr: T[],
-    cmp: (a: T, b: T) => boolean = (a, b) => a <= b
+    cmp: (a: T, b: T) => boolean
 ): boolean;
 
 
@@ -46,7 +48,9 @@ export declare function isSorted<T> (
 /**
  * Take every `nth` element from an `arr` array.
  */
-export declare function takeEvery (nth: number): (arr: unknown[]) => unknown[];
+export declare function takeEvery (
+    nth: number
+): (arr: unknown[]) => unknown[];
 
 
 
