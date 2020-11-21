@@ -14,7 +14,8 @@
  * Uses Web Crypto API when in browser
  * and `crypto` module when in node.js.
  */
-export declare function random (size: number = 64): Promise<Uint8Array>;
+export declare function random (): Promise<Uint8Array>;
+export declare function random (size: number): Promise<Uint8Array>;
 
 
 
