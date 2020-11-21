@@ -9,14 +9,6 @@
 
 
 
-import {
-    empty,
-    space,
-} from "./consts";
-
-
-
-
 /**
  * Convert `thisKindOfText` to `ThisKindOfText`.
  */
@@ -48,9 +40,16 @@ export declare function capitalize (str: string): string;
  * (thus some original characters are replaced with `sep` contents).
  */
 export declare function ellipsis (
+    str: string
+): string;
+export declare function ellipsis (
     str: string,
-    placing: number = 1,
-    sep: string = "…"
+    placing: number
+): string;
+export declare function ellipsis (
+    str: string,
+    placing: number,
+    sep: string
 ): string;
 
 
@@ -63,9 +62,13 @@ export declare function ellipsis (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padLeft (
-    input: string = empty(),
-    len: number = 0,
-    ch: string = space()
+    input: string,
+    len: number
+): string;
+export declare function padLeft (
+    input: string,
+    len: number,
+    ch: string
 ): string;
 
 
@@ -78,9 +81,13 @@ export declare function padLeft (
  * returned untouched (padding doesn't shorten the `input`).
  */
 export declare function padRight (
-    input: string = empty(),
-    len: number = 0,
-    ch: string = space()
+    input: string,
+    len: number
+): string;
+export declare function padRight (
+    input: string,
+    len: number,
+    ch: string
 ): string;
 
 
@@ -105,10 +112,8 @@ export declare function pascalToSnake (str: string): string;
 /**
  * Quote text.
  */
-export declare function quote (
-    str: string = empty(),
-    q: string = "\"\""
-): string;
+export declare function quote (str: string): string;
+export declare function quote (str: string, q: string): string;
 
 
 
@@ -117,10 +122,22 @@ export declare function quote (
  * Constructs new string not longer than `len`.
  */
 export declare function shorten (
+    str: string
+): string;
+export declare function shorten (
     str: string,
-    len: number = Infinity,
-    placing: number = 1,
-    sep: string = "…"
+    len: number
+): string;
+export declare function shorten (
+    str: string,
+    len: number,
+    placing: number
+): string;
+export declare function shorten (
+    str: string,
+    len: number,
+    placing: number,
+    sep: string
 ): string;
 
 
@@ -146,7 +163,14 @@ export declare function snakeToPascal (str: string): string;
  * Wrap passed string with `prefix` and `suffix`.
  */
 export declare function wrap (
-    str: string = empty(),
-    prefix: string = empty(),
-    suffix: string = empty()
+    str: string
+): string;
+export declare function wrap (
+    str: string,
+    prefix: string
+): string;
+export declare function wrap (
+    str: string,
+    prefix: string,
+    suffix: string
 ): string;
