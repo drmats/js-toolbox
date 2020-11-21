@@ -31,11 +31,11 @@ import type {
  */
 export declare function access<T extends any> (): T;
 export declare function access<T extends any> (
-    o: JSAnyArrObj,
+    o: JSAnyArrObj
 ): T;
 export declare function access<T extends any> (
     o: JSAnyArrObj,
-    path: (string | number)[],
+    path: (string | number)[]
 ): T;
 export declare function access<T extends any> (
     o: JSAnyArrObj,

@@ -63,7 +63,7 @@ export declare function keyAccessor (...path: (string | number)[]):
  */
 export declare function dfs<T> (): T;
 export declare function dfs<T> (
-    tree: JSAnyObj,
+    tree: JSAnyObj
 ): T;
 export declare function dfs<T> (
     tree: JSAnyObj,
