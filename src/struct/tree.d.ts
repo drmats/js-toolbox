@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -23,7 +25,6 @@ import type {
  * enumerate on any javascript object.
  */
 export declare function hashAccessor ():
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (n: JSAnyArrObj) => [any, (string | number)[]][];
 
 
@@ -50,7 +51,6 @@ export declare function hashAccessor ():
  * `hashAccessor`.
  */
 export declare function keyAccessor (...path: (string | number)[]):
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (n: JSAnyArrObj) => [any, (string | number)[]][];
 
 
@@ -61,14 +61,26 @@ export declare function keyAccessor (...path: (string | number)[]):
  * on each `tree` node in reduce-like fashion, accumulating
  * intermediate results.
  */
+export declare function dfs<T> (): T;
 export declare function dfs<T> (
-    tree: JSAnyObj = {},
+    tree: JSAnyObj,
+): T;
+export declare function dfs<T> (
+    tree: JSAnyObj,
     f: (
         accs: T[],
         node: JSAnyObj,
         path: (string | number)[],
         position: number
-    ) => T = (_accs, node, _path, _position) => node,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    children: (n: JSAnyArrObj) => [any, (string | number)[]][] = keyAccessor()
+    ) => T
+): T;
+export declare function dfs<T> (
+    tree: JSAnyObj,
+    f: (
+        accs: T[],
+        node: JSAnyObj,
+        path: (string | number)[],
+        position: number
+    ) => T,
+    children: (n: JSAnyArrObj) => [any, (string | number)[]][]
 ): T;
