@@ -24,6 +24,9 @@ export declare function clamp (low: number, high: number, n: number): number;
  * which can be changed through `precision` parameter.
  */
 export declare function roundIfClose (
+    x: number
+): number;
+export declare function roundIfClose (
     x: number,
-    precision: number = 9
+    precision: number
 ): number;
