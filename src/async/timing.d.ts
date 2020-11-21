@@ -9,12 +9,6 @@
 
 
 
-import { identity } from "../func/tools";
-import { timeUnit } from "../utils/misc";
-
-
-
-
 /**
  * Delay current async execution by `time` miliseconds.
  *
@@ -29,9 +23,13 @@ import { timeUnit } from "../utils/misc";
  * })()
  * ```
  */
+export declare function delay (): Promise<number>;
 export declare function delay (
-    time: number = timeUnit.second,
-    passCancel: (canceller: (reason: unknown) => void) => void = identity
+    time: number
+): Promise<number>;
+export declare function delay (
+    time: number,
+    passCancel: (canceller: (reason: unknown) => void) => void
 ): Promise<number>;
 
 
@@ -52,9 +50,16 @@ export declare function delay (
  * ```
  */
 export declare function interval<T> (
+    f: (clear: (reason: unknown) => T) => T
+): Promise<T>;
+export declare function interval<T> (
     f: (clear: (reason: unknown) => T) => T,
-    passClear: (clear: (reason: unknown) => T) => void = identity,
-    time: number = timeUnit.second
+    passClear: (clear: (reason: unknown) => T) => void
+): Promise<T>;
+export declare function interval<T> (
+    f: (clear: (reason: unknown) => T) => T,
+    passClear: (clear: (reason: unknown) => T) => void,
+    time: number
 ): Promise<T>;
 
 
@@ -75,7 +80,14 @@ export declare function interval<T> (
  * ```
  */
 export declare function timeout<T> (
+    f: () => T
+): Promise<T>;
+export declare function timeout<T> (
     f: () => T,
-    time: number = timeUnit.second,
-    passCancel: (cancel: () => T) => void = identity
+    time: number
+): Promise<T>;
+export declare function timeout<T> (
+    f: () => T,
+    time: number,
+    passCancel: (cancel: () => T) => void
 ): Promise<T>;

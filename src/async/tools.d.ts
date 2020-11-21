@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -52,7 +54,6 @@ export declare function cancellable (
 export declare function createMutex (): {
     lock: <T>() => Promise<T>,
     resolve: <T>(value?: T | PromiseLike<T>) => void,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     reject: (reason?: any) => void,
 };
 
