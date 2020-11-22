@@ -60,24 +60,6 @@ export declare function last (arr: unknown[] | string): unknown | string;
 
 
 /**
- * - `range(stop)` -> array of numbers; start defaults to `0`
- * - `range(start, stop[, step])` -> array of numbers
- *
- * Return a list containing an arithmetic progression.
- * - `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
- *
- * When step is given, it specifies the increment (or decrement).
- * For example:
- * - `range(4)` returns `[0, 1, 2, 3]`.
- *
- * Imitates Python's `range()`.
- */
-export declare function range (...args: number[]): number[];
-
-
-
-
-/**
  * Return array without its head (first element).
  */
 export declare function tail (arr: unknown[] | string): unknown[] | string;

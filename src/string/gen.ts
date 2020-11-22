@@ -15,7 +15,7 @@ import {
     empty,
 } from "./consts";
 import { draw } from "../array/random";
-import { range } from "../array/list";
+import { range } from "../array/tools";
 import { Y } from "../func/combinators";
 
 

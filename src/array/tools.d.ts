@@ -46,6 +46,24 @@ export declare function isSorted<T> (
 
 
 /**
+ * - `range(stop)` -> array of numbers; start defaults to `0`
+ * - `range(start, stop[, step])` -> array of numbers
+ *
+ * Return a list containing an arithmetic progression.
+ * - `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`.
+ *
+ * When step is given, it specifies the increment (or decrement).
+ * For example:
+ * - `range(4)` returns `[0, 1, 2, 3]`.
+ *
+ * Imitates Python's `range()`.
+ */
+export declare function range (...args: number[]): number[];
+
+
+
+
+/**
  * Take every `nth` element from an `arr` array.
  */
 export declare function takeEvery (
