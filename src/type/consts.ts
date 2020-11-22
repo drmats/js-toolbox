@@ -15,7 +15,7 @@
  * js-toolbox "cheat" types.
  */
 export type JSAnyArr = any[];
-export type JSAnyObj = Record<string, any>;
+export type JSAnyObj = { [P in keyof any]: any };
 export type JSAnyArrObj = JSAnyArr | JSAnyObj;
 export type JSAnyFun<T = any> = (...args: any[]) => T;
 export type JSOneArgFun<T = any> = (arg: any) => T;

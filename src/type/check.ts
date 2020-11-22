@@ -6,6 +6,16 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
+
+
+import type {
+    JSAnyFun,
+    JSAnyObj,
+} from "./consts";
+
 
 
 
@@ -28,7 +38,7 @@ export const isArray = Array.isArray;
  * @param {any} f
  * @returns {Boolean}
  */
-export const isFunction = (f: unknown): boolean =>
+export const isFunction = (f: unknown): f is JSAnyFun =>
     f != null  &&  "function" === typeof f;
 
 
@@ -42,7 +52,7 @@ export const isFunction = (f: unknown): boolean =>
  * @param {any} n
  * @returns {Boolean}
  */
-export const isNumber = (n: unknown): boolean =>
+export const isNumber = (n: unknown): n is number =>
     n != null  &&  "number" === typeof n  &&
     !Number.isNaN(n)  &&  Number.isFinite(n);
 
@@ -57,7 +67,7 @@ export const isNumber = (n: unknown): boolean =>
  * @param {any} o
  * @returns {Boolean}
  */
-export const isObject = (o: unknown): boolean =>
+export const isObject = (o: unknown): o is JSAnyObj =>
     o != null  &&  "object" === typeof o  &&  !isArray(o);
 
 
@@ -70,5 +80,5 @@ export const isObject = (o: unknown): boolean =>
  * @param {any} s
  * @returns {Boolean}
  */
-export const isString = (s: unknown): boolean =>
+export const isString = (s: unknown): s is string =>
     s != null  &&  "string" === typeof s;
