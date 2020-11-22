@@ -12,6 +12,7 @@
 /**
  * Add two values.
  */
+export declare function add (a: number): (b: number) => number;
 export declare function add (a: number, b: number): number;
 
 
@@ -28,6 +29,7 @@ export declare function dec (n: number): number;
 /**
  * Divide first value by the second value.
  */
+export declare function div (a: number): (b: number) => number;
 export declare function div (a: number, b: number): number;
 
 
@@ -68,6 +70,7 @@ export declare function log2 (x: number): number;
 /**
  * Divides the first argument by the second and returns the remainder.
  */
+export declare function mod (a: number): (b: number) => number;
 export declare function mod (a: number, b: number): number;
 
 
@@ -76,6 +79,7 @@ export declare function mod (a: number, b: number): number;
 /**
  * Multiply two values.
  */
+export declare function mul (a: number): (b: number) => number;
 export declare function mul (a: number, b: number): number;
 
 
@@ -92,6 +96,7 @@ export declare function neg (n: number): number;
 /**
  * Raise one value to the power of the second value.
  */
+export declare function pow (a: number): (b: number) => number;
 export declare function pow (a: number, b: number): number;
 
 
@@ -100,4 +105,5 @@ export declare function pow (a: number, b: number): number;
 /**
  * Subtract second value from the first value.
  */
+export declare function sub (a: number): (b: number) => number;
 export declare function sub (a: number, b: number): number;
