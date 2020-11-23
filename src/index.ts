@@ -215,6 +215,13 @@ export * as string from "./string";
 /**
  * @see {@link module:struct}
  */
+export type {
+    Atom,
+    Data,
+    DataArray,
+    DataObject,
+    DataIndex,
+} from "./struct/data";
 export {
     access,
     clone,
@@ -224,6 +231,7 @@ export {
     dict,
     objectMap,
     objectReduce,
+    rewrite,
     swap,
 } from "./struct";
 export * as struct from "./struct";

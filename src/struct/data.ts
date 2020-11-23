@@ -11,7 +11,52 @@
 
 
 
-import { handleException } from "../func/tools";
+import { append } from "../array/list";
+import { inc } from "../math/arithmetic";
+import {
+    isArray,
+    isNumber,
+    isObject,
+    isString,
+} from "../type/check";
+
+
+
+
+/**
+ * 'Atomic', simple, basic data type (leaf).
+ */
+export type Atom =
+    | boolean
+    | number
+    | string;
+
+/**
+ * Array - mutually recursive with Data (array node).
+ */
+export type DataArray<T = Atom> = Data<T>[];
+
+/**
+ * Object - mutually recursive with Data (object node).
+ */
+export type DataObject<T = Atom> = {
+    [property: string]: Data<T>,
+};
+
+/**
+ * Recursive data type (leaf or node).
+ */
+export type Data<T = Atom> =
+    | T
+    | DataArray<T>
+    | DataObject;
+
+/**
+ * Node-indexing type.
+ */
+export type DataIndex =
+    | string
+    | number;
 
 
 
@@ -33,12 +78,52 @@ import { handleException } from "../func/tools";
  * @returns {any}
  */
 export function access (
-    o: any = {},
-    path: (string | number)[] = [],
-    def?: unknown
-): any {
-    return handleException(
-        () => path.reduce((acc, p) => acc[p], o) || def,
-        () => def
-    );
+    o: Data = {},
+    path: DataIndex[] = [],
+    def?: Data
+): Data | void {
+    try {
+        return path.reduce((acc: any, p) => acc[p], o) || def;
+    } catch (_) {
+        return def;
+    }
+}
+
+
+
+
+/**
+ * Rewrite part of an object (first argument) reachable through passed path
+ * (second argument) with provided value (third argument). Creates new object
+ * with new data and references to all unchanged parts of the old object.
+ * This function implements copy-on-write semantics.
+ */
+export function rewrite (
+    o: Data,
+    [h, ...t]: DataIndex[],
+    v: Data
+): Data {
+
+    if (!h || !(isObject(o) || isArray(o))) return v;
+
+    if (isObject(o)) {
+        let data = o as DataObject;
+        if (!isString(h) || !(h in data))
+            throw new TypeError("struct.rewrite<object> - wrong path");
+        let member = h as string;
+        return {
+            ...data,
+            [member]: rewrite(data[member], t, v),
+        };
+    } else {
+        let data = o as DataArray;
+        if (!isNumber(h) || !(h in data))
+            throw new TypeError("struct.rewrite<array> - wrong path");
+        let index = h as number;
+        return append(data.slice(0, index)) ([
+            rewrite(data[index], t, v),
+            ...data.slice(inc(index)),
+        ]);
+    }
+
 }

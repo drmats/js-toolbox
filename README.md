@@ -422,6 +422,7 @@ struct
 >   dict: [Function: dict],
 >   objectMap: [Function: objectMap],
 >   objectReduce: [Function: objectReduce],
+>   rewrite: [Function: rewrite],
 >   swap: [Function: swap] }
 > ```
 
