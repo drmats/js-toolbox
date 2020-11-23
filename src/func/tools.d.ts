@@ -9,35 +9,7 @@
 
 
 
-import type {
-    JSAnyArr,
-    JSAnyFun,
-} from "../type/consts";
-
-
-
-
-/**
- * Functional replacement of a `switch` statement.
- */
-export declare function choose<T> (
-    key: string
-): T;
-export declare function choose<T> (
-    key: string,
-    actions: Record<string, JSAnyFun<T>>
-): T;
-export declare function choose<T> (
-    key: string,
-    actions: Record<string, JSAnyFun<T>>,
-    defaultAction: JSAnyFun<T>
-): T;
-export declare function choose<T> (
-    key: string,
-    actions: Record<string, JSAnyFun<T>>,
-    defaultAction: JSAnyFun<T>,
-    args: JSAnyArr
-): T;
+import type { JSAnyFun } from "../type/consts";
 
 
 

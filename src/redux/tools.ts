@@ -11,10 +11,8 @@
 
 
 
-import {
-    choose,
-    identity,
-} from "../func/tools";
+import { choose } from "../func/choice";
+import { identity } from "../func/tools";
 import { JSAnyFun } from "../type";
 
 
