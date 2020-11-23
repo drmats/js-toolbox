@@ -33,7 +33,7 @@ import {
  *
  * @function access
  * @param {Object} [o={}]
- * @param {Array.<String>} [path=[]]
+ * @param {Array.<String|Number>} [path=[]]
  * @param {any} [def]
  * @returns {any}
  */
