@@ -64,7 +64,7 @@ export const share = (
             Object.assign(ctx, ext);
         } else {
             throw new Error([
-                "conflicting keys:",
+                "memory.share() - conflicting keys:",
                 overlap.map(x => quote(x)).join(", "),
             ].join(space()));
         }
