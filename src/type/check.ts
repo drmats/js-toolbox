@@ -12,7 +12,7 @@
 
 
 import type {
-    JSAnyFun,
+    Fun,
     JSAnyObj,
 } from "./consts";
 
@@ -38,7 +38,7 @@ export const isArray = Array.isArray;
  * @param {any} f
  * @returns {Boolean}
  */
-export const isFunction = (f: unknown): f is JSAnyFun =>
+export const isFunction = (f: unknown): f is Fun =>
     f != null  &&  "function" === typeof f;
 
 

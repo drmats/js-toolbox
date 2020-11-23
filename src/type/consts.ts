@@ -12,15 +12,52 @@
 
 
 /**
+ * js-toolbox types.
+ */
+export type ArrStr<T = any> = T[] | string;
+export type Fun<In extends any[] = any[], Out = any> = (...args: In) => Out;
+export type OneArgFun<In = any, Out = any> = (arg: In) => Out;
+
+
+
+
+/**
  * js-toolbox "cheat" types.
  */
 export type JSAnyArr<T = any> = T[];
 export type JSAnyObj<T = any> = { [P in keyof any]: T };
 export type JSAnyArrObj<T = any> = JSAnyArr<T> | JSAnyObj<T>;
-export type JSArrStr<T = any> = T[] | string;
-export type JSFun<In extends any[] = any[], Out = any> = (...args: In) => Out;
-export type JSAnyFun<T = any> = JSFun<any[], T>;
-export type JSOneArgFun<In = any, Out = any> = (arg: In) => Out;
+export type JSAnyFun<T = any> = Fun<any[], T>;
+
+
+
+
+/**
+ * js-toolbox utility type.
+ *
+ * Infers one: `U` or `string` from `U[] | string` union type.
+ * If `U` nor `string` can be inferred then it's `never`.
+ */
+export type ChooseArrElOrStr<T = ArrStr> = T extends (infer U)[]
+    ? U
+    : T extends string
+    ? string
+    : never;
+
+
+
+
+/**
+ * js-toolbox utility type.
+ *
+ * Infers one: `U[]` or `string` from `U[] | string` union type.
+ * If `U[]` nor `string` can be inferred then it's `never`.
+ */
+export type ChooseArrOrStr<T = ArrStr> = T extends (infer U)[]
+    ? U[]
+    : T extends string
+    ? string
+    : never;
 
 
 

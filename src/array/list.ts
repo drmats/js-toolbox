@@ -9,36 +9,12 @@
 
 
 
-import type { JSArrStr } from "../type/consts";
+import type {
+    ArrStr,
+    ChooseArrElOrStr,
+    ChooseArrOrStr,
+} from "../type/consts";
 import { dec } from "../math/arithmetic";
-
-
-
-
-/**
- * Utility type:
- * Infers one: `unknown[]` or `string` from `unknown[] | string` union type.
- * If `unknown[]` nor `string` can be inferred then it's `never`.
- */
-type ArrOrStr<T = JSArrStr> = T extends (infer U)[]
-    ? U[]
-    : T extends string
-    ? string
-    : never;
-
-
-
-
-/**
- * Utility type:
- * Infers one: `unknown` or `string` from `unknown[] | string` union type.
- * If `unknown` nor `string` can be inferred then it's `never`.
- */
-type ArrElOrStr<T = JSArrStr> = T extends (infer U)[]
-    ? U
-    : T extends string
-    ? string
-    : never;
 
 
 
@@ -71,9 +47,9 @@ export function append<X> (xs: X[]): <Y>(ys: Y[]) => (X | Y)[] {
  */
 export function drop (
     n: number
-): <T extends JSArrStr>(xs: T) => ArrOrStr<T> {
-    return <T extends JSArrStr>(xs: T) =>
-        xs.slice(n) as ArrOrStr<T>;
+): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
+    return <T extends ArrStr>(xs: T) =>
+        xs.slice(n) as ChooseArrOrStr<T>;
 }
 
 
@@ -90,10 +66,10 @@ export function drop (
  */
 export function dropLast (
     n: number
-): <T extends JSArrStr>(xs: T) => ArrOrStr<T> {
-    return <T extends JSArrStr>(xs: T) => (
+): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
+    return <T extends ArrStr>(xs: T) => (
         n >= xs.length ? [] : xs.slice(0, xs.length - n)
-    ) as ArrOrStr<T>;
+    ) as ChooseArrOrStr<T>;
 }
 
 
@@ -106,9 +82,9 @@ export function dropLast (
  * @param {Array<T>|String} arr
  * @returns First element or type error is thrown.
  */
-export function head<T extends JSArrStr> (
+export function head<T extends ArrStr> (
     [x]: T
-): ArrElOrStr<T> {
+): ChooseArrElOrStr<T> {
     if (!x) throw new TypeError("array.head() - empty list");
     return x;
 }
@@ -123,10 +99,10 @@ export function head<T extends JSArrStr> (
  * @param {Array<T>|String} [arr]
  * @returns {Array<T>|String}
  */
-export function init<T extends JSArrStr> (
+export function init<T extends ArrStr> (
     xs: T
-): ArrOrStr<T> {
-    return xs.slice(0, dec(xs.length)) as ArrOrStr<T>;
+): ChooseArrOrStr<T> {
+    return xs.slice(0, dec(xs.length)) as ChooseArrOrStr<T>;
 }
 
 
@@ -139,9 +115,9 @@ export function init<T extends JSArrStr> (
  * @param {Array|String} arr
  * @returns Last element or type error is thrown.
  */
-export function last<T extends JSArrStr> (
+export function last<T extends ArrStr> (
     xs: T
-): ArrElOrStr<T> {
+): ChooseArrElOrStr<T> {
     if (!xs.length) throw new TypeError("array.last() - empty list");
     return xs[dec(xs.length)];
 }
@@ -156,10 +132,10 @@ export function last<T extends JSArrStr> (
  * @param {Array|String} arr
  * @returns {Array<T>|String}
  */
-export function tail<T extends JSArrStr> (
+export function tail<T extends ArrStr> (
     [_x, ...xs]: T
-): ArrOrStr<T> {
-    return xs as ArrOrStr<T>;
+): ChooseArrOrStr<T> {
+    return xs as ChooseArrOrStr<T>;
 }
 
 
@@ -175,9 +151,9 @@ export function tail<T extends JSArrStr> (
  */
 export function take (
     n: number
-): <T extends JSArrStr>(xs: T) => ArrOrStr<T> {
-    return <T extends JSArrStr>(xs: T) =>
-        xs.slice(0, n) as ArrOrStr<T>;
+): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
+    return <T extends ArrStr>(xs: T) =>
+        xs.slice(0, n) as ChooseArrOrStr<T>;
 }
 
 
@@ -193,8 +169,8 @@ export function take (
  */
 export function takeLast (
     n: number
-): <T extends JSArrStr>(xs: T) => ArrOrStr<T> {
-    return <T extends JSArrStr>(xs: T) => (
+): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
+    return <T extends ArrStr>(xs: T) => (
         (n >= xs.length) ? xs : xs.slice(xs.length - n)
-    ) as ArrOrStr<T>;
+    ) as ChooseArrOrStr<T>;
 }

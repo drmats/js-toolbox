@@ -235,11 +235,15 @@ export * as struct from "./struct";
  * @see {@link module:type}
  */
 export type {
+    ArrStr,
+    ChooseArrElOrStr,
+    ChooseArrOrStr,
+    Fun,
     JSAnyArr,
     JSAnyArrObj,
     JSAnyFun,
     JSAnyObj,
-    JSOneArgFun,
+    OneArgFun,
 } from "./type/consts";
 export {
     isArray,

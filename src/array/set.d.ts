@@ -9,7 +9,7 @@
 
 
 
-import type { JSOneArgFun } from "../type/consts";
+import type { OneArgFun } from "../type/consts";
 
 
 
@@ -36,7 +36,7 @@ export declare function countBy (
 ): Record<string, unknown>;
 export declare function countBy (
     arr: unknown[],
-    iteratee: JSOneArgFun
+    iteratee: OneArgFun
 ): Record<string, unknown>;
 
 
@@ -67,7 +67,7 @@ export declare function findDuplicates (
 ): string[];
 export declare function findDuplicates (
     arr: unknown[],
-    iteratee: JSOneArgFun
+    iteratee: OneArgFun
 ): string[];
 
 
@@ -97,7 +97,7 @@ export declare function removeDuplicates (
 ): string[];
 export declare function removeDuplicates (
     arr: unknown[],
-    iteratee: JSOneArgFun
+    iteratee: OneArgFun
 ): string[];
 
 

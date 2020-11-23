@@ -22,7 +22,7 @@ import type {
 /**
  * Recursive type for curried functions.
  */
-export type CurryFun<T = any> = (...args: any[]) => CurryFun<T> | T;
+export type CurryFun<T = any> = (...args: JSAnyArr) => CurryFun<T> | T;
 
 
 
