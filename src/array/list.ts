@@ -47,7 +47,7 @@ type ArrElOrStr<T = JSArrStr> = T extends (infer U)[]
  * Append `ys` to `xs` and return xs.
  *
  * @function append
- * @param {Array} xs
+ * @param {Array<T>} xs
  * @returns Concatenating function ys => xs . ys
  */
 export function append<X> (xs: X[]): <Y>(ys: Y[]) => (X | Y)[] {
@@ -85,8 +85,8 @@ export function drop (
  *
  * @function dropLast
  * @param {Number} n
- * @returns Function which takes `arr` and returns
- *      array without the last `n` elements.
+ * @returns Function which takes `xs` and returns
+ *      array or string without the last `n` elements.
  */
 export function dropLast (
     n: number
@@ -104,7 +104,7 @@ export function dropLast (
  *
  * @function head
  * @param {Array<T>|String} arr
- * @returns First element or undefined.
+ * @returns First element or type error is thrown.
  */
 export function head<T extends JSArrStr> (
     [x]: T
@@ -137,7 +137,7 @@ export function init<T extends JSArrStr> (
  *
  * @function last
  * @param {Array|String} arr
- * @returns {any}
+ * @returns Last element or type error is thrown.
  */
 export function last<T extends JSArrStr> (
     xs: T
@@ -154,7 +154,7 @@ export function last<T extends JSArrStr> (
  *
  * @function tail
  * @param {Array|String} arr
- * @returns {Array|String}
+ * @returns {Array<T>|String}
  */
 export function tail<T extends JSArrStr> (
     [_x, ...xs]: T
