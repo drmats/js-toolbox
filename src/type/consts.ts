@@ -17,6 +17,7 @@
 export type ArrStr<T = any> = T[] | string;
 export type Fun<In extends any[] = any[], Out = any> = (...args: In) => Out;
 export type OneArgFun<In = any, Out = any> = (arg: In) => Out;
+export type NoArgFun<Out = any> = () => Out;
 
 
 

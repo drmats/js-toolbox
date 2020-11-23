@@ -243,6 +243,7 @@ export type {
     JSAnyArrObj,
     JSAnyFun,
     JSAnyObj,
+    NoArgFun,
     OneArgFun,
 } from "./type/consts";
 export {
