@@ -10,7 +10,7 @@
 
 
 import { access } from "./object"
-import { choose } from "../func/tools"
+import { choose } from "../func/choice"
 import { Y } from "../func/combinators"
 import { empty } from "../string/consts"
 import { quote } from "../string/transform"

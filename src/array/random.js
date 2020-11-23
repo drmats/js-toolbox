@@ -9,7 +9,7 @@
 
 
 
-import { range } from "./list"
+import { range } from "./tools"
 import {
     dec,
     inc,

@@ -16,9 +16,9 @@ import {
 import {
     head,
     last,
-    range,
     tail,
 } from "../array/list"
+import { range } from "../array/tools"
 
 
 

@@ -13,8 +13,8 @@ import { findDuplicates } from "../array/set"
 import {
     head,
     last,
-    range,
 } from "../array/list"
+import { range } from "../array/tools"
 import { curryN } from "./curry"
 import {
     isArray,
