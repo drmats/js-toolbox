@@ -11,37 +11,11 @@
 
 import { curry } from "../func/curry"
 import { flow } from "../func/combinators"
-import { handleException } from "../func/tools"
 import { quote } from "../string/transform"
 import {
     isFunction,
     isObject,
 } from "../type/check"
-
-
-
-
-/**
- * Apply `path` to an object `o`. Return element reachable through
- * that `path` or `def` value.
- *
- * Example:
- *
- * ```
- * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
- * ```
- *
- * @function access
- * @param {Object} [o={}]
- * @param {Array.<String|Number>} [path=[]]
- * @param {any} [def]
- * @returns {any}
- */
-export const access = (o = {}, path = [], def = undefined) =>
-    handleException(
-        () => path.reduce((acc, p) => acc[p], o) || def,
-        () => def
-    )
 
 
 

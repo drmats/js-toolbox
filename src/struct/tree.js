@@ -9,7 +9,7 @@
 
 
 
-import { access } from "./object"
+import { access } from "./data"
 import { choose } from "../func/choice"
 import { Y } from "../func/combinators"
 import { empty } from "../string/consts"

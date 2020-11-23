@@ -19,11 +19,11 @@ import type { JSAnyFun } from "../type/consts";
  */
 export declare function handleException<T> (
     fn: () => T
-): T;
+): T | Error;
 export declare function handleException<T> (
     fn: () => T,
-    handler: (ex: unknown) => T
-): T;
+    handler: (ex: Error) => T
+): T | Error;
 
 
 

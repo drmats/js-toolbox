@@ -20,33 +20,6 @@ import type {
 
 
 /**
- * Apply `path` to an object `o`. Return element reachable through
- * that `path` or `def` value.
- *
- * Example:
- *
- * ```
- * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
- * ```
- */
-export declare function access<T extends any> (): T;
-export declare function access<T extends any> (
-    o: JSAnyArrObj
-): T;
-export declare function access<T extends any> (
-    o: JSAnyArrObj,
-    path: (string | number)[]
-): T;
-export declare function access<T extends any> (
-    o: JSAnyArrObj,
-    path: (string | number)[],
-    def: T
-): T;
-
-
-
-
-/**
  * Do the deep-copy of any JavaScript object
  * that doesn't contain functions.
  */
