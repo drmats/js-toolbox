@@ -12,7 +12,7 @@
 /**
  * Simple array flattener.
  */
-export declare function flatten (arr: unknown[][]): unknown[];
+export declare function flatten<T> (arr: T[][]): T[];
 
 
 
@@ -66,9 +66,9 @@ export declare function range (...args: number[]): number[];
 /**
  * Take every `nth` element from an `arr` array.
  */
-export declare function takeEvery (
+export declare function takeEvery<T> (
     nth: number
-): (arr: unknown[]) => unknown[];
+): (arr: T[]) => T[];
 
 
 
@@ -83,9 +83,9 @@ export declare function takeEvery (
  * [ 11, 22, 33, 44 ]
  * ```
  */
-export declare function zipWith<T> (
-    f: (...args: unknown[]) => T
-): (...arrs: unknown[][]) => T[];
+export declare function zipWith<In, Out> (
+    f: (...args: In[]) => Out
+): (...arrs: In[][]) => Out[];
 
 
 
@@ -100,4 +100,4 @@ export declare function zipWith<T> (
  * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
  * ```
  */
-export declare function zip (...arrs: unknown[][]): unknown[][];
+export declare function zip<T> (...arrs: T[][]): T[][];
