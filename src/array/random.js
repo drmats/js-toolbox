@@ -25,10 +25,13 @@ import { isArray } from "../type/check"
  * Choose a random element from a non-empty array.
  *
  * @function draw
- * @param {Array|String} arr
- * @returns {any}
+ * @param {Array<T>|String} arr
+ * @returns {T|String}
  */
-export const draw = arr => arr[randomInt() % arr.length]
+export const draw = xs => {
+    if (!xs.length) throw new TypeError("array.draw() - empty list")
+    return xs[randomInt() % xs.length]
+}
 
 
 
@@ -45,7 +48,7 @@ export const draw = arr => arr[randomInt() % arr.length]
  */
 export const shuffle = arr => {
     if (!isArray(arr)) throw new TypeError(
-        `array.shuffle() expected array as argument, got [${typeof arr}]`
+        `array.shuffle() - expected array as argument, got [${typeof arr}]`
     )
 
     for (let i = dec(arr.length);  i > 0;  i -= 1) {

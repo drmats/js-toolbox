@@ -9,10 +9,20 @@
 
 
 
+import type {
+    ArrStr,
+    ChooseArrElOrStr,
+} from "../type/consts";
+
+
+
+
 /**
  * Choose a random element from a non-empty array.
  */
-export declare function draw (arr: unknown[] | string): unknown | string;
+export declare function draw<T extends ArrStr> (
+    arr: T
+): ChooseArrElOrStr<T>;
 
 
 
@@ -23,7 +33,7 @@ export declare function draw (arr: unknown[] | string): unknown | string;
  *
  * The operation is taken in-place.
  */
-export declare function shuffle (arr: unknown[]): unknown[];
+export declare function shuffle<T> (arr: T[]): T[];
 
 
 
