@@ -12,7 +12,10 @@
 
 
 import { append } from "../array/list";
+import { intersection } from "../array/set";
 import { inc } from "../math/arithmetic";
+import { quote } from "../string/transform";
+import { space } from "../string/consts";
 import {
     isArray,
     isNumber,
@@ -86,6 +89,33 @@ export function access (
         return path.reduce((acc: any, p) => acc[p], o) || def;
     } catch (_) {
         return def;
+    }
+}
+
+
+
+
+/**
+ * Safe version of standard JavaScript Object.assign();
+ * Throws when `base` and `ext` have conflicting keys - prevents
+ * accidental overwrite.
+ *
+ * @function assign
+ * @param {Object} base
+ * @param {Object} ext
+ * @returns {void}
+ */
+export function assign<T> (base: T, ext: T): void {
+    const overlap = intersection(
+        Object.keys(base), Object.keys(ext)
+    ) as string[];
+    if (overlap.length === 0) {
+        Object.assign(base, ext);
+    } else {
+        throw new TypeError([
+            "struct.assign() - conflicting keys:",
+            overlap.map(x => quote(x)).join(", "),
+        ].join(space()));
     }
 }
 

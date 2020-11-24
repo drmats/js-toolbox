@@ -9,13 +9,11 @@
 
 
 
-import { intersection } from "../array/set";
 import {
     identity,
     lazyish,
 } from "../func/tools";
-import { quote } from "../string/transform";
-import { space } from "../string/consts";
+import { assign } from "../struct/data";
 
 
 
@@ -53,20 +51,9 @@ export function useMemory<T> (f: (x: T) => T = identity): T {
  * @param ext extension object
  * @returns extended memory object
  */
-export const share = (
-    ext: Record<string, unknown>
-): Record<string, unknown> =>
-    useMemory(ctx => {
-        const overlap = intersection(
-            Object.keys(ctx), Object.keys(ext)
-        ) as string[];
-        if (overlap.length === 0) {
-            Object.assign(ctx, ext);
-        } else {
-            throw new Error([
-                "memory.share() - conflicting keys:",
-                overlap.map(x => quote(x)).join(", "),
-            ].join(space()));
-        }
+export function share<T> (ext: T): T {
+    return useMemory(ctx => {
+        assign(ctx, ext);
         return ctx;
     });
+}

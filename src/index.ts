@@ -224,6 +224,7 @@ export type {
 } from "./struct/data";
 export {
     access,
+    assign,
     clone,
     hashAccessor,
     keyAccessor,

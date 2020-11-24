@@ -97,6 +97,7 @@ to bundle it with your project).
     >   "asciiLetters",
     >   "asciiLowercase",
     >   "asciiUppercase",
+    >   "assign",
     >   "async",
     >   "asyncMap",
     >   "asyncRace",
@@ -415,6 +416,7 @@ struct
 
 > ```javascript
 > { access: [Function: access],
+>   assign: [Function: assign],
 >   clone: [Function],
 >   hashAccessor: [Function: hashAccessor],
 >   keyAccessor: [Function: keyAccessor],
