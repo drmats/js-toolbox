@@ -45,7 +45,7 @@ export declare function countBy (
 /**
  * Compute array as `a` \ `b` (set difference).
  */
-export declare function difference (a: unknown[], b: unknown[]): unknown[];
+export declare function difference<T> (a: T[], b: T[]): T[];
 
 
 
@@ -76,7 +76,7 @@ export declare function findDuplicates (
 /**
  * Compute array that is an intersection of `a` and `b` arrays.
  */
-export declare function intersection (a: unknown[], b: unknown[]): unknown[];
+export declare function intersection<T> (a: T[], b: T[]): T[];
 
 
 
@@ -84,7 +84,7 @@ export declare function intersection (a: unknown[], b: unknown[]): unknown[];
 /**
  * Check if array `a` is a subset of array `b`.
  */
-export declare function isSubset (a: unknown[], b: unknown[]): boolean;
+export declare function isSubset<T> (a: T[], b: T[]): boolean;
 
 
 
@@ -106,4 +106,4 @@ export declare function removeDuplicates (
 /**
  * Check set equality of two arrays treated as sets.
  */
-export declare function setEqual (a: unknown[], b: unknown[]): boolean;
+export declare function setEqual<T> (a: T[], b: T[]): boolean;
