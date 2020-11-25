@@ -47,12 +47,12 @@ export type BasicData =
  */
 export type Atom =
     | BasicData
-    | null
-    | undefined
     | symbol
     | bigint
     | RegExp
-    | Fun;
+    | Fun
+    | null
+    | undefined;
 
 
 
@@ -60,7 +60,10 @@ export type Atom =
 /**
  * Array - mutually recursive with Data (array node).
  */
-export type DataArray<T = BasicData> = Data<T>[];
+export type DataArray<
+    T = BasicData,
+    PropType extends keyof any = string
+> = Data<T, PropType>[];
 
 
 
@@ -68,8 +71,11 @@ export type DataArray<T = BasicData> = Data<T>[];
 /**
  * Object - mutually recursive with Data (object node).
  */
-export type DataObject<T = BasicData> = {
-    [property: string]: Data<T>,
+export type DataObject<
+    T = BasicData,
+    PropType extends keyof any = string
+> = {
+    [property in PropType]: Data<T, PropType>;
 };
 
 
@@ -78,10 +84,13 @@ export type DataObject<T = BasicData> = {
 /**
  * Recursive data type (leaf or node).
  */
-export type Data<T = BasicData> =
+export type Data<
+    T = BasicData,
+    PropType extends keyof any = string
+> =
     | T
-    | DataArray<T>
-    | DataObject<T>;
+    | DataArray<T, PropType>
+    | DataObject<T, PropType>;
 
 
 
@@ -89,9 +98,9 @@ export type Data<T = BasicData> =
 /**
  * Node-indexing type.
  */
-export type DataIndex =
-    | string
-    | number;
+export type DataIndex<
+    PropType extends keyof any = string | number
+> = PropType;
 
 
 
@@ -107,16 +116,19 @@ export type DataIndex =
  * ```
  *
  * @function access
- * @param {Object} [o={}]
+ * @param {Data} o
  * @param {Array.<String|Number>} [path=[]]
  * @param {unknown} [def]
- * @returns {any}
+ * @returns {Data | undefined}
  */
-export function access<T = BasicData> (
-    o: Data<T> = {},
-    path: DataIndex[] = [],
-    def?: Data<T>
-): Data<T> | void {
+export function access<
+    T = BasicData,
+    PropType extends keyof any = string
+> (
+    o: Data<T, PropType>,
+    path: DataIndex<PropType | number>[] = [],
+    def?: Data<T, PropType>
+): Data<T, PropType> | void {
     try {
         return path.reduce((acc: any, p) => acc[p], o) || def;
     } catch (_) {
@@ -140,7 +152,7 @@ export function access<T = BasicData> (
 export function assign<T> (base: T, ext: T): T {
     const overlap = intersection(
         Object.keys(base), Object.keys(ext)
-    ) as string[];
+    );
     if (overlap.length === 0) {
         return Object.assign(base, ext);
     } else {
@@ -159,32 +171,39 @@ export function assign<T> (base: T, ext: T): T {
  * (second argument) with provided value (third argument). Creates new object
  * with new data and references to all unchanged parts of the old object.
  * This function implements copy-on-write semantics.
+ *
+ * @function rewrite
+ * @param {Data} o
+ * @param {DataIndex} path
+ * @param {Data} v
+ * @returns {Data}
  */
-export function rewrite<T = BasicData> (
-    o: Data<T>,
-    [h, ...t]: DataIndex[],
-    v: Data<T>
-): Data<T> {
+export function rewrite<
+    T = BasicData,
+    PropType extends keyof any = string
+> (
+    o: Data<T, PropType>,
+    [h, ...t]: DataIndex<PropType | number>[],
+    v: Data<T, PropType>
+): Data<T, PropType> {
 
     if (!h || !(isObject(o) || isArray(o))) return v;
 
     if (isObject(o)) {
-        let data = o as DataObject<T>;
+        let data = o as DataObject<T, PropType>;
         if (!isString(h) || !(h in data))
             throw new TypeError("struct.rewrite<object> - wrong path");
-        let member = h as string;
         return {
             ...data,
-            [member]: rewrite(data[member], t, v),
+            [h]: rewrite(data[h], t, v),
         };
     } else {
-        let data = o as DataArray<T>;
+        let data = o as DataArray<T, PropType>;
         if (!isNumber(h) || !(h in data))
             throw new TypeError("struct.rewrite<array> - wrong path");
-        let index = h as number;
-        return append(data.slice(0, index)) ([
-            rewrite(data[index], t, v),
-            ...data.slice(inc(index)),
+        return append(data.slice(0, h)) ([
+            rewrite(data[h], t, v),
+            ...data.slice(inc(h)),
         ]);
     }
 
