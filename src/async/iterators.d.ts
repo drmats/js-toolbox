@@ -33,8 +33,8 @@
  * ```
  */
 export declare function map<T> (
-    arr: unknown[],
-    f: (el: unknown, i: number) => Promise<T> | T
+    arr: T[],
+    f: (el: T, i: number) => Promise<T> | T
 ): Promise<T[]>;
 
 
@@ -66,8 +66,8 @@ export declare function map<T> (
  * ```
  */
 export declare function parMap<T> (
-    arr: unknown[],
-    f: (el: unknown, i: number) => Promise<T> | T
+    arr: T[],
+    f: (el: T, i: number) => Promise<T> | T
 ): Promise<T[]>;
 
 
@@ -103,8 +103,8 @@ export declare function parMap<T> (
  * })()
  * ```
  */
-export declare function reduce<T> (
-    arr: unknown[],
-    f: (acc: T, el: unknown, i: number) => Promise<T> | T,
-    initAcc: T
-): Promise<T>;
+export declare function reduce<T, S> (
+    arr: T[],
+    f: (acc: S, el: T, i: number) => Promise<S> | S,
+    initAcc: S
+): Promise<S>;

@@ -28,7 +28,11 @@
  */
 export declare function cancellable (
     p: Promise<unknown>
-): Record<string, unknown>;
+): {
+    promise: Promise<unknown>,
+    cancel: (reason?: any) => void,
+    resolve: (value?: any) => void,
+};
 
 
 
