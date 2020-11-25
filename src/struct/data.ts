@@ -11,6 +11,7 @@
 
 
 
+import type { Fun } from "../type/consts";
 import { append } from "../array/list";
 import { intersection } from "../array/set";
 import { inc } from "../math/arithmetic";
@@ -22,11 +23,6 @@ import {
     isObject,
     isString,
 } from "../type/check";
-
-
-
-
-import { Fun } from "../type/consts";
 
 
 
