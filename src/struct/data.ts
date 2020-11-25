@@ -26,33 +26,65 @@ import {
 
 
 
+import { Fun } from "../type/consts";
+
+
+
+
 /**
- * 'Atomic', simple, basic data type (leaf).
+ * Simple, basic data type (leaf).
  */
-export type Atom =
+export type BasicData =
     | boolean
     | number
     | string;
 
+
+
+
+/**
+ * All "atomic" types.
+ */
+export type Atom =
+    | BasicData
+    | null
+    | undefined
+    | symbol
+    | bigint
+    | RegExp
+    | Fun;
+
+
+
+
 /**
  * Array - mutually recursive with Data (array node).
  */
-export type DataArray<T = Atom> = Data<T>[];
+export type DataArray<T = BasicData> = Data<T>[];
+
+
+
 
 /**
  * Object - mutually recursive with Data (object node).
  */
-export type DataObject<T = Atom> = {
+export type DataObject<T = BasicData> = {
     [property: string]: Data<T>,
 };
+
+
+
 
 /**
  * Recursive data type (leaf or node).
  */
-export type Data<T = Atom> =
+export type Data<T = BasicData> =
     | T
     | DataArray<T>
-    | DataObject;
+    | DataObject<T>;
+
+
+
 
 /**
  * Node-indexing type.
@@ -80,11 +112,11 @@ export type DataIndex =
  * @param {unknown} [def]
  * @returns {any}
  */
-export function access (
-    o: Data = {},
+export function access<T = BasicData> (
+    o: Data<T> = {},
     path: DataIndex[] = [],
-    def?: Data
-): Data | void {
+    def?: Data<T>
+): Data<T> | void {
     try {
         return path.reduce((acc: any, p) => acc[p], o) || def;
     } catch (_) {
@@ -128,16 +160,16 @@ export function assign<T> (base: T, ext: T): T {
  * with new data and references to all unchanged parts of the old object.
  * This function implements copy-on-write semantics.
  */
-export function rewrite (
-    o: Data,
+export function rewrite<T = BasicData> (
+    o: Data<T>,
     [h, ...t]: DataIndex[],
-    v: Data
-): Data {
+    v: Data<T>
+): Data<T> {
 
     if (!h || !(isObject(o) || isArray(o))) return v;
 
     if (isObject(o)) {
-        let data = o as DataObject;
+        let data = o as DataObject<T>;
         if (!isString(h) || !(h in data))
             throw new TypeError("struct.rewrite<object> - wrong path");
         let member = h as string;
@@ -146,7 +178,7 @@ export function rewrite (
             [member]: rewrite(data[member], t, v),
         };
     } else {
-        let data = o as DataArray;
+        let data = o as DataArray<T>;
         if (!isNumber(h) || !(h in data))
             throw new TypeError("struct.rewrite<array> - wrong path");
         let index = h as number;

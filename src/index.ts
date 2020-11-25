@@ -217,6 +217,7 @@ export * as string from "./string";
  */
 export type {
     Atom,
+    BasicData,
     Data,
     DataArray,
     DataObject,
