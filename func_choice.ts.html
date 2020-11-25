@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>math/random.js - Documentation</title>
+    <title>func/choice.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">math/random.js</h1>
+    <h1 class="page-title">func/choice.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Mathematical tools.
+ * Functional programming tools.
  *
- * @module math
+ * @module func
  * @license Apache-2.0
  * @author drmats
  */
@@ -50,19 +50,34 @@
 
 
 
-import { maxInt } from "../type/consts"
+import type {
+    JSAnyFun,
+    JSAnyArr,
+} from "../type/consts";
 
 
 
 
 /**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
+ * Functional replacement of a `switch` statement.
  *
- * @function randomInt
- * @returns {Number}
+ * @function choose
+ * @param {String} key
+ * @param {Record&lt;string, JSAnyFun&lt;T>>} [actions]
+ * @param {Function} [defaultAction]
+ * @param {Array} [args]
+ * @returns {T}
  */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
+export function choose&lt;T> (
+    key: string,
+    actions: Record&lt;string, JSAnyFun&lt;T>> = {},
+    defaultAction: JSAnyFun = () => null,
+    args: JSAnyArr = []
+): T {
+    return key in actions ?
+        actions[key](...args) :
+        defaultAction(...args);
+}
 </code></pre>
         </article>
     </section>

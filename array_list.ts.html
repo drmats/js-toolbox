@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>math/random.js - Documentation</title>
+    <title>array/list.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">math/random.js</h1>
+    <h1 class="page-title">array/list.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Mathematical tools.
+ * Array tools.
  *
- * @module math
+ * @module array
  * @license Apache-2.0
  * @author drmats
  */
@@ -50,19 +50,171 @@
 
 
 
-import { maxInt } from "../type/consts"
+import type {
+    ArrStr,
+    ChooseArrElOrStr,
+    ChooseArrOrStr,
+} from "../type/consts";
+import { dec } from "../math/arithmetic";
 
 
 
 
 /**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
+ * Append `ys` to `xs` and return xs.
  *
- * @function randomInt
- * @returns {Number}
+ * @function append
+ * @param {Array&lt;T>} xs
+ * @returns Concatenating function ys => xs . ys
  */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
+export function append&lt;X> (xs: X[]): &lt;Y>(ys: Y[]) => (X | Y)[] {
+    return ys => {
+        Array.prototype.push.apply(xs, ys);
+        return xs;
+    };
+}
+
+
+
+
+/**
+ * Drop the first `n` elements of a given array or string.
+ * Returns array or string without the first `n` elements.
+ *
+ * @function drop
+ * @param {Number} n
+ * @returns Function which takes `xs` and returns
+ *      array or string without the first `n` elements.
+ */
+export function drop (
+    n: number
+): &lt;T extends ArrStr>(xs: T) => ChooseArrOrStr&lt;T> {
+    return &lt;T extends ArrStr>(xs: T) =>
+        xs.slice(n) as ChooseArrOrStr&lt;T>;
+}
+
+
+
+
+/**
+ * Drop the last `n` elements of a given array.
+ * Returns array without the last `n` elements.
+ *
+ * @function dropLast
+ * @param {Number} n
+ * @returns Function which takes `xs` and returns
+ *      array or string without the last `n` elements.
+ */
+export function dropLast (
+    n: number
+): &lt;T extends ArrStr>(xs: T) => ChooseArrOrStr&lt;T> {
+    return &lt;T extends ArrStr>(xs: T) => (
+        n >= xs.length ? [] : xs.slice(0, xs.length - n)
+    ) as ChooseArrOrStr&lt;T>;
+}
+
+
+
+
+/**
+ * Return first element of the given array.
+ *
+ * @function head
+ * @param {Array&lt;T>|String} arr
+ * @returns First element or type error is thrown.
+ */
+export function head&lt;T extends ArrStr> (
+    [x]: T
+): ChooseArrElOrStr&lt;T> {
+    if (!x) throw new TypeError("array.head() - empty list");
+    return x;
+}
+
+
+
+
+/**
+ * Return array without its last element.
+ *
+ * @function init
+ * @param {Array&lt;T>|String} [arr]
+ * @returns {Array&lt;T>|String}
+ */
+export function init&lt;T extends ArrStr> (
+    xs: T
+): ChooseArrOrStr&lt;T> {
+    return xs.slice(0, dec(xs.length)) as ChooseArrOrStr&lt;T>;
+}
+
+
+
+
+/**
+ * Return the last element of the given array.
+ *
+ * @function last
+ * @param {Array|String} arr
+ * @returns Last element or type error is thrown.
+ */
+export function last&lt;T extends ArrStr> (
+    xs: T
+): ChooseArrElOrStr&lt;T> {
+    if (!xs.length) throw new TypeError("array.last() - empty list");
+    return xs[dec(xs.length)];
+}
+
+
+
+
+/**
+ * Return array without its head (first element).
+ *
+ * @function tail
+ * @param {Array|String} arr
+ * @returns {Array&lt;T>|String}
+ */
+export function tail&lt;T extends ArrStr> (
+    [_x, ...xs]: T
+): ChooseArrOrStr&lt;T> {
+    return xs as ChooseArrOrStr&lt;T>;
+}
+
+
+
+
+/**
+ * Take the first `n` elements of a given array.
+ *
+ * @function take
+ * @param {Number} n
+ * @returns Function which takes `xs` and return first `n` elements
+ *
+ */
+export function take (
+    n: number
+): &lt;T extends ArrStr>(xs: T) => ChooseArrOrStr&lt;T> {
+    return &lt;T extends ArrStr>(xs: T) =>
+        xs.slice(0, n) as ChooseArrOrStr&lt;T>;
+}
+
+
+
+
+/**
+ * Take the last `n` elements of a given array.
+ *
+ * @function takeLast
+ * @param {Number} n
+ * @returns Function which takes `xs` and return last `n` elements
+ *
+ */
+export function takeLast (
+    n: number
+): &lt;T extends ArrStr>(xs: T) => ChooseArrOrStr&lt;T> {
+    return &lt;T extends ArrStr>(xs: T) => (
+        (n >= xs.length) ? xs : xs.slice(xs.length - n)
+    ) as ChooseArrOrStr&lt;T>;
+}
 </code></pre>
         </article>
     </section>

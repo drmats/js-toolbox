@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>math/random.js - Documentation</title>
+    <title>struct/data.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">math/random.js</h1>
+    <h1 class="page-title">struct/data.ts</h1>
     
 
     
@@ -40,29 +40,211 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Mathematical tools.
+ * Data structure manipulation tools.
  *
- * @module math
+ * @module struct
  * @license Apache-2.0
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-import { maxInt } from "../type/consts"
+
+import type { Fun } from "../type/consts";
+import { append } from "../array/list";
+import { intersection } from "../array/set";
+import { inc } from "../math/arithmetic";
+import { quote } from "../string/transform";
+import { space } from "../string/consts";
+import {
+    isArray,
+    isNumber,
+    isObject,
+    isString,
+} from "../type/check";
 
 
 
 
 /**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
- *
- * @function randomInt
- * @returns {Number}
+ * Simple, basic data type (leaf).
  */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
+export type BasicData =
+    | boolean
+    | number
+    | string;
+
+
+
+
+/**
+ * All "atomic" types.
+ */
+export type Atom =
+    | BasicData
+    | symbol
+    | bigint
+    | RegExp
+    | Fun
+    | null
+    | undefined;
+
+
+
+
+/**
+ * Array - mutually recursive with Data (array node).
+ */
+export type DataArray&lt;
+    T = BasicData,
+    PropType extends keyof any = string
+> = Data&lt;T, PropType>[];
+
+
+
+
+/**
+ * Object - mutually recursive with Data (object node).
+ */
+export type DataObject&lt;
+    T = BasicData,
+    PropType extends keyof any = string
+> = {
+    [property in PropType]: Data&lt;T, PropType>;
+};
+
+
+
+
+/**
+ * Recursive data type (leaf or node).
+ */
+export type Data&lt;
+    T = BasicData,
+    PropType extends keyof any = string
+> =
+    | T
+    | DataArray&lt;T, PropType>
+    | DataObject&lt;T, PropType>;
+
+
+
+
+/**
+ * Node-indexing type.
+ */
+export type DataIndex&lt;
+    PropType extends keyof any = string | number
+> = PropType;
+
+
+
+
+/**
+ * Apply `path` to an object `o`. Return element reachable through
+ * that `path` or `def` value.
+ *
+ * Example:
+ *
+ * ```
+ * access({ a: { b: [10, { c: 42 }] } }, ["a", "b", 1, "c"])  ===  42
+ * ```
+ *
+ * @function access
+ * @param {Data} o
+ * @param {Array.&lt;String|Number>} [path=[]]
+ * @param {unknown} [def]
+ * @returns {Data | undefined}
+ */
+export function access&lt;
+    T = BasicData,
+    PropType extends keyof any = string
+> (
+    o: Data&lt;T, PropType>,
+    path: DataIndex&lt;PropType | number>[] = [],
+    def?: Data&lt;T, PropType>
+): Data&lt;T, PropType> | void {
+    try {
+        return path.reduce((acc: any, p) => acc[p], o) || def;
+    } catch (_) {
+        return def;
+    }
+}
+
+
+
+
+/**
+ * Safe version of standard JavaScript Object.assign();
+ * Throws when `base` and `ext` have conflicting keys - prevents
+ * accidental overwrite.
+ *
+ * @function assign
+ * @param {Object} base
+ * @param {Object} ext
+ * @returns {Object} base
+ */
+export function assign&lt;T> (base: T, ext: T): T {
+    const overlap = intersection(
+        Object.keys(base), Object.keys(ext)
+    );
+    if (overlap.length === 0) {
+        return Object.assign(base, ext);
+    } else {
+        throw new TypeError([
+            "struct.assign() - conflicting keys:",
+            overlap.map(x => quote(x)).join(", "),
+        ].join(space()));
+    }
+}
+
+
+
+
+/**
+ * Rewrite part of an object (first argument) reachable through passed path
+ * (second argument) with provided value (third argument). Creates new object
+ * with new data and references to all unchanged parts of the old object.
+ * This function implements copy-on-write semantics.
+ *
+ * @function rewrite
+ * @param {Data} o
+ * @param {DataIndex} path
+ * @param {Data} v
+ * @returns {Data}
+ */
+export function rewrite&lt;
+    T = BasicData,
+    PropType extends keyof any = string
+> (
+    o: Data&lt;T, PropType>,
+    [h, ...t]: DataIndex&lt;PropType | number>[],
+    v: Data&lt;T, PropType>
+): Data&lt;T, PropType> {
+
+    if (!h || !(isObject(o) || isArray(o))) return v;
+
+    if (isObject(o)) {
+        let data = o as DataObject&lt;T, PropType>;
+        if (!isString(h) || !(h in data))
+            throw new TypeError("struct.rewrite&lt;object> - wrong path");
+        return {
+            ...data,
+            [h]: rewrite(data[h], t, v),
+        };
+    } else {
+        let data = o as DataArray&lt;T, PropType>;
+        if (!isNumber(h) || !(h in data))
+            throw new TypeError("struct.rewrite&lt;array> - wrong path");
+        return append(data.slice(0, h)) ([
+            rewrite(data[h], t, v),
+            ...data.slice(inc(h)),
+        ]);
+    }
+
+}
 </code></pre>
         </article>
     </section>
