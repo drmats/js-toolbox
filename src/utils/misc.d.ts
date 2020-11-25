@@ -9,12 +9,17 @@
 
 
 
+import type { NoArgFun } from "../type/consts";
+
+
+
+
 /**
  * Run "main" function:
  *     - in browser on "load" event,
  *     - via setTimeout if there's no event API available
  */
-export declare function run (main: () => void): void;
+export declare function run (main: NoArgFun<void>): void;
 
 
 
