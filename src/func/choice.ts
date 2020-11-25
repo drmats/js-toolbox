@@ -25,7 +25,7 @@ import type {
  * @param {Record<string, JSAnyFun<T>>} [actions]
  * @param {Function} [defaultAction]
  * @param {Array} [args]
- * @returns {any}
+ * @returns {T}
  */
 export function choose<T> (
     key: string,
