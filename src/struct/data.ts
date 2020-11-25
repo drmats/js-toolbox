@@ -58,8 +58,8 @@ export type Atom =
  */
 export type DataArray<
     T = BasicData,
-    PropType extends keyof any = string
-> = Data<T, PropType>[];
+    ObjectPropType extends keyof any = string
+> = Data<T, ObjectPropType>[];
 
 
 
@@ -82,11 +82,11 @@ export type DataObject<
  */
 export type Data<
     T = BasicData,
-    PropType extends keyof any = string
+    ObjectPropType extends keyof any = string
 > =
     | T
-    | DataArray<T, PropType>
-    | DataObject<T, PropType>;
+    | DataArray<T, ObjectPropType>
+    | DataObject<T, ObjectPropType>;
 
 
 
