@@ -103,14 +103,14 @@ export function access (
  * @function assign
  * @param {Object} base
  * @param {Object} ext
- * @returns {void}
+ * @returns {Object} base
  */
-export function assign<T> (base: T, ext: T): void {
+export function assign<T> (base: T, ext: T): T {
     const overlap = intersection(
         Object.keys(base), Object.keys(ext)
     ) as string[];
     if (overlap.length === 0) {
-        Object.assign(base, ext);
+        return Object.assign(base, ext);
     } else {
         throw new TypeError([
             "struct.assign() - conflicting keys:",
