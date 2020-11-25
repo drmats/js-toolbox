@@ -11,6 +11,7 @@
 
 
 
+import type { DataIndex } from "./data";
 import type {
     JSAnyArrObj,
     JSAnyObj,
@@ -25,7 +26,7 @@ import type {
  * enumerate on any javascript object.
  */
 export declare function hashAccessor ():
-    (n: JSAnyArrObj) => [any, (string | number)[]][];
+    (n: JSAnyArrObj) => [any, DataIndex[]][];
 
 
 
@@ -50,8 +51,8 @@ export declare function hashAccessor ():
  * `keyAccessor` called without arguments (`keyAccessor()`) returns
  * `hashAccessor`.
  */
-export declare function keyAccessor (...path: (string | number)[]):
-    (n: JSAnyArrObj) => [any, (string | number)[]][];
+export declare function keyAccessor (...path: DataIndex[]):
+    (n: JSAnyArrObj) => [any, DataIndex[]][];
 
 
 
@@ -70,7 +71,7 @@ export declare function dfs<T> (
     f: (
         accs: T[],
         node: JSAnyObj,
-        path: (string | number)[],
+        path: DataIndex[],
         position: number
     ) => T
 ): T;
@@ -79,8 +80,8 @@ export declare function dfs<T> (
     f: (
         accs: T[],
         node: JSAnyObj,
-        path: (string | number)[],
+        path: DataIndex[],
         position: number
     ) => T,
-    children: (n: JSAnyArrObj) => [any, (string | number)[]][]
+    children: (n: JSAnyArrObj) => [any, DataIndex[]][]
 ): T;
