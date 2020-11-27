@@ -26,7 +26,7 @@ export type NoArgFun<Out = any> = () => Out;
  * js-toolbox "cheat" types.
  */
 export type JSAnyArr<T = any> = T[];
-export type JSAnyObj<T = any> = { [P in keyof any]: T };
+export type JSAnyObj<T = any> = { [K in keyof T]: T[K]; };
 export type JSAnyArrObj<T = any> = JSAnyArr<T> | JSAnyObj<T>;
 export type JSAnyFun<T = any> = Fun<any[], T>;
 

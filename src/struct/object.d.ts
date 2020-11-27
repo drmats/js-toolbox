@@ -37,7 +37,12 @@ export declare function clone (o: JSAnyArrObj): JSAnyArrObj;
  *
  * Imitates Python's `dict()`.
  */
-export declare function dict (entries: [string, unknown][]): JSAnyObj;
+export declare function dict<
+    T,
+    Keys extends keyof T = keyof T
+> (
+    entries: [Keys, T][]
+): { [k in Keys]: T };
 
 
 
@@ -52,10 +57,23 @@ export declare function dict (entries: [string, unknown][]): JSAnyObj;
  *
  * `f` should return `[key, value]` array.
  */
-export declare function objectMap (
-    o: JSAnyObj,
-    f: (kv: [string, unknown]) => [string, unknown]
-): JSAnyObj;
+export declare function objectMap<
+    In,
+    Keys extends keyof In = keyof In,
+    Out
+> (
+    o: JSAnyObj<In>,
+    f: (kv: [Keys, In[Keys]]) => [Keys, Out]
+): { [k in Keys]: Out; };
+
+export declare function objectMap<
+    In,
+    Keys extends keyof In = keyof In,
+    Out
+> (
+    o: JSAnyObj<In>,
+    f: (kv: [Keys, In[Keys]]) => [keyof any, Out]
+): { [k in keyof any]: Out; };
 
 
 
@@ -72,11 +90,15 @@ export declare function objectMap (
  *
  * `f` should return value of the same type as `init`.
  */
-export declare function objectReduce<T> (
-    o: JSAnyObj,
-    f: (acc: T, kv: [string, unknown]) => T,
-    init: T
-): T;
+export declare function objectReduce<
+    In,
+    Keys extends keyof In = keyof In,
+    Out
+> (
+    o: JSAnyObj<In>,
+    f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
+    init: Out
+): Out;
 
 
 
@@ -85,5 +107,6 @@ export declare function objectReduce<T> (
  * When `o == { a: "b", c: "d" }`
  * then `swap(o) == { b: "a", d: "c" }`.
  */
-export declare function swap (o: Record<string, string>):
-    Record<string, string>;
+export declare function swap (
+    o: Record<string, string>
+): Record<string, string>;
