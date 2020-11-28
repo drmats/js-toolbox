@@ -71,7 +71,7 @@ export type DataObject<
     T = BasicData,
     PropType extends keyof any = string
 > = {
-    [property in PropType]: Data<T, PropType>;
+    [property in PropType]?: Data<T, PropType>;
 };
 
 
