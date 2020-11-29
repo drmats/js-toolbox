@@ -9,10 +9,11 @@
 
 
 
+import type { NoArgFun } from "../type/consts";
 import {
     isFunction,
     isObject,
-} from "../type/check"
+} from "../type/check";
 
 
 
@@ -26,13 +27,13 @@ import {
  * @param {Function} main
  * @returns {void}
  */
-export const run = main => {
+export const run = (main: NoArgFun<void>): void => {
     typeof window !== "undefined"  &&
     isObject(window)  &&
     isFunction(window.addEventListener) ?
         window.addEventListener("load", main) :
-        setTimeout(main, 10)
-}
+        setTimeout(main, 10);
+};
 
 
 
@@ -60,4 +61,5 @@ export const timeUnit = Object.freeze({
     month: 2629800000,
     quarter: 7889400000,
     year: 31557600000,
-})
+});
+export type TimeUnit = typeof timeUnit;
