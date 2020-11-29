@@ -1,21 +1,27 @@
 /**
- * Data structure manipulation tools.
+ * Struct - type declarations.
  *
  * @module struct
  * @license Apache-2.0
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-import { curry } from "../func/curry"
-import { flow } from "../func/combinators"
-import { quote } from "../string/transform"
+
+import type {
+    JSAnyArrObj,
+    JSAnyObj,
+} from "../type/consts";
+import { curry } from "../func/curry";
+import { flow } from "../func/combinators";
+import { quote } from "../string/transform";
 import {
     isFunction,
     isObject,
-} from "../type/check"
+} from "../type/check";
 
 
 
@@ -25,10 +31,13 @@ import {
  * that doesn't contain functions.
  *
  * @function clone
- * @param {Object} o
- * @returns {Object}
+ * @param {JSAnyArrObj} o
+ * @returns {JSAnyArrObj}
  */
-export const clone = flow(JSON.stringify, JSON.parse)
+export const clone = flow(
+    JSON.stringify,
+    JSON.parse
+) as (o: JSAnyArrObj) => JSAnyArrObj;
 
 
 
@@ -46,9 +55,13 @@ export const clone = flow(JSON.stringify, JSON.parse)
  * @param {Array.<Array>} entries
  * @returns {Object}
  */
-export const dict = entries => entries.reduce(
-    (acc, [k, v]) => ({ ...acc, [k]: v }), {}
-)
+export function dict<T> (
+    entries: [PropertyKey, T][]
+): { [k in PropertyKey]?: T; } {
+    return entries.reduce(
+        (acc, [k, v]) => ({ ...acc, [k]: v }), {}
+    );
+}
 
 
 
@@ -68,14 +81,33 @@ export const dict = entries => entries.reduce(
  * @param {Function} f
  * @returns {Object}
  */
-export const objectMap = curry((o, f) => {
-    let bquote = x => quote(typeof x, "[]")
+export const objectMap: {
+    /* specialized-case overload (output keys related to input keys) */
+    <
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj<In>,
+        f: (kv: [Keys, In[Keys]]) => [Keys, Out]
+    ): { [k in Keys]: Out; };
+    /* general-case overload (output keys not related to input keys) */
+    <
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj<In>,
+        f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
+    ): { [k in PropertyKey]?: Out; }
+} = curry((o: any, f: any) => {
+    let bquote = (x: any) => quote(typeof x, "[]");
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
-    )
-    return dict(Object.entries(o).map(kv => f.call(o, kv)))
-})
+    );
+    return dict(Object.entries(o).map((kv => f.call(o, kv))));
+});
 
 
 
@@ -95,17 +127,27 @@ export const objectMap = curry((o, f) => {
  * @function objectReduce
  * @param {Object} o
  * @param {Function} f
- * @param {any} init
- * @returns {any}
+ * @param {T} init
+ * @returns {T}
  */
-export const objectReduce = curry((o, f, init) => {
-    let bquote = x => quote(typeof x, "[]")
+export const objectReduce: {
+    <
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj<In>,
+        f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
+        init: Out,
+    ): Out;
+} = curry((o, f, init) => {
+    let bquote = (x: any) => quote(typeof x, "[]");
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
         `got ${bquote(o)} and ${bquote(f)}`
-    )
-    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init)
-})
+    );
+    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
+});
 
 
 
@@ -118,4 +160,6 @@ export const objectReduce = curry((o, f, init) => {
  * @param {Record<String, String>} o
  * @returns {Record<String, String>}
  */
-export const swap = o => objectMap(o, ([k, v]) => [v, k])
+export const swap = (
+    o: JSAnyObj
+): JSAnyObj => objectMap(o, ([k, v]) => [v, k]);
