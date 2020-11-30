@@ -14,6 +14,7 @@ import {
     isFunction,
     isObject,
 } from "../type/check";
+import { quote } from "../string/transform";
 
 
 
@@ -63,3 +64,15 @@ export const timeUnit = Object.freeze({
     year: 31557600000,
 });
 export type TimeUnit = typeof timeUnit;
+
+
+
+
+/**
+ * Wrap typeof output string with square brackets.
+ *
+ * @function btquote
+ * @param x
+ * @returns wrapped typeof string
+ */
+export const btquote = (x: unknown): string => quote(typeof x, "[]");

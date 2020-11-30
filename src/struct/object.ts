@@ -17,7 +17,7 @@ import type {
 } from "../type/consts";
 import { curry } from "../func/curry";
 import { flow } from "../func/combinators";
-import { quote } from "../string/transform";
+import { btquote } from "../utils/misc";
 import {
     isFunction,
     isObject,
@@ -101,10 +101,9 @@ export const objectMap: {
         f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
     ): { [k in PropertyKey]?: Out; }
 } = curry((o: any, f: any) => {
-    let bquote = (x: any) => quote(typeof x, "[]");
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
-        `got ${bquote(o)} and ${bquote(f)}`
+        `got ${btquote(o)} and ${btquote(f)}`
     );
     return dict(Object.entries(o).map((kv => f.call(o, kv))));
 });
@@ -141,10 +140,9 @@ export const objectReduce: {
         init: Out,
     ): Out;
 } = curry((o, f, init) => {
-    let bquote = (x: any) => quote(typeof x, "[]");
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
-        `got ${bquote(o)} and ${bquote(f)}`
+        `got ${btquote(o)} and ${btquote(f)}`
     );
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
 });
@@ -157,8 +155,8 @@ export const objectReduce: {
  * then `swap(o) == { b: "a", d: "c" }`.
  *
  * @function swap
- * @param {Record<String, String>} o
- * @returns {Record<String, String>}
+ * @param {JSAnyObj} o
+ * @returns {JSAnyObj}
  */
 export const swap = (
     o: JSAnyObj

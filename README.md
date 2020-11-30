@@ -455,7 +455,8 @@ utils
 ```
 
 > ```javascript
-> { devEnv: [Function: devEnv],
+> { btquote: [Function: btquote],
+>   devEnv: [Function: devEnv],
 >   getLibConfig: [Function: getLibConfig],
 >   getProcess: [Function: getProcess],
 >   isBrowser: [Function: isBrowser],

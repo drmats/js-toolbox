@@ -12,11 +12,11 @@
 import { head } from "../array/list"
 import { curry } from "../func/curry"
 import { inc } from "../math/arithmetic"
-import { quote } from "../string/transform"
 import {
     isArray,
     isFunction,
 } from "../type/check"
+import { btquote } from "../utils/misc"
 
 
 
@@ -68,8 +68,7 @@ export const map = curry((arr, f) => {
                     .resolve(f.call(arr, arr[i], i))
                     .then(progress).catch(reject)
             } else resolve(results)
-        },
-        bquote = x => quote(typeof x, "[]")
+        }
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
@@ -79,7 +78,7 @@ export const map = curry((arr, f) => {
         } else return Promise.resolve(results)
     } else throw new TypeError(
         "async.map() expected array and function, " +
-        `got ${bquote(arr)} and ${bquote(f)}`
+        `got ${btquote(arr)} and ${btquote(f)}`
     )
 
     return promise
@@ -179,8 +178,7 @@ export const reduce = curry((arr, f, initAcc) => {
                     .resolve(f.call(arr, r, arr[i], i))
                     .then(progress).catch(reject)
             } else resolve(r)
-        },
-        bquote = x => quote(typeof x, "[]")
+        }
 
     if (isArray(arr)  &&  isFunction(f)) {
         if (arr.length > 0) {
@@ -190,7 +188,7 @@ export const reduce = curry((arr, f, initAcc) => {
         } else return Promise.resolve(initAcc)
     } else throw new TypeError(
         "async.reduce() expected array and function, " +
-        `got ${bquote(arr)} and ${bquote(f)}`
+        `got ${btquote(arr)} and ${btquote(f)}`
     )
 
     return promise

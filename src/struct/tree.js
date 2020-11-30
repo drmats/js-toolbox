@@ -13,12 +13,12 @@ import { access } from "./data"
 import { choose } from "../func/choice"
 import { Y } from "../func/combinators"
 import { empty } from "../string/consts"
-import { quote } from "../string/transform"
 import {
     isArray,
     isFunction,
     isObject,
 } from "../type/check"
+import { btquote } from "../utils/misc"
 
 
 
@@ -111,12 +111,11 @@ export const dfs = (
     f = (_accs, node, _path, _position) => node,
     children = keyAccessor()
 ) => {
-    let bquote = x => quote(typeof x, "[]")
     if (
         !isObject(tree) || !isFunction(f) || !isFunction(children)
     ) throw new TypeError(
         "struct.dfs() expected object and 2 functions, " +
-        `got ${bquote(tree)}, ${bquote(f)} and ${bquote(children)}`
+        `got ${btquote(tree)}, ${btquote(f)} and ${btquote(children)}`
     )
     return Y(aux =>
         (node, path, position) => f(
