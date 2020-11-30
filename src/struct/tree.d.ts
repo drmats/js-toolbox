@@ -25,8 +25,9 @@ import type {
  * in the `struct.dfs` function. Use it with `struct.dfs` to
  * enumerate on any javascript object.
  */
-export declare function hashAccessor ():
-    (n: JSAnyArrObj) => [any, DataIndex[]][];
+export declare function hashAccessor (): {
+    (n: JSAnyArrObj): [any, DataIndex[]][];
+};
 
 
 
@@ -51,8 +52,9 @@ export declare function hashAccessor ():
  * `keyAccessor` called without arguments (`keyAccessor()`) returns
  * `hashAccessor`.
  */
-export declare function keyAccessor (...path: DataIndex[]):
-    (n: JSAnyArrObj) => [any, DataIndex[]][];
+export declare function keyAccessor (...path: DataIndex[]): {
+    (n: JSAnyArrObj): [any, DataIndex[]][];
+};
 
 
 
