@@ -39,11 +39,11 @@ export type JSAnyFun<T = any> = Fun<any[], T>;
  * Infers one: `U` or `string` from `U[] | string` union type.
  * If `U` nor `string` can be inferred then it's `never`.
  */
-export type ChooseArrElOrStr<T = ArrStr> = T extends (infer U)[]
-    ? U
-    : T extends string
-    ? string
-    : never;
+export type ChooseArrElOrStr<
+    T = ArrStr
+> = T extends (infer U)[]
+    ? U : T extends string
+        ? string : never;
 
 
 
@@ -54,11 +54,11 @@ export type ChooseArrElOrStr<T = ArrStr> = T extends (infer U)[]
  * Infers one: `U[]` or `string` from `U[] | string` union type.
  * If `U[]` nor `string` can be inferred then it's `never`.
  */
-export type ChooseArrOrStr<T = ArrStr> = T extends (infer U)[]
-    ? U[]
-    : T extends string
-    ? string
-    : never;
+export type ChooseArrOrStr<
+    T = ArrStr
+> = T extends (infer U)[]
+    ? U[] : T extends string
+        ? string : never;
 
 
 
