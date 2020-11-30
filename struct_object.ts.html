@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.ts - Documentation</title>
+    <title>struct/object.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.ts</h1>
+    <h1 class="page-title">struct/object.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Type tools.
+ * Struct - type declarations.
  *
- * @module type
+ * @module struct
  * @license Apache-2.0
  * @author drmats
  */
@@ -53,76 +53,155 @@
 
 
 import type {
-    Fun,
+    JSAnyArrObj,
     JSAnyObj,
-} from "./consts";
+} from "../type/consts";
+import { curry } from "../func/curry";
+import { flow } from "../func/combinators";
+import { btquote } from "../utils/misc";
+import {
+    isFunction,
+    isObject,
+} from "../type/check";
 
 
 
 
 /**
- * Determine if a given value is an `Array`.
+ * Do the deep-copy of any JavaScript object
+ * that doesn't contain functions.
  *
- * @function isArray
- * @param {any} a
- * @returns {Boolean}
+ * @function clone
+ * @param {JSAnyArrObj} o
+ * @returns {JSAnyArrObj}
  */
-export const isArray = Array.isArray;
+export const clone = flow(
+    JSON.stringify,
+    JSON.parse
+) as (o: JSAnyArrObj) => JSAnyArrObj;
 
 
 
 
 /**
- * Determine if a given value is a `Function`.
+ * Construct `Object` from the result of `Object.entries()` call.
  *
- * @function isFunction
- * @param {any} f
- * @returns {Boolean}
+ * ```
+ * entries = [[k1, v1,], ..., [kn, vn,]]
+ * ```
+ *
+ * Imitates Python's `dict()`.
+ *
+ * @function dict
+ * @param {Array.&lt;Array>} entries
+ * @returns {Object}
  */
-export const isFunction = (f: unknown): f is Fun =>
-    f != null  &amp;&amp;  "function" === typeof f;
+export function dict&lt;T> (
+    entries: [PropertyKey, T][]
+): { [k in PropertyKey]?: T; } {
+    return entries.reduce(
+        (acc, [k, v]) => ({ ...acc, [k]: v }), {}
+    );
+}
 
 
 
 
 /**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
+ * Map (iteration) on objects - shallow.
  *
- * @function isNumber
- * @param {any} n
- * @returns {Boolean}
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `kv` - current `[key, value]` array,
+ *
+ * `f` should return `[key, value]` array.
+ *
+ * @function objectMap
+ * @param {Object} o
+ * @param {Function} f
+ * @returns {Object}
  */
-export const isNumber = (n: unknown): n is number =>
-    n != null  &amp;&amp;  "number" === typeof n  &amp;&amp;
-    !Number.isNaN(n)  &amp;&amp;  Number.isFinite(n);
+export const objectMap: {
+    /* specialized-case overload (output keys related to input keys) */
+    &lt;
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj&lt;In>,
+        f: (kv: [Keys, In[Keys]]) => [Keys, Out]
+    ): { [k in Keys]: Out; };
+    /* general-case overload (output keys not related to input keys) */
+    &lt;
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj&lt;In>,
+        f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
+    ): { [k in PropertyKey]?: Out; }
+} = curry((o: any, f: any) => {
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectMap() expected object and function, " +
+        `got ${btquote(o)} and ${btquote(f)}`
+    );
+    return dict(Object.entries(o).map((kv => f.call(o, kv))));
+});
 
 
 
 
 /**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
+ * Reduce (fold) on objects - shallow.
  *
- * @function isObject
- * @param {any} o
- * @returns {Boolean}
+ * - `o` - `Object` to enumerate on.
+ * - `f` - `Function` to call on each key, params:
+ *     - `this` - bound to the enumerated object,
+ *     - `acc` - accumulated value,
+ *     - `kv` - current `[key, value]` array,
+ * - `init` - accumulated value initializer,
+ *
+ * `f` should return value of the same type as `init`.
+ *
+ * @function objectReduce
+ * @param {Object} o
+ * @param {Function} f
+ * @param {T} init
+ * @returns {T}
  */
-export const isObject = (o: unknown): o is JSAnyObj =>
-    o != null  &amp;&amp;  "object" === typeof o  &amp;&amp;  !isArray(o);
+export const objectReduce: {
+    &lt;
+        In,
+        Keys extends keyof In,
+        Out
+    >(
+        o: JSAnyObj&lt;In>,
+        f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
+        init: Out,
+    ): Out;
+} = curry((o, f, init) => {
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectReduce() expected object and function, " +
+        `got ${btquote(o)} and ${btquote(f)}`
+    );
+    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
+});
 
 
 
 
 /**
- * Determine if a given value is a `String`.
+ * When `o == { a: "b", c: "d" }`
+ * then `swap(o) == { b: "a", d: "c" }`.
  *
- * @function isString
- * @param {any} s
- * @returns {Boolean}
+ * @function swap
+ * @param {JSAnyObj} o
+ * @returns {JSAnyObj}
  */
-export const isString = (s: unknown): s is string =>
-    s != null  &amp;&amp;  "string" === typeof s;
+export const swap = (
+    o: JSAnyObj
+): JSAnyObj => objectMap(o, ([k, v]) => [v, k]);
 </code></pre>
         </article>
     </section>

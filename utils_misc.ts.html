@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.ts - Documentation</title>
+    <title>utils/misc.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.ts</h1>
+    <h1 class="page-title">utils/misc.ts</h1>
     
 
     
@@ -40,89 +40,83 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Type tools.
+ * Various tools.
  *
- * @module type
+ * @module utils
  * @license Apache-2.0
  * @author drmats
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-
-import type {
-    Fun,
-    JSAnyObj,
-} from "./consts";
-
-
-
-
-/**
- * Determine if a given value is an `Array`.
- *
- * @function isArray
- * @param {any} a
- * @returns {Boolean}
- */
-export const isArray = Array.isArray;
+import type { NoArgFun } from "../type/consts";
+import {
+    isFunction,
+    isObject,
+} from "../type/check";
+import { quote } from "../string/transform";
 
 
 
 
 /**
- * Determine if a given value is a `Function`.
+ * Run "main" function:
+ *     - in browser on "load" event,
+ *     - via setTimeout if there's no event API available
  *
- * @function isFunction
- * @param {any} f
- * @returns {Boolean}
+ * @function run
+ * @param {Function} main
+ * @returns {void}
  */
-export const isFunction = (f: unknown): f is Fun =>
-    f != null  &amp;&amp;  "function" === typeof f;
+export const run = (main: NoArgFun&lt;void>): void => {
+    typeof window !== "undefined"  &amp;&amp;
+    isObject(window)  &amp;&amp;
+    isFunction(window.addEventListener) ?
+        window.addEventListener("load", main) :
+        setTimeout(main, 10);
+};
 
 
 
 
 /**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
+ * Time units represented in milliseconds.
  *
- * @function isNumber
- * @param {any} n
- * @returns {Boolean}
+ * - `second` - `1000 milliseconds`
+ * - `minute` - `60 seconds`
+ * - `hour` - `60 minutes`
+ * - `day` - `24 hours`
+ * - `week` - `7 days`
+ * - `month` - [**average** month]: `30.4375 days` (`365.25 days / 12`)
+ * - `quarter` - [**average** quarter]: `3 months` (`365.25 days / 4`)
+ * - `year` - [**average** year]: `365.25 days`
+ *
+ * @name timeUnit
  */
-export const isNumber = (n: unknown): n is number =>
-    n != null  &amp;&amp;  "number" === typeof n  &amp;&amp;
-    !Number.isNaN(n)  &amp;&amp;  Number.isFinite(n);
+export const timeUnit = Object.freeze({
+    second: 1000,
+    minute: 60000,
+    hour: 3600000,
+    day: 86400000,
+    week: 604800000,
+    month: 2629800000,
+    quarter: 7889400000,
+    year: 31557600000,
+});
+export type TimeUnit = typeof timeUnit;
 
 
 
 
 /**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
+ * Wrap typeof output string with square brackets.
  *
- * @function isObject
- * @param {any} o
- * @returns {Boolean}
+ * @function btquote
+ * @param x
+ * @returns wrapped typeof string
  */
-export const isObject = (o: unknown): o is JSAnyObj =>
-    o != null  &amp;&amp;  "object" === typeof o  &amp;&amp;  !isArray(o);
-
-
-
-
-/**
- * Determine if a given value is a `String`.
- *
- * @function isString
- * @param {any} s
- * @returns {Boolean}
- */
-export const isString = (s: unknown): s is string =>
-    s != null  &amp;&amp;  "string" === typeof s;
+export const btquote = (x: unknown): string => quote(typeof x, "[]");
 </code></pre>
         </article>
     </section>
