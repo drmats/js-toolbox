@@ -91,6 +91,14 @@ export const objectMap: {
         o: JSAnyObj<In>,
         f: (kv: [Keys, In[Keys]]) => [Keys, Out]
     ): { [k in Keys]: Out; };
+    /* specialized-case - curried */
+    <In>(
+        o: JSAnyObj<In>
+    ): {
+        <Keys extends keyof In, Out>(
+            f: (kv: [Keys, In[Keys]]) => [Keys, Out]
+        ): { [k in Keys]: Out; }
+    };
     /* general-case overload (output keys not related to input keys) */
     <
         In,
@@ -99,7 +107,15 @@ export const objectMap: {
     >(
         o: JSAnyObj<In>,
         f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
-    ): { [k in PropertyKey]?: Out; }
+    ): { [k in PropertyKey]?: Out; };
+    /* general-case - curried */
+    <In>(
+        o: JSAnyObj<In>
+    ): {
+        <Keys extends keyof In, Out>(
+            f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
+        ): { [k in PropertyKey]: Out; }
+    };
 } = curry((o: any, f: any) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
