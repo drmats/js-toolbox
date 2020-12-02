@@ -46,7 +46,7 @@ export const clone = flow(
  * Construct `Object` from the result of `Object.entries()` call.
  *
  * ```
- * entries = [[k1, v1,], ..., [kn, vn,]]
+ * entries = [[k1, v1], ..., [kn, vn]]
  * ```
  *
  * Imitates Python's `dict()`.
@@ -97,7 +97,7 @@ export const objectMap: {
     ): {
         <Keys extends keyof In, Out>(
             f: (kv: [Keys, In[Keys]]) => [Keys, Out]
-        ): { [k in Keys]: Out; }
+        ): { [k in Keys]: Out; };
     };
     /* general-case overload (output keys not related to input keys) */
     <
@@ -114,7 +114,7 @@ export const objectMap: {
     ): {
         <Keys extends keyof In, Out>(
             f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
-        ): { [k in PropertyKey]: Out; }
+        ): { [k in PropertyKey]?: Out; };
     };
 } = curry((o: any, f: any) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
@@ -146,6 +146,7 @@ export const objectMap: {
  * @returns {T}
  */
 export const objectReduce: {
+    /* uncurried */
     <
         In,
         Keys extends keyof In,
@@ -155,6 +156,14 @@ export const objectReduce: {
         f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
         init: Out,
     ): Out;
+    /* curried */
+    <In>(o: JSAnyObj<In>): {
+        <Keys extends keyof In, Out>(
+            f: (acc: Out, kv: [Keys, In[Keys]]) => Out
+        ): {
+            (init: Out): Out;
+        };
+    };
 } = curry((o, f, init) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
@@ -176,4 +185,4 @@ export const objectReduce: {
  */
 export const swap = (
     o: JSAnyObj
-): JSAnyObj => objectMap(o, ([k, v]) => [v, k]);
+): JSAnyObj => objectMap(o) (([k, v]) => [v, k]);
