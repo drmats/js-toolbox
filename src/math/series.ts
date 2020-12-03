@@ -12,7 +12,7 @@
 import {
     add,
     mul,
-} from "./arithmetic"
+} from "./arithmetic";
 
 
 
@@ -24,7 +24,9 @@ import {
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const average = arr => sum(arr) / arr.length
+export function average (arr: number[]): number {
+    return sum(arr) / arr.length;
+}
 
 
 
@@ -36,7 +38,9 @@ export const average = arr => sum(arr) / arr.length
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export const product = arr => arr.reduce(mul, 1)
+export function product (arr: number[]): number {
+    return arr.reduce(mul, 1);
+}
 
 
 
@@ -48,5 +52,6 @@ export const product = arr => arr.reduce(mul, 1)
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-
-export const sum = arr => arr.reduce(add, 0)
+export function sum (arr: number[]): number {
+    return arr.reduce(add, 0);
+}
