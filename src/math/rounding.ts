@@ -9,7 +9,7 @@
 
 
 
-import { curry } from "../func/curry"
+import { curry } from "../func/curry";
 
 
 
@@ -24,11 +24,16 @@ import { curry } from "../func/curry"
  * @param {Number} n
  * @returns {Number}
  */
-export const clamp = curry((low, high, n) =>
+export const clamp: {
+    (low: number, high: number, n: number): number;
+    (low: number, high: number): { (n: number): number; };
+    (low: number): { (high: number, n: number): number; };
+    (low: number): { (high: number): { (n: number): number; }; };
+} = curry((low, high, n) =>
     n < low  ?  low  :
         n >= low  &&  n < high  ?  n  :
             high
-)
+);
 
 
 
@@ -39,11 +44,12 @@ export const clamp = curry((low, high, n) =>
  * which can be changed through `precision` parameter.
  *
  * @function roundIfClose
- * @param {Number} x
- * @param {Number} [precision=9]
- * @returns {Number}
+ * @param x
+ * @param [precision=9]
+ * @returns rounded number
  */
-export const roundIfClose = (x, precision = 9) => (
-    (rounded) =>
+export function roundIfClose (x: number, precision = 9): number {
+    return ((rounded) =>
         Math.abs(rounded - x) <= 10**(-precision)  ?  rounded  :  x
-)(Math.round(x))
+    )(Math.round(x));
+}
