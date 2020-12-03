@@ -9,7 +9,7 @@
 
 
 
-import { maxInt } from "../type/consts"
+import { maxInt } from "../type/consts";
 
 
 
@@ -21,4 +21,6 @@ import { maxInt } from "../type/consts"
  * @function randomInt
  * @returns {Number}
  */
-export const randomInt = () => Math.floor(Math.random() * (maxInt * 1e-3))
+export function randomInt (): number {
+    return Math.floor(Math.random() * (maxInt * 1e-3));
+}
