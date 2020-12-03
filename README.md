@@ -1042,8 +1042,7 @@ anti-pattern.
 Another solution is to pass these objects as parameters to functions that
 needs to use them, but it's cumbersome and scales poorly.
 
-Using `memory` module solves these problems and reminds the usage of react's
-hooks.
+Using `memory` module solves these problems and resembles the usage of Hooks in React.
 
 Example:
 
