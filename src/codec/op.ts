@@ -51,7 +51,14 @@ export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
  * @param {Uint8Array} u8a2
  * @returns {Boolean}
  */
-export const compareBytes = curry(
+export const compareBytes: {
+    /* uncurried */
+    (u8a1: Uint8Array, u8a2: Uint8Array): boolean;
+    /* curried */
+    (u8a1: Uint8Array): {
+        (u8a2: Uint8Array): boolean;
+    };
+} = curry(
     (u8a1: Uint8Array, u8a2: Uint8Array): boolean => {
         if (
             !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
@@ -67,4 +74,4 @@ export const compareBytes = curry(
             if (u8a1[i] !== u8a2[i]) return false;
         return true;
     }
-) as (u8a1: Uint8Array, u8a2: Uint8Array) => boolean;
+);
