@@ -9,8 +9,8 @@
 
 
 
-import { roundIfClose } from "./rounding"
-import { curry } from "../func/curry"
+import { roundIfClose } from "./rounding";
+import { curry } from "../func/curry";
 
 
 
@@ -23,7 +23,10 @@ import { curry } from "../func/curry"
  * @param {Number} b
  * @returns {Number}
  */
-export const add = curry((a, b) => Number(a) + Number(b))
+export const add: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) + Number(b));
 
 
 
@@ -35,7 +38,7 @@ export const add = curry((a, b) => Number(a) + Number(b))
  * @param {Number} n
  * @returns {Number}
  */
-export const dec = add(-1)
+export const dec = add(-1);
 
 
 
@@ -48,7 +51,10 @@ export const dec = add(-1)
  * @param {Number} b
  * @returns {Number}
  */
-export const div = curry((a, b) => Number(a) / Number(b))
+export const div: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) / Number(b));
 
 
 
@@ -60,7 +66,7 @@ export const div = curry((a, b) => Number(a) / Number(b))
  * @param {Number} n
  * @returns {Number}
  */
-export const inc = add(1)
+export const inc = add(1);
 
 
 
@@ -72,7 +78,7 @@ export const inc = add(1)
  * @param {Number} n
  * @returns {Number}
  */
-export const inv = div(1)
+export const inv = div(1);
 
 
 
@@ -84,7 +90,9 @@ export const inv = div(1)
  * @param {Number} x
  * @returns {Number}
  */
-export const log10 = x => roundIfClose(Math.log(x) / Math.LN10)
+export function log10 (x: number): number {
+    return roundIfClose(Math.log(x) / Math.LN10);
+}
 
 
 
@@ -96,7 +104,9 @@ export const log10 = x => roundIfClose(Math.log(x) / Math.LN10)
  * @param {Number} x
  * @returns {Number}
  */
-export const log2 = x => roundIfClose(Math.log(x) / Math.LN2)
+export function log2 (x: number): number {
+    return roundIfClose(Math.log(x) / Math.LN2);
+}
 
 
 
@@ -109,7 +119,10 @@ export const log2 = x => roundIfClose(Math.log(x) / Math.LN2)
  * @param {Number} b
  * @returns {Number}
  */
-export const mod = curry((a, b) => Number(a) % Number(b))
+export const mod: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) % Number(b));
 
 
 
@@ -122,7 +135,10 @@ export const mod = curry((a, b) => Number(a) % Number(b))
  * @param {Number} b
  * @returns {Number}
  */
-export const mul = curry((a, b) => Number(a) * Number(b))
+export const mul: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) * Number(b));
 
 
 
@@ -134,7 +150,7 @@ export const mul = curry((a, b) => Number(a) * Number(b))
  * @param {Number} n
  * @returns {Number}
  */
-export const neg = mul(-1)
+export const neg = mul(-1);
 
 
 
@@ -147,7 +163,10 @@ export const neg = mul(-1)
  * @param {Number} b
  * @returns {Number}
  */
-export const pow = curry((a, b) => Number(a) ** Number(b))
+export const pow: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) ** Number(b));
 
 
 
@@ -160,4 +179,7 @@ export const pow = curry((a, b) => Number(a) ** Number(b))
  * @param {Number} b
  * @returns {Number}
  */
-export const sub = curry((a, b) => Number(a) - Number(b))
+export const sub: {
+    (a: number, b: number): number;
+    (a: number): { (b: number): number; };
+} = curry((a, b) => Number(a) - Number(b));
