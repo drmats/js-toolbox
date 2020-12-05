@@ -6,8 +6,6 @@
  * @author drmats
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 
 
 
@@ -116,7 +114,7 @@ export const objectMap: {
             f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
         ): { [k in PropertyKey]?: Out; };
     };
-} = curry((o: any, f: any) => {
+} = curry((o, f) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
         `got ${btquote(o)} and ${btquote(f)}`
