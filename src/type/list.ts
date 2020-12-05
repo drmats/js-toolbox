@@ -15,6 +15,11 @@
 
 /**
  * Get head of list.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Hd = Head<List>;    // type Hd = 1;
+ * ```
  */
 export type Head<XSS> =
     XSS extends [infer HEAD, ...any[]] ?
@@ -26,6 +31,11 @@ export type Head<XSS> =
 
 /**
  * Get tail of list.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Tl = Tail<List>;    // type Tl = [2, 3, 4];
+ * ```
  */
 export type Tail<XSS> =
     XSS extends [any, ...infer TAIL] ?
@@ -37,6 +47,11 @@ export type Tail<XSS> =
 
 /**
  * Construct list.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Cs = Cons<0, List>;    // type Cs = [0, 1, 2, 3, 4];
+ * ```
  */
 export type Cons<CAR, CDR extends any[] = []> = [CAR, ...CDR];
 
@@ -45,6 +60,12 @@ export type Cons<CAR, CDR extends any[] = []> = [CAR, ...CDR];
 
 /**
  * Append two lists.
+ *
+ * ```
+ * type List1 = [1, 2];
+ * type List2 = [7, 8];
+ * type Ap = Append<List1, List2>;    // type Ap = [1, 2, 7, 8];
+ * ```
  */
 export type Append<XSS extends any[], YSS extends any[]> =
     XSS extends [infer HEAD, ...infer TAIL] ?
@@ -56,6 +77,11 @@ export type Append<XSS extends any[], YSS extends any[]> =
 
 /**
  * Reverse list.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Rev = Reverse<List>;    // type Rev = [4, 3, 2, 1];
+ * ```
  */
 export type Reverse<XSS extends any[], RESULT extends any[] = []> =
     XSS extends [infer HEAD, ...infer TAIL] ?
