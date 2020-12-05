@@ -122,3 +122,22 @@ export type Reverse<List extends any[], Acc extends any[] = []> =
     List extends [infer X, ...infer Xs] ?
         Reverse<Xs, Cons<X, Acc>> :
         Acc;
+
+
+
+
+/**
+ * Generate list of list prefixes.
+ *
+ * ```
+ * type List = [1, 2, 3];
+ * type Ps = Prefixes<List>;    // type Ps = [[1], [1, 2], [1, 2, 3]];
+ * ```
+ */
+export type Prefixes<List extends any[], Prefix extends any[] = []> =
+    List extends [infer X, ...infer Xs] ?
+        Cons<
+            Reverse<Cons<X, Prefix>>,
+            Prefixes<Xs, Cons<X, Prefix>>
+        > :
+        [];
