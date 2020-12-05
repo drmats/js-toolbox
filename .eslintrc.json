@@ -68,8 +68,8 @@
                 "prefer-const": "off",
                 "semi": "off",
                 "@typescript-eslint/semi": ["error", "always"],
-                "indent": "off",
-                "@typescript-eslint/indent": ["warn"]
+                "indent": ["warn", 4, { "SwitchCase": 1 }],
+                "@typescript-eslint/indent": "off"
             }
         }
     ]
