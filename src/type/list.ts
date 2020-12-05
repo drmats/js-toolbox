@@ -21,7 +21,7 @@
  * type Hd = Head<List>;    // type Hd = 1;
  * ```
  */
-export type Head<List> =
+export type Head<List extends any[]> =
     List extends [infer X, ...any[]] ?
         X :
         never;
@@ -37,7 +37,7 @@ export type Head<List> =
  * type Tl = Tail<List>;    // type Tl = [2, 3, 4];
  * ```
  */
-export type Tail<List> =
+export type Tail<List extends any[]> =
     List extends [any, ...infer Xs] ?
         Xs :
         never;
@@ -79,7 +79,7 @@ export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
  * type It = Init<List>;    // type It = [1, 2, 3];
  * ```
  */
-export type Init<List> =
+export type Init<List extends any[]> =
     List extends [any] ?
         [] :
         List extends [infer X, ...infer Xs] ?
@@ -96,7 +96,7 @@ export type Init<List> =
  * type List = [1, 2, 3, 4];
  * type Lt = Last<List>;    // type Lt = 4;
  */
-export type Last<List> =
+export type Last<List extends any[]> =
     List extends [infer X] ?
         X :
         List extends [any, ...infer Xs] ?
