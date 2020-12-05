@@ -36,6 +36,16 @@ export type JSAnyFun<T = any> = Fun<any[], T>;
 /**
  * js-toolbox utility type.
  *
+ * Infers array element type.
+ */
+export type ElementType<T> = T extends (infer U)[] ? U : never;
+
+
+
+
+/**
+ * js-toolbox utility type.
+ *
  * Infers one: `U` or `string` from `U[] | string` union type.
  * If `U` nor `string` can be inferred then it's `never`.
  */
