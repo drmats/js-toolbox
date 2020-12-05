@@ -14,7 +14,7 @@
 
 
 /**
- * Get head of list.
+ * Get head of the list.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -30,7 +30,7 @@ export type Head<List> =
 
 
 /**
- * Get tail of list.
+ * Get tail of the list.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -46,7 +46,20 @@ export type Tail<List> =
 
 
 /**
- * Construct list.
+ * Get length of the list.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Len = Length<List>;    // type Len = 4;
+ * ```
+ */
+export type Length<List extends any[]> = List["length"];
+
+
+
+
+/**
+ * Construct new list.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -59,7 +72,7 @@ export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
 
 
 /**
- * Get all elements except last one.
+ * Get all elements of the list except the last one.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -77,7 +90,7 @@ export type Init<List> =
 
 
 /**
- * Get last element.
+ * Get last element of the list.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -94,7 +107,7 @@ export type Last<List> =
 
 
 /**
- * Append two lists.
+ * Append one list at the other.
  *
  * ```
  * type List1 = [1, 2];
@@ -111,7 +124,7 @@ export type Append<List1 extends any[], List2 extends any[]> =
 
 
 /**
- * Reverse list.
+ * Reverse the list.
  *
  * ```
  * type List = [1, 2, 3, 4];
@@ -127,7 +140,7 @@ export type Reverse<List extends any[], Acc extends any[] = []> =
 
 
 /**
- * Generate list of list prefixes.
+ * Generate the list of list prefixes.
  *
  * ```
  * type List = [1, 2, 3];
