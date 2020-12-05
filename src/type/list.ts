@@ -21,9 +21,9 @@
  * type Hd = Head<List>;    // type Hd = 1;
  * ```
  */
-export type Head<XSS> =
-    XSS extends [infer HEAD, ...any[]] ?
-        HEAD :
+export type Head<List> =
+    List extends [infer X, ...any[]] ?
+        X :
         never;
 
 
@@ -37,9 +37,9 @@ export type Head<XSS> =
  * type Tl = Tail<List>;    // type Tl = [2, 3, 4];
  * ```
  */
-export type Tail<XSS> =
-    XSS extends [any, ...infer TAIL] ?
-        TAIL :
+export type Tail<List> =
+    List extends [any, ...infer Xs] ?
+        Xs :
         never;
 
 
@@ -53,7 +53,42 @@ export type Tail<XSS> =
  * type Cs = Cons<0, List>;    // type Cs = [0, 1, 2, 3, 4];
  * ```
  */
-export type Cons<CAR, CDR extends any[] = []> = [CAR, ...CDR];
+export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
+
+
+
+
+/**
+ * Get all elements except last one.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type It = Init<List>;    // type It = [1, 2, 3];
+ * ```
+ */
+export type Init<List> =
+    List extends [any] ?
+        [] :
+        List extends [infer X, ...infer Xs] ?
+            Cons<X, Init<Xs>> :
+            never;
+
+
+
+
+/**
+ * Get last element.
+ *
+ * ```
+ * type List = [1, 2, 3, 4];
+ * type Lt = Last<List>;    // type Lt = 4;
+ */
+export type Last<List> =
+    List extends [infer X] ?
+        X :
+        List extends [any, ...infer Xs] ?
+            Last<Xs> :
+            never;
 
 
 
@@ -67,10 +102,10 @@ export type Cons<CAR, CDR extends any[] = []> = [CAR, ...CDR];
  * type Ap = Append<List1, List2>;    // type Ap = [1, 2, 7, 8];
  * ```
  */
-export type Append<XSS extends any[], YSS extends any[]> =
-    XSS extends [infer HEAD, ...infer TAIL] ?
-        Cons<HEAD, Append<TAIL, YSS>> :
-        YSS;
+export type Append<List1 extends any[], List2 extends any[]> =
+    List1 extends [infer X, ...infer Xs] ?
+        Cons<X, Append<Xs, List2>> :
+        List2;
 
 
 
@@ -83,7 +118,7 @@ export type Append<XSS extends any[], YSS extends any[]> =
  * type Rev = Reverse<List>;    // type Rev = [4, 3, 2, 1];
  * ```
  */
-export type Reverse<XSS extends any[], RESULT extends any[] = []> =
-    XSS extends [infer HEAD, ...infer TAIL] ?
-        Reverse<TAIL, Cons<HEAD, RESULT>> :
-        RESULT;
+export type Reverse<List extends any[], Acc extends any[] = []> =
+    List extends [infer X, ...infer Xs] ?
+        Reverse<Xs, Cons<X, Acc>> :
+        Acc;
