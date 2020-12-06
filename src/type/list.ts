@@ -18,7 +18,8 @@
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Hd = Head<List>;    // type Hd = 1;
+ * type Hd = Head<List>;
+ * // type Hd = 1;
  * ```
  */
 export type Head<List extends any[]> =
@@ -34,7 +35,8 @@ export type Head<List extends any[]> =
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Tl = Tail<List>;    // type Tl = [2, 3, 4];
+ * type Tl = Tail<List>;
+ * // type Tl = [2, 3, 4];
  * ```
  */
 export type Tail<List extends any[]> =
@@ -50,7 +52,8 @@ export type Tail<List extends any[]> =
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Len = Length<List>;    // type Len = 4;
+ * type Len = Length<List>;
+ * // type Len = 4;
  * ```
  */
 export type Length<List extends any[]> = List["length"];
@@ -63,7 +66,8 @@ export type Length<List extends any[]> = List["length"];
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Cs = Cons<0, List>;    // type Cs = [0, 1, 2, 3, 4];
+ * type Cs = Cons<0, List>;
+ * // type Cs = [0, 1, 2, 3, 4];
  * ```
  */
 export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
@@ -76,7 +80,8 @@ export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type It = Init<List>;    // type It = [1, 2, 3];
+ * type It = Init<List>;
+ * // type It = [1, 2, 3];
  * ```
  */
 export type Init<List extends any[]> =
@@ -94,7 +99,8 @@ export type Init<List extends any[]> =
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Lt = Last<List>;    // type Lt = 4;
+ * type Lt = Last<List>;
+ * // type Lt = 4;
  */
 export type Last<List extends any[]> =
     List extends [infer X] ?
@@ -112,7 +118,8 @@ export type Last<List extends any[]> =
  * ```
  * type List1 = [1, 2];
  * type List2 = [7, 8];
- * type Ap = Append<List1, List2>;    // type Ap = [1, 2, 7, 8];
+ * type Ap = Append<List1, List2>;
+ * // type Ap = [1, 2, 7, 8];
  * ```
  */
 export type Append<List1 extends any[], List2 extends any[]> =
@@ -128,7 +135,8 @@ export type Append<List1 extends any[], List2 extends any[]> =
  *
  * ```
  * type List = [1, 2, 3, 4];
- * type Rev = Reverse<List>;    // type Rev = [4, 3, 2, 1];
+ * type Rev = Reverse<List>;
+ * // type Rev = [4, 3, 2, 1];
  * ```
  */
 export type Reverse<List extends any[], Acc extends any[] = []> =
@@ -140,30 +148,32 @@ export type Reverse<List extends any[], Acc extends any[] = []> =
 
 
 /**
- * Generate the list of list prefixes.
+ * Generate the list of all list prefixes.
  *
  * ```
  * type List = [1, 2, 3];
- * type Ps = Prefixes<List>;    // type Ps = [[1], [1, 2], [1, 2, 3]];
+ * type Ps = Prefixes<List>;
+ * // type Ps = [[], [1], [1, 2], [1, 2, 3]];
  * ```
  */
 export type Prefixes<List extends any[], Prefix extends any[] = []> =
     List extends [infer X, ...infer Xs] ?
         Cons<
-            Reverse<Cons<X, Prefix>>,
+            Reverse<Prefix>,
             Prefixes<Xs, Cons<X, Prefix>>
         > :
-        [];
+        Cons<Reverse<Prefix>>;
 
 
 
 
 /**
- * Generate the list of list suffixes.
+ * Generate the list of all list suffixes.
  *
  * ```
  * type List = [1, 2, 3];
- * type Ss = Suffixes<List>;    //  type Ss = [[1, 2, 3], [2, 3], [3]];
+ * type Ss = Suffixes<List>;
+ * // type Ss = [[1, 2, 3], [2, 3], [3], []];
  */
 export type Suffixes<List extends any[], Suffix extends any[] = List> =
     List extends [any, ...infer Xs] ?
@@ -171,4 +181,4 @@ export type Suffixes<List extends any[], Suffix extends any[] = List> =
             Suffix,
             Suffixes<Xs, Tail<Suffix>>
         > :
-        [];
+        Cons<Suffix>;
