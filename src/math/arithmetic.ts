@@ -19,14 +19,11 @@ import { curry } from "../func/curry";
  * Add two values.
  *
  * @function add
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a+b
  */
-export const add: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) + Number(b));
+export const add = curry((a: number, b: number) => Number(a) + Number(b));
 
 
 
@@ -35,8 +32,8 @@ export const add: {
  * Decrement given value by one.
  *
  * @function dec
- * @param {Number} n
- * @returns {Number}
+ * @param n
+ * @returns n-1
  */
 export const dec = add(-1);
 
@@ -47,14 +44,11 @@ export const dec = add(-1);
  * Divide first value by the second value.
  *
  * @function div
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a/b
  */
-export const div: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) / Number(b));
+export const div = curry((a: number, b: number) => Number(a) / Number(b));
 
 
 
@@ -63,8 +57,8 @@ export const div: {
  * Increment given value by one.
  *
  * @function inc
- * @param {Number} n
- * @returns {Number}
+ * @param n
+ * @returns n+1
  */
 export const inc = add(1);
 
@@ -75,8 +69,8 @@ export const inc = add(1);
  * Invert a given value.
  *
  * @function inv
- * @param {Number} n
- * @returns {Number}
+ * @param n
+ * @returns 1/n
  */
 export const inv = div(1);
 
@@ -87,8 +81,8 @@ export const inv = div(1);
  * Base 10 logarithm.
  *
  * @function log10
- * @param {Number} x
- * @returns {Number}
+ * @param x
+ * @returns log10(x)
  */
 export function log10 (x: number): number {
     return roundIfClose(Math.log(x) / Math.LN10);
@@ -101,8 +95,8 @@ export function log10 (x: number): number {
  * Base 2 logarithm.
  *
  * @function log2
- * @param {Number} x
- * @returns {Number}
+ * @param x
+ * @returns log2(x)
  */
 export function log2 (x: number): number {
     return roundIfClose(Math.log(x) / Math.LN2);
@@ -115,14 +109,11 @@ export function log2 (x: number): number {
  * Divides the first argument by the second and returns the remainder.
  *
  * @function mod
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a%b
  */
-export const mod: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) % Number(b));
+export const mod = curry((a: number, b: number) => Number(a) % Number(b));
 
 
 
@@ -131,14 +122,11 @@ export const mod: {
  * Multiply two values.
  *
  * @function mul
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a*b
  */
-export const mul: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) * Number(b));
+export const mul = curry((a: number, b: number) => Number(a) * Number(b));
 
 
 
@@ -147,8 +135,8 @@ export const mul: {
  * Negate a given value.
  *
  * @function neg
- * @param {Number} n
- * @returns {Number}
+ * @param n
+ * @returns -n
  */
 export const neg = mul(-1);
 
@@ -159,14 +147,11 @@ export const neg = mul(-1);
  * Raise one value to the power of the second value.
  *
  * @function pow
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a**b
  */
-export const pow: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) ** Number(b));
+export const pow = curry((a: number, b: number) => Number(a) ** Number(b));
 
 
 
@@ -175,11 +160,8 @@ export const pow: {
  * Subtract second value from the first value.
  *
  * @function sub
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param a
+ * @param b
+ * @returns a-b
  */
-export const sub: {
-    (a: number, b: number): number;
-    (a: number): { (b: number): number; };
-} = curry((a, b) => Number(a) - Number(b));
+export const sub = curry((a: number, b: number) => Number(a) - Number(b));

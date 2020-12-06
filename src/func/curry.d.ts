@@ -1,5 +1,5 @@
 /**
- * Func - type declarations.
+ * Func - ambient type declarations.
  *
  * @module @xcmats/js-toolbox/func
  * @license Apache-2.0
@@ -11,10 +11,12 @@
 
 
 
+import type { Fun } from "../type/consts";
 import type {
-    JSAnyArr,
-    JSAnyFun,
-} from "../type/consts";
+    Head,
+    Length,
+    Tail,
+} from "../type/list";
 
 
 
@@ -22,7 +24,15 @@ import type {
 /**
  * Recursive type for curried functions.
  */
-export type CurryFun<T = any> = (...args: JSAnyArr) => CurryFun<T> | T;
+export type CurryFun<
+    F extends Fun,
+    P extends any[] = Parameters<F>,
+    R = ReturnType<F>
+> = Length<P> extends 0 ?
+    () => R :
+    Length<P> extends 1 ?
+        (x: Head<P>) => R :
+        (x: Head<P>) => CurryFun<(...args: Tail<P>) => R>;
 
 
 
@@ -30,7 +40,13 @@ export type CurryFun<T = any> = (...args: JSAnyArr) => CurryFun<T> | T;
 /**
  * Recursive type for thunk-curried functions.
  */
-export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
+export type ThunkFun<
+    F extends Fun,
+    P extends any[] = Parameters<F>,
+    R = ReturnType<F>
+> = Length<P> extends 0 ?
+    () => R :
+    (x: Head<P>) => ThunkFun<(...args: Tail<P>) => R>;
 
 
 
@@ -48,12 +64,17 @@ export type ThunkFun<T = any> = (arg: any) => ThunkFun<T> | (() => T);
  * g(a) (b) (c)
  * ```
  *
- * Function `f` _arity_ is obtained by checking it's `.length`
+ * Function `f`'s _arity_ is obtained by checking it's `.length`
  * property, so if function `f` is defined with a _rest parameter_
- * then this parameter is excluded. Also only parameters before
+ * then this parameter is excluded. Also, only parameters before
  * the first one with a default value are included.
  */
-export declare function curry (f: JSAnyFun): CurryFun;
+export declare function curry<
+    F extends Fun
+> (f: F):
+    Length<Parameters<F>> extends 0 | 1 ?
+        F :
+        F & CurryFun<F>;
 
 
 
@@ -67,7 +88,12 @@ export declare function curry (f: JSAnyFun): CurryFun;
  * f(a, b, c, d, e)  <=>  curryN(5, f) (a) (b) (c) (d) (e)
  * ```
  */
-export declare function curryN (n: number, f: JSAnyFun): CurryFun;
+export declare function curryN<
+    F extends Fun
+> (n: number, f: F):
+    Length<Parameters<F>> extends 0 | 1 ?
+        F :
+        F & CurryFun<F>;
 
 
 
@@ -84,7 +110,9 @@ export declare function curryN (n: number, f: JSAnyFun): CurryFun;
  * f(a, b, c, d)  <=>  curryThunk(f) (a) (b) (c) (d) ()
  * ```
  */
-export declare function curryThunk (f: JSAnyFun): ThunkFun;
+export declare function curryThunk<
+    F extends Fun
+> (f: F): ThunkFun<F>;
 
 
 
@@ -104,6 +132,8 @@ export declare function curryThunk (f: JSAnyFun): ThunkFun;
  * g(4)  ->  7
  * ```
  */
-export declare function partial (
-    f: JSAnyFun
-): (...init: JSAnyArr) => JSAnyFun;
+export declare function partial<
+    F extends Fun
+> (
+    f: F
+): (...init: any[]) => Fun;

@@ -24,12 +24,7 @@ import { curry } from "../func/curry";
  * @param {Number} n
  * @returns {Number}
  */
-export const clamp: {
-    (low: number, high: number, n: number): number;
-    (low: number, high: number): { (n: number): number; };
-    (low: number): { (high: number, n: number): number; };
-    (low: number): { (high: number): { (n: number): number; }; };
-} = curry((low, high, n) =>
+export const clamp = curry((low: number, high: number, n: number) =>
     n < low  ?  low  :
         n >= low  &&  n < high  ?  n  :
             high

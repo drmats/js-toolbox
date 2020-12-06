@@ -22,9 +22,9 @@
  * g(a) (b) (c)
  * ```
  *
- * Function `f` _arity_ is obtained by checking it's `.length`
+ * Function `f`'s _arity_ is obtained by checking it's `.length`
  * property, so if function `f` is defined with a _rest parameter_
- * then this parameter is excluded. Also only parameters before
+ * then this parameter is excluded. Also, only parameters before
  * the first one with a default value are included.
  *
  * @function curry

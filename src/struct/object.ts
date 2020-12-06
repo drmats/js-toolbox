@@ -10,6 +10,7 @@
 
 
 import type {
+    Fun,
     JSAnyArrObj,
     JSAnyObj,
 } from "../type/consts";
@@ -75,11 +76,17 @@ export function dict<T> (
  * `f` should return `[key, value]` array.
  *
  * @function objectMap
- * @param {Object} o
- * @param {Function} f
- * @returns {Object}
+ * @param o Object
+ * @param f Function
+ * @returns Mapped object
  */
-export const objectMap: {
+export const objectMap = curry((o: JSAnyObj, f: Fun) => {
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectMap() expected object and function, " +
+        `got ${btquote(o)} and ${btquote(f)}`
+    );
+    return dict(Object.entries(o).map((kv => f.call(o, kv))));
+}) as {
     /* specialized-case overload (output keys related to input keys) */
     <
         In,
@@ -114,13 +121,7 @@ export const objectMap: {
             f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
         ): { [k in PropertyKey]?: Out; };
     };
-} = curry((o, f) => {
-    if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "struct.objectMap() expected object and function, " +
-        `got ${btquote(o)} and ${btquote(f)}`
-    );
-    return dict(Object.entries(o).map((kv => f.call(o, kv))));
-});
+};
 
 
 
@@ -138,12 +139,18 @@ export const objectMap: {
  * `f` should return value of the same type as `init`.
  *
  * @function objectReduce
- * @param {Object} o
- * @param {Function} f
- * @param {T} init
- * @returns {T}
+ * @param o Object
+ * @param f Function
+ * @param init T
+ * @returns T
  */
-export const objectReduce: {
+export const objectReduce = curry((o: JSAnyObj, f: Fun, init: unknown) => {
+    if (!isObject(o) || !isFunction(f)) throw new TypeError(
+        "struct.objectReduce() expected object and function, " +
+        `got ${btquote(o)} and ${btquote(f)}`
+    );
+    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
+}) as {
     /* uncurried */
     <
         In,
@@ -162,13 +169,7 @@ export const objectReduce: {
             (init: Out): Out;
         };
     };
-} = curry((o, f, init) => {
-    if (!isObject(o) || !isFunction(f)) throw new TypeError(
-        "struct.objectReduce() expected object and function, " +
-        `got ${btquote(o)} and ${btquote(f)}`
-    );
-    return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
-});
+};
 
 
 
