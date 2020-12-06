@@ -182,3 +182,25 @@ export type Suffixes<List extends any[], Suffix extends any[] = List> =
             Suffixes<Xs, Tail<Suffix>>
         > :
         Cons<Suffix>;
+
+
+
+
+/**
+ * Compose type union from all types in the list.
+ */
+export type Union<List extends any[]> =
+    List extends [infer X, ...infer Xs] ?
+        X | Union<Xs> :
+        never;
+
+
+
+
+/**
+ * Compose type intersection from all types in the list.
+ */
+export type Intersection<List extends any[]> =
+    List extends [infer X, ...infer Xs] ?
+        X & Intersection<Xs> :
+        unknown;
