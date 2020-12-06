@@ -154,3 +154,21 @@ export type Prefixes<List extends any[], Prefix extends any[] = []> =
             Prefixes<Xs, Cons<X, Prefix>>
         > :
         [];
+
+
+
+
+/**
+ * Generate the list of list suffixes.
+ *
+ * ```
+ * type List = [1, 2, 3];
+ * type Ss = Suffixes<List>;    //  type Ss = [[1, 2, 3], [2, 3], [3]];
+ */
+export type Suffixes<List extends any[], Suffix extends any[] = List> =
+    List extends [any, ...infer Xs] ?
+        Cons<
+            Suffix,
+            Suffixes<Xs, Tail<Suffix>>
+        > :
+        [];
