@@ -148,6 +148,28 @@ export type Reverse<List extends any[], Acc extends any[] = []> =
 
 
 /**
+ * Zip two lists together.
+ *
+ * ```
+ * type List1 = [1, 2, 3];
+ * type List2 = ["a", "b", "c"];
+ * type Zz = Zip<List1, List2>;
+ * // type Zz = [[1, "a"], [2, "b"], [3, "c"]];
+ * ```
+ */
+export type Zip<List1 extends any[], List2 extends any[]> =
+    List1 extends [infer X, ...infer Xs] ?
+        List2 extends [infer Y, ...infer Ys] ?
+            Cons<[X, Y], Zip<Xs, Ys>> :
+            Cons<[X], Zip<Xs, List2>> :
+        List2 extends [infer Y, ...infer Ys] ?
+            Cons<[Y], Zip<List1, Ys>> :
+            [];
+
+
+
+
+/**
  * Generate the list of all list prefixes.
  *
  * ```
