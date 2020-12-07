@@ -51,7 +51,7 @@ export type Tail<List extends any[]> =
  * Get length of the list.
  *
  * ```
- * type List = [1, 2, 3, 4];
+ * type List = ["a", "b", "c", "d"];
  * type Len = Length<List>;
  * // type Len = 4;
  * ```
@@ -113,7 +113,7 @@ export type Last<List extends any[]> =
 
 
 /**
- * Append one list at the other.
+ * Append one list at the end of the other.
  *
  * ```
  * type List1 = [1, 2];
