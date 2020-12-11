@@ -14,6 +14,20 @@
 
 
 /**
+ * Trivial type.
+ *
+ * ```
+ * type Something = [1, 2];
+ * type Sg = Id<Something>;
+ * // type Sg = [1, 2];
+ * ```
+ */
+export type Id<T> = T;
+
+
+
+
+/**
  * Get head of the list.
  *
  * ```
