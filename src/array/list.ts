@@ -83,10 +83,10 @@ export function dropLast (
  * @returns First element or type error is thrown.
  */
 export function head<T extends ArrStr> (
-    [x]: T
+    xs: T
 ): ChooseArrElOrStr<T> {
-    if (!x) throw new TypeError("array.head() - empty list");
-    return x;
+    if (!xs.length) throw new TypeError("array.head() - empty list");
+    return xs[0];
 }
 
 
