@@ -51,16 +51,10 @@ import { btquote } from "../utils/misc"
  * @returns {Promise.<Array>}
  */
 export const map = curry((arr, f) => {
-    let
-        results = [],
-        i = 0,
-        resolve = null,
-        reject = null,
-        promise = new Promise((res, rej) => {
-            resolve = res
-            reject = rej
-        }),
-        progress = r => {
+    let results = [], i = 0
+
+    return new Promise((resolve, reject) => {
+        let progress = (r) => {
             results.push(r)
             i = inc(i)
             if (i < arr.length) {
@@ -70,18 +64,17 @@ export const map = curry((arr, f) => {
             } else resolve(results)
         }
 
-    if (isArray(arr)  &&  isFunction(f)) {
-        if (arr.length > 0) {
-            Promise
-                .resolve(f.call(arr, head(arr), 0))
-                .then(progress).catch(reject)
-        } else return Promise.resolve(results)
-    } else throw new TypeError(
-        "async.map() expected array and function, " +
-        `got ${btquote(arr)} and ${btquote(f)}`
-    )
-
-    return promise
+        if (isArray(arr)  &&  isFunction(f)) {
+            if (arr.length > 0) {
+                Promise
+                    .resolve(f.call(arr, head(arr), 0))
+                    .then(progress).catch(reject)
+            } else return Promise.resolve(results)
+        } else throw new TypeError(
+            "async.map() expected array and function, " +
+            `got ${btquote(arr)} and ${btquote(f)}`
+        )
+    })
 })
 
 
