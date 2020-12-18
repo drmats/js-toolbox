@@ -156,15 +156,10 @@ export const parMap = curry((arr, f) =>
  * @returns {Promise.<unknown>}
  */
 export const reduce = curry((arr, f, initAcc) => {
-    let
-        i = 0,
-        resolve = null,
-        reject = null,
-        promise = new Promise((res, rej) => {
-            resolve = res
-            reject = rej
-        }),
-        progress = r => {
+    let i = 0
+
+    return new Promise((resolve, reject) => {
+        let progress = r => {
             i = inc(i)
             if (i < arr.length) {
                 Promise
@@ -173,16 +168,15 @@ export const reduce = curry((arr, f, initAcc) => {
             } else resolve(r)
         }
 
-    if (isArray(arr)  &&  isFunction(f)) {
-        if (arr.length > 0) {
-            Promise
-                .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
-                .then(progress).catch(reject)
-        } else return Promise.resolve(initAcc)
-    } else throw new TypeError(
-        "async.reduce() expected array and function, " +
-        `got ${btquote(arr)} and ${btquote(f)}`
-    )
-
-    return promise
+        if (isArray(arr)  &&  isFunction(f)) {
+            if (arr.length > 0) {
+                Promise
+                    .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
+                    .then(progress).catch(reject)
+            } else return Promise.resolve(initAcc)
+        } else throw new TypeError(
+            "async.reduce() expected array and function, " +
+            `got ${btquote(arr)} and ${btquote(f)}`
+        )
+    })
 })
