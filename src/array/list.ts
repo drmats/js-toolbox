@@ -133,9 +133,9 @@ export function last<T extends ArrStr> (
  * @returns {Array<T>|String}
  */
 export function tail<T extends ArrStr> (
-    [_x, ...xs]: T
+    xs: T
 ): ChooseArrOrStr<T> {
-    return xs as ChooseArrOrStr<T>;
+    return xs.slice(1, xs.length) as ChooseArrOrStr<T>;
 }
 
 
