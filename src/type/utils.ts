@@ -15,8 +15,6 @@ import type { ArrStr } from "./defs";
 
 
 /**
- * js-toolbox utility type.
- *
  * Infers array element type.
  */
 export type ElementType<T> = T extends (infer U)[] ? U : never;
@@ -25,8 +23,6 @@ export type ElementType<T> = T extends (infer U)[] ? U : never;
 
 
 /**
- * js-toolbox utility type.
- *
  * Infers one: `U` or `string` from `U[] | string` union type.
  * If `U` nor `string` can be inferred then it's `never`.
  */
@@ -40,8 +36,6 @@ export type ChooseArrElOrStr<
 
 
 /**
- * js-toolbox utility type.
- *
  * Infers one: `U[]` or `string` from `U[] | string` union type.
  * If `U[]` nor `string` can be inferred then it's `never`.
  */
@@ -50,3 +44,12 @@ export type ChooseArrOrStr<
 > = T extends (infer U)[]
     ? U[] : T extends string
         ? string : never;
+
+
+
+
+/**
+ * Override `Base` type properties with `Derived` type properties.
+ * (mimics field/method overriding in class-based inheritance model).
+ */
+export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
