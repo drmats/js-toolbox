@@ -27,3 +27,44 @@ export interface ReduxCompatAction<A = any> {
 export interface ReduxCompatAnyAction extends ReduxCompatAction {
     [key: string]: any;
 }
+
+
+
+
+/**
+ * Action creator not carrying anything else than just `type` field.
+ */
+export interface EmptyActionCreator<
+    ActionEnum,
+> extends ReduxCompatAction<ActionEnum> {
+    (): ReduxCompatAction<ActionEnum>;
+}
+
+
+
+
+/**
+ * Action creator carrying payload (more fields than just `type`).
+ */
+export interface PayloadActionCreator<
+    ActionEnum,
+    Args extends unknown[],
+    R,
+> extends ReduxCompatAction<ActionEnum> {
+    (...args: Args): ReduxCompatAction<ActionEnum> & R;
+}
+
+
+
+
+/**
+ * Any action creator (carrying just `type` or having more fields).
+ */
+export interface ActionCreator<
+    ActionEnum,
+    Args extends unknown[],
+    R,
+> extends ReduxCompatAction<ActionEnum> {
+    (...args: Args):
+        ReduxCompatAction<ActionEnum> & R | ReduxCompatAction<ActionEnum>;
+}
