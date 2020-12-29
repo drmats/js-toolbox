@@ -11,7 +11,7 @@
 
 
 
-import type { JSAnyFun } from "../type/consts";
+import type { JSAnyFun } from "../type/defs";
 
 
 

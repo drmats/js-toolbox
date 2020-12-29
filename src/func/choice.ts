@@ -12,7 +12,7 @@
 import type {
     JSAnyFun,
     JSAnyArr,
-} from "../type/consts";
+} from "../type/defs";
 
 
 

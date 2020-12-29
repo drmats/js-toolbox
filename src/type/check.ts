@@ -14,7 +14,7 @@
 import type {
     Fun,
     JSAnyObj,
-} from "./consts";
+} from "./defs";
 
 
 

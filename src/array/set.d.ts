@@ -9,7 +9,7 @@
 
 
 
-import type { OneArgFun } from "../type/consts";
+import type { OneArgFun } from "../type/defs";
 
 
 

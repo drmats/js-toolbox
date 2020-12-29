@@ -9,7 +9,7 @@
 
 
 
-import type { NoArgFun } from "../type/consts";
+import type { NoArgFun } from "../type/defs";
 import {
     isFunction,
     isObject,

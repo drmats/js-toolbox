@@ -9,10 +9,8 @@
 
 
 
-import type {
-    ArrStr,
-    ChooseArrElOrStr,
-} from "../type/consts";
+import type { ArrStr } from "../type/defs";
+import type { ChooseArrElOrStr } from "../type/consts";
 
 
 

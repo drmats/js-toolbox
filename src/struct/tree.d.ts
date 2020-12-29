@@ -15,7 +15,7 @@ import type { DataIndex } from "./data";
 import type {
     JSAnyArrObj,
     JSAnyObj,
-} from "../type/consts";
+} from "../type/defs";
 
 
 

@@ -11,7 +11,7 @@
 
 
 
-import type { Fun } from "../type/consts";
+import type { Fun } from "../type/defs";
 import type {
     Head,
     Length,

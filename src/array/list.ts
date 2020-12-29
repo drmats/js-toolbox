@@ -9,8 +9,8 @@
 
 
 
+import type { ArrStr } from "../type/defs";
 import type {
-    ArrStr,
     ChooseArrElOrStr,
     ChooseArrOrStr,
 } from "../type/consts";

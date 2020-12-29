@@ -13,7 +13,7 @@ import type {
     Fun,
     JSAnyArrObj,
     JSAnyObj,
-} from "../type/consts";
+} from "../type/defs";
 import { curry } from "../func/curry";
 import { flow } from "../func/combinators";
 import { btquote } from "../utils/misc";

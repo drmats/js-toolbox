@@ -1,9 +1,11 @@
 import * as check from "./check";
 import * as consts from "./consts";
 import * as conv from "./conv";
+import * as defs from "./defs";
 import * as list from "./list";
 export * from "./check";
 export * from "./consts";
 export * from "./conv";
+export * from "./defs";
 export * from "./list";
-export default Object.assign({}, check, consts, conv, list);
+export default Object.assign({}, check, consts, conv, defs, list);

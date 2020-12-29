@@ -13,7 +13,7 @@
 
 import { choose } from "../func/choice";
 import { identity } from "../func/tools";
-import { Fun } from "../type/consts";
+import { Fun } from "../type/defs";
 
 
 

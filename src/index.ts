@@ -246,8 +246,6 @@ export * as struct from "./struct";
  */
 export type {
     ArrStr,
-    ChooseArrElOrStr,
-    ChooseArrOrStr,
     Fun,
     JSAnyArr,
     JSAnyArrObj,
@@ -255,6 +253,10 @@ export type {
     JSAnyObj,
     NoArgFun,
     OneArgFun,
+} from "./type/defs";
+export type {
+    ChooseArrElOrStr,
+    ChooseArrOrStr,
 } from "./type/consts";
 export {
     isArray,
