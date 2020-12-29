@@ -86,7 +86,6 @@ to bundle it with your project).
     > ```javascript
     > [ "Y",
     >   "access",
-    >   "actionCreators",
     >   "add",
     >   "app",
     >   "array",
@@ -370,8 +369,7 @@ redux
 ```
 
 > ```javascript
-> { actionCreators: [Function: identity],
->   createReducer: [Function: createReducer] }
+> { createReducer: [Function: createReducer] }
 > ```
 
 
@@ -1042,7 +1040,8 @@ anti-pattern.
 Another solution is to pass these objects as parameters to functions that
 needs to use them, but it's cumbersome and scales poorly.
 
-Using `memory` module solves these problems and resembles the usage of Hooks in React.
+Using `memory` module solves these problems and resembles
+the usage of Hooks in React.
 
 Example:
 

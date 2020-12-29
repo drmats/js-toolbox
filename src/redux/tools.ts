@@ -12,8 +12,6 @@
 
 
 import { choose } from "../func/choice";
-import { identity } from "../func/tools";
-import { Fun } from "../type/defs";
 
 
 
@@ -34,19 +32,6 @@ export interface ReduxCompatAction<A = any> {
 export interface ReduxCompatAnyAction extends ReduxCompatAction {
     [key: string]: any;
 }
-
-
-
-
-/**
- * js-toolbox own ActionCreatorsMap type.
- */
-export type ActionCreatorsMap<
-    M = any,
-    A extends ReduxCompatAction = ReduxCompatAnyAction
-> = {
-    [K in keyof M]: M[K] extends Fun<any, A> ? M[K] : never;
-};
 
 
 
@@ -102,20 +87,6 @@ export type ReduxBoundReducer<
     reducers: ReducersMap<S, A>,
     defaultReducer?: ReduxCompatReducer<S, A>
 ) => ReduxCompatReducer<S, A>;
-
-
-
-
-/**
- * Type-safe action creators helper.
- *
- * @function actionCreators
- * @param ac
- * @returns {ActionCreatorsMap}
- */
-export const actionCreators: <M, A extends ReduxCompatAction>(
-    ac: ActionCreatorsMap<M, A>
-) => ActionCreatorsMap<M, A> = identity;
 
 
 
