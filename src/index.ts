@@ -162,13 +162,15 @@ export * as memory from "./memory";
  * @see {@link module:redux}
  */
 export type {
-    Reducer,
-    ReducersMap,
     ReduxCompatAction,
     ReduxCompatAnyAction,
+} from "./redux/action";
+export type {
+    Reducer,
+    ReducersMap,
     ReduxBoundReducer,
     ReduxCompatReducer,
-} from "./redux/tools";
+} from "./redux/reducer";
 export {
     createReducer,
 } from "./redux";

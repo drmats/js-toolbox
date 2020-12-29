@@ -1,5 +1,5 @@
 /**
- * Redux tools.
+ * Redux reducer tools.
  *
  * @module redux
  * @license Apache-2.0
@@ -11,27 +11,11 @@
 
 
 
+import type {
+    ReduxCompatAction,
+    ReduxCompatAnyAction,
+}from "./action";
 import { choose } from "../func/choice";
-
-
-
-
-/**
- * redux-compatible Action interface.
- */
-export interface ReduxCompatAction<A = any> {
-    type: A;
-}
-
-
-
-
-/**
- * redux-compatible AnyAction interface.
- */
-export interface ReduxCompatAnyAction extends ReduxCompatAction {
-    [key: string]: any;
-}
 
 
 
