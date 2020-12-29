@@ -53,3 +53,17 @@ export type ChooseArrOrStr<
  * (mimics field/method overriding in class-based inheritance model).
  */
 export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
+
+
+
+
+/**
+ * Parameter type guard - allow construction of `Subset` type
+ * whose properties exists in `Base` type (no properties outside of `Base`
+ * type are allowed).
+ */
+export type AllowSubset<Base, Subset> = {
+    [K in keyof Subset]:
+        K extends keyof Base ?
+            Subset[K] : never
+};
