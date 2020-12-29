@@ -257,7 +257,7 @@ export type {
 export type {
     ChooseArrElOrStr,
     ChooseArrOrStr,
-} from "./type/consts";
+} from "./type/utils";
 export {
     isArray,
     isFunction,

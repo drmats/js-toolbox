@@ -13,7 +13,7 @@ import type { ArrStr } from "../type/defs";
 import type {
     ChooseArrElOrStr,
     ChooseArrOrStr,
-} from "../type/consts";
+} from "../type/utils";
 import { dec } from "../math/arithmetic";
 
 

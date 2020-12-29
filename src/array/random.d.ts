@@ -10,7 +10,7 @@
 
 
 import type { ArrStr } from "../type/defs";
-import type { ChooseArrElOrStr } from "../type/consts";
+import type { ChooseArrElOrStr } from "../type/utils";
 
 
 
