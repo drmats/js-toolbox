@@ -35,7 +35,7 @@ export interface ReduxCompatAnyAction extends ReduxCompatAction {
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
-    ActionEnum,
+    ActionEnum
 > extends ReduxCompatAction<ActionEnum> {
     (): ReduxCompatAction<ActionEnum>;
 }
@@ -49,7 +49,7 @@ export interface EmptyActionCreator<
 export interface PayloadActionCreator<
     ActionEnum,
     Args extends unknown[],
-    R,
+    R
 > extends ReduxCompatAction<ActionEnum> {
     (...args: Args): ReduxCompatAction<ActionEnum> & R;
 }
@@ -63,7 +63,7 @@ export interface PayloadActionCreator<
 export interface ActionCreator<
     ActionEnum,
     Args extends unknown[],
-    R,
+    R
 > extends ReduxCompatAction<ActionEnum> {
     (...args: Args):
         ReduxCompatAction<ActionEnum> & R | ReduxCompatAction<ActionEnum>;
