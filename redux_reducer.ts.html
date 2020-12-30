@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>func/combinators.js - Documentation</title>
+    <title>redux/reducer.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">func/combinators.js</h1>
+    <h1 class="page-title">redux/reducer.ts</h1>
     
 
     
@@ -40,106 +40,101 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Functional programming tools.
+ * Redux reducer tools.
  *
- * @module func
+ * @module redux
  * @license Apache-2.0
  * @author drmats
  */
 
-
-
-
-import { head } from "../array/list"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
 
-/**
- * Basic function application.
- *
- * @function app
- * @param {Funcion} f
- * @returns {Function} x => f(x)
- */
-export const app = f => x => f(x)
+import type {
+    ReduxCompatAction,
+    ReduxCompatAnyAction,
+}from "./action";
+import { choose } from "../func/choice";
 
 
 
 
 /**
- * Function composition - read as "compose backward" or "but first".
- *
- * ```
- * let:
- * f: X -> Y,  g: Y -> Z
- *
- * then:
- * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  compose(g, f) (x)
- * ```
- *
- * @function compose
- * @param {...Function} fs
- * @returns {Function}
+ * redux-compatible Reducer type.
  */
-export const compose = (...fs) => (...args) =>
-    head(fs.reduceRight((result, f) => [f(...result)], args))
+export type ReduxCompatReducer&lt;
+    S = any,
+    A extends ReduxCompatAction = ReduxCompatAnyAction
+> = (
+    state: S | undefined,
+    action: A
+) => S;
 
 
 
 
 /**
- * Function composition - read as "compose forward" or "and then".
- *
- * ```
- * let:
- * f: X -> Y,  g: Y -> Z
- *
- * then:
- * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  flow(f, g) (x)
- * ```
- *
- * Inspired by {@link https://github.com/tfausak/flow}.
- *
- * @function flow
- * @param {...Function} fs
- * @returns {Function}
+ * js-toolbox own Reducer type.
  */
-export const flow = (...fs) => compose(...fs.reverse())
+export type Reducer&lt;
+    S = any,
+    A extends ReduxCompatAction = ReduxCompatAnyAction
+> = (
+    state: S,
+    action: A
+) => S;
 
 
 
 
 /**
- * Function composition - read as "compose forward" or "and then".
- * Version of `flow` taking _arguments_ (`args`) first
- * and then _functions_ (`fs`).
- *
- * ```
- * let:
- * f: X -> Y,  g: Y -> Z
- *
- * then:
- * g(f(x))  &lt;=>  (g . f) (x)  &lt;=>  pipe(x) (f, g)
- * ```
- *
- * @function pipe
- * @param {...Function} args
- * @returns {Function}
+ * js-toolbox own ReducersMap type.
  */
-export const pipe = (...args) => (...fs) => flow(...fs) (...args)
+export type ReducersMap&lt;
+    S,
+    A extends ReduxCompatAction = ReduxCompatAction
+> = {
+    [actionType: string]: Reducer&lt;S, A>,
+};
 
 
 
 
 /**
- * Y-combinator (fixed point of `f`).
- *
- * @function Y
- * @param {Function} f f: recf => (...args) => { ... recf(...args) ... }
- * @returns {Function}
+ * createReducer() return type.
  */
-export const Y = f => (...args) => f(Y(f)) (...args)
+export type ReduxBoundReducer&lt;
+    S,
+    A extends ReduxCompatAction = ReduxCompatAnyAction
+> = (
+    reducers: ReducersMap&lt;S, A>,
+    defaultReducer?: ReduxCompatReducer&lt;S, A>
+) => ReduxCompatReducer&lt;S, A>;
+
+
+
+
+/**
+ * Create clean and readable reducers for redux.
+ *
+ * @function createReducer
+ * @param initState
+ * @returns {ReduxBoundReducer}
+ */
+export function createReducer&lt;S> (
+    initState: S
+): ReduxBoundReducer&lt;S> {
+    return (reducers, defaultReducer = (s, _a) => s ? s : initState) =>
+        (state = initState, action) =>
+            choose(
+                action.type,
+                reducers,
+                defaultReducer,
+                [state, action]
+            );
+}
 </code></pre>
         </article>
     </section>
