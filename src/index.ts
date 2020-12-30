@@ -165,6 +165,7 @@ export type {
     ActionCreator,
     EmptyAction,
     EmptyActionCreator,
+    EmptyActionCreators,
     Payload,
     PayloadAction,
     PayloadActionCreator,
@@ -180,6 +181,7 @@ export type {
 export {
     createReducer,
     defineActionCreator,
+    emptyActionCreators,
 } from "./redux";
 export * as redux from "./redux";
 

@@ -127,3 +127,32 @@ export function defineActionCreator<
     actionCreator.type = type;
     return actionCreator;
 }
+
+
+
+
+/**
+ * Construct interface based on `ActionEnum` consisting of empty action
+ * creators (action creators without payload just `type` field).
+ */
+export type EmptyActionCreators<ActionEnum> = {
+    [K in keyof ActionEnum]: EmptyActionCreator<ActionEnum[K]>;
+};
+
+
+
+
+/**
+ * Construct object whose keys correspond to `actionEnum` keys and
+ * values consists of empty action creators for each type. Conforms to
+ * `EmptyActionCreators<ActionEnum>` interface.
+ */
+export function emptyActionCreators<ActionEnum> (
+    actionEnum: ActionEnum
+): EmptyActionCreators<ActionEnum> {
+    let actions: Record<string, unknown> = {};
+    for (const actionType in actionEnum) {
+        actions[actionType] = defineActionCreator(actionEnum[actionType]);
+    }
+    return actions as EmptyActionCreators<ActionEnum>;
+}
