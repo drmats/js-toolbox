@@ -162,6 +162,12 @@ export * as memory from "./memory";
  * @see {@link module:redux}
  */
 export type {
+    ActionCreator,
+    EmptyAction,
+    EmptyActionCreator,
+    Payload,
+    PayloadAction,
+    PayloadActionCreator,
     ReduxCompatAction,
     ReduxCompatAnyAction,
 } from "./redux/action";

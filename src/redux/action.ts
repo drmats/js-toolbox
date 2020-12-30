@@ -32,12 +32,38 @@ export interface ReduxCompatAnyAction extends ReduxCompatAction {
 
 
 /**
+ * Empty action consists just of { type: A } field.
+ */
+export type EmptyAction<A> = ReduxCompatAction<A>;
+
+
+
+
+/**
+ * Payload shape.
+ */
+export interface Payload<T = any> {
+    payload: T;
+}
+
+
+
+
+/**
+ * Action shape: { type: A, payload: T }
+ */
+export type PayloadAction<A, T> = EmptyAction<A> & Payload<T>;
+
+
+
+
+/**
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
     ActionEnum
-> extends ReduxCompatAction<ActionEnum> {
-    (): ReduxCompatAction<ActionEnum>;
+> extends EmptyAction<ActionEnum> {
+    (): EmptyAction<ActionEnum>;
 }
 
 
@@ -50,8 +76,8 @@ export interface PayloadActionCreator<
     ActionEnum,
     Args extends unknown[],
     R
-> extends ReduxCompatAction<ActionEnum> {
-    (...args: Args): ReduxCompatAction<ActionEnum> & R;
+> extends EmptyAction<ActionEnum> {
+    (...args: Args): PayloadAction<ActionEnum, R>;
 }
 
 
@@ -64,9 +90,9 @@ export interface ActionCreator<
     ActionEnum,
     Args extends unknown[],
     R
-> extends ReduxCompatAction<ActionEnum> {
+> extends EmptyAction<ActionEnum> {
     (...args: Args):
-        ReduxCompatAction<ActionEnum> & R | ReduxCompatAction<ActionEnum>;
+        PayloadAction<ActionEnum, R> | EmptyAction<ActionEnum>;
 }
 
 
@@ -76,7 +102,7 @@ export interface ActionCreator<
  * Redux action creator definer.
  *
  * @param type Action type
- * @param creator Custom function returning payload object.
+ * @param creator Custom function returning object.
  * @returns Action creator function.
  */
 export function defineActionCreator<
@@ -97,7 +123,7 @@ export function defineActionCreator<
     ActionCreator<ActionEnum, Args, R> {
     let actionCreator: any = !creator ?
         () => ({ type }) :
-        (...args: Args) => ({ ...creator(...args), type });
+        (...args: Args) => ({ type, payload: creator(...args) });
     actionCreator.type = type;
     return actionCreator;
 }
