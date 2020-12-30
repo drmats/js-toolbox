@@ -14,7 +14,7 @@
 import type {
     ReduxCompatAction,
     ReduxCompatAnyAction,
-}from "./action";
+} from "./action";
 import { choose } from "../func/choice";
 
 
