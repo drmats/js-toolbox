@@ -369,7 +369,8 @@ redux
 ```
 
 > ```javascript
-> { createReducer: [Function: createReducer] }
+> { createReducer: [Function: createReducer],
+>   defineActionCreator: [Function: defineActionCreator }
 > ```
 
 

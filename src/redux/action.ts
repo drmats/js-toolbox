@@ -68,3 +68,36 @@ export interface ActionCreator<
     (...args: Args):
         ReduxCompatAction<ActionEnum> & R | ReduxCompatAction<ActionEnum>;
 }
+
+
+
+
+/**
+ * Redux action creator definer.
+ *
+ * @param type Action type
+ * @param creator Custom function returning payload object.
+ * @returns Action creator function.
+ */
+export function defineActionCreator<
+    ActionEnum
+> (type: ActionEnum):
+    EmptyActionCreator<ActionEnum>;
+export function defineActionCreator<
+    ActionEnum,
+    Args extends unknown[],
+    R extends Record<string, never> | Record<string, unknown>
+> (type: ActionEnum, creator: (...args: Args) => R):
+    PayloadActionCreator<ActionEnum, Args, R>;
+export function defineActionCreator<
+    ActionEnum,
+    Args extends unknown[],
+    R extends Record<string, never> | Record<string, unknown>
+> (type: ActionEnum, creator?: (...args: Args) => R):
+    ActionCreator<ActionEnum, Args, R> {
+    let actionCreator: any = !creator ?
+        () => ({ type }) :
+        (...args: Args) => ({ ...creator(...args), type });
+    actionCreator.type = type;
+    return actionCreator;
+}

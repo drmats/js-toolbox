@@ -173,6 +173,7 @@ export type {
 } from "./redux/reducer";
 export {
     createReducer,
+    defineActionCreator,
 } from "./redux";
 export * as redux from "./redux";
 
