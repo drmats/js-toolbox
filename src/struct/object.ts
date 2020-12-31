@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 
 
@@ -89,35 +91,35 @@ export const objectMap = curry((o: JSAnyObj, f: Fun) => {
 }) as {
     /* specialized-case overload (output keys related to input keys) */
     <
-        In,
+        In extends JSAnyObj,
         Keys extends keyof In,
-        Out
+        Out = any
     >(
-        o: JSAnyObj<In>,
+        o: In,
         f: (kv: [Keys, In[Keys]]) => [Keys, Out]
     ): { [k in Keys]: Out; };
     /* specialized-case - curried */
-    <In>(
-        o: JSAnyObj<In>
+    <In extends JSAnyObj>(
+        o: In
     ): {
-        <Keys extends keyof In, Out>(
+        <Keys extends keyof In, Out = any>(
             f: (kv: [Keys, In[Keys]]) => [Keys, Out]
         ): { [k in Keys]: Out; };
     };
     /* general-case overload (output keys not related to input keys) */
     <
-        In,
+        In extends JSAnyObj,
         Keys extends keyof In,
-        Out
+        Out = any
     >(
-        o: JSAnyObj<In>,
+        o: In,
         f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
     ): { [k in PropertyKey]?: Out; };
     /* general-case - curried */
-    <In>(
-        o: JSAnyObj<In>
+    <In extends JSAnyObj>(
+        o: In
     ): {
-        <Keys extends keyof In, Out>(
+        <Keys extends keyof In, Out = any>(
             f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
         ): { [k in PropertyKey]?: Out; };
     };
@@ -153,16 +155,16 @@ export const objectReduce = curry((o: JSAnyObj, f: Fun, init: unknown) => {
 }) as {
     /* uncurried */
     <
-        In,
+        In extends JSAnyObj,
         Keys extends keyof In,
         Out
     >(
-        o: JSAnyObj<In>,
+        o: In,
         f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
         init: Out,
     ): Out;
     /* curried */
-    <In>(o: JSAnyObj<In>): {
+    <In extends JSAnyObj>(o: In): {
         <Keys extends keyof In, Out>(
             f: (acc: Out, kv: [Keys, In[Keys]]) => Out
         ): {
