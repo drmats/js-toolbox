@@ -169,6 +169,7 @@ export type {
     Payload,
     PayloadAction,
     PayloadActionCreator,
+    PayloadActionCreators,
     ReduxCompatAction,
     ReduxCompatAnyAction,
 } from "./redux/action";
@@ -182,6 +183,7 @@ export {
     createReducer,
     defineActionCreator,
     emptyActionCreators,
+    payloadActionCreators,
 } from "./redux";
 export * as redux from "./redux";
 

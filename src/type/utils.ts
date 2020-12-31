@@ -50,7 +50,7 @@ export type ChooseArrOrStr<
 
 /**
  * Override `Base` type properties with `Derived` type properties.
- * (mimics field/method overriding in class-based inheritance model).
+ * (mimics field/method overriding in a class-based inheritance model).
  */
 export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
 

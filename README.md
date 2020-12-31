@@ -370,7 +370,9 @@ redux
 
 > ```javascript
 > { createReducer: [Function: createReducer],
->   defineActionCreator: [Function: defineActionCreator }
+>   defineActionCreator: [Function: defineActionCreator],
+>   emptyActionCreators: [Function: emptyActionCreators],
+>   payloadActionCreators: [Function: payloadActionCreators] }
 > ```
 
 

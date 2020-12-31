@@ -11,11 +11,16 @@
 
 
 
+import type { AllowSubset, Override } from "../type/utils";
+
+
+
+
 /**
  * redux-compatible Action interface.
  */
-export interface ReduxCompatAction<A = any> {
-    type: A;
+export interface ReduxCompatAction<ActionType = any> {
+    type: ActionType;
 }
 
 
@@ -34,7 +39,7 @@ export interface ReduxCompatAnyAction extends ReduxCompatAction {
 /**
  * Empty action consists just of { type: A } field.
  */
-export type EmptyAction<A> = ReduxCompatAction<A>;
+export type EmptyAction<ActionType> = ReduxCompatAction<ActionType>;
 
 
 
@@ -42,8 +47,8 @@ export type EmptyAction<A> = ReduxCompatAction<A>;
 /**
  * Payload shape.
  */
-export interface Payload<T = any> {
-    payload: T;
+export interface Payload<PayloadType = any> {
+    payload: PayloadType;
 }
 
 
@@ -52,7 +57,7 @@ export interface Payload<T = any> {
 /**
  * Action shape: { type: A, payload: T }
  */
-export type PayloadAction<A, T> = EmptyAction<A> & Payload<T>;
+export type PayloadAction<A, P> = EmptyAction<A> & Payload<P>;
 
 
 
@@ -61,9 +66,9 @@ export type PayloadAction<A, T> = EmptyAction<A> & Payload<T>;
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
-    ActionEnum
-> extends EmptyAction<ActionEnum> {
-    (): EmptyAction<ActionEnum>;
+    ActionType
+> extends EmptyAction<ActionType> {
+    (): EmptyAction<ActionType>;
 }
 
 
@@ -73,11 +78,11 @@ export interface EmptyActionCreator<
  * Action creator carrying payload (more fields than just `type`).
  */
 export interface PayloadActionCreator<
-    ActionEnum,
+    ActionType,
     Args extends unknown[],
-    R
-> extends EmptyAction<ActionEnum> {
-    (...args: Args): PayloadAction<ActionEnum, R>;
+    PayloadType
+> extends EmptyAction<ActionType> {
+    (...args: Args): PayloadAction<ActionType, PayloadType>;
 }
 
 
@@ -87,12 +92,12 @@ export interface PayloadActionCreator<
  * Any action creator (carrying just `type` or having more fields).
  */
 export interface ActionCreator<
-    ActionEnum,
+    ActionType,
     Args extends unknown[],
-    R
-> extends EmptyAction<ActionEnum> {
+    PayloadType
+> extends EmptyAction<ActionType> {
     (...args: Args):
-        PayloadAction<ActionEnum, R> | EmptyAction<ActionEnum>;
+        PayloadAction<ActionType, PayloadType> | EmptyAction<ActionType>;
 }
 
 
@@ -106,21 +111,21 @@ export interface ActionCreator<
  * @returns Action creator function.
  */
 export function defineActionCreator<
-    ActionEnum
-> (type: ActionEnum):
-    EmptyActionCreator<ActionEnum>;
+    ActionType
+> (type: ActionType):
+    EmptyActionCreator<ActionType>;
 export function defineActionCreator<
-    ActionEnum,
+    ActionType,
     Args extends unknown[],
-    R extends Record<string, never> | Record<string, unknown>
-> (type: ActionEnum, creator: (...args: Args) => R):
-    PayloadActionCreator<ActionEnum, Args, R>;
+    PayloadType extends Record<string, never> | Record<string, unknown>
+> (type: ActionType, creator: (...args: Args) => PayloadType):
+    PayloadActionCreator<ActionType, Args, PayloadType>;
 export function defineActionCreator<
-    ActionEnum,
+    ActionType,
     Args extends unknown[],
-    R extends Record<string, never> | Record<string, unknown>
-> (type: ActionEnum, creator?: (...args: Args) => R):
-    ActionCreator<ActionEnum, Args, R> {
+    PayloadType extends Record<string, never> | Record<string, unknown>
+> (type: ActionType, creator?: (...args: Args) => PayloadType):
+    ActionCreator<ActionType, Args, PayloadType> {
     let actionCreator: any = !creator ?
         () => ({ type }) :
         (...args: Args) => ({ type, payload: creator(...args) });
@@ -132,8 +137,8 @@ export function defineActionCreator<
 
 
 /**
- * Construct interface based on `ActionEnum` consisting of empty action
- * creators (action creators without payload just `type` field).
+ * Construct interface based on `ActionEnum`. Consist of empty action
+ * creators (action creators without payload - just `type` field).
  */
 export type EmptyActionCreators<ActionEnum> = {
     [K in keyof ActionEnum]: EmptyActionCreator<ActionEnum[K]>;
@@ -150,9 +155,63 @@ export type EmptyActionCreators<ActionEnum> = {
 export function emptyActionCreators<ActionEnum> (
     actionEnum: ActionEnum
 ): EmptyActionCreators<ActionEnum> {
-    let actions: Record<string, unknown> = {};
+    let actions: EmptyActionCreators<ActionEnum> =
+        {} as EmptyActionCreators<ActionEnum>;
     for (const actionType in actionEnum) {
         actions[actionType] = defineActionCreator(actionEnum[actionType]);
     }
-    return actions as EmptyActionCreators<ActionEnum>;
+    return actions;
+}
+
+
+
+
+/**
+ * Take `ActionEnum` type with `PayloadCreators` object type and construct
+ * `PayloadActionCreators` on its basis. `PayloadCreators` object type
+ * should be a subset of `ActionEnum` type (in the sense of `AllowSubset`
+ * type defined in `type/utils.ts`) and should consists of a plain
+ * javascript functions.
+ */
+export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
+    [K in keyof PayloadCreators]:
+        K extends keyof ActionEnum ?
+            PayloadCreators[K] extends (...args: infer Args) => infer P ?
+                PayloadActionCreator<ActionEnum[K], Args, P> : never
+            : never
+};
+
+
+
+
+/**
+ * Take empty action creators object (that is an object with all action
+ * creators not carrying anything besides `type` property) and object
+ * consisting of payload creators (plain javascript functions taking
+ * arguments and returning values - not constrained anyhow).
+ * Create fully typed action creators object with all action creators
+ * defined as `EmptyActionCreator` or `PayloadActionCreator`.
+ */
+export function payloadActionCreators<ActionEnum, PayloadCreators> (
+    emptyActionCreators: EmptyActionCreators<ActionEnum>,
+    creatorStubsWithPayload: AllowSubset<ActionEnum, PayloadCreators>
+):
+    Override<
+        typeof emptyActionCreators,
+        PayloadActionCreators<ActionEnum, PayloadCreators>
+    >
+{
+    return Object.assign(emptyActionCreators, Object.fromEntries(
+        Object
+            .entries(creatorStubsWithPayload)
+            .map(([key, creator]) => [
+                key,
+                defineActionCreator(
+                    emptyActionCreators[key as keyof ActionEnum].type,
+                    creator as (
+                        ...args: unknown[]
+                    ) => Record<string, unknown> | Record<string, never>
+                ),
+            ]) as [any, any][]
+    ));
 }
