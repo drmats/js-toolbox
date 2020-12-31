@@ -63,7 +63,5 @@ export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
  * type are allowed).
  */
 export type AllowSubset<Base, Subset> = {
-    [K in keyof Subset]:
-        K extends keyof Base ?
-            Subset[K] : never
+    [K in keyof Subset]: K extends keyof Base ? Subset[K] : never
 };

@@ -12,6 +12,7 @@
 
 
 import type { AllowSubset, Override } from "../type/utils";
+import type { Fun } from "../type/defs";
 
 
 
@@ -117,13 +118,13 @@ export function defineActionCreator<
 export function defineActionCreator<
     ActionType,
     Args extends unknown[],
-    PayloadType extends Record<string, never> | Record<string, unknown>
+    PayloadType
 > (type: ActionType, creator: (...args: Args) => PayloadType):
     PayloadActionCreator<ActionType, Args, PayloadType>;
 export function defineActionCreator<
     ActionType,
     Args extends unknown[],
-    PayloadType extends Record<string, never> | Record<string, unknown>
+    PayloadType
 > (type: ActionType, creator?: (...args: Args) => PayloadType):
     ActionCreator<ActionType, Args, PayloadType> {
     let actionCreator: any = !creator ?
@@ -168,50 +169,52 @@ export function emptyActionCreators<ActionEnum> (
 
 /**
  * Take `ActionEnum` type with `PayloadCreators` object type and construct
- * `PayloadActionCreators` on its basis. `PayloadCreators` object type
- * should be a subset of `ActionEnum` type (in the sense of `AllowSubset`
- * type defined in `type/utils.ts`) and should consists of a plain
- * javascript functions.
+ * `PayloadActionCreators` on its basis.
+ *
+ * Constructed `PayloadActionCreators` object type consists only of keys
+ * that are also present in `ActionEnum` type (all other keys are dropped).
  */
 export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
-    [K in keyof PayloadCreators]:
-        K extends keyof ActionEnum ?
-            PayloadCreators[K] extends (...args: infer Args) => infer P ?
-                PayloadActionCreator<ActionEnum[K], Args, P> : never
-            : never
+    [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
+        PayloadCreators[K] extends Fun<infer Args, infer P> ?
+            PayloadActionCreator<ActionEnum[K], Args, P> : never
 };
 
 
 
 
 /**
- * Take empty action creators object (that is an object with all action
- * creators not carrying anything besides `type` property) and object
- * consisting of payload creators (plain javascript functions taking
- * arguments and returning values - not constrained anyhow).
+ * Take empty action creators object based on `ActionEnum` type
+ * (an object with all action creators not carrying anything besides
+ * `type` property) and `PayloadCreators` object consisting of plain
+ * javascript functions taking arguments and returning values.
+ *
+ * `PayloadCreators` object type is constrained to be a subset of `ActionEnum`
+ * type (in the sense of `AllowSubset` type defined in `type/utils.ts`).
+ *
  * Create fully typed action creators object with all action creators
  * defined as `EmptyActionCreator` or `PayloadActionCreator`.
  */
-export function payloadActionCreators<ActionEnum, PayloadCreators> (
+export function payloadActionCreators<
+    ActionEnum,
+    PayloadCreators extends AllowSubset<ActionEnum, PayloadCreators>
+> (
     emptyActionCreators: EmptyActionCreators<ActionEnum>,
-    creatorStubsWithPayload: AllowSubset<ActionEnum, PayloadCreators>
+    payloadCreators: PayloadCreators
 ):
     Override<
         typeof emptyActionCreators,
         PayloadActionCreators<ActionEnum, PayloadCreators>
     >
 {
-    return Object.assign(emptyActionCreators, Object.fromEntries(
-        Object
-            .entries(creatorStubsWithPayload)
-            .map(([key, creator]) => [
-                key,
-                defineActionCreator(
-                    emptyActionCreators[key as keyof ActionEnum].type,
-                    creator as (
-                        ...args: unknown[]
-                    ) => Record<string, unknown> | Record<string, never>
-                ),
-            ]) as [any, any][]
-    ));
+    return Object.assign(
+        emptyActionCreators,
+        Object.fromEntries(
+            (Object.entries(payloadCreators) as [keyof ActionEnum, Fun][])
+                .map(([key, creator]) => [
+                    key, defineActionCreator(
+                        emptyActionCreators[key].type, creator
+                    ),
+                ]) as [any, any][]
+        ));
 }
