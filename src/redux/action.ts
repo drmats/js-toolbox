@@ -13,6 +13,7 @@
 
 import type { AllowSubset, Override } from "../type/utils";
 import type { Fun } from "../type/defs";
+import { objectMap } from "../struct/object";
 
 
 
@@ -107,30 +108,31 @@ export interface ActionCreator<
 /**
  * Redux action creator definer.
  *
- * @param type Action type
- * @param creator Custom function returning object.
+ * @function defineActionCreator
+ * @param actionType Action type
+ * @param creator Optional custom function returning payload.
  * @returns Action creator function.
  */
 export function defineActionCreator<
     ActionType
-> (type: ActionType):
+> (actionType: ActionType):
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
     ActionType,
     Args extends unknown[],
     PayloadType
-> (type: ActionType, creator: (...args: Args) => PayloadType):
+> (actionType: ActionType, creator?: (...args: Args) => PayloadType):
     PayloadActionCreator<ActionType, Args, PayloadType>;
 export function defineActionCreator<
     ActionType,
     Args extends unknown[],
     PayloadType
-> (type: ActionType, creator?: (...args: Args) => PayloadType):
+> (actionType: ActionType, creator?: (...args: Args) => PayloadType):
     ActionCreator<ActionType, Args, PayloadType> {
     let actionCreator: any = !creator ?
-        () => ({ type }) :
-        (...args: Args) => ({ type, payload: creator(...args) });
-    actionCreator.type = type;
+        () => ({ type: actionType }) :
+        (...args: Args) => ({ type: actionType, payload: creator(...args) });
+    actionCreator.type = actionType;
     return actionCreator;
 }
 
@@ -152,6 +154,10 @@ export type EmptyActionCreators<ActionEnum> = {
  * Construct object whose keys correspond to `actionEnum` keys and
  * values consists of empty action creators for each type. Conforms to
  * `EmptyActionCreators<ActionEnum>` interface.
+ *
+ * @function emptyActionCreators
+ * @param actionEnum Enum upon which an EmptyActionCreators object is built.
+ * @returns EmptyActionCreators object.
  */
 export function emptyActionCreators<ActionEnum> (
     actionEnum: ActionEnum
@@ -194,10 +200,17 @@ export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
  *
  * Create fully typed action creators object with all action creators
  * defined as `EmptyActionCreator` or `PayloadActionCreator`.
+ *
+ * @function payloadActionCreators
+ * @param emptyActionCreators EmptyActionCreators object
+ * @param payloadCreators Object with payload creators.
+ * @returns ActionCreators object.
  */
 export function payloadActionCreators<
     ActionEnum,
-    PayloadCreators extends AllowSubset<ActionEnum, PayloadCreators>
+    PayloadCreators extends
+        & AllowSubset<ActionEnum, PayloadCreators>
+        & Partial<{ [K in keyof ActionEnum]: Fun }>,
 > (
     emptyActionCreators: EmptyActionCreators<ActionEnum>,
     payloadCreators: PayloadCreators
@@ -209,12 +222,8 @@ export function payloadActionCreators<
 {
     return Object.assign(
         emptyActionCreators,
-        Object.fromEntries(
-            (Object.entries(payloadCreators) as [keyof ActionEnum, Fun][])
-                .map(([key, creator]) => [
-                    key, defineActionCreator(
-                        emptyActionCreators[key].type, creator
-                    ),
-                ]) as [any, any][]
-        ));
+        objectMap(payloadCreators) <keyof ActionEnum>(([key, creator]) => [
+            key, defineActionCreator(emptyActionCreators[key].type, creator),
+        ])
+    );
 }
