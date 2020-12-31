@@ -10,8 +10,8 @@
 
 
 import type {
+    Arr,
     JSAnyFun,
-    JSAnyArr,
 } from "../type/defs";
 
 
@@ -31,7 +31,7 @@ export function choose<T> (
     key: string,
     actions: Record<string, JSAnyFun<T>> = {},
     defaultAction: JSAnyFun = () => null,
-    args: JSAnyArr = []
+    args: Arr = []
 ): T {
     return key in actions ?
         actions[key](...args) :

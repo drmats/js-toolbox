@@ -256,9 +256,9 @@ export * as struct from "./struct";
  * @see {@link module:type}
  */
 export type {
+    Arr,
     ArrStr,
     Fun,
-    JSAnyArr,
     JSAnyArrObj,
     JSAnyFun,
     JSAnyObj,

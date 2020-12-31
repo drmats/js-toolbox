@@ -12,11 +12,40 @@
 
 
 /**
- * js-toolbox types.
+ * Array.
  */
-export type ArrStr<T = any> = T[] | string;
+export type Arr<T = any> = T[];
+
+
+
+
+/**
+ * Array or string.
+ */
+export type ArrStr<T = any> = Arr<T> | string;
+
+
+
+
+/**
+ * Function.
+ */
 export type Fun<In extends any[] = any[], Out = any> = (...args: In) => Out;
+
+
+
+
+/**
+ * One argument function.
+ */
 export type OneArgFun<In = any, Out = any> = (arg: In) => Out;
+
+
+
+
+/**
+ * Function with no arguments.
+ */
 export type NoArgFun<Out = any> = () => Out;
 
 
@@ -25,7 +54,6 @@ export type NoArgFun<Out = any> = () => Out;
 /**
  * js-toolbox "cheat" types.
  */
-export type JSAnyArr<T = any> = T[];
 export type JSAnyObj<T = any> = { [K in keyof T]?: T[K]; };
-export type JSAnyArrObj<T = any> = JSAnyArr<T> | JSAnyObj<T>;
+export type JSAnyArrObj<T = any> = Arr<T> | JSAnyObj<T>;
 export type JSAnyFun<T = any> = Fun<any[], T>;

@@ -12,7 +12,7 @@
 
 
 import type { AllowSubset, Override } from "../type/utils";
-import type { Fun } from "../type/defs";
+import type { Arr, Fun } from "../type/defs";
 import { objectMap } from "../struct/object";
 
 
@@ -81,7 +81,7 @@ export interface EmptyActionCreator<
  */
 export interface PayloadActionCreator<
     ActionType,
-    Args extends unknown[],
+    Args extends Arr,
     PayloadType
 > extends EmptyAction<ActionType> {
     (...args: Args): PayloadAction<ActionType, PayloadType>;
@@ -95,7 +95,7 @@ export interface PayloadActionCreator<
  */
 export interface ActionCreator<
     ActionType,
-    Args extends unknown[],
+    Args extends Arr,
     PayloadType
 > extends EmptyAction<ActionType> {
     (...args: Args):
@@ -119,15 +119,15 @@ export function defineActionCreator<
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
     ActionType,
-    Args extends unknown[],
+    Args extends Arr,
     PayloadType
-> (actionType: ActionType, creator?: (...args: Args) => PayloadType):
+> (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     PayloadActionCreator<ActionType, Args, PayloadType>;
 export function defineActionCreator<
     ActionType,
-    Args extends unknown[],
+    Args extends Arr,
     PayloadType
-> (actionType: ActionType, creator?: (...args: Args) => PayloadType):
+> (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     ActionCreator<ActionType, Args, PayloadType> {
     let actionCreator: any = !creator ?
         () => ({ type: actionType }) :
