@@ -86,6 +86,7 @@ to bundle it with your project).
     > ```javascript
     > [ "Y",
     >   "access",
+    >   "actionCreators",
     >   "add",
     >   "app",
     >   "array",
@@ -362,14 +363,15 @@ memory
 > ```
 
 
-### some goodies for **[redux](https://redux.js.org/)**
+### statically typed goodies for **[redux](https://redux.js.org/)**
 
 ```javascript
 redux
 ```
 
 > ```javascript
-> { createReducer: [Function: createReducer],
+> { actionCreators: [Function: actionCreators],
+>   createReducer: [Function: createReducer],
 >   defineActionCreator: [Function: defineActionCreator],
 >   emptyActionCreators: [Function: emptyActionCreators],
 >   payloadActionCreators: [Function: payloadActionCreators] }

@@ -77,7 +77,7 @@ export interface EmptyActionCreator<
 
 
 /**
- * Action creator carrying payload (more fields than just `type`).
+ * Action creator carrying payload (more than just `type`).
  */
 export interface PayloadActionCreator<
     ActionType,
@@ -91,7 +91,7 @@ export interface PayloadActionCreator<
 
 
 /**
- * Any action creator (carrying just `type` or having more fields).
+ * Any action creator (carrying just `type` or `type` and `payload`).
  */
 export interface ActionCreator<
     ActionType,
@@ -226,4 +226,55 @@ export function payloadActionCreators<
             key, defineActionCreator(emptyActionCreators[key].type, creator),
         ])
     );
+}
+
+
+
+
+/**
+ * Construct action slice for provided action enum. Optionally
+ * define action creators with payload. Statically typed.
+ *
+ * @function actionCreators
+ * @param actionEnum Enum upon which an ActionCreators object is built.
+ * @param payloadCreators Optional object with payload creators.
+ * @returns ActionCreators object.
+ */
+export function actionCreators<
+    ActionEnum
+> (actionEnum: ActionEnum): EmptyActionCreators<ActionEnum>;
+export function actionCreators<
+    ActionEnum,
+    PayloadCreators extends
+        & AllowSubset<ActionEnum, PayloadCreators>
+        & Partial<{ [K in keyof ActionEnum]: Fun }>
+> (
+    actionEnum: ActionEnum,
+    payloadCreators?: PayloadCreators
+):
+    Override<
+        EmptyActionCreators<ActionEnum>,
+        PayloadActionCreators<ActionEnum, PayloadCreators>
+    >;
+export function actionCreators<
+    ActionEnum,
+    PayloadCreators extends
+        & AllowSubset<ActionEnum, PayloadCreators>
+        & Partial<{ [K in keyof ActionEnum]: Fun }>
+> (
+    actionEnum: ActionEnum,
+    payloadCreators?: PayloadCreators
+):
+    EmptyActionCreators<ActionEnum> |
+    Override<
+        EmptyActionCreators<ActionEnum>,
+        PayloadActionCreators<ActionEnum, PayloadCreators>
+    >
+{
+    const eac = emptyActionCreators(actionEnum);
+    if (payloadCreators) {
+        return payloadActionCreators(eac, payloadCreators);
+    } else {
+        return eac;
+    }
 }

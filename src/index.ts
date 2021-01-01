@@ -180,6 +180,7 @@ export type {
     ReduxCompatReducer,
 } from "./redux/reducer";
 export {
+    actionCreators,
     createReducer,
     defineActionCreator,
     emptyActionCreators,
