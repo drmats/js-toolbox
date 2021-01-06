@@ -39,7 +39,7 @@ export interface ReduxCompatAnyAction extends ReduxCompatAction {
 
 
 /**
- * Empty action consists just of { type: A } field.
+ * Empty action consists just of { type: ActionType } field.
  */
 export type EmptyAction<ActionType> = ReduxCompatAction<ActionType>;
 
@@ -47,19 +47,13 @@ export type EmptyAction<ActionType> = ReduxCompatAction<ActionType>;
 
 
 /**
- * Payload shape.
+ * Action with payload: { type: ActionType, payload: PayloadType }
  */
-export interface Payload<PayloadType = any> {
+export interface PayloadAction<
+    ActionType, PayloadType
+> extends EmptyAction<ActionType> {
     payload: PayloadType;
 }
-
-
-
-
-/**
- * Action shape: { type: A, payload: T }
- */
-export type PayloadAction<A, P> = EmptyAction<A> & Payload<P>;
 
 
 
@@ -99,7 +93,8 @@ export interface ActionCreator<
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args):
-        EmptyAction<ActionType> | PayloadAction<ActionType, PayloadType>;
+        | EmptyAction<ActionType>
+        | PayloadAction<ActionType, PayloadType>;
 }
 
 
@@ -265,8 +260,8 @@ export function actionCreators<
     actionEnum: ActionEnum,
     payloadCreators?: PayloadCreators
 ):
-    EmptyActionCreators<ActionEnum> |
-    Override<
+    | EmptyActionCreators<ActionEnum>
+    | Override<
         EmptyActionCreators<ActionEnum>,
         PayloadActionCreators<ActionEnum, PayloadCreators>
     >

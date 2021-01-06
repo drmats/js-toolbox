@@ -166,7 +166,6 @@ export type {
     EmptyAction,
     EmptyActionCreator,
     EmptyActionCreators,
-    Payload,
     PayloadAction,
     PayloadActionCreator,
     PayloadActionCreators,

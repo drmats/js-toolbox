@@ -25,10 +25,10 @@ import { choose } from "../func/choice";
  */
 export type ReduxCompatReducer<
     StateType = any,
-    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
+    Action extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
     state: StateType | undefined,
-    action: ActionType
+    action: Action
 ) => StateType;
 
 
@@ -39,10 +39,10 @@ export type ReduxCompatReducer<
  */
 export type Reducer<
     StateType = any,
-    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
+    Action extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
     state: StateType,
-    action: ActionType
+    action: Action
 ) => StateType;
 
 
@@ -53,9 +53,9 @@ export type Reducer<
  */
 export type ReducersMap<
     StateType,
-    ActionType extends ReduxCompatAction = ReduxCompatAction
+    Action extends ReduxCompatAction = ReduxCompatAction
 > = {
-    [actionType: string]: Reducer<StateType, ActionType>,
+    [actionType: string]: Reducer<StateType, Action>,
 };
 
 
@@ -66,11 +66,11 @@ export type ReducersMap<
  */
 export type ReduxBoundReducer<
     StateType,
-    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
+    Action extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
-    reducers: ReducersMap<StateType, ActionType>,
-    defaultReducer?: ReduxCompatReducer<StateType, ActionType>
-) => ReduxCompatReducer<StateType, ActionType>;
+    reducers: ReducersMap<StateType, Action>,
+    defaultReducer?: ReduxCompatReducer<StateType, Action>
+) => ReduxCompatReducer<StateType, Action>;
 
 
 
