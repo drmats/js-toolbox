@@ -9,7 +9,19 @@
 
 
 
-import type { ArrStr } from "./defs";
+import type { AnyKey, ArrStr } from "./defs";
+
+
+
+
+/**
+ * Parameter type guard - allow construction of `Subset` type
+ * whose properties exists in `Base` type (no properties outside of `Base`
+ * type are allowed).
+ */
+export type AllowSubset<Base, Subset> = {
+    [K in keyof Subset]: K extends keyof Base ? Subset[K] : never
+};
 
 
 
@@ -49,19 +61,19 @@ export type ChooseArrOrStr<
 
 
 /**
- * Override `Base` type properties with `Derived` type properties.
- * (mimics field/method overriding in a class-based inheritance model).
+ * Parameter type guard - allow only objects whose values can be used
+ * to index other objects.
  */
-export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
+export type NonConstEnum<
+    KeyTypes extends AnyKey = AnyKey,
+    ValTypes extends AnyKey = AnyKey
+> = { [K in KeyTypes]: ValTypes };
 
 
 
 
 /**
- * Parameter type guard - allow construction of `Subset` type
- * whose properties exists in `Base` type (no properties outside of `Base`
- * type are allowed).
+ * Override `Base` type properties with `Derived` type properties.
+ * (mimics field/method overriding in a class-based inheritance model).
  */
-export type AllowSubset<Base, Subset> = {
-    [K in keyof Subset]: K extends keyof Base ? Subset[K] : never
-};
+export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;

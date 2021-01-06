@@ -267,8 +267,12 @@ export type {
     OneArgFun,
 } from "./type/defs";
 export type {
+    AllowSubset,
+    ElementType,
     ChooseArrElOrStr,
     ChooseArrOrStr,
+    NonConstEnum,
+    Override,
 } from "./type/utils";
 export {
     isArray,
