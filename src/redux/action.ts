@@ -81,8 +81,8 @@ export interface EmptyActionCreator<
  */
 export interface PayloadActionCreator<
     ActionType,
-    Args extends Arr,
-    PayloadType
+    PayloadType,
+    Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args): PayloadAction<ActionType, PayloadType>;
 }
@@ -122,7 +122,7 @@ export function defineActionCreator<
     Args extends Arr,
     PayloadType
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
-    PayloadActionCreator<ActionType, Args, PayloadType>;
+    PayloadActionCreator<ActionType, PayloadType, Args>;
 export function defineActionCreator<
     ActionType,
     Args extends Arr,
@@ -182,8 +182,8 @@ export function emptyActionCreators<ActionEnum> (
  */
 export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
     [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
-        PayloadCreators[K] extends Fun<infer Args, infer P> ?
-            PayloadActionCreator<ActionEnum[K], Args, P> : never
+        PayloadCreators[K] extends Fun<infer Args, infer PayloadType> ?
+            PayloadActionCreator<ActionEnum[K], PayloadType, Args> : never
 };
 
 
