@@ -12,6 +12,14 @@
 
 
 /**
+ * Type whose values can be used to index objects.
+ */
+export type AnyKey = keyof any;
+
+
+
+
+/**
  * Array.
  */
 export type Arr<T = any> = T[];

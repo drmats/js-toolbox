@@ -11,7 +11,7 @@
 
 
 
-import type { Fun } from "../type/defs";
+import type { AnyKey, Fun } from "../type/defs";
 import { append } from "../array/list";
 import { intersection } from "../array/set";
 import { inc } from "../math/arithmetic";
@@ -58,7 +58,7 @@ export type Atom =
  */
 export type DataArray<
     T = BasicData,
-    ObjectPropType extends keyof any = string
+    ObjectPropType extends AnyKey = string
 > = Data<T, ObjectPropType>[];
 
 
@@ -69,7 +69,7 @@ export type DataArray<
  */
 export type DataObject<
     T = BasicData,
-    PropType extends keyof any = string
+    PropType extends AnyKey = string
 > = {
     [property in PropType]?: Data<T, PropType>;
 };
@@ -82,7 +82,7 @@ export type DataObject<
  */
 export type Data<
     T = BasicData,
-    ObjectPropType extends keyof any = string
+    ObjectPropType extends AnyKey = string
 > =
     | T
     | DataArray<T, ObjectPropType>
@@ -95,7 +95,7 @@ export type Data<
  * Node-indexing type.
  */
 export type DataIndex<
-    PropType extends keyof any = string | number
+    PropType extends AnyKey = string | number
 > = PropType;
 
 
@@ -119,7 +119,7 @@ export type DataIndex<
  */
 export function access<
     T = BasicData,
-    PropType extends keyof any = string
+    PropType extends AnyKey = string
 > (
     o: Data<T, PropType>,
     path: DataIndex<PropType | number>[] = [],
@@ -176,7 +176,7 @@ export function assign<T> (base: T, ext: T): T {
  */
 export function rewrite<
     T = BasicData,
-    PropType extends keyof any = string
+    PropType extends AnyKey = string
 > (
     o: Data<T, PropType>,
     [h, ...t]: DataIndex<PropType | number>[],

@@ -256,6 +256,7 @@ export * as struct from "./struct";
  * @see {@link module:type}
  */
 export type {
+    AnyKey,
     Arr,
     ArrStr,
     Fun,
