@@ -95,8 +95,8 @@ export interface PayloadActionCreator<
  */
 export interface ActionCreator<
     ActionType,
-    Args extends Arr,
-    PayloadType
+    PayloadType,
+    Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args):
         PayloadAction<ActionType, PayloadType> | EmptyAction<ActionType>;
@@ -119,16 +119,16 @@ export function defineActionCreator<
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
     ActionType,
-    Args extends Arr,
-    PayloadType
+    PayloadType,
+    Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     PayloadActionCreator<ActionType, PayloadType, Args>;
 export function defineActionCreator<
     ActionType,
-    Args extends Arr,
-    PayloadType
+    PayloadType,
+    Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
-    ActionCreator<ActionType, Args, PayloadType> {
+    ActionCreator<ActionType, PayloadType, Args> {
     let actionCreator: any = !creator ?
         () => ({ type: actionType }) :
         (...args: Args) => ({ type: actionType, payload: creator(...args) });
