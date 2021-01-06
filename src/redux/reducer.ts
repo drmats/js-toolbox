@@ -24,12 +24,12 @@ import { choose } from "../func/choice";
  * redux-compatible Reducer type.
  */
 export type ReduxCompatReducer<
-    S = any,
-    A extends ReduxCompatAction = ReduxCompatAnyAction
+    StateType = any,
+    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
-    state: S | undefined,
-    action: A
-) => S;
+    state: StateType | undefined,
+    action: ActionType
+) => StateType;
 
 
 
@@ -38,12 +38,12 @@ export type ReduxCompatReducer<
  * js-toolbox own Reducer type.
  */
 export type Reducer<
-    S = any,
-    A extends ReduxCompatAction = ReduxCompatAnyAction
+    StateType = any,
+    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
-    state: S,
-    action: A
-) => S;
+    state: StateType,
+    action: ActionType
+) => StateType;
 
 
 
@@ -52,10 +52,10 @@ export type Reducer<
  * js-toolbox own ReducersMap type.
  */
 export type ReducersMap<
-    S,
-    A extends ReduxCompatAction = ReduxCompatAction
+    StateType,
+    ActionType extends ReduxCompatAction = ReduxCompatAction
 > = {
-    [actionType: string]: Reducer<S, A>,
+    [actionType: string]: Reducer<StateType, ActionType>,
 };
 
 
@@ -65,12 +65,12 @@ export type ReducersMap<
  * createReducer() return type.
  */
 export type ReduxBoundReducer<
-    S,
-    A extends ReduxCompatAction = ReduxCompatAnyAction
+    StateType,
+    ActionType extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
-    reducers: ReducersMap<S, A>,
-    defaultReducer?: ReduxCompatReducer<S, A>
-) => ReduxCompatReducer<S, A>;
+    reducers: ReducersMap<StateType, ActionType>,
+    defaultReducer?: ReduxCompatReducer<StateType, ActionType>
+) => ReduxCompatReducer<StateType, ActionType>;
 
 
 
@@ -82,9 +82,9 @@ export type ReduxBoundReducer<
  * @param initState
  * @returns {ReduxBoundReducer}
  */
-export function createReducer<S> (
-    initState: S
-): ReduxBoundReducer<S> {
+export function createReducer<StateType> (
+    initState: StateType
+): ReduxBoundReducer<StateType> {
     return (reducers, defaultReducer = (s, _a) => s ? s : initState) =>
         (state = initState, action) =>
             choose(
