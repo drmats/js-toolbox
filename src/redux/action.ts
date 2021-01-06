@@ -99,7 +99,7 @@ export interface ActionCreator<
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args):
-        PayloadAction<ActionType, PayloadType> | EmptyAction<ActionType>;
+        EmptyAction<ActionType> | PayloadAction<ActionType, PayloadType>;
 }
 
 
