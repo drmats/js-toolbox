@@ -160,8 +160,7 @@ export type EmptyActionCreators<ActionEnum extends NonConstEnum> = {
 export function emptyActionCreators<ActionEnum extends NonConstEnum> (
     actionEnum: ActionEnum
 ): EmptyActionCreators<ActionEnum> {
-    let actions: EmptyActionCreators<ActionEnum> =
-        {} as EmptyActionCreators<ActionEnum>;
+    let actions = {} as EmptyActionCreators<ActionEnum>;
     for (const actionType in actionEnum) {
         actions[actionType] = defineActionCreator(actionEnum[actionType]);
     }
