@@ -11,8 +11,8 @@
 
 
 
-import type { AllowSubset, Override } from "../type/utils";
-import type { Arr, Fun } from "../type/defs";
+import type { AllowSubset, NonConstEnum, Override } from "../type/utils";
+import type { AnyKey, Arr, Fun } from "../type/defs";
 import { objectMap } from "../struct/object";
 
 
@@ -41,7 +41,9 @@ export interface ReduxCompatAnyAction extends ReduxCompatAction {
 /**
  * Empty action consists just of { type: ActionType } field.
  */
-export type EmptyAction<ActionType> = ReduxCompatAction<ActionType>;
+export type EmptyAction<
+    ActionType extends AnyKey
+> = ReduxCompatAction<ActionType>;
 
 
 
@@ -50,7 +52,8 @@ export type EmptyAction<ActionType> = ReduxCompatAction<ActionType>;
  * Action with payload: { type: ActionType, payload: PayloadType }
  */
 export interface PayloadAction<
-    ActionType, PayloadType
+    ActionType extends AnyKey,
+    PayloadType
 > extends EmptyAction<ActionType> {
     payload: PayloadType;
 }
@@ -62,7 +65,7 @@ export interface PayloadAction<
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
-    ActionType
+    ActionType extends AnyKey
 > extends EmptyAction<ActionType> {
     (): EmptyAction<ActionType>;
 }
@@ -74,7 +77,7 @@ export interface EmptyActionCreator<
  * Action creator carrying payload (more than just `type`).
  */
 export interface PayloadActionCreator<
-    ActionType,
+    ActionType extends AnyKey,
     PayloadType,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
@@ -88,7 +91,7 @@ export interface PayloadActionCreator<
  * Any action creator (carrying just `type` or `type` and `payload`).
  */
 export interface ActionCreator<
-    ActionType,
+    ActionType extends AnyKey,
     PayloadType,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
@@ -109,17 +112,17 @@ export interface ActionCreator<
  * @returns Action creator function.
  */
 export function defineActionCreator<
-    ActionType
+    ActionType extends AnyKey
 > (actionType: ActionType):
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
-    ActionType,
+    ActionType extends AnyKey,
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     PayloadActionCreator<ActionType, PayloadType, Args>;
 export function defineActionCreator<
-    ActionType,
+    ActionType extends AnyKey,
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
@@ -138,7 +141,7 @@ export function defineActionCreator<
  * Construct interface based on `ActionEnum`. Consist of empty action
  * creators (action creators without payload - just `type` field).
  */
-export type EmptyActionCreators<ActionEnum> = {
+export type EmptyActionCreators<ActionEnum extends NonConstEnum> = {
     [K in keyof ActionEnum]: EmptyActionCreator<ActionEnum[K]>;
 };
 
@@ -154,7 +157,7 @@ export type EmptyActionCreators<ActionEnum> = {
  * @param actionEnum Enum upon which an EmptyActionCreators object is built.
  * @returns EmptyActionCreators object.
  */
-export function emptyActionCreators<ActionEnum> (
+export function emptyActionCreators<ActionEnum extends NonConstEnum> (
     actionEnum: ActionEnum
 ): EmptyActionCreators<ActionEnum> {
     let actions: EmptyActionCreators<ActionEnum> =
@@ -175,7 +178,10 @@ export function emptyActionCreators<ActionEnum> (
  * Constructed `PayloadActionCreators` object type consists only of keys
  * that are also present in `ActionEnum` type (all other keys are dropped).
  */
-export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
+export type PayloadActionCreators<
+    ActionEnum extends NonConstEnum,
+    PayloadCreators
+> = {
     [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
         PayloadCreators[K] extends Fun<infer Args, infer PayloadType> ?
             PayloadActionCreator<ActionEnum[K], PayloadType, Args> : never
@@ -202,10 +208,10 @@ export type PayloadActionCreators<ActionEnum, PayloadCreators> = {
  * @returns ActionCreators object.
  */
 export function payloadActionCreators<
-    ActionEnum,
+    ActionEnum extends NonConstEnum,
     PayloadCreators extends
         & AllowSubset<ActionEnum, PayloadCreators>
-        & Partial<{ [K in keyof ActionEnum]: Fun }>,
+        & Partial<Record<keyof ActionEnum, Fun>>,
 > (
     emptyActionCreators: EmptyActionCreators<ActionEnum>,
     payloadCreators: PayloadCreators
@@ -236,13 +242,13 @@ export function payloadActionCreators<
  * @returns ActionCreators object.
  */
 export function actionCreators<
-    ActionEnum
+    ActionEnum extends NonConstEnum
 > (actionEnum: ActionEnum): EmptyActionCreators<ActionEnum>;
 export function actionCreators<
-    ActionEnum,
+    ActionEnum extends NonConstEnum,
     PayloadCreators extends
         & AllowSubset<ActionEnum, PayloadCreators>
-        & Partial<{ [K in keyof ActionEnum]: Fun }>
+        & Partial<Record<keyof ActionEnum, Fun>>
 > (
     actionEnum: ActionEnum,
     payloadCreators?: PayloadCreators
@@ -252,10 +258,10 @@ export function actionCreators<
         PayloadActionCreators<ActionEnum, PayloadCreators>
     >;
 export function actionCreators<
-    ActionEnum,
+    ActionEnum extends NonConstEnum,
     PayloadCreators extends
         & AllowSubset<ActionEnum, PayloadCreators>
-        & Partial<{ [K in keyof ActionEnum]: Fun }>
+        & Partial<Record<keyof ActionEnum, Fun>>
 > (
     actionEnum: ActionEnum,
     payloadCreators?: PayloadCreators
