@@ -374,7 +374,8 @@ redux
 >   createReducer: [Function: createReducer],
 >   defineActionCreator: [Function: defineActionCreator],
 >   emptyActionCreators: [Function: emptyActionCreators],
->   payloadActionCreators: [Function: payloadActionCreators] }
+>   payloadActionCreators: [Function: payloadActionCreators],
+>   sliceReducer: [Function: sliceReducer] }
 > ```
 
 

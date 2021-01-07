@@ -184,6 +184,7 @@ export {
     defineActionCreator,
     emptyActionCreators,
     payloadActionCreators,
+    sliceReducer,
 } from "./redux";
 export * as redux from "./redux";
 

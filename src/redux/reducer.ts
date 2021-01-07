@@ -12,6 +12,14 @@
 
 
 import type {
+    AnyKey,
+    Fun,
+} from "../type/defs";
+import type {
+    ActionCreator,
+    EmptyActionCreator,
+    PayloadAction,
+    PayloadActionCreator,
     ReduxCompatAction,
     ReduxCompatAnyAction,
 } from "./action";
@@ -93,4 +101,57 @@ export function createReducer<StateType> (
                 defaultReducer,
                 [state, action]
             );
+}
+
+
+
+
+/**
+ * ...
+ */
+interface SliceBuilderAPI<StateType> {
+    handle<ActionType extends AnyKey> (
+        actionCreator: EmptyActionCreator<ActionType>,
+        reducer: (state: StateType) => StateType
+    ): void;
+    handle<ActionType extends AnyKey, PayloadType> (
+        actionCreator: PayloadActionCreator<ActionType, PayloadType>,
+        reducer: (state: StateType, payload: PayloadType) => StateType
+    ): void;
+}
+
+
+
+
+/**
+ * Statically typed reducer for a "slice" of state.
+ *
+ * @function sliceReducer
+ * @param initState
+ * @param builder (slice: SliceBuilderAPI) => void
+ * @returns {ReduxCompatReducer}
+ */
+export function sliceReducer<StateType> (
+    initState: StateType,
+    builder: (slice: SliceBuilderAPI<StateType>) => void
+): ReduxCompatReducer<StateType, ReduxCompatAction> {
+    let reducers = {} as Record<AnyKey, Fun>;
+    builder({
+        handle: <ActionType extends AnyKey, PayloadType> (
+            actionCreator: ActionCreator<ActionType, PayloadType>,
+            reducer: (state: StateType, payload?: PayloadType) => StateType
+        ): void => {
+            if (reducer.length === 2) {
+                reducers[actionCreator.type] = (
+                    state: StateType,
+                    action: PayloadAction<ActionType, PayloadType>
+                ) => reducer(state, action.payload);
+            } else {
+                reducers[actionCreator.type] = (
+                    state: StateType
+                ) => reducer(state);
+            }
+        },
+    });
+    return createReducer(initState) (reducers);
 }
