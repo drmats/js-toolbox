@@ -107,31 +107,25 @@ export function createReducer<StateType> (
 
 
 /**
- * ...
- */
-interface SliceBuilderAPI<StateType> {
-    handle<ActionType extends AnyKey> (
-        actionCreator: EmptyActionCreator<ActionType>,
-        reducer: (state: StateType) => StateType
-    ): void;
-    handle<ActionType extends AnyKey, PayloadType> (
-        actionCreator: PayloadActionCreator<ActionType, PayloadType>,
-        reducer: (state: StateType, payload: PayloadType) => StateType
-    ): void;
-}
-
-
-
-
-/**
  * Statically typed reducer for a "slice" of state.
  *
  * @function sliceReducer
  * @param initState
- * @returns (builder: (slice: SliceBuilderAPI) => void) => ReduxCompatReducer
+ * @returns (builder: (slice: BuilderAPI) => void) => ReduxCompatReducer
  */
 export function sliceReducer<StateType> (initState: StateType): (
-    builder: (slice: SliceBuilderAPI<StateType>) => void
+    builder: (
+        slice: {
+            handle<ActionType extends AnyKey> (
+                actionCreator: EmptyActionCreator<ActionType>,
+                reducer: (state: StateType) => StateType
+            ): void;
+            handle<ActionType extends AnyKey, PayloadType> (
+                actionCreator: PayloadActionCreator<ActionType, PayloadType>,
+                reducer: (state: StateType, payload: PayloadType) => StateType
+            ): void;
+        }
+    ) => void
 ) => ReduxCompatReducer<StateType, ReduxCompatAction> {
 
     const create = createReducer(initState);
