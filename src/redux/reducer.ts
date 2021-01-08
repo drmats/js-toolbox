@@ -128,30 +128,37 @@ interface SliceBuilderAPI<StateType> {
  *
  * @function sliceReducer
  * @param initState
- * @param builder (slice: SliceBuilderAPI) => void
- * @returns {ReduxCompatReducer}
+ * @returns (builder: (slice: SliceBuilderAPI) => void) => ReduxCompatReducer
  */
-export function sliceReducer<StateType> (
-    initState: StateType,
+export function sliceReducer<StateType> (initState: StateType): (
     builder: (slice: SliceBuilderAPI<StateType>) => void
-): ReduxCompatReducer<StateType, ReduxCompatAction> {
+) => ReduxCompatReducer<StateType, ReduxCompatAction> {
+
+    const create = createReducer(initState);
     let reducers = {} as Record<AnyKey, Fun>;
-    builder({
-        handle: <ActionType extends AnyKey, PayloadType> (
-            actionCreator: ActionCreator<ActionType, PayloadType>,
-            reducer: (state: StateType, payload?: PayloadType) => StateType
-        ): void => {
-            if (reducer.length === 2) {
-                reducers[actionCreator.type] = (
-                    state: StateType,
-                    action: PayloadAction<ActionType, PayloadType>
-                ) => reducer(state, action.payload);
-            } else {
-                reducers[actionCreator.type] = (
-                    state: StateType
-                ) => reducer(state);
-            }
-        },
-    });
-    return createReducer(initState) (reducers);
+
+    return (builder) => {
+
+        builder({
+            handle: <ActionType extends AnyKey, PayloadType>(
+                actionCreator: ActionCreator<ActionType, PayloadType>,
+                reducer: (state: StateType, payload?: PayloadType) => StateType
+            ): void => {
+                if (reducer.length === 2) {
+                    reducers[actionCreator.type] = (
+                        state: StateType,
+                        action: PayloadAction<ActionType, PayloadType>
+                    ) => reducer(state, action.payload);
+                } else {
+                    reducers[actionCreator.type] = (
+                        state: StateType
+                    ) => reducer(state);
+                }
+            },
+        });
+
+        return create(reducers);
+
+    };
+
 }
