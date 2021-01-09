@@ -124,12 +124,23 @@ export function sliceReducer<StateType> (initState: StateType): (
                 actionCreator: PayloadActionCreator<ActionType, PayloadType>,
                 reducer: (state: StateType, payload: PayloadType) => StateType
             ): void;
+            default (
+                reducer: (
+                    state: StateType | undefined,
+                    action: ReduxCompatAnyAction<AnyKey>
+                ) => StateType
+            ): void;
         }
     ) => void
 ) => ReduxCompatReducer<StateType, ReduxCompatAction> {
 
     const create = createReducer(initState);
-    let reducers = {} as Record<AnyKey, Fun>;
+    let
+        reducers = {} as Record<AnyKey, Fun>,
+        defaultReducer: (
+            state: StateType | undefined,
+            action: ReduxCompatAnyAction<AnyKey>
+        ) => StateType;
 
     return (builder) => {
 
@@ -149,9 +160,12 @@ export function sliceReducer<StateType> (initState: StateType): (
                     ) => reducer(state);
                 }
             },
+            default: (reducer) => { defaultReducer = reducer; },
         });
 
-        return create(reducers);
+        return defaultReducer ?
+            create(reducers, defaultReducer) :
+            create(reducers);
 
     };
 
