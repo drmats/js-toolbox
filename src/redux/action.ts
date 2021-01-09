@@ -31,7 +31,9 @@ export interface ReduxCompatAction<ActionType = any> {
 /**
  * redux-compatible AnyAction interface.
  */
-export interface ReduxCompatAnyAction extends ReduxCompatAction {
+export interface ReduxCompatAnyAction<
+    ActionType = any
+> extends ReduxCompatAction<ActionType> {
     [key: string]: any;
 }
 
