@@ -6,6 +6,56 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import type { Fun } from "../type/defs";
+import type {
+    Head,
+    Length,
+    Tail,
+} from "../type/list";
+
+
+
+
+/**
+ * Recursive type for curried functions.
+ */
+export type CurryFun<
+    F extends Fun,
+    P extends any[] = Parameters<F>,
+    R = ReturnType<F>
+> = Length<P> extends 0 ?
+    () => R :
+    Length<P> extends 1 ?
+        (x: Head<P>) => R :
+        (x: Head<P>) => CurryFun<(...args: Tail<P>) => R>;
+
+
+
+
+/**
+ * `curry` and `curryN` return type.
+ */
+type CurryReturnType<
+    F extends Fun
+> = Length<Parameters<F>> extends 0 | 1 ?
+        F : F & CurryFun<F>;
+
+
+
+
+/**
+ * Recursive type for thunk-curried functions.
+ */
+export type ThunkFun<
+    F extends Fun,
+    P extends any[] = Parameters<F>,
+    R = ReturnType<F>
+> = Length<P> extends 0 ?
+    () => R :
+    (x: Head<P>) => ThunkFun<(...args: Tail<P>) => R>;
+
 
 
 
@@ -31,7 +81,9 @@
  * @param {Function} f
  * @returns {CurryFun}
  */
-export const curry = f => curryN(f.length, f)
+export function curry<F extends Fun> (f: F): CurryReturnType<F> {
+    return curryN(f.length, f);
+}
 
 
 
@@ -50,11 +102,14 @@ export const curry = f => curryN(f.length, f)
  * @param {Function} f
  * @returns {CurryFun}
  */
-export const curryN = (n, f) =>
-    (...args) =>
-        n <= args.length  ?
-            f(...args)  :
-            curryN(n - args.length, partial(f) (...args))
+export function curryN<F extends Fun> (n: number, f: F): CurryReturnType<F> {
+    return (
+        (...args: any[]) =>
+            n <= args.length ?
+                f(...args) :
+                curryN(n - args.length, partial(f) (...args))
+    ) as CurryReturnType<F>;
+}
 
 
 
@@ -74,10 +129,14 @@ export const curryN = (n, f) =>
  * @param {Function} f
  * @returns {ThunkFun}
  */
-export const curryThunk = f => (...args) =>
-    args.length === 0  ?  f()  :  curryThunk(partial(f) (...args))
-
-
+export function curryThunk<F extends Fun> (f: F): ThunkFun<F> {
+    return (
+        (...args: any[]) =>
+            args.length === 0 ?
+                f() :
+                curryThunk(partial(f) (...args))
+    ) as ThunkFun<F>;
+}
 
 
 
@@ -101,5 +160,6 @@ export const curryThunk = f => (...args) =>
  * @param {Function} f
  * @returns {Function}
  */
-export const partial = f => (...init) =>
-    (...rest) => f(...[...init, ...rest])
+export function partial<F extends Fun> (f: F): (...init: any[]) => Fun {
+    return (...init) => (...rest) => f(...[...init, ...rest]);
+}
