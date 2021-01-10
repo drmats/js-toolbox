@@ -24,6 +24,7 @@ import type {
     ReduxCompatAnyAction,
 } from "./action";
 import { choose } from "../func/choice";
+import { identity } from "../func/tools";
 
 
 
@@ -77,7 +78,7 @@ export type ReduxBoundReducer<
     ActionShape extends ReduxCompatAction = ReduxCompatAnyAction
 > = (
     reducers: ReducersMap<StateType, ActionShape>,
-    defaultReducer?: ReduxCompatReducer<StateType, ActionShape>
+    defaultReducer?: Reducer<StateType, ActionShape>
 ) => ReduxCompatReducer<StateType, ActionShape>;
 
 
@@ -93,7 +94,7 @@ export type ReduxBoundReducer<
 export function createReducer<StateType> (
     initState: StateType
 ): ReduxBoundReducer<StateType> {
-    return (reducers, defaultReducer = (s, _a) => s ? s : initState) =>
+    return (reducers, defaultReducer = identity) =>
         (state = initState, action) =>
             choose(
                 action.type,
