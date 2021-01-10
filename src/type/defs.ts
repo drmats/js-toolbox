@@ -20,6 +20,17 @@ export type AnyKey = keyof any;
 
 
 /**
+ * Type whose values can be used to index objects in TS.
+ *
+ * @see https://github.com/microsoft/TypeScript/issues/1863
+ * @see https://github.com/microsoft/TypeScript/pull/26797
+ */
+export type SafeKey = string | number;
+
+
+
+
+/**
  * Array.
  */
 export type Arr<T = any> = T[];

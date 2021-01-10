@@ -271,6 +271,7 @@ export type {
     JSAnyObj,
     NoArgFun,
     OneArgFun,
+    SafeKey,
 } from "./type/defs";
 export type {
     AllowSubset,
