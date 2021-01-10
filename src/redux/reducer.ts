@@ -115,7 +115,7 @@ interface SliceBuildAPI<StateType> {
         reducer: (state: StateType) => StateType
     ): SliceBuildAPI<StateType>;
     handle<ActionType extends AnyKey, PayloadType> (
-        actionCreator: PayloadActionCreator<ActionType, PayloadType>,
+        actionCreator: PayloadActionCreator<PayloadType, ActionType>,
         reducer: (state: StateType, payload: PayloadType) => StateType
     ): SliceBuildAPI<StateType>;
     default (
@@ -151,13 +151,13 @@ export function sliceReducer<StateType> (initState: StateType): (
         create = createReducer(initState),
         slice: SliceBuildAPI<StateType> = {
             handle: <ActionType extends AnyKey, PayloadType>(
-                actionCreator: ActionCreator<ActionType, PayloadType>,
+                actionCreator: ActionCreator<PayloadType, ActionType>,
                 reducer: (state: StateType, payload?: PayloadType) => StateType
             ): typeof slice => {
                 if (reducer.length === 2) {
                     reducers[actionCreator.type] = (
                         state: StateType,
-                        action: PayloadAction<ActionType, PayloadType>
+                        action: PayloadAction<PayloadType, ActionType>
                     ) => reducer(state, action.payload);
                 } else {
                     reducers[actionCreator.type] = (

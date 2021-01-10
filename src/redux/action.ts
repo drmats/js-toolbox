@@ -44,7 +44,7 @@ export interface ReduxCompatAnyAction<
  * Empty action consists just of { type: ActionType } field.
  */
 export type EmptyAction<
-    ActionType extends AnyKey
+    ActionType extends AnyKey = AnyKey
 > = ReduxCompatAction<ActionType>;
 
 
@@ -54,8 +54,8 @@ export type EmptyAction<
  * Action with payload: { type: ActionType, payload: PayloadType }
  */
 export interface PayloadAction<
-    ActionType extends AnyKey,
-    PayloadType
+    PayloadType = any,
+    ActionType extends AnyKey = AnyKey
 > extends EmptyAction<ActionType> {
     payload: PayloadType;
 }
@@ -67,11 +67,11 @@ export interface PayloadAction<
  * Empty action or action carrying payload.
  */
 export type Action<
-    ActionType extends AnyKey = AnyKey,
-    PayloadType = any
+    PayloadType = any,
+    ActionType extends AnyKey = AnyKey
 > =
     | EmptyAction<ActionType>
-    | PayloadAction<ActionType, PayloadType>;
+    | PayloadAction<PayloadType, ActionType>;
 
 
 
@@ -92,11 +92,11 @@ export interface EmptyActionCreator<
  * Action creator carrying payload (more than just `type`).
  */
 export interface PayloadActionCreator<
-    ActionType extends AnyKey,
-    PayloadType,
+    PayloadType = any,
+    ActionType extends AnyKey = AnyKey,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
-    (...args: Args): PayloadAction<ActionType, PayloadType>;
+    (...args: Args): PayloadAction<PayloadType, ActionType>;
 }
 
 
@@ -106,11 +106,11 @@ export interface PayloadActionCreator<
  * Any action creator (carrying just `type` or `type` and `payload`).
  */
 export interface ActionCreator<
-    ActionType extends AnyKey,
-    PayloadType,
+    PayloadType = any,
+    ActionType extends AnyKey = AnyKey,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
-    (...args: Args): Action<ActionType, PayloadType>;
+    (...args: Args): Action<PayloadType, ActionType>;
 }
 
 
@@ -133,13 +133,13 @@ export function defineActionCreator<
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
-    PayloadActionCreator<ActionType, PayloadType, Args>;
+    PayloadActionCreator<PayloadType, ActionType, Args>;
 export function defineActionCreator<
     ActionType extends AnyKey,
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
-    ActionCreator<ActionType, PayloadType, Args> {
+    ActionCreator<PayloadType, ActionType, Args> {
     let actionCreator: any = !creator ?
         () => ({ type: actionType }) :
         (...args: Args) => ({ type: actionType, payload: creator(...args) });
@@ -196,7 +196,7 @@ export type PayloadActionCreators<
 > = {
     [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
         PayloadCreators[K] extends Fun<infer Args, infer PayloadType> ?
-            PayloadActionCreator<ActionEnum[K], PayloadType, Args> : never
+            PayloadActionCreator<PayloadType, ActionEnum[K], Args> : never
 };
 
 
