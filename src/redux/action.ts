@@ -64,6 +64,19 @@ export interface PayloadAction<
 
 
 /**
+ * Empty action or action carrying payload.
+ */
+export type Action<
+    ActionType extends AnyKey = AnyKey,
+    PayloadType = any
+> =
+    | EmptyAction<ActionType>
+    | PayloadAction<ActionType, PayloadType>;
+
+
+
+
+/**
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
@@ -97,9 +110,7 @@ export interface ActionCreator<
     PayloadType,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
-    (...args: Args):
-        | EmptyAction<ActionType>
-        | PayloadAction<ActionType, PayloadType>;
+    (...args: Args): Action<ActionType, PayloadType>;
 }
 
 

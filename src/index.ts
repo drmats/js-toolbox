@@ -162,6 +162,7 @@ export * as memory from "./memory";
  * @see {@link module:redux}
  */
 export type {
+    Action,
     ActionCreator,
     EmptyAction,
     EmptyActionCreator,
