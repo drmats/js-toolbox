@@ -184,9 +184,12 @@ export {
     createReducer,
     defineActionCreator,
     emptyActionCreators,
+    isNumberActionType,
+    isStringActionType,
+    isSymbolActionType,
+    isWithPayload,
     payloadActionCreators,
     sliceReducer,
-    withPayload,
 } from "./redux";
 export * as redux from "./redux";
 

@@ -91,10 +91,46 @@ export type Action<
 /**
  * Type predicate - does a given action carry payload?
  */
-export function withPayload<PayloadType, ActionType extends AnyKey> (
+export function isWithPayload<PayloadType, ActionType extends AnyKey> (
     a: Action<PayloadType, ActionType>
 ): a is PayloadAction<PayloadType, ActionType> {
     return !a[empty];
+}
+
+
+
+
+/**
+ * Type predicate - is a given action of string type?
+ */
+export function isStringActionType<PayloadType> (
+    a: Action<PayloadType>
+): a is Action<PayloadType, string> {
+    return typeof a.type === "string";
+}
+
+
+
+
+/**
+ * Type predicate - is a given action of number type?
+ */
+export function isNumberActionType<PayloadType> (
+    a: Action<PayloadType>
+): a is Action<PayloadType, number> {
+    return typeof a.type === "number";
+}
+
+
+
+
+/**
+ * Type predicate - is a given action of symbol type?
+ */
+export function isSymbolActionType<PayloadType> (
+    a: Action<PayloadType>
+): a is Action<PayloadType, symbol> {
+    return typeof a.type === "symbol";
 }
 
 
