@@ -186,7 +186,6 @@ export {
     emptyActionCreators,
     isNumberActionType,
     isStringActionType,
-    isSymbolActionType,
     isWithPayload,
     payloadActionCreators,
     sliceReducer,

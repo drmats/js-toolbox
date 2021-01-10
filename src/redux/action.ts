@@ -11,8 +11,16 @@
 
 
 
-import type { AllowSubset, NonConstEnum, Override } from "../type/utils";
-import type { AnyKey, Arr, Fun } from "../type/defs";
+import type {
+    AllowSubset,
+    NonConstEnum,
+    Override,
+} from "../type/utils";
+import type {
+    Arr,
+    Fun,
+    SafeKey,
+} from "../type/defs";
 import { objectMap } from "../struct/object";
 
 
@@ -53,7 +61,7 @@ const empty = Symbol("empty");
  * Empty action consists just of { type: ActionType } field.
  */
 export interface EmptyAction<
-    ActionType extends AnyKey = AnyKey
+    ActionType extends SafeKey = SafeKey
 > extends ReduxCompatAction<ActionType> {
     [empty]: true;
 }
@@ -66,7 +74,7 @@ export interface EmptyAction<
  */
 export interface PayloadAction<
     PayloadType = any,
-    ActionType extends AnyKey = AnyKey
+    ActionType extends SafeKey = SafeKey
 > extends ReduxCompatAction<ActionType> {
     [empty]: false,
     payload: PayloadType;
@@ -80,7 +88,7 @@ export interface PayloadAction<
  */
 export type Action<
     PayloadType = any,
-    ActionType extends AnyKey = AnyKey
+    ActionType extends SafeKey = SafeKey
 > =
     | EmptyAction<ActionType>
     | PayloadAction<PayloadType, ActionType>;
@@ -91,7 +99,7 @@ export type Action<
 /**
  * Type predicate - does a given action carry payload?
  */
-export function isWithPayload<PayloadType, ActionType extends AnyKey> (
+export function isWithPayload<PayloadType, ActionType extends SafeKey> (
     a: Action<PayloadType, ActionType>
 ): a is PayloadAction<PayloadType, ActionType> {
     return !a[empty];
@@ -125,22 +133,10 @@ export function isNumberActionType<PayloadType> (
 
 
 /**
- * Type predicate - is a given action of symbol type?
- */
-export function isSymbolActionType<PayloadType> (
-    a: Action<PayloadType>
-): a is Action<PayloadType, symbol> {
-    return typeof a.type === "symbol";
-}
-
-
-
-
-/**
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
-    ActionType extends AnyKey
+    ActionType extends SafeKey
 > extends EmptyAction<ActionType> {
     (): EmptyAction<ActionType>;
 }
@@ -153,7 +149,7 @@ export interface EmptyActionCreator<
  */
 export interface PayloadActionCreator<
     PayloadType = any,
-    ActionType extends AnyKey = AnyKey,
+    ActionType extends SafeKey = SafeKey,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args): PayloadAction<PayloadType, ActionType>;
@@ -167,7 +163,7 @@ export interface PayloadActionCreator<
  */
 export interface ActionCreator<
     PayloadType = any,
-    ActionType extends AnyKey = AnyKey,
+    ActionType extends SafeKey = SafeKey,
     Args extends Arr = Arr
 > extends EmptyAction<ActionType> {
     (...args: Args): Action<PayloadType, ActionType>;
@@ -185,17 +181,17 @@ export interface ActionCreator<
  * @returns Action creator function.
  */
 export function defineActionCreator<
-    ActionType extends AnyKey
+    ActionType extends SafeKey
 > (actionType: ActionType):
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
-    ActionType extends AnyKey,
+    ActionType extends SafeKey,
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     PayloadActionCreator<PayloadType, ActionType, Args>;
 export function defineActionCreator<
-    ActionType extends AnyKey,
+    ActionType extends SafeKey,
     PayloadType,
     Args extends Arr
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):

@@ -12,8 +12,8 @@
 
 
 import type {
-    AnyKey,
     Fun,
+    SafeKey,
 } from "../type/defs";
 import type {
     ActionCreator,
@@ -110,18 +110,18 @@ export function createReducer<StateType> (
  * Chainable API for building reducer handling a slice of state.
  */
 interface SliceBuildAPI<StateType> {
-    handle<ActionType extends AnyKey> (
+    handle<ActionType extends SafeKey> (
         actionCreator: EmptyActionCreator<ActionType>,
         reducer: (state: StateType) => StateType
     ): SliceBuildAPI<StateType>;
-    handle<ActionType extends AnyKey, PayloadType> (
+    handle<ActionType extends SafeKey, PayloadType> (
         actionCreator: PayloadActionCreator<PayloadType, ActionType>,
         reducer: (state: StateType, payload: PayloadType) => StateType
     ): SliceBuildAPI<StateType>;
     default (
         reducer: (
             state: StateType | undefined,
-            action: ReduxCompatAnyAction<AnyKey>
+            action: ReduxCompatAnyAction<SafeKey>
         ) => StateType
     ): SliceBuildAPI<StateType>;
 }
@@ -141,16 +141,16 @@ export function sliceReducer<StateType> (initState: StateType): (
 ) => ReduxCompatReducer<StateType, ReduxCompatAction> {
 
     let
-        reducers = {} as Record<AnyKey, Fun>,
+        reducers = {} as Record<SafeKey, Fun>,
         defaultReducer: (
             state: StateType | undefined,
-            action: ReduxCompatAnyAction<AnyKey>
+            action: ReduxCompatAnyAction<SafeKey>
         ) => StateType;
 
     const
         create = createReducer(initState),
         slice: SliceBuildAPI<StateType> = {
-            handle: <ActionType extends AnyKey, PayloadType>(
+            handle: <ActionType extends SafeKey, PayloadType>(
                 actionCreator: ActionCreator<PayloadType, ActionType>,
                 reducer: (state: StateType, payload?: PayloadType) => StateType
             ): typeof slice => {

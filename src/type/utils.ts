@@ -9,7 +9,10 @@
 
 
 
-import type { AnyKey, ArrStr } from "./defs";
+import type {
+    ArrStr,
+    SafeKey,
+} from "./defs";
 
 
 
@@ -65,8 +68,8 @@ export type ChooseArrOrStr<
  * to index other objects.
  */
 export type NonConstEnum<
-    KeyTypes extends AnyKey = AnyKey,
-    ValTypes extends AnyKey = AnyKey
+    KeyTypes extends SafeKey = SafeKey,
+    ValTypes extends SafeKey = SafeKey
 > = { [K in KeyTypes]: ValTypes };
 
 
