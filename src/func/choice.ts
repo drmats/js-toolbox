@@ -12,6 +12,7 @@
 import type {
     Arr,
     JSAnyFun,
+    SafeKey,
 } from "../type/defs";
 
 
@@ -21,17 +22,17 @@ import type {
  * Functional replacement of a `switch` statement.
  *
  * @function choose
- * @param {String} key
- * @param {Record<string, JSAnyFun<T>>} [actions]
- * @param {Function} [defaultAction]
- * @param {Array} [args]
+ * @param key
+ * @param [actions]
+ * @param [defaultAction]
+ * @param [args]
  * @returns {T}
  */
-export function choose<T> (
-    key: string,
-    actions: Record<string, JSAnyFun<T>> = {},
+export function choose<T, Key extends SafeKey> (
+    key: Key,
+    actions = {} as Record<Key, JSAnyFun<T>>,
     defaultAction: JSAnyFun = () => null,
-    args: Arr = []
+    args = [] as Arr
 ): T {
     return key in actions ?
         actions[key](...args) :
