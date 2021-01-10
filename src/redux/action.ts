@@ -41,11 +41,22 @@ export interface ReduxCompatAnyAction<
 
 
 /**
+ * Unique, private identifier distinguishing
+ * between EmptyAction and PayloadAction.
+ */
+const empty = Symbol("empty");
+
+
+
+
+/**
  * Empty action consists just of { type: ActionType } field.
  */
-export type EmptyAction<
+export interface EmptyAction<
     ActionType extends AnyKey = AnyKey
-> = ReduxCompatAction<ActionType>;
+> extends ReduxCompatAction<ActionType> {
+    [empty]: true;
+}
 
 
 
@@ -56,7 +67,8 @@ export type EmptyAction<
 export interface PayloadAction<
     PayloadType = any,
     ActionType extends AnyKey = AnyKey
-> extends EmptyAction<ActionType> {
+> extends ReduxCompatAction<ActionType> {
+    [empty]: false,
     payload: PayloadType;
 }
 
@@ -72,6 +84,18 @@ export type Action<
 > =
     | EmptyAction<ActionType>
     | PayloadAction<PayloadType, ActionType>;
+
+
+
+
+/**
+ * Type predicate - does a given action carry payload?
+ */
+export function withPayload<PayloadType, ActionType extends AnyKey> (
+    a: Action<PayloadType, ActionType>
+): a is PayloadAction<PayloadType, ActionType> {
+    return !a[empty];
+}
 
 
 

@@ -186,6 +186,7 @@ export {
     emptyActionCreators,
     payloadActionCreators,
     sliceReducer,
+    withPayload,
 } from "./redux";
 export * as redux from "./redux";
 
