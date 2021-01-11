@@ -75,4 +75,4 @@ export type NoArgFun<Out = any> = () => Out;
  */
 export type JSAnyObj<T = any> = { [K in keyof T]?: T[K]; };
 export type JSAnyArrObj<T = any> = Arr<T> | JSAnyObj<T>;
-export type JSAnyFun<T = any> = Fun<any[], T>;
+export type JSAnyFun<T = any> = Fun<Arr, T>;
