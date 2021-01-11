@@ -49,7 +49,7 @@ export type ArrStr<T = any> = Arr<T> | string;
 /**
  * Function.
  */
-export type Fun<In extends any[] = any[], Out = any> = (...args: In) => Out;
+export type Fun<In extends Arr = Arr, Out = any> = (...args: In) => Out;
 
 
 
