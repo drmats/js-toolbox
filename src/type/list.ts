@@ -13,6 +13,11 @@
 
 
 
+import { Arr } from "./defs";
+
+
+
+
 /**
  * Trivial type.
  *
@@ -36,8 +41,8 @@ export type Id<T> = T;
  * // type Hd = 1;
  * ```
  */
-export type Head<List extends any[]> =
-    List extends [infer X, ...any[]] ?
+export type Head<List extends Arr> =
+    List extends [infer X, ...Arr] ?
         X :
         never;
 
@@ -53,7 +58,7 @@ export type Head<List extends any[]> =
  * // type Tl = [2, 3, 4];
  * ```
  */
-export type Tail<List extends any[]> =
+export type Tail<List extends Arr> =
     List extends [any, ...infer Xs] ?
         Xs :
         never;
@@ -70,7 +75,7 @@ export type Tail<List extends any[]> =
  * // type Len = 4;
  * ```
  */
-export type Length<List extends any[]> = List["length"];
+export type Length<List extends Arr> = List["length"];
 
 
 
@@ -84,7 +89,7 @@ export type Length<List extends any[]> = List["length"];
  * // type Cs = [0, 1, 2, 3, 4];
  * ```
  */
-export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
+export type Cons<Car, Cdr extends Arr = []> = [Car, ...Cdr];
 
 
 
@@ -98,7 +103,7 @@ export type Cons<Car, Cdr extends any[] = []> = [Car, ...Cdr];
  * // type It = [1, 2, 3];
  * ```
  */
-export type Init<List extends any[]> =
+export type Init<List extends Arr> =
     List extends [any] ?
         [] :
         List extends [infer X, ...infer Xs] ?
@@ -115,8 +120,9 @@ export type Init<List extends any[]> =
  * type List = [1, 2, 3, 4];
  * type Lt = Last<List>;
  * // type Lt = 4;
+ * ```
  */
-export type Last<List extends any[]> =
+export type Last<List extends Arr> =
     List extends [infer X] ?
         X :
         List extends [any, ...infer Xs] ?
@@ -136,7 +142,7 @@ export type Last<List extends any[]> =
  * // type Ap = [1, 2, 7, 8];
  * ```
  */
-export type Append<List1 extends any[], List2 extends any[]> =
+export type Append<List1 extends Arr, List2 extends Arr> =
     List1 extends [infer X, ...infer Xs] ?
         Cons<X, Append<Xs, List2>> :
         List2;
@@ -153,7 +159,7 @@ export type Append<List1 extends any[], List2 extends any[]> =
  * // type Rev = [4, 3, 2, 1];
  * ```
  */
-export type Reverse<List extends any[], Acc extends any[] = []> =
+export type Reverse<List extends Arr, Acc extends Arr = []> =
     List extends [infer X, ...infer Xs] ?
         Reverse<Xs, Cons<X, Acc>> :
         Acc;
@@ -171,7 +177,7 @@ export type Reverse<List extends any[], Acc extends any[] = []> =
  * // type Zz = [[1, "a"], [2, "b"], [3, "c"]];
  * ```
  */
-export type Zip<List1 extends any[], List2 extends any[]> =
+export type Zip<List1 extends Arr, List2 extends Arr> =
     List1 extends [infer X, ...infer Xs] ?
         List2 extends [infer Y, ...infer Ys] ?
             Cons<[X, Y], Zip<Xs, Ys>> :
@@ -192,7 +198,7 @@ export type Zip<List1 extends any[], List2 extends any[]> =
  * // type Ps = [[], [1], [1, 2], [1, 2, 3]];
  * ```
  */
-export type Prefixes<List extends any[], Prefix extends any[] = []> =
+export type Prefixes<List extends Arr, Prefix extends Arr = []> =
     List extends [infer X, ...infer Xs] ?
         Cons<
             Reverse<Prefix>,
@@ -210,8 +216,9 @@ export type Prefixes<List extends any[], Prefix extends any[] = []> =
  * type List = [1, 2, 3];
  * type Ss = Suffixes<List>;
  * // type Ss = [[1, 2, 3], [2, 3], [3], []];
+ * ```
  */
-export type Suffixes<List extends any[], Suffix extends any[] = List> =
+export type Suffixes<List extends Arr, Suffix extends Arr = List> =
     List extends [any, ...infer Xs] ?
         Cons<
             Suffix,
@@ -225,7 +232,7 @@ export type Suffixes<List extends any[], Suffix extends any[] = List> =
 /**
  * Compose type union from all types in the list.
  */
-export type Union<List extends any[]> =
+export type Union<List extends Arr> =
     List extends [infer X, ...infer Xs] ?
         X | Union<Xs> :
         never;
@@ -236,7 +243,7 @@ export type Union<List extends any[]> =
 /**
  * Compose type intersection from all types in the list.
  */
-export type Intersection<List extends any[]> =
+export type Intersection<List extends Arr> =
     List extends [infer X, ...infer Xs] ?
         X & Intersection<Xs> :
         unknown;
