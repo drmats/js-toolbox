@@ -42,7 +42,7 @@ export type ElementType<T> = T extends (infer U)[] ? U : never;
  * If `U` nor `string` can be inferred then it's `never`.
  */
 export type ChooseArrElOrStr<
-    T = ArrStr
+    T = ArrStr,
 > = T extends (infer U)[]
     ? U : T extends string
         ? string : never;
@@ -55,7 +55,7 @@ export type ChooseArrElOrStr<
  * If `U[]` nor `string` can be inferred then it's `never`.
  */
 export type ChooseArrOrStr<
-    T = ArrStr
+    T = ArrStr,
 > = T extends (infer U)[]
     ? U[] : T extends string
         ? string : never;
@@ -69,7 +69,7 @@ export type ChooseArrOrStr<
  */
 export type NonConstEnum<
     KeyTypes extends SafeKey = SafeKey,
-    ValTypes extends SafeKey = SafeKey
+    ValTypes extends SafeKey = SafeKey,
 > = { [K in KeyTypes]: ValTypes };
 
 

@@ -30,7 +30,7 @@ export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
     if (
         u8as.some(u8a => !isNumber(u8a.BYTES_PER_ELEMENT))
     ) throw new TypeError(
-        "codec.concatBytes() - Arguments must be of [TypedArray] type."
+        "codec.concatBytes() - Arguments must be of [TypedArray] type.",
     );
     let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
     u8as.reduce((pointer, u8a) => {
@@ -56,7 +56,7 @@ export const compareBytes = curry((u8a1: Uint8Array, u8a2: Uint8Array) => {
         !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
         !isNumber(u8a2.BYTES_PER_ELEMENT)
     ) throw new TypeError(
-        "codec.compareBytes() - Arguments must be of [TypedArray] type."
+        "codec.compareBytes() - Arguments must be of [TypedArray] type.",
     );
     if (
         u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||

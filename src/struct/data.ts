@@ -58,7 +58,7 @@ export type Atom =
  */
 export type DataArray<
     T = BasicData,
-    ObjectPropType extends AnyKey = string
+    ObjectPropType extends AnyKey = string,
 > = Data<T, ObjectPropType>[];
 
 
@@ -69,7 +69,7 @@ export type DataArray<
  */
 export type DataObject<
     T = BasicData,
-    PropType extends AnyKey = string
+    PropType extends AnyKey = string,
 > = {
     [property in PropType]?: Data<T, PropType>;
 };
@@ -82,7 +82,7 @@ export type DataObject<
  */
 export type Data<
     T = BasicData,
-    ObjectPropType extends AnyKey = string
+    ObjectPropType extends AnyKey = string,
 > =
     | T
     | DataArray<T, ObjectPropType>
@@ -95,7 +95,7 @@ export type Data<
  * Node-indexing type.
  */
 export type DataIndex<
-    PropType extends AnyKey = string | number
+    PropType extends AnyKey = string | number,
 > = PropType;
 
 
@@ -119,11 +119,11 @@ export type DataIndex<
  */
 export function access<
     T = BasicData,
-    PropType extends AnyKey = string
+    PropType extends AnyKey = string,
 > (
     o: Data<T, PropType>,
     path: DataIndex<PropType | number>[] = [],
-    def?: Data<T, PropType>
+    def?: Data<T, PropType>,
 ): Data<T, PropType> | void {
     try {
         return path.reduce((acc: any, p) => acc[p], o) || def;
@@ -147,7 +147,7 @@ export function access<
  */
 export function assign<T> (base: T, ext: T): T {
     const overlap = intersection(
-        Object.keys(base), Object.keys(ext)
+        Object.keys(base), Object.keys(ext),
     );
     if (overlap.length === 0) {
         return Object.assign(base, ext);
@@ -176,11 +176,11 @@ export function assign<T> (base: T, ext: T): T {
  */
 export function rewrite<
     T = BasicData,
-    PropType extends AnyKey = string
+    PropType extends AnyKey = string,
 > (
     o: Data<T, PropType>,
     [h, ...t]: DataIndex<PropType | number>[],
-    v: Data<T, PropType>
+    v: Data<T, PropType>,
 ): Data<T, PropType> {
 
     if (!h || !(isObject(o) || isArray(o))) return v;

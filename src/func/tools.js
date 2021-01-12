@@ -165,7 +165,7 @@ export const rearg = f => (...indices) => {
     if (indices.length === 0) return f
 
     if (findDuplicates(indices).length > 0) throw RangeError(
-        "func.rearg: duplicate indices are forbidden"
+        "func.rearg: duplicate indices are forbidden",
     )
 
     // index mapping "new" -> "old"
@@ -183,8 +183,8 @@ export const rearg = f => (...indices) => {
                 // destination arguments: [argument, usageCount]
                 dargs = range(Math.max(
                     head(last(indexPairs)) + 1,
-                    args.length)
-                ).map(() => [null, 0]),
+                    args.length,
+                )).map(() => [null, 0]),
 
                 // not used source arguments
                 rest = null
@@ -209,6 +209,6 @@ export const rearg = f => (...indices) => {
                 if (isArray(rel)) return head(rel)
                 return rel
             }))
-        }
+        },
     )
 }

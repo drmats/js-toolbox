@@ -50,7 +50,7 @@ export function draw<T extends ArrStr> (xs: T): ChooseArrElOrStr<T> {
  */
 export function shuffle<T> (arr: T[]): T[] {
     if (!isArray(arr)) throw new TypeError(
-        `array.shuffle() - expected array as argument, got [${typeof arr}]`
+        `array.shuffle() - expected array as argument, got [${typeof arr}]`,
     );
 
     for (let i = dec(arr.length);  i > 0;  i -= 1) {
@@ -90,7 +90,7 @@ export function sparse (...args: number[]): number[] {
     if (args.length === 2) { [stop, size] = args; }
     else if (args.length === 3) { [start, stop, size] = args; }
     else throw new TypeError(
-        `array.sparse() expected 2 or 3 arguments, got ${args.length}`
+        `array.sparse() expected 2 or 3 arguments, got ${args.length}`,
     );
 
     if (start > stop) { [start, stop] = [stop, start]; }

@@ -27,7 +27,7 @@ import { curry } from "../func/curry";
 export const clamp = curry((low: number, high: number, n: number) =>
     n < low  ?  low  :
         n >= low  &&  n < high  ?  n  :
-            high
+            high,
 );
 
 

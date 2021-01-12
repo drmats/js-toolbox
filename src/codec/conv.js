@@ -80,9 +80,9 @@ export const hexToBytes = (hexInput => (
                     i % 2  ?
                         [el, ...acc] :
                         [el + head(acc), ...tail(acc)],
-                []
+                [],
             )
-            .map(hexByte => parseInt(hexByte, 16))
+            .map(hexByte => parseInt(hexByte, 16)),
     )
 )(hexInput.replace(/(\s)|(^0x)/g, empty())))
 
@@ -102,7 +102,7 @@ export const bytesToHex = bytes =>
         .map(b =>
             b < 16  ?
                 "0" + b.toString(16) :
-                b.toString(16)
+                b.toString(16),
         )
         .join(empty())
 

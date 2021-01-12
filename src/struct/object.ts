@@ -37,7 +37,7 @@ import {
  */
 export const clone = flow(
     JSON.stringify,
-    JSON.parse
+    JSON.parse,
 ) as (o: JSAnyArrObj) => JSAnyArrObj;
 
 
@@ -57,10 +57,10 @@ export const clone = flow(
  * @returns {Object}
  */
 export function dict<T> (
-    entries: [PropertyKey, T][]
+    entries: [PropertyKey, T][],
 ): { [k in PropertyKey]?: T; } {
     return entries.reduce(
-        (acc, [k, v]) => ({ ...acc, [k]: v }), {}
+        (acc, [k, v]) => ({ ...acc, [k]: v }), {},
     );
 }
 
@@ -85,7 +85,7 @@ export function dict<T> (
 export const objectMap = curry((o: JSAnyObj, f: Fun) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectMap() expected object and function, " +
-        `got ${btquote(o)} and ${btquote(f)}`
+        `got ${btquote(o)} and ${btquote(f)}`,
     );
     return dict(Object.entries(o).map((kv => f.call(o, kv))));
 }) as {
@@ -93,7 +93,7 @@ export const objectMap = curry((o: JSAnyObj, f: Fun) => {
     <
         In extends JSAnyObj,
         Keys extends keyof In,
-        Out = any
+        Out = any,
     >(
         o: In,
         f: (kv: [Keys, In[Keys]]) => [Keys, Out]
@@ -110,7 +110,7 @@ export const objectMap = curry((o: JSAnyObj, f: Fun) => {
     <
         In extends JSAnyObj,
         Keys extends keyof In,
-        Out = any
+        Out = any,
     >(
         o: In,
         f: (kv: [Keys, In[Keys]]) => [PropertyKey, Out]
@@ -149,7 +149,7 @@ export const objectMap = curry((o: JSAnyObj, f: Fun) => {
 export const objectReduce = curry((o: JSAnyObj, f: Fun, init: unknown) => {
     if (!isObject(o) || !isFunction(f)) throw new TypeError(
         "struct.objectReduce() expected object and function, " +
-        `got ${btquote(o)} and ${btquote(f)}`
+        `got ${btquote(o)} and ${btquote(f)}`,
     );
     return Object.entries(o).reduce((acc, kv) => f.call(o, acc, kv), init);
 }) as {
@@ -157,7 +157,7 @@ export const objectReduce = curry((o: JSAnyObj, f: Fun, init: unknown) => {
     <
         In extends JSAnyObj,
         Keys extends keyof In,
-        Out
+        Out,
     >(
         o: In,
         f: (acc: Out, kv: [Keys, In[Keys]]) => Out,
@@ -185,5 +185,5 @@ export const objectReduce = curry((o: JSAnyObj, f: Fun, init: unknown) => {
  * @returns {JSAnyObj}
  */
 export const swap = (
-    o: JSAnyObj
+    o: JSAnyObj,
 ): JSAnyObj => objectMap(o) (([k, v]) => [v, k]);

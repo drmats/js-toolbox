@@ -23,10 +23,10 @@
             "error",
             {
                 "arrays": "always-multiline",
-                "objects": "always-multiline",
-                "imports": "ignore",
-                "exports": "ignore",
-                "functions": "ignore"
+                "exports": "always-multiline",
+                "functions": "always-multiline",
+                "imports": "always-multiline",
+                "objects": "always-multiline"
             }
         ],
         "indent": ["warn", 4, { "SwitchCase": 1 }],
@@ -63,13 +63,27 @@
                 "@typescript-eslint"
             ],
             "rules": {
+                 "@typescript-eslint/comma-dangle": [
+                    "error",
+                    {
+                        "arrays": "always-multiline",
+                        "enums": "always-multiline",
+                        "exports": "always-multiline",
+                        "functions": "always-multiline",
+                        "generics": "always-multiline",
+                        "imports": "always-multiline",
+                        "objects": "always-multiline",
+                        "tuples": "always-multiline"
+                    }
+                ],
+                "@typescript-eslint/indent": "off",
                 "@typescript-eslint/interface-name-prefix": "off",
                 "@typescript-eslint/no-unused-vars": ["warn", {"args": "all", "argsIgnorePattern": "^_"}],
-                "prefer-const": "off",
-                "semi": "off",
                 "@typescript-eslint/semi": ["error", "always"],
+                "comma-dangle": "off",
                 "indent": ["warn", 4, { "SwitchCase": 1 }],
-                "@typescript-eslint/indent": "off"
+                "prefer-const": "off",
+                "semi": "off"
             }
         }
     ]

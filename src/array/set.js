@@ -90,7 +90,7 @@ export const findDuplicates = (arr, iteratee = identity) =>
     objectReduce(
         countBy(arr, iteratee),
         (acc, [k, v]) => v > 1  ?  [...acc, k]  :  acc,
-        []
+        [],
     )
 
 
@@ -151,7 +151,7 @@ export const isSubset = (a, b) => {
  */
 export const removeDuplicates = flow(
     countBy,
-    Object.keys.bind(Object)
+    Object.keys.bind(Object),
 )
 
 

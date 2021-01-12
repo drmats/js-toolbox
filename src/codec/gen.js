@@ -42,7 +42,7 @@ export const random = isBrowser() ?
         const nodeRandomBytes = (await import("crypto")).randomBytes
         return new Promise((resolve, reject) => nodeRandomBytes(
             size,
-            (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf))
+            (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf)),
         ))
     }
 
@@ -59,5 +59,5 @@ export const timestamp = () =>
     pipe(Date.now()) (
         d => d.toString(16),
         rearg(padLeft) (1, 2, 0) (6*2, "0"),
-        hexToBytes
+        hexToBytes,
     )

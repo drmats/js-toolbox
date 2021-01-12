@@ -24,7 +24,7 @@ import type {
 export type CurryFun<
     F extends Fun,
     P extends any[] = Parameters<F>,
-    R = ReturnType<F>
+    R = ReturnType<F>,
 > = Length<P> extends 0 ?
     () => R :
     Length<P> extends 1 ?
@@ -38,7 +38,7 @@ export type CurryFun<
  * `curry` and `curryN` return type.
  */
 type CurryReturnType<
-    F extends Fun
+    F extends Fun,
 > = Length<Parameters<F>> extends 0 | 1 ?
         F : F & CurryFun<F>;
 
@@ -51,7 +51,7 @@ type CurryReturnType<
 export type ThunkFun<
     F extends Fun,
     P extends any[] = Parameters<F>,
-    R = ReturnType<F>
+    R = ReturnType<F>,
 > = Length<P> extends 0 ?
     () => R :
     (x: Head<P>) => ThunkFun<(...args: Tail<P>) => R>;

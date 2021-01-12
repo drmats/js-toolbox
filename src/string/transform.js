@@ -103,7 +103,7 @@ export const ellipsis = (str, placing = 1, sep = "…") => {
         if (placing === position.MIDDLE) {
             x.splice(
                 Math.floor(x.length / 2) - Math.floor(sep.length / 2),
-                sep.length, sep
+                sep.length, sep,
             )
         } else if (placing === position.BEGIN) {
             x.splice(0, sep.length, sep)

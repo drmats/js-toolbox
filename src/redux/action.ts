@@ -40,7 +40,7 @@ export interface ReduxCompatAction<ActionType = any> {
  * redux-compatible AnyAction interface.
  */
 export interface ReduxCompatAnyAction<
-    ActionType = any
+    ActionType = any,
 > extends ReduxCompatAction<ActionType> {
     [key: string]: any;
 }
@@ -61,7 +61,7 @@ const payload = Symbol("payload");
  * Empty action consists just of { type: ActionType } field.
  */
 export interface EmptyAction<
-    ActionType extends SafeKey = SafeKey
+    ActionType extends SafeKey = SafeKey,
 > extends ReduxCompatAction<ActionType> {
     [payload]: false;
 }
@@ -74,7 +74,7 @@ export interface EmptyAction<
  */
 export interface PayloadAction<
     PayloadType = any,
-    ActionType extends SafeKey = SafeKey
+    ActionType extends SafeKey = SafeKey,
 > extends ReduxCompatAction<ActionType> {
     [payload]: true,
     payload: PayloadType;
@@ -88,7 +88,7 @@ export interface PayloadAction<
  */
 export type Action<
     PayloadType = any,
-    ActionType extends SafeKey = SafeKey
+    ActionType extends SafeKey = SafeKey,
 > =
     | EmptyAction<ActionType>
     | PayloadAction<PayloadType, ActionType>;
@@ -100,7 +100,7 @@ export type Action<
  * Type predicate - does a given action carry payload?
  */
 export function isWithPayload<PayloadType, ActionType extends SafeKey> (
-    a: Action<PayloadType, ActionType>
+    a: Action<PayloadType, ActionType>,
 ): a is PayloadAction<PayloadType, ActionType> {
     return a[payload];
 }
@@ -112,7 +112,7 @@ export function isWithPayload<PayloadType, ActionType extends SafeKey> (
  * Type predicate - is a given action of string type?
  */
 export function isStringActionType<PayloadType> (
-    a: Action<PayloadType>
+    a: Action<PayloadType>,
 ): a is Action<PayloadType, string> {
     return typeof a.type === "string";
 }
@@ -124,7 +124,7 @@ export function isStringActionType<PayloadType> (
  * Type predicate - is a given action of number type?
  */
 export function isNumberActionType<PayloadType> (
-    a: Action<PayloadType>
+    a: Action<PayloadType>,
 ): a is Action<PayloadType, number> {
     return typeof a.type === "number";
 }
@@ -136,7 +136,7 @@ export function isNumberActionType<PayloadType> (
  * Action creator not carrying anything else than just `type` field.
  */
 export interface EmptyActionCreator<
-    ActionType extends SafeKey
+    ActionType extends SafeKey,
 > extends EmptyAction<ActionType> {
     (): EmptyAction<ActionType>;
 }
@@ -150,7 +150,7 @@ export interface EmptyActionCreator<
 export interface PayloadActionCreator<
     PayloadType = any,
     ActionType extends SafeKey = SafeKey,
-    Args extends Arr = Arr
+    Args extends Arr = Arr,
 > extends EmptyAction<ActionType> {
     (...args: Args): PayloadAction<PayloadType, ActionType>;
 }
@@ -164,7 +164,7 @@ export interface PayloadActionCreator<
 export interface ActionCreator<
     PayloadType = any,
     ActionType extends SafeKey = SafeKey,
-    Args extends Arr = Arr
+    Args extends Arr = Arr,
 > extends EmptyAction<ActionType> {
     (...args: Args): Action<PayloadType, ActionType>;
 }
@@ -181,19 +181,19 @@ export interface ActionCreator<
  * @returns Action creator function.
  */
 export function defineActionCreator<
-    ActionType extends SafeKey
+    ActionType extends SafeKey,
 > (actionType: ActionType):
     EmptyActionCreator<ActionType>;
 export function defineActionCreator<
     ActionType extends SafeKey,
     PayloadType,
-    Args extends Arr
+    Args extends Arr,
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     PayloadActionCreator<PayloadType, ActionType, Args>;
 export function defineActionCreator<
     ActionType extends SafeKey,
     PayloadType,
-    Args extends Arr
+    Args extends Arr,
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     ActionCreator<PayloadType, ActionType, Args> {
     let actionCreator: any = !creator ?
@@ -234,7 +234,7 @@ export type EmptyActionCreators<ActionEnum extends NonConstEnum> = {
  * @returns EmptyActionCreators object.
  */
 export function emptyActionCreators<ActionEnum extends NonConstEnum> (
-    actionEnum: ActionEnum
+    actionEnum: ActionEnum,
 ): EmptyActionCreators<ActionEnum> {
     let actions = {} as EmptyActionCreators<ActionEnum>;
     for (const actionType in actionEnum) {
@@ -255,7 +255,7 @@ export function emptyActionCreators<ActionEnum extends NonConstEnum> (
  */
 export type PayloadActionCreators<
     ActionEnum extends NonConstEnum,
-    PayloadCreators
+    PayloadCreators,
 > = {
     [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
         PayloadCreators[K] extends Fun<infer Args, infer PayloadType> ?
@@ -289,7 +289,7 @@ export function payloadActionCreators<
         & Partial<Record<keyof ActionEnum, Fun>>,
 > (
     emptyActionCreators: EmptyActionCreators<ActionEnum>,
-    payloadCreators: PayloadCreators
+    payloadCreators: PayloadCreators,
 ):
     Override<
         typeof emptyActionCreators,
@@ -300,7 +300,7 @@ export function payloadActionCreators<
         emptyActionCreators,
         objectMap(payloadCreators) <keyof ActionEnum>(([key, creator]) => [
             key, defineActionCreator(emptyActionCreators[key].type, creator),
-        ])
+        ]),
     );
 }
 
@@ -317,13 +317,13 @@ export function payloadActionCreators<
  * @returns ActionCreators object.
  */
 export function actionCreators<
-    ActionEnum extends NonConstEnum
+    ActionEnum extends NonConstEnum,
 > (actionEnum: ActionEnum): EmptyActionCreators<ActionEnum>;
 export function actionCreators<
     ActionEnum extends NonConstEnum,
     PayloadCreators extends
         & AllowSubset<ActionEnum, PayloadCreators>
-        & Partial<Record<keyof ActionEnum, Fun>>
+        & Partial<Record<keyof ActionEnum, Fun>>,
 > (
     actionEnum: ActionEnum,
     payloadCreators?: PayloadCreators
@@ -336,10 +336,10 @@ export function actionCreators<
     ActionEnum extends NonConstEnum,
     PayloadCreators extends
         & AllowSubset<ActionEnum, PayloadCreators>
-        & Partial<Record<keyof ActionEnum, Fun>>
+        & Partial<Record<keyof ActionEnum, Fun>>,
 > (
     actionEnum: ActionEnum,
-    payloadCreators?: PayloadCreators
+    payloadCreators?: PayloadCreators,
 ):
     | EmptyActionCreators<ActionEnum>
     | Override<

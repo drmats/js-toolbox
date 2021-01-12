@@ -37,7 +37,7 @@ export const hashAccessor = () =>
         [isObject(n), isArray(n)].map(v => v ? 1 : 0).join(empty()), {
             "10": () => Object.keys(n).map(k => [n[k], [k]]),
             "01": () => n.map((v, i) => [v, [i]]),
-        }, () => []
+        }, () => [],
     )
 
 
@@ -109,20 +109,20 @@ export const keyAccessor = (...path) =>
 export const dfs = (
     tree = {},
     f = (_accs, node, _path, _position) => node,
-    children = keyAccessor()
+    children = keyAccessor(),
 ) => {
     if (
         !isObject(tree) || !isFunction(f) || !isFunction(children)
     ) throw new TypeError(
         "struct.dfs() expected object and 2 functions, " +
-        `got ${btquote(tree)}, ${btquote(f)} and ${btquote(children)}`
+        `got ${btquote(tree)}, ${btquote(f)} and ${btquote(children)}`,
     )
     return Y(aux =>
         (node, path, position) => f(
             children(node).map(
                 ([child, childPath], p) =>
-                    aux(child, path.concat(childPath), p)
-            ), node, path, position
-        )
+                    aux(child, path.concat(childPath), p),
+            ), node, path, position,
+        ),
     ) (tree, [], 0)
 }

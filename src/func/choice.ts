@@ -38,12 +38,12 @@ import type {
 export function choose<
     In extends Arr | [],
     Out,
-    Key extends SafeKey
+    Key extends SafeKey,
 > (
     key: Key,
     choices = {} as Record<Key, Fun<In, Out>>,
     defaultChoice: Fun<In> = () => undefined,
-    args?: In
+    args?: In,
 ):
     | Out
     | ReturnType<typeof defaultChoice>

@@ -37,7 +37,7 @@ import { objectMap } from "../struct/object";
  */
 export type ReduxCompatReducer<
     StateType = any,
-    ActionShape extends ReduxCompatAction = ReduxCompatAnyAction
+    ActionShape extends ReduxCompatAction = ReduxCompatAnyAction,
 > = (
     state: StateType | undefined,
     action: ActionShape
@@ -52,7 +52,7 @@ export type ReduxCompatReducer<
 export type Reducer<
     StateType = any,
     PayloadType = any,
-    ActionType extends SafeKey = SafeKey
+    ActionType extends SafeKey = SafeKey,
 > = (
     state: StateType,
     action: Action<PayloadType, ActionType>
@@ -78,7 +78,7 @@ export function createReducer<StateType> (initState: StateType): (
                 action.type,
                 reducers,
                 defaultReducer,
-                [state, action]
+                [state, action],
             );
 }
 
@@ -140,16 +140,19 @@ export function sliceReducer<StateType> (initState: StateType): (
         slice: SliceBuildAPI<StateType> = {
             handle: <ActionType extends SafeKey, PayloadType>(
                 actionCreator: ActionCreator<PayloadType, ActionType>,
-                reducer: (state: StateType, payload?: PayloadType) => StateType
+                reducer: (
+                    state: StateType,
+                    payload?: PayloadType,
+                ) => StateType,
             ): typeof slice => {
                 if (reducer.length === 2) {
                     reducers[actionCreator.type] = (
                         state: StateType,
-                        action: PayloadAction<PayloadType, ActionType>
+                        action: PayloadAction<PayloadType, ActionType>,
                     ) => reducer(state, action.payload);
                 } else {
                     reducers[actionCreator.type] = (
-                        state: StateType
+                        state: StateType,
                     ) => reducer(state);
                 }
                 return slice;
@@ -160,7 +163,10 @@ export function sliceReducer<StateType> (initState: StateType): (
             },
             match: <PayloadType>(
                 predicate: (action: Action) => boolean,
-                reducer: (state: StateType, payload?: PayloadType) => StateType
+                reducer: (
+                    state: StateType,
+                    payload?: PayloadType,
+                ) => StateType,
             ): typeof slice => {
                 matchers.push(
                     (state, action) =>
@@ -168,7 +174,7 @@ export function sliceReducer<StateType> (initState: StateType): (
                             isWithPayload(action) ?
                                 reducer(state || initState, action.payload) :
                                 reducer(state || initState) :
-                            state || initState
+                            state || initState,
 
                 );
                 return slice;
@@ -212,10 +218,10 @@ export function sliceReducer<StateType> (initState: StateType): (
  */
 export function bindActionCreator<
     ActionCreatorType extends Fun,
-    ReduxDispatch extends Fun<[Action]>
+    ReduxDispatch extends Fun<[Action]>,
 > (
     actionCreator: ActionCreatorType | ActionCreator,
-    dispatch: ReduxDispatch
+    dispatch: ReduxDispatch,
 ): typeof actionCreator {
     let boundActionCreator = (
         ...args: Parameters<ActionCreatorType>
@@ -246,14 +252,14 @@ export function bindActionCreator<
 export function bindActionCreators<
     ActionCreatorType extends Fun,
     ReduxDispatch extends Fun<[Action]>,
-    ActionCreators extends Record<SafeKey, ActionCreatorType | ActionCreator>
+    ActionCreators extends Record<SafeKey, ActionCreatorType | ActionCreator>,
 > (
     actionCreators: ActionCreators,
-    dispatch: ReduxDispatch
+    dispatch: ReduxDispatch,
 ): typeof actionCreators {
     return (
         objectMap(actionCreators) (
-            ([k, a]) => [k, bindActionCreator(a, dispatch)]
+            ([k, a]) => [k, bindActionCreator(a, dispatch)],
         )
     ) as unknown as ActionCreators;
 }

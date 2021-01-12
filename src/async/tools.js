@@ -72,7 +72,7 @@ export const createMutex = () => {
     let
         resolve = null, reject = null,
         promise = new Promise(
-            (res, rej) => { resolve = res; reject = rej }
+            (res, rej) => { resolve = res; reject = rej },
         )
 
     return {
@@ -146,5 +146,5 @@ export const repeat = curry((f, condition) => Y(act =>
     result =>
         condition() ?
             Promise.resolve().then(f).then(act) :
-            Promise.resolve(result)
+            Promise.resolve(result),
 )())

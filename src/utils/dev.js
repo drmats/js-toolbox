@@ -48,9 +48,9 @@ export const devEnv = (strict = false) =>
         isBrowser()  &&  !strict ?
             handleException(
                 () => Object.prototype.hasOwnProperty.call(
-                    sessionStorage, "dev"
+                    sessionStorage, "dev",
                 ),
-                () => false
+                () => false,
             ) : false
     )  ||  (
         // or if there is a `string` under `process.env.NODE_ENV`
@@ -67,7 +67,7 @@ export const devEnv = (strict = false) =>
         // or... you're in babel context and appropriate env. var is set
         !isBrowser()  &&
         access(
-            getProcess(), ["env", "BABEL_ENV"], "production"
+            getProcess(), ["env", "BABEL_ENV"], "production",
         ) !== "production"
     )
 
@@ -167,7 +167,7 @@ export const to_ = (name = "_") =>
                     console.log(val)
                     repl.context.process.stdout.write(repl._prompt)
                 }
-            }
+            },
         )
         return val
     }

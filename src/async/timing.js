@@ -38,7 +38,7 @@ import { timeUnit } from "../utils/misc"
  */
 export const delay = (
     time = timeUnit.second,
-    passCancel = identity
+    passCancel = identity,
 ) =>
     timeout(() => time, time, passCancel)
 
@@ -83,7 +83,7 @@ export const delay = (
 export const interval = (
     f,
     passClear = identity,
-    time = timeUnit.second
+    time = timeUnit.second,
 ) => {
     let
         resolve = null, handle = null, result = null,
@@ -135,7 +135,7 @@ export const interval = (
 export const timeout = (
     f,
     time = timeUnit.second,
-    passCancel = identity
+    passCancel = identity,
 ) => {
     let
         reject = null, handle = null,

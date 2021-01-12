@@ -52,7 +52,7 @@ export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
  */
 export const isContinuous = (
     arr,
-    neighbour = (a, b) => b - a === 1
+    neighbour = (a, b) => b - a === 1,
 ) =>
     isSorted(arr, neighbour)
 
@@ -102,10 +102,10 @@ export const range = (...args) => {
     else if (args.length === 3) {
         [start, stop, step] = args
         if (step === 0) throw new RangeError(
-            "array.range() 'step' argument must not be zero"
+            "array.range() 'step' argument must not be zero",
         )
     } else throw new TypeError(
-        `array.range() expected at most 3 arguments, got ${args.length}`
+        `array.range() expected at most 3 arguments, got ${args.length}`,
     )
 
     while (
@@ -136,10 +136,10 @@ export const takeEvery = nth => arr =>
                 .reduce(([taken, rest]) => [
                     append(take(1) (rest)) (taken),
                     drop(nth) (rest),
-                ], [[], arr])
+                ], [[], arr]),
         ) (
             head,
-            arr => arr.reverse()
+            arr => arr.reverse(),
         ) : arr
 
 
@@ -161,7 +161,7 @@ export const takeEvery = nth => arr =>
  */
 export const zipWith = f => (...arrs) =>
     range(
-        head(arrs.map(arr => arr.length).sort(sub))
+        head(arrs.map(arr => arr.length).sort(sub)),
     ).map(i => f(...arrs.map(arr => arr[i])))
 
 

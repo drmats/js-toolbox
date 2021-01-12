@@ -72,7 +72,7 @@ export const map = curry((arr, f) => {
             } else return Promise.resolve(results)
         } else throw new TypeError(
             "async.map() expected array and function, " +
-            `got ${btquote(arr)} and ${btquote(f)}`
+            `got ${btquote(arr)} and ${btquote(f)}`,
         )
     })
 })
@@ -112,7 +112,7 @@ export const map = curry((arr, f) => {
  * @returns {Promise.<Array>}
  */
 export const parMap = curry((arr, f) =>
-    Promise.all(arr.map(el => Promise.resolve(f(el))))
+    Promise.all(arr.map(el => Promise.resolve(f(el)))),
 )
 
 
@@ -176,7 +176,7 @@ export const reduce = curry((arr, f, initAcc) => {
             } else return Promise.resolve(initAcc)
         } else throw new TypeError(
             "async.reduce() expected array and function, " +
-            `got ${btquote(arr)} and ${btquote(f)}`
+            `got ${btquote(arr)} and ${btquote(f)}`,
         )
     })
 })

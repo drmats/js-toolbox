@@ -46,7 +46,7 @@ export const big = Y(r =>
     (n, c = "x") =>
         n > 0 ?
             r(n - 1, c + c) :
-            c
+            c,
 ) as (n: number, c?: string) => string;
 
 
@@ -62,10 +62,10 @@ export const big = Y(r =>
  */
 export const random = (
     size = 0,
-    letters = asciiLetters() + digits()
+    letters = asciiLetters() + digits(),
 ): string =>
     range(size)
         .map(() => draw(
-            letters.split(empty()))
+            letters.split(empty())),
         )
         .join(empty());

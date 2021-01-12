@@ -46,7 +46,7 @@ export function append<X> (xs: X[]): <Y>(ys: Y[]) => (X | Y)[] {
  *      array or string without the first `n` elements.
  */
 export function drop (
-    n: number
+    n: number,
 ): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
     return <T extends ArrStr>(xs: T) =>
         xs.slice(n) as ChooseArrOrStr<T>;
@@ -65,7 +65,7 @@ export function drop (
  *      array or string without the last `n` elements.
  */
 export function dropLast (
-    n: number
+    n: number,
 ): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
     return <T extends ArrStr>(xs: T) => (
         n >= xs.length ? [] : xs.slice(0, xs.length - n)
@@ -83,7 +83,7 @@ export function dropLast (
  * @returns First element or type error is thrown.
  */
 export function head<T extends ArrStr> (
-    xs: T
+    xs: T,
 ): ChooseArrElOrStr<T> {
     if (!xs.length) throw new TypeError("array.head() - empty list");
     return xs[0];
@@ -100,7 +100,7 @@ export function head<T extends ArrStr> (
  * @returns {Array<T>|String}
  */
 export function init<T extends ArrStr> (
-    xs: T
+    xs: T,
 ): ChooseArrOrStr<T> {
     return xs.slice(0, dec(xs.length)) as ChooseArrOrStr<T>;
 }
@@ -116,7 +116,7 @@ export function init<T extends ArrStr> (
  * @returns Last element or type error is thrown.
  */
 export function last<T extends ArrStr> (
-    xs: T
+    xs: T,
 ): ChooseArrElOrStr<T> {
     if (!xs.length) throw new TypeError("array.last() - empty list");
     return xs[dec(xs.length)];
@@ -133,7 +133,7 @@ export function last<T extends ArrStr> (
  * @returns {Array<T>|String}
  */
 export function tail<T extends ArrStr> (
-    xs: T
+    xs: T,
 ): ChooseArrOrStr<T> {
     return xs.slice(1, xs.length) as ChooseArrOrStr<T>;
 }
@@ -150,7 +150,7 @@ export function tail<T extends ArrStr> (
  *
  */
 export function take (
-    n: number
+    n: number,
 ): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
     return <T extends ArrStr>(xs: T) =>
         xs.slice(0, n) as ChooseArrOrStr<T>;
@@ -168,7 +168,7 @@ export function take (
  *
  */
 export function takeLast (
-    n: number
+    n: number,
 ): <T extends ArrStr>(xs: T) => ChooseArrOrStr<T> {
     return <T extends ArrStr>(xs: T) => (
         (n >= xs.length) ? xs : xs.slice(xs.length - n)
