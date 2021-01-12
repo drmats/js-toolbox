@@ -16,6 +16,7 @@ import type {
     SafeKey,
 } from "../type/defs";
 import type {
+    Action,
     ActionCreator,
     EmptyActionCreator,
     PayloadAction,
@@ -44,42 +45,16 @@ export type ReduxCompatReducer<
 
 
 /**
- * js-toolbox own Reducer type.
+ * Reducer - function taking state and action and returning a new state.
  */
 export type Reducer<
     StateType = any,
-    ActionShape extends ReduxCompatAction = ReduxCompatAnyAction
+    PayloadType = any,
+    ActionType extends SafeKey = SafeKey
 > = (
     state: StateType,
-    action: ActionShape
+    action: Action<PayloadType, ActionType>
 ) => StateType;
-
-
-
-
-/**
- * js-toolbox own ReducersMap type.
- */
-export type ReducersMap<
-    StateType,
-    ActionShape extends ReduxCompatAction = ReduxCompatAction
-> = {
-    [actionType: string]: Reducer<StateType, ActionShape>,
-};
-
-
-
-
-/**
- * createReducer() return type.
- */
-export type ReduxBoundReducer<
-    StateType,
-    ActionShape extends ReduxCompatAction = ReduxCompatAnyAction
-> = (
-    reducers: ReducersMap<StateType, ActionShape>,
-    defaultReducer?: Reducer<StateType, ActionShape>
-) => ReduxCompatReducer<StateType, ActionShape>;
 
 
 
@@ -91,9 +66,10 @@ export type ReduxBoundReducer<
  * @param initState
  * @returns {ReduxBoundReducer}
  */
-export function createReducer<StateType> (
-    initState: StateType
-): ReduxBoundReducer<StateType> {
+export function createReducer<StateType> (initState: StateType): (
+    reducers: Record<SafeKey, Reducer<StateType>>,
+    defaultReducer?: Reducer<StateType>
+) => ReduxCompatReducer<StateType, Action> {
     return (reducers, defaultReducer = identity) =>
         (state = initState, action) =>
             choose(
@@ -121,8 +97,8 @@ interface SliceBuildAPI<StateType> {
     ): SliceBuildAPI<StateType>;
     default (
         reducer: (
-            state: StateType | undefined,
-            action: ReduxCompatAnyAction<SafeKey>
+            state: StateType,
+            action: Action
         ) => StateType
     ): SliceBuildAPI<StateType>;
 }
@@ -139,13 +115,13 @@ interface SliceBuildAPI<StateType> {
  */
 export function sliceReducer<StateType> (initState: StateType): (
     builder: (slice: SliceBuildAPI<StateType>) => void
-) => ReduxCompatReducer<StateType, ReduxCompatAction> {
+) => ReduxCompatReducer<StateType, Action> {
 
     let
         reducers = {} as Record<SafeKey, Fun>,
         defaultReducer: (
-            state: StateType | undefined,
-            action: ReduxCompatAnyAction<SafeKey>
+            state: StateType,
+            action: Action
         ) => StateType;
 
     const

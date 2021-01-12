@@ -175,8 +175,6 @@ export type {
 } from "./redux/action";
 export type {
     Reducer,
-    ReducersMap,
-    ReduxBoundReducer,
     ReduxCompatReducer,
 } from "./redux/reducer";
 export {

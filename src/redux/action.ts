@@ -252,7 +252,7 @@ export type PayloadActionCreators<
 > = {
     [K in Extract<keyof PayloadCreators, keyof ActionEnum>]:
         PayloadCreators[K] extends Fun<infer Args, infer PayloadType> ?
-            PayloadActionCreator<PayloadType, ActionEnum[K], Args> : never
+            PayloadActionCreator<PayloadType, ActionEnum[K], Args> : never;
 };
 
 
