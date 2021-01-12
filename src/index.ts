@@ -179,6 +179,8 @@ export type {
 } from "./redux/reducer";
 export {
     actionCreators,
+    bindActionCreator,
+    bindActionCreators,
     createReducer,
     defineActionCreator,
     emptyActionCreators,
