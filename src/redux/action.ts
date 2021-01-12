@@ -50,9 +50,9 @@ export interface ReduxCompatAnyAction<
 
 /**
  * Unique, private identifier distinguishing
- * between EmptyAction and PayloadAction.
+ * between EmptyAction and PayloadAction (statically and in runtime).
  */
-const empty = Symbol("empty");
+const payload = Symbol("payload");
 
 
 
@@ -63,7 +63,7 @@ const empty = Symbol("empty");
 export interface EmptyAction<
     ActionType extends SafeKey = SafeKey
 > extends ReduxCompatAction<ActionType> {
-    [empty]: true;
+    [payload]: false;
 }
 
 
@@ -76,7 +76,7 @@ export interface PayloadAction<
     PayloadType = any,
     ActionType extends SafeKey = SafeKey
 > extends ReduxCompatAction<ActionType> {
-    [empty]: false,
+    [payload]: true,
     payload: PayloadType;
 }
 
@@ -102,7 +102,7 @@ export type Action<
 export function isWithPayload<PayloadType, ActionType extends SafeKey> (
     a: Action<PayloadType, ActionType>
 ): a is PayloadAction<PayloadType, ActionType> {
-    return !a[empty];
+    return a[payload];
 }
 
 
@@ -197,8 +197,15 @@ export function defineActionCreator<
 > (actionType: ActionType, creator?: Fun<Args, PayloadType>):
     ActionCreator<PayloadType, ActionType, Args> {
     let actionCreator: any = !creator ?
-        () => ({ type: actionType }) :
-        (...args: Args) => ({ type: actionType, payload: creator(...args) });
+        () => ({
+            type: actionType,
+            [payload]: false,
+        }) :
+        (...args: Args) => ({
+            type: actionType,
+            [payload]: true,
+            payload: creator(...args),
+        });
     actionCreator.type = actionType;
     return actionCreator;
 }
