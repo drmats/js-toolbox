@@ -29,7 +29,7 @@ import type {
  *
  * @function choose
  * @param key
- * @param [choices] Plain JS object in form `{ key: (...In) => Out }`
+ * @param [choices] Plain JS object in form `\{ key: (...In) => Out \}`
  * @param [defaultChoice] Simple JS function in form `(...In) => Out`
  * @param [args] If choice functions accepts arguments, then put an array of
  *     appropriate values here.
