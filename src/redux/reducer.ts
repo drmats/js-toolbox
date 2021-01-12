@@ -24,6 +24,7 @@ import type {
     ReduxCompatAction,
     ReduxCompatAnyAction,
 } from "./action";
+import { isWithPayload } from "./action";
 import { choose } from "../func/choice";
 import { identity } from "../func/tools";
 import { objectMap } from "../struct/object";
@@ -102,6 +103,14 @@ interface SliceBuildAPI<StateType> {
             action: Action
         ) => StateType
     ): SliceBuildAPI<StateType>;
+    match <PayloadType>(
+        predicate: (action: Action) => action is Action<PayloadType>,
+        reducer: (state: StateType, payload: PayloadType) => StateType
+    ): SliceBuildAPI<StateType>;
+    match (
+        predicate: (action: Action) => boolean,
+        reducer: (state: StateType) => StateType
+    ): SliceBuildAPI<StateType>;
 }
 
 
@@ -120,6 +129,7 @@ export function sliceReducer<StateType> (initState: StateType): (
 
     let
         reducers = {} as Record<SafeKey, Fun>,
+        matchers = [] as ReduxCompatReducer<StateType, Action>[],
         defaultReducer: (
             state: StateType,
             action: Action
@@ -148,15 +158,42 @@ export function sliceReducer<StateType> (initState: StateType): (
                 defaultReducer = reducer;
                 return slice;
             },
+            match: <PayloadType>(
+                predicate: (action: Action) => boolean,
+                reducer: (state: StateType, payload?: PayloadType) => StateType
+            ): typeof slice => {
+                matchers.push(
+                    (state, action) =>
+                        predicate(action) ?
+                            isWithPayload(action) ?
+                                reducer(state || initState, action.payload) :
+                                reducer(state || initState) :
+                            state || initState
+
+                );
+                return slice;
+            },
         };
 
+    // function building actual reducer based on provided builder function
     return (builder) => {
 
+        // build `reducers` object and `matchers` array
         builder(slice);
 
-        return defaultReducer ?
+        // create main (slice) reducer
+        const reducer = defaultReducer ?
             create(reducers, defaultReducer) :
             create(reducers);
+
+        // return reducer that is also applying all defined matchers
+        return (state, action) => {
+            let localState = reducer(state, action);
+            for (const match of matchers) {
+                localState = match(localState, action);
+            }
+            return localState;
+        };
 
     };
 
