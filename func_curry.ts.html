@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>math/random.ts - Documentation</title>
+    <title>func/curry.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">math/random.ts</h1>
+    <h1 class="page-title">func/curry.ts</h1>
     
 
     
@@ -40,30 +40,169 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Mathematical tools.
+ * Functional programming tools.
  *
- * @module math
+ * @module func
  * @license Apache-2.0
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-
-
-import { maxInt } from "../type/consts";
+import type { Fun } from "../type/defs";
+import type {
+    Head,
+    Length,
+    Tail,
+} from "../type/list";
 
 
 
 
 /**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
- *
- * @function randomInt
- * @returns {Number}
+ * Recursive type for curried functions.
  */
-export function randomInt (): number {
-    return Math.floor(Math.random() * (maxInt * 1e-3));
+export type CurryFun&lt;
+    F extends Fun,
+    P extends any[] = Parameters&lt;F>,
+    R = ReturnType&lt;F>,
+> = Length&lt;P> extends 0 ?
+    () => R :
+    Length&lt;P> extends 1 ?
+        (x: Head&lt;P>) => R :
+        (x: Head&lt;P>) => CurryFun&lt;(...args: Tail&lt;P>) => R>;
+
+
+
+
+/**
+ * `curry` and `curryN` return type.
+ */
+type CurryReturnType&lt;
+    F extends Fun,
+> = Length&lt;Parameters&lt;F>> extends 0 | 1 ?
+        F : F &amp; CurryFun&lt;F>;
+
+
+
+
+/**
+ * Recursive type for thunk-curried functions.
+ */
+export type ThunkFun&lt;
+    F extends Fun,
+    P extends any[] = Parameters&lt;F>,
+    R = ReturnType&lt;F>,
+> = Length&lt;P> extends 0 ?
+    () => R :
+    (x: Head&lt;P>) => ThunkFun&lt;(...args: Tail&lt;P>) => R>;
+
+
+
+
+/**
+ * Return curried form of a given function `f`.
+ *
+ * If funcion `f` has _arity_ 3, and `g = curry(f)` then
+ * a following invocations have the same result:
+ *
+ * ```
+ * g(a,  b,  c)
+ * g(a,  b) (c)
+ * g(a) (b,  c)
+ * g(a) (b) (c)
+ * ```
+ *
+ * Function `f`'s _arity_ is obtained by checking it's `.length`
+ * property, so if function `f` is defined with a _rest parameter_
+ * then this parameter is excluded. Also, only parameters before
+ * the first one with a default value are included.
+ *
+ * @function curry
+ * @param {Function} f
+ * @returns {CurryFun}
+ */
+export function curry&lt;F extends Fun> (f: F): CurryReturnType&lt;F> {
+    return curryN(f.length, f);
+}
+
+
+
+
+/**
+ * Translate the evaluation of function `f` taking `n` arguments
+ * into an evaluation of sequence of `n` functions, where each
+ * next function is a result of previous function evaluation.
+ *
+ * ```
+ * f(a, b, c, d, e)  &lt;=>  curryN(5, f) (a) (b) (c) (d) (e)
+ * ```
+ *
+ * @function curryN
+ * @param {Number} n
+ * @param {Function} f
+ * @returns {CurryFun}
+ */
+export function curryN&lt;F extends Fun> (n: number, f: F): CurryReturnType&lt;F> {
+    return (
+        (...args: any[]) =>
+            n &lt;= args.length ?
+                f(...args) :
+                curryN(n - args.length, partial(f) (...args))
+    ) as CurryReturnType&lt;F>;
+}
+
+
+
+
+/**
+ * Translate the evaluation of function `f` taking multiple arguments
+ * into an evaluation of sequence of functions, each with a single argument.
+ *
+ * Because `curryThunk` doesn't assume anything on passed function
+ * `f` _arity_, final invocation has to be done with no arguments.
+ *
+ * ```
+ * f(a, b, c, d)  &lt;=>  curryThunk(f) (a) (b) (c) (d) ()
+ * ```
+ *
+ * @function curryThunk
+ * @param {Function} f
+ * @returns {ThunkFun}
+ */
+export function curryThunk&lt;F extends Fun> (f: F): ThunkFun&lt;F> {
+    return (
+        (...args: any[]) =>
+            args.length === 0 ?
+                f() :
+                curryThunk(partial(f) (...args))
+    ) as ThunkFun&lt;F>;
+}
+
+
+
+
+/**
+ * Partial application.
+ *
+ * Bind `init` arguments to function `f` and construct
+ * a function of smaller _arity_ which accept `rest` of the arguments.
+ *
+ * Example:
+ *
+ * ```
+ * let f = (a, b) => a + b
+ * f(3, 4)  ->  7
+ * let g = partial(f) (3)  // note that `partial` is in *curried* form
+ * g(4)  ->  7
+ * ```
+ *
+ * @function partial
+ * @param {Function} f
+ * @returns {Function}
+ */
+export function partial&lt;F extends Fun> (f: F): (...init: any[]) => Fun {
+    return (...init) => (...rest) => f(...[...init, ...rest]);
 }
 </code></pre>
         </article>

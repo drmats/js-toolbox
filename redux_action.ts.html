@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>math/random.ts - Documentation</title>
+    <title>redux/action.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">math/random.ts</h1>
+    <h1 class="page-title">redux/action.ts</h1>
     
 
     
@@ -40,30 +40,360 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Mathematical tools.
+ * Redux action tools.
  *
- * @module math
+ * @module redux
  * @license Apache-2.0
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-import { maxInt } from "../type/consts";
+
+import type {
+    AllowSubset,
+    NonConstEnum,
+    Override,
+} from "../type/utils";
+import type {
+    Arr,
+    Fun,
+    SafeKey,
+} from "../type/defs";
+import { objectMap } from "../struct/object";
 
 
 
 
 /**
- * Generate a random positive integer.
- * NOT CRYPTOGRAPHICALLY SECURE.
- *
- * @function randomInt
- * @returns {Number}
+ * redux-compatible Action interface.
  */
-export function randomInt (): number {
-    return Math.floor(Math.random() * (maxInt * 1e-3));
+export interface ReduxCompatAction&lt;ActionType = any> {
+    type: ActionType;
+}
+
+
+
+
+/**
+ * redux-compatible AnyAction interface.
+ */
+export interface ReduxCompatAnyAction&lt;
+    ActionType = any,
+> extends ReduxCompatAction&lt;ActionType> {
+    [key: string]: any;
+}
+
+
+
+
+/**
+ * Unique, private identifier distinguishing
+ * between EmptyAction and PayloadAction (statically and in runtime).
+ */
+const payload = Symbol("payload");
+
+
+
+
+/**
+ * Empty action consists just of { type: ActionType } field.
+ */
+export interface EmptyAction&lt;
+    ActionType extends SafeKey = SafeKey,
+> extends ReduxCompatAction&lt;ActionType> {
+    [payload]: false;
+}
+
+
+
+
+/**
+ * Action with payload: { type: ActionType, payload: PayloadType }
+ */
+export interface PayloadAction&lt;
+    PayloadType = any,
+    ActionType extends SafeKey = SafeKey,
+> extends ReduxCompatAction&lt;ActionType> {
+    [payload]: true,
+    payload: PayloadType;
+}
+
+
+
+
+/**
+ * Empty action or action carrying payload.
+ */
+export type Action&lt;
+    PayloadType = any,
+    ActionType extends SafeKey = SafeKey,
+> =
+    | EmptyAction&lt;ActionType>
+    | PayloadAction&lt;PayloadType, ActionType>;
+
+
+
+
+/**
+ * Type predicate - does a given action carry payload?
+ */
+export function isWithPayload&lt;PayloadType, ActionType extends SafeKey> (
+    a: Action&lt;PayloadType, ActionType>,
+): a is PayloadAction&lt;PayloadType, ActionType> {
+    return a[payload];
+}
+
+
+
+
+/**
+ * Type predicate - is a given action of string type?
+ */
+export function isStringActionType&lt;PayloadType> (
+    a: Action&lt;PayloadType>,
+): a is Action&lt;PayloadType, string> {
+    return typeof a.type === "string";
+}
+
+
+
+
+/**
+ * Type predicate - is a given action of number type?
+ */
+export function isNumberActionType&lt;PayloadType> (
+    a: Action&lt;PayloadType>,
+): a is Action&lt;PayloadType, number> {
+    return typeof a.type === "number";
+}
+
+
+
+
+/**
+ * Action creator not carrying anything else than just `type` field.
+ */
+export interface EmptyActionCreator&lt;
+    ActionType extends SafeKey,
+> extends EmptyAction&lt;ActionType> {
+    (): EmptyAction&lt;ActionType>;
+}
+
+
+
+
+/**
+ * Action creator carrying payload (more than just `type`).
+ */
+export interface PayloadActionCreator&lt;
+    PayloadType = any,
+    ActionType extends SafeKey = SafeKey,
+    Args extends Arr = Arr,
+> extends EmptyAction&lt;ActionType> {
+    (...args: Args): PayloadAction&lt;PayloadType, ActionType>;
+}
+
+
+
+
+/**
+ * Any action creator (carrying just `type` or `type` and `payload`).
+ */
+export interface ActionCreator&lt;
+    PayloadType = any,
+    ActionType extends SafeKey = SafeKey,
+    Args extends Arr = Arr,
+> extends EmptyAction&lt;ActionType> {
+    (...args: Args): Action&lt;PayloadType, ActionType>;
+}
+
+
+
+
+/**
+ * Redux action creator definer.
+ *
+ * @function defineActionCreator
+ * @param actionType Action type
+ * @param creator Optional custom function returning payload.
+ * @returns Action creator function.
+ */
+export function defineActionCreator&lt;
+    ActionType extends SafeKey,
+> (actionType: ActionType):
+    EmptyActionCreator&lt;ActionType>;
+export function defineActionCreator&lt;
+    ActionType extends SafeKey,
+    PayloadType,
+    Args extends Arr,
+> (actionType: ActionType, creator?: Fun&lt;Args, PayloadType>):
+    PayloadActionCreator&lt;PayloadType, ActionType, Args>;
+export function defineActionCreator&lt;
+    ActionType extends SafeKey,
+    PayloadType,
+    Args extends Arr,
+> (actionType: ActionType, creator?: Fun&lt;Args, PayloadType>):
+    ActionCreator&lt;PayloadType, ActionType, Args> {
+    let actionCreator: any = !creator ?
+        () => ({
+            type: actionType,
+            [payload]: false,
+        }) :
+        (...args: Args) => ({
+            type: actionType,
+            [payload]: true,
+            payload: creator(...args),
+        });
+    actionCreator.type = actionType;
+    return actionCreator;
+}
+
+
+
+
+/**
+ * Construct interface based on `ActionEnum`. Consist of empty action
+ * creators (action creators without payload - just `type` field).
+ */
+export type EmptyActionCreators&lt;ActionEnum extends NonConstEnum> = {
+    [K in keyof ActionEnum]: EmptyActionCreator&lt;ActionEnum[K]>;
+};
+
+
+
+
+/**
+ * Construct object whose keys correspond to `actionEnum` keys and
+ * values consists of empty action creators for each type. Conforms to
+ * `EmptyActionCreators&lt;ActionEnum>` interface.
+ *
+ * @function emptyActionCreators
+ * @param actionEnum Enum upon which an EmptyActionCreators object is built.
+ * @returns EmptyActionCreators object.
+ */
+export function emptyActionCreators&lt;ActionEnum extends NonConstEnum> (
+    actionEnum: ActionEnum,
+): EmptyActionCreators&lt;ActionEnum> {
+    let actions = {} as EmptyActionCreators&lt;ActionEnum>;
+    for (const actionType in actionEnum) {
+        actions[actionType] = defineActionCreator(actionEnum[actionType]);
+    }
+    return actions;
+}
+
+
+
+
+/**
+ * Take `ActionEnum` type with `PayloadCreators` object type and construct
+ * `PayloadActionCreators` on its basis.
+ *
+ * Constructed `PayloadActionCreators` object type consists only of keys
+ * that are also present in `ActionEnum` type (all other keys are dropped).
+ */
+export type PayloadActionCreators&lt;
+    ActionEnum extends NonConstEnum,
+    PayloadCreators,
+> = {
+    [K in Extract&lt;keyof PayloadCreators, keyof ActionEnum>]:
+        PayloadCreators[K] extends Fun&lt;infer Args, infer PayloadType> ?
+            PayloadActionCreator&lt;PayloadType, ActionEnum[K], Args> : never;
+};
+
+
+
+
+/**
+ * Take empty action creators object based on `ActionEnum` type
+ * (an object with all action creators not carrying anything besides
+ * `type` property) and `PayloadCreators` object consisting of plain
+ * javascript functions taking arguments and returning values.
+ *
+ * `PayloadCreators` object type is constrained to be a subset of `ActionEnum`
+ * type (in the sense of `AllowSubset` type defined in `type/utils.ts`).
+ *
+ * Create fully typed action creators object with all action creators
+ * defined as `EmptyActionCreator` or `PayloadActionCreator`.
+ *
+ * @function payloadActionCreators
+ * @param emptyActionCreators EmptyActionCreators object
+ * @param payloadCreators Object with payload creators.
+ * @returns ActionCreators object.
+ */
+export function payloadActionCreators&lt;
+    ActionEnum extends NonConstEnum,
+    PayloadCreators extends
+        &amp; AllowSubset&lt;ActionEnum, PayloadCreators>
+        &amp; Partial&lt;Record&lt;keyof ActionEnum, Fun>>,
+> (
+    emptyActionCreators: EmptyActionCreators&lt;ActionEnum>,
+    payloadCreators: PayloadCreators,
+):
+    Override&lt;
+        typeof emptyActionCreators,
+        PayloadActionCreators&lt;ActionEnum, PayloadCreators>
+    >
+{
+    return Object.assign(
+        emptyActionCreators,
+        objectMap(payloadCreators) &lt;keyof ActionEnum>(([key, creator]) => [
+            key, defineActionCreator(emptyActionCreators[key].type, creator),
+        ]),
+    );
+}
+
+
+
+
+/**
+ * Construct action slice for provided action enum. Optionally
+ * define action creators with payload. Statically typed.
+ *
+ * @function actionCreators
+ * @param actionEnum Enum upon which an ActionCreators object is built.
+ * @param payloadCreators Optional object with payload creators.
+ * @returns ActionCreators object.
+ */
+export function actionCreators&lt;
+    ActionEnum extends NonConstEnum,
+> (actionEnum: ActionEnum): EmptyActionCreators&lt;ActionEnum>;
+export function actionCreators&lt;
+    ActionEnum extends NonConstEnum,
+    PayloadCreators extends
+        &amp; AllowSubset&lt;ActionEnum, PayloadCreators>
+        &amp; Partial&lt;Record&lt;keyof ActionEnum, Fun>>,
+> (
+    actionEnum: ActionEnum,
+    payloadCreators?: PayloadCreators
+):
+    Override&lt;
+        EmptyActionCreators&lt;ActionEnum>,
+        PayloadActionCreators&lt;ActionEnum, PayloadCreators>
+    >;
+export function actionCreators&lt;
+    ActionEnum extends NonConstEnum,
+    PayloadCreators extends
+        &amp; AllowSubset&lt;ActionEnum, PayloadCreators>
+        &amp; Partial&lt;Record&lt;keyof ActionEnum, Fun>>,
+> (
+    actionEnum: ActionEnum,
+    payloadCreators?: PayloadCreators,
+):
+    | EmptyActionCreators&lt;ActionEnum>
+    | Override&lt;
+        EmptyActionCreators&lt;ActionEnum>,
+        PayloadActionCreators&lt;ActionEnum, PayloadCreators>
+    >
+{
+    const eac = emptyActionCreators(actionEnum);
+    if (payloadCreators) {
+        return payloadActionCreators(eac, payloadCreators);
+    } else {
+        return eac;
+    }
 }
 </code></pre>
         </article>
