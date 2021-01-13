@@ -40,7 +40,7 @@ export type ReduxCompatReducer<
     ActionShape extends ReduxCompatAction = ReduxCompatAnyAction,
 > = (
     state: StateType | undefined,
-    action: ActionShape
+    action: ActionShape,
 ) => StateType;
 
 
@@ -55,7 +55,7 @@ export type Reducer<
     ActionType extends SafeKey = SafeKey,
 > = (
     state: StateType,
-    action: Action<PayloadType, ActionType>
+    action: Action<PayloadType, ActionType>,
 ) => StateType;
 
 
@@ -70,7 +70,7 @@ export type Reducer<
  */
 export function createReducer<StateType> (initState: StateType): (
     reducers: Record<SafeKey, Reducer<StateType>>,
-    defaultReducer?: Reducer<StateType>
+    defaultReducer?: Reducer<StateType>,
 ) => ReduxCompatReducer<StateType, Action> {
     return (reducers, defaultReducer = identity) =>
         (state = initState, action) =>

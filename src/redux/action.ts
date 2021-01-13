@@ -76,7 +76,7 @@ export interface PayloadAction<
     PayloadType = any,
     ActionType extends SafeKey = SafeKey,
 > extends ReduxCompatAction<ActionType> {
-    [payload]: true,
+    [payload]: true;
     payload: PayloadType;
 }
 
@@ -326,7 +326,7 @@ export function actionCreators<
         & Partial<Record<keyof ActionEnum, Fun>>,
 > (
     actionEnum: ActionEnum,
-    payloadCreators?: PayloadCreators
+    payloadCreators?: PayloadCreators,
 ):
     Override<
         EmptyActionCreators<ActionEnum>,
