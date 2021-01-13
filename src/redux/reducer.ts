@@ -89,27 +89,40 @@ export function createReducer<StateType> (initState: StateType): (
  * Chainable API for building reducer handling a slice of state.
  */
 interface SliceBuildAPI<StateType> {
+    // handle empty action (overload)
     handle<ActionType extends SafeKey> (
         actionCreator: EmptyActionCreator<ActionType>,
-        reducer: (state: StateType) => StateType
+        reducer: (state: Readonly<StateType>) => Readonly<StateType>,
     ): SliceBuildAPI<StateType>;
+    // handle action with payload (overload)
     handle<ActionType extends SafeKey, PayloadType> (
         actionCreator: PayloadActionCreator<PayloadType, ActionType>,
-        reducer: (state: StateType, payload: PayloadType) => StateType
+        reducer: (
+            state: Readonly<StateType>,
+            payload: PayloadType,
+        ) => Readonly<StateType>,
     ): SliceBuildAPI<StateType>;
+    // handle unmatched actions
     default (
         reducer: (
-            state: StateType,
-            action: Action
-        ) => StateType
+            state: Readonly<StateType>,
+            action: Action,
+        ) => Readonly<StateType>,
     ): SliceBuildAPI<StateType>;
+    // match actions using type predicate - useful for matching actions
+    // by payload content (overload)
     match <PayloadType>(
         predicate: (action: Action) => action is Action<PayloadType>,
-        reducer: (state: StateType, payload: PayloadType) => StateType
+        reducer: (
+            state: Readonly<StateType>,
+            payload: PayloadType,
+        ) => Readonly<StateType>,
     ): SliceBuildAPI<StateType>;
+    // match action using boolean predicate - useful for matching actions
+    // using string operations on their type (overload)
     match (
         predicate: (action: Action) => boolean,
-        reducer: (state: StateType) => StateType
+        reducer: (state: Readonly<StateType>) => Readonly<StateType>,
     ): SliceBuildAPI<StateType>;
 }
 
@@ -124,49 +137,53 @@ interface SliceBuildAPI<StateType> {
  * @returns (builder: (slice: SliceBuildAPI) => void) => ReduxCompatReducer
  */
 export function sliceReducer<StateType> (initState: StateType): (
-    builder: (slice: SliceBuildAPI<StateType>) => void
-) => ReduxCompatReducer<StateType, Action> {
+    builder: (slice: SliceBuildAPI<StateType>) => void,
+) => ReduxCompatReducer<Readonly<StateType>, Action> {
 
     let
         reducers = {} as Record<SafeKey, Fun>,
-        matchers = [] as ReduxCompatReducer<StateType, Action>[],
+        matchers = [] as ReduxCompatReducer<Readonly<StateType>, Action>[],
         defaultReducer: (
-            state: StateType,
-            action: Action
-        ) => StateType;
+            state: Readonly<StateType>,
+            action: Action,
+        ) => Readonly<StateType>;
 
     const
         create = createReducer(initState),
         slice: SliceBuildAPI<StateType> = {
+            // handle concrete type of action
             handle: <ActionType extends SafeKey, PayloadType>(
                 actionCreator: ActionCreator<PayloadType, ActionType>,
                 reducer: (
-                    state: StateType,
+                    state: Readonly<StateType>,
                     payload?: PayloadType,
-                ) => StateType,
+                ) => Readonly<StateType>,
             ): typeof slice => {
                 if (reducer.length === 2) {
                     reducers[actionCreator.type] = (
-                        state: StateType,
+                        state: Readonly<StateType>,
                         action: PayloadAction<PayloadType, ActionType>,
                     ) => reducer(state, action.payload);
                 } else {
                     reducers[actionCreator.type] = (
-                        state: StateType,
+                        state: Readonly<StateType>,
                     ) => reducer(state);
                 }
                 return slice;
             },
+            // handle unmatched actions (state identity by default)
             default: (reducer) => {
                 defaultReducer = reducer;
                 return slice;
             },
+            // additionally match actions using predicate (matcher is run
+            // against all actions - handled and unhandled earlier)
             match: <PayloadType>(
                 predicate: (action: Action) => boolean,
                 reducer: (
-                    state: StateType,
+                    state: Readonly<StateType>,
                     payload?: PayloadType,
-                ) => StateType,
+                ) => Readonly<StateType>,
             ): typeof slice => {
                 matchers.push(
                     (state, action) =>
