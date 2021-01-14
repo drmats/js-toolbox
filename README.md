@@ -37,7 +37,7 @@ to bundle it with your project).
     - [func](#functional-programming-tools)
     - [math](#basic-math)
     - [memory](#shared-memory)
-    - [redux](#some-goodies-for-redux)
+    - [redux](#statically-typed-goodies-for-redux)
     - [string](#string-utilities)
     - [struct](#data-structure-manipulation-tools)
     - [type](#type-helpers)
