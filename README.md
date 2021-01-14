@@ -373,6 +373,7 @@ redux
 > { actionCreators: [Function: actionCreators],
 >   bindActionCreator: [Function: bindActionCreator],
 >   bindActionCreators: [Function: bindActionCreators],
+>   bindActionCreatorsTree: [Function: bindActionCreatorsTree],
 >   createReducer: [Function: createReducer],
 >   defineActionCreator: [Function: defineActionCreator],
 >   emptyActionCreators: [Function: emptyActionCreators],

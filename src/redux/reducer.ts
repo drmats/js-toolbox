@@ -27,7 +27,6 @@ import type {
 import { isWithPayload } from "./action";
 import { choose } from "../func/choice";
 import { identity } from "../func/tools";
-import { objectMap } from "../struct/object";
 
 
 
@@ -220,63 +219,4 @@ export function sliceReducer<StateType> (initState: StateType): (
 
     };
 
-}
-
-
-
-
-/**
- * Binds given action creator with chosen store's dispatch.
- *
- * @function bindActionCreator
- * @param actionCreator any action creator
- * @param dispatch redux store's `dispatch` function
- * @returns bound action creator
- */
-export function bindActionCreator<
-    ActionCreatorType extends Fun,
-    ReduxDispatch extends Fun<[Action]>,
-> (
-    actionCreator: ActionCreatorType | ActionCreator,
-    dispatch: ReduxDispatch,
-): typeof actionCreator {
-    let boundActionCreator = (
-        ...args: Parameters<ActionCreatorType>
-    ) => dispatch(actionCreator(...args));
-    if ((actionCreator as ActionCreator).type) {
-        (boundActionCreator as ActionCreator).type =
-            (actionCreator as ActionCreator).type;
-    }
-    return boundActionCreator as ActionCreatorType;
-}
-
-
-
-
-/**
- * Redux's original `bindActionCreators` clone with extended `Action`
- * support (original function assumes dispatch parametrized with redux's
- * `AnyAction` which is not compatible with `Action`).
- *
- * Turns an object with action creators into an object with every
- * action creator wrapped into a `dispatch` call.
- *
- * @function bindActionCreators
- * @param actionCreators Object with action creator functions
- * @param dispatch redux store's `dispatch` function
- * @returns Object with wrapped action creators
- */
-export function bindActionCreators<
-    ActionCreatorType extends Fun,
-    ReduxDispatch extends Fun<[Action]>,
-    ActionCreators extends Record<SafeKey, ActionCreatorType | ActionCreator>,
-> (
-    actionCreators: ActionCreators,
-    dispatch: ReduxDispatch,
-): typeof actionCreators {
-    return (
-        objectMap(actionCreators) (
-            ([k, a]) => [k, bindActionCreator(a, dispatch)],
-        )
-    ) as unknown as ActionCreators;
 }

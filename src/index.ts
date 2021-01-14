@@ -181,6 +181,7 @@ export {
     actionCreators,
     bindActionCreator,
     bindActionCreators,
+    bindActionCreatorsTree,
     createReducer,
     defineActionCreator,
     emptyActionCreators,
