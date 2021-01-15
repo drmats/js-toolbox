@@ -418,7 +418,7 @@ export function bindActionCreators<
 
 
 /**
- * Bind whole tree of action creators.
+ * Bind whole tree of action creators to the redux's dispatch function.
  *
  * @function bindActionCreatorsTree
  * @param acTree Object with `actionCreators` objects
@@ -429,7 +429,7 @@ export function bindActionCreatorsTree<
     ActionCreatorType extends Fun,
     ReduxDispatch extends Fun<[Action]>,
     ActionCreators extends Record<SafeKey, ActionCreatorType | ActionCreator>,
-    ACTree extends { [K in keyof ACTree]: ActionCreators },
+    ACTree extends Record<keyof ACTree, ActionCreators>,
 > (
     acTree: ACTree,
     dispatch: ReduxDispatch,
