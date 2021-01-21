@@ -7,7 +7,7 @@
 var
 
     runtimeVersion = require(
-        "./package.json"
+        "./package.json",
     ).dependencies["@babel/runtime-corejs3"],
 
     conf = {
