@@ -147,18 +147,6 @@ export * as math from "./math";
 
 
 /**
- * @see {@link module:memory}
- */
-export {
-    useMemory,
-    share,
-} from "./memory";
-export * as memory from "./memory";
-
-
-
-
-/**
  * @see {@link module:redux}
  */
 export type {
