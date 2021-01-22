@@ -1,0 +1,309 @@
+/* User-Agent Style */
+html {
+    background-color: #181a1b !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #181a1b;
+}
+html, body, input, textarea, select, button {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #555b00 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+* {
+    scrollbar-color: #202324 #454a4d;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+
+/* Invert Style */
+.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, embed[type="application/pdf"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}
+
+/* Variables Style */
+:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}
+
+/* Modified CSS */
+.pln {
+    color: rgb(184, 178, 168);
+}
+@media screen {
+    .str {
+        color: rgb(155, 255, 119);
+    }
+    .kwd {
+        color: rgb(51, 125, 255);
+    }
+    .com {
+        color: rgb(168, 160, 149);
+    }
+    .typ {
+        color: rgb(106, 160, 255);
+    }
+    .lit {
+        color: rgb(82, 145, 255);
+    }
+    .pun {
+        color: rgb(232, 230, 227);
+    }
+    .opn {
+        color: rgb(232, 230, 227);
+    }
+    .clo {
+        color: rgb(232, 230, 227);
+    }
+    .tag {
+        color: rgb(219, 73, 73);
+    }
+    .atn {
+        color: rgb(246, 145, 49);
+    }
+    .atv {
+        color: rgb(107, 192, 197);
+    }
+    .dec {
+        color: rgb(246, 145, 49);
+    }
+    .var {
+        color: rgb(219, 73, 73);
+    }
+    .fun {
+        color: rgb(114, 160, 201);
+    }
+}
+body {
+    color: rgb(181, 175, 166);
+    background-color: rgb(24, 26, 27);
+}
+a,
+a:active {
+    color: rgb(49, 188, 255);
+    text-decoration-color: currentcolor;
+}
+a:hover {
+    text-decoration-color: currentcolor;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: rgb(232, 230, 227);
+}
+h1.page-title {
+    border-bottom-color: rgb(58, 62, 65);
+}
+h4 {
+    color: rgb(181, 175, 166);
+}
+tt,
+code,
+kbd,
+samp {
+    background-color: rgb(30, 33, 34);
+    background-image: none;
+}
+blockquote {
+    border-left-color: rgb(53, 57, 59);
+    color: rgb(157, 148, 136);
+}
+section {
+    background-color: rgb(24, 26, 27);
+}
+.signature-attributes {
+    color: rgb(178, 172, 162);
+}
+.readme h3 {
+    background-color: transparent;
+}
+.readme table tr {
+    background-color: rgb(24, 26, 27);
+    border-top-color: rgb(62, 68, 70);
+}
+.readme table th,
+.readme table td {
+    border-color: rgb(58, 62, 65);
+}
+.readme table tr:nth-child(2n) {
+    background-color: rgb(28, 30, 31);
+}
+nav {
+    background-color: rgb(24, 26, 27);
+    background-image: none;
+    border-right-color: rgb(53, 57, 59);
+}
+nav li {
+    list-style-image: none;
+}
+.nav-heading a {
+    color: rgb(157, 148, 136);
+}
+.type-function {
+    background-color: rgb(4, 66, 95);
+    background-image: none;
+    color: rgb(58, 184, 253);
+}
+.type-class {
+    background-color: rgb(47, 51, 53);
+    background-image: none;
+    color: rgb(131, 102, 218);
+}
+.type-member {
+    background-color: rgb(31, 68, 41);
+    background-image: none;
+    color: rgb(119, 201, 123);
+}
+.type-module {
+    background-color: rgb(69, 28, 76);
+    background-image: none;
+    color: rgb(188, 99, 225);
+}
+footer {
+    color: rgb(187, 181, 172);
+    border-top-color: rgb(53, 57, 59);
+}
+.ancestors {
+    color: rgb(168, 160, 149);
+}
+.ancestors a {
+    color: rgb(168, 160, 149) !important;
+    text-decoration-color: currentcolor;
+}
+.important {
+    color: rgb(253, 110, 100);
+}
+.type-signature {
+    color: rgb(178, 172, 162);
+}
+.details {
+    border-left-color: rgb(58, 62, 65);
+}
+.prettyprint {
+    border-color: rgb(58, 62, 65);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px;
+}
+.prettyprint code {
+    background-color: rgb(24, 26, 27);
+    color: rgb(181, 175, 166);
+}
+.prettyprint.linenums li {
+    border-left-color: rgb(58, 62, 65);
+}
+.prettyprint.linenums li.selected,
+.prettyprint.linenums li.selected * {
+    background-color: rgb(70, 70, 0);
+}
+.params,
+.props {
+    border-color: rgb(58, 62, 65);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+}
+.params .name,
+.props .name,
+.name code {
+    color: rgb(181, 175, 166);
+}
+.params td {
+    border-top-color: rgb(53, 57, 59);
+}
+.params thead tr,
+.props thead tr {
+    background-color: rgb(24, 26, 27);
+}
+.params .params thead tr,
+.props .props thead tr {
+    background-color: rgb(24, 26, 27);
+}
+.disabled {
+    color: rgb(188, 183, 174);
+}
+.navicon {
+    background-color: rgb(0, 0, 0);
+    background-image: none;
+}
+.navicon::before,
+.navicon::after {
+    background-color: rgb(0, 0, 0);
+    background-image: none;
+}
+.nav-trigger:checked + label.plus .navicon,
+.nav-trigger:checked + label.x .navicon {
+    background-color: transparent;
+    background-image: none;
+}
+.nav-trigger:checked + label.plus .navicon::before,
+.nav-trigger:checked + label.x .navicon::before {
+    background-color: rgb(24, 26, 27);
+    background-image: none;
+}
+.nav-trigger:checked + label.plus .navicon::after,
+.nav-trigger:checked + label.x .navicon::after {
+    background-color: rgb(24, 26, 27);
+    background-image: none;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: none;
+}
+.section-method {
+    border-bottom-color: rgb(53, 57, 59);
+}
+@media only screen and (min-width: 320px) and (max-width: 680px) {
+    nav {
+        background-color: rgb(24, 26, 27);
+        background-image: none;
+    }
+}
+
+/* Override Style */
+.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
