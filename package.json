@@ -46,14 +46,16 @@
     "keywords": [
         "array",
         "async",
-        "byte-array",
         "codec",
-        "es6",
-        "functional",
-        "javascript",
-        "library",
+        "func",
+        "math",
         "string",
-        "type"
+        "struct",
+        "type",
+        "utils",
+        "es6",
+        "javascript",
+        "typescript"
     ],
     "license": "Apache-2.0",
     "main": "dist/index.js",
