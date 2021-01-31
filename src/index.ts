@@ -300,6 +300,7 @@ export {
     rgba,
     run,
     timeUnit,
+    timing,
     to_,
     url,
 } from "./utils";

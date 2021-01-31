@@ -459,6 +459,7 @@ utils
 >   rgb: [Function: rgb],
 >   rgba: [Function: rgba],
 >   run: [Function: run],
+>   timing: [Function: timing],
 >   timeUnit: { ... },
 >   to_: [Function: to_],
 >   url: [Function: url] }

@@ -76,3 +76,22 @@ export type TimeUnit = typeof timeUnit;
  * @returns wrapped typeof string
  */
 export const btquote = (x: unknown): string => quote(typeof x, "[]");
+
+
+
+
+/**
+ * Measure `fn` working time.
+ *
+ * @function timing
+ * @param fn asynchronous function to measure
+ * @returns Object containing `result`, `start` and `duration` fields.
+ */
+export const timing = async <T>(fn: NoArgFun<Promise<T>>): Promise<{
+    result: T;
+    start: number;
+    duration: number;
+}> => {
+    let start = Date.now(), result = await fn();
+    return { result, start, duration: Date.now() - start };
+};
