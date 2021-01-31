@@ -112,7 +112,7 @@ export const map = curry((arr, f) => {
  * @returns {Promise.<Array>}
  */
 export const parMap = curry((arr, f) =>
-    Promise.all(arr.map(el => Promise.resolve(f(el)))),
+    Promise.all(arr.map((el, i) => Promise.resolve(f.call(arr, el, i)))),
 )
 
 
