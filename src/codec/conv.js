@@ -43,7 +43,7 @@ export const stringToBytes = isBrowser() ?
  */
 export const bytesToString = isBrowser() ?
     bytes => (new TextDecoder("utf-8")).decode(bytes) :
-    bytes => Buffer.from(bytes).toString()
+    bytes => Buffer.from(bytes).toString("utf-8")
 
 
 
