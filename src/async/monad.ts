@@ -10,6 +10,7 @@
 
 
 import type { OneArgFun } from "../type/defs";
+import { curry } from "../func/curry";
 
 
 
@@ -36,8 +37,16 @@ export function unit<T> (val: T): Promise<T> {
  * @param ma
  * @returns (f >>= ma): mb
  */
-export async function bind<A, B> (
-    f: OneArgFun<A, B>, ma: Promise<A>,
-): Promise<B> {
-    return f(await ma);
-}
+export const bind: {
+    /* uncurried */
+    <A, B>(
+        f: OneArgFun<A, B>, ma: Promise<A>,
+    ): Promise<B>;
+    /* curried */
+    <A, B>(
+        f: OneArgFun<A, B>,
+    ): { (ma: Promise<A>): Promise<B>; };
+} = curry(async <A, B>(
+    f: OneArgFun<A, B>,
+    ma: Promise<A>,
+) => f(await ma));
