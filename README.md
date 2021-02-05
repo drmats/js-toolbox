@@ -258,7 +258,8 @@ async
 ```
 
 > ```javascript
-> { cancellable: [Function: cancellable],
+> { bind: [Function bind],
+>   cancellable: [Function: cancellable],
 >   createMutex: [Function: createMutex],
 >   delay: [Function: delay],
 >   interval: [Function: interval],
@@ -267,7 +268,8 @@ async
 >   race: [Function: race],
 >   reduce: [Function: reduce],
 >   repeat: [Function: repeat],
->   timeout: [Function: timeout] }
+>   timeout: [Function: timeout],
+>   unit: [Function: unit] }
 > ```
 
 

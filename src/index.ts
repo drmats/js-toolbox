@@ -48,6 +48,7 @@ export * as array from "./array";
  * @see {@link module:async}
  */
 export {
+    bind,
     cancellable,
     createMutex,
     delay,
@@ -58,6 +59,7 @@ export {
     reduce as asyncReduce,
     repeat as asyncRepeat,
     timeout,
+    unit,
 } from "./async";
 export * as async from "./async";
 
