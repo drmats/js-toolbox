@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>func/choice.ts - Documentation</title>
+    <title>async/monad.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">func/choice.ts</h1>
+    <h1 class="page-title">async/monad.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Functional programming tools.
+ * Asynchronous tools.
  *
- * @module func
+ * @module async
  * @license Apache-2.0
  * @author drmats
  */
@@ -50,51 +50,47 @@
 
 
 
-import type {
-    Arr,
-    Fun,
-    SafeKey,
-} from "../type/defs";
+import type { OneArgFun } from "../type/defs";
+import { curry } from "../func/curry";
 
 
 
 
 /**
- * Functional replacement of a `switch` statement. When used properly (i.e.
- * `choices` object is prepared once and stored in memory for later accesses)
- * then for large choice sets it should be noticeably faster than plain
- * `switch` statement - it's semantics require sequential evaluation, so
- * it's time complexity, in general case, tends to be linear. Here, there is
- * no requirement of sequential evaluation, so average time complexity should
- * be no worse than logarithmic.
+ * Time monad - `return`.
  *
- * @function choose
- * @param key
- * @param [choices] Plain JS object in form `key: (...In) => Out`
- * @param [defaultChoice] Simple JS function in form `(...In) => Out`
- * @param [args] If choice functions accepts arguments, then put an array of
- *     appropriate values here.
- * @returns {Out | undefined} Return value of choosen or default function.
+ * @function unit
+ * @param val
+ * @returns promise
  */
-export function choose&lt;
-    In extends Arr | [],
-    Out,
-    Key extends SafeKey,
-> (
-    key: Key,
-    choices = {} as Record&lt;Key, Fun&lt;In, Out>>,
-    defaultChoice: Fun&lt;In> = () => undefined,
-    args?: In,
-):
-    | Out
-    | ReturnType&lt;typeof defaultChoice>
-{
-    return (
-        key in choices ?
-            choices[key](...(args || [] as In)) :
-            defaultChoice(...(args || [] as In))
-    );
+export function unit&lt;T> (val: T): Promise&lt;T> {
+    return Promise.resolve(val);
 }
+
+
+
+
+/**
+ * Time monad - `>>=`.
+ *
+ * @function bind
+ * @param f f: a -> b
+ * @param ma
+ * @returns (f >>= ma): mb
+ */
+export const bind: {
+    /* uncurried */
+    &lt;A, B>(
+        f: OneArgFun&lt;A, B>, ma: Promise&lt;A>,
+    ): Promise&lt;B>;
+    /* curried */
+    &lt;A, B>(
+        f: OneArgFun&lt;A, B>,
+    ): { (ma: Promise&lt;A>): Promise&lt;B>; };
+} = curry(async &lt;A, B>(
+    f: OneArgFun&lt;A, B>,
+    ma: Promise&lt;A>,
+) => f(await ma));
 </code></pre>
         </article>
     </section>
