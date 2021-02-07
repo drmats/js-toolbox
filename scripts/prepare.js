@@ -49,7 +49,7 @@ require("./module_names")
         });
         writeFileSync(
             `${dst}/package.json`,
-            JSON.stringify(esConfig(mn))
+            JSON.stringify(esConfig(mn)),
         );
     });
 
@@ -68,7 +68,7 @@ writeFileSync(
         Object.entries(distJson)
             .sort(([a, _1], [b, _2]) => a.localeCompare(b))
             .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {})
-    )
+    ),
 );
 
 
