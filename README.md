@@ -36,7 +36,6 @@ to bundle it with your project).
     - [codec](#typedarray-codersdecoders)
     - [func](#functional-programming-tools)
     - [math](#basic-math)
-    - [redux](#statically-typed-goodies-for-redux)
     - [string](#string-utilities)
     - [struct](#data-structure-manipulation-tools)
     - [type](#type-helpers)
@@ -84,7 +83,6 @@ to bundle it with your project).
     > ```javascript
     > [ "Y",
     >   "access",
-    >   "actionCreators",
     >   "add",
     >   "app",
     >   "array",
@@ -348,28 +346,6 @@ math
 >   roundIfClose: [Function: roundIfClose],
 >   sub: [Function],
 >   sum: [Function: sum] }
-> ```
-
-
-### statically typed goodies for **[redux](https://redux.js.org/)**
-
-```javascript
-redux
-```
-
-> ```javascript
-> { actionCreators: [Function: actionCreators],
->   bindActionCreator: [Function: bindActionCreator],
->   bindActionCreators: [Function: bindActionCreators],
->   bindActionCreatorsTree: [Function: bindActionCreatorsTree],
->   createReducer: [Function: createReducer],
->   defineActionCreator: [Function: defineActionCreator],
->   emptyActionCreators: [Function: emptyActionCreators],
->   isNumberActionType: [Function: isNumberActionType],
->   isStringActionType: [Function: isStringActionType],
->   isWithPayload: [Function: isWithPayload],
->   payloadActionCreators: [Function: payloadActionCreators],
->   sliceReducer: [Function: sliceReducer] }
 > ```
 
 
