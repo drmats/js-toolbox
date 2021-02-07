@@ -277,6 +277,7 @@ export {
     isNumber,
     isObject,
     isString,
+    lazyNullishCoalesce,
     maxInt,
     minInt,
     nullToUndefined,

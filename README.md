@@ -439,6 +439,7 @@ type
 >   isNumber: [Function: isNumber],
 >   isObject: [Function: isObject],
 >   isString: [Function: isString],
+>   lazyNullishCoalesce: [Function: lazyNullishCoalesce],
 >   maxInt: 9007199254740991,
 >   minInt: -9007199254740991,
 >   nullToUndefined: [Function: nullToUndefined],
