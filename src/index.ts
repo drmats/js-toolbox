@@ -56,6 +56,7 @@ export {
     map as asyncMap,
     parMap,
     race as asyncRace,
+    rbind,
     reduce as asyncReduce,
     repeat as asyncRepeat,
     timeout,

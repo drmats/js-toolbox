@@ -264,6 +264,7 @@ async
 >   map: [Function: map],
 >   parMap: [Function: parMap],
 >   race: [Function: race],
+>   rbind: [Function: rbind],
 >   reduce: [Function: reduce],
 >   repeat: [Function: repeat],
 >   timeout: [Function: timeout],

@@ -33,11 +33,36 @@ export function unit<T> (val: T): Promise<T> {
  * Time monad - `>>=`.
  *
  * @function bind
- * @param f f: a -> b
  * @param ma
- * @returns (f >>= ma): mb
+ * @param f f: a -> b
+ * @returns (ma >>= f): mb
  */
 export const bind: {
+    /* uncurried */
+    <A, B>(
+        ma: Promise<A>, f: OneArgFun<A, B>,
+    ): Promise<B>;
+    /* curried */
+    <A, B>(
+        ma: Promise<A>,
+    ): { (f: OneArgFun<A, B>): Promise<B>; };
+} = curry(async <A, B>(
+    ma: Promise<A>,
+    f: OneArgFun<A, B>,
+) => f(await ma));
+
+
+
+
+/**
+ * Time monad - `=<<`.
+ *
+ * @function rbind
+ * @param f f: a -> b
+ * @param ma
+ * @returns (f =<< ma): mb
+ */
+export const rbind: {
     /* uncurried */
     <A, B>(
         f: OneArgFun<A, B>, ma: Promise<A>,
