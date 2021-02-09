@@ -34,22 +34,22 @@ export function unit<T> (val: T): Promise<T> {
  *
  * @function bind
  * @param ma
- * @param f f: a -> b
+ * @param f f: a -> mb
  * @returns (ma >>= f): mb
  */
 export const bind: {
     /* uncurried */
     <A, B>(
-        ma: Promise<A>, f: OneArgFun<A, B>,
+        ma: Promise<A>, f: OneArgFun<A, Promise<B>>,
     ): Promise<B>;
     /* curried */
     <A, B>(
         ma: Promise<A>,
-    ): { (f: OneArgFun<A, B>): Promise<B>; };
+    ): { (f: OneArgFun<A, Promise<B>>): Promise<B>; };
 } = curry(async <A, B>(
     ma: Promise<A>,
-    f: OneArgFun<A, B>,
-) => f(await ma));
+    f: OneArgFun<A, Promise<B>>,
+) => await f(await ma));
 
 
 
@@ -58,20 +58,36 @@ export const bind: {
  * Time monad - `=<<`.
  *
  * @function rbind
- * @param f f: a -> b
+ * @param f f: a -> mb
  * @param ma
  * @returns (f =<< ma): mb
  */
 export const rbind: {
     /* uncurried */
     <A, B>(
-        f: OneArgFun<A, B>, ma: Promise<A>,
+        f: OneArgFun<A, Promise<B>>, ma: Promise<A>,
     ): Promise<B>;
     /* curried */
     <A, B>(
-        f: OneArgFun<A, B>,
+        f: OneArgFun<A, Promise<B>>,
     ): { (ma: Promise<A>): Promise<B>; };
 } = curry(async <A, B>(
-    f: OneArgFun<A, B>,
+    f: OneArgFun<A, Promise<B>>,
     ma: Promise<A>,
-) => f(await ma));
+) => await f(await ma));
+
+
+
+
+/**
+ * Time monad - `ap`.
+ *
+ * @function ap
+ * @param f f: a -> b
+ * @returns mf: ma -> mb
+ */
+export function ap<A, B> (
+    f: OneArgFun<A, B>,
+): OneArgFun<Promise<A>, Promise<B>> {
+    return async (ma: Promise<A>) => f(await ma);
+}

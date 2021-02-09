@@ -84,6 +84,7 @@ to bundle it with your project).
     > [ "Y",
     >   "access",
     >   "add",
+    >   "ap",
     >   "app",
     >   "array",
     >   "arrayDifference",
@@ -256,7 +257,8 @@ async
 ```
 
 > ```javascript
-> { bind: [Function bind],
+> { ap: [Function ap],
+>   bind: [Function bind],
 >   cancellable: [Function: cancellable],
 >   createMutex: [Function: createMutex],
 >   delay: [Function: delay],

@@ -48,6 +48,7 @@ export * as array from "./array";
  * @see {@link module:async}
  */
 export {
+    ap,
     bind,
     cancellable,
     createMutex,
