@@ -54,6 +54,7 @@ export {
     createMutex,
     delay,
     interval,
+    liftr,
     map as asyncMap,
     parMap,
     race as asyncRace,

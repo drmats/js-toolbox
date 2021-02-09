@@ -263,6 +263,7 @@ async
 >   createMutex: [Function: createMutex],
 >   delay: [Function: delay],
 >   interval: [Function: interval],
+>   liftr: [Function: liftr],
 >   map: [Function: map],
 >   parMap: [Function: parMap],
 >   race: [Function: race],

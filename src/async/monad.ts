@@ -9,7 +9,11 @@
 
 
 
-import type { OneArgFun } from "../type/defs";
+import type {
+    Arr,
+    Fun,
+    OneArgFun,
+} from "../type/defs";
 import { curry } from "../func/curry";
 
 
@@ -90,4 +94,20 @@ export function ap<A, B> (
     f: OneArgFun<A, B>,
 ): OneArgFun<Promise<A>, Promise<B>> {
     return async (ma: Promise<A>) => f(await ma);
+}
+
+
+
+
+/**
+ * Time monad - `liftr`.
+ *
+ * @function liftr
+ * @param f f: a[] -> b
+ * @returns f: a[] -> mb
+ */
+export function liftr<A extends Arr, B> (
+    f: Fun<A, B>,
+): Fun<A, Promise<B>> {
+    return (...x: A) => unit(f(...x));
 }
