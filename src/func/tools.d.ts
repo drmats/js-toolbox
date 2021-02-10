@@ -9,7 +9,10 @@
 
 
 
-import type { JSAnyFun } from "../type/defs";
+import type {
+    Arr,
+    Fun,
+} from "../type/defs";
 
 
 
@@ -123,5 +126,5 @@ export declare function locker<T> (n: number): (val: T) => T;
  * ```
  */
 export declare function rearg<T> (
-    f: JSAnyFun<T>
-): (...indices: number[]) => JSAnyFun<T>;
+    f: Fun<Arr, T>
+): (...indices: number[]) => Fun<Arr, T>;

@@ -11,7 +11,7 @@
 
 
 
-import type { JSAnyFun } from "../type/defs";
+import type { Fun } from "../type/defs";
 
 
 
@@ -48,7 +48,7 @@ export declare function app<T, S> (f: (a: T) => S): (a: T) => S;
  * g(f(x))  <=>  (g . f) (x)  <=>  compose(g, f) (x)
  * ```
  */
-export declare function compose (...fs: JSAnyFun[]): JSAnyFun;
+export declare function compose (...fs: Fun[]): Fun;
 
 
 
@@ -66,7 +66,7 @@ export declare function compose (...fs: JSAnyFun[]): JSAnyFun;
  *
  * Inspired by {@link https://github.com/tfausak/flow}.
  */
-export declare function flow (...fs: JSAnyFun[]): JSAnyFun;
+export declare function flow (...fs: Fun[]): Fun;
 
 
 
@@ -84,7 +84,7 @@ export declare function flow (...fs: JSAnyFun[]): JSAnyFun;
  * g(f(x))  <=>  (g . f) (x)  <=>  pipe(x) (f, g)
  * ```
  */
-export declare function pipe (...args: any[]): (...fs: JSAnyFun[]) => any;
+export declare function pipe (...args: any[]): (...fs: Fun[]) => any;
 
 
 

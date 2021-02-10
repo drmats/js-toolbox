@@ -222,7 +222,6 @@ export type {
     ArrStr,
     Fun,
     JSAnyArrObj,
-    JSAnyFun,
     JSAnyObj,
     NoArgFun,
     OneArgFun,
