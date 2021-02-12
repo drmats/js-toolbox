@@ -164,22 +164,22 @@ t = require("@xcmats/js-toolbox")
 ### example use in ES6 modules code
 
 ```javascript
-import { range } from "@xcmats/js-toolbox/array"
-import { stringToB64 } from "@xcmats/js-toolbox/codec"
-import { flow } from "@xcmats/js-toolbox/func"
-import { random } from "@xcmats/js-toolbox/string"
+import { range } from "@xcmats/js-toolbox/array";
+import { stringToB64 } from "@xcmats/js-toolbox/codec";
+import { flow } from "@xcmats/js-toolbox/func";
+import { random } from "@xcmats/js-toolbox/string";
 
 const b64stringify = flow(
     JSON.stringify,
-    stringToB64
-)
+    stringToB64,
+);
 
 let spam = b64stringify({
     tenNumbers: range(10),
-    randomLetters: random(20)
-})
+    randomLetters: random(20),
+});
 
-console.log("Stringified and b64-encoded object: ", spam)
+console.log("Stringified and b64-encoded object: ", spam);
 ```
 
 <br />
@@ -463,8 +463,8 @@ utils
     ```javascript
     array.countBy(
         'exemplo plus quam ratione vivimus'.split(' '),
-        w => w.length
-    )
+        w => w.length,
+    );
     ```
 
     > ```javascript
@@ -476,7 +476,7 @@ utils
     (or a random character from a given `string`).
 
     ```javascript
-    array.draw(string.asciiLetters())
+    array.draw(string.asciiLetters());
     ```
 
     > ```javascript
@@ -487,7 +487,7 @@ utils
 * Find duplicates in a given `array`.
 
     ```javascript
-    array.findDuplicates(['one', 'two', 'one', 'six', 'two', 'two'])
+    array.findDuplicates(['one', 'two', 'one', 'six', 'two', 'two']);
     ```
 
     > ```javascript
@@ -499,7 +499,7 @@ utils
     `[[1, 2,], ..., [3, 4,],]` to `[1, 2, ..., 3, 4,]`.
 
     ```javascript
-    array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
+    array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }));
     ```
 
     > ```javascript
@@ -514,7 +514,7 @@ utils
     When `step` is given, it specifies the increment (or decrement).
 
     ```javascript
-    array.range(10)
+    array.range(10);
     ```
 
     > ```javascript
@@ -522,7 +522,7 @@ utils
     > ```
 
     ```javascript
-    array.range(-128, -256, -16)
+    array.range(-128, -256, -16);
     ```
 
     > ```javascript
@@ -535,7 +535,7 @@ utils
     The operation is taken in-place.
 
     ```javascript
-    array.shuffle(array.range(12))
+    array.shuffle(array.range(12));
     ```
 
     > ```javascript
@@ -550,7 +550,7 @@ utils
     integers in range `[start..stop-1]`.
 
     ```javascript
-    array.sparse(1024, 8)
+    array.sparse(1024, 8);
     ```
 
     > ```javascript
@@ -561,7 +561,7 @@ utils
 * "Zip" given arrays using provided `f` operator.
 
     ```javascript
-    array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
+    array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40]);
     ```
 
     > ```javascript
@@ -572,7 +572,7 @@ utils
 * Take every 3rd element from a given array.
 
     ```javascript
-    array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     ```
 
     > ```javascript
@@ -588,11 +588,11 @@ utils
 
     ```javascript
     (async () => {
-        await async.delay()
-        console.log('Hello ...')
-        await async.delay()
-        console.log('... world')
-    }) ()
+        await async.delay();
+        console.log('Hello ...');
+        await async.delay();
+        console.log('... world');
+    }) ();
     ```
 
     > ```javascript
@@ -608,13 +608,13 @@ utils
     (async () => {
         let x = await async.map(
             array.range(10),
-            x => async.timeout(() => {
+            (x) => async.timeout(() => {
                 console.log(4*x);
                 return 4*x;
-            }, array.head(array.sparse(1000, 1)))
-        )
-        console.log(`Result: ${x}`)
-    }) ()
+            }, array.head(array.sparse(1000, 1))),
+        );
+        console.log(`Result: ${x}`);
+    }) ();
     ```
 
     > ```javascript
@@ -639,12 +639,12 @@ utils
     (async () => {
         let x = await async.parMap(
             array.range(10),
-            x => async.timeout(() => {
+            (x) => async.timeout(() => {
                 console.log(4*x);
                 return 4*x;
-            }, array.head(array.sparse(1000, 1)))
-        )
-        console.log(`Result: ${x}`)
+            }, array.head(array.sparse(1000, 1))),
+        );
+        console.log(`Result: ${x}`);
     }) ()
     ```
 
@@ -673,9 +673,9 @@ utils
             (acc, x) => async.timeout(() => {
                 console.log(acc+x);
                 return acc+x;
-            }, 100*x)
-        )
-        console.log(`Accumulated value: ${x}`)
+            }, 100*x),
+        );
+        console.log(`Accumulated value: ${x}`);
     }) ()
     ```
 
@@ -702,7 +702,7 @@ utils
 * Convert UTF-8 string into an array of bytes.
 
     ```javascript
-    codec.stringToBytes('Koń: 🐎')
+    codec.stringToBytes('Koń: 🐎');
     ```
 
     > ```javascript
@@ -713,7 +713,7 @@ utils
 * Convert array of bytes into a UTF-8 string.
 
     ```javascript
-    data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
+    data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138]);
     ```
 
     > ```javascript
@@ -721,7 +721,7 @@ utils
     > ```
 
     ```javascript
-    codec.bytesToString(data)
+    codec.bytesToString(data);
     ```
 
     >```javascript
@@ -733,7 +733,7 @@ utils
     **Base64 encoding in _browser_ and _node.js_.**
 
     ```javascript
-    data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
+    data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176]);
     ```
 
     > ```javascript
@@ -741,7 +741,7 @@ utils
     > ```
 
     ```javascript
-    codec.b64enc(data)
+    codec.b64enc(data);
     ```
 
     > ```javascript
@@ -753,7 +753,7 @@ utils
     **Base64 decoding in _browser_ and _node.js_.**
 
     ```javascript
-    data = codec.b64dec('8J+OqfCfkLA=')
+    data = codec.b64dec('8J+OqfCfkLA=');
     ```
 
     > ```javascript
@@ -761,7 +761,7 @@ utils
     > ```
 
     ```javascript
-    codec.bytesToString(data)
+    codec.bytesToString(data);
     ```
 
     > ```javascript
@@ -776,7 +776,7 @@ utils
 * Convert hex-encoded string to a byte representation.
 
     ```javascript
-    codec.hexToBytes('cabafa87')
+    codec.hexToBytes('cabafa87');
     ```
 
     > ```javascript
@@ -784,7 +784,7 @@ utils
     > ```
 
     ```javascript
-    codec.hexToBytes('0x1234567890ABCDEF')
+    codec.hexToBytes('0x1234567890ABCDEF');
     ```
 
     > ```javascript
@@ -795,7 +795,7 @@ utils
 * Convert byte representation to a hex-encoded string.
 
     ```javascript
-    codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]))
+    codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]));
     ```
 
     > ```javascript
@@ -813,8 +813,8 @@ utils
     codec.concatBytes(
         Uint8Array.from([255, 255, 0, 0]),
         codec.stringToBytes('🌍'),
-        Uint8Array.from([128, 64])
-    )
+        Uint8Array.from([128, 64]),
+    );
     ```
 
     > ```javascript
@@ -827,8 +827,8 @@ utils
     ```javascript
     codec.compareBytes(
         codec.stringToBytes('𝓬𝓸𝓭𝓮'.normalize('NFC')),
-        codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC'))
-    )
+        codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC')),
+    );
     ```
 
     > ```javascript
@@ -836,7 +836,7 @@ utils
     > ```
 
     ```javascript
-    codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]))
+    codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]));
     ```
 
     > ```javascript
@@ -853,11 +853,11 @@ utils
     ```javascript
     func.compose(
         string.quote,
-        string.shorten
+        string.shorten,
     ) (
         "When I find myself in times of trouble",
-        20, string.shorten.END
-    )
+        20, string.shorten.END,
+    );
     ```
 
     > ```javascript
@@ -865,7 +865,7 @@ utils
     > ```
 
     ```javascript
-    stringToHex = func.flow(codec.stringToBytes, codec.bytesToHex)
+    stringToHex = func.flow(codec.stringToBytes, codec.bytesToHex);
     ```
 
     > ```javascript
@@ -873,7 +873,7 @@ utils
     > ```
 
     ```javascript
-    stringToHex('Kaboom! 💥')
+    stringToHex('Kaboom! 💥');
     ```
 
     > ```javascript
@@ -883,7 +883,7 @@ utils
     ```javascript
     func.pipe('4b61626f6f6d2120f09f92a5') (
         codec.hexToBytes, codec.bytesToString
-    )
+    );
     ```
 
     > ```javascript
@@ -895,7 +895,7 @@ utils
     into an evaluation of sequence of functions, each with a single argument.
 
     ```javascript
-    addition = (a, b, c) => a + b + c
+    addition = (a, b, c) => a + b + c;
     ```
 
     > ```javascript
@@ -903,7 +903,7 @@ utils
     > ```
 
     ```javascript
-    func.curry(addition) (1) (2) (3)
+    func.curry(addition) (1) (2) (3);
     ```
 
     > ```javascript
@@ -914,7 +914,7 @@ utils
  * Function arguments rearrangement.
 
     ```javascript
-    console.log('a', 'b', 'c', 'd', 'e')
+    console.log('a', 'b', 'c', 'd', 'e');
     ```
 
     > ```javascript
@@ -922,8 +922,8 @@ utils
     > ```
 
     ```javascript
-    revConsole = rearg(console.log) (4, 3, 2, 1, 0)
-    revConsole('a', 'b', 'c', 'd', 'e')
+    revConsole = rearg(console.log) (4, 3, 2, 1, 0);
+    revConsole('a', 'b', 'c', 'd', 'e');
     ```
 
     > ```javascript
@@ -931,7 +931,7 @@ utils
     > ```
 
     ```javascript
-    revConsole('f') ('g', 'h') ('i') ('j')
+    revConsole('f') ('g', 'h') ('i') ('j');
     ```
 
     > ```javascript
@@ -943,7 +943,7 @@ utils
     **Anonymous recursion in Javascript**.
 
     ```javascript
-    factorial = func.Y(r => n => n <= 0  ?  1  :  n * r(n - 1))
+    factorial = func.Y((r) => (n) => n <= 0  ?  1  :  n * r(n - 1));
     ```
 
     > ```javascript
@@ -951,7 +951,7 @@ utils
     > ```
 
     ```javascript
-    factorial(5)
+    factorial(5);
     ```
 
     > ```javascript
@@ -966,7 +966,7 @@ utils
 * Compute mathematical average of array of numbers.
 
     ```javascript
-    math.average([1, 2, 3, 4, 5])
+    math.average([1, 2, 3, 4, 5]);
     ```
 
     > ```javascript
@@ -977,7 +977,7 @@ utils
 * Base 2 logarithm.
 
     ```javascript
-    math.log2(2**32)
+    math.log2(2**32);
     ```
 
     > ```javascript
@@ -988,7 +988,7 @@ utils
 * Base 10 logarithm.
 
     ```javascript
-    math.log10(1e9)
+    math.log10(1e9);
     ```
 
     > ```javascript
@@ -999,7 +999,7 @@ utils
 * Sum of numbers in passed `array`.
 
     ```javascript
-    math.sum([5, 6, 7, 8, 9, 10])
+    math.sum([5, 6, 7, 8, 9, 10]);
     ```
 
     > ```javascript
@@ -1014,7 +1014,7 @@ utils
 * Allocate a **big** string (of size `2^n`).
 
     ```javascript
-    string.big(5)
+    string.big(5);
     ```
 
     > ```javascript
@@ -1025,7 +1025,7 @@ utils
 * Convert `camelText` to `snake_text`.
 
     ```javascript
-    string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+    string.camelToSnake('someNightsIStayUpCashingInMyBadLuck');
     ```
 
     > ```javascript
@@ -1036,7 +1036,7 @@ utils
 * Quote text.
 
     ```javascript
-    string.quote('div', '<>')
+    string.quote('div', '<>');
     ```
 
     > ```javascript
@@ -1047,7 +1047,7 @@ utils
 * Construct random string of desired length.
 
     ```javascript
-    string.random(16)
+    string.random(16);
     ```
 
     > ```javascript
@@ -1058,7 +1058,7 @@ utils
 * Shorten a given string to the desired length.
 
     ```javascript
-    string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
+    string.shorten('abcdefghijklmnopqrstuvwxyz', 15);
     ```
 
     > ```javascript
@@ -1069,8 +1069,8 @@ utils
     string.shorten(
         'To be, or not to be, that is the question',
         20,
-        string.shorten.END
-    )
+        string.shorten.END,
+    );
     ```
 
     > ```javascript
@@ -1081,7 +1081,7 @@ utils
 * Convert `snake_text` to `camelText`.
 
     ```javascript
-    string.snakeToCamel('some_nights_i_call_it_a_draw')
+    string.snakeToCamel('some_nights_i_call_it_a_draw');
     ```
 
     > ```javascript
@@ -1096,7 +1096,7 @@ utils
 * Apply `path` to an object.
 
     ```javascript
-    struct.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+    struct.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c']);
     ```
 
     > ```javascript
@@ -1108,7 +1108,7 @@ utils
     `entries = [[k1, v1,], ..., [kn, vn,]]`
 
     ```javascript
-    struct.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+    struct.dict([['a', 'b'], ['c', 'd'], ['e', 'f']]);
     ```
 
     > ```javascript
@@ -1123,9 +1123,9 @@ utils
         { what: 'od', i: '?rof dnats' },
         ([k, v,]) => [
             string.capitalize(k),
-            v.split('').reverse().join('')
-        ]
-    )
+            v.split('').reverse().join(''),
+        ],
+    );
     ```
 
     > ```javascript
@@ -1136,7 +1136,7 @@ utils
 * Swap keys with values in a given `Object`.
 
     ```javascript
-    struct.swap({ a: 'b', c: 'd', e: 'f' })
+    struct.swap({ a: 'b', c: 'd', e: 'f' });
     ```
 
     > ```javascript
