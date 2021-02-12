@@ -187,22 +187,22 @@ utils:
 </blockquote>
 <br />
 <h3>example use in ES6 modules code</h3>
-<pre class="prettyprint source lang-javascript"><code>import { range } from &quot;@xcmats/js-toolbox/array&quot;
-import { stringToB64 } from &quot;@xcmats/js-toolbox/codec&quot;
-import { flow } from &quot;@xcmats/js-toolbox/func&quot;
-import { random } from &quot;@xcmats/js-toolbox/string&quot;
+<pre class="prettyprint source lang-javascript"><code>import { range } from &quot;@xcmats/js-toolbox/array&quot;;
+import { stringToB64 } from &quot;@xcmats/js-toolbox/codec&quot;;
+import { flow } from &quot;@xcmats/js-toolbox/func&quot;;
+import { random } from &quot;@xcmats/js-toolbox/string&quot;;
 
 const b64stringify = flow(
     JSON.stringify,
-    stringToB64
-)
+    stringToB64,
+);
 
 let spam = b64stringify({
     tenNumbers: range(10),
-    randomLetters: random(20)
-})
+    randomLetters: random(20),
+});
 
-console.log(&quot;Stringified and b64-encoded object: &quot;, spam)
+console.log(&quot;Stringified and b64-encoded object: &quot;, spam);
 </code></pre>
 <br />
 <h2>use the source</h2>
@@ -430,8 +430,8 @@ and have launched <em>node.js</em> session via <code>npm start</code> then you'r
 and count how many of them exists in each length group.</p>
 <pre class="prettyprint source lang-javascript"><code>array.countBy(
     'exemplo plus quam ratione vivimus'.split(' '),
-    w => w.length
-)
+    w => w.length,
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>{ '4': 2, '7': 3 }
@@ -441,7 +441,7 @@ and count how many of them exists in each length group.</p>
 <li>
 <p>Choose a random element from a given <code>array</code>
 (or a random character from a given <code>string</code>).</p>
-<pre class="prettyprint source lang-javascript"><code>array.draw(string.asciiLetters())
+<pre class="prettyprint source lang-javascript"><code>array.draw(string.asciiLetters());
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'S'
@@ -450,7 +450,7 @@ and count how many of them exists in each length group.</p>
 </li>
 <li>
 <p>Find duplicates in a given <code>array</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>array.findDuplicates(['one', 'two', 'one', 'six', 'two', 'two'])
+<pre class="prettyprint source lang-javascript"><code>array.findDuplicates(['one', 'two', 'one', 'six', 'two', 'two']);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 'one', 'two' ]
@@ -460,7 +460,7 @@ and count how many of them exists in each length group.</p>
 <li>
 <p>Flatten passed <code>array</code>, i.e. transform
 <code>[[1, 2,], ..., [3, 4,],]</code> to <code>[1, 2, ..., 3, 4,]</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }))
+<pre class="prettyprint source lang-javascript"><code>array.flatten(Object.entries({ a: 'b', c: 'd', e: 'f' }));
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 'a', 'b', 'c', 'd', 'e', 'f' ]
@@ -473,13 +473,13 @@ and count how many of them exists in each length group.</p>
 Possible invocations are: <code>range(stop)</code>, <code>range(start, stop)</code>,
 <code>range(start, stop, step)</code>. When <code>start</code> is omitted it defaults to <code>0</code>.
 When <code>step</code> is given, it specifies the increment (or decrement).</p>
-<pre class="prettyprint source lang-javascript"><code>array.range(10)
+<pre class="prettyprint source lang-javascript"><code>array.range(10);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>array.range(-128, -256, -16)
+<pre class="prettyprint source lang-javascript"><code>array.range(-128, -256, -16);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ -128, -144, -160, -176, -192, -208, -224, -240 ]
@@ -490,7 +490,7 @@ When <code>step</code> is given, it specifies the increment (or decrement).</p>
 <p>Randomly shuffle all elements in the given <code>array</code> (Durstenfeld's
 modification to the Fisher-Yates shuffle algorithm).
 The operation is taken in-place.</p>
-<pre class="prettyprint source lang-javascript"><code>array.shuffle(array.range(12))
+<pre class="prettyprint source lang-javascript"><code>array.shuffle(array.range(12));
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 9, 7, 0, 8, 2, 10, 3, 1, 11, 4, 5, 6 ]
@@ -503,7 +503,7 @@ The operation is taken in-place.</p>
 integers in range <code>[0..stop-1]</code>.
 <code>sparse(start, stop, size)</code> returns <code>array</code> of <code>size</code> distinct
 integers in range <code>[start..stop-1]</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>array.sparse(1024, 8)
+<pre class="prettyprint source lang-javascript"><code>array.sparse(1024, 8);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 6, 34, 170, 422, 530, 643, 855, 862 ]
@@ -512,7 +512,7 @@ integers in range <code>[start..stop-1]</code>.</p>
 </li>
 <li>
 <p>&quot;Zip&quot; given arrays using provided <code>f</code> operator.</p>
-<pre class="prettyprint source lang-javascript"><code>array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40])
+<pre class="prettyprint source lang-javascript"><code>array.zipWith((a, b) => a + b) ([1, 2, 3, 4], [10, 20, 30, 40]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[ 11, 22, 33, 44 ]
@@ -521,7 +521,7 @@ integers in range <code>[start..stop-1]</code>.</p>
 </li>
 <li>
 <p>Take every 3rd element from a given array.</p>
-<pre class="prettyprint source lang-javascript"><code>array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+<pre class="prettyprint source lang-javascript"><code>array.takeEvery(3) ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[0, 3, 6, 9]
@@ -535,11 +535,11 @@ integers in range <code>[start..stop-1]</code>.</p>
 <li>
 <p>Delay current async execution by <code>time</code> miliseconds.</p>
 <pre class="prettyprint source lang-javascript"><code>(async () => {
-    await async.delay()
-    console.log('Hello ...')
-    await async.delay()
-    console.log('... world')
-}) ()
+    await async.delay();
+    console.log('Hello ...');
+    await async.delay();
+    console.log('... world');
+}) ();
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -553,13 +553,13 @@ Hello ...
 <pre class="prettyprint source lang-javascript"><code>(async () => {
     let x = await async.map(
         array.range(10),
-        x => async.timeout(() => {
+        (x) => async.timeout(() => {
             console.log(4*x);
             return 4*x;
-        }, array.head(array.sparse(1000, 1)))
-    )
-    console.log(`Result: ${x}`)
-}) ()
+        }, array.head(array.sparse(1000, 1))),
+    );
+    console.log(`Result: ${x}`);
+}) ();
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Promise { &lt;pending> }
@@ -582,12 +582,12 @@ Result: 0,4,8,12,16,20,24,28,32,36
 <pre class="prettyprint source lang-javascript"><code>(async () => {
     let x = await async.parMap(
         array.range(10),
-        x => async.timeout(() => {
+        (x) => async.timeout(() => {
             console.log(4*x);
             return 4*x;
-        }, array.head(array.sparse(1000, 1)))
-    )
-    console.log(`Result: ${x}`)
+        }, array.head(array.sparse(1000, 1))),
+    );
+    console.log(`Result: ${x}`);
 }) ()
 </code></pre>
 <blockquote>
@@ -614,9 +614,9 @@ Result: 0,4,8,12,16,20,24,28,32,36
         (acc, x) => async.timeout(() => {
             console.log(acc+x);
             return acc+x;
-        }, 100*x)
-    )
-    console.log(`Accumulated value: ${x}`)
+        }, 100*x),
+    );
+    console.log(`Accumulated value: ${x}`);
 }) ()
 </code></pre>
 <blockquote>
@@ -641,7 +641,7 @@ Accumulated value: 45
 <ul>
 <li>
 <p>Convert UTF-8 string into an array of bytes.</p>
-<pre class="prettyprint source lang-javascript"><code>codec.stringToBytes('Koń: 🐎')
+<pre class="prettyprint source lang-javascript"><code>codec.stringToBytes('Koń: 🐎');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 75, 111, 197, 132, 58, 32, 240, 159, 144, 142 ]
@@ -650,13 +650,13 @@ Accumulated value: 45
 </li>
 <li>
 <p>Convert array of bytes into a UTF-8 string.</p>
-<pre class="prettyprint source lang-javascript"><code>data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138])
+<pre class="prettyprint source lang-javascript"><code>data = Uint8Array.from([70, 111, 120, 58, 32, 240, 159, 166, 138]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 70, 111, 120, 58, 32, 240, 159, 166, 138 ]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>codec.bytesToString(data)
+<pre class="prettyprint source lang-javascript"><code>codec.bytesToString(data);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'Fox: 🦊'
@@ -666,13 +666,13 @@ Accumulated value: 45
 <li>
 <p>Encode given byte array to Base64.
 <strong>Base64 encoding in <em>browser</em> and <em>node.js</em>.</strong></p>
-<pre class="prettyprint source lang-javascript"><code>data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176])
+<pre class="prettyprint source lang-javascript"><code>data = Uint8Array.from([240, 159, 142, 169, 240, 159, 144, 176]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>codec.b64enc(data)
+<pre class="prettyprint source lang-javascript"><code>codec.b64enc(data);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'8J+OqfCfkLA='
@@ -682,13 +682,13 @@ Accumulated value: 45
 <li>
 <p>Decode given Base64 string to byte array.
 <strong>Base64 decoding in <em>browser</em> and <em>node.js</em>.</strong></p>
-<pre class="prettyprint source lang-javascript"><code>data = codec.b64dec('8J+OqfCfkLA=')
+<pre class="prettyprint source lang-javascript"><code>data = codec.b64dec('8J+OqfCfkLA=');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 240, 159, 142, 169, 240, 159, 144, 176 ]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>codec.bytesToString(data)
+<pre class="prettyprint source lang-javascript"><code>codec.bytesToString(data);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'🎩🐰'
@@ -701,13 +701,13 @@ Accumulated value: 45
 <ul>
 <li>
 <p>Convert hex-encoded string to a byte representation.</p>
-<pre class="prettyprint source lang-javascript"><code>codec.hexToBytes('cabafa87')
+<pre class="prettyprint source lang-javascript"><code>codec.hexToBytes('cabafa87');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 202, 186, 250, 135 ]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>codec.hexToBytes('0x1234567890ABCDEF')
+<pre class="prettyprint source lang-javascript"><code>codec.hexToBytes('0x1234567890ABCDEF');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 18, 52, 86, 120, 144, 171, 205, 239 ]
@@ -716,7 +716,7 @@ Accumulated value: 45
 </li>
 <li>
 <p>Convert byte representation to a hex-encoded string.</p>
-<pre class="prettyprint source lang-javascript"><code>codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]))
+<pre class="prettyprint source lang-javascript"><code>codec.bytesToHex(Uint8Array.from([31, 63, 127, 255]));
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'1f3f7fff'
@@ -732,8 +732,8 @@ Accumulated value: 45
 <pre class="prettyprint source lang-javascript"><code>codec.concatBytes(
     Uint8Array.from([255, 255, 0, 0]),
     codec.stringToBytes('🌍'),
-    Uint8Array.from([128, 64])
-)
+    Uint8Array.from([128, 64]),
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>Uint8Array [ 255, 255, 0, 0, 240, 159, 140, 141, 128, 64 ]
@@ -744,14 +744,14 @@ Accumulated value: 45
 <p>Compare two byte arrays.</p>
 <pre class="prettyprint source lang-javascript"><code>codec.compareBytes(
     codec.stringToBytes('𝓬𝓸𝓭𝓮'.normalize('NFC')),
-    codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC'))
-)
+    codec.stringToBytes('𝐜𝐨𝐝𝐞'.normalize('NFC')),
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>false
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]))
+<pre class="prettyprint source lang-javascript"><code>codec.compareBytes(codec.hexToBytes('0xFF'), Uint8Array.from([255]));
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>true
@@ -766,23 +766,23 @@ Accumulated value: 45
 <p>Function composition.</p>
 <pre class="prettyprint source lang-javascript"><code>func.compose(
     string.quote,
-    string.shorten
+    string.shorten,
 ) (
     &quot;When I find myself in times of trouble&quot;,
-    20, string.shorten.END
-)
+    20, string.shorten.END,
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'&quot;When I find myself …&quot;'
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>stringToHex = func.flow(codec.stringToBytes, codec.bytesToHex)
+<pre class="prettyprint source lang-javascript"><code>stringToHex = func.flow(codec.stringToBytes, codec.bytesToHex);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[Function]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>stringToHex('Kaboom! 💥')
+<pre class="prettyprint source lang-javascript"><code>stringToHex('Kaboom! 💥');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'4b61626f6f6d2120f09f92a5'
@@ -790,7 +790,7 @@ Accumulated value: 45
 </blockquote>
 <pre class="prettyprint source lang-javascript"><code>func.pipe('4b61626f6f6d2120f09f92a5') (
     codec.hexToBytes, codec.bytesToString
-)
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'Kaboom! 💥'
@@ -800,13 +800,13 @@ Accumulated value: 45
 <li>
 <p>Translate the evaluation of function <code>f</code> taking multiple arguments
 into an evaluation of sequence of functions, each with a single argument.</p>
-<pre class="prettyprint source lang-javascript"><code>addition = (a, b, c) => a + b + c
+<pre class="prettyprint source lang-javascript"><code>addition = (a, b, c) => a + b + c;
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[Function: addition]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>func.curry(addition) (1) (2) (3)
+<pre class="prettyprint source lang-javascript"><code>func.curry(addition) (1) (2) (3);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>6
@@ -815,20 +815,20 @@ into an evaluation of sequence of functions, each with a single argument.</p>
 </li>
 <li>
 <p>Function arguments rearrangement.</p>
-<pre class="prettyprint source lang-javascript"><code>console.log('a', 'b', 'c', 'd', 'e')
+<pre class="prettyprint source lang-javascript"><code>console.log('a', 'b', 'c', 'd', 'e');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>a b c d e
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>revConsole = rearg(console.log) (4, 3, 2, 1, 0)
-revConsole('a', 'b', 'c', 'd', 'e')
+<pre class="prettyprint source lang-javascript"><code>revConsole = rearg(console.log) (4, 3, 2, 1, 0);
+revConsole('a', 'b', 'c', 'd', 'e');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>e d c b a
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>revConsole('f') ('g', 'h') ('i') ('j')
+<pre class="prettyprint source lang-javascript"><code>revConsole('f') ('g', 'h') ('i') ('j');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>j i h g f
@@ -838,13 +838,13 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <li>
 <p>Y-combinator - returns fixed point of a higher-order function passed as <code>f</code>.
 <strong>Anonymous recursion in Javascript</strong>.</p>
-<pre class="prettyprint source lang-javascript"><code>factorial = func.Y(r => n => n &lt;= 0  ?  1  :  n * r(n - 1))
+<pre class="prettyprint source lang-javascript"><code>factorial = func.Y((r) => (n) => n &lt;= 0  ?  1  :  n * r(n - 1));
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>[Function]
 </code></pre>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>factorial(5)
+<pre class="prettyprint source lang-javascript"><code>factorial(5);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>120
@@ -857,7 +857,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <ul>
 <li>
 <p>Compute mathematical average of array of numbers.</p>
-<pre class="prettyprint source lang-javascript"><code>math.average([1, 2, 3, 4, 5])
+<pre class="prettyprint source lang-javascript"><code>math.average([1, 2, 3, 4, 5]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>3
@@ -866,7 +866,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Base 2 logarithm.</p>
-<pre class="prettyprint source lang-javascript"><code>math.log2(2**32)
+<pre class="prettyprint source lang-javascript"><code>math.log2(2**32);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>32
@@ -875,7 +875,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Base 10 logarithm.</p>
-<pre class="prettyprint source lang-javascript"><code>math.log10(1e9)
+<pre class="prettyprint source lang-javascript"><code>math.log10(1e9);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>9
@@ -884,7 +884,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Sum of numbers in passed <code>array</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>math.sum([5, 6, 7, 8, 9, 10])
+<pre class="prettyprint source lang-javascript"><code>math.sum([5, 6, 7, 8, 9, 10]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>45
@@ -897,7 +897,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <ul>
 <li>
 <p>Allocate a <strong>big</strong> string (of size <code>2^n</code>).</p>
-<pre class="prettyprint source lang-javascript"><code>string.big(5)
+<pre class="prettyprint source lang-javascript"><code>string.big(5);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -906,7 +906,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Convert <code>camelText</code> to <code>snake_text</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>string.camelToSnake('someNightsIStayUpCashingInMyBadLuck')
+<pre class="prettyprint source lang-javascript"><code>string.camelToSnake('someNightsIStayUpCashingInMyBadLuck');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'some_nights_i_stay_up_cashing_in_my_bad_luck'
@@ -915,7 +915,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Quote text.</p>
-<pre class="prettyprint source lang-javascript"><code>string.quote('div', '&lt;>')
+<pre class="prettyprint source lang-javascript"><code>string.quote('div', '&lt;>');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'&lt;div>'
@@ -924,7 +924,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Construct random string of desired length.</p>
-<pre class="prettyprint source lang-javascript"><code>string.random(16)
+<pre class="prettyprint source lang-javascript"><code>string.random(16);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'MxWGe8MoOss0yUAP'
@@ -933,7 +933,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Shorten a given string to the desired length.</p>
-<pre class="prettyprint source lang-javascript"><code>string.shorten('abcdefghijklmnopqrstuvwxyz', 15)
+<pre class="prettyprint source lang-javascript"><code>string.shorten('abcdefghijklmnopqrstuvwxyz', 15);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'abcdefg…tuvwxyz'
@@ -942,8 +942,8 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <pre class="prettyprint source lang-javascript"><code>string.shorten(
     'To be, or not to be, that is the question',
     20,
-    string.shorten.END
-)
+    string.shorten.END,
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'To be, or not to be…'
@@ -952,7 +952,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Convert <code>snake_text</code> to <code>camelText</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>string.snakeToCamel('some_nights_i_call_it_a_draw')
+<pre class="prettyprint source lang-javascript"><code>string.snakeToCamel('some_nights_i_call_it_a_draw');
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>'someNightsICallItADraw'
@@ -965,7 +965,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <ul>
 <li>
 <p>Apply <code>path</code> to an object.</p>
-<pre class="prettyprint source lang-javascript"><code>struct.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c'])
+<pre class="prettyprint source lang-javascript"><code>struct.access({ a: { b: { c: 42 } } }, ['a', 'b', 'c']);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>42
@@ -975,7 +975,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 <li>
 <p>Construct <code>Object</code> from the result of <code>Object.entries()</code> call.
 <code>entries = [[k1, v1,], ..., [kn, vn,]]</code></p>
-<pre class="prettyprint source lang-javascript"><code>struct.dict([['a', 'b'], ['c', 'd'], ['e', 'f']])
+<pre class="prettyprint source lang-javascript"><code>struct.dict([['a', 'b'], ['c', 'd'], ['e', 'f']]);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>{ a: 'b', c: 'd', e: 'f' }
@@ -988,9 +988,9 @@ revConsole('a', 'b', 'c', 'd', 'e')
     { what: 'od', i: '?rof dnats' },
     ([k, v,]) => [
         string.capitalize(k),
-        v.split('').reverse().join('')
-    ]
-)
+        v.split('').reverse().join(''),
+    ],
+);
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>{ What: 'do', I: 'stand for?' }
@@ -999,7 +999,7 @@ revConsole('a', 'b', 'c', 'd', 'e')
 </li>
 <li>
 <p>Swap keys with values in a given <code>Object</code>.</p>
-<pre class="prettyprint source lang-javascript"><code>struct.swap({ a: 'b', c: 'd', e: 'f' })
+<pre class="prettyprint source lang-javascript"><code>struct.swap({ a: 'b', c: 'd', e: 'f' });
 </code></pre>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>{ b: 'a', d: 'c', f: 'e' }
@@ -1061,7 +1061,7 @@ for more details.</p></article>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Feb 10 2021 10:11:59 GMT+0100 (Central European Standard Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Feb 12 2021 13:23:42 GMT+0100 (Central European Standard Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
