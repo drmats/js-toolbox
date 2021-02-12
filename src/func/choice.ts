@@ -30,11 +30,52 @@ import type {
  * @function choose
  * @param key
  * @param [choices] Plain JS object in form `key: (...In) => Out`
- * @param [defaultChoice] Simple JS function in form `(...In) => Out`
+ * @param [defaultChoice] Simple JS function in form `(...In) => DefaultOut`
  * @param [args] If choice functions accepts arguments, then put an array of
  *     appropriate values here.
- * @returns {Out | undefined} Return value of choosen or default function.
+ * @returns {Out | DefaultOut | undefined} Return value
+ *     of choosen or default function.
  */
+export function choose<
+    Key extends SafeKey,
+> (
+    key: Key
+): undefined;
+export function choose<
+    In extends Arr | [],
+    Out,
+    Key extends SafeKey,
+> (
+    key: Key,
+    choices: Record<Key, Fun<In, Out>>,
+):
+    | Out
+    | undefined;
+export function choose<
+    In extends Arr | [],
+    Out,
+    Key extends SafeKey,
+    DefaultOut,
+> (
+    key: Key,
+    choices: Record<Key, Fun<In, Out>>,
+    defaultChoice: Fun<In, DefaultOut>,
+):
+    | Out
+    | DefaultOut;
+export function choose<
+    In extends Arr | [],
+    Out,
+    Key extends SafeKey,
+    DefaultOut,
+> (
+    key: Key,
+    choices: Record<Key, Fun<In, Out>>,
+    defaultChoice: Fun<In, DefaultOut>,
+    args: In,
+):
+    | Out
+    | DefaultOut;
 export function choose<
     In extends Arr | [],
     Out,
