@@ -32,12 +32,12 @@
  * })()
  * ```
  */
-export declare function map<T> (
-    arr: T[],
-    f: (el: T, i: number) => Promise<T> | T
-): Promise<T[]>;
-export declare function map<T> (arr: T[]): {
-    (f: (el: T, i: number) => Promise<T> | T): Promise<T[]>;
+export declare function map<I, O> (
+    arr: I[],
+    f: (el: I, i: number) => Promise<O> | O
+): Promise<O[]>;
+export declare function map<I, O> (arr: I[]): {
+    (f: (el: I, i: number) => Promise<O> | O): Promise<O[]>;
 };
 
 
@@ -68,12 +68,12 @@ export declare function map<T> (arr: T[]): {
  * })()
  * ```
  */
-export declare function parMap<T> (
-    arr: T[],
-    f: (el: T, i: number) => Promise<T> | T
-): Promise<T[]>;
-export declare function parMap<T> (arr: T[]): {
-    (f: (el: T, i: number) => Promise<T> | T): Promise<T[]>;
+export declare function parMap<I, O> (
+    arr: I[],
+    f: (el: I, i: number) => Promise<O> | O
+): Promise<O[]>;
+export declare function parMap<I, O> (arr: I[]): {
+    (f: (el: I, i: number) => Promise<O> | O): Promise<O[]>;
 };
 
 
