@@ -83,7 +83,7 @@ export declare function createMutex (): {
  * m1.resolve("All right!")  //  or, e.g: m2.reject("Some left!")
  * ```
  */
-export declare function race (...ps: Promise<unknown>[]): Promise<unknown>;
+export declare function race<T> (...ps: Promise<T>[]): Promise<T>;
 
 
 
