@@ -36,8 +36,8 @@ export {
     take,
     takeEvery,
     takeLast,
-    zipWith,
     zip,
+    zipWith,
 } from "./array";
 export * as array from "./array";
 
@@ -79,8 +79,8 @@ export {
     b64ToString,
     bytesToHex,
     bytesToString,
-    concatBytes,
     compareBytes,
+    concatBytes,
     hexToB64,
     hexToBytes,
     random as randomBytes,
@@ -129,12 +129,13 @@ export * as func from "./func";
 export {
     add,
     average,
+    clamp,
     dec,
+    degrees,
     div,
     inc,
+    interpolate,
     inv,
-    clamp,
-    degrees,
     log10,
     log2,
     mod,
@@ -167,9 +168,7 @@ export {
     digits,
     ellipsis,
     empty as emptyString,
-    space as spaceString,
     nl as nlString,
-    tab as tabString,
     padLeft,
     padRight,
     pascalToCamel,
@@ -179,6 +178,8 @@ export {
     shorten,
     snakeToCamel,
     snakeToPascal,
+    space as spaceString,
+    tab as tabString,
     wrap,
 } from "./string";
 export * as string from "./string";
@@ -194,17 +195,17 @@ export type {
     BasicData,
     Data,
     DataArray,
-    DataObject,
     DataIndex,
+    DataObject,
 } from "./struct/data";
 export {
     access,
     assign,
     clone,
-    hashAccessor,
-    keyAccessor,
     dfs,
     dict,
+    hashAccessor,
+    keyAccessor,
     objectMap,
     objectReduce,
     rewrite,
@@ -231,9 +232,9 @@ export type {
 } from "./type/defs";
 export type {
     AllowSubset,
-    ElementType,
     ChooseArrElOrStr,
     ChooseArrOrStr,
+    ElementType,
     NonConstEnum,
     Override,
 } from "./type/utils";

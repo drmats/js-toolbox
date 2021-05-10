@@ -339,6 +339,7 @@ math
 >   degrees: [Function],
 >   div: [Function],
 >   inc: [Function],
+>   interpolate: [Function],
 >   inv: [Function],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
