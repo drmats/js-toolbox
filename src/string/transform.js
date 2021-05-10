@@ -131,8 +131,8 @@ Object.freeze(Object.assign(ellipsis, position))
  * @returns {String}
  */
 export const padLeft = (input = empty(), len = 0, ch = space()) => (
-    (ilen, c) => range(len - ilen).map(() => c).join(empty()) + input
-)(input.length, head(ch))
+    (ilen, c) => range(len - ilen).map(() => c).join(empty()) + String(input)
+)(String(input).length, head(ch))
 
 
 
@@ -150,8 +150,8 @@ export const padLeft = (input = empty(), len = 0, ch = space()) => (
  * @returns {String}
  */
 export const padRight = (input = empty(), len = 0, ch = space()) => (
-    (ilen, c) => input + range(len - ilen).map(() => c).join(empty())
-)(input.length, head(ch))
+    (ilen, c) => String(input) + range(len - ilen).map(() => c).join(empty())
+)(String(input).length, head(ch))
 
 
 
