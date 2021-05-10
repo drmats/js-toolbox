@@ -266,6 +266,7 @@ async
 >   liftr: [Function: liftr],
 >   map: [Function: map],
 >   parMap: [Function: parMap],
+>   promisePool: [Function: promisePool],
 >   race: [Function: race],
 >   rbind: [Function: rbind],
 >   reduce: [Function: reduce],

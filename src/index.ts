@@ -47,6 +47,13 @@ export * as array from "./array";
 /**
  * @see {@link module:async}
  */
+export type {
+    PromisePoolEmptyResult,
+    PromisePoolFulfilledResult,
+    PromisePoolProps,
+    PromisePoolRejectedResult,
+    PromisePoolResult,
+} from "./async/concurrency";
 export {
     ap,
     bind,
@@ -57,6 +64,7 @@ export {
     liftr,
     map as asyncMap,
     parMap,
+    promisePool,
     race as asyncRace,
     rbind,
     reduce as asyncReduce,
