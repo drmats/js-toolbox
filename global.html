@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>codec/op.ts - Documentation</title>
+    <title>Global - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,87 +29,379 @@
 
 <div id="main">
     
-    <h1 class="page-title">codec/op.ts</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * String, TypedArray and Base64 encoders/decoders.
- *
- * @module codec
- * @license Apache-2.0
- * @author drmats
- */
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="random"><span class="type-signature">(async) </span>random<span class="signature">(size<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Uint8Array>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get random bytes.
+Uses Web Crypto API when in browser
+and <code>crypto</code> module when in node.js.</p>
+</div>
 
 
 
 
-import { curry } from "../func/curry";
-import { inc } from "../math/arithmetic";
-import { sum } from "../math/series";
-import { isNumber } from "../type/check";
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="codec_gen.js.html">codec/gen.js</a>, <a href="codec_gen.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
 
-/**
- * Concatenate contents of a given byte arrays (Uint8Array)
- * into a new byte array (Uint8Array).
- *
- * @function concatBytes
- * @param {...Uint8Array} u8as
- * @returns {Uint8Array}
- */
-export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
-    if (u8as.length === 0) return new Uint8Array();
-    if (
-        u8as.some(u8a => !isNumber(u8a.BYTES_PER_ELEMENT))
-    ) throw new TypeError(
-        "codec.concatBytes() - Arguments must be of [TypedArray] type.",
-    );
-    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
-    u8as.reduce((pointer, u8a) => {
-        result.set(u8a, pointer);
-        return pointer + u8a.length;
-    }, 0);
-    return result;
-};
 
 
 
 
-/**
- * Compare two byte arrays.
- *
- * @function compareBytes
- * @param {Uint8Array} u8a1
- * @param {Uint8Array} u8a2
- * @returns {Boolean}
- */
-export const compareBytes = curry((u8a1: Uint8Array, u8a2: Uint8Array) => {
-    if (
-        !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
-        !isNumber(u8a2.BYTES_PER_ELEMENT)
-    ) throw new TypeError(
-        "codec.compareBytes() - Arguments must be of [TypedArray] type.",
-    );
-    if (
-        u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||
-        u8a1.length !== u8a2.length
-    ) return false;
-    for (let i = 0;  i &lt; u8a1.length;  i = inc(i))
-        if (u8a1[i] !== u8a2[i]) return false;
-    return true;
-});
-</code></pre>
-        </article>
-    </section>
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>size</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    64
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;Uint8Array></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="timestamp"><span class="type-signature"></span>timestamp<span class="signature">()</span><span class="type-signature"> &rarr; {Uint8Array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Generate 48 bits (6 bytes) timestamp - milliseconds since epoch.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="codec_gen.js.html">codec/gen.js</a>, <a href="codec_gen.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Uint8Array</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

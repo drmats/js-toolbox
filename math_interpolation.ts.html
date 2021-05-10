@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>codec/op.ts - Documentation</title>
+    <title>math/interpolation.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">codec/op.ts</h1>
+    <h1 class="page-title">math/interpolation.ts</h1>
     
 
     
@@ -40,9 +40,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * String, TypedArray and Base64 encoders/decoders.
+ * Mathematical tools.
  *
- * @module codec
+ * @module math
  * @license Apache-2.0
  * @author drmats
  */
@@ -51,62 +51,27 @@
 
 
 import { curry } from "../func/curry";
-import { inc } from "../math/arithmetic";
-import { sum } from "../math/series";
-import { isNumber } from "../type/check";
 
 
 
 
 /**
- * Concatenate contents of a given byte arrays (Uint8Array)
- * into a new byte array (Uint8Array).
+ * Linear interpolation.
  *
- * @function concatBytes
- * @param {...Uint8Array} u8as
- * @returns {Uint8Array}
+ * @function interpolate
+ * @param {Number} low lower output bound
+ * @param {Number} high higher output bound
+ * @param {Number} val value in range [0,1]
+ *     (extrapolation done beyond that range)
+ * @returns {Number}
  */
-export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
-    if (u8as.length === 0) return new Uint8Array();
-    if (
-        u8as.some(u8a => !isNumber(u8a.BYTES_PER_ELEMENT))
-    ) throw new TypeError(
-        "codec.concatBytes() - Arguments must be of [TypedArray] type.",
-    );
-    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
-    u8as.reduce((pointer, u8a) => {
-        result.set(u8a, pointer);
-        return pointer + u8a.length;
-    }, 0);
-    return result;
-};
-
-
-
-
-/**
- * Compare two byte arrays.
- *
- * @function compareBytes
- * @param {Uint8Array} u8a1
- * @param {Uint8Array} u8a2
- * @returns {Boolean}
- */
-export const compareBytes = curry((u8a1: Uint8Array, u8a2: Uint8Array) => {
-    if (
-        !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
-        !isNumber(u8a2.BYTES_PER_ELEMENT)
-    ) throw new TypeError(
-        "codec.compareBytes() - Arguments must be of [TypedArray] type.",
-    );
-    if (
-        u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||
-        u8a1.length !== u8a2.length
-    ) return false;
-    for (let i = 0;  i &lt; u8a1.length;  i = inc(i))
-        if (u8a1[i] !== u8a2[i]) return false;
-    return true;
-});
+export const interpolate = curry((
+    low: number,
+    high: number,
+    val: number,
+): number =>
+    val * (high - low) + low,
+);
 </code></pre>
         </article>
     </section>

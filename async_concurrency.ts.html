@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>codec/op.ts - Documentation</title>
+    <title>async/concurrency.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">codec/op.ts</h1>
+    <h1 class="page-title">async/concurrency.ts</h1>
     
 
     
@@ -40,73 +40,164 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * String, TypedArray and Base64 encoders/decoders.
+ * Asynchronous tools.
  *
- * @module codec
+ * @module async
  * @license Apache-2.0
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
-import { curry } from "../func/curry";
-import { inc } from "../math/arithmetic";
-import { sum } from "../math/series";
-import { isNumber } from "../type/check";
+
+import {
+    createMutex,
+    race,
+} from "./tools";
+import { random } from "../string/gen";
 
 
 
 
 /**
- * Concatenate contents of a given byte arrays (Uint8Array)
- * into a new byte array (Uint8Array).
- *
- * @function concatBytes
- * @param {...Uint8Array} u8as
- * @returns {Uint8Array}
+ * PromisePool fulfilled result type.
  */
-export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
-    if (u8as.length === 0) return new Uint8Array();
-    if (
-        u8as.some(u8a => !isNumber(u8a.BYTES_PER_ELEMENT))
-    ) throw new TypeError(
-        "codec.concatBytes() - Arguments must be of [TypedArray] type.",
-    );
-    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
-    u8as.reduce((pointer, u8a) => {
-        result.set(u8a, pointer);
-        return pointer + u8a.length;
-    }, 0);
-    return result;
+export interface PromisePoolFulfilledResult&lt;T> {
+    status: "fulfilled";
+    value: T;
+}
+
+
+
+
+/**
+ * PromisePool rejected result type.
+ */
+export interface PromisePoolRejectedResult&lt;E> {
+    status: "rejected";
+    reason: E;
+}
+
+
+
+
+/**
+ * PromisePool empty result type.
+ */
+export interface PromisePoolEmptyResult {
+    status: "empty";
+}
+
+
+
+
+/**
+ * PromisePool result type.
+ */
+export type PromisePoolResult&lt;T, E = any> =
+    | PromisePoolFulfilledResult&lt;T>
+    | PromisePoolRejectedResult&lt;E>
+    | PromisePoolEmptyResult;
+
+
+
+
+/**
+ * PromisePool properties type.
+ */
+export interface PromisePoolProps {
+    id: string;
+}
+
+
+
+
+/**
+ * Imperative promise pool.
+ *
+ * ```
+ * const pool = promisePool(128);
+ * for (element of dataSeries) {
+ *     let r = await pool.exec(async () => {
+ *         // ...
+ *     });
+ *     if (r.status === "fulfilled") {
+ *         // ...
+ *     } else if (r.status === "rejected") {
+ *         // ...
+ *     }
+ * }
+ * let rest = await pool.finish();
+ * ```
+ *
+ * @function promisePool
+ * @param {Number} [poolSize=64]
+ * @returns {Object} exec(t), finish()
+ */
+export const promisePool = &lt;T, E = any>(poolSize = 64): {
+    exec: (
+        task: { (props: PromisePoolProps): Promise&lt;T> },
+    ) => Promise&lt;PromisePoolResult&lt;T, E>>;
+    finish: () => Promise&lt;Array&lt;PromisePoolResult&lt;T, E>>>;
+} => {
+    let slots = {} as Record&lt;string, Promise&lt;{ id: string, value: T }>>;
+
+    return {
+        // execute task in an "empty slot"
+        // awaits (suspends caller) if there are no more empty slots available
+        exec: async (task) => {
+            const
+                m = createMutex(),
+                id = random(8) + String(Date.now());
+
+            // create new slot with locked mutex
+            slots[id] = m.lock();
+
+            // convert slots object to array
+            let locks = Object.values(slots);
+
+            // run the task (don't wait for it to finish in this context)
+            Promise.resolve()
+                .then(() => task({ id }))
+                .then(
+                    (value) => m.resolve({ id, value }),
+                    (reason) => m.reject({ id, reason }),
+                );
+
+            // if poolSize is filled up then await for some resources
+            if (locks.length === poolSize) {
+                try {
+                    let winner = await race(...locks);
+                    delete slots[winner.id];
+                    return { status: "fulfilled", value: winner.value };
+                } catch (winningErr) {
+                    delete slots[winningErr.id];
+                    return { status: "rejected", reason: winningErr.reason };
+                }
+            }
+
+            // resolve immediately otherwise
+            return { status: "empty" };
+        },
+
+        // wait until all tasks are finished
+        finish: async () =>
+            Object.values(slots).length > 0 ?
+                (await Promise.allSettled(
+                    Object.values(slots),
+                )).map((r) =>
+                    r.status === "fulfilled" ? ({
+                        status: r.status,
+                        value: r.value.value,
+                    }) : ({
+                        status: r.status,
+                        reason: r.reason.reason,
+                    }),
+                ) as PromisePoolResult&lt;T, E>[] : [],
+    };
 };
-
-
-
-
-/**
- * Compare two byte arrays.
- *
- * @function compareBytes
- * @param {Uint8Array} u8a1
- * @param {Uint8Array} u8a2
- * @returns {Boolean}
- */
-export const compareBytes = curry((u8a1: Uint8Array, u8a2: Uint8Array) => {
-    if (
-        !isNumber(u8a1.BYTES_PER_ELEMENT)  ||
-        !isNumber(u8a2.BYTES_PER_ELEMENT)
-    ) throw new TypeError(
-        "codec.compareBytes() - Arguments must be of [TypedArray] type.",
-    );
-    if (
-        u8a1.BYTES_PER_ELEMENT !== u8a2.BYTES_PER_ELEMENT  ||
-        u8a1.length !== u8a2.length
-    ) return false;
-    for (let i = 0;  i &lt; u8a1.length;  i = inc(i))
-        if (u8a1[i] !== u8a2[i]) return false;
-    return true;
-});
 </code></pre>
         </article>
     </section>
