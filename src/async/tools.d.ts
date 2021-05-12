@@ -38,33 +38,6 @@ export declare function cancellable (
 
 
 /**
- * Mutual exclusion for asynchronous functions.
- *
- * Example:
- *
- * ```
- * const mutex = async.createMutex()
- *
- * let f = async m => {
- *     let val = await m.lock()
- *     return `Freed with val: ${val}`
- * }
- *
- * f(mutex).then(utils.to_("success")).catch(utils.to_("failure"))
- *
- * mutex.resolve(42)  //  mutex.reject("ERROR")
- * ```
- */
-export declare function createMutex (): {
-    lock: <T>() => Promise<T>,
-    resolve: <T>(value?: T | PromiseLike<T>) => void,
-    reject: (reason?: any) => void,
-};
-
-
-
-
-/**
  * Resolve or reject when any of the promises
  * passed as arguments resolve or reject.
  *

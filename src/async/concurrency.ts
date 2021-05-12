@@ -11,11 +11,50 @@
 
 
 
-import {
-    createMutex,
-    race,
-} from "./tools";
+import { race } from "./tools";
 import { random } from "../string/gen";
+
+
+
+
+/**
+ * Mutual exclusion for asynchronous functions.
+ *
+ * Example:
+ *
+ * ```
+ * const mutex = async.createMutex()
+ *
+ * let f = async m => {
+ *     let val = await m.lock()
+ *     return `Freed with val: ${val}`
+ * }
+ *
+ * f(mutex).then(utils.to_("success")).catch(utils.to_("failure"))
+ *
+ * mutex.resolve(42)  //  mutex.reject("ERROR")
+ * ```
+ *
+ * @function createMutex
+ * @returns {Object} lock(), resolve(), reject()
+ */
+export const createMutex = <T>(): {
+    lock: () => Promise<T>,
+    resolve: (value: T | PromiseLike<T>) => void,
+    reject: (reason?: any) => void,
+} => {
+    let
+        resolve = (_v: T | PromiseLike<T>): void => { /* no-op */ },
+        reject = (_r?: any): void => {/* no-op */ },
+        promise = new Promise<T>(
+            (res, rej) => { resolve = res; reject = rej; },
+        );
+
+    return {
+        lock: () => promise,
+        resolve, reject,
+    };
+};
 
 
 
@@ -74,6 +113,17 @@ export interface PromisePoolProps {
 
 
 /**
+ * PromisePool internal interface.
+ */
+interface PromisePoolSlotType<T> {
+    id: string;
+    value: T;
+}
+
+
+
+
+/**
  * Imperative promise pool.
  *
  * ```
@@ -101,14 +151,14 @@ export const promisePool = <T, E = any>(poolSize = 64): {
     ) => Promise<PromisePoolResult<T, E>>;
     finish: () => Promise<Array<PromisePoolResult<T, E>>>;
 } => {
-    let slots = {} as Record<string, Promise<{ id: string, value: T }>>;
+    let slots = {} as Record<string, Promise<PromisePoolSlotType<T>>>;
 
     return {
         // execute task in an "empty slot"
         // awaits (suspends caller) if there are no more empty slots available
         exec: async (task) => {
             const
-                m = createMutex(),
+                m = createMutex<PromisePoolSlotType<T>>(),
                 id = random(8) + String(Date.now());
 
             // create new slot with locked mutex

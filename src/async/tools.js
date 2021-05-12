@@ -9,6 +9,7 @@
 
 
 
+import { createMutex } from "./concurrency"
 import { curry } from "../func/curry"
 import { Y } from "../func/combinators"
 
@@ -41,43 +42,6 @@ export const cancellable = p => {
         promise: race(p, mutex.lock()),
         cancel: mutex.reject,
         resolve: mutex.resolve,
-    }
-}
-
-
-
-
-/**
- * Mutual exclusion for asynchronous functions.
- *
- * Example:
- *
- * ```
- * const mutex = async.createMutex()
- *
- * let f = async m => {
- *     let val = await m.lock()
- *     return `Freed with val: ${val}`
- * }
- *
- * f(mutex).then(utils.to_("success")).catch(utils.to_("failure"))
- *
- * mutex.resolve(42)  //  mutex.reject("ERROR")
- * ```
- *
- * @function createMutex
- * @returns {Object} lock(), resolve(), reject()
- */
-export const createMutex = () => {
-    let
-        resolve = null, reject = null,
-        promise = new Promise(
-            (res, rej) => { resolve = res; reject = rej },
-        )
-
-    return {
-        lock: () => promise,
-        resolve, reject,
     }
 }
 
