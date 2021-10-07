@@ -181,7 +181,7 @@ export const promisePool = <T, E = any>(poolSize = 64): {
                     let winner = await race(...locks);
                     delete slots[winner.id];
                     return { status: "fulfilled", value: winner.value };
-                } catch (winningErr) {
+                } catch (winningErr: any) {
                     delete slots[winningErr.id];
                     return { status: "rejected", reason: winningErr.reason };
                 }
