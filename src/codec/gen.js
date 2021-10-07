@@ -38,8 +38,8 @@ export const random = isBrowser() ?
             reject(ex)
         }
     }) :
-    async (size = 64) => {
-        const nodeRandomBytes = (await import("crypto")).randomBytes
+    (size = 64) => {
+        const nodeRandomBytes = eval("require(\"crypto\")").randomBytes
         return new Promise((resolve, reject) => nodeRandomBytes(
             size,
             (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf)),
