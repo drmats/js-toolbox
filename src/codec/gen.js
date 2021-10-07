@@ -29,7 +29,7 @@ import { isBrowser } from "../utils/dev"
  * @returns {Promise.<Uint8Array>}
  */
 export const random = isBrowser() ?
-    async (size = 64) => new Promise((resolve, reject) => {
+    (size = 64) => new Promise((resolve, reject) => {
         try {
             let bytes = new Uint8Array(size)
             window.crypto.getRandomValues(bytes)
