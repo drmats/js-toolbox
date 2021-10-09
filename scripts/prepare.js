@@ -60,14 +60,14 @@ require("./module_names")
 [
     "bugs", "contributors", "dependencies", "description",
     "engines", "homepage", "keywords", "license", "name",
-    "repository", "version"
-].forEach(key => { distJson[key] = packageJson[key] });
+    "repository", "version",
+].forEach(key => { distJson[key] = packageJson[key]; });
 writeFileSync(
     `${distDir}/package.json`,
     JSON.stringify(
         Object.entries(distJson)
             .sort(([a, _1], [b, _2]) => a.localeCompare(b))
-            .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {})
+            .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {}),
     ),
 );
 
