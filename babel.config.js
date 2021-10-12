@@ -1,10 +1,16 @@
-"use strict"
+/**
+ * Babel config.
+ *
+ * @license Apache-2.0
+ * @copyright Mat. 2019-present
+ * @author drmats
+ */
 
 
 
 
 // ...
-var
+const
 
     runtimeVersion = require(
         "./package.json",
