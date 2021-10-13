@@ -124,6 +124,10 @@ export const getProcess = () => (
         // eslint-disable-next-line
         () => process.env.BABEL_ENV
     ),
+    DEBUG: handleException(
+        // eslint-disable-next-line
+        () => process.env.DEBUG
+    ),
 })
 
 
