@@ -100,33 +100,38 @@ export const getLibConfig = () => ({
  * @returns {Object}
  */
 export const getProcess = () => (
-    envvars =>
-        // eslint-disable-next-line
-        isObject(process) ? {
-            ...process,
-            // eslint-disable-next-line
-            browser: toBool(process.browser),
-            env: {
-                ...process.env,
-                ...envvars,
+    envvars => handleException(
+        () =>
+            // eslint-disable-next-line no-undef
+            isObject(process) ? {
+                ...process,
+                // eslint-disable-next-line no-undef
+                browser: toBool(process.browser),
+                env: {
+                    ...process.env,
+                    ...envvars,
+                },
+            } : {
+                browser: true,
+                env: envvars,
             },
-        } : {
-            // eslint-disable-next-line
-            browser: toBool(process.browser),
+        () => ({
+            browser: true,
             env: envvars,
-        }
+        }),
+    )
 )({
     NODE_ENV: handleException(
-        // eslint-disable-next-line
-        () => process.env.NODE_ENV
+        // eslint-disable-next-line no-undef
+        () => process.env.NODE_ENV,
     ),
     BABEL_ENV: handleException(
-        // eslint-disable-next-line
-        () => process.env.BABEL_ENV
+        // eslint-disable-next-line no-undef
+        () => process.env.BABEL_ENV,
     ),
     DEBUG: handleException(
-        // eslint-disable-next-line
-        () => process.env.DEBUG
+        // eslint-disable-next-line no-undef
+        () => process.env.DEBUG,
     ),
 })
 
