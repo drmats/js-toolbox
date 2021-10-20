@@ -41,7 +41,10 @@ export declare function getLibConfig (): {
 /**
  * Return global `process` variable if it exists.
  */
-export declare function getProcess (): Record<string, unknown>;
+export declare function getProcess (): {
+    browser: boolean;
+    env: Record<string, unknown>;
+} & Record<string, unknown>;
 
 
 
