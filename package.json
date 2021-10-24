@@ -1,4 +1,5 @@
 {
+    "author": "Mat.",
     "bugs": {
         "url": "https://github.com/drmats/js-toolbox/issues"
     },
@@ -92,5 +93,5 @@
         "type-check": "tsc --noEmit"
     },
     "typings": "dist/index.d.ts",
-    "version": "0.13.3"
+    "version": "0.13.4"
 }
