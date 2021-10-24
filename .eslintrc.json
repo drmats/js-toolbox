@@ -40,6 +40,7 @@
         "no-unexpected-multiline": "error",
         "no-unused-vars": ["warn", {"args": "all", "argsIgnorePattern": "^_"}],
         "object-curly-newline": "off",
+        "object-curly-spacing": ["error", "always"],
         "quotes": ["error", "double"],
         "semi": ["error", "never"],
         "space-before-function-paren": ["error", "always"],
