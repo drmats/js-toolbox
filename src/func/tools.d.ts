@@ -23,10 +23,10 @@ import type {
 export declare function handleException<T> (
     fn: () => T
 ): T | Error;
-export declare function handleException<T> (
+export declare function handleException<T, R> (
     fn: () => T,
-    handler: (ex: Error) => T
-): T | Error;
+    handler: (ex: Error) => R
+): T | R;
 
 
 
