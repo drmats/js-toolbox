@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+"use strict"
+
 
 
 

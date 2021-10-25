@@ -4,6 +4,8 @@
  * @author drmats
  */
 
+"use strict";
+
 // ...
 const { readdirSync } = require("fs");
 

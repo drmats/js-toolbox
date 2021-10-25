@@ -7,8 +7,7 @@
  * @author drmats
  */
 
-
-
+"use strict";
 
 // ...
 const

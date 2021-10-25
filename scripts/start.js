@@ -5,6 +5,8 @@
  * @author drmats
  */
 
+"use strict";
+
 
 
 
@@ -16,5 +18,5 @@ Object.assign(
             .sort(([k1], [k2]) => k1.localeCompare(k2))
             .reduce((m, [k, v]) => (m[k] = v, m), {}),
         e
-    ), {})
+    ), {}),
 );
