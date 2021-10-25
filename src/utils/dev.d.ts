@@ -27,12 +27,12 @@ export declare function devEnv (strict: boolean): boolean;
  * Get useful library configuration variables.
  */
 export declare function getLibConfig (): {
-    dependencies: Record<string, string>,
-    description: string,
-    homepage: string,
-    license: string,
-    name: string,
-    version: string,
+    dependencies: Record<string, string>;
+    description: string;
+    homepage: string;
+    license: string;
+    name: string;
+    version: string;
 };
 
 
