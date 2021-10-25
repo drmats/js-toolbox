@@ -2,7 +2,7 @@
  * Babel config.
  *
  * @license Apache-2.0
- * @copyright Mat. 2019-present
+ * @copyright Mat. 2018-present
  * @author drmats
  */
 

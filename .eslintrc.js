@@ -1,19 +1,31 @@
-{
+/**
+ * ESLint config.
+ *
+ * @license Apache-2.0
+ * @copyright Mat. 2018-present
+ * @author drmats
+ */
+
+
+
+
+// ...
+module.exports = {
     "env": {
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
     },
 
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
     ],
 
     "parser": "@babel/eslint-parser",
 
     "plugins": [
-        "import"
+        "import",
     ],
 
     "root": true,
@@ -26,8 +38,8 @@
                 "exports": "always-multiline",
                 "functions": "always-multiline",
                 "imports": "always-multiline",
-                "objects": "always-multiline"
-            }
+                "objects": "always-multiline",
+            },
         ],
         "indent": ["warn", 4, { "SwitchCase": 1 }],
         "linebreak-style": ["error", "unix"],
@@ -38,7 +50,7 @@
         "no-redeclare": "error",
         "no-undef": "error",
         "no-unexpected-multiline": "error",
-        "no-unused-vars": ["warn", {"args": "all", "argsIgnorePattern": "^_"}],
+        "no-unused-vars": ["warn", { "args": "all", "argsIgnorePattern": "^_" }],
         "object-curly-newline": "off",
         "object-curly-spacing": ["error", "always"],
         "quotes": ["error", "double"],
@@ -48,7 +60,7 @@
 
         "import/first": "error",
         "import/no-amd": "error",
-        "import/no-webpack-loader-syntax": "error"
+        "import/no-webpack-loader-syntax": "error",
     },
 
     "overrides": [
@@ -58,13 +70,13 @@
             "extends": [
                 "eslint:recommended",
                 "plugin:@typescript-eslint/eslint-recommended",
-                "plugin:@typescript-eslint/recommended"
+                "plugin:@typescript-eslint/recommended",
             ],
             "plugins": [
-                "@typescript-eslint"
+                "@typescript-eslint",
             ],
             "rules": {
-                 "@typescript-eslint/comma-dangle": [
+                "@typescript-eslint/comma-dangle": [
                     "error",
                     {
                         "arrays": "always-multiline",
@@ -74,18 +86,18 @@
                         "generics": "always-multiline",
                         "imports": "always-multiline",
                         "objects": "always-multiline",
-                        "tuples": "always-multiline"
-                    }
+                        "tuples": "always-multiline",
+                    },
                 ],
                 "@typescript-eslint/indent": "off",
                 "@typescript-eslint/interface-name-prefix": "off",
-                "@typescript-eslint/no-unused-vars": ["warn", {"args": "all", "argsIgnorePattern": "^_"}],
+                "@typescript-eslint/no-unused-vars": ["warn", { "args": "all", "argsIgnorePattern": "^_" }],
                 "@typescript-eslint/semi": ["error", "always"],
                 "comma-dangle": "off",
                 "indent": ["warn", 4, { "SwitchCase": 1 }],
                 "prefer-const": "off",
-                "semi": "off"
-            }
-        }
-    ]
+                "semi": "off",
+            },
+        },
+    ],
 }
