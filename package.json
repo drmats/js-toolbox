@@ -11,18 +11,18 @@
         }
     ],
     "dependencies": {
-        "@babel/runtime-corejs3": "^7.15.4"
+        "@babel/runtime-corejs3": "^7.16.0"
     },
     "description": "Useful JS utilities.",
     "devDependencies": {
-        "@babel/cli": "7.15.7",
-        "@babel/core": "7.15.8",
-        "@babel/eslint-parser": "7.15.8",
-        "@babel/plugin-proposal-class-properties": "7.14.5",
-        "@babel/plugin-proposal-export-namespace-from": "7.14.5",
-        "@babel/plugin-transform-runtime": "7.15.8",
-        "@babel/preset-env": "7.15.8",
-        "@babel/preset-typescript": "7.15.0",
+        "@babel/cli": "7.16.0",
+        "@babel/core": "7.16.0",
+        "@babel/eslint-parser": "7.16.0",
+        "@babel/plugin-proposal-class-properties": "7.16.0",
+        "@babel/plugin-proposal-export-namespace-from": "7.16.0",
+        "@babel/plugin-transform-runtime": "7.16.0",
+        "@babel/preset-env": "7.16.0",
+        "@babel/preset-typescript": "7.16.0",
         "@typescript-eslint/eslint-plugin": "4.33.0",
         "@typescript-eslint/parser": "4.33.0",
         "babel-plugin-inline-json-import": "0.3.2",
