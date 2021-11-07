@@ -244,6 +244,7 @@ export type {
     ChooseArrOrStr,
     ElementType,
     NonConstEnum,
+    NullToUndefined,
     Override,
 } from "./type/utils";
 export {

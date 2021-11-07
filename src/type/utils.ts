@@ -80,3 +80,11 @@ export type NonConstEnum<
  * (mimics field/method overriding in a class-based inheritance model).
  */
 export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
+
+
+
+
+/**
+ * Non-null type guard - "converts" null to undefined.
+ */
+export type NullToUndefined<T> = T extends null ? undefined : T;
