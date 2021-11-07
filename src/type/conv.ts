@@ -9,7 +9,10 @@
 
 
 
-import type { NullToUndefined } from "./utils";
+import type {
+    NullToUndefined,
+    UndefinedToNull,
+} from "./utils";
 import { curry } from "../func/curry";
 
 
@@ -24,6 +27,19 @@ import { curry } from "../func/curry";
  */
 export const nullToUndefined = <T>(val: T): NullToUndefined<T> =>
     (val === null ? undefined : val) as NullToUndefined<T>;
+
+
+
+
+/**
+ * If `val` is `undefined` then return `null`, else return `val`.
+ *
+ * @function undefinedToNull
+ * @param {T} val
+ * @returns {UndefinedToNull<T>} `val` is ensured not to be `undefined`
+ */
+export const undefinedToNull = <T>(val: T): UndefinedToNull<T> =>
+    (val === undefined ? null : val) as UndefinedToNull<T>;
 
 
 

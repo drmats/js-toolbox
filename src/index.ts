@@ -246,6 +246,7 @@ export type {
     NonConstEnum,
     NullToUndefined,
     Override,
+    UndefinedToNull,
 } from "./type/utils";
 export {
     isArray,
@@ -258,6 +259,7 @@ export {
     minInt,
     nullToUndefined,
     toBool,
+    undefinedToNull,
 } from "./type";
 export * as type from "./type";
 

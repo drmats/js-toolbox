@@ -88,3 +88,11 @@ export type Override<Base, Derived> = Omit<Base, keyof Derived> & Derived;
  * Non-null type guard - "converts" null to undefined.
  */
 export type NullToUndefined<T> = T extends null ? undefined : T;
+
+
+
+
+/**
+ * Non-undefined type guard - "converts" undefined to null.
+ */
+export type UndefinedToNull<T> = T extends undefined ? null : T;

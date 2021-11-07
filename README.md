@@ -427,7 +427,8 @@ type
 >   maxInt: 9007199254740991,
 >   minInt: -9007199254740991,
 >   nullToUndefined: [Function: nullToUndefined],
->   toBool: [Function: toBool] }
+>   toBool: [Function: toBool],
+>   undefinedToNull: [Function: undefinedToNull] }
 > ```
 
 
