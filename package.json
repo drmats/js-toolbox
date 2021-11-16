@@ -93,5 +93,5 @@
         "type-check": "tsc --noEmit"
     },
     "typings": "dist/index.d.ts",
-    "version": "0.13.5"
+    "version": "0.14.0"
 }
