@@ -146,6 +146,7 @@ export {
     inv,
     log10,
     log2,
+    mod,
     mul,
     neg,
     pow,

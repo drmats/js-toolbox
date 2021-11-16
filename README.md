@@ -344,6 +344,7 @@ math
 >   inv: [Function],
 >   log10: [Function: log10],
 >   log2: [Function: log2],
+>   mod: [Function],
 >   mul: [Function],
 >   neg: [Function],
 >   pow: [Function],

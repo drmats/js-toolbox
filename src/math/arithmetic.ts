@@ -106,14 +106,26 @@ export function log2 (x: number): number {
 
 
 /**
- * Remainder - `%` operator.
+ * Modulo - reversed arguments for curried version usage convenience.
  *
- * @function remainder
+ * ```
+ * mod(a, b) === mod(a) (b) === b `mod` a
+ * ```
+ *
+ * ```
+ * let mod10 = mod(10);
+ * mod10(-3) === 7
+ * ```
+ *
+ * @function mod
  * @param a
  * @param b
- * @returns a%b
+ * @returns b `mod` a
  */
-export const remainder = curry((a: number, b: number) => Number(a) % Number(b));
+export const mod = curry(
+    (a: number, b: number): number =>
+        Number(b) - (Number(a) * Math.floor(Number(b) / Number(a))),
+);
 
 
 
@@ -152,6 +164,19 @@ export const neg = mul(-1);
  * @returns a**b
  */
 export const pow = curry((a: number, b: number) => Number(a) ** Number(b));
+
+
+
+
+/**
+ * Remainder - `%` operator.
+ *
+ * @function remainder
+ * @param a
+ * @param b
+ * @returns a%b
+ */
+export const remainder = curry((a: number, b: number) => Number(a) % Number(b));
 
 
 
