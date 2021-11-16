@@ -106,14 +106,14 @@ export function log2 (x: number): number {
 
 
 /**
- * Divides the first argument by the second and returns the remainder.
+ * Remainder - `%` operator.
  *
- * @function mod
+ * @function remainder
  * @param a
  * @param b
  * @returns a%b
  */
-export const mod = curry((a: number, b: number) => Number(a) % Number(b));
+export const remainder = curry((a: number, b: number) => Number(a) % Number(b));
 
 
 
