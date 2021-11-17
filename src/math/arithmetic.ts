@@ -169,14 +169,14 @@ export const pow = curry((a: number, b: number) => Number(a) ** Number(b));
 
 
 /**
- * Remainder - `%` operator.
+ * Remainder - `%` operator - reversed arguments. See `mod`.
  *
  * @function remainder
  * @param a
  * @param b
- * @returns a%b
+ * @returns b%a
  */
-export const remainder = curry((a: number, b: number) => Number(a) % Number(b));
+export const remainder = curry((a: number, b: number) => Number(b) % Number(a));
 
 
 
