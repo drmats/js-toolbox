@@ -195,8 +195,11 @@ Cloning into 'js-toolbox'...
 $ cd js-toolbox
 $ npm i
 $ npm start
+Copying type declarations and module configs ...
+OK.
+Generating type declarations from .ts files.
 Compiling for 'commonjs' ...
-🎉  Successfully compiled 11 files with Babel.
+Successfully compiled 47 files with Babel (1709ms).
 >
 ```
 
