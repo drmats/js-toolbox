@@ -248,6 +248,7 @@ export type {
     NullToUndefined,
     Override,
     UndefinedToNull,
+    Writable,
 } from "./type/utils";
 export {
     isArray,

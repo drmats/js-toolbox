@@ -96,3 +96,11 @@ export type NullToUndefined<T> = T extends null ? undefined : T;
  * Non-undefined type guard - "converts" undefined to null.
  */
 export type UndefinedToNull<T> = T extends undefined ? null : T;
+
+
+
+
+/**
+ * Remove `readonly` specifiers from type keys.
+ */
+export type Writable<T> = { -readonly [K in keyof T]: T[K]; };
