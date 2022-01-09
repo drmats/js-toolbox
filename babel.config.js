@@ -14,10 +14,6 @@
 // ...
 const
 
-    runtimeVersion = require(
-        "./package.json",
-    ).dependencies["@babel/runtime-corejs3"].replace(/^\^?(.*)/, (_, m) => m),
-
     conf = {
         plugins: [
             "babel-plugin-inline-json-import",
@@ -39,7 +35,9 @@ module.exports = function (api) {
 
             // linting and jsdoc generation
             development: {
-                plugins: [...conf.plugins, "@babel/plugin-transform-runtime"],
+                plugins: [
+                    ...conf.plugins,
+                ],
                 presets: [
                     "@babel/preset-env",
                     "@babel/preset-typescript",
@@ -49,14 +47,7 @@ module.exports = function (api) {
             // node-compatible modules generation
             commonjs: {
                 plugins: [
-                    ...conf.plugins, [
-                        "@babel/plugin-transform-runtime",
-                        {
-                            absoluteRuntime: false,
-                            corejs: 3,
-                            version: runtimeVersion,
-                        },
-                    ],
+                    ...conf.plugins,
                 ],
                 comments: false,
                 shouldPrintComment: () => false,
@@ -64,11 +55,15 @@ module.exports = function (api) {
                     [
                         "@babel/preset-env",
                         {
+                            exclude: [
+                                "transform-async-to-generator",
+                                "transform-regenerator",
+                            ],
                             modules: "commonjs",
-                            useBuiltIns: false,
                             targets: {
                                 node: "14.0.0",
                             },
+                            useBuiltIns: false,
                         },
                     ],
                     [
@@ -80,14 +75,7 @@ module.exports = function (api) {
             // es-modules generation
             es: {
                 plugins: [
-                    ...conf.plugins, [
-                        "@babel/plugin-transform-runtime",
-                        {
-                            absoluteRuntime: false,
-                            corejs: 3,
-                            version: runtimeVersion,
-                        },
-                    ],
+                    ...conf.plugins,
                 ],
                 comments: false,
                 shouldPrintComment: () => false,
@@ -95,11 +83,15 @@ module.exports = function (api) {
                     [
                         "@babel/preset-env",
                         {
+                            exclude: [
+                                "transform-async-to-generator",
+                                "transform-regenerator",
+                            ],
                             modules: false,
-                            useBuiltIns: false,
                             targets: {
                                 esmodules: true,
                             },
+                            useBuiltIns: false,
                         },
                     ],
                     [

@@ -10,17 +10,12 @@
             "url": "https://twitter.com/xcmats/"
         }
     ],
-    "dependencies": {
-        "@babel/runtime-corejs3": "^7.16.7"
-    },
     "description": "Useful JS utilities.",
     "devDependencies": {
         "@babel/cli": "7.16.7",
         "@babel/core": "7.16.7",
         "@babel/eslint-parser": "7.16.5",
-        "@babel/plugin-proposal-class-properties": "7.16.7",
         "@babel/plugin-proposal-export-namespace-from": "7.16.7",
-        "@babel/plugin-transform-runtime": "7.16.7",
         "@babel/preset-env": "7.16.7",
         "@babel/preset-typescript": "7.16.7",
         "@typescript-eslint/eslint-plugin": "5.9.0",
