@@ -66,9 +66,9 @@ export declare function range (...args: number[]): number[];
 /**
  * Take every `nth` element from an `arr` array.
  */
-export declare function takeEvery<T> (
+export declare function takeEvery (
     nth: number
-): (arr: T[]) => T[];
+): <T>(arr: T[]) => T[];
 
 
 
