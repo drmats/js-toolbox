@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { pipe } from "../func/combinators"
 import {
     append,

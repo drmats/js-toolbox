@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { hexToBytes } from "./conv"
 import { pipe } from "../func/combinators"
 import { rearg } from "../func/tools"

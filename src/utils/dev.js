@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { handleException } from "../func/tools"
 import { quote } from "../string/transform"
 import { access } from "../struct/data"

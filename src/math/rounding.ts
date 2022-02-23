@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { curry } from "../func/curry";
 
 

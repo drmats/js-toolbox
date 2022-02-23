@@ -8,9 +8,6 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
-
-
 import { race } from "./tools";
 import { random } from "../string/gen";
 

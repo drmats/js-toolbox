@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { createMutex } from "./concurrency"
 import { curry } from "../func/curry"
 import { Y } from "../func/combinators"

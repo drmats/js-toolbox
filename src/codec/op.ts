@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { curry } from "../func/curry";
 import { inc } from "../math/arithmetic";
 import { sum } from "../math/series";

@@ -8,9 +8,6 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
-
-
 import type { AnyKey, Fun } from "../type/defs";
 import { append } from "../array/list";
 import { intersection } from "../array/set";

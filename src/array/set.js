@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { flow } from "../func/combinators"
 import { identity } from "../func/tools"
 import { objectReduce } from "../struct/object"

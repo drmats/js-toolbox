@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import type { NoArgFun } from "../type/defs";
 import {
     isFunction,

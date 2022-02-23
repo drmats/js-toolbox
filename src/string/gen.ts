@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import {
     asciiLetters,
     digits,

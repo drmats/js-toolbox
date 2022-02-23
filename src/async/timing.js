@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { identity } from "../func/tools"
 import { timeUnit } from "../utils/misc"
 

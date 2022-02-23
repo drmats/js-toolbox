@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { access } from "./data"
 import { choose } from "../func/choice"
 import { Y } from "../func/combinators"

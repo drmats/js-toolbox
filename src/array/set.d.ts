@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import type { OneArgFun } from "../type/defs";
 
 

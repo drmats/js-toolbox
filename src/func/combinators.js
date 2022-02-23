@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { head } from "../array/list"
 
 

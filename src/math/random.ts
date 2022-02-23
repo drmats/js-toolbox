@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { maxInt } from "../type/consts";
 
 

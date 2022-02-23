@@ -6,9 +6,6 @@
  * @author drmats
  */
 
-
-
-
 import { roundIfClose } from "./rounding";
 import { curry } from "../func/curry";
 
