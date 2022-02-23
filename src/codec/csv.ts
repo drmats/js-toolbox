@@ -49,6 +49,6 @@ export const csv = (input: string, sep = ","): string[][] => {
                 return fields;
             })
             // filter-out non-parsed lines
-            .filter(line => isArray(line))
+            .filter(isArray)
      ) as string[][];
 };
