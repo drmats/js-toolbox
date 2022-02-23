@@ -20,8 +20,8 @@ import {
  * Parse input string as a CSV data.
  *
  * @function csv
- * @param {String} input
- * @param {String} [sep]
+ * @param {String} input csv text
+ * @param {String} [sep=","] default field separator
  * @returns Array of parsed lines - each line is an array of string fields.
  */
 export const csv = (input: string, sep = ","): string[][] => {
