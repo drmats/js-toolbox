@@ -290,6 +290,7 @@ codec
 >   compareBytes: [Function: compareBytes],
 >   stringToBytes: [Function],
 >   bytesToString: [Function],
+>   csv: [Function],
 >   hexToBytes: [Function: hexToBytes],
 >   bytesToHex: [Function: bytesToHex],
 >   b64dec: [Function],

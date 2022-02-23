@@ -89,6 +89,7 @@ export {
     bytesToString,
     compareBytes,
     concatBytes,
+    csv,
     hexToB64,
     hexToBytes,
     random as randomBytes,
