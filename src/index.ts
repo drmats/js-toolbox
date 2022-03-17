@@ -246,6 +246,7 @@ export type {
     ChooseArrOrStr,
     ElementType,
     NonConstEnum,
+    Nullable,
     NullToUndefined,
     Override,
     UndefinedToNull,

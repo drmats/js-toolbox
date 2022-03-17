@@ -101,3 +101,11 @@ export type UndefinedToNull<T> = T extends undefined ? null : T;
  * Remove `readonly` specifiers from type keys.
  */
 export type Writable<T> = { -readonly [K in keyof T]: T[K]; };
+
+
+
+
+/**
+ * Allow mapped type values to be of `null` type.
+ */
+export type Nullable<T> = { [K in keyof T]: T[K] | null; };
