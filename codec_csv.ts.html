@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils/dev.js - Documentation</title>
+    <title>codec/csv.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils/dev.js</h1>
+    <h1 class="page-title">codec/csv.ts</h1>
     
 
     
@@ -40,184 +40,59 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Various tools.
+ * Comma-separated-values format tools.
  *
- * @module utils
+ * @module codec
  * @license Apache-2.0
  * @author drmats
  */
 
-import { handleException } from "../func/tools"
-import { quote } from "../string/transform"
-import { access } from "../struct/data"
+import { isArray } from "../type/check";
+import { init } from "../array/list";
 import {
-    isObject,
-    isString,
-} from "../type/check"
-import { toBool } from "../type/conv"
-import {
-    dependencies,
-    description,
-    homepage,
-    license,
-    name,
-    version,
-} from "../../dist/package.json"
+    empty,
+    nl,
+} from "../string/consts";
 
 
 
 
 /**
- * Determine runtime environment (is it development or not?).
- * `devEnv() -> true/false`
+ * Parse input string as a CSV data.
  *
- * When `strict` is not set to `true` then "development environment"
- * can be simulated by storing value of any type under "dev" key
- * in browser's sessionStorage, e.g. `sessionStorage[dev] = true`.
- *
- * @function devEnv
- * @param {Boolean} [strict=false]
- * @returns {Boolean}
+ * @function csv
+ * @param {String} input csv text
+ * @param {String} [sep=","] default field separator
+ * @returns Array of parsed lines - each line is an array of string fields.
  */
-export const devEnv = (strict = false) =>
-    (
-        // if you're in browser and not in strict mode
-        // then check if there is "dev" key in `sessionStorage`
-        isBrowser()  &amp;&amp;  !strict ?
-            handleException(
-                () => Object.prototype.hasOwnProperty.call(
-                    sessionStorage, "dev",
-                ),
-                () => false,
-            ) : false
-    )  ||  (
-        // or if there is a `string` under `process.env.NODE_ENV`
-        // and it is not equal to "production"
-        isString(access(getProcess(), ["env", "NODE_ENV"]))  &amp;&amp;
-        access(getProcess(), ["env", "NODE_ENV"]) !== "production"
-    )  ||  (
-        // or, maybe, you're not in browser
-        // and there is no `string` under `process.env.NODE_ENV`,
-        // which happens in "bare" node.js console
-        !isBrowser()  &amp;&amp;
-        !isString(access(getProcess(), ["env", "NODE_ENV"]))
-    )  ||  (
-        // or... you're in babel context and appropriate env. var is set
-        !isBrowser()  &amp;&amp;
-        access(
-            getProcess(), ["env", "BABEL_ENV"], "production",
-        ) !== "production"
-    )
-
-
-
-
-/**
- * Get useful library configuration variables.
- *
- * @function getLibConfig
- * @returns {Object}
- */
-export const getLibConfig = () => ({
-    dependencies,
-    description,
-    homepage,
-    license,
-    name,
-    version,
-})
-
-
-
-
-/**
- * Return global `process` variable if it exists.
- * Also give "transform-inline-environment-variables" plugin a chance.
- *
- * @function getProcess
- * @returns {Object}
- */
-export const getProcess = () => (
-    envvars => handleException(
-        () =>
-            // eslint-disable-next-line no-undef
-            isObject(process) ? {
-                ...process,
-                // eslint-disable-next-line no-undef
-                browser: toBool(process.browser),
-                env: {
-                    ...process.env,
-                    ...envvars,
-                },
-            } : {
-                browser: true,
-                env: envvars,
-            },
-        () => ({
-            browser: true,
-            env: envvars,
-        }),
-    )
-)({
-    NODE_ENV: handleException(
-        // eslint-disable-next-line no-undef
-        () => process.env.NODE_ENV,
-    ),
-    BABEL_ENV: handleException(
-        // eslint-disable-next-line no-undef
-        () => process.env.BABEL_ENV,
-    ),
-    DEBUG: handleException(
-        // eslint-disable-next-line no-undef
-        () => process.env.DEBUG,
-    ),
-})
-
-
-
-
-/**
- * Check current runtime environment.
- *
- * @function isBrowser
- * @returns {Boolean}
- */
-export const isBrowser = () => toBool(getProcess().browser)
-
-
-
-
-/**
- * Assign argument to the global object.
- * Async-console-dev-helper.
- *
- * @function to_
- * @param {String} name
- * @returns {Function} (*) => *
- */
-export const to_ = (name = "_") =>
-    val => {
-        // eslint-disable-next-line no-console
-        console.log(`${name} = ${quote(typeof val, "[]")}`)
-        handleException(
-            () => {
-                (window || self)[name] = val
-                // eslint-disable-next-line no-console
-                console.log(val)
-            },
-            () => {
-                if (!isBrowser()) {
-                    // hide the repl require from webpack
-                    let { repl } = eval("require(\"repl\")")
-                    repl.context[name] = val
-                    // eslint-disable-next-line no-console
-                    console.log(val)
-                    repl.context.process.stdout.write(repl._prompt)
-                }
-            },
-        )
-        return val
-    }
+export const csv = (input: string, sep = ","): string[][] => {
+    const field = new RegExp(`".*"${sep}|[^${sep}]*${sep}`, "g");
+    return (
+        input
+            // CRLF -> LF
+            .replace(/\r\n/g, nl())
+            // split to lines
+            .split(nl())
+            // filter-out empty lines
+            .filter(line => line !== empty())
+            // parse every line
+            .map(line => {
+                // match quoted and unquoted fields
+                const fields = (line + sep).match(field);
+                if (fields)
+                    return fields
+                        // remove last character (comma sign) from every field
+                        .map(v => init(v))
+                        // remove surrounding quotation marks if they exist
+                        .map(v => v.replace(/"(.*)"/, (_, x) => x))
+                        // replace all occurences of doubled quotes
+                        .map(v => v.replace(/""/g, "\""));
+                return fields;
+            })
+            // filter-out non-parsed lines
+            .filter(isArray)
+     ) as string[][];
+};
 </code></pre>
         </article>
     </section>
