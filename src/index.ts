@@ -229,6 +229,24 @@ export * as struct from "./struct";
 /**
  * @see {@link module:type}
  */
+export {
+    isArray,
+    isBoolean,
+    isFunction,
+    isNumber,
+    isObject,
+    isString,
+} from "./type/check";
+export {
+    maxInt,
+    minInt,
+} from "./type/consts";
+export {
+    lazyNullishCoalesce,
+    nullToUndefined,
+    toBool,
+    undefinedToNull,
+} from "./type/conv";
 export type {
     AnyKey,
     Arr,
@@ -241,6 +259,22 @@ export type {
     SafeKey,
 } from "./type/defs";
 export type {
+    Append,
+    Cons,
+    Head,
+    Id,
+    Init,
+    Intersection,
+    Last,
+    Length,
+    Prefixes,
+    Reverse,
+    Suffixes,
+    Tail,
+    Union,
+    Zip,
+} from "./type/list";
+export type {
     AllowSubset,
     ChooseArrElOrStr,
     ChooseArrOrStr,
@@ -252,19 +286,6 @@ export type {
     UndefinedToNull,
     Writable,
 } from "./type/utils";
-export {
-    isArray,
-    isFunction,
-    isNumber,
-    isObject,
-    isString,
-    lazyNullishCoalesce,
-    maxInt,
-    minInt,
-    nullToUndefined,
-    toBool,
-    undefinedToNull,
-} from "./type";
 export * as type from "./type";
 
 

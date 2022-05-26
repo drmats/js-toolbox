@@ -424,6 +424,7 @@ type
 
 > ```javascript
 > { isArray: [Function: isArray],
+>   isBoolean: [Function: isBoolean],
 >   isFunction: [Function: isFunction],
 >   isNumber: [Function: isNumber],
 >   isObject: [Function: isObject],

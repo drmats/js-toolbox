@@ -79,3 +79,16 @@ export const isObject = (o: unknown): o is JSAnyObj =>
  */
 export const isString = (s: unknown): s is string =>
     s != null  &&  "string" === typeof s;
+
+
+
+
+/**
+ * Determine if a given value is a `Boolean`.
+ *
+ * @function isBoolean
+ * @param {any} b
+ * @returns {Boolean}
+ */
+export const isBoolean = (b: unknown): b is boolean =>
+    b != null  &&  "boolean" === typeof b;
