@@ -38,9 +38,9 @@ import { isNumber } from "../type/check"
  */
 export const countBy = (arr, iteratee = identity) =>
     arr.reduce((acc, el) => (
-        key => isNumber(acc[key]) ?
-            { ...acc, [key]: acc[key] + 1 } :
-            { ...acc, [key]: 1 }
+        key => isNumber(acc[key])
+            ? { ...acc, [key]: acc[key] + 1 }
+            : { ...acc, [key]: 1 }
     )(iteratee(el)), Object.create(null))
 
 

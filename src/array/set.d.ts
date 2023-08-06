@@ -28,13 +28,13 @@ import type { OneArgFun } from "../type/defs";
  * )
  * ```
  */
-export declare function countBy <T>(
+export declare function countBy<T extends string | number> (
     arr: T[]
-): Record<string, number>;
-export declare function countBy <T>(
+): Record<string | number, number>;
+export declare function countBy<T> (
     arr: T[],
-    iteratee: OneArgFun<T, number>
-): Record<string, number>;
+    iteratee: OneArgFun<T, string | number>
+): Record<string | number, number>;
 
 
 
@@ -59,12 +59,12 @@ export declare function difference<T> (a: T[], b: T[]): T[];
  * findDuplicates(["one", "two", "one", "three", "six", "two", "two"])
  * ```
  */
-export declare function findDuplicates (
-    arr: unknown[]
+export declare function findDuplicates<T extends string | number> (
+    arr: T[]
 ): string[];
-export declare function findDuplicates (
-    arr: unknown[],
-    iteratee: OneArgFun
+export declare function findDuplicates<T> (
+    arr: T[],
+    iteratee: OneArgFun<T, string | number>
 ): string[];
 
 
@@ -89,12 +89,12 @@ export declare function isSubset<T> (a: T[], b: T[]): boolean;
 /**
  * Create a new array with removed duplicates.
  */
-export declare function removeDuplicates (
-    arr: unknown[]
+export declare function removeDuplicates<T extends string | number> (
+    arr: T[]
 ): string[];
-export declare function removeDuplicates (
-    arr: unknown[],
-    iteratee: OneArgFun
+export declare function removeDuplicates<T> (
+    arr: T[],
+    iteratee: OneArgFun<T, string | number>
 ): string[];
 
 
