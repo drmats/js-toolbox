@@ -28,13 +28,13 @@ import type { OneArgFun } from "../type/defs";
  * )
  * ```
  */
-export declare function countBy (
-    arr: unknown[]
-): Record<string, unknown>;
-export declare function countBy (
-    arr: unknown[],
-    iteratee: OneArgFun
-): Record<string, unknown>;
+export declare function countBy <T>(
+    arr: T[]
+): Record<string, number>;
+export declare function countBy <T>(
+    arr: T[],
+    iteratee: OneArgFun<T, number>
+): Record<string, number>;
 
 
 
