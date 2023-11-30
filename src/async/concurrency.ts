@@ -6,7 +6,11 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/array-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/prefer-function-type */
 
 import { race } from "./tools";
 import { random } from "../string/gen";
@@ -36,16 +40,16 @@ import { random } from "../string/gen";
  * @returns {Object} lock(), resolve(), reject()
  */
 export const createMutex = <T>(): {
-    lock: () => Promise<T>,
-    resolve: (value: T | PromiseLike<T>) => void,
-    reject: (reason?: any) => void,
+    lock: () => Promise<T>;
+    resolve: (value: T | PromiseLike<T>) => void;
+    reject: (reason?: any) => void;
 } => {
     let
         resolve = (_v: T | PromiseLike<T>): void => { /* no-op */ },
-        reject = (_r?: any): void => {/* no-op */ },
-        promise = new Promise<T>(
-            (res, rej) => { resolve = res; reject = rej; },
-        );
+        reject = (_r?: any): void => {/* no-op */ };
+    const promise = new Promise<T>(
+        (res, rej) => { resolve = res; reject = rej; },
+    );
 
     return {
         lock: () => promise,
@@ -148,7 +152,7 @@ export const promisePool = <T, E = any>(poolSize = 64): {
     ) => Promise<PromisePoolResult<T, E>>;
     finish: () => Promise<Array<PromisePoolResult<T, E>>>;
 } => {
-    let slots = {} as Record<string, Promise<PromisePoolSlotType<T>>>;
+    const slots = {} as Record<string, Promise<PromisePoolSlotType<T>>>;
 
     return {
         // execute task in an "empty slot"
@@ -162,7 +166,7 @@ export const promisePool = <T, E = any>(poolSize = 64): {
             slots[id] = m.lock();
 
             // convert slots object to array
-            let locks = Object.values(slots);
+            const locks = Object.values(slots);
 
             // run the task (don't wait for it to finish in this context)
             Promise.resolve()
@@ -175,7 +179,7 @@ export const promisePool = <T, E = any>(poolSize = 64): {
             // if poolSize is filled up then await for some resources
             if (locks.length === poolSize) {
                 try {
-                    let winner = await race(...locks);
+                    const winner = await race(...locks);
                     delete slots[winner.id];
                     return { status: "fulfilled", value: winner.value };
                 } catch (winningErr: any) {

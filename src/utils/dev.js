@@ -6,14 +6,14 @@
  * @author drmats
  */
 
-import { handleException } from "../func/tools"
-import { quote } from "../string/transform"
-import { access } from "../struct/data"
+import { handleException } from "../func/tools";
+import { quote } from "../string/transform";
+import { access } from "../struct/data";
 import {
     isObject,
     isString,
-} from "../type/check"
-import { toBool } from "../type/conv"
+} from "../type/check";
+import { toBool } from "../type/conv";
 import {
     dependencies,
     description,
@@ -21,7 +21,7 @@ import {
     license,
     name,
     version,
-} from "../../dist/package.json"
+} from "../../dist/package.json";
 
 
 
@@ -66,7 +66,7 @@ export const devEnv = (strict = false) =>
         access(
             getProcess(), ["env", "BABEL_ENV"], "production",
         ) !== "production"
-    )
+    );
 
 
 
@@ -84,7 +84,7 @@ export const getLibConfig = () => ({
     license,
     name,
     version,
-})
+});
 
 
 
@@ -130,7 +130,7 @@ export const getProcess = () => (
         // eslint-disable-next-line no-undef
         () => process.env.DEBUG,
     ),
-})
+});
 
 
 
@@ -141,7 +141,7 @@ export const getProcess = () => (
  * @function isBrowser
  * @returns {Boolean}
  */
-export const isBrowser = () => toBool(getProcess().browser)
+export const isBrowser = () => toBool(getProcess().browser);
 
 
 
@@ -157,23 +157,23 @@ export const isBrowser = () => toBool(getProcess().browser)
 export const to_ = (name = "_") =>
     val => {
         // eslint-disable-next-line no-console
-        console.log(`${name} = ${quote(typeof val, "[]")}`)
+        console.log(`${name} = ${quote(typeof val, "[]")}`);
         handleException(
             () => {
-                (window || self)[name] = val
+                (window || self)[name] = val;
                 // eslint-disable-next-line no-console
-                console.log(val)
+                console.log(val);
             },
             () => {
                 if (!isBrowser()) {
                     // hide the repl require from webpack
-                    let { repl } = eval("require(\"repl\")")
-                    repl.context[name] = val
+                    const { repl } = eval("require(\"repl\")");
+                    repl.context[name] = val;
                     // eslint-disable-next-line no-console
-                    console.log(val)
-                    repl.context.process.stdout.write(repl._prompt)
+                    console.log(val);
+                    repl.context.process.stdout.write(repl._prompt);
                 }
             },
-        )
-        return val
-    }
+        );
+        return val;
+    };

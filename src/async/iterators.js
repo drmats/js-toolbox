@@ -6,14 +6,14 @@
  * @author drmats
  */
 
-import { head } from "../array/list"
-import { curry } from "../func/curry"
-import { inc } from "../math/arithmetic"
+import { head } from "../array/list";
+import { curry } from "../func/curry";
+import { inc } from "../math/arithmetic";
 import {
     isArray,
     isFunction,
-} from "../type/check"
-import { btquote } from "../utils/misc"
+} from "../type/check";
+import { btquote } from "../utils/misc";
 
 
 
@@ -48,31 +48,32 @@ import { btquote } from "../utils/misc"
  * @returns {Promise.<Array>}
  */
 export const map = curry((arr, f) => {
-    let results = [], i = 0
+    const results = [];
+    let i = 0;
 
     return new Promise((resolve, reject) => {
-        let progress = (r) => {
-            results.push(r)
-            i = inc(i)
+        const progress = (r) => {
+            results.push(r);
+            i = inc(i);
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, arr[i], i))
-                    .then(progress).catch(reject)
-            } else resolve(results)
-        }
+                    .then(progress).catch(reject);
+            } else resolve(results);
+        };
 
         if (isArray(arr)  &&  isFunction(f)) {
             if (arr.length > 0) {
                 Promise
                     .resolve(f.call(arr, head(arr), 0))
-                    .then(progress).catch(reject)
-            } else return Promise.resolve(results)
+                    .then(progress).catch(reject);
+            } else return Promise.resolve(results);
         } else throw new TypeError(
             "async.map() expected array and function, " +
             `got ${btquote(arr)} and ${btquote(f)}`,
-        )
-    })
-})
+        );
+    });
+});
 
 
 
@@ -110,7 +111,7 @@ export const map = curry((arr, f) => {
  */
 export const parMap = curry((arr, f) =>
     Promise.all(arr.map((el, i) => Promise.resolve(f.call(arr, el, i)))),
-)
+);
 
 
 
@@ -153,27 +154,27 @@ export const parMap = curry((arr, f) =>
  * @returns {Promise.<unknown>}
  */
 export const reduce = curry((arr, f, initAcc) => {
-    let i = 0
+    let i = 0;
 
     return new Promise((resolve, reject) => {
-        let progress = r => {
-            i = inc(i)
+        const progress = r => {
+            i = inc(i);
             if (i < arr.length) {
                 Promise
                     .resolve(f.call(arr, r, arr[i], i))
-                    .then(progress).catch(reject)
-            } else resolve(r)
-        }
+                    .then(progress).catch(reject);
+            } else resolve(r);
+        };
 
         if (isArray(arr)  &&  isFunction(f)) {
             if (arr.length > 0) {
                 Promise
                     .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
-                    .then(progress).catch(reject)
-            } else return Promise.resolve(initAcc)
+                    .then(progress).catch(reject);
+            } else return Promise.resolve(initAcc);
         } else throw new TypeError(
             "async.reduce() expected array and function, " +
             `got ${btquote(arr)} and ${btquote(f)}`,
-        )
-    })
-})
+        );
+    });
+});

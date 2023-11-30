@@ -6,6 +6,9 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import type { ArrStr } from "../type/defs";
 import type { ChooseArrElOrStr } from "../type/utils";
 import { range } from "./tools";
@@ -51,7 +54,7 @@ export function shuffle<T> (arr: readonly T[]): T[] {
     );
 
     for (let i = dec(arr.length);  i > 0;  i -= 1) {
-        let j = randomInt() % inc(i);
+        const j = randomInt() % inc(i);
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
@@ -79,10 +82,8 @@ export function shuffle<T> (arr: readonly T[]): T[] {
 export function sparse (stop: number, size: number): number[];
 export function sparse (start: number, stop: number, size: number): number[];
 export function sparse (...args: number[]): number[] {
-    let
-        start = 0, stop = 0, size = 0,
-        hash = Object.create(null) as Record<number, number>,
-        interval = 0;
+    let start = 0, stop = 0, size = 0, interval = 0;
+    const hash = Object.create(null) as Record<number, number>;
 
     if (args.length === 2) { [stop, size] = args; }
     else if (args.length === 3) { [start, stop, size] = args; }
@@ -97,7 +98,7 @@ export function sparse (...args: number[]): number[] {
     if (size >= interval) { return range(start, stop); }
 
     while (size > 0) {
-        let val = (randomInt() % interval) + start;
+        const val = (randomInt() % interval) + start;
         if (!Object.hasOwnProperty.call(hash, val)) {
             hash[val] = val;
             size = dec(size);

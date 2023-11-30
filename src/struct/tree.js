@@ -6,16 +6,16 @@
  * @author drmats
  */
 
-import { access } from "./data"
-import { choose } from "../func/choice"
-import { Y } from "../func/combinators"
-import { empty } from "../string/consts"
+import { access } from "./data";
+import { choose } from "../func/choice";
+import { Y } from "../func/combinators";
+import { empty } from "../string/consts";
 import {
     isArray,
     isFunction,
     isObject,
-} from "../type/check"
-import { btquote } from "../utils/misc"
+} from "../type/check";
+import { btquote } from "../utils/misc";
 
 
 
@@ -35,7 +35,7 @@ export const hashAccessor = () =>
             "10": () => Object.keys(n).map(k => [n[k], [k]]),
             "01": () => n.map((v, i) => [v, [i]]),
         }, () => [],
-    )
+    );
 
 
 
@@ -70,7 +70,7 @@ export const hashAccessor = () =>
 export const keyAccessor = (...path) =>
     path.length > 0 ?
         n => access(n, path, []).map((c, i) => [c, [...path, i]]) :
-        hashAccessor()
+        hashAccessor();
 
 
 
@@ -113,7 +113,7 @@ export const dfs = (
     ) throw new TypeError(
         "struct.dfs() expected object and 2 functions, " +
         `got ${btquote(tree)}, ${btquote(f)} and ${btquote(children)}`,
-    )
+    );
     return Y(aux =>
         (node, path, position) => f(
             children(node).map(
@@ -121,5 +121,5 @@ export const dfs = (
                     aux(child, path.concat(childPath), p),
             ), node, path, position,
         ),
-    ) (tree, [], 0)
-}
+    ) (tree, [], 0);
+};

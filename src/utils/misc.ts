@@ -89,6 +89,6 @@ export const timing = async <T>(fn: NoArgFun<Promise<T>>): Promise<{
     start: number;
     duration: number;
 }> => {
-    let start = Date.now(), result = await fn();
+    const start = Date.now(), result = await fn();
     return { result, start, duration: Date.now() - start };
 };

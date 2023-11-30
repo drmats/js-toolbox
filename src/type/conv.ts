@@ -6,6 +6,9 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/prefer-function-type */
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+
 import type {
     NullToUndefined,
     UndefinedToNull,

@@ -6,8 +6,8 @@
  * @author drmats
  */
 
-import { identity } from "../func/tools"
-import { timeUnit } from "../utils/misc"
+import { identity } from "../func/tools";
+import { timeUnit } from "../utils/misc";
 
 
 
@@ -37,7 +37,7 @@ export const delay = (
     time = timeUnit.second,
     passCancel = identity,
 ) =>
-    timeout(() => time, time, passCancel)
+    timeout(() => time, time, passCancel);
 
 
 
@@ -82,28 +82,28 @@ export const interval = (
     passClear = identity,
     time = timeUnit.second,
 ) => {
-    let
-        resolve = null, handle = null, result = null,
+    let resolve = null, handle = null, result = null;
+    const
         clear = (...args) => {
-            clearInterval(handle)
-            resolve(...(args.length > 0 ? args : [result]))
-            return result
+            clearInterval(handle);
+            resolve(...(args.length > 0 ? args : [result]));
+            return result;
         },
         promise = new Promise((res, rej) => {
-            resolve = res
+            resolve = res;
             handle = setInterval(() => {
-                try { result = f(clear) }
+                try { result = f(clear); }
                 catch (ex) {
-                    clearInterval(handle)
-                    rej(ex)
+                    clearInterval(handle);
+                    rej(ex);
                 }
-            }, time)
-        })
+            }, time);
+        });
 
-    passClear(clear)
+    passClear(clear);
 
-    return promise
-}
+    return promise;
+};
 
 
 
@@ -134,20 +134,19 @@ export const timeout = (
     time = timeUnit.second,
     passCancel = identity,
 ) => {
-    let
-        reject = null, handle = null,
-        promise = new Promise((res, rej) => {
-            reject = rej
-            handle = setTimeout(() => {
-                try { res(f()) }
-                catch (ex) { rej(ex) }
-            }, time)
-        })
+    let reject = null, handle = null;
+    const promise = new Promise((res, rej) => {
+        reject = rej;
+        handle = setTimeout(() => {
+            try { res(f()); }
+            catch (ex) { rej(ex); }
+        }, time);
+    });
 
     passCancel(reason => {
-        clearTimeout(handle)
-        reject(reason)
-    })
+        clearTimeout(handle);
+        reject(reason);
+    });
 
-    return promise
-}
+    return promise;
+};

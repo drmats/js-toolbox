@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/prefer-function-type */
+
 import type {
     Arr,
     Fun,
@@ -46,7 +48,7 @@ export const bind: {
     /* curried */
     <A, B>(
         ma: Promise<A>,
-    ): { (f: OneArgFun<A, Promise<B>>): Promise<B>; };
+    ): { (f: OneArgFun<A, Promise<B>>): Promise<B> };
 } = curry(async <A, B>(
     ma: Promise<A>,
     f: OneArgFun<A, Promise<B>>,
@@ -71,7 +73,7 @@ export const rbind: {
     /* curried */
     <A, B>(
         f: OneArgFun<A, Promise<B>>,
-    ): { (ma: Promise<A>): Promise<B>; };
+    ): { (ma: Promise<A>): Promise<B> };
 } = curry(async <A, B>(
     f: OneArgFun<A, Promise<B>>,
     ma: Promise<A>,

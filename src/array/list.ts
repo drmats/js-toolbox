@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import type { ArrStr } from "../type/defs";
 import type {
     ChooseArrElOrStr,

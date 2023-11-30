@@ -6,6 +6,8 @@
  * @author drmats
  */
 
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import { isArray } from "../type/check";
 import { init } from "../array/list";
 import {

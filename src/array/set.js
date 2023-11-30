@@ -6,10 +6,10 @@
  * @author drmats
  */
 
-import { flow } from "../func/combinators"
-import { identity } from "../func/tools"
-import { objectReduce } from "../struct/object"
-import { isNumber } from "../type/check"
+import { flow } from "../func/combinators";
+import { identity } from "../func/tools";
+import { objectReduce } from "../struct/object";
+import { isNumber } from "../type/check";
 
 
 
@@ -41,7 +41,7 @@ export const countBy = (arr, iteratee = identity) =>
         key => isNumber(acc[key])
             ? { ...acc, [key]: acc[key] + 1 }
             : { ...acc, [key]: 1 }
-    )(iteratee(el)), Object.create(null))
+    )(iteratee(el)), Object.create(null));
 
 
 
@@ -55,13 +55,13 @@ export const countBy = (arr, iteratee = identity) =>
  * @returns {Array}
  */
 export const difference = (a, b) => {
-    let diff = new Set(a)
+    const diff = new Set(a);
 
-    for (let element of b)
-        diff.delete(element)
+    for (const element of b)
+        diff.delete(element);
 
-    return Array.from(diff)
-}
+    return Array.from(diff);
+};
 
 
 
@@ -88,7 +88,7 @@ export const findDuplicates = (arr, iteratee = identity) =>
         countBy(arr, iteratee),
         (acc, [k, v]) => v > 1  ?  [...acc, k]  :  acc,
         [],
-    )
+    );
 
 
 
@@ -102,15 +102,15 @@ export const findDuplicates = (arr, iteratee = identity) =>
  * @returns {Array}
  */
 export const intersection = (a, b) => {
-    let
+    const
         aa = new Set(a),
-        intersection = new Set()
+        intersection = new Set();
 
-    for (let element of b)
-        if (aa.has(element)) intersection.add(element)
+    for (const element of b)
+        if (aa.has(element)) intersection.add(element);
 
-    return Array.from(intersection)
-}
+    return Array.from(intersection);
+};
 
 
 
@@ -124,16 +124,16 @@ export const intersection = (a, b) => {
  * @returns {Boolean}
  */
 export const isSubset = (a, b) => {
-    let
+    const
         aa = new Set(a),
-        bb = new Set(b)
+        bb = new Set(b);
 
-    if (aa.size > bb.size) return false
-    for (let element of aa)
-        if (!bb.has(element)) return false
+    if (aa.size > bb.size) return false;
+    for (const element of aa)
+        if (!bb.has(element)) return false;
 
-    return true
-}
+    return true;
+};
 
 
 
@@ -149,7 +149,7 @@ export const isSubset = (a, b) => {
 export const removeDuplicates = flow(
     countBy,
     Object.keys.bind(Object),
-)
+);
 
 
 
@@ -163,4 +163,4 @@ export const removeDuplicates = flow(
  * @returns {Boolean}
  */
 export const setEqual = (a, b) =>
-    isSubset(a, b)  &&  isSubset(b, a)
+    isSubset(a, b)  &&  isSubset(b, a);

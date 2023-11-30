@@ -29,7 +29,7 @@ export const concatBytes = (...u8as: Uint8Array[]): Uint8Array => {
     ) throw new TypeError(
         "codec.concatBytes() - Arguments must be of [TypedArray] type.",
     );
-    let result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
+    const result = new Uint8Array(sum(u8as.map(u8a => u8a.length)));
     u8as.reduce((pointer, u8a) => {
         result.set(u8a, pointer);
         return pointer + u8a.length;

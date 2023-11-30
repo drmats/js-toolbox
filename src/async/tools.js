@@ -6,9 +6,9 @@
  * @author drmats
  */
 
-import { createMutex } from "./concurrency"
-import { curry } from "../func/curry"
-import { Y } from "../func/combinators"
+import { createMutex } from "./concurrency";
+import { curry } from "../func/curry";
+import { Y } from "../func/combinators";
 
 
 
@@ -33,14 +33,14 @@ import { Y } from "../func/combinators"
  * @returns {Object} { promise, cancel, resolve }
  */
 export const cancellable = p => {
-    let mutex = createMutex()
+    const mutex = createMutex();
 
     return {
         promise: race(p, mutex.lock()),
         cancel: mutex.reject,
         resolve: mutex.resolve,
-    }
-}
+    };
+};
 
 
 
@@ -70,23 +70,22 @@ export const cancellable = p => {
  * @returns {Promise}
  */
 export const race = (...ps) => {
-    let
-        mutex = createMutex(),
-        resolved = false
+    const mutex = createMutex();
+    let resolved = false;
 
     ps.forEach(async p => {
-        let v = null, e = null, thrown = false
-        try { v = await p }
-        catch (ex) { e = ex; thrown = true }
+        let v = null, e = null, thrown = false;
+        try { v = await p; }
+        catch (ex) { e = ex; thrown = true; }
         if (!resolved) {
-            resolved = true
-            if (!thrown) mutex.resolve(v)
-            else mutex.reject(e)
+            resolved = true;
+            if (!thrown) mutex.resolve(v);
+            else mutex.reject(e);
         }
-    })
+    });
 
-    return mutex.lock()
-}
+    return mutex.lock();
+};
 
 
 
@@ -108,4 +107,4 @@ export const repeat = curry((f, condition) => Y(act =>
         condition() ?
             Promise.resolve().then(f).then(act) :
             Promise.resolve(result),
-)())
+)());

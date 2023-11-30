@@ -6,7 +6,7 @@
  * @author drmats
  */
 
-import { head } from "../array/list"
+import { head } from "../array/list";
 
 
 
@@ -18,7 +18,7 @@ import { head } from "../array/list"
  * @param {Funcion} f
  * @returns {Function} x => f(x)
  */
-export const app = f => x => f(x)
+export const app = f => x => f(x);
 
 
 
@@ -39,7 +39,7 @@ export const app = f => x => f(x)
  * @returns {Function}
  */
 export const compose = (...fs) => (...args) =>
-    head(fs.reduceRight((result, f) => [f(...result)], args))
+    head(fs.reduceRight((result, f) => [f(...result)], args));
 
 
 
@@ -61,7 +61,7 @@ export const compose = (...fs) => (...args) =>
  * @param {...Function} fs
  * @returns {Function}
  */
-export const flow = (...fs) => compose(...fs.reverse())
+export const flow = (...fs) => compose(...fs.reverse());
 
 
 
@@ -83,7 +83,7 @@ export const flow = (...fs) => compose(...fs.reverse())
  * @param {...Function} args
  * @returns {Function}
  */
-export const pipe = (...args) => (...fs) => flow(...fs) (...args)
+export const pipe = (...args) => (...fs) => flow(...fs) (...args);
 
 
 
@@ -95,4 +95,4 @@ export const pipe = (...args) => (...fs) => flow(...fs) (...args)
  * @param {Function} f f: recf => (...args) => { ... recf(...args) ... }
  * @returns {Function}
  */
-export const Y = f => (...args) => f(Y(f)) (...args)
+export const Y = f => (...args) => f(Y(f)) (...args);

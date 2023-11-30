@@ -6,17 +6,17 @@
  * @author drmats
  */
 
-import { findDuplicates } from "../array/set"
+import { findDuplicates } from "../array/set";
 import {
     head,
     last,
-} from "../array/list"
-import { range } from "../array/tools"
-import { curryN } from "./curry"
+} from "../array/list";
+import { range } from "../array/tools";
+import { curryN } from "./curry";
 import {
     isArray,
     isFunction,
-} from "../type/check"
+} from "../type/check";
 
 
 
@@ -30,9 +30,9 @@ import {
  * @returns {any}
  */
 export const handleException = (fn, handler = identity) => {
-    try { return fn() }
-    catch (ex) { return isFunction(handler) ? handler(ex) : ex }
-}
+    try { return fn(); }
+    catch (ex) { return isFunction(handler) ? handler(ex) : ex; }
+};
 
 
 
@@ -44,7 +44,7 @@ export const handleException = (fn, handler = identity) => {
  * @param {any} x
  * @returns {any}
  */
-export const identity = x => x
+export const identity = x => x;
 
 
 
@@ -56,7 +56,7 @@ export const identity = x => x
  * @param {any} x
  * @returns {Function}
  */
-export const lazyish = x => () => x
+export const lazyish = x => () => x;
 
 
 
@@ -70,7 +70,7 @@ export const lazyish = x => () => x
  * @param {Function} () => T
  * @returns {*} T
  */
-export const local = (f = identity) => f()
+export const local = (f = identity) => f();
 
 
 
@@ -112,12 +112,12 @@ export const locker = (n = 1) => (
     ({ memoized, value }) =>
         (thing) => {
             if (memoized < n) {
-                memoized += 1
-                value = thing
+                memoized += 1;
+                value = thing;
             }
-            return value
+            return value;
         }
-) ({ memoized: 0, value: null })
+) ({ memoized: 0, value: null });
 
 
 
@@ -159,21 +159,21 @@ export const locker = (n = 1) => (
  * @returns {Function}
  */
 export const rearg = f => (...indices) => {
-    if (indices.length === 0) return f
+    if (indices.length === 0) return f;
 
     if (findDuplicates(indices).length > 0) throw RangeError(
         "func.rearg: duplicate indices are forbidden",
-    )
+    );
 
     // index mapping "new" -> "old"
-    let indexPairs = indices
+    const indexPairs = indices
         .map((n, o) => [n, o])
-        .sort(([n1], [n2]) => n1 - n2)
+        .sort(([n1], [n2]) => n1 - n2);
 
     return curryN(
         indices.length,
         (...args) => {
-            let
+            const
                 // source arguments: [argument, usageCount]
                 sargs = args.map(a => [a, 0]),
 
@@ -181,31 +181,31 @@ export const rearg = f => (...indices) => {
                 dargs = range(Math.max(
                     head(last(indexPairs)) + 1,
                     args.length,
-                )).map(() => [null, 0]),
+                )).map(() => [null, 0]);
 
-                // not used source arguments
-                rest = null
+            // not used source arguments
+            let rest = null;
 
             // fill destination arguments with source arguments
             // (through index mapping) and mark valid destination arguments
             // and used source arguments
             indexPairs.forEach(([n, o]) => {
-                dargs[n][0] = head(sargs[o])
-                dargs[n][1] += 1
-                sargs[o][1] += 1
-            })
+                dargs[n][0] = head(sargs[o]);
+                dargs[n][1] += 1;
+                sargs[o][1] += 1;
+            });
 
             // filter-out all used source arguments and leave only unused ones
-            rest = sargs.filter((a) => last(a) === 0).reverse()
+            rest = sargs.filter((a) => last(a) === 0).reverse();
 
             // return function `f` invocation with valid destination arguments
             // and not-valid ones replaced with the unused source arguments
             return f(...dargs.map(a => {
-                if (last(a) !== 0) return head(a)
-                let rel = rest.pop()
-                if (isArray(rel)) return head(rel)
-                return rel
-            }))
+                if (last(a) !== 0) return head(a);
+                const rel = rest.pop();
+                if (isArray(rel)) return head(rel);
+                return rel;
+            }));
         },
-    )
-}
+    );
+};

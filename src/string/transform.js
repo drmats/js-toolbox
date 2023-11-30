@@ -9,13 +9,13 @@
 import {
     empty,
     space,
-} from "./consts"
+} from "./consts";
 import {
     head,
     last,
     tail,
-} from "../array/list"
-import { range } from "../array/tools"
+} from "../array/list";
+import { range } from "../array/tools";
 
 
 
@@ -30,7 +30,7 @@ import { range } from "../array/tools"
 export const camelToPascal = str =>
     str  &&  str.length > 0  ?
         head(str).toUpperCase() + tail(str)  :
-        empty()
+        empty();
 
 
 
@@ -45,7 +45,7 @@ export const camelToPascal = str =>
 export const camelToSnake = str =>
     str  ?
         str.replace(/([A-Z])/g, "_$1").toLowerCase()  :
-        empty()
+        empty();
 
 
 
@@ -60,7 +60,7 @@ export const camelToSnake = str =>
 export const capitalize = str =>
     str  &&  str.length > 0  ?
         head(str).toUpperCase() + tail(str).toLowerCase()  :
-        empty()
+        empty();
 
 
 
@@ -76,7 +76,7 @@ const position = Object.freeze({
     BEGIN: 0,
     MIDDLE: 1,
     END: 2,
-})
+});
 
 
 
@@ -95,22 +95,22 @@ const position = Object.freeze({
  * @returns {String}
  */
 export const ellipsis = (str, placing = 1, sep = "…") => {
-    let x = str.split(empty())
+    const x = str.split(empty());
     if (str.length >= sep.length) {
         if (placing === position.MIDDLE) {
             x.splice(
                 Math.floor(x.length / 2) - Math.floor(sep.length / 2),
                 sep.length, sep,
-            )
+            );
         } else if (placing === position.BEGIN) {
-            x.splice(0, sep.length, sep)
+            x.splice(0, sep.length, sep);
         } else if (placing === position.END) {
-            x.splice(x.length - sep.length, sep.length, sep)
+            x.splice(x.length - sep.length, sep.length, sep);
         }
     }
-    return x.join(empty())
-}
-Object.freeze(Object.assign(ellipsis, position))
+    return x.join(empty());
+};
+Object.freeze(Object.assign(ellipsis, position));
 
 
 
@@ -129,7 +129,7 @@ Object.freeze(Object.assign(ellipsis, position))
  */
 export const padLeft = (input = empty(), len = 0, ch = space()) => (
     (ilen, c) => range(len - ilen).map(() => c).join(empty()) + String(input)
-)(String(input).length, head(ch))
+)(String(input).length, head(ch));
 
 
 
@@ -148,7 +148,7 @@ export const padLeft = (input = empty(), len = 0, ch = space()) => (
  */
 export const padRight = (input = empty(), len = 0, ch = space()) => (
     (ilen, c) => String(input) + range(len - ilen).map(() => c).join(empty())
-)(String(input).length, head(ch))
+)(String(input).length, head(ch));
 
 
 
@@ -163,7 +163,7 @@ export const padRight = (input = empty(), len = 0, ch = space()) => (
 export const pascalToCamel = str =>
     str  &&  str.length > 0  ?
         head(str).toLowerCase() + tail(str)  :
-        empty()
+        empty();
 
 
 
@@ -176,7 +176,7 @@ export const pascalToCamel = str =>
  * @returns {String}
  */
 export const pascalToSnake = str =>
-    str  ?  tail(camelToSnake(str))  :  empty()
+    str  ?  tail(camelToSnake(str))  :  empty();
 
 
 
@@ -190,7 +190,7 @@ export const pascalToSnake = str =>
  * @returns {String}
  */
 export const quote = (str = empty(), q = "\"\"") =>
-    `${head(q)}${str}${last(q)}`
+    `${head(q)}${str}${last(q)}`;
 
 
 
@@ -207,20 +207,20 @@ export const quote = (str = empty(), q = "\"\"") =>
  * @returns {String}
  */
 export const shorten = (str, len = Infinity, placing = 1, sep = "…") => {
-    let x = str.split(empty())
+    const x = str.split(empty());
     if (len < str.length) {
         if (placing === position.MIDDLE) {
-            x.splice(Math.floor(len/2), str.length - len)
+            x.splice(Math.floor(len/2), str.length - len);
         } else if (placing === position.BEGIN) {
-            x.splice(0, x.length - len)
+            x.splice(0, x.length - len);
         } else if (placing === position.END) {
-            x.splice(len, x.length - len)
+            x.splice(len, x.length - len);
         }
-        return ellipsis(x.join(empty()), placing, sep)
+        return ellipsis(x.join(empty()), placing, sep);
     }
-    return str
-}
-Object.freeze(Object.assign(shorten, position))
+    return str;
+};
+Object.freeze(Object.assign(shorten, position));
 
 
 
@@ -237,7 +237,7 @@ export const snakeToCamel = str => (
         pascal.length > 0  ?
             head(pascal).toLowerCase() + tail(pascal)  :
             empty()
-)(snakeToPascal(str))
+)(snakeToPascal(str));
 
 
 
@@ -252,7 +252,7 @@ export const snakeToCamel = str => (
 export const snakeToPascal = str =>
     str  ?
         str.split(/_+/g).map(w => capitalize(w)).join(empty())  :
-        empty()
+        empty();
 
 
 
@@ -267,4 +267,4 @@ export const snakeToPascal = str =>
  * @returns {String}
  */
 export const wrap = (str = empty(), prefix = empty(), suffix = empty()) =>
-    `${prefix}${str}${suffix}`
+    `${prefix}${str}${suffix}`;

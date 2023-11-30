@@ -29,9 +29,9 @@
 export declare function cancellable (
     p: Promise<unknown>
 ): {
-    promise: Promise<unknown>,
-    cancel: (reason?: any) => void,
-    resolve: (value?: any) => void,
+    promise: Promise<unknown>;
+    cancel: (reason?: any) => void;
+    resolve: (value?: any) => void;
 };
 
 

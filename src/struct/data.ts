@@ -7,6 +7,9 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 
 import type { AnyKey, Fun } from "../type/defs";
 import { append } from "../array/list";
@@ -183,7 +186,7 @@ export function rewrite<
     if (!h || !(isObject(o) || isArray(o))) return v;
 
     if (isObject(o)) {
-        let data = o as DataObject<T, PropType>;
+        const data = o as DataObject<T, PropType>;
         if (!isString(h) || !(h in data))
             throw new TypeError("struct.rewrite<object> - wrong path");
         return {
@@ -191,7 +194,7 @@ export function rewrite<
             [h]: rewrite(data[h], t, v),
         };
     } else {
-        let data = o as DataArray<T, PropType>;
+        const data = o as DataArray<T, PropType>;
         if (!isNumber(h) || !(h in data))
             throw new TypeError("struct.rewrite<array> - wrong path");
         return append(data.slice(0, h)) ([

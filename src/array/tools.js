@@ -6,19 +6,19 @@
  * @author drmats
  */
 
-import { pipe } from "../func/combinators"
+import { pipe } from "../func/combinators";
 import {
     append,
     drop,
     head,
     take,
     tail,
-} from "./list"
-import { sub } from "../math/arithmetic"
+} from "./list";
+import { sub } from "../math/arithmetic";
 import {
     isArray,
     isNumber,
-} from "../type/check"
+} from "../type/check";
 
 
 
@@ -34,7 +34,7 @@ import {
  * @param {Array.<Array>} arr
  * @returns {Array}
  */
-export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], [])
+export const flatten = arr => arr.reduce((acc, el) => [...acc, ...el], []);
 
 
 
@@ -51,7 +51,7 @@ export const isContinuous = (
     arr,
     neighbour = (a, b) => b - a === 1,
 ) =>
-    isSorted(arr, neighbour)
+    isSorted(arr, neighbour);
 
 
 
@@ -67,7 +67,7 @@ export const isContinuous = (
 export const isSorted = (arr, cmp = (a, b) => a <= b) =>
     isArray(arr) ?
         zip(arr, tail(arr)).every((pair) => cmp(...pair)) :
-        false
+        false;
 
 
 
@@ -92,29 +92,30 @@ export const isSorted = (arr, cmp = (a, b) => a <= b) =>
  * @returns {Array}
  */
 export const range = (...args) => {
-    let start = 0, stop = 0, step = 1, arr = []
+    let start = 0, stop = 0, step = 1;
+    const arr = [];
 
-    if (args.length === 1) { [stop] = args }
-    else if (args.length === 2) { [start, stop] = args }
+    if (args.length === 1) { [stop] = args; }
+    else if (args.length === 2) { [start, stop] = args; }
     else if (args.length === 3) {
-        [start, stop, step] = args
+        [start, stop, step] = args;
         if (step === 0) throw new RangeError(
             "array.range() 'step' argument must not be zero",
-        )
+        );
     } else throw new TypeError(
         `array.range() expected at most 3 arguments, got ${args.length}`,
-    )
+    );
 
     while (
         (start < stop  &&  step > 0)  ||
         (start > stop  &&  step < 0)
     ) {
-        arr[arr.length] = start
-        start += step
+        arr[arr.length] = start;
+        start += step;
     }
 
-    return arr
-}
+    return arr;
+};
 
 
 
@@ -137,7 +138,7 @@ export const takeEvery = nth => arr =>
         ) (
             head,
             arr => arr.reverse(),
-        ) : arr
+        ) : arr;
 
 
 
@@ -159,7 +160,7 @@ export const takeEvery = nth => arr =>
 export const zipWith = f => (...arrs) =>
     range(
         head(arrs.map(arr => arr.length).sort(sub)),
-    ).map(i => f(...arrs.map(arr => arr[i])))
+    ).map(i => f(...arrs.map(arr => arr[i])));
 
 
 
@@ -178,4 +179,4 @@ export const zipWith = f => (...arrs) =>
  * @param {...Array} arrs Arrays to zip.
  * @returns {Array}
  */
-export const zip = zipWith((...args) => args)
+export const zip = zipWith((...args) => args);

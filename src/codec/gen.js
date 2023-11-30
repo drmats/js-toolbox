@@ -6,11 +6,11 @@
  * @author drmats
  */
 
-import { hexToBytes } from "./conv"
-import { pipe } from "../func/combinators"
-import { rearg } from "../func/tools"
-import { padLeft } from "../string/transform"
-import { isBrowser } from "../utils/dev"
+import { hexToBytes } from "./conv";
+import { pipe } from "../func/combinators";
+import { rearg } from "../func/tools";
+import { padLeft } from "../string/transform";
+import { isBrowser } from "../utils/dev";
 
 
 
@@ -28,20 +28,20 @@ import { isBrowser } from "../utils/dev"
 export const random = isBrowser() ?
     (size = 64) => new Promise((resolve, reject) => {
         try {
-            let bytes = new Uint8Array(size)
-            window.crypto.getRandomValues(bytes)
-            resolve(bytes)
+            const bytes = new Uint8Array(size);
+            window.crypto.getRandomValues(bytes);
+            resolve(bytes);
         } catch (ex) {
-            reject(ex)
+            reject(ex);
         }
     }) :
     (size = 64) => {
-        const nodeRandomBytes = eval("require(\"crypto\")").randomBytes
+        const nodeRandomBytes = eval("require(\"crypto\")").randomBytes;
         return new Promise((resolve, reject) => nodeRandomBytes(
             size,
             (err, buf) => err ? reject(err) : resolve(Uint8Array.from(buf)),
-        ))
-    }
+        ));
+    };
 
 
 
@@ -57,4 +57,4 @@ export const timestamp = () =>
         d => d.toString(16),
         rearg(padLeft) (1, 2, 0) (6*2, "0"),
         hexToBytes,
-    )
+    );

@@ -9,10 +9,10 @@
 import {
     head,
     tail,
-} from "../array/list"
-import { compose } from "../func/combinators"
-import { empty } from "../string/consts"
-import { isBrowser } from "../utils/dev"
+} from "../array/list";
+import { compose } from "../func/combinators";
+import { empty } from "../string/consts";
+import { isBrowser } from "../utils/dev";
 
 
 
@@ -26,7 +26,7 @@ import { isBrowser } from "../utils/dev"
  */
 export const stringToBytes = isBrowser() ?
     s => (new TextEncoder("utf-8")).encode(s) :
-    s => Uint8Array.from(Buffer.from(s))
+    s => Uint8Array.from(Buffer.from(s));
 
 
 
@@ -40,7 +40,7 @@ export const stringToBytes = isBrowser() ?
  */
 export const bytesToString = isBrowser() ?
     bytes => (new TextDecoder("utf-8")).decode(bytes) :
-    bytes => Buffer.from(bytes).toString("utf-8")
+    bytes => Buffer.from(bytes).toString("utf-8");
 
 
 
@@ -81,7 +81,7 @@ export const hexToBytes = (hexInput => (
             )
             .map(hexByte => parseInt(hexByte, 16)),
     )
-)(hexInput.replace(/(\s)|(^0x)/g, empty())))
+)(hexInput.replace(/(\s)|(^0x)/g, empty())));
 
 
 
@@ -101,7 +101,7 @@ export const bytesToHex = bytes =>
                 "0" + b.toString(16) :
                 b.toString(16),
         )
-        .join(empty())
+        .join(empty());
 
 
 
@@ -117,7 +117,7 @@ export const b64dec = isBrowser() ?
     s =>
         Uint8Array.from(atob(s).split(empty()).map(c => c.charCodeAt(0))) :
     s =>
-        Uint8Array.from(Buffer.from(s, "base64"))
+        Uint8Array.from(Buffer.from(s, "base64"));
 
 
 
@@ -133,7 +133,7 @@ export const b64enc = isBrowser() ?
     bytes =>
         btoa([...bytes].map(b => String.fromCharCode(b)).join(empty())) :
     bytes =>
-        Buffer.from(bytes).toString("base64")
+        Buffer.from(bytes).toString("base64");
 
 
 
@@ -145,7 +145,7 @@ export const b64enc = isBrowser() ?
  * @param {String} s
  * @returns {String}
  */
-export const b64ToString = compose(bytesToString, b64dec)
+export const b64ToString = compose(bytesToString, b64dec);
 
 
 
@@ -157,7 +157,7 @@ export const b64ToString = compose(bytesToString, b64dec)
  * @param {String} s
  * @returns {String}
  */
-export const stringToB64 = compose(b64enc, stringToBytes)
+export const stringToB64 = compose(b64enc, stringToBytes);
 
 
 
@@ -169,7 +169,7 @@ export const stringToB64 = compose(b64enc, stringToBytes)
  * @param {String} input
  * @returns {String}
  */
-export const b64ToHex = compose(bytesToHex, b64dec)
+export const b64ToHex = compose(bytesToHex, b64dec);
 
 
 
@@ -181,4 +181,4 @@ export const b64ToHex = compose(bytesToHex, b64dec)
  * @param {String} input
  * @returns {String}
  */
-export const hexToB64 = compose(b64enc, hexToBytes)
+export const hexToB64 = compose(b64enc, hexToBytes);
