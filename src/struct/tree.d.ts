@@ -68,7 +68,7 @@ export declare function dfs<T> (
 export declare function dfs<T> (
     tree: JSAnyObj,
     f: (
-        accs: T[],
+        accs: readonly T[],
         node: JSAnyObj,
         path: DataIndex[],
         position: number
@@ -77,7 +77,7 @@ export declare function dfs<T> (
 export declare function dfs<T> (
     tree: JSAnyObj,
     f: (
-        accs: T[],
+        accs: readonly T[],
         node: JSAnyObj,
         path: DataIndex[],
         position: number

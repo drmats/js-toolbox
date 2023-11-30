@@ -119,7 +119,7 @@ export function access<
     PropType extends AnyKey = string,
 > (
     o: Data<T, PropType>,
-    path: DataIndex<PropType | number>[] = [],
+    path: readonly DataIndex<PropType | number>[] = [],
     def?: Data<T, PropType>,
 ): Data<T, PropType> | void {
     try {
@@ -176,7 +176,7 @@ export function rewrite<
     PropType extends AnyKey = string,
 > (
     o: Data<T, PropType>,
-    [h, ...t]: DataIndex<PropType | number>[],
+    [h, ...t]: readonly DataIndex<PropType | number>[],
     v: Data<T, PropType>,
 ): Data<T, PropType> {
 

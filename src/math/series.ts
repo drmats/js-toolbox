@@ -21,7 +21,7 @@ import {
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export function average (arr: number[]): number {
+export function average (arr: readonly number[]): number {
     return sum(arr) / arr.length;
 }
 
@@ -35,7 +35,7 @@ export function average (arr: number[]): number {
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export function product (arr: number[]): number {
+export function product (arr: readonly number[]): number {
     return arr.reduce(mul, 1);
 }
 
@@ -49,6 +49,6 @@ export function product (arr: number[]): number {
  * @param {Array.<Number>} arr
  * @returns {Number}
  */
-export function sum (arr: number[]): number {
+export function sum (arr: readonly number[]): number {
     return arr.reduce(add, 0);
 }

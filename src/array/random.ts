@@ -45,7 +45,7 @@ export function draw<T extends ArrStr> (xs: T): ChooseArrElOrStr<T> {
  * @param {Array} arr
  * @returns {Array}
  */
-export function shuffle<T> (arr: T[]): T[] {
+export function shuffle<T> (arr: readonly T[]): T[] {
     if (!isArray(arr)) throw new TypeError(
         `array.shuffle() - expected array as argument, got [${typeof arr}]`,
     );

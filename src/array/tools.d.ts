@@ -12,7 +12,7 @@
 /**
  * Simple array flattener.
  */
-export declare function flatten<T> (arr: T[][]): T[];
+export declare function flatten<T> (arr: readonly (readonly T[])[]): T[];
 
 
 
@@ -21,11 +21,11 @@ export declare function flatten<T> (arr: T[][]): T[];
  * Checks if a given array is a continuous block.
  */
 export declare function isContinuous<T> (
-    arr: T[]
+    arr: readonly T[],
 ): boolean;
 export declare function isContinuous<T extends (number | bigint)> (
-    arr: T[],
-    neighbour: (a: T, b: T) => boolean
+    arr: readonly T[],
+    neighbour: (a: T, b: T) => boolean,
 ): boolean;
 
 
@@ -35,11 +35,11 @@ export declare function isContinuous<T extends (number | bigint)> (
  * Checks if a given array is sorted.
  */
 export declare function isSorted<T> (
-    arr: T[]
+    arr: readonly T[],
 ): boolean;
 export declare function isSorted<T> (
-    arr: T[],
-    cmp: (a: T, b: T) => boolean
+    arr: readonly T[],
+    cmp: (a: T, b: T) => boolean,
 ): boolean;
 
 
@@ -58,7 +58,7 @@ export declare function isSorted<T> (
  *
  * Imitates Python's `range()`.
  */
-export declare function range (...args: number[]): number[];
+export declare function range (...args: readonly number[]): number[];
 
 
 
@@ -67,8 +67,8 @@ export declare function range (...args: number[]): number[];
  * Take every `nth` element from an `arr` array.
  */
 export declare function takeEvery (
-    nth: number
-): <T>(arr: T[]) => T[];
+    nth: number,
+): <T>(arr: readonly T[]) => T[];
 
 
 
@@ -84,8 +84,8 @@ export declare function takeEvery (
  * ```
  */
 export declare function zipWith<In, Out> (
-    f: (...args: In[]) => Out
-): (...arrs: In[][]) => Out[];
+    f: (...args: readonly In[]) => Out,
+): (...arrs: readonly (readonly In[])[]) => Out[];
 
 
 
@@ -100,4 +100,6 @@ export declare function zipWith<In, Out> (
  * [ [ 1, 'a' ], [ 2, 'b' ], [ 3, 'c' ], [ 4, 'd' ], [ 5, 'e' ] ]
  * ```
  */
-export declare function zip<T> (...arrs: T[][]): T[][];
+export declare function zip<T extends readonly (readonly unknown[])[]> (
+    ...arrs: T,
+): T;

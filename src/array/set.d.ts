@@ -29,11 +29,11 @@ import type { OneArgFun } from "../type/defs";
  * ```
  */
 export declare function countBy<T extends string | number> (
-    arr: T[]
+    arr: readonly T[],
 ): Record<string | number, number>;
 export declare function countBy<T> (
-    arr: T[],
-    iteratee: OneArgFun<T, string | number>
+    arr: readonly T[],
+    iteratee: OneArgFun<T, string | number>,
 ): Record<string | number, number>;
 
 
@@ -42,7 +42,7 @@ export declare function countBy<T> (
 /**
  * Compute array as `a` \ `b` (set difference).
  */
-export declare function difference<T> (a: T[], b: T[]): T[];
+export declare function difference<T> (a: readonly T[], b: readonly T[]): T[];
 
 
 
@@ -60,11 +60,11 @@ export declare function difference<T> (a: T[], b: T[]): T[];
  * ```
  */
 export declare function findDuplicates<T extends string | number> (
-    arr: T[]
+    arr: readonly T[],
 ): string[];
 export declare function findDuplicates<T> (
-    arr: T[],
-    iteratee: OneArgFun<T, string | number>
+    arr: readonly T[],
+    iteratee: OneArgFun<T, string | number>,
 ): string[];
 
 
@@ -73,7 +73,10 @@ export declare function findDuplicates<T> (
 /**
  * Compute array that is an intersection of `a` and `b` arrays.
  */
-export declare function intersection<T> (a: T[], b: T[]): T[];
+export declare function intersection<T> (
+    a: readonly T[],
+    b: readonly T[],
+): T[];
 
 
 
@@ -81,7 +84,10 @@ export declare function intersection<T> (a: T[], b: T[]): T[];
 /**
  * Check if array `a` is a subset of array `b`.
  */
-export declare function isSubset<T> (a: T[], b: T[]): boolean;
+export declare function isSubset<T> (
+    a: readonly T[],
+    b: readonly T[],
+): boolean;
 
 
 
@@ -90,10 +96,10 @@ export declare function isSubset<T> (a: T[], b: T[]): boolean;
  * Create a new array with removed duplicates.
  */
 export declare function removeDuplicates<T extends string | number> (
-    arr: T[]
+    arr: readonly T[],
 ): string[];
 export declare function removeDuplicates<T> (
-    arr: T[],
+    arr: readonly T[],
     iteratee: OneArgFun<T, string | number>
 ): string[];
 
@@ -103,4 +109,7 @@ export declare function removeDuplicates<T> (
 /**
  * Check set equality of two arrays treated as sets.
  */
-export declare function setEqual<T> (a: T[], b: T[]): boolean;
+export declare function setEqual<T> (
+    a: readonly T[],
+    b: readonly T[],
+): boolean;

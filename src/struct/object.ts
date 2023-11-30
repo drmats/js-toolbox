@@ -54,7 +54,7 @@ export const clone = flow(
  * @returns {Object}
  */
 export function dict<T> (
-    entries: [PropertyKey, T][],
+    entries: readonly [PropertyKey, T][],
 ): { [k in PropertyKey]?: T; } {
     return entries.reduce(
         (acc, [k, v]) => ({ ...acc, [k]: v }), {},
