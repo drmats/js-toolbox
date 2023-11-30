@@ -17,7 +17,7 @@ const
     conf = {
         plugins: [
             "babel-plugin-inline-json-import",
-            "@babel/plugin-proposal-export-namespace-from",
+            "@babel/plugin-transform-export-namespace-from",
         ],
     }
 
