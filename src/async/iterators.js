@@ -64,7 +64,7 @@ export const map = curry((arr, f) => {
                 Promise
                     .resolve(f.call(arr, head(arr), 0))
                     .then(progress).catch(reject);
-            } else return Promise.resolve(results);
+            } else resolve(results);
         } else throw new TypeError(
             "async.map() expected array and function, " +
             `got ${btquote(arr)} and ${btquote(f)}`,
@@ -168,7 +168,7 @@ export const reduce = curry((arr, f, initAcc) => {
                 Promise
                     .resolve(f.call(arr, initAcc ?? head(arr), head(arr), 0))
                     .then(progress).catch(reject);
-            } else return Promise.resolve(initAcc);
+            } else resolve(initAcc);
         } else throw new TypeError(
             "async.reduce() expected array and function, " +
             `got ${btquote(arr)} and ${btquote(f)}`,
