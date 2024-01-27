@@ -113,15 +113,21 @@ export type DataIndex<
  * @returns {Data | undefined}
  */
 export function access<
-    T = BasicData,
+    IT = BasicData,
     PropType extends AnyKey = string,
+    OT = BasicData,
 > (
-    o: Data<T, PropType>,
+    o: Data<IT, PropType>,
     path: readonly DataIndex<PropType | number>[] = [],
-    def?: Data<T, PropType>,
-): Data<T, PropType> | void {
+    def?: Data<OT, PropType>,
+): Data<OT, PropType> | undefined {
     try {
-        return path.reduce((acc: any, p) => acc[p], o) ?? def;
+        return (
+            path.reduce(
+                (acc: any, p) => acc[p] as Data<IT, PropType>,
+                o,
+            ) as Data<OT, PropType>
+        ) ?? def;
     } catch (_) {
         return def;
     }
