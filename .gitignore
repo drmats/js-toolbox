@@ -6,3 +6,9 @@ dist
 
 # npm
 package-lock.json
+
+# testing
+coverage
+
+# IDE
+.idea
