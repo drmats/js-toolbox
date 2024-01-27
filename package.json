@@ -12,32 +12,31 @@
     ],
     "description": "Useful JS utilities.",
     "devDependencies": {
-        "@babel/cli": "7.23.4",
-        "@babel/core": "7.23.5",
-        "@babel/eslint-parser": "7.23.3",
-        "@babel/plugin-transform-class-properties": "7.23.3",
+        "@babel/cli": "7.23.9",
+        "@babel/core": "7.23.9",
+        "@babel/eslint-parser": "7.23.9",
         "@babel/plugin-transform-export-namespace-from": "7.23.4",
-        "@babel/preset-env": "7.23.5",
+        "@babel/preset-env": "7.23.9",
         "@babel/preset-typescript": "7.23.3",
-        "@types/jest": "^29.5.11",
-        "@typescript-eslint/eslint-plugin": "6.12.0",
-        "@typescript-eslint/parser": "6.12.0",
+        "@types/jest": "29.5.11",
+        "@typescript-eslint/eslint-plugin": "6.19.1",
+        "@typescript-eslint/parser": "6.19.1",
         "babel-plugin-inline-json-import": "0.3.2",
         "cross-env": "7.0.3",
-        "eslint": "8.54.0",
-        "eslint-plugin-import": "2.29.0",
-        "gh-pages": "6.1.0",
-        "jest": "^29.7.0",
+        "eslint": "8.56.0",
+        "eslint-plugin-import": "2.29.1",
+        "gh-pages": "6.1.1",
+        "jest": "29.7.0",
         "jsdoc": "4.0.2",
         "jsdoc-babel": "0.5.0",
         "minami": "1.2.3",
         "rimraf": "5.0.5",
-        "ts-jest": "^29.1.1",
-        "typescript": "4.7.2"
+        "ts-jest": "29.1.2",
+        "typescript": "5.3.3"
     },
     "engines": {
-        "node": ">=14.0.0",
-        "npm": ">=7.0.0"
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
     },
     "files": [
         "dist"
@@ -71,14 +70,16 @@
     },
     "scripts": {
         "build": "npm run clean:build && npm run build:prepare && npm run build:types && npm run build:commonjs && npm run build:es",
-        "build:commonjs": "cross-env BABEL_ENV=commonjs babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts\" ./src/ -d ./dist/",
-        "build:es": "cross-env BABEL_ENV=es babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts\" ./src/ -d ./dist/es/",
+        "build:commonjs": "cross-env BABEL_ENV=commonjs babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts,./src/**/*.spec.ts\" ./src/ -d ./dist/",
+        "build:es": "cross-env BABEL_ENV=es babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts,./src/**/*.spec.ts\" ./src/ -d ./dist/es/",
         "build:prepare": "node ./scripts/prepare.js",
-        "build:types": "echo \"Generating type declarations from .ts files.\" && tsc --emitDeclarationOnly",
+        "build:types": "echo \"Generating type declarations from .ts files.\" && tsc --emitDeclarationOnly -p ./tsconfig.nojest.json",
         "clean:build": "rimraf ./dist",
         "clean:doc": "rimraf ./dist/doc",
+        "clean:coverage": "rimraf ./coverage",
         "clean:modules": "rimraf package-lock.json && rimraf node_modules",
-        "clean": "npm run clean:build && npm run clean:doc",
+        "clean": "npm run clean:build && npm run clean:doc && npm run clean:coverage",
+        "clean:all": "npm run clean && npm run clean:modules",
         "deploy": "gh-pages -d ./dist/doc --message 'gh-pages update'",
         "doc": "npm run clean:doc && npm run jsdoc",
         "jsdoc": "npm run jsdoc:bright && node ./scripts/darken.js",
@@ -88,9 +89,9 @@
         "prestart": "npm run build:prepare && npm run build:types && npm run build:commonjs",
         "publishAll": "npm run prepublishOnly && echo \"Publishing ...\" && cd ./dist/ && npm publish && cd .. && npm run deploy && echo \"Done.\"",
         "start": "node ./scripts/start.js",
-        "test": "npm run lint && echo \"Warning: no tests specified (yet)\"",
+        "test": "npm run lint && jest",
         "type-check": "tsc --noEmit"
     },
     "typings": "dist/index.d.ts",
-    "version": "0.14.7"
+    "version": "0.15.0"
 }
