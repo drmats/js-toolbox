@@ -14,7 +14,7 @@
  *
  * @name maxInt
  */
-export const maxInt = Number.MAX_SAFE_INTEGER  ||  2 ** 53 - 1;
+export const maxInt = Number.MAX_SAFE_INTEGER  ??  2 ** 53 - 1;
 
 
 
@@ -24,4 +24,4 @@ export const maxInt = Number.MAX_SAFE_INTEGER  ||  2 ** 53 - 1;
  *
  * @name minInt
  */
-export const minInt = Number.MIN_SAFE_INTEGER  ||  -(2 ** 53) + 1;
+export const minInt = Number.MIN_SAFE_INTEGER  ??  -(2 ** 53) + 1;

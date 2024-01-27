@@ -91,7 +91,7 @@ export function choose<
 {
     return (
         key in choices ?
-            choices[key](...(args || [] as In)) :
-            defaultChoice(...(args || [] as In))
+            choices[key](...(args ?? [] as In)) :
+            defaultChoice(...(args ?? [] as In))
     );
 }

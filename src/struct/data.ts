@@ -11,7 +11,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 
-import type { AnyKey, Fun } from "../type/defs";
+import type { AnyKey, Fun, JSAnyObj } from "../type/defs";
 import { append } from "../array/list";
 import { intersection } from "../array/set";
 import { inc } from "../math/arithmetic";
@@ -126,7 +126,7 @@ export function access<
     def?: Data<T, PropType>,
 ): Data<T, PropType> | void {
     try {
-        return path.reduce((acc: any, p) => acc[p], o) || def;
+        return path.reduce((acc: any, p) => acc[p], o) ?? def;
     } catch (_) {
         return def;
     }
@@ -145,7 +145,7 @@ export function access<
  * @param {Object} ext
  * @returns {Object} base
  */
-export function assign<T> (base: T, ext: T): T {
+export function assign<T extends JSAnyObj> (base: T, ext: T): T {
     const overlap = intersection(
         Object.keys(base), Object.keys(ext),
     );
@@ -186,7 +186,7 @@ export function rewrite<
     if (!h || !(isObject(o) || isArray(o))) return v;
 
     if (isObject(o)) {
-        const data = o as DataObject<T, PropType>;
+        const data = o;
         if (!isString(h) || !(h in data))
             throw new TypeError("struct.rewrite<object> - wrong path");
         return {

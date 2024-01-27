@@ -169,7 +169,7 @@ export const reduce = curry((arr, f, initAcc) => {
         if (isArray(arr)  &&  isFunction(f)) {
             if (arr.length > 0) {
                 Promise
-                    .resolve(f.call(arr, initAcc || head(arr), head(arr), 0))
+                    .resolve(f.call(arr, initAcc ?? head(arr), head(arr), 0))
                     .then(progress).catch(reject);
             } else return Promise.resolve(initAcc);
         } else throw new TypeError(

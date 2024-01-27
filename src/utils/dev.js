@@ -160,7 +160,7 @@ export const to_ = (name = "_") =>
         console.log(`${name} = ${quote(typeof val, "[]")}`);
         handleException(
             () => {
-                (window || self)[name] = val;
+                (window ?? self)[name] = val;
                 // eslint-disable-next-line no-console
                 console.log(val);
             },
