@@ -1,14 +1,14 @@
 /**
  * Asynchronous tools.
  *
- * @module async
+ * @module @xcmats/js-toolbox/async
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { createMutex } from "./concurrency";
-import { curry } from "../func/curry";
-import { Y } from "../func/combinators";
+import { createMutex } from "~async/concurrency";
+import { curry } from "~func/curry";
+import { Y } from "~func/combinators";
 
 
 

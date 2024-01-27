@@ -1,9 +1,19 @@
-import * as conv from "./conv";
-import * as csv from "./csv";
-import * as gen from "./gen";
-import * as op from "./op";
-export * from "./conv";
-export * from "./csv";
-export * from "./gen";
-export * from "./op";
+/**
+ * JS toolbox.
+ *
+ * @license Apache-2.0
+ * @copyright Mat. 2018-present
+ */
+
+
+
+
+import * as conv from "~codec/conv";
+import * as csv from "~codec/csv";
+import * as gen from "~codec/gen";
+import * as op from "~codec/op";
+export * from "~codec/conv";
+export * from "~codec/csv";
+export * from "~codec/gen";
+export * from "~codec/op";
 export default Object.assign({}, conv, csv, gen, op);

@@ -3,17 +3,14 @@
  *
  * @module @xcmats/js-toolbox/struct
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type { DataIndex } from "./data";
-import type {
-    JSAnyArrObj,
-    JSAnyObj,
-} from "../type/defs";
+import type { DataIndex } from "~struct/data";
+import type { JSAnyArrObj, JSAnyObj } from "~type/defs";
 
 
 

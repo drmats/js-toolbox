@@ -1,21 +1,17 @@
 /**
  * Data structure manipulation tools.
  *
- * @module struct
+ * @module @xcmats/js-toolbox/struct
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { access } from "./data";
-import { choose } from "../func/choice";
-import { Y } from "../func/combinators";
-import { empty } from "../string/consts";
-import {
-    isArray,
-    isFunction,
-    isObject,
-} from "../type/check";
-import { btquote } from "../utils/misc";
+import { access } from "~struct/data";
+import { choose } from "~func/choice";
+import { Y } from "~func/combinators";
+import { empty } from "~string/consts";
+import { isArray, isFunction, isObject } from "~type/check";
+import { btquote } from "~utils/misc";
 
 
 

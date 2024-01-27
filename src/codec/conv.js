@@ -1,18 +1,15 @@
 /**
  * String, TypedArray and Base64 encoders/decoders.
  *
- * @module codec
+ * @module @xcmats/js-toolbox/codec
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import {
-    head,
-    tail,
-} from "../array/list";
-import { compose } from "../func/combinators";
-import { empty } from "../string/consts";
-import { isBrowser } from "../utils/dev";
+import { head, tail } from "~array/list";
+import { compose } from "~func/combinators";
+import { empty } from "~string/consts";
+import { isBrowser } from "~utils/dev";
 
 
 

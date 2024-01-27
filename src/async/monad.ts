@@ -1,19 +1,15 @@
 /**
  * Asynchronous tools.
  *
- * @module async
+ * @module @xcmats/js-toolbox/async
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type {
-    Arr,
-    Fun,
-    OneArgFun,
-} from "../type/defs";
-import { curry } from "../func/curry";
+import type { Arr, Fun, OneArgFun } from "~type/defs";
+import { curry } from "~func/curry";
 
 
 

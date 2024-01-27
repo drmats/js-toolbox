@@ -1,19 +1,15 @@
 /**
  * String tools.
  *
- * @module string
+ * @module @xcmats/js-toolbox/string
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import {
-    asciiLetters,
-    digits,
-    empty,
-} from "./consts";
-import { draw } from "../array/random";
-import { range } from "../array/tools";
-import { Y } from "../func/combinators";
+import { asciiLetters, digits, empty } from "~string/consts";
+import { draw } from "~array/random";
+import { range } from "~array/tools";
+import { Y } from "~func/combinators";
 
 
 

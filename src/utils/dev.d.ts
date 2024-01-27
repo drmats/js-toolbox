@@ -3,7 +3,7 @@
  *
  * @module @xcmats/js-toolbox/utils
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 

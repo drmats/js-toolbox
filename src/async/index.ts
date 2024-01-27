@@ -1,13 +1,23 @@
-import * as concurrency from "./concurrency";
-import * as iterators from "./iterators";
-import * as monad from "./monad";
-import * as timing from "./timing";
-import * as tools from "./tools";
-export * from "./concurrency";
-export * from "./iterators";
-export * from "./monad";
-export * from "./timing";
-export * from "./tools";
+/**
+ * JS toolbox.
+ *
+ * @license Apache-2.0
+ * @copyright Mat. 2018-present
+ */
+
+
+
+
+import * as concurrency from "~async/concurrency";
+import * as iterators from "~async/iterators";
+import * as monad from "~async/monad";
+import * as timing from "~async/timing";
+import * as tools from "~async/tools";
+export * from "~async/concurrency";
+export * from "~async/iterators";
+export * from "~async/monad";
+export * from "~async/timing";
+export * from "~async/tools";
 export default Object.assign(
     {},
     concurrency,

@@ -1,19 +1,16 @@
 /**
  * Type tools.
  *
- * @module type
+ * @module @xcmats/js-toolbox/type
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/prefer-function-type */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 
-import type {
-    NullToUndefined,
-    UndefinedToNull,
-} from "./utils";
-import { curry } from "../func/curry";
+import type { NullToUndefined, UndefinedToNull } from "~type/utils";
+import { curry } from "~func/curry";
 
 
 

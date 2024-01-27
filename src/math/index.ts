@@ -1,15 +1,25 @@
-import * as arithmetic from "./arithmetic";
-import * as geom from "./geom";
-import * as interpolation from "./interpolation";
-import * as random from "./random";
-import * as rounding from "./rounding";
-import * as series from "./series";
-export * from "./arithmetic";
-export * from "./geom";
-export * from "./interpolation";
-export * from "./random";
-export * from "./rounding";
-export * from "./series";
+/**
+ * JS toolbox.
+ *
+ * @license Apache-2.0
+ * @copyright Mat. 2018-present
+ */
+
+
+
+
+import * as arithmetic from "~math/arithmetic";
+import * as geom from "~math/geom";
+import * as interpolation from "~math/interpolation";
+import * as random from "~math/random";
+import * as rounding from "~math/rounding";
+import * as series from "~math/series";
+export * from "~math/arithmetic";
+export * from "~math/geom";
+export * from "~math/interpolation";
+export * from "~math/random";
+export * from "~math/rounding";
+export * from "~math/series";
 export default Object.assign(
     {},
     arithmetic,

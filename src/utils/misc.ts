@@ -1,17 +1,14 @@
 /**
  * Various tools.
  *
- * @module utils
+ * @module @xcmats/js-toolbox/utils
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import type { NoArgFun } from "../type/defs";
-import {
-    isFunction,
-    isObject,
-} from "../type/check";
-import { quote } from "../string/transform";
+import type { NoArgFun } from "~type/defs";
+import { isFunction, isObject } from "~type/check";
+import { quote } from "~string/transform";
 
 
 

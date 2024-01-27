@@ -3,10 +3,10 @@
  *
  * @module @xcmats/js-toolbox/array
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import type { OneArgFun } from "../type/defs";
+import type { OneArgFun } from "~type/defs";
 
 
 

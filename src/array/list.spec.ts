@@ -1,5 +1,14 @@
+/**
+ * JS toolbox.
+ *
+ * @license Apache-2.0
+ */
+
 import { describe, test, expect } from "@jest/globals";
-import { append } from "./list";
+import { append } from "~array/list";
+
+
+
 
 describe("append", () => {
     test("should append array ys to array xs", () => {

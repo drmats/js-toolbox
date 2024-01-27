@@ -1,12 +1,12 @@
 /**
  * Functional programming tools.
  *
- * @module func
+ * @module @xcmats/js-toolbox/func
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { head } from "../array/list";
+import { head } from "~array/list";
 
 
 

@@ -1,17 +1,14 @@
 /**
  * Type tools.
  *
- * @module type
+ * @module @xcmats/js-toolbox/type
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type {
-    Fun,
-    JSAnyObj,
-} from "./defs";
+import type { Fun, JSAnyObj } from "~type/defs";
 
 
 

@@ -1,19 +1,16 @@
 /**
  * Array tools.
  *
- * @module array
+ * @module @xcmats/js-toolbox/array
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { ArrStr } from "../type/defs";
-import type {
-    ChooseArrElOrStr,
-    ChooseArrOrStr,
-} from "../type/utils";
-import { dec } from "../math/arithmetic";
+import type { ArrStr } from "~type/defs";
+import type { ChooseArrElOrStr, ChooseArrOrStr } from "~type/utils";
+import { dec } from "~math/arithmetic";
 
 
 

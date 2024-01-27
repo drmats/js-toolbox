@@ -1,15 +1,12 @@
 /**
  * Type utilities.
  *
- * @module type
+ * @module @xcmats/js-toolbox/type
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import type {
-    ArrStr,
-    SafeKey,
-} from "./defs";
+import type { ArrStr, SafeKey } from "~type/defs";
 
 
 

@@ -1,13 +1,14 @@
 /**
+ * List all submodule names.
+ *
  * @license Apache-2.0
  * @copyright Mat. 2019-present
- * @author drmats
  */
 
 "use strict";
 
 // ...
-const { readdirSync } = require("fs");
+const { readdirSync } = require("node:fs");
 
 
 

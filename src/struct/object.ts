@@ -1,27 +1,20 @@
 /**
  * Struct - type declarations.
  *
- * @module struct
+ * @module @xcmats/js-toolbox/struct
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type {
-    Fun,
-    JSAnyArrObj,
-    JSAnyObj,
-} from "../type/defs";
-import { curry } from "../func/curry";
-import { flow } from "../func/combinators";
-import { btquote } from "../utils/misc";
-import {
-    isFunction,
-    isObject,
-} from "../type/check";
+import type { Fun, JSAnyArrObj, JSAnyObj } from "~type/defs";
+import { curry } from "~func/curry";
+import { flow } from "~func/combinators";
+import { btquote } from "~utils/misc";
+import { isFunction, isObject } from "~type/check";
 
 
 

@@ -1,19 +1,16 @@
 /**
  * Asynchronous tools.
  *
- * @module async
+ * @module @xcmats/js-toolbox/async
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { head } from "../array/list";
-import { curry } from "../func/curry";
-import { inc } from "../math/arithmetic";
-import {
-    isArray,
-    isFunction,
-} from "../type/check";
-import { btquote } from "../utils/misc";
+import { head } from "~array/list";
+import { curry } from "~func/curry";
+import { inc } from "~math/arithmetic";
+import { isArray, isFunction } from "~type/check";
+import { btquote } from "~utils/misc";
 
 
 

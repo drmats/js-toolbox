@@ -1,16 +1,16 @@
 /**
  * String, TypedArray and Base64 encoders/decoders.
  *
- * @module codec
+ * @module @xcmats/js-toolbox/codec
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { hexToBytes } from "./conv";
-import { pipe } from "../func/combinators";
-import { rearg } from "../func/tools";
-import { padLeft } from "../string/transform";
-import { isBrowser } from "../utils/dev";
+import { hexToBytes } from "~codec/conv";
+import { pipe } from "~func/combinators";
+import { rearg } from "~func/tools";
+import { padLeft } from "~string/transform";
+import { isBrowser } from "~utils/dev";
 
 
 

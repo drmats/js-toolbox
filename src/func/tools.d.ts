@@ -3,13 +3,10 @@
  *
  * @module @xcmats/js-toolbox/func
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import type {
-    Arr,
-    Fun,
-} from "../type/defs";
+import type { Arr, Fun } from "~type/defs";
 
 
 

@@ -1,9 +1,9 @@
 /**
  * Type definitions.
  *
- * @module type
+ * @module @xcmats/js-toolbox/type
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -71,7 +71,7 @@ export type NoArgFun<Out = any> = () => Out;
 
 
 /**
- * js-toolbox "cheat" types.
+ * JS toolbox. "cheat" types.
  */
 export type JSAnyObj<T = any> = { [K in keyof T]?: T[K]; };
 export type JSAnyArrObj<T = any> = Arr<T> | JSAnyObj<T>;

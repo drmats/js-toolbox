@@ -1,19 +1,16 @@
 /**
  * Comma-separated-values format tools.
  *
- * @module codec
+ * @module @xcmats/js-toolbox/codec
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import { isArray } from "../type/check";
-import { init } from "../array/list";
-import {
-    empty,
-    nl,
-} from "../string/consts";
+import { isArray } from "~type/check";
+import { init } from "~array/list";
+import { empty, nl } from "~string/consts";
 
 
 

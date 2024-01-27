@@ -1,19 +1,15 @@
 /**
  * Functional programming tools.
  *
- * @module func
+ * @module @xcmats/js-toolbox/func
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 
-import type {
-    Arr,
-    Fun,
-    SafeKey,
-} from "../type/defs";
+import type { Arr, Fun, SafeKey } from "~type/defs";
 
 
 

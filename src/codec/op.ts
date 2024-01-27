@@ -1,15 +1,15 @@
 /**
  * String, TypedArray and Base64 encoders/decoders.
  *
- * @module codec
+ * @module @xcmats/js-toolbox/codec
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { curry } from "../func/curry";
-import { inc } from "../math/arithmetic";
-import { sum } from "../math/series";
-import { isNumber } from "../type/check";
+import { curry } from "~func/curry";
+import { inc } from "~math/arithmetic";
+import { sum } from "~math/series";
+import { isNumber } from "~type/check";
 
 
 

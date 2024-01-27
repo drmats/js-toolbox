@@ -1,21 +1,14 @@
 /**
  * String tools.
  *
- * @module string
+ * @module @xcmats/js-toolbox/string
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import {
-    empty,
-    space,
-} from "./consts";
-import {
-    head,
-    last,
-    tail,
-} from "../array/list";
-import { range } from "../array/tools";
+import { empty, space } from "~string/consts";
+import { head, last, tail } from "~array/list";
+import { range } from "~array/tools";
 
 
 

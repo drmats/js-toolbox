@@ -1,9 +1,9 @@
 /**
  * Functional programming tools.
  *
- * @module func
+ * @module @xcmats/js-toolbox/func
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,12 +11,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { Fun } from "../type/defs";
-import type {
-    Head,
-    Length,
-    Tail,
-} from "../type/list";
+import type { Fun } from "~type/defs";
+import type { Head, Length, Tail } from "~type/list";
 
 
 

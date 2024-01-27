@@ -1,24 +1,20 @@
 /**
  * Array tools.
  *
- * @module array
+ * @module @xcmats/js-toolbox/array
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { ArrStr } from "../type/defs";
-import type { ChooseArrElOrStr } from "../type/utils";
-import { range } from "./tools";
-import {
-    dec,
-    inc,
-    sub,
-} from "../math/arithmetic";
-import { randomInt } from "../math/random";
-import { isArray } from "../type/check";
+import type { ArrStr } from "~type/defs";
+import type { ChooseArrElOrStr } from "~type/utils";
+import { range } from "~array/tools";
+import { dec, inc, sub } from "~math/arithmetic";
+import { randomInt } from "~math/random";
+import { isArray } from "~type/check";
 
 
 

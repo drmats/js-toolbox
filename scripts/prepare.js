@@ -4,7 +4,6 @@
  *
  * @license Apache-2.0
  * @copyright Mat. 2019-present
- * @author drmats
  */
 
 "use strict";
@@ -20,7 +19,7 @@ const
         mkdirSync,
         readdirSync,
         writeFileSync,
-    } = require("fs"),
+    } = require("node:fs"),
 
     srcDir = "./src",
     distDir = "./dist",

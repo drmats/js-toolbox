@@ -1,9 +1,9 @@
 /**
  * Asynchronous tools.
  *
- * @module async
+ * @module @xcmats/js-toolbox/async
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
 /* eslint-disable @typescript-eslint/array-type */
@@ -12,8 +12,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import { race } from "./tools";
-import { random } from "../string/gen";
+import { race } from "~async/tools";
+import { random } from "~string/gen";
 
 
 

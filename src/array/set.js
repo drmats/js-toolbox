@@ -1,15 +1,15 @@
 /**
  * Array tools.
  *
- * @module array
+ * @module @xcmats/js-toolbox/array
  * @license Apache-2.0
- * @author drmats
+ * @copyright Mat. 2018-present
  */
 
-import { flow } from "../func/combinators";
-import { identity } from "../func/tools";
-import { objectReduce } from "../struct/object";
-import { isNumber } from "../type/check";
+import { flow } from "~func/combinators";
+import { identity } from "~func/tools";
+import { objectReduce } from "~struct/object";
+import { isNumber } from "~type/check";
 
 
 
