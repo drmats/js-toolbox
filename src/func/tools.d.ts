@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import type { Arr, Fun } from "~type/defs";
+import type { Arr, Fun } from "../type/defs";
 
 
 

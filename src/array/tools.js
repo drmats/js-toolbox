@@ -6,10 +6,10 @@
  * @copyright Mat. 2018-present
  */
 
-import { pipe } from "~func/combinators";
-import { append, drop, head, take, tail } from "~array/list";
-import { sub } from "~math/arithmetic";
-import { isArray, isNumber } from "~type/check";
+import { pipe } from "../func/combinators";
+import { append, drop, head, take, tail } from "../array/list";
+import { sub } from "../math/arithmetic";
+import { isArray, isNumber } from "../type/check";
 
 
 

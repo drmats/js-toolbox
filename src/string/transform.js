@@ -6,9 +6,9 @@
  * @copyright Mat. 2018-present
  */
 
-import { empty, space } from "~string/consts";
-import { head, last, tail } from "~array/list";
-import { range } from "~array/tools";
+import { empty, space } from "../string/consts";
+import { head, last, tail } from "../array/list";
+import { range } from "../array/tools";
 
 
 

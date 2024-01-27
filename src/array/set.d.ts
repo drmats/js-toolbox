@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import type { OneArgFun } from "~type/defs";
+import type { OneArgFun } from "../type/defs";
 
 
 

@@ -6,10 +6,10 @@
  * @copyright Mat. 2018-present
  */
 
-import { head, tail } from "~array/list";
-import { compose } from "~func/combinators";
-import { empty } from "~string/consts";
-import { isBrowser } from "~utils/dev";
+import { head, tail } from "../array/list";
+import { compose } from "../func/combinators";
+import { empty } from "../string/consts";
+import { isBrowser } from "../utils/dev";
 
 
 

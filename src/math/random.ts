@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import { maxInt } from "~type/consts";
+import { maxInt } from "../type/consts";
 
 
 

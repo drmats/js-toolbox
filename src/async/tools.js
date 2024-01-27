@@ -6,9 +6,9 @@
  * @copyright Mat. 2018-present
  */
 
-import { createMutex } from "~async/concurrency";
-import { curry } from "~func/curry";
-import { Y } from "~func/combinators";
+import { createMutex } from "../async/concurrency";
+import { curry } from "../func/curry";
+import { Y } from "../func/combinators";
 
 
 

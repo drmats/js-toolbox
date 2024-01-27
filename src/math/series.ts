@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import { add, mul } from "~math/arithmetic";
+import { add, mul } from "../math/arithmetic";
 
 
 

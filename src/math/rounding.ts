@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import { curry } from "~func/curry";
+import { curry } from "../func/curry";
 
 
 

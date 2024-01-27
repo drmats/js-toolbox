@@ -9,8 +9,8 @@
 /* eslint-disable @typescript-eslint/prefer-function-type */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 
-import type { NullToUndefined, UndefinedToNull } from "~type/utils";
-import { curry } from "~func/curry";
+import type { NullToUndefined, UndefinedToNull } from "../type/utils";
+import { curry } from "../func/curry";
 
 
 

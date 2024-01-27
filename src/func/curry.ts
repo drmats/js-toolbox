@@ -11,8 +11,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { Fun } from "~type/defs";
-import type { Head, Length, Tail } from "~type/list";
+import type { Fun } from "../type/defs";
+import type { Head, Length, Tail } from "../type/list";
 
 
 

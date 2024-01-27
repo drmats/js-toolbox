@@ -8,9 +8,9 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { ArrStr } from "~type/defs";
-import type { ChooseArrElOrStr, ChooseArrOrStr } from "~type/utils";
-import { dec } from "~math/arithmetic";
+import type { ArrStr } from "../type/defs";
+import type { ChooseArrElOrStr, ChooseArrOrStr } from "../type/utils";
+import { dec } from "../math/arithmetic";
 
 
 

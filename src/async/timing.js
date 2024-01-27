@@ -6,8 +6,8 @@
  * @copyright Mat. 2018-present
  */
 
-import { identity } from "~func/tools";
-import { timeUnit } from "~utils/misc";
+import { identity } from "../func/tools";
+import { timeUnit } from "../utils/misc";
 
 
 

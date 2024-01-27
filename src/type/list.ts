@@ -10,7 +10,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Arr } from "~type/defs";
+import { Arr } from "../type/defs";
 
 
 

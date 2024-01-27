@@ -10,11 +10,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type { Fun, JSAnyArrObj, JSAnyObj } from "~type/defs";
-import { curry } from "~func/curry";
-import { flow } from "~func/combinators";
-import { btquote } from "~utils/misc";
-import { isFunction, isObject } from "~type/check";
+import type { Fun, JSAnyArrObj, JSAnyObj } from "../type/defs";
+import { curry } from "../func/curry";
+import { flow } from "../func/combinators";
+import { btquote } from "../utils/misc";
+import { isFunction, isObject } from "../type/check";
 
 
 

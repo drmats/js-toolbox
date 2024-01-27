@@ -6,9 +6,9 @@
  * @copyright Mat. 2018-present
  */
 
-import type { NoArgFun } from "~type/defs";
-import { isFunction, isObject } from "~type/check";
-import { quote } from "~string/transform";
+import type { NoArgFun } from "../type/defs";
+import { isFunction, isObject } from "../type/check";
+import { quote } from "../string/transform";
 
 
 

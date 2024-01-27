@@ -8,8 +8,8 @@
 
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type { Arr, Fun, OneArgFun } from "~type/defs";
-import { curry } from "~func/curry";
+import type { Arr, Fun, OneArgFun } from "../type/defs";
+import { curry } from "../func/curry";
 
 
 

@@ -8,7 +8,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { Fun } from "~type/defs";
+import type { Fun } from "../type/defs";
 
 
 

@@ -11,13 +11,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 
-import type { AnyKey, Fun, JSAnyObj } from "~type/defs";
-import { append } from "~array/list";
-import { intersection } from "~array/set";
-import { inc } from "~math/arithmetic";
-import { quote } from "~string/transform";
-import { space } from "~string/consts";
-import { isArray, isNumber, isObject, isString } from "~type/check";
+import type { AnyKey, Fun, JSAnyObj } from "../type/defs";
+import { append } from "../array/list";
+import { intersection } from "../array/set";
+import { inc } from "../math/arithmetic";
+import { quote } from "../string/transform";
+import { space } from "../string/consts";
+import { isArray, isNumber, isObject, isString } from "../type/check";
 
 
 

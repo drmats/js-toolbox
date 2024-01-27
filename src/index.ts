@@ -38,8 +38,8 @@ export {
     takeLast,
     zip,
     zipWith,
-} from "~/array";
-export * as array from "~/array";
+} from "./array";
+export * as array from "./array";
 
 
 
@@ -53,7 +53,7 @@ export type {
     PromisePoolProps,
     PromisePoolRejectedResult,
     PromisePoolResult,
-} from "~/async/concurrency";
+} from "./async/concurrency";
 export {
     ap,
     bind,
@@ -71,8 +71,8 @@ export {
     repeat as asyncRepeat,
     timeout,
     unit,
-} from "~/async";
-export * as async from "~/async";
+} from "./async";
+export * as async from "./async";
 
 
 
@@ -96,8 +96,8 @@ export {
     stringToB64,
     stringToBytes,
     timestamp as timestampBytes,
-} from "~/codec";
-export * as codec from "~/codec";
+} from "./codec";
+export * as codec from "./codec";
 
 
 
@@ -108,7 +108,7 @@ export * as codec from "~/codec";
 export type {
     CurryFun,
     ThunkFun,
-} from "~/func/curry";
+} from "./func/curry";
 export {
     app,
     choose,
@@ -126,8 +126,8 @@ export {
     pipe,
     rearg,
     Y,
-} from "~/func";
-export * as func from "~/func";
+} from "./func";
+export * as func from "./func";
 
 
 
@@ -158,8 +158,8 @@ export {
     roundIfClose,
     sub,
     sum,
-} from "~/math";
-export * as math from "~/math";
+} from "./math";
+export * as math from "./math";
 
 
 
@@ -191,8 +191,8 @@ export {
     space as spaceString,
     tab as tabString,
     wrap,
-} from "~/string";
-export * as string from "~/string";
+} from "./string";
+export * as string from "./string";
 
 
 
@@ -207,7 +207,7 @@ export type {
     DataArray,
     DataIndex,
     DataObject,
-} from "~/struct/data";
+} from "./struct/data";
 export {
     access,
     assign,
@@ -220,8 +220,8 @@ export {
     objectReduce,
     rewrite,
     swap,
-} from "~/struct";
-export * as struct from "~/struct";
+} from "./struct";
+export * as struct from "./struct";
 
 
 
@@ -236,17 +236,17 @@ export {
     isNumber,
     isObject,
     isString,
-} from "~/type/check";
+} from "./type/check";
 export {
     maxInt,
     minInt,
-} from "~/type/consts";
+} from "./type/consts";
 export {
     lazyNullishCoalesce,
     nullToUndefined,
     toBool,
     undefinedToNull,
-} from "~/type/conv";
+} from "./type/conv";
 export type {
     AnyKey,
     Arr,
@@ -257,7 +257,7 @@ export type {
     NoArgFun,
     OneArgFun,
     SafeKey,
-} from "~/type/defs";
+} from "./type/defs";
 export type {
     Append,
     Cons,
@@ -273,7 +273,7 @@ export type {
     Tail,
     Union,
     Zip,
-} from "~/type/list";
+} from "./type/list";
 export type {
     AllowSubset,
     ChooseArrElOrStr,
@@ -285,8 +285,8 @@ export type {
     Override,
     UndefinedToNull,
     Writable,
-} from "~/type/utils";
-export * as type from "~/type";
+} from "./type/utils";
+export * as type from "./type";
 
 
 
@@ -296,7 +296,7 @@ export * as type from "~/type";
  */
 export type {
     TimeUnit,
-} from "~/utils/misc";
+} from "./utils/misc";
 export {
     devEnv,
     getLibConfig,
@@ -309,5 +309,5 @@ export {
     timing,
     to_,
     url,
-} from "~/utils";
-export * as utils from "~/utils";
+} from "./utils";
+export * as utils from "./utils";

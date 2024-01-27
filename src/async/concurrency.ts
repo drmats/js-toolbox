@@ -12,8 +12,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import { race } from "~async/tools";
-import { random } from "~string/gen";
+import { race } from "../async/tools";
+import { random } from "../string/gen";
 
 
 

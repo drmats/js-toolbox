@@ -22,9 +22,7 @@
         "@typescript-eslint/eslint-plugin": "6.19.1",
         "@typescript-eslint/parser": "6.19.1",
         "babel-plugin-inline-json-import": "0.3.2",
-        "babel-plugin-module-resolver": "5.0.0",
         "cross-env": "7.0.3",
-        "eslint-import-resolver-alias": "1.1.2",
         "eslint-plugin-import": "2.29.1",
         "eslint": "8.56.0",
         "gh-pages": "6.1.1",
@@ -70,7 +68,7 @@
         "url": "git+https://github.com/drmats/js-toolbox.git"
     },
     "scripts": {
-        "build": "npm run clean:build && npm run build:prepare && npm run build:types && npm run build:commonjs && npm run build:es",
+        "build": "npm run clean:build && npm run build:types && npm run build:prepare && npm run build:commonjs && npm run build:es",
         "build:commonjs": "cross-env BABEL_ENV=commonjs babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts,./src/**/*.spec.ts\" ./src/ -d ./dist/",
         "build:es": "cross-env BABEL_ENV=es babel --extensions \".js,.ts\" --ignore \"./src/**/*.d.ts,./src/**/*.spec.ts\" ./src/ -d ./dist/es/",
         "build:prepare": "node ./scripts/prepare.js",
@@ -87,7 +85,7 @@
         "jsdoc:bright": "echo \"Generating jsdoc ...\" && jsdoc -c ./jsdoc.json -R ./README.md ./src/**/* -d ./dist/doc/",
         "lint": "echo \"Linting and typechecking...\" && eslint ./src/ --ext .js,.ts && npm run type-check",
         "prepublishOnly": "npm run test && npm run build && npm run doc",
-        "prestart": "npm run build:prepare && npm run build:types && npm run build:commonjs",
+        "prestart": "npm run build:types && npm run build:prepare && npm run build:commonjs",
         "publishAll": "npm run prepublishOnly && echo \"Publishing ...\" && cd ./dist/ && npm publish && cd .. && npm run deploy && echo \"Done.\"",
         "start": "node ./scripts/start.js",
         "test": "npm run lint && jest",

@@ -6,14 +6,14 @@
  * @copyright Mat. 2018-present
  */
 
-import { handleException } from "~func/tools";
-import { quote } from "~string/transform";
-import { access } from "~struct/data";
+import { handleException } from "../func/tools";
+import { quote } from "../string/transform";
+import { access } from "../struct/data";
 import {
     isObject,
     isString,
-} from "~type/check";
-import { toBool } from "~type/conv";
+} from "../type/check";
+import { toBool } from "../type/conv";
 import {
     dependencies,
     description,

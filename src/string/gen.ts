@@ -6,10 +6,10 @@
  * @copyright Mat. 2018-present
  */
 
-import { asciiLetters, digits, empty } from "~string/consts";
-import { draw } from "~array/random";
-import { range } from "~array/tools";
-import { Y } from "~func/combinators";
+import { asciiLetters, digits, empty } from "../string/consts";
+import { draw } from "../array/random";
+import { range } from "../array/tools";
+import { Y } from "../func/combinators";
 
 
 

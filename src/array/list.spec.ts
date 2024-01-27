@@ -5,7 +5,7 @@
  */
 
 import { describe, test, expect } from "@jest/globals";
-import { append } from "~array/list";
+import { append } from "../array/list";
 
 
 

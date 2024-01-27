@@ -8,9 +8,9 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import { isArray } from "~type/check";
-import { init } from "~array/list";
-import { empty, nl } from "~string/consts";
+import { isArray } from "../type/check";
+import { init } from "../array/list";
+import { empty, nl } from "../string/consts";
 
 
 

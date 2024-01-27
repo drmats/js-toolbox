@@ -6,12 +6,12 @@
  * @copyright Mat. 2018-present
  */
 
-import { access } from "~struct/data";
-import { choose } from "~func/choice";
-import { Y } from "~func/combinators";
-import { empty } from "~string/consts";
-import { isArray, isFunction, isObject } from "~type/check";
-import { btquote } from "~utils/misc";
+import { access } from "../struct/data";
+import { choose } from "../func/choice";
+import { Y } from "../func/combinators";
+import { empty } from "../string/consts";
+import { isArray, isFunction, isObject } from "../type/check";
+import { btquote } from "../utils/misc";
 
 
 

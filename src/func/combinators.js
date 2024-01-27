@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import { head } from "~array/list";
+import { head } from "../array/list";
 
 
 

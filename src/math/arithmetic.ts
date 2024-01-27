@@ -6,8 +6,8 @@
  * @copyright Mat. 2018-present
  */
 
-import { roundIfClose } from "~math/rounding";
-import { curry } from "~func/curry";
+import { roundIfClose } from "../math/rounding";
+import { curry } from "../func/curry";
 
 
 

@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import type { ArrStr, SafeKey } from "~type/defs";
+import type { ArrStr, SafeKey } from "../type/defs";
 
 
 

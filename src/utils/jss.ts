@@ -6,7 +6,7 @@
  * @copyright Mat. 2018-present
  */
 
-import { quote, wrap } from "~string/transform";
+import { quote, wrap } from "../string/transform";
 
 
 

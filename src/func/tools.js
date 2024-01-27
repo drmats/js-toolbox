@@ -6,11 +6,11 @@
  * @copyright Mat. 2018-present
  */
 
-import { findDuplicates } from "~array/set";
-import { head, last } from "~array/list";
-import { range } from "~array/tools";
-import { curryN } from "~func/curry";
-import { isArray, isFunction } from "~type/check";
+import { findDuplicates } from "../array/set";
+import { head, last } from "../array/list";
+import { range } from "../array/tools";
+import { curryN } from "../func/curry";
+import { isArray, isFunction } from "../type/check";
 
 
 

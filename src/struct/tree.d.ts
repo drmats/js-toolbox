@@ -9,8 +9,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-function-type */
 
-import type { DataIndex } from "~struct/data";
-import type { JSAnyArrObj, JSAnyObj } from "~type/defs";
+import type { DataIndex } from "../struct/data";
+import type { JSAnyArrObj, JSAnyObj } from "../type/defs";
 
 
 
