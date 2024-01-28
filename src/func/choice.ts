@@ -1,7 +1,7 @@
 /**
  * Functional programming tools.
  *
- * @module @xcmats/js-toolbox/func
+ * @module func
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

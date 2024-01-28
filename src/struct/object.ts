@@ -1,7 +1,7 @@
 /**
  * Struct - type declarations.
  *
- * @module @xcmats/js-toolbox/struct
+ * @module struct
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

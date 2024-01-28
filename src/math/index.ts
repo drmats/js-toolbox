@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as arithmetic from "../math/arithmetic";
 import * as geom from "../math/geom";
 import * as interpolation from "../math/interpolation";

@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as conv from "../codec/conv";
 import * as csv from "../codec/csv";
 import * as gen from "../codec/gen";

@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as check from "../type/check";
 import * as consts from "../type/consts";
 import * as conv from "../type/conv";

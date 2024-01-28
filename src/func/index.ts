@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as choice from "../func/choice";
 import * as combinators from "../func/combinators";
 import * as curry from "../func/curry";

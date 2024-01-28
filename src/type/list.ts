@@ -3,7 +3,7 @@
  *
  * Typescript ^4.1.x tuple fun.
  *
- * @module @xcmats/js-toolbox/type
+ * @module type
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

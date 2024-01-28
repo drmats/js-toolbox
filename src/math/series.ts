@@ -1,7 +1,7 @@
 /**
  * Mathematical tools.
  *
- * @module @xcmats/js-toolbox/math
+ * @module math
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

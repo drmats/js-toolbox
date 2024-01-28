@@ -1,7 +1,7 @@
 /**
  * Type tools.
  *
- * @module @xcmats/js-toolbox/type
+ * @module type
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

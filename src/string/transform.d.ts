@@ -1,7 +1,7 @@
 /**
  * String - type declarations.
  *
- * @module @xcmats/js-toolbox/string
+ * @module string
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

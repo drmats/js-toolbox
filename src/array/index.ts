@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as list from "../array/list";
 import * as random from "../array/random";
 import * as set from "../array/set";

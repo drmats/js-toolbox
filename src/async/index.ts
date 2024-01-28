@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as concurrency from "../async/concurrency";
 import * as iterators from "../async/iterators";
 import * as monad from "../async/monad";

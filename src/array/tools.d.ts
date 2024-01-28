@@ -1,7 +1,7 @@
 /**
  * Array - type declarations.
  *
- * @module @xcmats/js-toolbox/array
+ * @module array
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

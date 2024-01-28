@@ -1,7 +1,7 @@
 /**
  * Codec - type declarations.
  *
- * @module @xcmats/js-toolbox/codec
+ * @module codec
  * @license Apache-2.0
  * @copyright Mat. 2018-present
  */

@@ -1,13 +1,3 @@
-/**
- * JS toolbox.
- *
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
-
-
-
-
 import * as dev from "../utils/dev";
 import * as jss from "../utils/jss";
 import * as misc from "../utils/misc";
