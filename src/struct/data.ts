@@ -141,28 +141,40 @@ export type DataIndex<
  * ```
  *
  * @function access
- * @param {Data} o
- * @param {Array.<String|Number>} [path=[]]
- * @param {unknown} [def]
- * @returns {Data | undefined}
+ * @param {InputType} input
+ * @param [path=[]]
+ * @param [def]
+ * @returns {OutputType | undefined}
  */
-export function access<
-    IT = BasicData,
-    PropType extends AnyKey = string,
-    OT = BasicData,
-> (
-    o: Data<IT, PropType>,
-    path: readonly DataIndex<PropType | number>[] = [],
-    def?: Data<OT, PropType>,
-): Data<OT, PropType> | undefined {
+export function access<InputType> (
+    input: InputType,
+): InputType;
+export function access<InputType, OutputType> (
+    input: InputType,
+    path: readonly DataIndex<AnyKey>[],
+): OutputType | undefined;
+export function access<InputType, DefaultType, OutputType> (
+    input: InputType,
+    path: readonly DataIndex<AnyKey>[],
+    def: DefaultType,
+): DefaultType | OutputType;
+export function access<InputType, DefaultType, OutputType> (
+    input: InputType,
+    path: readonly DataIndex<AnyKey>[] = [],
+    def?: DefaultType,
+): DefaultType | OutputType | undefined {
     try {
         return (
-            path.reduce(
-                (acc: any, p) => acc[p] as Data<IT, PropType>,
-                o,
-            ) as Data<OT, PropType>
+            path.reduce((acc: InputType | undefined, p: AnyKey) => {
+                if (isObject(acc) || isArray(acc)) {
+                    return (
+                        acc as Record<AnyKey, unknown>
+                    )[p] as InputType | undefined;
+                }
+                return undefined;
+            }, input) as OutputType
         ) ?? def;
-    } catch (_) {
+    } catch {
         return def;
     }
 }

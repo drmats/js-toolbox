@@ -6,7 +6,7 @@
 
 import { describe, test, expect } from "@jest/globals";
 
-import { map } from "./iterators";
+import { map } from "../async/iterators";
 
 
 
