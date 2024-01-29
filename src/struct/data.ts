@@ -68,69 +68,6 @@ export const isBasicDataOrUndefined = (
 
 
 /**
- * All "atomic" types.
- */
-export type Atom =
-    | BasicData
-    | symbol
-    | bigint
-    | RegExp
-    | Fun
-    | null
-    | undefined;
-
-
-
-
-/**
- * Array - mutually recursive with Data (array node).
- */
-export type DataArray<
-    T = BasicData,
-    ObjectPropType extends AnyKey = string,
-> = Data<T, ObjectPropType>[];
-
-
-
-
-/**
- * Object - mutually recursive with Data (object node).
- */
-export type DataObject<
-    T = BasicData,
-    PropType extends AnyKey = string,
-> = {
-    [property in PropType]?: Data<T, PropType>;
-};
-
-
-
-
-/**
- * Recursive data type (leaf or node).
- */
-export type Data<
-    T = BasicData,
-    ObjectPropType extends AnyKey = string,
-> =
-    | T
-    | DataArray<T, ObjectPropType>
-    | DataObject<T, ObjectPropType>;
-
-
-
-
-/**
- * Node-indexing type.
- */
-export type DataIndex<
-    PropType extends AnyKey = string | number,
-> = PropType;
-
-
-
-
-/**
  * Apply `path` to an object `o`. Return element reachable through
  * that `path` or `def` value.
  *
@@ -192,7 +129,9 @@ export function access<InputType, DefaultType, OutputType> (
  * @param {Object} ext
  * @returns {Object} base
  */
-export function assign<T extends JSAnyObj> (base: T, ext: T): T {
+export function assign<B extends JSAnyObj, E extends JSAnyObj> (
+    base: B, ext: E,
+): (B & E) {
     const overlap = intersection(
         Object.keys(base), Object.keys(ext),
     );
@@ -205,6 +144,69 @@ export function assign<T extends JSAnyObj> (base: T, ext: T): T {
         ].join(space()));
     }
 }
+
+
+
+
+/**
+ * All "atomic" types.
+ */
+export type Atom =
+    | BasicData
+    | symbol
+    | bigint
+    | RegExp
+    | Fun
+    | null
+    | undefined;
+
+
+
+
+/**
+ * Array - mutually recursive with Data (array node).
+ */
+export type DataArray<
+    T = BasicData,
+    ObjectPropType extends AnyKey = string,
+> = Data<T, ObjectPropType>[];
+
+
+
+
+/**
+ * Object - mutually recursive with Data (object node).
+ */
+export type DataObject<
+    T = BasicData,
+    PropType extends AnyKey = string,
+> = {
+    [property in PropType]?: Data<T, PropType>;
+};
+
+
+
+
+/**
+ * Recursive data type (leaf or node).
+ */
+export type Data<
+    T = BasicData,
+    ObjectPropType extends AnyKey = string,
+> =
+    | T
+    | DataArray<T, ObjectPropType>
+    | DataObject<T, ObjectPropType>;
+
+
+
+
+/**
+ * Node-indexing type.
+ */
+export type DataIndex<
+    PropType extends AnyKey = string | number,
+> = PropType;
 
 
 
