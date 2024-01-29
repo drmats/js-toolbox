@@ -427,9 +427,11 @@ type
 > ```javascript
 > { isArray: [Function: isArray],
 >   isBoolean: [Function: isBoolean],
+>   isDate: [Function: isDate],
 >   isFunction: [Function: isFunction],
 >   isNumber: [Function: isNumber],
 >   isObject: [Function: isObject],
+>   isRegExp: [Function: isRegExp],
 >   isString: [Function: isString],
 >   lazyNullishCoalesce: [Function: lazyNullishCoalesce],
 >   maxInt: 9007199254740991,

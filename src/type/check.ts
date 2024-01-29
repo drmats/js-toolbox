@@ -17,7 +17,7 @@ import type { Fun, JSAnyObj } from "../type/defs";
  * Determine if a given value is an `Array`.
  *
  * @function isArray
- * @param {any} a
+ * @param {unknown} c
  * @returns {Boolean}
  */
 export const isArray = Array.isArray;
@@ -26,14 +26,39 @@ export const isArray = Array.isArray;
 
 
 /**
+ * Determine if a given value is a `Boolean`.
+ *
+ * @function isBoolean
+ * @param {unknown} c
+ * @returns {Boolean}
+ */
+export const isBoolean = (c: unknown): c is boolean =>
+    c != null  &&  "boolean" === typeof c;
+
+
+
+
+/**
+ * Determine if a given value is of `Date` type.
+ *
+ * @function isDate
+ * @param {unknown} c
+ * @returns {Date}
+ */
+export const isDate = (c: unknown): c is Date => c instanceof Date;
+
+
+
+
+/**
  * Determine if a given value is a `Function`.
  *
  * @function isFunction
- * @param {any} f
+ * @param {unknown} c
  * @returns {Boolean}
  */
-export const isFunction = (f: unknown): f is Fun =>
-    f != null  &&  "function" === typeof f;
+export const isFunction = (c: unknown): c is Fun =>
+    c != null  &&  "function" === typeof c;
 
 
 
@@ -43,12 +68,12 @@ export const isFunction = (f: unknown): f is Fun =>
  * (not `NaN` and not `Infinity`).
  *
  * @function isNumber
- * @param {any} n
+ * @param {unknown} c
  * @returns {Boolean}
  */
-export const isNumber = (n: unknown): n is number =>
-    n != null  &&  "number" === typeof n  &&
-    !Number.isNaN(n)  &&  Number.isFinite(n);
+export const isNumber = (c: unknown): c is number =>
+    c != null  &&  "number" === typeof c  &&
+    !Number.isNaN(c)  &&  Number.isFinite(c);
 
 
 
@@ -58,11 +83,23 @@ export const isNumber = (n: unknown): n is number =>
  * (not `null`, not `undefined` and not `Array`).
  *
  * @function isObject
- * @param {any} o
+ * @param {unknown} c
  * @returns {Boolean}
  */
-export const isObject = (o: unknown): o is JSAnyObj =>
-    o != null  &&  "object" === typeof o  &&  !isArray(o);
+export const isObject = (c: unknown): c is JSAnyObj =>
+    c != null  &&  "object" === typeof c  &&  !isArray(c);
+
+
+
+
+/**
+ * Determine if a given value is of `RegExp` type.
+ *
+ * @function isRegExp
+ * @param {unknown} c
+ * @returns {RegExp}
+ */
+export const isRegExp = (c: unknown): c is RegExp => c instanceof RegExp;
 
 
 
@@ -71,21 +108,8 @@ export const isObject = (o: unknown): o is JSAnyObj =>
  * Determine if a given value is a `String`.
  *
  * @function isString
- * @param {any} s
+ * @param {unknown} c
  * @returns {Boolean}
  */
-export const isString = (s: unknown): s is string =>
-    s != null  &&  "string" === typeof s;
-
-
-
-
-/**
- * Determine if a given value is a `Boolean`.
- *
- * @function isBoolean
- * @param {any} b
- * @returns {Boolean}
- */
-export const isBoolean = (b: unknown): b is boolean =>
-    b != null  &&  "boolean" === typeof b;
+export const isString = (c: unknown): c is string =>
+    c != null  &&  "string" === typeof c;

@@ -238,9 +238,11 @@ export * as struct from "./struct";
 export {
     isArray,
     isBoolean,
+    isDate,
     isFunction,
     isNumber,
     isObject,
+    isRegExp,
     isString,
 } from "./type/check";
 export {
