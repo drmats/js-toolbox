@@ -209,18 +209,23 @@ export type {
     DataObject,
 } from "./struct/data";
 export {
+    isBasicData,
     access,
     assign,
+    rewrite,
+} from "./struct/data";
+export {
     clone,
-    dfs,
     dict,
-    hashAccessor,
-    keyAccessor,
     objectMap,
     objectReduce,
-    rewrite,
     swap,
-} from "./struct";
+} from "./struct/object";
+export {
+    dfs,
+    hashAccessor,
+    keyAccessor,
+} from "./struct/tree";
 export * as struct from "./struct";
 
 

@@ -17,18 +17,37 @@ import { intersection } from "../array/set";
 import { inc } from "../math/arithmetic";
 import { quote } from "../string/transform";
 import { space } from "../string/consts";
-import { isArray, isNumber, isObject, isString } from "../type/check";
+import {
+    isArray,
+    isBoolean,
+    isNumber,
+    isObject,
+    isString,
+} from "../type/check";
 
 
 
 
 /**
- * Simple, basic data type (leaf).
+ * Simple, basic data type (leaf). Serializable. Non recursive type.
  */
 export type BasicData =
     | boolean
     | number
     | string;
+
+
+
+
+/**
+ * Check if value is of `BasicData` type. Non recursive check.
+ *
+ * @function isBasicData
+ * @param {unknown} c
+ * @returns {Boolean}
+ */
+export const isBasicData = (c: unknown): c is BasicData =>
+    isString(c) || isNumber(c) || isBoolean(c);
 
 
 
