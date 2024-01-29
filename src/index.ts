@@ -209,9 +209,10 @@ export type {
     DataObject,
 } from "./struct/data";
 export {
-    isBasicData,
     access,
     assign,
+    isBasicData,
+    isBasicDataOrUndefined,
     rewrite,
 } from "./struct/data";
 export {

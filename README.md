@@ -409,6 +409,8 @@ struct
 >   keyAccessor: [Function: keyAccessor],
 >   dfs: [Function: dfs],
 >   dict: [Function: dict],
+>   isBasicData: [Function: isBasicData],
+>   isBasicDataOrUndefined: [Function: isBasicDataOrUndefined],
 >   objectMap: [Function: objectMap],
 >   objectReduce: [Function: objectReduce],
 >   rewrite: [Function: rewrite],

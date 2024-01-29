@@ -53,6 +53,21 @@ export const isBasicData = (c: unknown): c is BasicData =>
 
 
 /**
+ * Check if value is of `BasicData` of `undefined` type. Non recursive check.
+ *
+ * @function isBasicDataOrUndefined
+ * @param {unknown} c
+ * @returns {Boolean | undefined}
+ */
+export const isBasicDataOrUndefined = (
+    c: unknown,
+): c is BasicData | undefined =>
+    typeof c === "undefined" || isBasicData(c);
+
+
+
+
+/**
  * All "atomic" types.
  */
 export type Atom =
