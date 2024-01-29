@@ -100,16 +100,22 @@ export {
     b64ToString,
     bytesToHex,
     bytesToString,
-    compareBytes,
-    concatBytes,
-    csv,
     hexToB64,
     hexToBytes,
-    random as randomBytes,
     stringToB64,
     stringToBytes,
+} from "./codec/conv";
+export {
+    csv,
+} from "./codec/csv";
+export {
+    random as randomBytes,
     timestamp as timestampBytes,
-} from "./codec";
+} from "./codec/gen";
+export {
+    compareBytes,
+    concatBytes,
+} from "./codec/op";
 export * as codec from "./codec";
 
 
@@ -118,28 +124,32 @@ export * as codec from "./codec";
 /**
  * @see {@link module:func}
  */
-export type {
-    CurryFun,
-    ThunkFun,
-} from "./func/curry";
+export {
+    choose,
+} from "./func/choice";
 export {
     app,
-    choose,
     compose,
+    flow,
+    pipe,
+    Y,
+} from "./func/combinators";
+export {
+    type CurryFun,
+    type ThunkFun,
     curry,
     curryN,
     curryThunk,
-    flow,
+    partial,
+} from "./func/curry";
+export {
     handleException,
     identity,
     lazyish,
     local,
     locker,
-    partial,
-    pipe,
     rearg,
-    Y,
-} from "./func";
+} from "./func/tools";
 export * as func from "./func";
 
 
@@ -150,13 +160,9 @@ export * as func from "./func";
  */
 export {
     add,
-    average,
-    clamp,
     dec,
-    degrees,
     div,
     inc,
-    interpolate,
     inv,
     log10,
     log2,
@@ -164,14 +170,28 @@ export {
     mul,
     neg,
     pow,
-    product,
-    radians,
-    randomInt,
     remainder,
-    roundIfClose,
     sub,
+} from "./math/arithmetic";
+export {
+    degrees,
+    radians,
+} from "./math/geom";
+export {
+    interpolate,
+} from "./math/interpolation";
+export {
+    randomInt,
+} from "./math/random";
+export {
+    clamp,
+    roundIfClose,
+} from "./math/rounding";
+export {
+    average,
+    product,
     sum,
-} from "./math";
+} from "./math/series";
 export * as math from "./math";
 
 
@@ -184,27 +204,31 @@ export {
     asciiLetters,
     asciiLowercase,
     asciiUppercase,
+    digits,
+    empty as emptyString,
+    nl as nlString,
+    space as spaceString,
+    tab as tabString,
+} from "./string/consts";
+export {
     big as bigString,
+    random as randomString,
+} from "./string/gen";
+export {
     camelToPascal,
     camelToSnake,
     capitalize,
-    digits,
     ellipsis,
-    empty as emptyString,
-    nl as nlString,
     padLeft,
     padRight,
     pascalToCamel,
     pascalToSnake,
     quote,
-    random as randomString,
     shorten,
     snakeToCamel,
     snakeToPascal,
-    space as spaceString,
-    tab as tabString,
     wrap,
-} from "./string";
+} from "./string/transform";
 export * as string from "./string";
 
 
@@ -313,20 +337,22 @@ export * as type from "./type";
 /**
  * @see {@link module:utils}
  */
-export type {
-    TimeUnit,
-} from "./utils/misc";
 export {
     devEnv,
     getLibConfig,
     getProcess,
     isBrowser,
+    to_,
+} from "./utils/dev";
+export {
     rgb,
     rgba,
+    url,
+} from "./utils/jss";
+export {
     run,
     timeUnit,
     timing,
-    to_,
-    url,
-} from "./utils";
+    type TimeUnit,
+} from "./utils/misc";
 export * as utils from "./utils";
