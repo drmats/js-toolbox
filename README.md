@@ -1196,6 +1196,7 @@ utils
 This library is suitable to use in server and browser environments
 and it is being used as such.
 Go ahead and [file an issue](https://github.com/drmats/js-toolbox/issues/new)
+or [submit a fresh PR](https://github.com/drmats/js-toolbox/pulls)
 if you found a bug 🐞.
 
 </br>
