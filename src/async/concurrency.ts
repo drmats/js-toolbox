@@ -14,6 +14,7 @@
 
 import { race } from "../async/tools";
 import { random } from "../string/gen";
+import { timeUnit } from "../utils/misc";
 
 
 
@@ -54,6 +55,51 @@ export const createMutex = <T>(): {
     return {
         lock: () => promise,
         resolve, reject,
+    };
+};
+
+
+
+
+/**
+ * Create mutex with watchdog (10 minutes by default).
+ *
+ * `barrier`, in contrast to `mutex`, is preventing node process from exiting.
+ *
+ * Example:
+ * ```
+ * const barrier = createBarrier<void>();
+ *
+ * setTimeout(() => { barrier.resolve("Released!"); }, 2000);
+ *
+ * await barrier.lock();
+ * ```
+ *
+ * @function createTimedBarrier
+ * @param [releaseTimeout=10*timeUnit.minute]
+ * @returns {Object} lock(), resolve(), reject()
+ */
+export const createTimedBarrier = <T>(
+    releaseTimeout = 10 * timeUnit.minute,
+): ReturnType<typeof createMutex<T>> => {
+    const mutex = createMutex<T>();
+    let watchdog: ReturnType<typeof setTimeout> | undefined = undefined;
+    return {
+        ...mutex,
+        lock: () => {
+            watchdog = setTimeout(() => {
+                mutex.reject(new Error("timeout"));
+            }, releaseTimeout);
+            return mutex.lock();
+        },
+        resolve: (v) => {
+            if (watchdog) clearTimeout(watchdog);
+            return mutex.resolve(v);
+        },
+        reject: (r) => {
+            if (watchdog) clearTimeout(watchdog);
+            return mutex.reject(r);
+        },
     };
 };
 
@@ -143,7 +189,7 @@ interface PromisePoolSlotType<T> {
  * ```
  *
  * @function promisePool
- * @param {Number} [poolSize=64]
+ * @param [poolSize=64]
  * @returns {Object} exec(t), finish()
  */
 export const promisePool = <T, E = any>(poolSize = 64): {

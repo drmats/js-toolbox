@@ -264,6 +264,7 @@ async
 >   bind: [Function bind],
 >   cancellable: [Function: cancellable],
 >   createMutex: [Function: createMutex],
+>   createTimedBarrier: [Function: createTimedBarrier],
 >   delay: [Function: delay],
 >   interval: [Function: interval],
 >   liftr: [Function: liftr],

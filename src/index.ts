@@ -13,32 +13,38 @@
  */
 export {
     append,
-    countBy,
-    difference as arrayDifference,
-    draw,
     drop,
     dropLast,
-    findDuplicates,
-    flatten,
     head,
     init,
-    intersection as arrayIntersection,
-    isContinuous,
-    isSorted,
-    isSubset as arrayIsSubset,
     last,
-    range,
-    removeDuplicates,
-    setEqual as arraySetEqual,
-    shuffle,
-    sparse,
     tail,
     take,
-    takeEvery,
     takeLast,
+} from "./array/list";
+export {
+    draw,
+    shuffle,
+    sparse,
+} from "./array/random";
+export {
+    countBy,
+    difference as arrayDifference,
+    findDuplicates,
+    intersection as arrayIntersection,
+    isSubset as arrayIsSubset,
+    removeDuplicates,
+    setEqual as arraySetEqual,
+} from "./array/set";
+export {
+    flatten,
+    isContinuous,
+    isSorted,
+    range,
+    takeEvery,
     zip,
     zipWith,
-} from "./array";
+} from "./array/tools";
 export * as array from "./array";
 
 
@@ -47,31 +53,38 @@ export * as array from "./array";
 /**
  * @see {@link module:async}
  */
-export type {
-    PromisePoolEmptyResult,
-    PromisePoolFulfilledResult,
-    PromisePoolProps,
-    PromisePoolRejectedResult,
-    PromisePoolResult,
+export {
+    createMutex,
+    createTimedBarrier,
+    promisePool,
+    type PromisePoolEmptyResult,
+    type PromisePoolFulfilledResult,
+    type PromisePoolProps,
+    type PromisePoolRejectedResult,
+    type PromisePoolResult,
 } from "./async/concurrency";
+export {
+    map as asyncMap,
+    parMap,
+    reduce as asyncReduce,
+} from "./async/iterators";
 export {
     ap,
     bind,
-    cancellable,
-    createMutex,
+    liftr,
+    rbind,
+    unit,
+} from "./async/monad";
+export {
     delay,
     interval,
-    liftr,
-    map as asyncMap,
-    parMap,
-    promisePool,
-    race as asyncRace,
-    rbind,
-    reduce as asyncReduce,
-    repeat as asyncRepeat,
     timeout,
-    unit,
-} from "./async";
+} from "./async/timing";
+export {
+    cancellable,
+    race as asyncRace,
+    repeat as asyncRepeat,
+} from "./async/tools";
 export * as async from "./async";
 
 
@@ -200,20 +213,18 @@ export * as string from "./string";
 /**
  * @see {@link module:struct}
  */
-export type {
-    Atom,
-    BasicData,
-    Data,
-    DataArray,
-    DataIndex,
-    DataObject,
-} from "./struct/data";
 export {
     access,
     assign,
     isBasicData,
     isBasicDataOrUndefined,
     rewrite,
+    type Atom,
+    type BasicData,
+    type Data,
+    type DataArray,
+    type DataIndex,
+    type DataObject,
 } from "./struct/data";
 export {
     clone,
