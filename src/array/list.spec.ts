@@ -21,6 +21,7 @@ describe("append", () => {
         expect(result).toEqual([1, 2, 3, 4, 5, 6]);
     });
 
+
     test("should work with empty arrays", () => {
         const xs: number[] = [];
         const ys: number[] = [4, 5, 6];
@@ -29,6 +30,7 @@ describe("append", () => {
 
         expect(result).toEqual([4, 5, 6]);
     });
+
 
     test("should work with different types", () => {
         const xs: (number | string)[] = [1, 2, 3];

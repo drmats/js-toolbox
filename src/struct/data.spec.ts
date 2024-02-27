@@ -21,17 +21,21 @@ describe("isBasicData", () => {
         expect(isBasicData("test string")).toEqual(true);
     });
 
+
     test("should recognize number", async () => {
         expect(isBasicData(42)).toEqual(true);
     });
+
 
     test("should recognize boolean", async () => {
         expect(isBasicData(false)).toEqual(true);
     });
 
+
     test("shouldn't recognize undefined", async () => {
         expect(isBasicData(undefined)).toEqual(false);
     });
+
 
     test("shouldn't recognize null", async () => {
         expect(isBasicData(null)).toEqual(false);
@@ -46,17 +50,21 @@ describe("isBasicDataOrUndefined", () => {
         expect(isBasicDataOrUndefined("test string")).toEqual(true);
     });
 
+
     test("should recognize number", async () => {
         expect(isBasicDataOrUndefined(42)).toEqual(true);
     });
+
 
     test("should recognize boolean", async () => {
         expect(isBasicDataOrUndefined(false)).toEqual(true);
     });
 
+
     test("should recognize undefined", async () => {
         expect(isBasicDataOrUndefined(undefined)).toEqual(true);
     });
+
 
     test("shouldn't recognize null", async () => {
         expect(isBasicDataOrUndefined(null)).toEqual(false);
@@ -77,6 +85,7 @@ describe("access", () => {
         expect(result).toEqual(42);
     });
 
+
     test("should return fallback value on non-existing key", async () => {
         const testObj = { a: { b: [10, { c: 42 }] } };
         const testPath1 = ["a", "b", 1, "x"];
@@ -91,6 +100,7 @@ describe("access", () => {
         expect(result2).toEqual("different value");
     });
 
+
     test("should return undefined on non-existing key if no fallback", async () => {
         const testObj = { a: { b: [10, { c: 42 }] } };
         const testPath1 = ["c", "x"];
@@ -102,6 +112,7 @@ describe("access", () => {
         expect(result1).toEqual("undefined");
         expect(result2).toEqual("undefined");
     });
+
 
     test("should return input if no path", async () => {
         const testObj = { a: { b: [10, { c: 42 }] } };
