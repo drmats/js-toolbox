@@ -6,8 +6,6 @@
  * @copyright Mat. 2018-present
  */
 
-/* eslint-disable @typescript-eslint/prefer-function-type */
-
 import type { Arr, Fun, OneArgFun } from "../type/defs";
 import { curry } from "../func/curry";
 
@@ -38,13 +36,9 @@ export function unit<T> (val: T): Promise<T> {
  */
 export const bind: {
     /* uncurried */
-    <A, B>(
-        ma: Promise<A>, f: OneArgFun<A, Promise<B>>,
-    ): Promise<B>;
+    <A, B>(ma: Promise<A>, f: OneArgFun<A, Promise<B>>): Promise<B>;
     /* curried */
-    <A, B>(
-        ma: Promise<A>,
-    ): { (f: OneArgFun<A, Promise<B>>): Promise<B> };
+    <A, B>(ma: Promise<A>): (f: OneArgFun<A, Promise<B>>) => Promise<B>;
 } = curry(async <A, B>(
     ma: Promise<A>,
     f: OneArgFun<A, Promise<B>>,
@@ -63,13 +57,9 @@ export const bind: {
  */
 export const rbind: {
     /* uncurried */
-    <A, B>(
-        f: OneArgFun<A, Promise<B>>, ma: Promise<A>,
-    ): Promise<B>;
+    <A, B>(f: OneArgFun<A, Promise<B>>, ma: Promise<A>): Promise<B>;
     /* curried */
-    <A, B>(
-        f: OneArgFun<A, Promise<B>>,
-    ): { (ma: Promise<A>): Promise<B> };
+    <A, B>(f: OneArgFun<A, Promise<B>>): (ma: Promise<A>) => Promise<B>;
 } = curry(async <A, B>(
     f: OneArgFun<A, Promise<B>>,
     ma: Promise<A>,

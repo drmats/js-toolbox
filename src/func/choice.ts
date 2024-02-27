@@ -86,8 +86,8 @@ export function choose<
     | ReturnType<typeof defaultChoice>
 {
     return (
-        key in choices ?
-            choices[key](...(args ?? [] as In)) :
-            defaultChoice(...(args ?? [] as In))
+        key in choices
+            ? choices[key](...(args ?? [] as In))
+            : defaultChoice(...(args ?? [] as In))
     );
 }

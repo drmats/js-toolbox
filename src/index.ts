@@ -143,6 +143,17 @@ export {
     partial,
 } from "./func/curry";
 export {
+    bind as optionBind,
+    hasValue,
+    JUST,
+    NOTHING,
+    optionalize,
+    rbind as optionRbind,
+    type Just,
+    type Maybe,
+    type Nothing,
+} from "./func/option";
+export {
     handleException,
     identity,
     lazyish,
