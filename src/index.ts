@@ -143,17 +143,6 @@ export {
     partial,
 } from "./func/curry";
 export {
-    bind as optionBind,
-    hasValue,
-    JUST,
-    NOTHING,
-    optionalize,
-    rbind as optionRbind,
-    type Just,
-    type Maybe,
-    type Nothing,
-} from "./func/option";
-export {
     handleException,
     identity,
     lazyish,
@@ -204,6 +193,25 @@ export {
     sum,
 } from "./math/series";
 export * as math from "./math";
+
+
+
+
+/**
+ * @see {@link module:option}
+ */
+export {
+    bind as optionBind,
+    hasValue,
+    JUST,
+    NOTHING,
+    optionalize,
+    rbind as optionRbind,
+    type Just,
+    type Maybe,
+    type Nothing,
+} from "./option/maybe";
+export * as option from "./option";
 
 
 

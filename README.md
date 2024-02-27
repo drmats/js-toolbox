@@ -313,7 +313,6 @@ func
 
 > ```javascript
 > { app: [Function: app],
->   bind: [Function: bind],
 >   choose: [Function: choose],
 >   compose: [Function: compose],
 >   curry: [Function: curry],
@@ -321,17 +320,12 @@ func
 >   curryThunk: [Function: curryThunk],
 >   flow: [Function: flow],
 >   handleException: [Function: handleException],
->   hasValue: [Function: hasValue],
 >   identity: [Function: identity],
->   JUST: [Function: JUST],
 >   lazyish: [Function: lazyish],
 >   locker: [Function: locker],
 >   local: [Function: local],
->   NOTHING: { [Symbol(__maybe)]: false },
->   optionalize: [Function: optionalize],
 >   partial: [Function: partial],
 >   pipe: [Function: pipe],
->   rbind: [Function: rbind],
 >   rearg: [Function: rearg],
 >   Y: [Function: Y] }
 > ```
@@ -366,6 +360,22 @@ math
 >   roundIfClose: [Function: roundIfClose],
 >   sub: [Function],
 >   sum: [Function: sum] }
+> ```
+
+
+### **option monad**
+
+```javascript
+option
+```
+
+> ```javascript
+> { bind: [Function: bind],
+>   hasValue: [Function: hasValue],
+>   JUST: [Function: JUST],
+>   NOTHING: { [Symbol(__maybe)]: false },
+>   optionalize: [Function: optionalize],
+>   rbind: [Function: rbind] }
 > ```
 
 
