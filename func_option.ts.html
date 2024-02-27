@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.ts - Documentation</title>
+    <title>func/option.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.ts</h1>
+    <h1 class="page-title">func/option.ts</h1>
     
 
     
@@ -40,120 +40,151 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Type tools.
+ * Carbon-copied Haskell's `Maybe` monad.
  *
- * @module type
+ * @module option
  * @license Apache-2.0
- * @copyright Mat. 2018-present
+ * @copyright Mat. 2023-present
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import type { Fun, JSAnyObj } from "../type/defs";
+import { isObject } from "../type/check";
+import { curry } from "../func/curry";
 
 
 
 
 /**
- * Determine if a given value is an `Array`.
- *
- * @function isArray
- * @param {unknown} c
- * @returns {Boolean}
+ * 'Maybe' type internal trait.
  */
-export const isArray = Array.isArray;
+const __maybe: unique symbol = Symbol("__maybe");
 
 
 
 
 /**
- * Determine if a given value is a `Boolean`.
- *
- * @function isBoolean
- * @param {unknown} c
- * @returns {Boolean}
+ * No value - type domain.
  */
-export const isBoolean = (c: unknown): c is boolean =>
-    c != null  &amp;&amp;  "boolean" === typeof c;
+export type Nothing = { readonly [__maybe]: false };
 
 
 
 
 /**
- * Determine if a given value is of `Date` type.
+ * No value - runtime domain.
  *
- * @function isDate
- * @param {unknown} c
- * @returns {Date}
+ * @constant NOTHING
  */
-export const isDate = (c: unknown): c is Date => c instanceof Date;
+export const NOTHING: Nothing = { [__maybe]: false } as const;
 
 
 
 
 /**
- * Determine if a given value is a `Function`.
- *
- * @function isFunction
- * @param {unknown} c
- * @returns {Boolean}
+ * Value - type domain.
  */
-export const isFunction = (c: unknown): c is Fun =>
-    c != null  &amp;&amp;  "function" === typeof c;
+export type Just&lt;A> = { readonly [__maybe]: true; value: A };
 
 
 
 
 /**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
+ * Value - runtime domain.
+ * Monadic `return`.
  *
- * @function isNumber
- * @param {unknown} c
- * @returns {Boolean}
+ * @function JUST
+ * @param value
+ * @returns Just&lt;typeof value>
  */
-export const isNumber = (c: unknown): c is number =>
-    c != null  &amp;&amp;  "number" === typeof c  &amp;&amp;
-    !Number.isNaN(c)  &amp;&amp;  Number.isFinite(c);
+export const JUST = &lt;A>(value: A): Just&lt;A> => ({ [__maybe]: true, value });
 
 
 
 
 /**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
- *
- * @function isObject
- * @param {unknown} c
- * @returns {Boolean}
+ * No-value or value?
  */
-export const isObject = (c: unknown): c is JSAnyObj =>
-    c != null  &amp;&amp;  "object" === typeof c  &amp;&amp;  !isArray(c);
+export type Maybe&lt;A> =
+    | Nothing
+    | Just&lt;A>;
 
 
 
 
 /**
- * Determine if a given value is of `RegExp` type.
+ * Type assertion - does that value of `Maybe` type have value?
  *
- * @function isRegExp
- * @param {unknown} c
- * @returns {RegExp}
+ * @function hasValue
+ * @param maybe
+ * @return boolean
  */
-export const isRegExp = (c: unknown): c is RegExp => c instanceof RegExp;
+export const hasValue = &lt;A>(maybe: Maybe&lt;A>): maybe is Just&lt;A> =>
+    isObject(maybe) &amp;&amp; maybe[__maybe];
 
 
 
 
 /**
- * Determine if a given value is a `String`.
+ * Option monad - `>>=`;
  *
- * @function isString
- * @param {unknown} c
- * @returns {Boolean}
+ * If `maybe` has value then apply `f` to it and return result.
+ * Otherwise return `NOTHING`.
+ *
+ * @function bind
+ * @param ma
+ * @param f f: a -> mb
+ * @returns (ma >>= f): mb
  */
-export const isString = (c: unknown): c is string =>
-    c != null  &amp;&amp;  "string" === typeof c;
+export const bind: {
+    /* uncurried */
+    &lt;A, B>(maybe: Maybe&lt;A>, f: (value: A) => Maybe&lt;B>): Maybe&lt;B>;
+    /* curried */
+    &lt;A, B>(maybe: Maybe&lt;A>): (f: (value: A) => Maybe&lt;B>) => Maybe&lt;B>;
+} = curry(
+    &lt;A, B>(maybe: Maybe&lt;A>, f: (value: A) => Maybe&lt;B>) =>
+        hasValue(maybe) ? f(maybe.value) : NOTHING,
+);
+
+
+
+
+/**
+ * Option monad - `=&lt;&lt;`;
+ *
+ * If `maybe` has value then apply `f` to it and return result.
+ * Otherwise return `NOTHING`.
+ *
+ * @function rbind
+ * @param f f: a -> mb
+ * @param ma
+ * @returns (f =&lt;&lt; ma): mb
+ */
+export const rbind: {
+    /* uncurried */
+    &lt;A, B>(f: (value: A) => Maybe&lt;B>, maybe: Maybe&lt;A>): Maybe&lt;B>;
+    /* curried */
+    &lt;A, B>(f: (value: A) => Maybe&lt;B>): (maybe: Maybe&lt;A>) => Maybe&lt;B>;
+} = curry(
+    &lt;A, B>(f: (value: A) => Maybe&lt;B>, maybe: Maybe&lt;A>) =>
+        hasValue(maybe) ? f(maybe.value) : NOTHING,
+);
+
+
+
+
+/**
+ * Option monad - `ap`.
+ *
+ * Takes regular function and makes it `Maybe`-compatible.
+ *
+ * @function optionalize
+ * @param f f: a -> b
+ * @returns mf: ma -> mb
+ */
+export function optionalize&lt;A, B> (
+    f: (value: A) => B,
+): (maybe: Maybe&lt;A>) => Maybe&lt;B> {
+    return (maybe) => hasValue(maybe) ? JUST(f(maybe.value)) : NOTHING;
+}
 </code></pre>
         </article>
     </section>

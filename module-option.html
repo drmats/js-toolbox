@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>type/check.ts - Documentation</title>
+    <title>option - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,134 +29,1064 @@
 
 <div id="main">
     
-    <h1 class="page-title">type/check.ts</h1>
+    <h1 class="page-title">option</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Type tools.
- *
- * @module type
- * @license Apache-2.0
- * @copyright Mat. 2018-present
- */
+</header>
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Carbon-copied Haskell's <code>Maybe</code> monad.</p></div>
+        
 
-import type { Fun, JSAnyObj } from "../type/defs";
+        
 
 
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li>Mat. 2023-present</li></ul></dd>
+    
+
+    
+    <dt class="tag-license">License:</dt>
+    <dd class="tag-license"><ul class="dummy"><li>Apache-2.0</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
-/**
- * Determine if a given value is an `Array`.
- *
- * @function isArray
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isArray = Array.isArray;
+        
+    
+    </div>
 
+    
 
+    
 
+    
 
-/**
- * Determine if a given value is a `Boolean`.
- *
- * @function isBoolean
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isBoolean = (c: unknown): c is boolean =>
-    c != null  &amp;&amp;  "boolean" === typeof c;
+     
 
+    
 
+    
+        <h3 class="subsection-title">Members</h3>
 
-
-/**
- * Determine if a given value is of `Date` type.
- *
- * @function isDate
- * @param {unknown} c
- * @returns {Date}
- */
-export const isDate = (c: unknown): c is Date => c instanceof Date;
-
-
-
-
-/**
- * Determine if a given value is a `Function`.
- *
- * @function isFunction
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isFunction = (c: unknown): c is Fun =>
-    c != null  &amp;&amp;  "function" === typeof c;
-
-
-
-
-/**
- * Determine if a given value is a proper `Number`
- * (not `NaN` and not `Infinity`).
- *
- * @function isNumber
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isNumber = (c: unknown): c is number =>
-    c != null  &amp;&amp;  "number" === typeof c  &amp;&amp;
-    !Number.isNaN(c)  &amp;&amp;  Number.isFinite(c);
-
-
-
-
-/**
- * Determine if a given value is an `Object`
- * (not `null`, not `undefined` and not `Array`).
- *
- * @function isObject
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isObject = (c: unknown): c is JSAnyObj =>
-    c != null  &amp;&amp;  "object" === typeof c  &amp;&amp;  !isArray(c);
+        
+            
+<div class="section-members">
+<h4 class="name" id=".JUST"><span class="type-signature">(static) </span>JUST<span class="type-signature"></span></h4>
 
 
 
 
-/**
- * Determine if a given value is of `RegExp` type.
- *
- * @function isRegExp
- * @param {unknown} c
- * @returns {RegExp}
- */
-export const isRegExp = (c: unknown): c is RegExp => c instanceof RegExp;
+<div class="description">
+    <p>No-value or value?</p>
+</div>
 
 
 
 
-/**
- * Determine if a given value is a `String`.
- *
- * @function isString
- * @param {unknown} c
- * @returns {Boolean}
- */
-export const isString = (c: unknown): c is string =>
-    c != null  &amp;&amp;  "string" === typeof c;
-</code></pre>
-        </article>
-    </section>
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="~NOTHING"><span class="type-signature">(inner, constant) </span>NOTHING<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>No value - runtime domain.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="~__maybe"><span class="type-signature">(inner, constant) </span>__maybe<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>'Maybe' type internal trait.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+</div>
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~JUST"><span class="type-signature">(inner) </span>JUST<span class="signature">(value)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Value - runtime domain.
+Monadic <code>return</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+
+<div class="param-desc">
+    <p>Just<typeof value></p>
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~bind"><span class="type-signature">(inner) </span>bind<span class="signature">(ma, f)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Option monad - <code>&gt;&gt;=</code>;</p>
+<p>If <code>maybe</code> has value then apply <code>f</code> to it and return result.
+Otherwise return <code>NOTHING</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ma</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>f: a -&gt; mb</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+
+<div class="param-desc">
+    <p>(ma &gt;&gt;= f): mb</p>
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~hasValue"><span class="type-signature">(inner) </span>hasValue<span class="signature">(maybe)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Type assertion - does that value of <code>Maybe</code> type have value?</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maybe</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+
+<div class="param-desc">
+    <p>boolean</p>
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~optionalize"><span class="type-signature">(inner) </span>optionalize<span class="signature">(f)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Option monad - <code>ap</code>.</p>
+<p>Takes regular function and makes it <code>Maybe</code>-compatible.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line133">line 133</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>f: a -&gt; b</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+
+<div class="param-desc">
+    <p>mf: ma -&gt; mb</p>
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="~rbind"><span class="type-signature">(inner) </span>rbind<span class="signature">(f, ma)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Option monad - <code>=&lt;&lt;</code>;</p>
+<p>If <code>maybe</code> has value then apply <code>f</code> to it and return result.
+Otherwise return <code>NOTHING</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="func_option.ts.html">func/option.ts</a>, <a href="func_option.ts.html#line109">line 109</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>f</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>f: a -&gt; mb</p>
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ma</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+
+<div class="param-desc">
+    <p>(f =&lt;&lt; ma): mb</p>
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
