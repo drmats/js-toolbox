@@ -6,8 +6,6 @@
  * @copyright Mat. 2018-present
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { Fun, JSAnyObj } from "../type/defs";
 
 

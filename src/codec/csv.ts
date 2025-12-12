@@ -49,5 +49,5 @@ export const csv = (input: string, sep = ","): string[][] => {
             })
             // filter-out non-parsed lines
             .filter(isArray)
-     ) as string[][];
+    ) as string[][];
 };

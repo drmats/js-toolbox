@@ -74,11 +74,17 @@ export const lazyNullishCoalesce = curry(
     <L, R>(left: L, right: () => R) => left == null ? right() : left,
 ) as {
     /* uncurried */
-    <L, R>(left: L, right: () => R):
-        L extends null ? R : L extends undefined ? R : L;
+    <L, R>(left: L, right: () => R): L extends null
+        ? R
+        : L extends undefined
+            ? R
+            : L;
     /* curried */
     <L>(left: L): {
-        <R>(right: () => R):
-            L extends null ? R : L extends undefined ? R : L;
+        <R>(right: () => R): L extends null
+            ? R
+            : L extends undefined
+                ? R
+                : L;
     };
 };

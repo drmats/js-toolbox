@@ -25,10 +25,10 @@ export type CurryFun<
     P extends any[] = Parameters<F>,
     R = ReturnType<F>,
 > = Length<P> extends 0
-        ? () => R
-        : Length<P> extends 1
-            ? (x: Head<P>) => R
-            : (x: Head<P>) => CurryFun<(...args: Tail<P>) => R>;
+    ? () => R
+    : Length<P> extends 1
+        ? (x: Head<P>) => R
+        : (x: Head<P>) => CurryFun<(...args: Tail<P>) => R>;
 
 
 

@@ -99,10 +99,8 @@ export const getLibConfig = () => ({
 export const getProcess = () => (
     envvars => handleException(
         () =>
-            // eslint-disable-next-line no-undef
             isObject(process) ? {
                 ...process,
-                // eslint-disable-next-line no-undef
                 browser: toBool(process.browser),
                 env: {
                     ...process.env,
@@ -119,15 +117,12 @@ export const getProcess = () => (
     )
 )({
     NODE_ENV: handleException(
-        // eslint-disable-next-line no-undef
         () => process.env.NODE_ENV,
     ),
     BABEL_ENV: handleException(
-        // eslint-disable-next-line no-undef
         () => process.env.BABEL_ENV,
     ),
     DEBUG: handleException(
-        // eslint-disable-next-line no-undef
         () => process.env.DEBUG,
     ),
 });

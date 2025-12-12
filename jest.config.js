@@ -5,6 +5,9 @@
  * @copyright Mat. 2018-present
  */
 
+
+
+
 /** @type {import("ts-jest").JestConfigWithTsJest} */
 module.exports = {
     preset: "ts-jest",

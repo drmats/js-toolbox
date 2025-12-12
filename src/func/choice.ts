@@ -7,7 +7,6 @@
  */
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 
 import type { Arr, Fun, SafeKey } from "../type/defs";
 

@@ -6,11 +6,6 @@
  * @copyright Mat. 2018-present
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-
-
 import type { AnyKey, Fun, JSAnyObj } from "../type/defs";
 import { append } from "../array/list";
 import { intersection } from "../array/set";
