@@ -7,28 +7,17 @@
 
 "use strict";
 
-const {
-    defineConfig,
-    globalIgnores,
-} = require("eslint/config");
-
-const globals = require("globals");
-const babelParser = require("@babel/eslint-parser");
-const eslintPluginImport = require("eslint-plugin-import");
-
-const {
-    fixupPluginRules,
-} = require("@eslint/compat");
-
-const tsParser = require("@typescript-eslint/parser");
-const typescriptEslint = require("@typescript-eslint/eslint-plugin");
-const js = require("@eslint/js");
-
-const stylistic = require("@stylistic/eslint-plugin");
-
-const {
-    FlatCompat,
-} = require("@eslint/eslintrc");
+const
+    { defineConfig, globalIgnores } = require("eslint/config"),
+    { fixupPluginRules } = require("@eslint/compat"),
+    { FlatCompat } = require("@eslint/eslintrc"),
+    babelParser = require("@babel/eslint-parser"),
+    eslintPluginImport = require("eslint-plugin-import"),
+    globals = require("globals"),
+    js = require("@eslint/js"),
+    stylistic = require("@stylistic/eslint-plugin"),
+    tsParser = require("@typescript-eslint/parser"),
+    typescriptEslint = require("@typescript-eslint/eslint-plugin");
 
 
 
