@@ -57,7 +57,7 @@ module.exports = function (api) {
                             ],
                             modules: "commonjs",
                             targets: {
-                                node: "16.0.0",
+                                node: "20.0.0",
                             },
                             useBuiltIns: false,
                         },
